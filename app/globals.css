@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b0b09;
+  color: #99998a;
+}
+
+/* Grid background */
+.grid-background {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Custom Tailwind component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-[#F1A334] text-black font-semibold md:rounded-tl-xl rounded-lg md:rounded-none md:rounded-br-xl hover:bg-[#f5b55b];
+  }
+
+  .btn-secondary {
+    @apply text-[#b4b4a6] rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-br-xl border border-transparent hover:border hover:border-[#99998a] hover:bg-[#151512];
+  }
+
+  .btn-secondary-no-hover {
+    @apply text-[#b4b4a6] rounded-tl-xl rounded-br-xl;
+  }
+
+  .btn-secondary-with-bg {
+    @apply text-[#b4b4a6] bg-[#2E2E2E] rounded-tl-xl rounded-br-xl hover:border hover:border-[#99998a] hover:bg-[#1a1a1a];
+  }
+}
+
+/* Custom Tailwind utility styles */
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(8, 5, 37, 0.8) 2px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(8, 5, 37, 0.8) 2px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Animated line styles */
+.animated-line {
+  animation: animated-line 5s infinite;
+}
+
+@keyframes animated-line {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 100vh;
+    opacity: 0;
+  }
+  22% {
+    height: 0vh;
+  }
+  100% {
+    height: 0vh;
+  }
+}
+
+.animated-line-w {
+  animation: animated-line-w 5s infinite;
+}
+
+@keyframes animated-line-w {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    width: 100vw;
+    opacity: 0;
+  }
+  22% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/* Radial gradient text */
+.circular-gradient-text {
+  background: radial-gradient(circle, #d4d4cc, #bcbcb3, #abab9e, #99998a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Background radial gradient */
+.bg-radial-gradient {
+  box-shadow: 0 0 100px 130px rgba(255, 255, 255, 0.15);
+}
+
+/* Custom cursor styles */
+.cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease;
+}
+
+.cursor-inner {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+}
+
+.cursor-inner.click {
+  transform: translate(-50%, -50%) scale(2);
+}
