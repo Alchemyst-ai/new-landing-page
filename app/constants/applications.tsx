@@ -21,7 +21,7 @@ const applications: Application[] = [
     title: "On-chain Accountability",
     description:
       "Trustlessly evaluate and pay protocol participants without external oracles. Reward protocol contributions based on on-chain behavior, even in external protocols. Slash for bad behavior according to custom criteria.",
-    bgColor: "bg-[#99998A] text-black",
+    bgColor: "bg-[#ffc676] text-black",
     round: "rounded-tl-3xl",
   },
   {
@@ -90,7 +90,7 @@ const applications: Application[] = [
     title: "On-chain Loyalty and Incentives",
     description:
       "Reward your most loyal users based on their provable record of on-chain activity, without modifying your deployed contracts. Vampire attack your competition by targeting their most valuable users.",
-    bgColor: "bg-[#99998A] text-black",
+    bgColor: "bg-[#ffc676] text-black",
     round: "rounded-br-3xl",
   },
 ];

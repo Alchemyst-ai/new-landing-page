@@ -12,7 +12,7 @@ import { flows } from "./constants/flows";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen max-w-screen overflow-x-hidden">
       <header className="sticky top-0 z-50 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
         <Navbar />
         <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
@@ -24,7 +24,7 @@ export default function Home() {
         <ModelsIntro />
         <Applications applications={applications} />
         <Team />
-        <div className="animated-line-w absolute right-0 bottom-40 flex flex-col justify-start items-start ">
+        <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 flex flex-col justify-start items-start ">
           <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
         </div>
         <Footer />
