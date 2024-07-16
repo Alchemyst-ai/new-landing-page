@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import Flow from "@/app/types/flow";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Button from "./Button";
@@ -43,7 +43,9 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
         <div className="relative  w-full h-[50vh] bg-[#0B0B09] rounded-2xl border border-[#242422] ">
           {flows.map((flow, index) => (
             <div key={index} className="photo absolute bg-[#0B0B09] m-8">
-              <img
+              <Image
+                width={800}
+                height={700}
                 src={flow.image}
                 alt={`img-${index}`}
                 className="w-full h-full"
@@ -73,7 +75,9 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
         {flows.map((flow, index) => (
           <div key={index}>
             <div className="bg-[#0B0B09] md:hidden rounded-2xl border border-[#242422]">
-              <img
+              <Image
+                width={800}
+                height={700}
                 src={flow.image}
                 alt={`img-${index}`}
                 className="w-full h-full"
