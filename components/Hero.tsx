@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   const verticalLines = Array.from({ length: 10 }).map((_, index) => (
     <div
       key={`v-${index}`}
-      className="h-screen max-w-screen overflow-x-hidden absolute top-0 animated-line flex flex-col justify-end items-end"
+      className="h-screen absolute top-0 animated-line flex flex-col justify-end items-end"
       style={{
         right: `${20 + Math.random() * 20}%`,
         animationDelay: getRandomDelay(),
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   const horizontalLines = Array.from({ length: 10 }).map((_, index) => (
     <div
       key={`h-${index}`}
-      className="w-screen max-w-screen overflow-x-hidden absolute right-0 animated-line-w flex flex-col justify-start items-start"
+      className="w-screen absolute right-0 animated-line-w flex flex-col justify-start items-start"
       style={{
         top: `${20 + Math.random() * 60}%`,
         animationDelay: getRandomDelay(),
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
 
   return (
     <GridLayout>
-      <div className="relative z-20 flex h-full w-full items-center justify-center max-w-screen overflow-x-hidden">
+      <div className="relative z-20 flex h-full w-full items-center justify-center">
         {verticalLines}
         {horizontalLines}
         <div className="relative my-40 w-full md:w-2/3 px-4 md:px-0">
