@@ -9,7 +9,7 @@ html {
 
 body {
   background-color: #0b0b09;
-  color: #99998a;
+  color: #e9e9e9;
 }
 
 /* Grid background */
@@ -27,10 +27,10 @@ body {
   height: 100%;
   background-image: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.1) 1px,
+      rgba(143, 138, 246, 0.21) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(143, 138, 246, 0.21) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -38,19 +38,19 @@ body {
 /* Custom Tailwind component styles */
 @layer components {
   .btn-primary {
-    @apply bg-[#F1A334] text-black font-semibold md:rounded-tl-xl rounded-lg md:rounded-none md:rounded-br-xl hover:bg-[#f5b55b];
+    @apply bg-blue-600 text-white font-semibold md:rounded-tl-xl rounded-lg md:rounded-none md:rounded-br-xl hover:bg-blue-500;
   }
 
   .btn-secondary {
-    @apply text-[#b4b4a6] rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-br-xl border border-transparent hover:border hover:border-[#99998a] hover:bg-[#151512];
+    @apply rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-br-xl border border-transparent hover:border hover:border-blue-500 hover:bg-[#15151e];
   }
 
   .btn-secondary-no-hover {
-    @apply text-[#b4b4a6] rounded-tl-xl rounded-br-xl;
+    @apply rounded-tl-xl rounded-br-xl;
   }
 
   .btn-secondary-with-bg {
-    @apply text-[#b4b4a6] bg-[#2E2E2E] rounded-tl-xl rounded-br-xl hover:border hover:border-[#99998a] hover:bg-[#1a1a1a];
+    @apply bg-[#27272c] rounded-tl-xl rounded-br-xl hover:border hover:border-blue-500 hover:bg-[#15151e];
   }
 }
 
@@ -108,15 +108,6 @@ body {
   100% {
     width: 0;
   }
-}
-
-/* Radial gradient text */
-.circular-gradient-text {
-  background: radial-gradient(circle, #d4d4cc, #bcbcb3, #abab9e, #99998a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
 }
 
 /* Background radial gradient */

@@ -4,7 +4,7 @@ export const Twitter: React.FC = () => (
     enableBackground="new 0 0 72 72"
     viewBox="0 0 72 72"
     id="twitterx"
-    className="fill-current text-white"
+    className="fill-current text-white hover:text-blue-600 scale-105 transition-all"
   >
     <path
       d="M42.5,31.2L66,6h-6L39.8,27.6L24,6H4l24.6,33.6L4,66

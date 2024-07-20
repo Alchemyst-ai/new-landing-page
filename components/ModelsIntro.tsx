@@ -1,21 +1,46 @@
 "use client";
-import React, { useState } from "react";
-
 import { models } from "@/app/constants/models";
 import Model from "@/app/types/model";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 const ModelsIntro: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<Model>(models[0]);
 
+  const containerVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { delay: i * 0.1 },
+    }),
+  };
+
+  const popupVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <div className="w-4/5 md:w-2/3 mx-auto mb-20">
       <h1 className="text-4xl mb-8 text-[#cecec5]">
-        Explore the next-gen <span className="text-[#F1A334]">AI digital employee</span>
+        Explore the next-gen{" "}
+        <span className="text-blue-500">AI digital employee</span>
       </h1>
       <div className="flex flex-col-reverse md:flex-row items-start space-y-4 md:space-y-0 md:space-x-8">
-        <div className="flex flex-col space-y-6 w-full md:w-1/3 mt-8 md:mt-auto">
+        <motion.div
+          className="flex flex-col space-y-6 w-full md:w-1/3 mt-8 md:mt-auto"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           {models.map((model, index) => (
-            <button
+            <motion.button
               key={index}
               className={`flex items-center space-x-4 p-5 rounded-lg bg-[#ffffff10] rounded-tl-3xl rounded-br-3xl ${
                 model.disabled
@@ -23,18 +48,25 @@ const ModelsIntro: React.FC = () => {
                   : "cursor-pointer"
               } ${
                 selectedModel.name === model.name
-                  ? "text-[#cecec5]"
-                  : "text-[#5f5f56]"
+                  ? "text-blue-200"
+                  : "text-gray-400"
               }`}
               onClick={() => !model.disabled && setSelectedModel(model)}
               disabled={model.disabled}
+              custom={index}
+              variants={buttonVariants}
             >
               <span>{model.icon}</span>
               <span className="font-medium">{model.name}</span>
-            </button>
+            </motion.button>
           ))}
-        </div>
-        <div className="w-full md:w-2/3">
+        </motion.div>
+        <motion.div
+          className="w-full md:w-2/3"
+          initial="hidden"
+          animate="visible"
+          variants={popupVariants}
+        >
           <div className="aspect-w-16 aspect-h-9">
             <iframe
               src={selectedModel.video}
@@ -47,7 +79,7 @@ const ModelsIntro: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold mt-4">{selectedModel.title}</h2>
           <p className="mt-2 text-[#5d5d55]">{selectedModel.description}</p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

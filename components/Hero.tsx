@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Announcement from "@/components/Announcement";
 import Button from "@/components/Button";
 import GridLayout from "@/components/GridLayout";
@@ -46,18 +46,20 @@ const Hero: React.FC = () => {
         {verticalLines}
         {horizontalLines}
         <motion.div
-          className="relative my-40 w-full md:w-2/3 px-4 md:px-0"
+          className="relative my-40 w-full md:w-[70%] px-4 md:px-0"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1] circular-gradient-text">
-            Compute over the history of Ethereum in your smart contract
+          <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
+            <span className="text-blue-">Revolutionize</span> Workflow with
+            Cognitive <span className="text-blue-400">Systems</span> and Quantum
+            Models
           </h1>
-          <p className="my-10 w-full md:w-2/5 text-lg font-medium text-center md:text-start">
-            Access more data at a lower cost on-chain, made trustless by the
-            power of ZK. Use transactions, receipts, and historic state in your
-            smart contract.
+          <p className="my-6 w-full md:w-2/5 text-xl font-medium text-center md:text-start text-gray-400">
+            Transform your business processes with cutting-edge cognitive
+            automation. Harness the power of quantum models and AI workforces to
+            achieve unparalleled efficiency and innovation.
           </p>
           <div className="flex flex-col md:flex-row gap-2">
             <Button variant={"primary"}>Developer Docs</Button>
@@ -85,27 +87,27 @@ const Hero: React.FC = () => {
           </div>
           <Announcement />
           <div className="absolute top-5 right-28 hidden md:flex cursor-pointer">
-            <div className="flex h-6 w-6 items-center justify-center transition-all hover:border hover:border-white">
-              <div className="h-2 w-2 bg-white" />
+            <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-blue-500">
+              <div className="h-2 w-2 animate-spin bg-blue-500" />
             </div>
             <p className="-mt-4 ml-1">V2 MAINNET</p>
           </div>
           <div className="absolute top-32 right-5 hidden md:flex cursor-pointer">
-            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:border hover:border-white">
-              <div className="h-2 w-2 bg-white" />
+            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-yellow-500">
+              <div className="h-2 w-2 animate-spin bg-yellow-500" />
             </div>
             <p className="-mt-4 ml-1">AXIOM REPL</p>
           </div>
           <div className="absolute top-96 right-20 hidden md:flex cursor-pointer">
-            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:border hover:border-white">
-              <div className="h-2 w-2 bg-white" />
+            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-purple-500">
+              <div className="h-2 w-2 animate-spin bg-purple-500" />
             </div>
             <p className="mt-4 mr-1">READ OUR BLOG</p>
           </div>
           <div className="absolute top-80 right-72 hidden md:flex cursor-pointer">
             <p className="mt-4 mr-1">JOIN US</p>
-            <div className="flex h-6 w-6 items-center justify-center transition-all hover:border hover:border-white">
-              <div className="h-2 w-2 bg-white" />
+            <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-[#06b3e8]">
+              <div className="h-2 w-2 animate-spin bg-[#06b3e8]" />
             </div>
           </div>
         </motion.div>

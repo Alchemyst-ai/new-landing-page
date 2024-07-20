@@ -38,7 +38,7 @@ const Team: React.FC = () => {
     <div className="flex flex-col items-center justify-center w-[85vw] md:w-2/3 my-20">
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
         <span>The great minds&nbsp;</span>
-        <span className="text-[#F1A334] underline-curved">behind our work</span>
+        <span className="text-blue-500 underline-curved">behind our work</span>
       </h1>
       <div className="w-full px-8">
         <Slider {...settings} lazyLoad={"progressive"}>
@@ -55,7 +55,7 @@ const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (
   <div
-    className="absolute top-1/2 -right-8 z-10 w-8 h-8 text-black bg-[#F1A334] hover:bg-[#fac77f] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    className="absolute top-1/2 -right-8 z-10 w-8 h-8 text-white bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
   >
     <svg
@@ -79,7 +79,7 @@ const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (
   <div
-    className="absolute top-1/2 -left-8 z-10 w-8 h-8 text-black bg-[#F1A334] hover:bg-[#fac77f] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    className="absolute top-1/2 -left-8 z-10 w-8 h-8 text-black bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
   >
     <svg

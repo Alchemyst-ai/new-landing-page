@@ -18,10 +18,10 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "On-chain Accountability",
+    title: "Cognitive Accountability",
     description:
-      "Trustlessly evaluate and pay protocol participants without external oracles. Reward protocol contributions based on on-chain behavior, even in external protocols. Slash for bad behavior according to custom criteria.",
-    bgColor: "bg-[#ffc676] text-black",
+      "Evaluate and reward contributors without needing external oracles. Incentivize participation based on behavior, and penalize non-compliance using intelligent criteria.",
+    bgColor: "bg-blue-400 text-black",
     round: "rounded-tl-3xl",
   },
   {
@@ -41,9 +41,9 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "Dynamic DeFi",
+    title: "Dynamic Finance",
     description:
-      "Update protocol parameters based on on-chain history. Adapt AMM fees, lending protocol rates, and structured product pricing to how the market is trading.",
+      "Automatically adjust financial parameters based on historical data. Optimize fees, lending rates, and pricing in response to market trends.",
     bgColor: "bg-[#1C1C1A]",
     round: "rounded-tr-3xl",
   },
@@ -64,9 +64,9 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "Custom Oracles",
+    title: "Smart Oracles",
     description:
-      "Settle blockspace markets or on-chain structured products without requiring support from an oracle provider. Customize your governance by tailoring voting power to on-chain activity.",
+      "Settle transactions and structured products without external oracle support. Tailor governance with voting power aligned to real-time activity.",
     bgColor: "bg-[#1C1C1A]",
     round: "rounded-bl-3xl",
   },
@@ -87,10 +87,10 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "On-chain Loyalty and Incentives",
+    title: "Loyalty and Incentives",
     description:
-      "Reward your most loyal users based on their provable record of on-chain activity, without modifying your deployed contracts. Vampire attack your competition by targeting their most valuable users.",
-    bgColor: "bg-[#ffc676] text-black",
+      "Reward loyal users based on their activity, without changing existing contracts. Attract top users from competitors by targeting valuable behaviors.",
+    bgColor: "bg-blue-400 text-black",
     round: "rounded-br-3xl",
   },
 ];
