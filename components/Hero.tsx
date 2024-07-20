@@ -1,34 +1,43 @@
+"use client"
 import Announcement from "@/components/Announcement";
 import Button from "@/components/Button";
 import GridLayout from "@/components/GridLayout";
+import { motion } from "framer-motion";
+import React from "react";
 
 const Hero: React.FC = () => {
   const getRandomDelay = () => `${Math.random() * 5}s`;
 
   const verticalLines = Array.from({ length: 10 }).map((_, index) => (
-    <div
+    <motion.div
       key={`v-${index}`}
       className="h-screen absolute top-0 animated-line flex flex-col justify-end items-end"
       style={{
         right: `${20 + Math.random() * 20}%`,
         animationDelay: getRandomDelay(),
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: Math.random() * 2 }}
     >
       <div className="w-[1px] bg-gradient-to-b from-black via-gray-300 to-white h-64"></div>
-    </div>
+    </motion.div>
   ));
 
   const horizontalLines = Array.from({ length: 10 }).map((_, index) => (
-    <div
+    <motion.div
       key={`h-${index}`}
       className="w-screen absolute right-0 animated-line-w flex flex-col justify-start items-start"
       style={{
         top: `${20 + Math.random() * 60}%`,
         animationDelay: getRandomDelay(),
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: Math.random() * 2 }}
     >
       <div className="h-[1px] w-32 bg-gradient-to-l from-black via-gray-300 to-white"></div>
-    </div>
+    </motion.div>
   ));
 
   return (
@@ -36,7 +45,12 @@ const Hero: React.FC = () => {
       <div className="relative z-20 flex h-full w-full items-center justify-center">
         {verticalLines}
         {horizontalLines}
-        <div className="relative my-40 w-full md:w-2/3 px-4 md:px-0">
+        <motion.div
+          className="relative my-40 w-full md:w-2/3 px-4 md:px-0"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1] circular-gradient-text">
             Compute over the history of Ethereum in your smart contract
           </h1>
@@ -94,7 +108,7 @@ const Hero: React.FC = () => {
               <div className="h-2 w-2 bg-white" />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </GridLayout>
   );

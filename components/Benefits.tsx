@@ -10,7 +10,9 @@ const Benefits: React.FC = () => {
             <p className="text-base md:text-xl text-[#cecec5]">
               Trustlessly access all historical Ethereum
             </p>
-            <h1 className="text-3xl md:text-5xl font-semibold text-[#cecec5] mt-3">Data</h1>
+            <h1 className="text-3xl md:text-5xl font-semibold text-[#cecec5] mt-3">
+              Data
+            </h1>
           </div>
         </div>
         <div className="border p-2 w-[80vw] md:w-[25vw] h-[15vh] md:h-[20vh] rounded-br-3xl">
