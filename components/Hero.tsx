@@ -2,10 +2,13 @@
 import Announcement from "@/components/Announcement";
 import Button from "@/components/Button";
 import GridLayout from "@/components/GridLayout";
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero: React.FC = () => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, -200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -200]);
+
   const getRandomDelay = () => `${Math.random() * 5}s`;
 
   const verticalLines = Array.from({ length: 10 }).map((_, index) => (
@@ -17,7 +20,7 @@ const Hero: React.FC = () => {
         animationDelay: getRandomDelay(),
       }}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ duration: 1, delay: Math.random() * 2 }}
     >
       <div className="w-[1px] bg-gradient-to-b from-black via-gray-300 to-white h-64"></div>
@@ -33,7 +36,7 @@ const Hero: React.FC = () => {
         animationDelay: getRandomDelay(),
       }}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ duration: 1, delay: Math.random() * 2 }}
     >
       <div className="h-[1px] w-32 bg-gradient-to-l from-black via-gray-300 to-white"></div>
@@ -48,8 +51,9 @@ const Hero: React.FC = () => {
         <motion.div
           className="relative my-40 w-full md:w-[70%] px-4 md:px-0"
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          style={{ y: y1 }}
         >
           <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
             <span className="text-blue-">Revolutionize</span> Workflow with
@@ -86,30 +90,54 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           <Announcement />
-          <div className="absolute top-5 right-28 hidden md:flex cursor-pointer">
+          <motion.div
+            className="absolute top-5 right-28 hidden md:flex cursor-pointer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ y: y2 }}
+          >
             <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-blue-500">
               <div className="h-2 w-2 animate-spin bg-blue-500" />
             </div>
             <p className="-mt-4 ml-1">V2 MAINNET</p>
-          </div>
-          <div className="absolute top-32 right-5 hidden md:flex cursor-pointer">
+          </motion.div>
+          <motion.div
+            className="absolute top-32 right-5 hidden md:flex cursor-pointer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ y: y2 }}
+          >
             <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-yellow-500">
               <div className="h-2 w-2 animate-spin bg-yellow-500" />
             </div>
             <p className="-mt-4 ml-1">AXIOM REPL</p>
-          </div>
-          <div className="absolute top-96 right-20 hidden md:flex cursor-pointer">
+          </motion.div>
+          <motion.div
+            className="absolute top-96 right-20 hidden md:flex cursor-pointer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ y: y2 }}
+          >
             <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-purple-500">
               <div className="h-2 w-2 animate-spin bg-purple-500" />
             </div>
             <p className="mt-4 mr-1">READ OUR BLOG</p>
-          </div>
-          <div className="absolute top-80 right-72 hidden md:flex cursor-pointer">
+          </motion.div>
+          <motion.div
+            className="absolute top-80 right-72 hidden md:flex cursor-pointer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ y: y2 }}
+          >
             <p className="mt-4 mr-1">JOIN US</p>
             <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-[#06b3e8]">
               <div className="h-2 w-2 animate-spin bg-[#06b3e8]" />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </GridLayout>

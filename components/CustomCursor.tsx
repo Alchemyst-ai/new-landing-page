@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const CustomCursor: React.FC = () => {
   useEffect(() => {

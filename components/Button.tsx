@@ -1,5 +1,5 @@
-import React from "react";
-
+"use client";
+import { motion } from "framer-motion";
 interface ButtonProps {
   variant:
     | "primary"
@@ -31,17 +31,19 @@ const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   return (
-    <button
-      className={`
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <button
+        className={`
         ${className}
         ${buttonStyles[variant]}
         py-3 px-7 shadow-sm flex justify-center items-center
       `}
-      onClick={onClick}
-    >
-      {children}
-      {icon && <span className="ml-2">{icon}</span>}
-    </button>
+        onClick={onClick}
+      >
+        {children}
+        {icon && <span className="ml-2">{icon}</span>}
+      </button>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { team } from "@/app/constants/team";
-import React from "react";
+import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -35,7 +35,13 @@ const Team: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-[85vw] md:w-2/3 my-20">
+    <motion.div
+      initial={{ opacity: 0.6, y: 70 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
+      viewport={{ once: false }}
+      className="flex flex-col items-center justify-center w-[85vw] md:w-2/3 my-20"
+    >
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
         <span>The great minds&nbsp;</span>
         <span className="text-blue-500 underline-curved">behind our work</span>
@@ -43,14 +49,20 @@ const Team: React.FC = () => {
       <div className="w-full px-8">
         <Slider {...settings} lazyLoad={"progressive"}>
           {team.map((member, index) => (
-            <TeamMemberCard key={index} member={member} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <TeamMemberCard member={member} />
+            </motion.div>
           ))}
         </Slider>
       </div>
-    </div>
+    </motion.div>
   );
 };
-
 const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (

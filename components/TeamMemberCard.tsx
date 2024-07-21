@@ -1,7 +1,6 @@
 import Team from "@/app/types/team";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { LinkedIn } from "./IconComponent/Linkedin";
 import { Twitter } from "./IconComponent/Twitter";
 
