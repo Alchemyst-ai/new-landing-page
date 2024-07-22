@@ -8,8 +8,13 @@ import LottieAnimation from "@/components/LottieAnimation";
 import ModelsIntro from "@/components/ModelsIntro";
 import Navbar from "@/components/Navbar";
 import Team from "@/components/Team";
+import Testimonials from "@/components/Testimonials";
 import applications from "./constants/applications";
 import { flows } from "./constants/flows";
+import testimonials from "./constants/testimonials";
+import Integrations from "@/components/Integrations";
+import Features from "@/components/Features";
+import { features } from "./constants/features";
 
 export default function Home() {
   return (
@@ -23,9 +28,12 @@ export default function Home() {
         <Hero />
         <Benefits />
         <FlowLayout flows={flows} />
+        <Features features={features}/>
         <ModelsIntro />
+        <Integrations/>
         <Applications applications={applications} />
         <Team />
+        <Testimonials testimonials={testimonials} />
         <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 flex flex-col justify-start items-start ">
           <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
         </div>

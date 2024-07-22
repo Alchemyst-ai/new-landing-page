@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { trustedby } from "@/app/constants/trustedby";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Benefits: React.FC = () => {
   return (

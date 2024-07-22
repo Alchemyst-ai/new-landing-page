@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import TeamMemberCard from "./TeamMemberCard";
+import GridLayout from "./GridLayout";
 
 const Team: React.FC = () => {
   const settings = {
@@ -35,16 +36,17 @@ const Team: React.FC = () => {
   };
 
   return (
+    <GridLayout>
     <motion.div
       initial={{ opacity: 0.6, y: 70 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
       viewport={{ once: false }}
-      className="flex flex-col items-center justify-center w-[85vw] md:w-2/3 my-20"
+      className="flex flex-col items-center justify-center w-[70vw] my-20"
     >
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
         <span>The great minds&nbsp;</span>
-        <span className="text-blue-500 underline-curved">behind our work</span>
+        <span className="text-blue-500">behind our work</span>
       </h1>
       <div className="w-full px-8">
         <Slider {...settings} lazyLoad={"progressive"}>
@@ -61,13 +63,14 @@ const Team: React.FC = () => {
         </Slider>
       </div>
     </motion.div>
+    </GridLayout>
   );
 };
 const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (
   <div
-    className="absolute top-1/2 -right-8 z-10 w-8 h-8 text-white bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    className="absolute top-1/2 -right-8 z-10 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
   >
     <svg
@@ -75,7 +78,7 @@ const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-7 h-7 p-1"
     >
       <path
         strokeLinecap="round"
@@ -91,7 +94,7 @@ const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (
   <div
-    className="absolute top-1/2 -left-8 z-10 w-8 h-8 text-black bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    className="absolute top-1/2 -left-8 z-10 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
   >
     <svg
@@ -99,7 +102,7 @@ const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-7 h-7 p-1"
     >
       <path
         strokeLinecap="round"

@@ -62,7 +62,7 @@ const ModelsIntro: React.FC = () => {
               } ${
                 selectedModel.name === model.name
                   ? "text-blue-200"
-                  : "text-gray-400"
+                  : "text-gray-600"
               }`}
               onClick={() => !model.disabled && setSelectedModel(model)}
               disabled={model.disabled}
