@@ -58,13 +58,27 @@ const Hero: React.FC = () => {
   const settings = {
     infinite: true,
     speed: 5000,
-    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
     pauseOnHover: false,
     arrows: false,
+    slidesToShow: 5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
 
   return (
@@ -91,9 +105,10 @@ const Hero: React.FC = () => {
             achieve unparalleled efficiency and innovation.
           </p>
           <div className="flex flex-col md:flex-row gap-2">
-            <Button variant={"primary"}>Book A Demo</Button>
+            <Button variant={"primary"} className="w-full md:w-auto">Book A Demo</Button>
             <Button
               variant={"secondary"}
+              className="w-full md:w-auto"
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +131,10 @@ const Hero: React.FC = () => {
           </div>
           <Announcement />
           <div className="flex flex-col justify-center items-center overflow-hidden">
-            <h1 className="text-2xl mb-8">
+            <h1 className="text-2xl mb-8 text-center">
               Enterprises and Startups building on Lyzr
             </h1>
-            <div className="w-[60vw]">
+            <div className="w-[90vw] md:w-[60vw]">
               <Slider {...settings}>
                 {logos.map((logo, index) => (
                   <div key={index}>

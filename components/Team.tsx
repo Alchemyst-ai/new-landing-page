@@ -42,7 +42,7 @@ const Team: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
       viewport={{ once: false }}
-      className="flex flex-col items-center justify-center w-[70vw] my-20"
+      className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
     >
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
         <span>The great minds&nbsp;</span>

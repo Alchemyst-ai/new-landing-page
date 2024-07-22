@@ -15,7 +15,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials }) => {
       viewport={{ once: false }}
       className="relative flex flex-col items-center justify-center md:w-[60vw] my-20"
     >
-      <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
+      <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
         <span>Our customers&nbsp;</span>
         <span className="text-blue-500">love us</span>
       </h1>
@@ -50,13 +50,13 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials }) => {
             viewport={{ once: false }}
             className="bg-[#1C1C1A] p-4 rounded-2xl shadow-lg"
           >
-            <div className="flex flex-col md:flex-row gap-2 mb-4">
+            <div className="flex flex-col md:flex-row md:gap-2 mb-4">
               <img
                 src={testimonial.profileImage}
                 alt={testimonial.name}
                 className="w-7 h-7 rounded-full"
               />
-              <h2 className="text-lg text-center font-semibold mb-2">
+              <h2 className="text-lg mt-2 md:mt-auto font-semibold mb-2">
                 {testimonial.name}
               </h2>
             </div>

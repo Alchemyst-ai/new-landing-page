@@ -8,7 +8,7 @@ const TalkToFounder: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
       viewport={{ once: false }}
-      className="relative flex flex-col items-center justify-center md:w-[66vw] my-20 p-10 md:p-12 space-y-6 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 shadow-lg"
+      className="relative flex mx-4 md:mx-auto flex-col items-center justify-center md:w-[66vw] my-20 p-10 md:p-12 space-y-6 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 shadow-lg"
     >
       <motion.p
         initial={{ opacity: 0, scale: 0.8 }}

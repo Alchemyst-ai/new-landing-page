@@ -13,7 +13,7 @@ const Integrations: React.FC = () => {
         viewport={{ once: false }}
         className="relative flex flex-col items-center justify-center my-20"
       >
-        <h1 className="mb-10 text-4xl md:text-5xl text-center">
+        <h1 className="mb-10 text-4xl md:text-5xl text-center mx-4">
           Integrates with Leading LLMs, <br />
           <span className="text-blue-500">Vector Databases</span>
           <span className="text-blue-500">and Cloud Platforms</span>

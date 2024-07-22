@@ -12,7 +12,7 @@ const Announcement: React.FC = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <p className="text-center px-8 py-1">
+        <p className="text-center px-8 py-1 text-xs md:text-base">
           🎉 Our next-gen AI automation platform is live! Explore our solutions
           and developer docs to integrate today. 🎉
         </p>
