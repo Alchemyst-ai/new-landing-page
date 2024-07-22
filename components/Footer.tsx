@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                   </svg>
                 }
               >
-                <span>Read developer docs</span>
+                <span>Book A Demo</span>
               </Button>
             </motion.div>
           </Link>

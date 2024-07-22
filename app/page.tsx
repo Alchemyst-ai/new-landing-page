@@ -1,20 +1,20 @@
 import Applications from "@/components/Applications";
 import Benefits from "@/components/Benefits";
 import CustomCursor from "@/components/CustomCursor";
+import Features from "@/components/Features";
 import FlowLayout from "@/components/FlowLayout";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import LottieAnimation from "@/components/LottieAnimation";
+import Integrations from "@/components/Integrations";
 import ModelsIntro from "@/components/ModelsIntro";
 import Navbar from "@/components/Navbar";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import applications from "./constants/applications";
+import { features } from "./constants/features";
 import { flows } from "./constants/flows";
 import testimonials from "./constants/testimonials";
-import Integrations from "@/components/Integrations";
-import Features from "@/components/Features";
-import { features } from "./constants/features";
+import TalkToFounder from "@/components/TalkToFounder";
 
 export default function Home() {
   return (
@@ -28,11 +28,12 @@ export default function Home() {
         <Hero />
         <Benefits />
         <FlowLayout flows={flows} />
-        <Features features={features}/>
+        <Features features={features} />
         <ModelsIntro />
-        <Integrations/>
+        <Integrations />
         <Applications applications={applications} />
         <Team />
+        <TalkToFounder/>
         <Testimonials testimonials={testimonials} />
         <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 flex flex-col justify-start items-start ">
           <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
@@ -43,8 +44,6 @@ export default function Home() {
       <div className="hidden md:block">
         <CustomCursor />
       </div>
-
-      <LottieAnimation />
     </div>
   );
 }

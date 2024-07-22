@@ -4,22 +4,22 @@ const dummyTestimonials: Testimonial[] = [
   {
     profileImage: 'https://insightglobal.com/wp-content/uploads/2022/10/headshot-1024x683.jpg',
     name: 'John Doe',
-    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     profileImage: 'https://insightglobal.com/wp-content/uploads/2022/10/headshot-1024x683.jpg',
     name: 'Jane Smith',
-    message: 'Vivamus lacinia odio vitae vestibulum vestibulum.',
+    message: 'Vivamus lacinia odio vitae vestibulum vestibulumVivamus lacinia odio vitae vestibulum vestibulum.',
   },
   {
     profileImage: 'https://insightglobal.com/wp-content/uploads/2022/10/headshot-1024x683.jpg',
     name: 'Emily Johnson',
-    message: 'Cras pulvinar mattis nunc sed blandit libero volutpat.',
+    message: 'Cras pulvinar mattis nunc sed blandit libero volutpatCras pulvinar mattis nunc sed blandit libero volutpat.',
   },
   {
     profileImage: 'https://insightglobal.com/wp-content/uploads/2022/10/headshot-1024x683.jpg',
     name: 'Michael Brown',
-    message: 'Phasellus lacinia magna a urna congue, ac facilisis lorem dapibus.',
+    message: 'Phasellus lacinia magna a urna congue, ac facilisisPhasellus lacinia magna a urna congue, ac facilisis lorem dapibus.',
   },
   {
     profileImage: 'https://insightglobal.com/wp-content/uploads/2022/10/headshot-1024x683.jpg',

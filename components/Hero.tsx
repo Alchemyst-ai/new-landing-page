@@ -3,6 +3,10 @@ import Announcement from "@/components/Announcement";
 import Button from "@/components/Button";
 import GridLayout from "@/components/GridLayout";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -43,16 +47,37 @@ const Hero: React.FC = () => {
     </motion.div>
   ));
 
+  const logos = [
+    "/integrations/claude.webp",
+    "/integrations/drant.webp",
+    "/integrations/gemini.webp",
+    "/integrations/microsoft.webp",
+    "/integrations/mongo.webp",
+  ];
+
+  const settings = {
+    infinite: true,
+    speed: 5000,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    pauseOnHover: false,
+    arrows: false,
+  };
+
   return (
     <GridLayout>
       <div className="relative z-20 flex h-full w-full items-center justify-center">
         {verticalLines}
         {horizontalLines}
         <motion.div
-          className="relative my-40 w-full md:w-[70%] px-4 md:px-0"
-          initial={{ opacity: 0, y: 50 }}
+          className="relative mt-20 md:mt-40 w-full md:w-[75%] px-4 md:px-0"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
           style={{ y: y1 }}
         >
           <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
@@ -66,7 +91,7 @@ const Hero: React.FC = () => {
             achieve unparalleled efficiency and innovation.
           </p>
           <div className="flex flex-col md:flex-row gap-2">
-            <Button variant={"primary"}>Developer Docs</Button>
+            <Button variant={"primary"}>Book A Demo</Button>
             <Button
               variant={"secondary"}
               icon={
@@ -90,6 +115,26 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           <Announcement />
+          <div className="flex flex-col justify-center items-center overflow-hidden">
+            <h1 className="text-2xl mb-8">
+              Enterprises and Startups building on Lyzr
+            </h1>
+            <div className="w-[60vw]">
+              <Slider {...settings}>
+                {logos.map((logo, index) => (
+                  <div key={index}>
+                    <Image
+                      src={logo}
+                      alt={`Company ${index + 1}`}
+                      width={150}
+                      height={50}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+
           <motion.div
             className="absolute top-5 right-28 hidden md:flex cursor-pointer"
             initial={{ opacity: 0, scale: 0.9 }}

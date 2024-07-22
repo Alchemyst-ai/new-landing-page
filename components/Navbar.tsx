@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
             </Button>
           </Link>
           <Link href="/docs">
-            <Button variant="primary">Developer Docs</Button>
+            <Button variant="primary">Book A Demo</Button>
           </Link>
         </div>
         <button
@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
               </motion.div>
             ))}
             <Link href="/docs" onClick={toggleMenu}>
-              <Button variant="primary">Developer Docs</Button>
+              <Button variant="primary">Book A Demo</Button>
             </Link>
           </motion.div>
         )}

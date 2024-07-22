@@ -60,7 +60,7 @@ const Benefits: React.FC = () => {
       <div className="w-full bg-radial-gradient rounded-full"></div>
       <div className="flex w-full mt-40 justify-center items-center">
         <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42]  h-[2px]"></div>
-        <h1 className="text-base text-nowrap mx-3">TRUSTED BY</h1>
+        <h1 className="text-base text-nowrap mx-3">BACKED BY</h1>
         <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42]  h-[2px]"></div>
       </div>
       <motion.div
