@@ -49,11 +49,11 @@ const Hero: React.FC = () => {
   ));
 
   const logos = [
-    "/integrations/claude.webp",
-    "/integrations/drant.webp",
-    "/integrations/gemini.webp",
-    "/integrations/microsoft.webp",
-    "/integrations/mongo.webp",
+    "/integrations/jira.png",
+    "/integrations/servicenow.png",
+    "/integrations/apollo.png",
+    "/integrations/internal.png",
+    "/integrations/zoho.png",
   ];
 
   const settings = {
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
     cssEase: "linear",
     pauseOnHover: false,
     arrows: false,
-    slidesToShow: 5,
+    slidesToShow: 3,
     responsive: [
       {
         breakpoint: 1024,
@@ -148,7 +148,7 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           <Announcement />
-          <div className="flex flex-col justify-center items-center overflow-hidden">
+          <div className="flex flex-col justify-center items-center overflow-hidden mb-16">
             <h1 className="text-2xl mb-8 text-center">
               Best Enterprises and Startups trust us
             </h1>
@@ -161,6 +161,7 @@ const Hero: React.FC = () => {
                       alt={`Company ${index + 1}`}
                       width={150}
                       height={50}
+                      className="h-12 w-auto m-auto mx-4"
                     />
                   </div>
                 ))}
