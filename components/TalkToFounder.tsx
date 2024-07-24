@@ -32,8 +32,8 @@ const TalkToFounder: React.FC = () => {
         transition={{ duration: 0.6, delay: 0.6 }}
         className="text-center text-white max-w-lg"
       >
-        Launch prototypes in minutes. Go production in hours. No more chains. No
-        more building blocks.
+        Automate end-to-end workflows in minutes, not months. 90% lesser time &
+        50x increased productivity.
       </motion.p>
       <motion.button
         whileHover={{ scale: 1.1, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)" }}

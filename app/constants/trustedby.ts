@@ -1,11 +1,14 @@
 export const trustedby = [
   {
-    image: "/trustedby/uniswap.svg",
+    image: "/trustedby/inflection.png",
+    title: "Inflection Point Ventures",
   },
   {
-    image: "/trustedby/uniswap.svg",
+    image: "/trustedby/100unicorn.png",
+    title: "",
   },
   {
-    image: "/trustedby/uniswap.svg",
-  },
+    image: "/trustedby/earlyseed.png",
+    title: "",
+  }
 ];

@@ -18,7 +18,7 @@ const Benefits: React.FC = () => {
             <p className="text-base md:text-xl text-gray-300">
               Trustlessly access all historical data
             </p>
-            <h1 className="text-3xl md:text-5xl font-semibold text-blue-300 mt-3">
+            <h1 className="text-3xl md:text-5xl font-semibold text-[#21dbd8] mt-3">
               Data
             </h1>
           </div>
@@ -34,7 +34,7 @@ const Benefits: React.FC = () => {
             <p className="text-base md:text-xl text-gray-300">
               Utilize our Quantum SDK to express your
             </p>
-            <h1 className="text-3xl md:text-5xl font-semibold text-blue-300 mt-3">
+            <h1 className="text-3xl md:text-5xl font-semibold text-[#21dbd8] mt-3">
               Compute
             </h1>
           </div>
@@ -54,13 +54,13 @@ const Benefits: React.FC = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        Data-enriched <span className="text-blue-400">autonomous</span>{" "}
+        Data-enriched <span className="text-[#21dbd8]">autonomous</span>{" "}
         applications
       </motion.h1>
       <div className="w-full bg-radial-gradient rounded-full"></div>
       <div className="flex w-full mt-40 justify-center items-center">
         <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42]  h-[2px]"></div>
-        <h1 className="text-base text-nowrap mx-3">BACKED BY</h1>
+        <h1 className="text-base text-nowrap mx-3">BACKED BY THE BEST</h1>
         <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42]  h-[2px]"></div>
       </div>
       <motion.div
@@ -71,13 +71,19 @@ const Benefits: React.FC = () => {
         viewport={{ once: false }}
       >
         {trustedby.map((company, index) => (
-          <Image
+          <div
+            className="flex flex-col justify-center items-center"
             key={index}
-            src={company.image}
-            alt={company.image}
-            width={250}
-            height={250}
-          />
+          >
+            <Image
+              src={company.image}
+              alt={company.image}
+              width={company.title === "" ? 180 : 130}
+              height={company.title === "" ? 180 : 130}
+              className= {`${index === 2 && "invert"}`}
+            />
+            <p className="text-base text-gray-300">{company.title}</p>
+          </div>
         ))}
       </motion.div>
     </div>

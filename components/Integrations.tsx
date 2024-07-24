@@ -13,18 +13,18 @@ const Integrations: React.FC = () => {
         viewport={{ once: false }}
         className="relative flex flex-col items-center justify-center my-20"
       >
-        <h1 className="mb-10 text-4xl md:text-5xl text-center mx-4">
-          Integrates with Leading LLMs, <br />
-          <span className="text-blue-500">Vector Databases</span>
-          <span className="text-blue-500">and Cloud Platforms</span>
+        <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
+          <span className="text-[#21dbd8]">Pre-built integrations </span>
+          <br />
+          for limitless possibilities
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+        <div className="flex flex-wrap gap-28 w-2/3 justify-center items-center">
           {integrations.map((integration, index) => (
             <motion.img
               key={index}
               src={integration}
               alt="integration"
-              className="w-1/2 mx-auto mb-10 invert"
+              className="h-16 w-auto"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
@@ -32,9 +32,6 @@ const Integrations: React.FC = () => {
                 delay: index * 0.1,
                 type: "spring",
                 stiffness: 200,
-              }}
-              whileHover={{
-                scale: 1.05,
               }}
             />
           ))}

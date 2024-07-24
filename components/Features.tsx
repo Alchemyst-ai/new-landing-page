@@ -40,7 +40,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
             <br />
             Central Intelligence with
             <br />
-            <span className="text-blue-500">Alchemyst&apos;s AgentMesh</span>
+            <span className="text-[#21dbd8]">Alchemyst&apos;s AgentMesh</span>
           </h1>
           <div className="relative w-[70vw] h-[70vh] hidden md:block">
             <div

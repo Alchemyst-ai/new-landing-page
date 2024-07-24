@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import TeamMemberCard from "./TeamMemberCard";
 import GridLayout from "./GridLayout";
+import TeamMemberCard from "./TeamMemberCard";
 
 const Team: React.FC = () => {
   const settings = {
@@ -46,7 +46,7 @@ const Team: React.FC = () => {
     >
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
         <span>The great minds&nbsp;</span>
-        <span className="text-blue-500">behind our work</span>
+        <span className="text-[#21dbd8]">behind Alchemyst AI</span>
       </h1>
       <div className="w-full px-8">
         <Slider {...settings} lazyLoad={"progressive"}>

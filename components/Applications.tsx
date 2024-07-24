@@ -16,8 +16,11 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
       className="flex flex-col items-center w-4/5 md:w-2/3"
     >
       <h1 className="mb-10 text-4xl md:text-5xl text-center">
-        <span className="text-lg text-gray-400">Alchemyst Labs makes it easier for</span> <br />
-        <span className="text-blue-500">Enterprises to adopt AI</span>
+        <span className="text-lg text-gray-400">
+          Alchemyst Labs makes it easier for
+        </span>{" "}
+        <br />
+        <span className="text-[#21dbd8]">Enterprises to adopt AI</span>
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         {applications.map((app, index) => (
@@ -37,7 +40,7 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
             }}
             style={{ overflow: "hidden" }}
           >
-            <div className="flex justify-center mb-4">{app.svg}</div>
+            <div className="mb-4">{app.svg}</div>
             <h2 className="text-3xl font-semibold my-5">{app.title}</h2>
             <p className="text-lg">{app.description}</p>
           </motion.div>

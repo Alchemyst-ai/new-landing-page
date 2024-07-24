@@ -17,7 +17,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials }) => {
     >
       <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
         <span>Our customers&nbsp;</span>
-        <span className="text-blue-500">love us</span>
+        <span className="text-[#21dbd8]">love us</span>
       </h1>
       <div className="w-full px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 mb-4 gap-4">
         {["Product Hunt Award", "G2 High Performer"].map((title, index) => (

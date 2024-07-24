@@ -7,6 +7,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import Typewriter from "typewriter-effect";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -94,18 +95,35 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.5 }}
           style={{ y: y1 }}
         >
-          <h1 className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
-            <span className="text-blue-">Revolutionize</span> Workflow with
-            Cognitive <span className="text-blue-400">Systems</span> and Quantum
-            Models
-          </h1>
+          <div className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
+            <div className="flex">
+              <p className="text-blue-">Revolutionize&nbsp;</p>
+              <Typewriter
+                options={{
+                  strings: [
+                    `<span style="color: #ff9933;">Productivity</span>`,
+                    `<span style="color: #ff9933;">Business</span>`,
+                    `<span style="color: #ff9933;">Growth</span>`,
+                    `<span style="color: #ff9933;">Innovation</span>`,
+                    `<span style="color: #ff9933;">Automation</span>`,
+                  ],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+            with your Next-Gen AI Digital Employees
+          </div>
           <p className="my-6 w-full md:w-2/5 text-xl font-medium text-center md:text-start text-gray-400">
-            Transform your business processes with cutting-edge cognitive
-            automation. Harness the power of quantum models and AI workforces to
-            achieve unparalleled efficiency and innovation.
+            Transform your business with the next ecosystem of gen-AI digital
+            employees built on Alchemyst&apos;s Infrastructure that interacts
+            with each other and form highly intelligent functional components
+            across enterprises.
           </p>
           <div className="flex flex-col md:flex-row gap-2">
-            <Button variant={"primary"} className="w-full md:w-auto">Book A Demo</Button>
+            <Button variant={"primary"} className="w-full md:w-auto">
+              Book A Demo
+            </Button>
             <Button
               variant={"secondary"}
               className="w-full md:w-auto"
@@ -132,7 +150,7 @@ const Hero: React.FC = () => {
           <Announcement />
           <div className="flex flex-col justify-center items-center overflow-hidden">
             <h1 className="text-2xl mb-8 text-center">
-              Enterprises and Startups building on Lyzr
+              Best Enterprises and Startups trust us
             </h1>
             <div className="w-[90vw] md:w-[60vw]">
               <Slider {...settings}>

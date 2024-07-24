@@ -38,11 +38,11 @@ body {
 /* Custom Tailwind component styles */
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 text-white font-semibold md:rounded-tl-xl rounded-lg md:rounded-none md:rounded-br-xl hover:bg-blue-500;
+    @apply bg-[#ff9933] text-black font-semibold md:rounded-tl-xl rounded-lg md:rounded-none md:rounded-br-xl hover:bg-[#ff9933c4];
   }
 
   .btn-secondary {
-    @apply rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-br-xl border border-transparent hover:border hover:border-blue-500 hover:bg-[#15151e];
+    @apply rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-br-xl border border-transparent hover:border hover:border-[#ffbe7d] hover:bg-[#15151e];
   }
 
   .btn-secondary-no-hover {
@@ -50,7 +50,7 @@ body {
   }
 
   .btn-secondary-with-bg {
-    @apply bg-[#27272c] rounded-tl-xl rounded-br-xl hover:border hover:border-blue-500 hover:bg-[#15151e];
+    @apply bg-[#27272c] rounded-tl-xl rounded-br-xl hover:border hover:border-[#ffbe7d] hover:bg-[#15151e];
   }
 }
 

@@ -42,7 +42,7 @@ const ModelsIntro: React.FC = () => {
         viewport={{ once: false }}
       >
         Explore the next-gen{" "}
-        <span className="text-blue-500">AI digital employee</span>
+        <span className="text-[#21dbd8]">AI digital employee</span>
       </motion.h1>
       <div className="flex flex-col-reverse md:flex-row items-start space-y-4 md:space-y-0 md:space-x-8">
         <motion.div

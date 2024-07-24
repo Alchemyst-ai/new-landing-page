@@ -1,34 +1,52 @@
 "use client";
 import { motion } from "framer-motion";
+import Slider, { Settings } from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import CoverageCard from "./CoverageCard";
 import GridLayout from "./GridLayout";
 
 const MediaAndCoverage: React.FC = () => {
   const mediaItems = [
     {
-      title: "LAgMo - The Large Agent Model by Lyzr",
+      title: "LAgMo - The Large AgentLarge Agent Model by Lyzr...",
       date: "June 12, 2024",
-      readingTime: "4 minutes",
-      description: "As the agent",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non temporibus iure pariatur laboriosam, nihil debitis voluptas eveniet exercitationem ab? Odit molestias voluptates dolorem aperiam sapiente, vitae soluta vero ratione amet aliquid delectus quisquam dolore laudantium beatae, rem quod itaque. Magni asperiores expedita corporis, fuga culpa obcaecati eaque quasi dignissimos error!",
       link: "#",
-      imgSrc: "https://via.placeholder.com/200", // Replace with actual image source
+      imgSrc:
+        "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg", // Replace with actual image source
     },
     {
-      title: "Lyzr's Blueprint for Organizational General...",
+      title: "Lyzr's Blueprint forBlueprint for Organizational General...",
       date: "May 13, 2024",
-      readingTime: "4 minutes",
-      description: "Task-specific Agents...",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non temporibus iure pariatur laboriosam, nihil debitis voluptas eveniet exercitationem ab? Odit molestias voluptates dolorem aperiam sapiente, vitae soluta vero ratione amet aliquid delectus quisquam dolore laudantium beatae, rem quod itaque. Magni asperiores expedita corporis, fuga culpa obcaecati eaque quasi dignissimos error!...",
       link: "#",
-      imgSrc: "https://via.placeholder.com/200", // Replace with actual image source
+      imgSrc:
+        "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg", // Replace with actual image source
     },
     {
-      title: "27 Parameters, Techniques &...",
+      title: "27 Par Parameters Parameters Parameters, Techniques &...",
       date: "December 21, 2023",
-      readingTime: "15 minutes",
-      description: "Defining the Use",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non temporibus iure pariatur laboriosam, nihil debitis voluptas eveniet exercitationem ab? Odit molestias voluptates dolorem aperiam sapiente, vitae soluta vero ratione amet aliquid delectus quisquam dolore laudantium beatae, rem quod itaque. Magni asperiores expedita corporis, fuga culpa obcaecati eaque quasi dignissimos error!",
       link: "#",
-      imgSrc: "https://via.placeholder.com/200", // Replace with actual image source
+      imgSrc:
+        "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg", // Replace with actual image source
     },
   ];
+
+  const settings: Settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
 
   return (
     <GridLayout>
@@ -39,59 +57,67 @@ const MediaAndCoverage: React.FC = () => {
         viewport={{ once: false }}
         className="relative flex flex-col items-center justify-center my-20"
       >
-        <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
-          <span>Stay Updated&nbsp;</span>
-          <span className="text-blue-500">with Coverages</span>
+        <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
+          <span>Stay Updated with&nbsp;</span>
+          <span className="text-[#21dbd8]">Highlights & Coverages</span>
         </h1>
-        <div className="flex flex-col justify-between lg:flex-row">
-          <motion.div
-            initial={{ opacity: 0.6, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: false }}
-            className="lg:w-1/3 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
-          >
-            <h2 className="text-3xl font-bold mb-4">Media</h2>
-            <p className="text-gray-700 mb-6">
-              Publications highlighting Lyzr for simplifying AI agent creation
-            </p>
-            <button className="px-8 py-3 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition">
-              View All Media
-            </button>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0.6, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: false }}
-            className="lg:w-2/3 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
-          >
-            <h2 className="text-3xl font-bold mb-6">Media Coverage</h2>
+        <div className="w-[90vw] md:w-[70vw]">
+          <Slider {...settings} className="mx-4 md:mx-20">
             {mediaItems.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col lg:flex-row mb-8 items-center"
-              >
-                <img
-                  src={item.imgSrc}
-                  alt={item.title}
-                  className="w-full lg:w-48 h-32 object-cover rounded-lg mb-4 lg:mb-0 lg:mr-6"
-                />
-                <div className="flex flex-col">
-                  <p className="text-gray-500">{item.date}</p>
-                  <h3 className="text-2xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-700 mb-2">{`Estimated reading time: ${item.readingTime}`}</p>
-                  <p className="text-purple-600 hover:underline">
-                    <a href={item.link}>Read More →</a>
-                  </p>
-                </div>
-              </div>
+              <CoverageCard key={index} {...item} />
             ))}
-          </motion.div>
+          </Slider>
         </div>
       </motion.div>
     </GridLayout>
   );
 };
 
+const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  onClick,
+}) => (
+  <div
+    className="absolute top-1/2 -right-12 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    onClick={onClick}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      className="w-7 h-7 p-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  </div>
+);
+
+const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  onClick,
+}) => (
+  <div
+    className="absolute top-1/2 -left-12 z-10 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
+    onClick={onClick}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      className="w-7 h-7 p-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 19l-7-7 7-7"
+      />
+    </svg>
+  </div>
+);
 export default MediaAndCoverage;

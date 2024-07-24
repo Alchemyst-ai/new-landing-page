@@ -1,15 +1,17 @@
 const integrations: string[] = [
-  "/integrations/claude.webp",
-  "/integrations/drant.webp",
-  "/integrations/gemini.webp",
-  "/integrations/huggingface.webp",
-  "/integrations/llama.webp",
-  "/integrations/microsoft.webp",
-  "/integrations/mistral.webp",
-  "/integrations/mongo.webp",
-  "/integrations/openai.webp",
-  "/integrations/perplexity.webp",
-  "/integrations/pincode.webp",
+  "/integrations/hubspot.png",
+  "/integrations/gmail.webp",
+  "/integrations/internal.png",
+  "/integrations/jira.png",
+  "/integrations/apollo.png",
+  "/integrations/salesforce.png",
+  "/integrations/slack.png",
+  "/integrations/zoho.png",
+  "/integrations/telegram.webp",
+  "/integrations/whatsapp.png",
+  "/integrations/freshdesk.png",
+  "/integrations/servicenow.png",
+  "/integrations/trello.png",
 ];
 
 export default integrations;
