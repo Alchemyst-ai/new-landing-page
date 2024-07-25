@@ -196,8 +196,8 @@ const Benefits: React.FC = () => {
 
       <div className="w-full bg-radial-gradient rounded-full"></div>
 
-      <div className="flex flex-col justify-center items-center overflow-hidden mt-32">
-        <h1 className="text-xl mb-8 text-gray-300 text-center">
+      <div className="flex flex-col justify-center items-center overflow-hidden mt-36">
+        <h1 className="text-xl mb-16 text-gray-300 text-center">
           ENTERPRISE LEVEL SECURITY AND COMPLIANCE
         </h1>
         <div className="w-[80vw]">
@@ -207,9 +207,9 @@ const Benefits: React.FC = () => {
                 <Image
                   src={logo}
                   alt={`Company ${index + 1}`}
-                  width={200}
-                  height={200}
-                  className="h-24 w-auto rounded"
+                  width={250}
+                  height={250}
+                  className="h-28 w-auto rounded"
                 />
               </div>
             ))}

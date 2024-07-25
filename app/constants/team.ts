@@ -8,7 +8,7 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/uttaran-nayak-1b1b3b1b1/",
     twitter: "https://twitter.com/uttaran_nayak",
     achievement:
-      " ipsum ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Economic Times & Unstop Competitive Leader '23 | National Entrepreneurship Summit Winner '21 & '23 | Asia Pacific Global Hackathon Winner '23 | TEDx & Upcoming Josh Talks Speaker",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/anuran-roy-8b4b1b1b1/",
     twitter: "https://twitter.com/anuran_roy",
     achievement:
-      " ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumloremipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Ex-AI Engineering Team @AI4Bharat | Deep Learning & AI Research Intern @Google DeepMind | Ex-Founding AI Engineering Team @Quantum Leap AI | GDC Fellow 2022 | Ex-Applied AI Engineering Team @Arakoo AI",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/mukesh-kuiry/",
     twitter: "https://twitter.com/mukeshkuiry7",
     achievement:
-      " ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumloremipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Ex-Golang & Kubernetes Engineer @justk8s & @forge | Ex-Founding Developer @freeflow | Ex-Software Developer @chainrisk (prev UNSNARL) | Maintainer of Multiple Open Source Projects @clueless",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/saptarshipani/",
     twitter: "https://twitter.com/saptarshipani",
     achievement:
-      " ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumloremipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Richard E. Merwin International Scholar | 3 Research Papers in Machine Learning (International Journals) | 10x National Hackathon Winner | Economic Times & Unstop Competitive Leader '23",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/debayan-pradhan-1b1b3b1b1/",
     twitter: "https://twitter.com/debayanpradhan",
     achievement:
-      " ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumloremipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Incubatee under Algorand Start-up Labs | National Runner-Up, Hack4Bengal 2023 | National Finalist, Smart India Hackathon 2023 | Google Developers Community Lead, KGEC Kalyani",
   },
 
   {
@@ -59,6 +59,6 @@ export const team: Team[] = [
     linkedin: "https://www.linkedin.com/in/samarth-rawat-1b1b3b1b1/",
     twitter: "https://twitter.com/samarthrawat",
     achievement:
-      " ipsum ipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumloremipsum ipsum ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
+      "Finalist - GEHealthcare Hackathon | Regional Finalist - Solving for India Hackathon | Freelanced with Clients from the US and UK | Developed an Automated Reservation Bot with Python and Azure",
   },
 ];

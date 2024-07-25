@@ -24,7 +24,7 @@ const HoverOverlay: React.FC<{ member: Team }> = ({ member }) => (
   <div className="absolute bg-grid inset-0 flex flex-col items-center justify-center bg-[#080419] opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-3">
     <h2 className="text-2xl">{member.name}</h2>
     <p className="text-lg text-gray-300">{member.role}</p>
-    <p className="mt-2 text-center text-sm text-gray-400">
+    <p className="mt-3 text-center text-sm text-balance text-slate-400">
       {member.achievement}
     </p>
     <SocialLinks member={member} />

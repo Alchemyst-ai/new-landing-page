@@ -53,6 +53,7 @@ const Hero: React.FC = () => {
     "/enterprises/forethought.png",
     "/enterprises/plat.png",
     "/enterprises/tesco.png",
+    "/enterprises/fourkites.webp",
   ];
 
   const settings = {
