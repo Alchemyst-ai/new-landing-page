@@ -1,7 +1,7 @@
 "use client";
 import Feature from "@/app/types/feature";
 import { motion } from "framer-motion";
-import GridLayout from "./GridLayout";
+import GridLayout from "../GridLayout";
 
 interface FeatureProps {
   features: Feature[];

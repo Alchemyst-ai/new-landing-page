@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import GridLayout from "./GridLayout";
+import GridLayout from "../GridLayout";
 import TeamMemberCard from "./TeamMemberCard";
 
 const Team: React.FC = () => {
@@ -36,7 +36,7 @@ const Team: React.FC = () => {
   };
 
   return (
-    <section id="team">
+    <div id="team">
       <GridLayout>
         <motion.div
           initial={{ opacity: 0.6, y: 70 }}
@@ -65,7 +65,7 @@ const Team: React.FC = () => {
           </div>
         </motion.div>
       </GridLayout>
-    </section>
+    </div>
   );
 };
 const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({

@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
-import { LinkedIn } from "./IconComponent/Linkedin";
-import { Twitter } from "./IconComponent/Twitter";
+import { LinkedIn } from "../IconComponent/Linkedin";
+import { Twitter } from "../IconComponent/Twitter";
 
 const Footer: React.FC = () => {
   return (

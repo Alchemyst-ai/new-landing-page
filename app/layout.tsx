@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 
-import CustomCursor from "@/components/CustomCursor";
+import CustomCursor from "@/components/home/CustomCursor";
 import { Metadata } from "next";
 import "./globals.css";
 

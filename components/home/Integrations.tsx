@@ -1,7 +1,7 @@
 "use client";
 import integrations from "@/app/constants/integrations";
 import { motion } from "framer-motion";
-import GridLayout from "./GridLayout";
+import GridLayout from "../GridLayout";
 
 const Integrations: React.FC = () => {
   return (

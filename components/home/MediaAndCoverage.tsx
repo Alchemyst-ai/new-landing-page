@@ -4,7 +4,7 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import CoverageCard from "./CoverageCard";
-import GridLayout from "./GridLayout";
+import GridLayout from "../GridLayout";
 
 const MediaAndCoverage: React.FC = () => {
   const mediaItems = [
@@ -49,7 +49,7 @@ const MediaAndCoverage: React.FC = () => {
   };
 
   return (
-    <section id="media">
+    <div id="media">
       <GridLayout>
         <motion.div
           initial={{ opacity: 0.6, y: 70 }}
@@ -71,7 +71,7 @@ const MediaAndCoverage: React.FC = () => {
           </div>
         </motion.div>
       </GridLayout>
-    </section>
+    </div>
   );
 };
 

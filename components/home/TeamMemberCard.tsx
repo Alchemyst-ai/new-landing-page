@@ -1,8 +1,8 @@
 import Team from "@/app/types/team";
 import Image from "next/image";
 import Link from "next/link";
-import { LinkedIn } from "./IconComponent/Linkedin";
-import { Twitter } from "./IconComponent/Twitter";
+import { LinkedIn } from "../IconComponent/Linkedin";
+import { Twitter } from "../IconComponent/Twitter";
 
 interface TeamMemberCardProps {
   member: Team;

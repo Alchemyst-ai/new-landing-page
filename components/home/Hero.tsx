@@ -1,7 +1,7 @@
 "use client";
-import Announcement from "@/components/Announcement";
-import Button from "@/components/Button";
 import GridLayout from "@/components/GridLayout";
+import Announcement from "@/components/home/Announcement";
+import Button from "@/components/home/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Slider from "react-slick";
