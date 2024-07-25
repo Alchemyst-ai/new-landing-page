@@ -8,17 +8,26 @@ interface FeatureProps {
 }
 
 const Features: React.FC<FeatureProps> = ({ features }) => {
-  const horizontalRadius = 40; // Horizontal radius for the oval
+  const horizontalRadius = 30; // Horizontal radius for the oval
   const verticalRadius = 40; // Vertical radius for the oval
-  const distortion = 0.5; // Distortion factor to add some randomness
-  const center = { top: "45%", left: "45%" };
+  const distortion = 0; // Distortion factor to add some randomness
+  const center = { top: "47%", left: "46%" };
+
+  const centerCircle = (
+    <div
+      style={center}
+      className="absolute shadow-2xl shadow-pink-400 w-24 h-24 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center"
+    >
+      {/* Center Circle Content */}
+    </div>
+  );
 
   const positions = features.map((_, index) => {
     const angle = (index / features.length) * 2 * Math.PI; // Angle for the feature
     const distortionFactor = 1 + Math.random() * distortion - distortion / 2; // Random distortion
-    const top = 45 - verticalRadius * distortionFactor * Math.sin(angle) + "%";
+    const top = 41 - verticalRadius * distortionFactor * Math.sin(angle) + "%";
     const left =
-      45 + horizontalRadius * distortionFactor * Math.cos(angle) + "%";
+      41 + horizontalRadius * distortionFactor * Math.cos(angle) + "%";
 
     return { top, left };
   });
@@ -33,7 +42,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
           viewport={{ once: true }}
           className="relative flex flex-col items-center justify-center"
         >
-          <h1 className="mb-10 text-4xl md:text-5xl text-center mx-4">
+          <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
             <span className="text-lg text-gray-400">
               Grow your Organization&apos;s
             </span>
@@ -42,44 +51,12 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
             <br />
             <span className="text-[#21dbd8]">Alchemyst&apos;s AgentMesh</span>
           </h1>
-          <div className="relative w-[70vw] h-[70vh] hidden md:block">
-            <div
-              style={center}
-              className="absolute shadow-2xl shadow-pink-400 w-24 h-24 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center"
-            >
-              {/* Center Circle Content */}
-            </div>
-
-            {/* Dotted lines */}
-            {features.map((_, index) => {
-              const angle = (index / features.length) * 2 * Math.PI;
-              const top = 45 - verticalRadius * Math.sin(angle) + "%";
-              const left = 45 + horizontalRadius * Math.cos(angle) + "%";
-
-              return (
-                <svg
-                  key={index}
-                  className="absolute top-0 left-0 w-full p-20 h-full pointer-events-none -z-10"
-                  style={{ overflow: "visible" }}
-                >
-                  <line
-                    x1="50%"
-                    y1="50%"
-                    x2={left}
-                    y2={top}
-                    stroke="gray"
-                    strokeWidth="1"
-                    strokeDasharray="4"
-                    className=""
-                  />
-                </svg>
-              );
-            })}
-
+          <div className="relative w-[80vw] h-[70vh] hidden md:block">
+            {centerCircle}
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-[#1C1C1A] absolute p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
+                className="bg-[#1C1C1A] min-w-60 absolute p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
                 drag
                 dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
                 style={center} // Initially position at center

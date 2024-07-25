@@ -49,11 +49,10 @@ const Hero: React.FC = () => {
   ));
 
   const logos = [
-    "/integrations/jira.png",
-    "/integrations/servicenow.png",
-    "/integrations/apollo.png",
-    "/integrations/internal.png",
-    "/integrations/zoho.png",
+    "/enterprises/chainrisk.svg",
+    "/enterprises/forethought.png",
+    "/enterprises/plat.png",
+    "/enterprises/tesco.png",
   ];
 
   const settings = {
@@ -65,8 +64,8 @@ const Hero: React.FC = () => {
     cssEase: "linear",
     pauseOnHover: false,
     arrows: false,
-    slidesToShow: 3,
-    responsive: [
+    slidesToShow: 4,
+    breakpoints: [
       {
         breakpoint: 1024,
         settings: {
@@ -74,9 +73,15 @@ const Hero: React.FC = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 600,
         settings: {
           slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
         },
       },
     ],
@@ -152,7 +157,7 @@ const Hero: React.FC = () => {
             <h1 className="text-2xl mb-8 text-center">
               Best Enterprises and Startups trust us
             </h1>
-            <div className="w-[90vw] md:w-[60vw]">
+            <div className="w-[60vw] md:w-[60vw]">
               <Slider {...settings}>
                 {logos.map((logo, index) => (
                   <div key={index}>
@@ -161,7 +166,7 @@ const Hero: React.FC = () => {
                       alt={`Company ${index + 1}`}
                       width={150}
                       height={50}
-                      className="h-12 w-auto m-auto mx-4"
+                      className="h-12 w-auto rounded"
                     />
                   </div>
                 ))}
