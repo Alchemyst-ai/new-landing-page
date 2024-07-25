@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
 
   return (
     <GridLayout>
-      <div className="relative z-20 flex h-full w-full items-center justify-center">
+      <div className="relative mt-12 z-20 flex h-full w-full items-center justify-center">
         {verticalLines}
         {horizontalLines}
         <motion.div

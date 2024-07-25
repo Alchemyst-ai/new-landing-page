@@ -1,8 +1,7 @@
 import localFont from "next/font/local";
 
+import CustomCursor from "@/components/CustomCursor";
 import { Metadata } from "next";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 import "./globals.css";
 
 const satoshi = localFont({
@@ -73,6 +72,9 @@ export default function RootLayout({
         className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
       >
         {children}
+        <div className="hidden md:block">
+          <CustomCursor />
+        </div>
       </body>
     </html>
   );

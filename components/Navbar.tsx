@@ -6,7 +6,6 @@ import { useState } from "react";
 import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
-  { name: "Home", link: "#" },
   { name: "Product", link: "/product" },
   { name: "Team", link: "#team" },
   { name: "Media", link: "#media" },
@@ -21,16 +20,16 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="py-2 px-8 flex justify-between items-center w-full md:w-[70%] relative">
+    <nav className=" top-0 py-2 px-8 flex justify-between items-center w-full md:w-[70%] ">
       <div className="flex items-center space-x-4">
-        <Link href="/" className="mr-4 -ml-4">
+        <a href="/" className="mr-4 -ml-4">
           <Image
             src="/logo/alchemyst.webp"
             alt="Alchemyst AI"
             width={200}
             height={200}
           />
-        </Link>
+        </a>
         <div className="hidden md:flex items-center space-x-4">
           {navItems.slice(0, -1).map((item, index) => (
             <motion.div

@@ -1,7 +1,50 @@
 "use client";
-import { trustedby } from "@/app/constants/trustedby";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Slider from "react-slick";
+
+const settings = {
+  infinite: true,
+  speed: 3000,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 0,
+  cssEase: "linear",
+  pauseOnHover: false,
+  arrows: false,
+  slidesToShow: 6,
+  breakpoints: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
+
+const logos = [
+  "/security/1.svg",
+  "/security/2.svg",
+  "/security/3.webp",
+  "/security/4.webp",
+  "/security/5.webp",
+  "/security/6.webp",
+  "/security/7.webp",
+  "/security/8.webp",
+];
 
 const Benefits: React.FC = () => {
   return (
@@ -93,7 +136,7 @@ const Benefits: React.FC = () => {
           </div>
         </motion.div>
         <motion.div
-          className="p-2 w-[80vw] md:w-[12vw] md:h-[15vh] md:h-[8vh] flex justify-center items-center -ml-10"
+          className="p-2 w-[80vw] md:w-[12vw] h-[8vh] flex justify-center items-center -ml-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -152,29 +195,27 @@ const Benefits: React.FC = () => {
       </motion.div>
 
       <div className="w-full bg-radial-gradient rounded-full"></div>
-      <div className="flex w-full mt-40 justify-center items-center">
-        <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42]  h-[2px]"></div>
-        <h1 className="text-base text-nowrap mx-3">BACKED BY THE BEST</h1>
-        <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42]  h-[2px]"></div>
+
+      <div className="flex flex-col justify-center items-center overflow-hidden mt-32">
+        <h1 className="text-xl mb-8 text-gray-300 text-center">
+          ENTERPRISE LEVEL SECURITY AND COMPLIANCE
+        </h1>
+        <div className="w-[80vw]">
+          <Slider {...settings}>
+            {logos.map((logo, index) => (
+              <div key={index}>
+                <Image
+                  src={logo}
+                  alt={`Company ${index + 1}`}
+                  width={200}
+                  height={200}
+                  className="h-24 w-auto rounded"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
-      <motion.div
-        className="flex flex-col md:flex-row justify-center items-center mt-8 gap-12"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false }}
-      >
-        {trustedby.map((company, index) => (
-          <Image
-            key={index}
-            src={company.image}
-            alt={company.image}
-            width={index ===1 ? 160 :220}
-            height={index ===1 ? 160 :220}
-            className={`${index === 2 && "invert"}`}
-          />
-        ))}
-      </motion.div>
     </div>
   );
 };

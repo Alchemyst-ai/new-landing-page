@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Testimonial from "@/app/types/testimonials";
 import { motion } from "framer-motion";
