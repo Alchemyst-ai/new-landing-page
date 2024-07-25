@@ -49,27 +49,29 @@ const MediaAndCoverage: React.FC = () => {
   };
 
   return (
-    <GridLayout>
-      <motion.div
-        initial={{ opacity: 0.6, y: 70 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        viewport={{ once: false }}
-        className="relative flex flex-col items-center justify-center my-20"
-      >
-        <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
-          <span>Stay Updated with&nbsp;</span>
-          <span className="text-[#21dbd8]">Highlights & Coverages</span>
-        </h1>
-        <div className="w-[90vw] md:w-[70vw]">
-          <Slider {...settings} className="mx-4 md:mx-20">
-            {mediaItems.map((item, index) => (
-              <CoverageCard key={index} {...item} />
-            ))}
-          </Slider>
-        </div>
-      </motion.div>
-    </GridLayout>
+    <section id="media">
+      <GridLayout>
+        <motion.div
+          initial={{ opacity: 0.6, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: false }}
+          className="relative flex flex-col items-center justify-center my-20"
+        >
+          <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
+            <span>Stay Updated with&nbsp;</span>
+            <span className="text-[#21dbd8]">Highlights & Coverages</span>
+          </h1>
+          <div className="w-[90vw] md:w-[70vw]">
+            <Slider {...settings} className="mx-4 md:mx-20">
+              {mediaItems.map((item, index) => (
+                <CoverageCard key={index} {...item} />
+              ))}
+            </Slider>
+          </div>
+        </motion.div>
+      </GridLayout>
+    </section>
   );
 };
 

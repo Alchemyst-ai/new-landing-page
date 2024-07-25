@@ -36,34 +36,36 @@ const Team: React.FC = () => {
   };
 
   return (
-    <GridLayout>
-    <motion.div
-      initial={{ opacity: 0.6, y: 70 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-      viewport={{ once: false }}
-      className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
-    >
-      <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
-        <span>The great minds&nbsp;</span>
-        <span className="text-[#21dbd8]">behind Alchemyst AI</span>
-      </h1>
-      <div className="w-full px-8">
-        <Slider {...settings} lazyLoad={"progressive"}>
-          {team.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <TeamMemberCard member={member} />
-            </motion.div>
-          ))}
-        </Slider>
-      </div>
-    </motion.div>
-    </GridLayout>
+    <section id="team">
+      <GridLayout>
+        <motion.div
+          initial={{ opacity: 0.6, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: false }}
+          className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
+        >
+          <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
+            <span>The great minds&nbsp;</span>
+            <span className="text-[#21dbd8]">behind Alchemyst AI</span>
+          </h1>
+          <div className="w-full px-8">
+            <Slider {...settings} lazyLoad={"progressive"}>
+              {team.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <TeamMemberCard member={member} />
+                </motion.div>
+              ))}
+            </Slider>
+          </div>
+        </motion.div>
+      </GridLayout>
+    </section>
   );
 };
 const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({

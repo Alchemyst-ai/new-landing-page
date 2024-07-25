@@ -6,12 +6,10 @@ import { useState } from "react";
 import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
-  { name: "Explorer", link: "/explorer" },
-  { name: "REPL", link: "/repl" },
-  { name: "Docs", link: "/docs" },
-  { name: "Talks", link: "/talks" },
-  { name: "Blog", link: "/blog" },
-  { name: "Careers", link: "/careers" },
+  { name: "Home", link: "#" },
+  { name: "Product", link: "/product" },
+  { name: "Team", link: "#team" },
+  { name: "Media", link: "#media" },
   { name: "Partner With Us", link: "/partner" },
 ];
 
