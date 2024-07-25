@@ -165,19 +165,14 @@ const Benefits: React.FC = () => {
         viewport={{ once: false }}
       >
         {trustedby.map((company, index) => (
-          <div
-            className="flex flex-col justify-center items-center"
+          <Image
             key={index}
-          >
-            <Image
-              src={company.image}
-              alt={company.image}
-              width={company.title === "" ? 180 : 130}
-              height={company.title === "" ? 180 : 130}
-              className={`${index === 2 && "invert"}`}
-            />
-            <p className="text-base text-gray-300">{company.title}</p>
-          </div>
+            src={company.image}
+            alt={company.image}
+            width={index ===1 ? 160 :220}
+            height={index ===1 ? 160 :220}
+            className={`${index === 2 && "invert"}`}
+          />
         ))}
       </motion.div>
     </div>

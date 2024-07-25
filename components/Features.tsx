@@ -8,9 +8,9 @@ interface FeatureProps {
 }
 
 const Features: React.FC<FeatureProps> = ({ features }) => {
-  const horizontalRadius = 30; // Horizontal radius for the oval
-  const verticalRadius = 40; // Vertical radius for the oval
-  const distortion = 0; // Distortion factor to add some randomness
+  const horizontalRadius = 30;
+  const verticalRadius = 40;
+  const distortion = 0;
   const center = { top: "47%", left: "46%" };
 
   const centerCircle = (
@@ -23,8 +23,8 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
   );
 
   const positions = features.map((_, index) => {
-    const angle = (index / features.length) * 2 * Math.PI; // Angle for the feature
-    const distortionFactor = 1 + Math.random() * distortion - distortion / 2; // Random distortion
+    const angle = (index / features.length) * 2 * Math.PI;
+    const distortionFactor = 1 + Math.random() * distortion - distortion / 2;
     const top = 41 - verticalRadius * distortionFactor * Math.sin(angle) + "%";
     const left =
       41 + horizontalRadius * distortionFactor * Math.cos(angle) + "%";
@@ -59,7 +59,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
                 className="bg-[#1C1C1A] min-w-60 absolute p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
                 drag
                 dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-                style={center} // Initially position at center
+                style={center}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
                   opacity: 1,
