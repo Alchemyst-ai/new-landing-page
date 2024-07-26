@@ -2,34 +2,39 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
-  { name: "Team", link: "#team" },
-  { name: "Media", link: "#media" },
+  { name: "Team", link: "/#team" },
+  { name: "Media", link: "/#media" },
   { name: "Partner With Us", link: "/partner" },
 ];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="top-0 py-2 px-8 flex justify-between items-center w-full md:w-[70%] ">
+    <nav className="top-0 py-2 px-8 flex justify-between items-center w-full md:w-[70%]">
       <div className="flex items-center space-x-4">
-        <a href="/" className="mr-4 -ml-4">
+        <Link href="/" className="mr-4 -ml-4">
           <Image
             src="/logo/alchemyst.webp"
             alt="Alchemyst AI"
             width={200}
             height={200}
           />
-        </a>
+        </Link>
         <div className="hidden md:flex items-center space-x-4">
           {navItems.slice(0, -1).map((item, index) => (
             <motion.div
@@ -98,58 +103,60 @@ const Navbar: React.FC = () => {
           </svg>
         </button>
       </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="md:hidden fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center pt-20 space-y-4"
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
-            transition={{ duration: 0.5 }}
-          >
-            <button
-              className="absolute top-4 right-4 focus:outline-none"
-              onClick={toggleMenu}
-              aria-label="Close menu"
+      {mounted && (
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="md:hidden fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center pt-20 space-y-4"
+              initial={{ opacity: 0, x: "-100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "-100%" }}
+              transition={{ duration: 0.5 }}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+              <button
+                className="absolute top-4 right-4 focus:outline-none"
+                onClick={toggleMenu}
+                aria-label="Close menu"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            {navItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Link
-                  href={item.link}
-                  className="hover:text-gray-400 transition-colors duration-200 opacity-80 text-xl"
-                  onClick={toggleMenu}
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
-            <Link href="/docs" onClick={toggleMenu}>
-              <Button variant="primary">Book A Demo</Button>
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Link
+                    href={item.link}
+                    className="hover:text-gray-400 transition-colors duration-200 opacity-80 text-xl"
+                    onClick={toggleMenu}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <Link href="/docs" onClick={toggleMenu}>
+                <Button variant="primary">Book A Demo</Button>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </nav>
   );
 };

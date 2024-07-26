@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import GridLayout from "@/components/GridLayout";
 import Announcement from "@/components/home/Announcement";
 import Button from "@/components/home/Button";
@@ -13,6 +14,12 @@ const Hero: React.FC = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, -200]);
   const y2 = useTransform(scrollY, [0, 500], [0, -200]);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const getRandomDelay = () => `${Math.random() * 5}s`;
 
@@ -66,7 +73,7 @@ const Hero: React.FC = () => {
     pauseOnHover: false,
     arrows: false,
     slidesToShow: 4,
-    breakpoints: [
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
@@ -88,9 +95,11 @@ const Hero: React.FC = () => {
     ],
   };
 
+  if (!mounted) return null;
+
   return (
     <GridLayout>
-      <div className="relative mt-12 z-20 flex h-full w-full items-center justify-center">
+      <section className="relative z-20 flex h-full w-full items-center justify-center">
         {verticalLines}
         {horizontalLines}
         <motion.div
@@ -101,7 +110,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.5 }}
           style={{ y: y1 }}
         >
-          <div className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
+          <header className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
             <div className="flex">
               <p className="text-blue-">Revolutionize&nbsp;</p>
               <Typewriter
@@ -119,7 +128,7 @@ const Hero: React.FC = () => {
               />
             </div>
             with your Next-Gen AI Digital Employees
-          </div>
+          </header>
           <p className="my-6 w-full md:w-2/5 text-xl font-medium text-center md:text-start text-gray-400">
             Transform your business with the next ecosystem of gen-AI digital
             employees built on Alchemyst&apos;s Infrastructure that interacts
@@ -155,9 +164,9 @@ const Hero: React.FC = () => {
           </div>
           <Announcement />
           <div className="flex flex-col justify-center items-center overflow-hidden mb-16">
-            <h1 className="text-2xl mb-8 text-center">
+            <h2 className="text-2xl mb-8 text-center">
               Best Enterprises and Startups trust us
-            </h1>
+            </h2>
             <div className="w-[60vw] md:w-[60vw]">
               <Slider {...settings}>
                 {logos.map((logo, index) => (
@@ -168,6 +177,7 @@ const Hero: React.FC = () => {
                       width={150}
                       height={50}
                       className="h-12 w-auto rounded"
+                      priority
                     />
                   </div>
                 ))}
@@ -224,7 +234,7 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
         </motion.div>
-      </div>
+      </section>
     </GridLayout>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+
 interface ButtonProps {
   variant:
     | "primary"
@@ -12,6 +13,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  ariaLabel?: string; // Optional aria-label for accessibility
 }
 
 const buttonStyles: Record<ButtonProps["variant"], string> = {
@@ -28,22 +30,26 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   children,
   onClick,
-  className,
+  className = "",
+  ariaLabel,
 }) => {
   return (
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <button
-        className={`
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className={`
         ${className}
         ${buttonStyles[variant]}
-        py-3 px-7 shadow-sm flex justify-center items-center
+        py-3 px-7 shadow-sm flex items-center justify-center 
+        transition duration-300 ease-in-out
+        
       `}
-        onClick={onClick}
-      >
-        {children}
-        {icon && <span className="ml-2">{icon}</span>}
-      </button>
-    </motion.div>
+      onClick={onClick}
+      aria-label={ariaLabel}
+    >
+      {children}
+      {icon && <span className="ml-2">{icon}</span>}
+    </motion.button>
   );
 };
 

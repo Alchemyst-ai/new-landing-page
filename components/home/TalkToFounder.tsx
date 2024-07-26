@@ -39,6 +39,7 @@ const TalkToFounder: React.FC = () => {
         whileHover={{ scale: 1.1, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)" }}
         whileTap={{ scale: 0.9 }}
         className="shadow-sm shadow-gray-300 p-3 px-8 bg-white rounded-full text-black font-medium hover:bg-gray-200 transition-all duration-300"
+        aria-label="Book a demo"
       >
         Book A Demo
       </motion.button>

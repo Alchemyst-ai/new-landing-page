@@ -13,7 +13,7 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
       viewport={{ once: false }}
-      className="flex flex-col items-center w-4/5 md:w-2/3"
+      className="flex flex-col items-center w-4/5 md:w-2/3 mx-auto my-16"
     >
       <h1 className="mb-10 text-4xl md:text-5xl text-center">
         <span className="text-lg text-gray-400">
@@ -35,12 +35,13 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
               type: "spring",
               stiffness: 200,
             }}
-            whileHover={{
-              scale: 1.05,
-            }}
+            whileHover={{ scale: 1.05 }}
             style={{ overflow: "hidden" }}
           >
-            <div className="mb-4">{app.svg}</div>
+            <div className="mb-4">
+              {/* Ensure SVGs are accessible if they are interactive */}
+              {app.svg}
+            </div>
             <h2 className="text-3xl font-semibold my-5">{app.title}</h2>
             <p className="text-lg">{app.description}</p>
           </motion.div>

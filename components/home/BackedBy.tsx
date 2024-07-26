@@ -6,10 +6,15 @@ import Image from "next/image";
 const BackedBy: React.FC = () => {
   return (
     <div className="mt-20">
-      <div className="flex w-full  justify-center items-center">
-        <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42]  h-[2px]"></div>
-        <h1 className="text-base text-nowrap mx-3">BACKED BY THE BEST</h1>
-        <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42]  h-[2px]"></div>
+      <div className="flex w-full justify-center items-center">
+        <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42] h-[2px]"></div>
+        <h1
+          className="text-base text-nowrap mx-3"
+          aria-label="Backed by the best"
+        >
+          BACKED BY THE BEST
+        </h1>
+        <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42] h-[2px]"></div>
       </div>
       <motion.div
         className="flex flex-col md:flex-row justify-center items-center gap-12"
@@ -22,10 +27,10 @@ const BackedBy: React.FC = () => {
           <Image
             key={index}
             src={company.image}
-            alt={company.image}
+            alt={`Logo of ${company.image}`} // More descriptive alt text
             width={index === 1 ? 160 : 220}
             height={index === 1 ? 160 : 220}
-            className={`${index === 2 && "invert"}`}
+            className={`${index === 2 ? "invert" : ""}`}
           />
         ))}
       </motion.div>

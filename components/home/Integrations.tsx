@@ -1,6 +1,7 @@
 "use client";
 import integrations from "@/app/constants/integrations";
 import { motion } from "framer-motion";
+import Image from "next/image"; // Import for optimized images
 import GridLayout from "../GridLayout";
 
 const Integrations: React.FC = () => {
@@ -20,11 +21,9 @@ const Integrations: React.FC = () => {
         </h1>
         <div className="flex flex-wrap gap-28 w-2/3 justify-center items-center">
           {integrations.map((integration, index) => (
-            <motion.img
+            <motion.div
               key={index}
-              src={integration}
-              alt="integration"
-              className="h-16 w-auto"
+              className="h-16 w-auto" // Wrapping div to handle image sizes
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
@@ -33,11 +32,20 @@ const Integrations: React.FC = () => {
                 type: "spring",
                 stiffness: 200,
               }}
-            />
+            >
+              <Image
+                src={integration}
+                alt={`Integration ${index}`} // More descriptive alt text
+                width={64} // Adjust size based on your design
+                height={64}
+                className="object-contain" // Ensures image scaling within its container
+              />
+            </motion.div>
           ))}
         </div>
       </motion.div>
     </GridLayout>
   );
 };
+
 export default Integrations;

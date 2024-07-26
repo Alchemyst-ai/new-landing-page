@@ -7,6 +7,7 @@ import { useState } from "react";
 const ModelsIntro: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<Model>(models[0]);
 
+  // Variants for animations
   const containerVariants = {
     initial: { opacity: 0, x: -50 },
     whileInView: { opacity: 1, x: 0, transition: { duration: 0.5 } },
@@ -61,7 +62,7 @@ const ModelsIntro: React.FC = () => {
                   : "cursor-pointer"
               } ${
                 selectedModel.name === model.name
-                  ? "text-blue-200"
+                  ? "text-cyan-100"
                   : "text-gray-600"
               }`}
               onClick={() => !model.disabled && setSelectedModel(model)}
@@ -70,6 +71,8 @@ const ModelsIntro: React.FC = () => {
               initial="initial"
               whileInView="whileInView"
               variants={buttonVariants}
+              aria-selected={selectedModel.name === model.name}
+              aria-disabled={model.disabled}
             >
               <span>{model.icon}</span>
               <span className="font-medium">{model.name}</span>

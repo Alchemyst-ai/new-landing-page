@@ -45,12 +45,12 @@ const Team: React.FC = () => {
           viewport={{ once: false }}
           className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
         >
-          <h1 className="mb-10 text-4xl md:text-5xl flex flex-col md:flex-row">
+          <h1 className="mb-10 text-4xl md:text-5xl text-center flex flex-col md:flex-row">
             <span>The great minds&nbsp;</span>
             <span className="text-[#21dbd8]">behind Alchemyst AI</span>
           </h1>
           <div className="w-full px-8">
-            <Slider {...settings} lazyLoad={"progressive"}>
+            <Slider {...settings} lazyLoad="progressive">
               {team.map((member, index) => (
                 <motion.div
                   key={index}
@@ -68,12 +68,15 @@ const Team: React.FC = () => {
     </div>
   );
 };
+
+// Custom Arrow components for the slider
 const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   onClick,
 }) => (
   <div
     className="absolute top-1/2 -right-8 z-10 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
+    aria-label="Next slide"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +101,7 @@ const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   <div
     className="absolute top-1/2 -left-8 z-10 w-8 h-8 text-gray-400 bg-gradient-to-br from-[#0a0c1f] to-[#0c124e] rounded-full flex items-center justify-center cursor-pointer transform -translate-y-1/2"
     onClick={onClick}
+    aria-label="Previous slide"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

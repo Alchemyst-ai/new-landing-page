@@ -2,13 +2,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./Button";
 import { LinkedIn } from "../IconComponent/Linkedin";
 import { Twitter } from "../IconComponent/Twitter";
+import Button from "./Button";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full justify-center items-center flex">
+    <footer className="w-full flex justify-center items-center text-white">
       <div className="py-6 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center md:w-2/3">
         <motion.div
           className="flex flex-col items-start mb-4 md:mb-0"
@@ -20,13 +20,14 @@ const Footer: React.FC = () => {
             width={200}
             height={200}
             src="/logo/alchemyst.webp"
-            alt="Alchemyst"
+            alt="Alchemyst AI logo"
             className="h-16"
           />
           <p className="text-sm text-gray-400 mt-4">
             © {new Date().getFullYear()} Alchemyst AI, Inc. All rights reserved.
           </p>
         </motion.div>
+
         <motion.div
           className="flex flex-col gap-8"
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +55,8 @@ const Footer: React.FC = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="size-6"
+                      className="w-6 h-6"
+                      aria-hidden="true"
                     >
                       <path
                         strokeLinecap="round"
@@ -69,18 +71,19 @@ const Footer: React.FC = () => {
               </motion.div>
             </Link>
           </div>
+
           <motion.div
             className="flex items-center justify-center md:justify-normal space-x-5 mt-8 md:mt-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Link href={"#"} className="h-6 w-6">
+            <Link href="#" aria-label="Twitter" className="h-6 w-6">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Twitter />
               </motion.div>
             </Link>
-            <Link href={"#"} className="h-6 w-6">
+            <Link href="#" aria-label="LinkedIn" className="h-6 w-6">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <LinkedIn />
               </motion.div>
