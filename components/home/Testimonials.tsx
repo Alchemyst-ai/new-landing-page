@@ -28,7 +28,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             viewport={{ once: false }}
-            className="w-full p-4 border border-[#2d2d2da1] rounded-2xl bg-white shadow-lg"
+            className="w-full p-4 border border-[#2d2d2da1] rounded-2xl shadow-lg"
             whileHover={{ scale: 1.05 }}
           >
             <img

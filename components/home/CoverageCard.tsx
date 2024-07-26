@@ -21,9 +21,9 @@ const CoverageCard: React.FC<CoverageCardProps> = ({
       <img
         src={imgSrc}
         alt={title}
-        className="object-cover w-full md:w-2/5 h-80 rounded-l-2xl"
+        className="object-cover w-full md:w-2/5 h-full rounded-l-2xl"
       />
-      <div className="p-4 md:p-12 rounded-2xl bg-gray-200 space-y-5 md:w-3/5">
+      <div className="p-4 md:p-12 rounded-2xl bg-gray-200 space-y-5 h-full md:w-3/5">
         <h3 className="text-3xl font-bold text-black">{title}</h3>
         <p className="text-gray-600 text-base">{description}</p>
         <div className="flex justify-between items-center">

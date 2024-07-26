@@ -30,7 +30,7 @@ const BackedBy: React.FC = () => {
             alt={`Logo of ${company.image}`} // More descriptive alt text
             width={index === 1 ? 160 : 220}
             height={index === 1 ? 160 : 220}
-            className={`${index === 2 ? "invert" : ""}`}
+            className={`${index === 1 ? "invert" : ""}`}
           />
         ))}
       </motion.div>
