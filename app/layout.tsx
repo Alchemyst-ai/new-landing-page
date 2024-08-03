@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 
-import CustomCursor from "@/components/home/CustomCursor";
 import { Metadata } from "next";
 import "./globals.css";
 
@@ -72,9 +71,6 @@ export default function RootLayout({
         className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
       >
         {children}
-        <div className="hidden md:block">
-          <CustomCursor />
-        </div>
       </body>
     </html>
   );

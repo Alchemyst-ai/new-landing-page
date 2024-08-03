@@ -7,8 +7,9 @@ import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
-  { name: "Team", link: "#team" },
-  { name: "Media", link: "#media" },
+  { name: "Industries", link: "/industries" },
+  { name: "Team", link: "/#team" },
+  { name: "Media", link: "/#media" },
   { name: "Partner With Us", link: "/partner" },
 ];
 

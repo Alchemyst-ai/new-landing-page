@@ -23,7 +23,7 @@ const Integrations: React.FC = () => {
           {integrations.map((integration, index) => (
             <motion.div
               key={index}
-              className="h-16 w-auto" // Wrapping div to handle image sizes
+              className="h-16 w-auto"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
@@ -35,10 +35,10 @@ const Integrations: React.FC = () => {
             >
               <Image
                 src={integration}
-                alt={`Integration ${index}`} // More descriptive alt text
-                width={64} // Adjust size based on your design
-                height={64}
-                className="object-contain" // Ensures image scaling within its container
+                alt={`Integration ${index}`}
+                width={150}
+                height={150}
+                className="h-14 w-auto"
               />
             </motion.div>
           ))}

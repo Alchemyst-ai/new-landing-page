@@ -1,6 +1,7 @@
 import Applications from "@/components/home/Applications";
 import BackedBy from "@/components/home/BackedBy";
 import Benefits from "@/components/home/Benefits";
+import CustomCursor from "@/components/home/CustomCursor";
 import Features from "@/components/home/Features";
 import FlowLayout from "@/components/home/FlowLayout";
 import Footer from "@/components/home/Footer";
@@ -19,12 +20,15 @@ import testimonials from "./constants/testimonials";
 
 export default function HomePage() {
   return (
-    <>
+    <div>
       <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
         <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
           <Navbar />
           <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
         </header>
+        <div className="hidden md:block">
+          <CustomCursor />
+        </div>
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
@@ -45,6 +49,6 @@ export default function HomePage() {
         </main>
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
