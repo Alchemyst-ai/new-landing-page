@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             className="h-16"
           />
           <p className="text-sm text-gray-400 mt-4">
-            © {new Date().getFullYear()} Alchemyst AI, Inc. All rights reserved.
+            © {new Date().getFullYear()} XAlchemyst Lab Pvt. Ltd. All rights reserved.
           </p>
         </motion.div>
 

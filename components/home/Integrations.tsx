@@ -42,6 +42,19 @@ const Integrations: React.FC = () => {
               />
             </motion.div>
           ))}
+          <motion.div
+            className="h-16 flex justify-center items-center w-auto text-gray-500 text-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: integrations.length * 0.1,
+              type: "spring",
+              stiffness: 200,
+            }}
+          >
+            + 200 Pre-built integrations
+          </motion.div>
         </div>
       </motion.div>
     </GridLayout>

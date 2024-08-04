@@ -48,22 +48,22 @@ const logos = [
   "/security/8.webp",
 ];
 
-const Benefits: React.FC = () => {
+const Architecture: React.FC = () => {
   return (
-    <section className="flex flex-col justify-center items-center">
-      <header className="mb-20 text-4xl md:text-5xl flex flex-col md:flex-row text-center">
+    <section className="flex flex-col justify-center items-center p-4">
+      <header className="mb-20 text-3xl md:text-4xl flex flex-col md:flex-row text-center">
         <span>Service Oriented&nbsp;</span>
         <span className="text-[#21dbd8]">Architecture</span>
       </header>
 
       <motion.div
-        className="border p-2 w-[80vw] md:w-[20vw] h-[12vh] md:rounded-3xl"
+        className="border p-2 w-[80vw] md:w-[25vw] h-[10vh] md:h-[12vh] rounded-lg md:rounded-3xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="border border-dashed md:rounded-3xl p-4 h-[12vh] w-[80vw] md:w-[20vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
+        <div className="border border-dashed rounded-lg md:rounded-3xl p-4 h-[10vh] md:h-[12vh] w-[80vw] md:w-[25vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
           <h2 className="text-3xl font-semibold text-[#ff9933]">
             Gen-AI Employees
           </h2>
@@ -71,10 +71,9 @@ const Benefits: React.FC = () => {
       </motion.div>
 
       <div className="w-1 mt-3 border-l border-dashed h-8 border-gray-400"></div>
-      <div className="h-12 w-3/5 border-x border-t rounded-t-full border-dashed border-gray-400"></div>
+      <div className="h-8 w-4/5 md:w-3/5 border-x border-t rounded-t-full border-dashed border-gray-400"></div>
 
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-        {/* Empty Placeholder */}
+      <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-4">
         <motion.div
           className="p-2 w-[80vw] md:w-[12vw] h-0 md:h-[8vh] flex justify-center items-center"
           initial={{ opacity: 0, y: 50 }}
@@ -85,74 +84,68 @@ const Benefits: React.FC = () => {
           <h2 className="text-lg text-gray-400 mt-5"></h2>
         </motion.div>
 
-        {/* Sales */}
         <motion.div
-          className="border p-2 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] md:rounded-tl-3xl"
+          className="border p-2 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] rounded-tl-lg md:rounded-tl-3xl"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed md:rounded-tl-3xl p-4 md:p-8 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
+          <div className="border border-dashed rounded-tl-lg md:rounded-tl-3xl p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">Sales</h2>
           </div>
         </motion.div>
 
-        {/* Marketing */}
         <motion.div
-          className="border p-2 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh]"
+          className="border p-2 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] rounded-lg"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed p-4 md:p-8 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
+          <div className="border border-dashed rounded-lg p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">Marketing</h2>
           </div>
         </motion.div>
 
-        {/* HR-Tech */}
         <motion.div
-          className="border p-2 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh]"
+          className="border p-2 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] rounded-lg"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed p-4 md:p-8 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
+          <div className="border border-dashed rounded-lg p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">HR-Tech</h2>
           </div>
         </motion.div>
 
-        {/* Customer Support */}
         <motion.div
-          className="border p-2 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh]"
+          className="border p-2 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] rounded-lg"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed p-4 md:p-8 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
+          <div className="border border-dashed rounded-lg p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">
               Customer Support
             </h2>
           </div>
         </motion.div>
 
-        {/* Analytics */}
         <motion.div
-          className="border p-2 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] md:rounded-tr-3xl"
+          className="border p-2 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] rounded-tr-lg md:rounded-tr-3xl"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed md:rounded-tr-3xl p-4 md:p-8 w-[80vw] md:w-[12vw] h-[15vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
+          <div className="border border-dashed rounded-tr-lg md:rounded-tr-3xl p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">Analytics</h2>
           </div>
         </motion.div>
 
-        {/* More in Pipeline */}
         <motion.div
           className="p-2 w-[80vw] md:w-[12vw] h-[8vh] flex justify-center items-center -ml-10"
           initial={{ opacity: 0, y: 50 }}
@@ -164,8 +157,8 @@ const Benefits: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="h-12 w-3/5 border-x border-b border-gray-400 rounded-b-full border-dashed mt-3 flex justify-center items-center">
-        <div className="w-1/2 h-12 border-x border-b border-gray-400 rounded-b-full border-dashed flex justify-center items-center">
+      <div className="h-8 w-4/5 md:w-3/5 border-x border-b border-gray-400 rounded-b-full border-dashed mt-3 flex justify-center items-center">
+        <div className="w-1/2 h-8 border-x border-b border-gray-400 rounded-b-full border-dashed flex justify-center items-center">
           <div className="w-1 h-full border-l border-gray-400 border-dashed"></div>
         </div>
       </div>
@@ -173,13 +166,13 @@ const Benefits: React.FC = () => {
       <div className="w-1 border-l border-dashed h-8"></div>
 
       <motion.div
-        className="border p-2 w-[80vw] md:w-[25vw] md:h-[16vh] md:rounded-3xl"
+        className="border p-2 w-[80vw] md:w-[25vw] h-[12vh] md:h-[14vh] rounded-lg md:rounded-3xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="border border-dashed md:rounded-3xl p-4 md:h-[16vh] w-[80vw] md:w-[25vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
+        <div className="border border-dashed rounded-lg md:rounded-3xl p-4 h-[12vh] md:h-[14vh] w-[80vw] md:w-[25vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
           <h2 className="text-4xl font-semibold text-[#ff9933]">
             Application Layer
           </h2>
@@ -189,13 +182,13 @@ const Benefits: React.FC = () => {
       <h2 className="text-3xl text-[#ffffffbc] my-6">+</h2>
 
       <motion.div
-        className="border p-2 w-[80vw] md:w-[18vw] md:h-[10vh] md:rounded-3xl"
+        className="border p-2 w-[80vw] md:w-[18vw] h-[8vh] md:h-[10vh] rounded-lg md:rounded-3xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="border border-dashed md:rounded-3xl p-4 md:h-[10vh] w-[80vw] md:w-[18vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
+        <div className="border border-dashed rounded-lg md:rounded-3xl p-4 h-[8vh] md:h-[10vh] w-[80vw] md:w-[18vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
           <h2 className="text-2xl font-semibold text-[#21dbd8] text-center">
             Security + Governance Layer
           </h2>
@@ -205,13 +198,13 @@ const Benefits: React.FC = () => {
       <h2 className="text-3xl text-[#ffffffbc] my-6">+</h2>
 
       <motion.div
-        className="border p-2 w-[80vw] md:w-[25vw] h-[16vh] md:rounded-3xl"
+        className="border p-2 w-[80vw] md:w-[25vw] h-[12vh] md:h-[14vh] rounded-lg md:rounded-3xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="border border-dashed md:rounded-3xl p-4 h-[16vh] w-[80vw] md:w-[25vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
+        <div className="border border-dashed rounded-lg md:rounded-3xl p-4 h-[12vh] md:h-[14vh] w-[80vw] md:w-[25vw] bg-[#1F1F1C] flex flex-col justify-center items-center">
           <h2 className="text-4xl font-semibold text-[#ff9933]">
             Infrastructure Layer
           </h2>
@@ -233,7 +226,7 @@ const Benefits: React.FC = () => {
                   alt={`Company ${index + 1}`}
                   width={250}
                   height={250}
-                  className="h-28 w-auto rounded"
+                  className="h-20 md:h-28 w-auto rounded"
                   priority
                 />
               </div>
@@ -245,4 +238,4 @@ const Benefits: React.FC = () => {
   );
 };
 
-export default Benefits;
+export default Architecture;

@@ -10,7 +10,6 @@ interface FeatureProps {
 const Features: React.FC<FeatureProps> = ({ features }) => {
   const horizontalRadius = 30;
   const verticalRadius = 40;
-  const distortion = 0;
   const center = { top: "47%", left: "46%" };
 
   const centerCircle = (
@@ -44,10 +43,8 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
 
   const positions = features.map((_, index) => {
     const angle = (index / features.length) * 2 * Math.PI;
-    const distortionFactor = 1 + Math.random() * distortion - distortion / 2;
-    const top = 41 - verticalRadius * distortionFactor * Math.sin(angle) + "%";
-    const left =
-      41 + horizontalRadius * distortionFactor * Math.cos(angle) + "%";
+    const top = 41 - verticalRadius * Math.sin(angle) + "%";
+    const left = 41 + horizontalRadius * Math.cos(angle) + "%";
 
     return { top, left };
   });
@@ -86,13 +83,10 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: index * 0.1 }}
-                
                 viewport={{ once: false }}
               >
                 <div className="w-14 h-14 mb-4">{feature.icon}</div>
-                <h2 className="text-lg font-semibold">
-                  {feature.title}
-                </h2>
+                <h2 className="text-lg font-semibold">{feature.title}</h2>
                 <motion.div
                   className="absolute -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
                   animate={{ y: [0, -5, 0] }}
@@ -111,7 +105,6 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
               <motion.div
                 key={index}
                 className="bg-[#1C1C1A] m-2 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
-                
                 viewport={{ once: false }}
               >
                 <div className="w-12 h-12 mb-2">{feature.icon}</div>

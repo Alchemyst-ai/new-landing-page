@@ -1,13 +1,12 @@
 import Applications from "@/components/home/Applications";
+import Architecture from "@/components/home/Architecture";
 import BackedBy from "@/components/home/BackedBy";
-import Benefits from "@/components/home/Benefits";
 import CustomCursor from "@/components/home/CustomCursor";
 import Features from "@/components/home/Features";
 import FlowLayout from "@/components/home/FlowLayout";
 import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
 import Integrations from "@/components/home/Integrations";
-import MediaAndCoverage from "@/components/home/MediaAndCoverage";
 import ModelsIntro from "@/components/home/ModelsIntro";
 import Navbar from "@/components/home/Navbar";
 import TalkToFounder from "@/components/home/TalkToFounder";
@@ -32,8 +31,8 @@ export default function HomePage() {
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
-          <Benefits />
           <FlowLayout flows={flows} />
+          <Architecture />
           <Features features={features} />
           <ModelsIntro />
           <BackedBy />
@@ -41,7 +40,7 @@ export default function HomePage() {
           <Applications applications={applications} />
           <Team />
           <TalkToFounder />
-          <MediaAndCoverage />
+          {/* <MediaAndCoverage /> */}
           <Testimonials testimonials={testimonials} />
           <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 flex flex-col justify-start items-start">
             <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
