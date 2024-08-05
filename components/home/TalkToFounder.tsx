@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const TalkToFounder: React.FC = () => {
   return (
@@ -35,14 +36,23 @@ const TalkToFounder: React.FC = () => {
         Automate end-to-end workflows in minutes, not months. 90% lesser time &
         50x increased productivity.
       </motion.p>
-      <motion.button
-        whileHover={{ scale: 1.1, boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)" }}
-        whileTap={{ scale: 0.9 }}
-        className="shadow-sm shadow-gray-300 p-3 px-8 bg-white rounded-full text-black font-medium hover:bg-gray-200 transition-all duration-300"
-        aria-label="Book a demo"
+      <Link
+        href={"https://calendly.com/getalchemystai/alchemyst-ai"}
+        passHref
+        target="_blank"
       >
-        Book A Demo
-      </motion.button>
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)",
+          }}
+          whileTap={{ scale: 0.9 }}
+          className="shadow-sm shadow-gray-300 p-3 px-8 bg-white rounded-full text-black font-medium hover:bg-gray-200 transition-all duration-300"
+          aria-label="Book a demo"
+        >
+          Book A Demo
+        </motion.button>
+      </Link>
     </motion.div>
   );
 };

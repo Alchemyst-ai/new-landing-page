@@ -30,10 +30,11 @@ const Navbar: React.FC = () => {
       <div className="flex items-center space-x-4">
         <Link href="/" className="mr-4 -ml-4">
           <Image
-            src="/logo/alchemyst.webp"
+            src="/logo/alchemyst_long_dark.svg"
             alt="Alchemyst AI"
             width={200}
             height={200}
+            className="h-11 w-auto -mt-4"
           />
         </Link>
         <div className="hidden md:flex items-center space-x-4">
