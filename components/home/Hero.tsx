@@ -1,14 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
 import GridLayout from "@/components/GridLayout";
 import Announcement from "@/components/home/Announcement";
 import Button from "@/components/home/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Typewriter from "typewriter-effect";
+import RotatingMaya from "./RotatingMaya";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -103,64 +104,71 @@ const Hero: React.FC = () => {
         {verticalLines}
         {horizontalLines}
         <motion.div
-          className="relative mt-20 md:mt-40 w-full md:w-[75%] px-4 md:px-0"
+          className="relative mt-20 md:mt-40 w-full md:w-[72%]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5 }}
           style={{ y: y1 }}
         >
-          <header className="text-4xl md:w-3/4 md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
-            <div className="flex">
-              <p className="text-blue-">Revolutionize&nbsp;</p>
-              <Typewriter
-                options={{
-                  strings: [
-                    `<span style="color: #ff9933;">Productivity</span>`,
-                    `<span style="color: #ff9933;">Business</span>`,
-                    `<span style="color: #ff9933;">Growth</span>`,
-                    `<span style="color: #ff9933;">Innovation</span>`,
-                    `<span style="color: #ff9933;">Automation</span>`,
-                  ],
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
-            </div>
-            with your Next-Gen AI Digital Employees
-          </header>
-          <p className="my-6 w-full md:w-2/5 text-xl font-medium text-center md:text-start text-gray-400">
-            Transform your business with the next ecosystem of gen-AI digital
-            employees built on Alchemyst&apos;s Infrastructure that interacts
-            with each other and form highly intelligent functional components
-            across enterprises.
-          </p>
-          <div className="flex flex-col md:flex-row gap-2">
-            <Button variant={"primary"} className="w-full md:w-auto">
-              Book A Demo
-            </Button>
-            <Button
-              variant={"secondary"}
-              className="w-full md:w-auto"
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+          <div className="flex justify-between items-center">
+            <div className="md:w-1/2">
+              <header className="text-4xl  md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
+                <div className="flex">
+                  <p className="text-blue-">Revolutionize&nbsp;</p>
+                  <Typewriter
+                    options={{
+                      strings: [
+                        `<span style="color: #ff9933;">Productivity</span>`,
+                        `<span style="color: #ff9933;">Business</span>`,
+                        `<span style="color: #ff9933;">Growth</span>`,
+                        `<span style="color: #ff9933;">Innovation</span>`,
+                        `<span style="color: #ff9933;">Automation</span>`,
+                      ],
+                      autoStart: true,
+                      loop: true,
+                    }}
                   />
-                </svg>
-              }
-            >
-              Contact Us
-            </Button>
+                </div>
+                with your Next-Gen AI Digital Employees
+              </header>
+              <p className="my-6 w-full md:w-2/3 text-xl font-medium text-center md:text-start text-gray-400">
+                Transform your business with the next ecosystem of gen-AI
+                digital employees built on Alchemyst&apos;s Infrastructure that
+                interacts with each other and form highly intelligent functional
+                components across enterprises.
+              </p>
+              <div className="flex flex-col md:flex-row gap-2">
+                <Button variant={"primary"} className="w-full md:w-auto">
+                  Book A Demo
+                </Button>
+                <Button
+                  variant={"secondary"}
+                  className="w-full md:w-auto"
+                  icon={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                      />
+                    </svg>
+                  }
+                >
+                  Contact Us
+                </Button>
+              </div>
+            </div>
+            <div className="w-1/2 -mr-40 -mt-10">
+              <RotatingMaya />
+            </div>
           </div>
           <Announcement />
           <div className="flex flex-col justify-center items-center overflow-hidden mb-16">
@@ -184,55 +192,6 @@ const Hero: React.FC = () => {
               </Slider>
             </div>
           </div>
-
-          <motion.div
-            className="absolute top-5 right-28 hidden md:flex cursor-pointer"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ y: y2 }}
-          >
-            <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-blue-500">
-              <div className="h-2 w-2 animate-spin bg-blue-500" />
-            </div>
-            <p className="-mt-4 ml-1">V2 MAINNET</p>
-          </motion.div>
-          <motion.div
-            className="absolute top-32 right-5 hidden md:flex cursor-pointer"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ y: y2 }}
-          >
-            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-yellow-500">
-              <div className="h-2 w-2 animate-spin bg-yellow-500" />
-            </div>
-            <p className="-mt-4 ml-1">AXIOM REPL</p>
-          </motion.div>
-          <motion.div
-            className="absolute top-96 right-20 hidden md:flex cursor-pointer"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ y: y2 }}
-          >
-            <div className="hidden md:flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-purple-500">
-              <div className="h-2 w-2 animate-spin bg-purple-500" />
-            </div>
-            <p className="mt-4 mr-1">READ OUR BLOG</p>
-          </motion.div>
-          <motion.div
-            className="absolute top-80 right-72 hidden md:flex cursor-pointer"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ y: y2 }}
-          >
-            <p className="mt-4 mr-1">JOIN US</p>
-            <div className="flex h-6 w-6 items-center justify-center transition-all hover:animate-spin hover:border hover:border-[#06b3e8]">
-              <div className="h-2 w-2 animate-spin bg-[#06b3e8]" />
-            </div>
-          </motion.div>
         </motion.div>
       </section>
     </GridLayout>

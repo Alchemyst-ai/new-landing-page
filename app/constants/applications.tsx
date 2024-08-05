@@ -22,7 +22,7 @@ const applications: Application[] = [
     title: "Data Privacy",
     description:
       "SDKs can be hosted 100% locally or on your cloud as docker containers. The application logic, sensitive data always remains within customer’s infra.",
-    bgColor: "bg-[#21dbd8] text-black",
+    bgColor: "bg-[#ED8625] text-black",
     round: "rounded-tl-3xl",
   },
   {
@@ -91,7 +91,7 @@ const applications: Application[] = [
     title: "Loyalty and Incentives",
     description:
       "Reward loyal users based on their activity, without changing existing contracts. Attract top users from competitors by targeting valuable behaviors.",
-    bgColor: "bg-[#21dbd8] text-black",
+    bgColor: "bg-[#ED8625] text-black",
     round: "rounded-br-3xl",
   },
 ];

@@ -40,15 +40,18 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
   return (
     <div className="gallery flex w-4/5 md:w-2/3">
       <div className="leftblock hidden w-2/3 h-screen md:flex flex-col justify-center shadow-2xl">
-        <div className="relative  w-full h-[50vh] bg-[#0B0B09] rounded-2xl border border-[#242422] ">
+        <div className="relative flex justify-center items-center w-full h-[50vh] bg-[#0B0B09] rounded-2xl border border-[#242422] p-8">
           {flows.map((flow, index) => (
-            <div key={index} className="photo absolute bg-[#0B0B09] m-8">
+            <div
+              key={index}
+              className="photo absolute bg-[#0B0B09]"
+            >
               <Image
-                width={800}
-                height={700}
+                width={400}
+                height={400}
                 src={flow.image}
                 alt={`img-${index}`}
-                className="w-full h-full"
+                className="h-96 w-auto "
               />
             </div>
           ))}

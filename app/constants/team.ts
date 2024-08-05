@@ -61,4 +61,24 @@ export const team: Team[] = [
     achievement:
       "Finalist - GEHealthcare Hackathon | Regional Finalist - Solving for India Hackathon | Freelanced with Clients from the US and UK | Developed an Automated Reservation Bot with Python and Azure",
   },
+  {
+    id: 7,
+    name: "Prithwijit Dey",
+    role: "B2B Sales",
+    image: "/team/prithwijit.png",
+    linkedin: "",
+    twitter: "",
+    achievement:
+      "Senior Consultant @ 180 Degrees Consulting | Ex- Consulting Intern @ENORD | Ex- BDA Intern @VentureLabs | Member @Google Developer Group | B.Tech BIT Mesra",
+  },
+  {
+    id: 8,
+    name: "Mehul Paul",
+    role: "UI/UX Designer",
+    image: "/team/mehul.png",
+    linkedin: "https://www.linkedin.com/in/mehul-paul-32896a242/",
+    twitter: "",
+    achievement:
+      "2022 NASA Industrial Design Finalist. 2023 NASA ANDC winner. Editorial Board, MANIT Joint Chief. UTHAAN Foundation NGO volunteer and designer. Giaaka WEB3 UX designer.",
+  },
 ];

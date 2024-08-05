@@ -143,3 +143,24 @@ body {
 .cursor-inner.click {
   transform: translate(-50%, -50%) scale(2);
 }
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow 20s linear infinite reverse;
+}
+
+.orange-shadow {
+  box-shadow: 0 0 50px 5px rgba(255, 128, 1, 0.84);
+}

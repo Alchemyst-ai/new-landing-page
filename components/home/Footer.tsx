@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <Image
             width={200}
             height={200}
-            src="/logo/alchemyst.webp"
+            src="/logo/alchemyst_long_dark.svg"
             alt="Alchemyst AI logo"
             className="h-16"
           />

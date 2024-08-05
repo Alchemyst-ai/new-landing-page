@@ -2,7 +2,7 @@ import Flow from "../types/flow";
 
 export const flows: Flow[] = [
   {
-    image: "/flows/read.webp",
+    image: "/flows/read.svg",
     title: "Discover",
     moto: "Access Historical Data Seamlessly",
     description:
@@ -27,7 +27,7 @@ export const flows: Flow[] = [
     ),
   },
   {
-    image: "/flows/compute.webp",
+    image: "/flows/compute.svg",
     title: "Analyze",
     moto: "Harness the Power of Cognitive Insights",
     description:
@@ -52,7 +52,7 @@ export const flows: Flow[] = [
     ),
   },
   {
-    image: "/flows/verify.webp",
+    image: "/flows/verify.svg",
     title: "Innovate",
     moto: "Build with Future-Ready Solutions",
     description:
