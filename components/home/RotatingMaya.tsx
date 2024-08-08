@@ -16,10 +16,10 @@ const RotatingMaya: React.FC = () => {
   ];
   const horizontalRadius = 45;
   const verticalRadius = 45;
-  const center = { top: "25%", left: "25%" };
+  // const center = { top: "25%", left: "25%" };
 
   const centerCircle = (
-    <div style={center} className="absolute h-60 w-60 ">
+    <div className="absolute h-full w-full p-[24%] ">
       <img
         src="/logo/maya.svg"
         alt="Maya"
@@ -39,7 +39,11 @@ const RotatingMaya: React.FC = () => {
   return (
     <div className="relative w-[25vw] h-[25vw] hidden md:block">
       {centerCircle}
-      <img src="/svg/dotted-circle.svg" alt="Circle" className="absolute h-full w-full p-7 opacity-50" />
+      <img
+        src="/svg/dotted-circle.svg"
+        alt="Circle"
+        className="absolute h-full w-full p-7 opacity-50"
+      />
       <div className="relative w-full h-full animate-spin-slow">
         {features.map((feature, index) => (
           <motion.div
@@ -56,7 +60,6 @@ const RotatingMaya: React.FC = () => {
           </motion.div>
         ))}
       </div>
-
     </div>
   );
 };

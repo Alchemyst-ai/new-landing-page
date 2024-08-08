@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
         {verticalLines}
         {horizontalLines}
         <motion.div
-          className="relative mt-20 md:mt-40 w-full md:w-[72%]"
+          className="relative mt-20 md:mt-40 w-full md:w-[76%]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
           style={{ y: y1 }}
         >
           <div className="flex justify-between items-center">
-            <div className="md:w-1/2">
+            <div className="w-full min-w-[90%] md:min-w-[60%] md:m-auto m-5 md:w-1/2">
               <header className="text-4xl  md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
                 <div className="flex">
                   <p className="text-blue-">Revolutionize&nbsp;</p>
