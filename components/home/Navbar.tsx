@@ -9,7 +9,7 @@ const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
   { name: "Industries", link: "/industries" },
   { name: "Team", link: "/#team" },
-  { name: "Highlights", link: "/highlights" },
+  { name: "Media & Awards", link: "/media-awards" },
   { name: "Partner With Us", link: "/partner" },
 ];
 

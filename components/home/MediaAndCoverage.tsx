@@ -1,48 +1,11 @@
 "use client";
+import mediaItems from "@/app/constants/media";
 import { motion } from "framer-motion";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import GridLayout from "../GridLayout";
 import CoverageCard from "./CoverageCard";
-
-interface MediaItem {
-  title: string;
-  date: string;
-  description: string;
-  link: string;
-  imgSrc: string;
-}
-
-const mediaItems: MediaItem[] = [
-  {
-    title: "LAgMo - The Large Agent Model by Lyzr",
-    date: "June 12, 2024",
-    description:
-      "LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency and scalability. This innovative approach promises to transform the landscape of AI-driven solutions by optimizing computational resources and enhancing model performance.",
-    link: "#",
-    imgSrc:
-      "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg",
-  },
-  {
-    title: "Blueprint for Organizational General AI",
-    date: "May 13, 2024",
-    description:
-      "LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency and scalability. This innovative approach promises to transform the landscape of AI-driven solutions by optimizing computational resources and enhancing model performance.",
-    link: "#",
-    imgSrc:
-      "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg",
-  },
-  {
-    title: "27 Parameters, Techniques & Trends AI",
-    date: "December 21, 2023",
-    description:
-      "LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency LAgMo introduces a breakthrough in large-agent modeling with unprecedented efficiency and scalability. This innovative approach promises to transform the landscape of AI-driven solutions by optimizing computational resources and enhancing model performance.",
-    link: "#",
-    imgSrc:
-      "https://srepublic.in/uploads/images/2024/01/image_750x_65ababf63209d.jpg",
-  },
-];
 
 const Arrow: React.FC<
   React.HTMLAttributes<HTMLDivElement> & { direction: "next" | "prev" }

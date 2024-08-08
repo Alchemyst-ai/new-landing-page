@@ -11,11 +11,9 @@ import ModelsIntro from "@/components/home/ModelsIntro";
 import Navbar from "@/components/home/Navbar";
 import TalkToFounder from "@/components/home/TalkToFounder";
 import Team from "@/components/home/Team";
-import Testimonials from "@/components/home/Testimonials";
 import applications from "./constants/applications";
 import { features } from "./constants/features";
 import { flows } from "./constants/flows";
-import testimonials from "./constants/testimonials";
 
 export default function HomePage() {
   return (
@@ -41,7 +39,7 @@ export default function HomePage() {
           <Team />
           <TalkToFounder />
           {/* <MediaAndCoverage /> */}
-          <Testimonials testimonials={testimonials} />
+          {/* <Testimonials testimonials={testimonials} /> */}
           <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 flex flex-col justify-start items-start">
             <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
           </div>
