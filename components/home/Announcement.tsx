@@ -13,8 +13,8 @@ const Announcement: React.FC = () => {
         whileTap={{ scale: 0.95 }}
       >
         <p className="text-center px-8 py-1 text-xs md:text-base">
-          🎉 Our next-gen AI automation platform is live! Explore our solutions
-          and developer docs to integrate today. 🎉
+          🎉 Alchemyst raised its pre-seed round, led by Inflection Point
+          Ventures, along with 100Unicorns & Early Seed Ventures!. 🎉
         </p>
       </motion.div>
     </div>

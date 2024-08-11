@@ -61,12 +61,17 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
         >
           <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
             <span className="text-lg text-gray-400">
-              Grow your Organization&apos;s
+              From knowledge silos to organized context
             </span>
             <br />
-            Central Intelligence with
+            <span className="mb-20 text-2xl md:text-3xl text-center mx-4">
+              Supercharge Organization Productivity with
+            </span>
             <br />
-            <span className="text-[#21dbd8]">Alchemyst&apos;s AgentMesh</span>
+            <span className="text-[#21dbd8]">
+              {/* Alchemyst&apos;s Workflow Catalyst */}
+              Alchemyst personas
+            </span>
           </h1>
           <div className="relative w-[80vw] h-[70vh] hidden md:block">
             {centerCircle}
