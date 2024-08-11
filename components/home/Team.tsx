@@ -46,8 +46,8 @@ const Team: React.FC = () => {
           className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
         >
           <h1 className="mb-10 text-4xl md:text-5xl text-center flex flex-col md:flex-row">
-            <span>The great minds&nbsp;</span>
-            <span className="text-[#21dbd8]">behind Alchemyst AI</span>
+            <span>The&nbsp;</span>
+            <span className="text-[#21dbd8]">Team</span>
           </h1>
           <div className="w-full px-8">
             <Slider {...settings} lazyLoad="progressive">

@@ -21,7 +21,7 @@ const applications: Application[] = [
     ),
     title: "Data Privacy",
     description:
-      "SDKs can be hosted 100% locally or on your cloud as docker containers. The application logic, sensitive data always remains within customer’s infra.",
+      "Alchemysts can interact both directly with your infra through connectors, or through any OpenAPI specification. Alternatively, for sensitive tasks, Alchemysts can also use your data for one particular task and delete the required data, with 100% transparency.",
     bgColor: "bg-[#ED8625] text-black",
     round: "rounded-tl-3xl",
   },
@@ -42,9 +42,9 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "24*7 Enterprise Support",
+    title: "24x7 Enterprise Support",
     description:
-      "Any production issues? Get 24*7 phone and email support from Lyzr team, ensuring prompt updates within a 30-minute SLA.",
+      "Any production issues? Want to get an audit done quick? Get 24x7 phone and email support from the Alchemyst team, ensuring prompt updates within a 30-minute SLA.",
     bgColor: "bg-[#1C1C1A]",
     round: "rounded-tr-3xl",
   },
@@ -67,7 +67,7 @@ const applications: Application[] = [
     ),
     title: "Enterprise AI Safety",
     description:
-      "Lyzr’s Agent SDKs meet ISO 42001 AI safety standards & SOC2 compliance of the respective cloud platforms.",
+      "Alchemyst completely insulates your data from <b>ALL</b> AI models used in the AI grid except runtime, so you can be sure we're compliant with all standards and that your data remains yours. Tests pending for HIPAA, SOC/SOC2, TIPA, GDPR.",
     bgColor: "bg-[#1C1C1A]",
     round: "rounded-bl-3xl",
   },
@@ -88,9 +88,9 @@ const applications: Application[] = [
         />
       </svg>
     ),
-    title: "Loyalty and Incentives",
+    title: "Maximized conversions",
     description:
-      "Reward loyal users based on their activity, without changing existing contracts. Attract top users from competitors by targeting valuable behaviors.",
+      "With Alchemysts running 24x7 with minimum interference and maximum observability, Alchemysts ensure maximized conversions for all of your outcomes.",
     bgColor: "bg-[#ED8625] text-black",
     round: "rounded-br-3xl",
   },

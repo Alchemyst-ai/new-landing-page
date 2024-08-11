@@ -15,8 +15,8 @@ export const team: Team[] = [
     name: "Anuran Roy",
     role: "Chief Technology Officer",
     image: "/team/anuran.png",
-    linkedin: "https://www.linkedin.com/in/anuran-roy-8b4b1b1b1/",
-    twitter: "https://twitter.com/anuran_roy",
+    linkedin: "https://www.linkedin.com/in/anuran-roy/",
+    twitter: "https://twitter.com/anuranroy",
     achievement:
       "Ex-AI Engineering Team @AI4Bharat | Deep Learning & AI Research Intern @Google DeepMind | Ex-Founding AI Engineering Team @Quantum Leap AI | GDC Fellow 2022 | Ex-Applied AI Engineering Team @Arakoo AI",
   },

@@ -7,10 +7,10 @@ import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
-  { name: "Industries", link: "/industries" },
+  // { name: "Industries", link: "/industries" },
   { name: "Team", link: "/#team" },
-  { name: "Media & Awards", link: "/media-awards" },
-  { name: "Partner With Us", link: "/partner" },
+  { name: "Docs", link: "https://docs.getalchemystai.com" },
+  { name: "Partner With Us", link: "https://tripetto.app/run/60HWNW0WQN" },
 ];
 
 const Navbar: React.FC = () => {

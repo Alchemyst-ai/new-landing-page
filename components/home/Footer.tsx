@@ -24,7 +24,8 @@ const Footer: React.FC = () => {
             className="h-16"
           />
           <p className="text-sm text-gray-400 mt-4">
-            © {new Date().getFullYear()} XAlchemyst Lab Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} XAlchemyst Lab Pvt. Ltd. All rights
+            reserved.
           </p>
         </motion.div>
 
@@ -36,11 +37,23 @@ const Footer: React.FC = () => {
         >
           <div className="flex flex-col md:flex-row justify-center items-center md:space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="primary" className="w-full md:w-fit text-nowrap">
-                Get in touch
-              </Button>
+              <Link
+                href={"https://tripetto.app/run/60HWNW0WQN"}
+                target="_blank noopen"
+              >
+                <Button
+                  variant="primary"
+                  className="w-full md:w-fit text-nowrap"
+                >
+                  Get in touch
+                </Button>
+              </Link>
             </motion.div>
-            <Link href="/docs" className="mt-8 md:mt-auto w-full">
+            <Link
+              href="https://calendly.com/getalchemystai/alchemyst-ai"
+              className="mt-8 md:mt-auto w-full"
+              target="_blank noopener noreferrer"
+            >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -78,12 +91,21 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Link href="#" aria-label="Twitter" className="h-6 w-6">
+            <Link
+              href="https://twitter.com/getalchemyst"
+              target="_blank noopener"
+              aria-label="Twitter"
+              className="h-6 w-6"
+            >
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Twitter />
               </motion.div>
             </Link>
-            <Link href="#" aria-label="LinkedIn" className="h-6 w-6">
+            <Link
+              href="https://www.linkedin.com/company/alchemystai/"
+              aria-label="LinkedIn"
+              className="h-6 w-6"
+            >
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <LinkedIn />
               </motion.div>

@@ -1,7 +1,7 @@
 const integrations: string[] = [
   "/integrations/hubspot.png",
   "/integrations/gmail.webp",
-  "/integrations/internal.png",
+  "/integrations/swagger.png",
   "/integrations/jira.png",
   "/integrations/apollo.png",
   "/integrations/salesforce.png",
