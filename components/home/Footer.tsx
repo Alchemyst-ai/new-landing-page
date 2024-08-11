@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
             className="h-16"
           />
           <p className="text-sm text-gray-400 mt-4">
-            © {new Date().getFullYear()} XAlchemyst Lab Pvt. Ltd. All rights
-            reserved.
+            © {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
+            rights reserved.
           </p>
         </motion.div>
 
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
                     </svg>
                   }
                 >
-                  <span>Book A Demo</span>
+                  <span>Book a demo</span>
                 </Button>
               </motion.div>
             </Link>

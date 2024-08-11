@@ -59,20 +59,20 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
           viewport={{ once: true }}
           className="relative flex flex-col items-center justify-center"
         >
-          <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
-            <span className="text-lg text-gray-400">
+          <div className="mb-20 text-4xl md:text-5xl text-center mx-4">
+            <h3 className="text-lg text-gray-400">
               From knowledge silos to organized context
-            </span>
+            </h3>
             <br />
-            <span className="mb-20 text-2xl md:text-3xl text-center mx-4">
+            <h3 className="mb-20 text-2xl md:text-3xl text-center mx-4">
               Supercharge Organization Productivity with
-            </span>
+            </h3>
             <br />
-            <span className="text-[#21dbd8]">
+            <h2 className="text-[#21dbd8]">
               {/* Alchemyst&apos;s Workflow Catalyst */}
               Alchemyst personas
-            </span>
-          </h1>
+            </h2>
+          </div>
           <div className="relative w-[80vw] h-[70vh] hidden md:block">
             {centerCircle}
             {features.map((feature, index) => (

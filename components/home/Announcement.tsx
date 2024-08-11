@@ -14,7 +14,7 @@ const Announcement: React.FC = () => {
       >
         <p className="text-center px-8 py-1 text-xs md:text-base">
           🎉 Alchemyst raised its pre-seed round, led by Inflection Point
-          Ventures, along with 100Unicorns & Early Seed Ventures!. 🎉
+          Ventures, along with 100Unicorns & Early Seed Ventures! 🎉
         </p>
       </motion.div>
     </div>

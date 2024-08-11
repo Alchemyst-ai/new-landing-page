@@ -9,7 +9,7 @@ const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
   // { name: "Industries", link: "/industries" },
   { name: "Team", link: "/#team" },
-  { name: "Docs", link: "https://docs.getalchemystai.com" },
+  // { name: "Docs", link: "https://docs.getalchemystai.com" },
   { name: "Partner With Us", link: "https://tripetto.app/run/60HWNW0WQN" },
 ];
 
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
             </Button>
           </Link>
           <Link href="/docs">
-            <Button variant="primary">Book A Demo</Button>
+            <Button variant="primary">Book a demo</Button>
           </Link>
         </div>
         <button
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
                 </motion.div>
               ))}
               <Link href="/docs" onClick={toggleMenu}>
-                <Button variant="primary">Book A Demo</Button>
+                <Button variant="primary">Book a demo</Button>
               </Link>
             </motion.div>
           )}

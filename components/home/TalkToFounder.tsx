@@ -50,7 +50,7 @@ const TalkToFounder: React.FC = () => {
           className="shadow-sm shadow-gray-300 p-3 px-8 bg-white rounded-full text-black font-medium hover:bg-gray-200 transition-all duration-300"
           aria-label="Book a demo"
         >
-          Book A Demo
+          Book a demo
         </motion.button>
       </Link>
     </motion.div>
