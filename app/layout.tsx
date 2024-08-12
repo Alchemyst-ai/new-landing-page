@@ -70,7 +70,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="logo/alchemyst-ai.jpeg?<generated>"
+          href="/logo/alchemyst-ai.jpeg?<generated>"
           type="image/<generated>"
           sizes="<generated>"
         />
