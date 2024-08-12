@@ -13,7 +13,7 @@ const mediaItems: MediaItem[] = [
     title: "29 top Deep Tech companies and startups in India in August 2024",
     date: "Aug 1, 2024",
     description:
-      "Alchemyst AI is building the next-gen AI digital employees for the world. These employees can automate entire workflows in go-to-market teams. Our digital employees integrate into workspaces in minutes and start working. Our first product, Maya, is an AI employee which has 50x the efficiency a human SDR would have but costs over 90% less..",
+      "Alchemyst AI is building the next-gen AI digital employees for the world. These employees can automate entire workflows in go-to-market teams. Our digital employees integrate into workspaces in minutes and start working. Our first product, Maya, is an AI employee which has 50x the efficiency a human SDR would have but costs over 90% less.",
     link: "#",
     imgSrc: "/media/f6s.png",
   },
