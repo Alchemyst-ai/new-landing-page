@@ -5,8 +5,7 @@ export const flows: Flow[] = [
     image: "/flows/read.svg",
     title: "Discover",
     moto: "Access Historical Data Seamlessly",
-    description:
-      "Our platform enables seamless access to comprehensive historical data, verified by advanced quantum algorithms. Integrate data from multiple sources, including logs, records, and transactions.",
+    description: "",
     linkText: "Learn More",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
