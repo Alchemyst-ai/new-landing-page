@@ -4,8 +4,9 @@ export const flows: Flow[] = [
   {
     image: "/flows/read.svg",
     title: "Discover",
-    moto: "Access Historical Data Seamlessly",
-    description: "",
+    moto: "Retain context over time, seamlessly",
+    description:
+      "Alchemysts evolve with the evolving needs of your organization. Integrate data from multiple sources, including logs, records, and transactions.",
     linkText: "Learn More",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
@@ -28,9 +29,9 @@ export const flows: Flow[] = [
   {
     image: "/flows/compute.svg",
     title: "Analyze",
-    moto: "Harness the Power of Cognitive Insights",
+    moto: "Harness the power of CAPI",
     description:
-      "Unlock the full potential of your data with our cutting-edge analytical tools. Leverage powerful AI models and integrations to derive insights and drive intelligent decision-making.",
+      "Unlock the full potential of your data with our cutting-edge AI technology and maximized observability at your end. Alchemysts are designed for Context Aware Personalized Intelligence (CAPI) to maximize your team and organizational outcomes.",
     linkText: "Learn More",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
@@ -53,9 +54,9 @@ export const flows: Flow[] = [
   {
     image: "/flows/verify.svg",
     title: "Innovate",
-    moto: "Build with Future-Ready Solutions",
+    moto: "Supercharge your team productivity",
     description:
-      "Develop robust, scalable applications using our state-of-the-art development tools and resources. Empower your creations with the latest in AI technology and cognitive computing.",
+      "Get more done with less - 50x the productivity at 90% less expense.",
     linkText: "Book a demo",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
