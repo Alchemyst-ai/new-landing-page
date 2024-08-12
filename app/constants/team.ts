@@ -14,7 +14,7 @@ export const team: Team[] = [
     id: 2,
     name: "Anuran Roy",
     role: "Chief Technology Officer",
-    image: "/team/anuran.png",
+    image: "/team/anuran2.png",
     linkedin: "https://www.linkedin.com/in/anuran-roy/",
     twitter: "https://twitter.com/anuranroy",
     achievement:
