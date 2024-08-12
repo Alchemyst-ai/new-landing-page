@@ -9,6 +9,9 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/logo/alchemyst-ai.jpeg",
+  },
   title: "Alchemyst AI",
   description:
     "Alchemyst AI - Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
@@ -70,7 +73,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="/logo/alchemyst-ai.jpeg?<generated>"
+          href="logo/alchemyst-ai.jpeg?<generated>"
           type="image/<generated>"
           sizes="<generated>"
         />
