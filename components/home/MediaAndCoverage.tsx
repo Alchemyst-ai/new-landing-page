@@ -34,10 +34,10 @@ const Arrow: React.FC<
   </div>
 );
 
-const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => (
+const NextArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = props => (
   <Arrow direction="next" {...props} />
 );
-const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => (
+const PrevArrow: React.FC<React.HTMLAttributes<HTMLDivElement>> = props => (
   <Arrow direction="prev" {...props} />
 );
 
@@ -54,7 +54,7 @@ const settings: Settings = {
 
 const MediaAndCoverage: React.FC = () => {
   return (
-    <section id="media" className="my-20">
+    <section id="media-coverage" className="my-20">
       <GridLayout>
         <motion.div
           initial={{ opacity: 0.6, y: 70 }}

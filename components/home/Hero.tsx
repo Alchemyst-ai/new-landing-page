@@ -141,7 +141,7 @@ const Hero: React.FC = () => {
               </p>
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
-                  href="mailto:getalchemystai@gmail.com"
+                  href="https://calendly.com/getalchemystai/alchemyst-ai"
                   target="_blank noopener"
                 >
                   <Button variant={"primary"} className="w-full md:w-auto">

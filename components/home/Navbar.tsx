@@ -7,8 +7,8 @@ import Button from "./Button";
 
 const navItems: { name: string; link: string }[] = [
   { name: "Product", link: "/product" },
-  // { name: "Industries", link: "/industries" },
   { name: "Team", link: "/#team" },
+  { name: "Coverage", link: "/#featured-in" },
   // { name: "Docs", link: "https://docs.getalchemystai.com" },
   { name: "Partner With Us", link: "https://tripetto.app/run/60HWNW0WQN" },
 ];
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
               {navItems[navItems.length - 1].name}
             </Button>
           </Link>
-          <Link href="/docs">
+          <Link href="https://calendly.com/getalchemystai/alchemyst-ai">
             <Button variant="primary">Book a demo</Button>
           </Link>
         </div>
@@ -152,7 +152,10 @@ const Navbar: React.FC = () => {
                   </Link>
                 </motion.div>
               ))}
-              <Link href="/docs" onClick={toggleMenu}>
+              <Link
+                href="https://calendly.com/getalchemystai/alchemyst-ai"
+                onClick={toggleMenu}
+              >
                 <Button variant="primary">Book a demo</Button>
               </Link>
             </motion.div>

@@ -7,8 +7,8 @@ export const flows: Flow[] = [
     moto: "Access Historical Data Seamlessly",
     description:
       "Our platform enables seamless access to comprehensive historical data, verified by advanced quantum algorithms. Integrate data from multiple sources, including logs, records, and transactions.",
-    linkText: "View Docs",
-    link: "/docs",
+    linkText: "Learn More",
+    link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export const flows: Flow[] = [
     description:
       "Unlock the full potential of your data with our cutting-edge analytical tools. Leverage powerful AI models and integrations to derive insights and drive intelligent decision-making.",
     linkText: "Learn More",
-    link: "/learn",
+    link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +57,8 @@ export const flows: Flow[] = [
     moto: "Build with Future-Ready Solutions",
     description:
       "Develop robust, scalable applications using our state-of-the-art development tools and resources. Empower your creations with the latest in AI technology and cognitive computing.",
-    linkText: "Get Started",
-    link: "/start",
+    linkText: "Book a demo",
+    link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
