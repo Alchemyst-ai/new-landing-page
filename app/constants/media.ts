@@ -18,7 +18,7 @@ const mediaItems: MediaItem[] = [
     imgSrc: "/media/f6s.png",
   },
   {
-    title: "National Winner of Naviskar 2024",
+    title: "National Winner of Navishkar 2024",
     date: "July 30, 2024",
     description:
       "Navachar Research Incubation and Innovation Council, in collaboration with XLRI, presents NAVISHKAR 2024, India’s largest young innovator initiative. The event features groundbreaking ideas from young innovators in technology, healthcare, sustainability, and education.",
