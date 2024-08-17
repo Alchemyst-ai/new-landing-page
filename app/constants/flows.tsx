@@ -2,11 +2,11 @@ import Flow from "../types/flow";
 
 export const flows: Flow[] = [
   {
-    image: "/flows/read.svg",
+    image: "/flows/discover.png",
     title: "Discover",
-    moto: "Retain context over time, seamlessly",
+    moto: "Maya discovers your best fit customers, ICPs",
     description:
-      "Alchemysts evolve with the evolving needs of your organization. Integrate data from multiple sources, including logs, records, and transactions.",
+      "She prioritizes and matches you with your dream customers. Maya has access to every buyer your business needs, in real time. Only targeting companies that need your solution right now.",
     linkText: "Learn More",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
@@ -27,11 +27,11 @@ export const flows: Flow[] = [
     ),
   },
   {
-    image: "/flows/compute.svg",
+    image: "/flows/analyze.png",
     title: "Analyze",
-    moto: "Harness the power of CAPI",
+    moto: "Harness the power of CAPI and retain context over time, seamlessly",
     description:
-      "Unlock the full potential of your data with our cutting-edge AI technology and maximized observability at your end. Alchemysts are designed for Context Aware Personalized Intelligence (CAPI) to maximize your team and organizational outcomes.",
+      "Maya researches each target account and contact across dozens of sources, and generates prospect insights unique to your business. This enables highly-customized outreach based on AI powered, research-led insights.",
     linkText: "Learn More",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
@@ -52,11 +52,11 @@ export const flows: Flow[] = [
     ),
   },
   {
-    image: "/flows/verify.svg",
-    title: "Innovate",
-    moto: "Supercharge your team productivity",
+    image: "/flows/innovate.png",
+    title: "Research",
+    moto: "Personalized outreach to drive conversions, done 50x faster.",
     description:
-      "Get more done with less - 50x the productivity at 90% less expense.",
+      "Maya hyper-personalizes outreach with human-level depth and precision. Her customized emails lead to higher engagement and conversion rates, at scale beyond human capability. This personal touch in outreach has a direct impact on conversion rates. Get more done with less - 50x the productivity at 90% less expense.",
     linkText: "Book a demo",
     link: "https://calendly.com/getalchemystai/alchemyst-ai",
     icon: (
