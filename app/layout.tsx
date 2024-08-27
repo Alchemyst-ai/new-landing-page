@@ -36,13 +36,13 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: "https://alchemyst.ai",
+    url: "https://getalchemystai.com",
     title: "Alchemyst AI",
     description:
       "Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
     images: [
       {
-        url: "https://alchemyst.ai/og-image.jpg",
+        url: "https://getalchemystai.com/logo/alchemyst-ai.jpeg",
         width: 800,
         height: 600,
         alt: "Alchemyst AI",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "Alchemyst AI",
     description:
       "Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
-    images: "https://alchemyst.ai/twitter-image.jpg",
+    images: "https://getalchemystai.com/logo/alchemyst-ai.jpeg",
   },
 };
 

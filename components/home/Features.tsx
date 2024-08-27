@@ -51,7 +51,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
 
   return (
     <GridLayout>
-      <div className="relative mb-40">
+      <div className="relative mb-40 mt-40">
         <motion.div
           initial={{ opacity: 0.6, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,15 +59,20 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
           viewport={{ once: true }}
           className="relative flex flex-col items-center justify-center"
         >
-          <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
-            <span className="text-lg text-gray-400">
-              Grow your Organization&apos;s
-            </span>
-            <br />
-            Central Intelligence with
-            <br />
-            <span className="text-[#21dbd8]">Alchemyst&apos;s AgentMesh</span>
-          </h1>
+          <div className="mb-20 text-4xl md:text-5xl text-center mx-4">
+            <h3 className="text-lg text-gray-400">
+              From knowledge silos to organized context
+            </h3>
+            {/* <br /> */}
+            <h3 className="text-2xl md:text-3xl text-center mx-4">
+              Supercharge Organization Productivity with
+            </h3>
+            {/* <br /> */}
+            <h2 className="text-[#21dbd8]">
+              {/* Alchemyst&apos;s Workflow Catalyst */}
+              Alchemyst personas
+            </h2>
+          </div>
           <div className="relative w-[80vw] h-[70vh] hidden md:block">
             {centerCircle}
             {features.map((feature, index) => (

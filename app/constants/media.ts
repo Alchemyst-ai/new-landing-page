@@ -13,12 +13,12 @@ const mediaItems: MediaItem[] = [
     title: "29 top Deep Tech companies and startups in India in August 2024",
     date: "Aug 1, 2024",
     description:
-      "Alchemyst AI is building the next-gen AI digital employees for the world. These employees can automate entire workflows in go-to-market teams. Our digital employees integrate into workspaces in minutes and start working. Our first product, Maya, is an AI employee which has 50x the efficiency a human SDR would have but costs over 90% less..",
+      "Alchemyst AI is building the next-gen AI digital employees for the world. These employees can automate entire workflows in go-to-market teams. Our digital employees integrate into workspaces in minutes and start working. Our first product, Maya, is an AI employee which has 50x the efficiency a human SDR would have but costs over 90% less.",
     link: "#",
     imgSrc: "/media/f6s.png",
   },
   {
-    title: "National Winner of Naviskar 2024",
+    title: "National Winner of Navishkar 2024",
     date: "July 30, 2024",
     description:
       "Navachar Research Incubation and Innovation Council, in collaboration with XLRI, presents NAVISHKAR 2024, India’s largest young innovator initiative. The event features groundbreaking ideas from young innovators in technology, healthcare, sustainability, and education.",

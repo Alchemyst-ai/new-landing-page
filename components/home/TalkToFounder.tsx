@@ -25,7 +25,7 @@ const TalkToFounder: React.FC = () => {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="text-5xl font-semibold text-black text-center"
       >
-        Speak to the Founding Team
+        Speak to the Team
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const TalkToFounder: React.FC = () => {
           className="shadow-sm shadow-gray-300 p-3 px-8 bg-white rounded-full text-black font-medium hover:bg-gray-200 transition-all duration-300"
           aria-label="Book a demo"
         >
-          Book A Demo
+          Book a demo
         </motion.button>
       </Link>
     </motion.div>

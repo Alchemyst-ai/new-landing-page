@@ -16,11 +16,10 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
       className="flex flex-col items-center w-4/5 md:w-2/3 mx-auto my-16"
     >
       <h1 className="mb-10 text-4xl md:text-5xl text-center">
-        <span className="text-lg text-gray-400">
-          Alchemyst Labs makes it easier for
-        </span>{" "}
+        <span className="text-lg text-gray-400">Kickstart your</span> <br />
+        <span className="text-[#21dbd8]">Enterprise AI adoption</span>
         <br />
-        <span className="text-[#21dbd8]">Enterprises to adopt AI</span>
+        <span className="text-lg text-gray-400">with</span> <br />
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         {applications.map((app, index) => (
@@ -43,7 +42,10 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
               {app.svg}
             </div>
             <h2 className="text-3xl font-semibold my-5">{app.title}</h2>
-            <p className="text-lg">{app.description}</p>
+            <p
+              className="text-lg"
+              dangerouslySetInnerHTML={{ __html: app.description }}
+            />
           </motion.div>
         ))}
       </div>

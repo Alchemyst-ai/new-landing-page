@@ -14,11 +14,15 @@ const Integrations: React.FC = () => {
         viewport={{ once: false }}
         className="relative flex flex-col items-center justify-center my-20"
       >
-        <h1 className="mb-20 text-4xl md:text-5xl text-center mx-4">
-          <span className="text-[#21dbd8]">Pre-built integrations </span>
-          <br />
-          for limitless possibilities
-        </h1>
+        <h2 className="text-[#21dbd8] mb-20 text-4xl md:text-5xl text-center mx-4">
+          {/* <span className="text-[#21dbd8]"> */}
+          One-minute integrations
+          {/* </span> */}
+          {/* <br /> */}
+        </h2>
+        <h3 className="mb-20 text-3xl md:text-3xl text-center mx-4">
+          Alchemysts work wherever you work.
+        </h3>
         <div className="flex flex-wrap gap-28 w-2/3 justify-center items-center">
           {integrations.map((integration, index) => (
             <motion.div

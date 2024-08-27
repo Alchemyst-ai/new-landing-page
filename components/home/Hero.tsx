@@ -4,6 +4,7 @@ import Announcement from "@/components/home/Announcement";
 import Button from "@/components/home/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -112,7 +113,7 @@ const Hero: React.FC = () => {
           style={{ y: y1 }}
         >
           <div className="flex justify-between items-center">
-            <div className="w-full min-w-[90%] md:min-w-[60%] md:m-auto m-5 md:w-1/2">
+            <div className="w-full min-w-[90%] md:min-w-[60%] md:m-auto mx-5 my-2 md:w-1/2">
               <header className="text-4xl  md:text-6xl text-center md:text-start font-bold leading-tight md:leading-[1.1]">
                 <div className="flex">
                   <p className="text-blue-">Revolutionize&nbsp;</p>
@@ -139,31 +140,38 @@ const Hero: React.FC = () => {
                 components across enterprises.
               </p>
               <div className="flex flex-col md:flex-row gap-2">
-                <Button variant={"primary"} className="w-full md:w-auto">
-                  Book A Demo
-                </Button>
-                <Button
-                  variant={"secondary"}
-                  className="w-full md:w-auto"
-                  icon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                      />
-                    </svg>
-                  }
+                <Link
+                  href="https://calendly.com/getalchemystai/alchemyst-ai"
+                  target="_blank noopener"
                 >
-                  Contact Us
-                </Button>
+                  <Button variant={"primary"} className="w-full md:w-auto">
+                    Book a demo
+                  </Button>
+                </Link>
+                <Link href="https://tripetto.app/run/60HWNW0WQN">
+                  <Button
+                    variant={"secondary"}
+                    className="w-full md:w-auto"
+                    icon={
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    }
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="w-1/2 -mr-40 -mt-10">

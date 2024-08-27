@@ -42,10 +42,7 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
       <div className="leftblock hidden w-2/3 h-screen md:flex flex-col justify-center shadow-2xl">
         <div className="relative flex justify-center items-center w-full h-[50vh] bg-[#0B0B09] rounded-2xl border border-[#242422] p-8">
           {flows.map((flow, index) => (
-            <div
-              key={index}
-              className="photo absolute bg-[#0B0B09]"
-            >
+            <div key={index} className="photo absolute bg-[#0B0B09]">
               <Image
                 width={400}
                 height={400}
@@ -63,7 +60,7 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
             key={index}
             className="details h-screen flex flex-col justify-center text-3xl font-extrabold"
           >
-            <h1 className="text-6xl text-[#21dbd8]">{flow.title}</h1>
+            <h1 className="text-6xl text-[#ff9933]">{flow.title}</h1>
             <h2 className="text-xl my-5 text-gray-300">{flow.moto}</h2>
             <p className="text-base text-gray-400">{flow.description}</p>
             <Link href={flow.link} className="text-base mt-4">
@@ -90,7 +87,7 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
               key={index}
               className="md:details my-10 md:my-auto md:h-screen flex flex-col justify-center text-3xl font-extrabold"
             >
-              <h1 className="text-6xl text-[#21dbd8]">{flow.title}</h1>
+              <h1 className="text-6xl text-[#ff9933]">{flow.title}</h1>
               <h2 className="text-base my-5 text-[#cecec5]">{flow.moto}</h2>
               <p className="text-base">{flow.description}</p>
               <Link href={flow.link} className="text-base mt-4">
