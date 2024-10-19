@@ -14,7 +14,7 @@ export const team: Team[] = [
     id: 2,
     name: "Anuran Roy",
     role: "Chief Technology Officer",
-    image: "/team/anuran2.png",
+    image: "/team/anuran.png",
     linkedin: "https://www.linkedin.com/in/anuran-roy/",
     twitter: "https://twitter.com/anuranroy",
     achievement:
@@ -80,5 +80,32 @@ export const team: Team[] = [
     twitter: "",
     achievement:
       "2022 NASA Industrial Design Finalist. 2023 NASA ANDC winner. Editorial Board, MANIT Joint Chief. UTHAAN Foundation NGO volunteer and designer. Giaaka WEB3 UX designer.",
+  },
+  {
+    id : 9,
+    name : "Arnab Sengupta",
+    role : "Machine Learning Engineer",
+    image : "/team/arnab.png",
+    linkedin : "https://www.linkedin.com/in/arnab-chakraborty-1b1b3b1b1/",
+    twitter : "https://twitter.com/arnabchakraborty",
+    achievement : "Ex-Data Science Intern @Quantum Leap AI | Ex-Data Science Intern @Arakoo AI | Ex-Data Science Intern @AI4Bharat | Ex-Data Science Intern @Forge | Ex-Data Science Intern @JustK8s"
+  },
+  {
+    id : 10,
+    name : "Kapil Kumar",
+    role : "Product Strategy",
+    image : "/team/kapil.png",
+    linkedin : "https://www.linkedin.com/in/kapil-kumar-1b1b3b1b1/",
+    twitter : "https://twitter.com/kapilkumar",
+    achievement : "Ex-Product Manager @Quantum Leap AI | Ex-Product Manager @Arakoo AI | Ex-Product Manager @AI4Bharat | Ex-Product Manager @Forge | Ex-Product Manager @JustK8s"
+  },
+  {
+    id  :11,
+    name : "Shiladitya Das",
+    role : "SDE | B2B Content Production",
+    image : "/team/shiladitya.png",
+    linkedin : "https://www.linkedin.com/in/shiladitya-das-1b1b3b1b1/",
+    twitter : "https://twitter.com/shiladityadas",
+    achievement : "Ex-Software Developer @Quantum Leap AI | Ex-Software Developer @Arakoo AI | Ex-Software Developer @AI4Bharat | Ex-Software Developer @Forge | Ex-Software Developer @JustK8s"
   },
 ];

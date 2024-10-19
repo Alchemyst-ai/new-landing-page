@@ -1,5 +1,7 @@
 "use client";
+import { announcementText } from "@/app/constants/text.constant";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Announcement: React.FC = () => {
   return (
@@ -12,11 +14,13 @@ const Announcement: React.FC = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <p className="text-center px-8 py-1 text-xs md:text-base">
-          {/* 🎉 Alchemyst raised its pre-seed round, led by Inflection Point
-          Ventures, along with 100Unicorns & Early Seed Ventures! 🎉 */}
-          🎉 Alchemyst won the best emerging startup award in Navishkar 2024! 🎉
-        </p>
+        <Link href="https://analyticsindiamag.com/ai-origins-evolution/this-bengaluru-startup-secures-300k-to-build-ai-employees-for-enterprises/" target="_blank">
+          <p className="text-center px-8 py-1 text-xs md:text-base">
+            {/* 🎉 Alchemyst raised its pre-seed round, led by Inflection Point
+            Ventures, along with 100Unicorns & Early Seed Ventures! 🎉 */}
+            {announcementText}
+          </p>
+        </Link>
       </motion.div>
     </div>
   );

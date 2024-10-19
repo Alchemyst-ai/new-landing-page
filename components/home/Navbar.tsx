@@ -4,14 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "./Button";
-
-const navItems: { name: string; link: string }[] = [
-  { name: "Product", link: "/product" },
-  { name: "Team", link: "/#team" },
-  { name: "Coverage", link: "/#featured-in" },
-  // { name: "Docs", link: "https://docs.getalchemystai.com" },
-  { name: "Partner With Us", link: "https://tripetto.app/run/60HWNW0WQN" },
-];
+import { navItems } from "@/app/constants/navItems.constant";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

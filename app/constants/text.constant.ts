@@ -1,0 +1,1 @@
+export const announcementText = "🎉 Alchemyst AI raises Pre-Seed round of $300K  to build Hyper-Intelligent AI assistants for Enterprise teams. 🎉" 

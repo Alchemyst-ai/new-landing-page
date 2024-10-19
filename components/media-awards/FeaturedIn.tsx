@@ -31,7 +31,7 @@ const FeaturedIn: React.FC = () => {
 
       <div className="w-[70vw] md:w-[70vw]">
         <Slider {...settings}>
-          {featuredin.map((company, index) => (
+          {featuredin.slice(0, -2).map((company, index) => (
             <div key={index} className="px-10">
               <Link
                 href={company.link}
@@ -47,6 +47,25 @@ const FeaturedIn: React.FC = () => {
               </Link>
             </div>
           ))}
+
+          {
+            featuredin.slice(-2).map((company, index) => (
+              <div key={index} className="px-10">
+                <Link
+                  href={company.link}
+                  target="_blank"
+                  className="h-80 bg-ed-400 flex justify-center items-center"
+                >
+                  <Image
+                    src={company.image}
+                    alt={`Logo of ${company.image}`}
+                    width={100}
+                    height={100}
+                  />
+                </Link>
+              </div>
+            ))
+          }
         </Slider>
       </div>
     </div>

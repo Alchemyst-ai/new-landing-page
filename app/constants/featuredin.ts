@@ -14,6 +14,22 @@ const featuredin = [
   {
     image: "/featuredin/startupnews.png",
     link: "https://startupnews.fyi/event/navishkar-2024-jharkhand-july-29/",
+  },
+  {
+    image : "/featuredin/Entrepreneur.jpg",
+    link :""
+  },
+  {
+    image : "/featuredin/Financial.jpg",
+    link : ""
+  },
+  {
+    image : "/featuredin/economic_rect.jpg",
+    link : "",
+  },
+    {
+    image : "/featuredin/aim_Rect.jpg",
+    link : "",
   }
 ];
 
