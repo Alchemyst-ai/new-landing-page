@@ -1,11 +1,18 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 
 // pages/blog.js
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CircleCheck, Link2, Mail } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Blog() {
+  
+    const [copied, setCopied] = useState(false);
+    
   return (
     <div>
       <main className="container mx-auto p-6 w-[50%]">
@@ -91,7 +98,7 @@ export default function Blog() {
 
         <section className="mt-12">
           <blockquote className="border-l-4 border-blue-500 pl-4 italic text-lg text-[#ff9933]">
-            “The next industrial revolution to reshape every business is here, and it’s powered by Alchemyst AI.”
+            “The next industrial revolution to reshape every business is here, and it’s envisioned by Alchemyst AI.”
           </blockquote>
         </section>
 
@@ -122,7 +129,41 @@ export default function Blog() {
           </ul>
         </section>
 
-        <footer className="mt-16 border-t pt-8 text-center text-gray-500">
+        <section className='mt-16 border-t pt-6 text-left text-gray-500'>
+            <p className='flex justify-start items-center gap-[7.3rem]'>
+                <span>Share Article : </span> 
+
+                <span className='flex justify-start items-center gap-2'>
+                    {
+                        copied ? (
+                            <span><CircleCheck height={15} width={15} /></span>
+                        ) : (
+                    <span onClick={() => {
+                        navigator.clipboard.writeText("https://getalchemystai.com/blogs/pre-seed").then(() => {
+                            setCopied(true);
+                            setTimeout(() => {
+                                setCopied(false);
+                            }, 2000);
+                        })
+                    }}><Link2 height={15} width={15} />
+                    </span> 
+                        )
+                    }
+                    <span><Link href="https://getalchemystai.com/blogs/pre-seed"><Mail height={15} width={15} /></Link></span>
+                </span>
+                
+            </p>
+            <p className='flex justify-start items-center gap-[10rem]'> 
+                <span>Author :</span>
+                <span>Parineeta</span>
+            </p>
+        </section>
+
+        {/* <section className='mt-16 border-t pt-6 text-left text-gray-500'>
+
+        </section> */}
+
+        <footer className="mt-8 border-t pt-8 text-center text-gray-500">
           <p className='text-xl'>Featured in: Economic Times, Tech in Asia, Entrepreneur.com, FinancialExpress.com</p>
         </footer>
       </main>
