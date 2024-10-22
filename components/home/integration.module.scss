@@ -4,13 +4,13 @@
     grid-template-rows: repeat(7, 1fr);
     grid-template-areas:
         "area1 area1 area1"
-        "area2 area3 area4"
-        "area5 area5 area5"
-        "area6 area6 area7"
-        "area8 area9 area10"
+        "area2 area3 area6"
         "area11 area11 area12"
+        "area4 area4 area10"
+        "area5 area5 area5"
+        "area8 area9 area7"
         "area13 area13 area13"
         "area14 area14 area14";
-    gap: 2.5rem;
+    row-gap: 4rem;
     padding: 0.5rem;
 }
