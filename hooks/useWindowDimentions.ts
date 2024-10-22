@@ -6,16 +6,18 @@ interface WindowDimensions {
 }
 
 function useWindowDimensions(): WindowDimensions {
+
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 2000,
+    height: 1000,
   });
 
   useEffect(() => {
     function handleResize() {
+    if(window)
       setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: window?.innerWidth,
+        height: window?.innerHeight,
       });
     }
 
