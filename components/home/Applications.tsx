@@ -25,7 +25,7 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
         {applications.map((app, index) => (
           <motion.div
             key={index}
-            className={`${app.bgColor} ${app.round} p-10`}
+            className={`${app.bgColor} sm:rounded-2xl rounded-xl ${index=== 0 && 'md:rounded-tr-none md:rounded-br-none md:rounded-bl-none'} ${index=== 1 && 'md:rounded-tl-none md:rounded-br-none md:rounded-bl-none'} ${index=== 2 && 'md:rounded-tl-none md:rounded-tr-none md:rounded-br-none'} ${index=== 3 && 'md:rounded-tr-none md:rounded-tl-none sm:rounded-bl-none'} p-10 `}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{

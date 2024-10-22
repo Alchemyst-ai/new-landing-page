@@ -8,7 +8,7 @@ import Button from "./Button";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full flex justify-center items-center text-white">
+    <footer className="w-full flex justify-center items-center text-white border-t-[1px] border-t-[#1f1e1d]">
       <div className="py-6 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center md:w-2/3">
         <motion.div
           className="flex flex-col items-start mb-4 md:mb-0"
@@ -16,26 +16,28 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Image
-            width={200}
-            height={200}
-            src="/logo/alchemyst_long_dark.svg"
-            alt="Alchemyst AI logo"
-            className="h-16"
-          />
-          <p className="text-sm text-gray-400 mt-4">
+          <div className="flex items-center justify-center w-full sm:justify-start">
+            <Image
+              width={200}
+              height={200}
+              src="/logo/alchemyst_long_dark.svg"
+              alt="Alchemyst AI logo"
+              className="h-16"
+            />
+          </div>
+          <p className="text-sm text-gray-400 mt-4 text-center sm:text-left">
             © {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
             rights reserved.
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-8  w-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-4">
+          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-4 ">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={"https://tripetto.app/run/60HWNW0WQN"}
@@ -86,7 +88,7 @@ const Footer: React.FC = () => {
           </div>
 
           <motion.div
-            className="flex items-center justify-center md:justify-normal space-x-5 mt-8 md:mt-0"
+            className="flex items-center justify-center md:justify-normal space-x-5 md:mt-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}

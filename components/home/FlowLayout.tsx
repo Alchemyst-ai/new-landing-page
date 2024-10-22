@@ -87,7 +87,7 @@ const FlowLayout: React.FC<FlowLayoutProps> = ({ flows }) => {
               key={index}
               className="md:details my-10 md:my-auto md:h-screen flex flex-col justify-center text-3xl font-extrabold"
             >
-              <h1 className="text-6xl text-[#ff9933]">{flow.title}</h1>
+              <p className="text-4xl sm:text-6xl text-[#ff9933]">{flow.title}</p>
               <h2 className="text-base my-5 text-[#cecec5]">{flow.moto}</h2>
               <p className="text-base">{flow.description}</p>
               <Link href={flow.link} className="text-base mt-4">

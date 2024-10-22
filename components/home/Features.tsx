@@ -93,7 +93,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
                 <div className="w-14 h-14 mb-4">{feature.icon}</div>
                 <h2 className="text-lg font-semibold">{feature.title}</h2>
                 <motion.div
-                  className="absolute -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
+                  className="hidden -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
                   animate={{ y: [0, -5, 0] }}
                   transition={{
                     duration: 2,
@@ -105,11 +105,11 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
               </motion.div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-4 mx-2 md:hidden">
+          <div className="grid grid-cols-2 gap-0 sm:gap-4 mx-2 md:hidden">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-[#1C1C1A] m-2 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
+                className="bg-[#1C1C1A] m-2 min-h-[10rem] p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center border border-gray-800 text-gray-400"
                 viewport={{ once: false }}
               >
                 <div className="w-12 h-12 mb-2">{feature.icon}</div>
@@ -117,7 +117,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
                   {feature.title}
                 </h2>
                 <motion.div
-                  className="absolute -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
+                  className="absolute -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full hidden"
                   animate={{ y: [0, -5, 0] }}
                   transition={{
                     duration: 2,
