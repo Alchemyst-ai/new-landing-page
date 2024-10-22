@@ -15,7 +15,7 @@ const Applications: React.FC<ApplicationProps> = ({ applications }) => {
       viewport={{ once: false }}
       className="flex flex-col items-center w-4/5 md:w-2/3 mx-auto my-16"
     >
-      <h1 className="mb-10 text-4xl md:text-5xl text-left sm:text-center ">
+      <h1 className="mb-10 text-4xl md:text-5xl text-center">
         <span className="text-lg text-gray-400">Kickstart your</span> <br />
         <span className="text-[#21dbd8]">Enterprise AI adoption</span>
         <br />
