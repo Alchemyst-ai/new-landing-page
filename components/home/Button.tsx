@@ -42,7 +42,6 @@ const Button: React.FC<ButtonProps> = ({
         ${buttonStyles[variant]}
         py-3 px-7 shadow-sm flex items-center justify-center 
         transition duration-300 ease-in-out
-        
       `}
       onClick={onClick}
       aria-label={ariaLabel}

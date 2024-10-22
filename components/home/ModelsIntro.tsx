@@ -36,13 +36,13 @@ const ModelsIntro: React.FC = () => {
       className="w-4/5 md:w-2/3 mx-auto mb-20"
     >
       <motion.h1
-        className="text-4xl mb-8 text-[#cecec5]"
+        className="text-center text-3xl sm:text-4xl mb-8 text-[#cecec5] w-full flex flex-col justify-center items-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        Explore the <span className="text-[#21dbd8]">Alchemyst Ecosystem</span>
+        <span>Explore the</span> <span className="text-[#21dbd8]">Alchemyst Ecosystem</span>
       </motion.h1>
       <div className="flex flex-col-reverse md:flex-row items-start space-y-4 md:space-y-0 md:space-x-8">
         <motion.div

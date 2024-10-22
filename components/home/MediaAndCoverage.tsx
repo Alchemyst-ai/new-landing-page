@@ -63,7 +63,7 @@ const MediaAndCoverage: React.FC = () => {
           viewport={{ once: false }}
           className="flex flex-col items-center justify-center"
         >
-          <header className="text-center mb-10">
+          <header className="text-left sm:text-center mb-10">
             <h1 className="text-4xl md:text-5xl flex flex-col md:flex-row">
               <span>Stay Updated with&nbsp;</span>
               <span className="text-[#21dbd8]">Highlights & Coverages</span>
