@@ -8,7 +8,7 @@ import Button from "./Button";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full flex justify-center items-center text-white border-t-[1px] border-t-[#1f1e1d]">
+    <footer className="w-full flex justify-center items-center text-white border-t-[1px] border-t-[#1f1e1d] sm:border-none">
       <div className="py-6 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center md:w-2/3">
         <motion.div
           className="flex flex-col items-start mb-4 md:mb-0"

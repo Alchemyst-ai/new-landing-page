@@ -11,7 +11,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Typewriter from "typewriter-effect";
 import RotatingMaya from "./RotatingMaya";
-import { Settings } from "lucide-react";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();

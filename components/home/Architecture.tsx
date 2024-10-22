@@ -139,7 +139,7 @@ const Architecture: React.FC = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <div className="border border-dashed rounded-lg p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] flex flex-col justify-center items-center hidden sm:block">
+          <div className="border border-dashed rounded-lg p-4 md:p-8 w-[80vw] md:w-[12vw] h-[10vh] md:h-[8vh] bg-[#1F1F1C] sm:flex flex-col justify-center items-center hidden">
             <h2 className="text-2xl font-semibold text-[#21dbd8]">
               Customer Support
             </h2>
@@ -169,11 +169,11 @@ const Architecture: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* <div className="h-8 w-4/5 md:w-3/5 border-x border-b border-gray-400 rounded-b-full border-dashed mt-3 flex justify-center items-center">
+      <div className="h-8 w-4/5 md:w-3/5 border-x border-b border-gray-400 rounded-b-full border-dashed mt-3 flex justify-center items-center">
         <div className="hidden w-1/2 h-8 border-x border-b border-gray-400 rounded-b-full border-dashed sm:flex justify-center items-center">
           <div className="w-1 h-full border-l border-gray-400 border-dashed"></div>
         </div>
-      </div> */}
+      </div>
 
       <div className="w-1 border-l border-dashed h-8"></div>
 

@@ -22,7 +22,7 @@ const CoverageCard: React.FC<CoverageCardProps> = ({
         <img
           src={imgSrc}
           alt={title}
-          className="w-full md:w-2/5 rounded-t-2xl sm:rounded-l-2xl sm:-mr-4 h-[12rem] object-cover object-top"
+          className="w-full md:w-2/5 rounded-t-2xl sm:rounded-l-2xl sm:-mr-4 h-[14rem] sm:h-[20rem] object-cover object-top sm:object-center"
         />
       {/* </div> */}
       <div className="p-4 md:p-12 rounded-t-none rounded-b-2xl sm:rounded-2xl bg-gray-200 space-y-5 h-[22rem] sm:h-full md:w-3/5 flex flex-col justify-between">

@@ -1,20 +1,11 @@
-'use client'
-
-import React, { useState } from 'react'
-
-// pages/blog.js
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CircleCheck, Link2, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-export default function Blog() {
-  
-    const [copied, setCopied] = useState(false);
-    
+export default function Blog() {    
   return (
-    <div>
       <main className="container mx-auto p-6 w-[50%]">
         <h1 className="text-4xl font-bold text-left mb-6">Alchemyst AI raises $300K Pre-Seed Round</h1>
         <p className="text-gray-600 text-left mb-12 ">Parineeta | 19-10-2024 | 7 mins read</p>
@@ -133,22 +124,13 @@ export default function Blog() {
             <p className='flex justify-start items-center gap-[7.3rem]'>
                 <span>Share Article : </span> 
 
-                <span className='flex justify-start items-center gap-2'>
-                    {
-                        copied ? (
-                            <span><CircleCheck height={15} width={15} /></span>
-                        ) : (
-                    <span onClick={() => {
-                        navigator.clipboard.writeText("https://getalchemystai.com/blogs/pre-seed").then(() => {
-                            setCopied(true);
-                            setTimeout(() => {
-                                setCopied(false);
-                            }, 2000);
-                        })
-                    }}><Link2 height={15} width={15} />
-                    </span> 
-                        )
-                    }
+                <span className='flex justify-start items-center gap-2'
+                onClick={() => {
+                    const copyText = "https://getalchemystai.com/blogs/pre-seed";
+                    navigator.clipboard.writeText(copyText).then(() => {
+                        alert("Copied to clipboard");
+                    });
+                }}>
                     <span><Link href="https://getalchemystai.com/blogs/pre-seed"><Mail height={15} width={15} /></Link></span>
                 </span>
                 
@@ -167,6 +149,5 @@ export default function Blog() {
           <p className='text-xl'>Featured in: Economic Times, Tech in Asia, Entrepreneur.com, FinancialExpress.com</p>
         </footer>
       </main>
-    </div>
   );
 }

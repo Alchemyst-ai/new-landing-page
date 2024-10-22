@@ -93,7 +93,7 @@ const Features: React.FC<FeatureProps> = ({ features }) => {
                 <div className="w-14 h-14 mb-4">{feature.icon}</div>
                 <h2 className="text-lg font-semibold">{feature.title}</h2>
                 <motion.div
-                  className="hidden -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
+                  className="hidden sm:block absolute -bottom-2.5 w-5 h-5 border-2 border-gray-800 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full"
                   animate={{ y: [0, -5, 0] }}
                   transition={{
                     duration: 2,
