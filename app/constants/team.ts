@@ -64,7 +64,7 @@ export const team: Team[] = [
   {
     id: 7,
     name: "Prithwijit Dey",
-    role: "B2B Sales",
+    role: "Founder's Office",
     image: "/team/prithwijit.png",
     linkedin: "",
     twitter: "",
