@@ -16,10 +16,31 @@ import FeaturedIn from "@/components/media-awards/FeaturedIn";
 import applications from "./constants/applications";
 import { features } from "./constants/features";
 import { flows } from "./constants/flows";
+import Head from "next/head";
+
 
 export default function HomePage() {
   return (
     <div>
+      <Head>
+        <title>Company Name - Leading in AI and Technology</title>
+        <meta
+          name="description"
+          content="Explore our cutting-edge AI technology, our team, features, and success stories. Backed by industry leaders."
+        />
+        <meta
+          name="keywords"
+          content="AI, Technology, Innovation, Features, Team, Integrations, Architecture, Applications"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Company Name - Leading in AI and Technology" />
+        <meta
+          property="og:description"
+          content="Discover our powerful AI solutions and learn how we're shaping the future."
+        />
+        <meta property="og:url" content="https://yourcompany.com" />
+        <meta property="og:type" content="website" />
+      </Head>
       <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
         <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
           <Navbar />

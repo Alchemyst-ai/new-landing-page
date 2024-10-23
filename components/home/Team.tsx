@@ -36,7 +36,7 @@ const Team: React.FC = () => {
   };
 
   return (
-    <div id="team">
+    <section id="team">
       <GridLayout>
         <motion.div
           initial={{ opacity: 0.6, y: 70 }}
@@ -65,7 +65,7 @@ const Team: React.FC = () => {
           </div>
         </motion.div>
       </GridLayout>
-    </div>
+    </section>
   );
 };
 

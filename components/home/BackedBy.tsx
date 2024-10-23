@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const BackedBy: React.FC = () => {
   return (
-    <div className="mt-20">
+    <section className="mt-20">
       <div className="flex w-full justify-center items-center">
         <div className="w-full bg-gradient-to-r from-[#0b0b09] to-[#ffffff42] h-[2px]"></div>
         <h1
@@ -34,7 +34,7 @@ const BackedBy: React.FC = () => {
           />
         ))}
       </motion.div>
-    </div>
+    </section>
   );
 };
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const TalkToFounder: React.FC = () => {
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0.6, y: 70 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
@@ -53,7 +53,7 @@ const TalkToFounder: React.FC = () => {
           Book a demo
         </motion.button>
       </Link>
-    </motion.div>
+    </motion.section>
   );
 };
 

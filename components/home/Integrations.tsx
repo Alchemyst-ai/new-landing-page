@@ -12,7 +12,7 @@ const Integrations: React.FC = () => {
 
   return (
     <GridLayout>
-      <motion.div
+      <motion.section
         initial={{ opacity: 0.6, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
@@ -72,7 +72,7 @@ const Integrations: React.FC = () => {
             + 200 Pre-built integrations
           </motion.div>
         </div>
-      </motion.div>
+      </motion.section>
     </GridLayout>
   );
 };
