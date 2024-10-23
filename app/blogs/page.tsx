@@ -35,15 +35,18 @@ const Blogs = () => {
   return (
     <div className='h-screen w-screen p-10 grid grid-cols-1 grid-rows-3 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
         {
-            posts.map((post, index) => (
-                <div key={index} className='border border-[#242422] max-w-max rounded-xl flex flex-col justify-center items-center gap-3 overflow-hidden w-[25rem]' onClick={() => {
+            posts.map((post, index) => {
+                return(
+                <div key={index} className='border border-[#242422] h-[22rem] max-w-max rounded-xl flex flex-col justify-center items-center gap-3 overflow-hidden w-[25rem] cursor-pointer' onClick={() => {
                     const slug = post?.properties.slug;
                     if (slug && 'rich_text' in slug) {
                         router.push(`/blogs/${slug.rich_text[0].plain_text}`);
                     }
                 }}>
                     <div className='w-full flex justify-center items-center'>
-                        <img src={post?.properties.coverimage.files[0].file.url} alt="Parineeta" width={500} height={500} />
+                        {post?.properties.coverimage.type === 'files' && (
+                            <Image src={post.properties.coverimage.files[0].file.url} alt="Parineeta" width={500} height={500} />
+                        )}
                     </div>
                     <div className='w-full py-2'>
                         {/* <div>
@@ -51,7 +54,7 @@ const Blogs = () => {
                         </div> */}
                         <div className='p-3'>
                             <div className='text-xl font-bold mb-6'>
-                                <p>{'title' in post?.properties.Title ? post.properties.Title.title[0].plain_text : 'Untitled'}</p>
+                                <p>{post?.properties.Name ? post.properties.Name.title[0].plain_text : 'Untitled'}</p>
                             </div>
                             <div className='flex justify-between items-center'>
                                 <p className='text-gray-600'>Parineeta</p>
@@ -61,7 +64,7 @@ const Blogs = () => {
 
                     </div>
                 </div>
-            ))
+            )})
         }
     </div>
   )
