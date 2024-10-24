@@ -58,7 +58,7 @@ export default function Blogs () {
                     posts.map((post : PageObjectResponse, index : number) => {
                 const slug = post?.properties.slug as { type: 'rich_text'; rich_text: { plain_text: string }[] };
                 return(
-                    <Link href={`http://localhost:3000/blogs/${slug.rich_text[0].plain_text}`} key={index}>
+                    <Link href={`https://getalchemystai.com/blogs/${slug.rich_text[0].plain_text}`} key={index}>
                         <div key={index} className='border border-[#242422] h-[22rem] max-w-max rounded-xl flex flex-col justify-center items-center gap-3 overflow-hidden w-[25rem] cursor-pointer'>
                             <div className='w-full flex justify-center items-center'>
                                 {post?.properties.coverimage.type === 'files' && (
