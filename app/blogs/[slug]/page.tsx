@@ -13,6 +13,7 @@ import { fetchBySlug } from '@/app/lib/notion';
 // import { NotionRenderer } from '@notion-render/client';
 import { NotionRenderer } from 'react-notion-x'
 import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 // import { NotionAPI } from 'notion-client'
 
 // const notion = new NotionAPI()
@@ -27,10 +28,11 @@ type BlogParams  = {
 
 export default function Blog({params} : BlogParams) {
 
+
     const slug = params.slug;
 
 
-    const [data, setData] = useState<{ content: BlockObjectResponse[] } | null>(null);
+    const [data, setData] = useState<{ content: BlockObjectResponse[], post:PageObjectResponse } | null>(null);
     // const response = await fetch(`http://localhost:3000/api/notion/blogs/${slug}`)
     // const data = await response.json();
 
@@ -53,13 +55,16 @@ export default function Blog({params} : BlogParams) {
   return (
 
     <div>
-      <main className="container mx-auto p-6 w-[50%] flex flex-col justify-start items-baseline gap-3">
+      <main className="container mx-auto p-6 w-full sm:w-[70%] lg:w-[45%] xl:w-40%] flex flex-col justify-start items-baseline gap-4">
         {/* <NotionRenderer recordMap={data} fullPage={true} darkMode={false} /> */}
+        <section className='w-full flex justify-center items-center py-16'>
+          <Image src={data?.post.cover?.type=== 'file' ? data?.post.cover.file.url : ''} alt='coverimage' width={600} height={600} />
+        </section>
       {data?.content.map((block : BlockObjectResponse, index : number) => {
         switch (block.type) {
           case "heading_1":
             return (
-              <h1 key={block.id} className="text-3xl font-bold text-[#ff9933]">
+              <h1 key={block.id} className="text-3xl font-bold text-[#ff9933] mb-6">
                 {block.heading_1.rich_text.map((text) => {
                   if(text.href !== null) {
                     return <Link key={index} href={text.href} target="_blank" rel="noreferrer"><span className='underline'>{text.plain_text}</span></Link>
@@ -172,9 +177,18 @@ export default function Blog({params} : BlogParams) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginBottom: '2rem',
+                width:'100%'
               }}>
                 <Image width={600} height={600} src={block.image.type === 'file' ? block.image.file.url : block.image.external.url} alt="Notion Image" />
               </figure>
+            );
+          case "embed":
+            return (
+              <div className='w-full lg:w-[70%] flex justify-center items-center'>
+                <TwitterTweetEmbed
+                tweetId={block.embed.url.split('/').pop()!}
+                  />
+              </div>
             );
           default:
             return null;
