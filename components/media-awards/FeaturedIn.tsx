@@ -39,7 +39,7 @@ const FeaturedIn: React.FC = () => {
                 className="h-80 bg-ed-400 flex justify-center items-center"
               >
                 <Image
-                  className="filter grayscale-[110%] brightness-[0.9] contrast-100 saturate-[80%] object-full"
+                  className="filter grayscale-[100%] brightness-[1] contrast-80 saturate-[100%] object-full"
                   src={company.image}
                   alt={`Logo of ${company.image}`}
                   width={400}
