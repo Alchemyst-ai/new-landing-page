@@ -6,7 +6,7 @@ export const models: Model[] = [
     title: "Meet Maya, AI Sales Development Representative (SDR)",
     description:
       "Maya is your gen-AI digital employee, designed to automate your enterprise sales. It works without any human interference, researching prospects and composing hyper-personalized messages.",
-    video: "https://www.youtube.com/embed/NGAcerzvGrc",
+    video: "https://youtube.com/embed/QQiZEo-S3po",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
