@@ -31,14 +31,15 @@ const FeaturedIn: React.FC = () => {
 
       <div className="w-[70vw] md:w-[70vw]">
         <Slider {...settings}>
-          {featuredin.slice(0, -2).map((company, index) => (
-            <div key={index} className="px-10">
+          {featuredin.map((company, index) => (
+            <div key={index} className="px-10 flex flex-row justify-center items-center overflow-hidden rounded-md ">
               <Link
                 href={company.link}
                 target="_blank"
                 className="h-80 bg-ed-400 flex justify-center items-center"
               >
                 <Image
+                  className="filter grayscale-[110%] brightness-[0.9] contrast-100 saturate-[80%] object-full"
                   src={company.image}
                   alt={`Logo of ${company.image}`}
                   width={400}
@@ -47,9 +48,9 @@ const FeaturedIn: React.FC = () => {
               </Link>
             </div>
           ))}
-
+{/* 
           {
-            featuredin.slice(-2).map((company, index) => (
+            featuredin.map((company, index) => (
               <div key={index} className="px-10">
                 <Link
                   href={company.link}
@@ -65,7 +66,7 @@ const FeaturedIn: React.FC = () => {
                 </Link>
               </div>
             ))
-          }
+          } */}
         </Slider>
       </div>
     </section>
