@@ -1,21 +1,39 @@
 "use client";
 import featuredin from "@/app/constants/featuredin";
+import useWindowDimensions from "@/hooks/useWindowDimentions";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 const FeaturedIn: React.FC = () => {
-  const settings = {
-    infinite: true,
-    speed: 5000,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    cssEase: "linear",
-    pauseOnHover: false,
-    arrows: false,
-    slidesToShow: 4,
-  };
+
+  const windowDimen = useWindowDimensions()
+
+  const [settings, setSettings] = useState({})   
+
+  const slidesToShow = (() => {
+    if (windowDimen.width >= 1200) return 4; 
+    if (windowDimen.width >= 992) return 3; 
+    if (windowDimen.width >= 768) return 2;
+    return 1;
+  })();
+
+  useEffect(() => {
+    setSettings({
+      infinite: true,
+      speed: 5000,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 0,
+      cssEase: "linear",
+      pauseOnHover: false,
+      arrows: false,
+      slidesToShow: slidesToShow,
+    });
+  },[slidesToShow])
+
+
   return (
     <section className="mt-20" id="featured-in">
       <div className="flex w-full justify-center items-center">
@@ -32,14 +50,14 @@ const FeaturedIn: React.FC = () => {
       <div className="w-[70vw] md:w-[70vw]">
         <Slider {...settings}>
           {featuredin.map((company, index) => (
-            <div key={index} className="px-10 flex flex-row justify-center items-center overflow-hidden rounded-md ">
+            <div key={index} className="px-10 flex flex-row justify-center items-center overflow-hidden rounded-md w-full">
               <Link
                 href={company.link}
                 target="_blank"
                 className="h-80 bg-ed-400 flex justify-center items-center"
               >
                 <Image
-                  className="filter grayscale-[100%] brightness-[1] contrast-80 saturate-[100%] object-full"
+                  className="filter grayscale-[100%] brightness-[1] contrast-80 saturate-[100%] "
                   src={company.image}
                   alt={`Logo of ${company.image}`}
                   width={400}
@@ -48,29 +66,14 @@ const FeaturedIn: React.FC = () => {
               </Link>
             </div>
           ))}
-{/* 
-          {
-            featuredin.map((company, index) => (
-              <div key={index} className="px-10">
-                <Link
-                  href={company.link}
-                  target="_blank"
-                  className="h-80 bg-ed-400 flex justify-center items-center"
-                >
-                  <Image
-                    src={company.image}
-                    alt={`Logo of ${company.image}`}
-                    width={100}
-                    height={100}
-                  />
-                </Link>
-              </div>
-            ))
-          } */}
         </Slider>
       </div>
     </section>
   );
+
+  
+
+
 };
 
 export default FeaturedIn;
