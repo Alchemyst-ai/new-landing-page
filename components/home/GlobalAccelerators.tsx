@@ -52,7 +52,7 @@ const GlobalAccelerators: React.FC = () => {
             <div key={index} className="h-[18rem]">
                 <div className="px-10 rounded-md w-full h-full flex justify-center items-center">
                     <Image
-                    className="object-contain rounded-md"
+                    className="filter grayscale-[100%] brightness-[1] contrast-80 saturate-[100%] "
                     src={company.image}
                     alt={`Logo of ${company.image}`}
                     width={400}

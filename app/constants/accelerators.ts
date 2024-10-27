@@ -3,19 +3,19 @@ const accelerators = [
     image: "/accelerators/acce1.png",
   },
   {
-    image: "/accelerators/acce2.jpeg",
+    image: "/accelerators/acce2.png",
   },
   {
-    image: "/accelerators/acce3.jpeg",
+    image: "/accelerators/acce3.png",
   },
   {
-    image: "/accelerators/acce4.jpeg",
+    image: "/accelerators/acce4.png",
   },
   {
-    image : "/accelerators/acce5.jpeg",
+    image : "/accelerators/acce5.png",
   },
   {
-    image : "/accelerators/acce6.jpeg",
+    image : "/accelerators/acce6.png",
   },
   {
     image : "/accelerators/acce7.png",
