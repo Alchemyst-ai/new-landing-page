@@ -12,7 +12,7 @@ const BackedBy: React.FC = () => {
           className="text-base text-nowrap mx-3"
           aria-label="Backed by the best"
         >
-          BACKED BY THE BEST
+          BACKED BY THE BEST INVESTORS
         </h1>
         <div className="w-full bg-gradient-to-r to-[#0b0b09] from-[#ffffff42] h-[2px]"></div>
       </div>

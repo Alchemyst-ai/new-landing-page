@@ -17,6 +17,7 @@ import applications from "./constants/applications";
 import { features } from "./constants/features";
 import { flows } from "./constants/flows";
 import Head from "next/head";
+import GlobalAccelerators from "@/components/home/GlobalAccelerators";
 
 
 export default function HomePage() {
@@ -55,8 +56,9 @@ export default function HomePage() {
           <FlowLayout flows={flows} />
           <Architecture />
           <Features features={features} />
-          <ModelsIntro />
           <BackedBy />
+          <ModelsIntro />
+          <GlobalAccelerators />
           <Integrations />
           <Applications applications={applications} />
           <Team />
