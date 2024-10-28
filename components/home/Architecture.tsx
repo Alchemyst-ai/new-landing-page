@@ -5,37 +5,37 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-const settings = {
-  infinite: true,
-  speed: 3000,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 0,
-  cssEase: "linear",
-  pauseOnHover: false,
-  arrows: false,
-  slidesToShow: 6,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 5,
+  const settings = {
+    infinite: true,
+    speed: 5000,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    pauseOnHover: false,
+    arrows: false,
+    slidesToShow: 5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
       },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 4,
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
       },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-  ],
-};
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      }
+    ],
+  }
 
 const logos = [
   "/security/1.svg",

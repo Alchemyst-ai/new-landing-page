@@ -1,25 +1,11 @@
 "use client";
 import accelerators from "@/app/constants/accelerators";
-import useWindowDimensions from "@/hooks/useWindowDimentions";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 const GlobalAccelerators: React.FC = () => {
 
-  const windowDimen = useWindowDimensions()
-
-  const [settings, setSettings] = useState({})   
-
-  const slidesToShow = (() => {
-    if (windowDimen.width >= 1200) return 4; 
-    if (windowDimen.width >= 992) return 3; 
-    if (windowDimen.width >= 768) return 2;
-    return 1;
-  })();
-
-  useEffect(() => {
-    setSettings({
+    const settings = {
       infinite: true,
       speed: 5000,
       slidesToScroll: 1,
@@ -28,9 +14,28 @@ const GlobalAccelerators: React.FC = () => {
       cssEase: "linear",
       pauseOnHover: false,
       arrows: false,
-      slidesToShow: slidesToShow,
-    });
-  },[slidesToShow])
+      slidesToShow: 4,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+          },
+        }
+      ],
+    }
 
 
   return (
