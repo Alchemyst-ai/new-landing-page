@@ -19,19 +19,19 @@ import 'slick-carousel/slick/slick.css';
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       }
     ],
