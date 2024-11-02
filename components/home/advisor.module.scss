@@ -21,7 +21,7 @@
         align-items: center;
 
         &>img {
-            filter: grayscale(100%) brightness(1) contrast(80%) saturate(100%);
+            // filter: grayscale(100%) brightness(1) contrast(80%) saturate(100%);
             transition: filter 0.3s ease;
             width: 15rem;
 
