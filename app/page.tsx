@@ -55,11 +55,11 @@ export default function HomePage() {
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
           <FlowLayout flows={flows} />
+          <Advisor />
           <Architecture />
           <Features features={features} />
           <BackedBy />
           <ModelsIntro />
-          <Advisor />
           <GlobalAccelerators />
           <Integrations />
           <Applications applications={applications} />
