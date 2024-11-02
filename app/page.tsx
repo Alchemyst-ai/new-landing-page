@@ -18,6 +18,7 @@ import { features } from "./constants/features";
 import { flows } from "./constants/flows";
 import Head from "next/head";
 import GlobalAccelerators from "@/components/home/GlobalAccelerators";
+import Advisor from "@/components/home/Advisor";
 
 
 export default function HomePage() {
@@ -58,6 +59,7 @@ export default function HomePage() {
           <Features features={features} />
           <BackedBy />
           <ModelsIntro />
+          <Advisor />
           <GlobalAccelerators />
           <Integrations />
           <Applications applications={applications} />

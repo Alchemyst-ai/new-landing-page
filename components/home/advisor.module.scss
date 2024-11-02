@@ -1,0 +1,61 @@
+.advisor__grid__container {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+        "area1 area2 area3"
+        "area4 area5 area6";
+    row-gap: 4rem;
+    column-gap: 4rem;
+    padding: 2rem;
+
+    @for $i from 1 through 6 {
+        div:nth-child(#{$i}) {
+            grid-area: area#{$i};
+        }
+    }
+
+    &>div:nth-child(n) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &>img {
+            filter: grayscale(100%) brightness(1) contrast(80%) saturate(100%);
+            transition: filter 0.3s ease;
+            width: 15rem;
+
+            &:hover {
+                filter: none;
+            }
+        }
+    }
+
+    @media (max-width: 680px) {
+
+        &>div:nth-child(n) {
+            &>img {
+                width: 10rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+            "area1 area2"
+            "area3 area4"
+            "area5 area6";
+        padding: 1rem;
+        column-gap: 2rem;
+        row-gap: 2rem;
+
+
+        &>div:nth-child(n) {
+            &>img {
+                width: 8rem;
+            }
+        }
+    }
+}

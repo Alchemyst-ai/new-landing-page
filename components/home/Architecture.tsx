@@ -14,7 +14,7 @@ import 'slick-carousel/slick/slick.css';
     cssEase: "linear",
     pauseOnHover: false,
     arrows: false,
-    slidesToShow: 5,
+    slidesToShow: 4,
     responsive: [
       {
         breakpoint: 1024,

@@ -11,6 +11,7 @@
     "sitemap": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@notion-render/bookmark-plugin": "^0.0.2",
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
