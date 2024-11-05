@@ -21,7 +21,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 };
 
 const HoverOverlay: React.FC<{ member: Team }> = ({ member }) => (
-  <div className="absolute bg-grid inset-0 flex flex-col items-center justify-center bg-[#080419] opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-3">
+  <div className="absolute bg-grid inset-0 h-full flex flex-col items-center justify-center bg-[#080419] opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-3">
     <h2 className="text-2xl">{member.name}</h2>
     <p className="text-lg text-gray-300">{member.role}</p>
     <p className="mt-3 text-center text-sm text-balance text-slate-400">
@@ -32,7 +32,7 @@ const HoverOverlay: React.FC<{ member: Team }> = ({ member }) => (
 );
 
 const BottomOverlay: React.FC<{ member: Team }> = ({ member }) => (
-  <div className="absolute bottom-0 left-0 flex flex-col items-start justify-end w-full h-[38vh] p-4 bg-gradient-to-b from-[#00000038] via-[#00000010] to-[#000000c3] bg-opacity-50 transition-transform duration-300 transform group-hover:-translate-y-full">
+  <div className="absolute bottom-0 left-0 flex flex-col items-start justify-end w-full h-[100%] p-4 bg-gradient-to-b from-[#00000038] via-[#00000010] to-[#000000c3] bg-opacity-50 transition-transform duration-300 transform group-hover:-translate-y-full">
     <h2 className="text-2xl">{member.name}</h2>
     <p className="text-sm text-gray-400">{member.role}</p>
   </div>
