@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
               </Link>
             </motion.div>
             <Link
-              href="https://calendly.com/getalchemystai/alchemyst-ai"
+              href="https://calendly.com/uttaran-getalchemystai/30min"
               className="mt-8 md:mt-auto w-full"
               target="_blank noopener noreferrer"
             >

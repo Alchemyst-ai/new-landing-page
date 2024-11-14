@@ -37,7 +37,7 @@ const TalkToFounder: React.FC = () => {
         50x increased productivity.
       </motion.p>
       <Link
-        href={"https://calendly.com/getalchemystai/alchemyst-ai"}
+        href={"https://calendly.com/uttaran-getalchemystai/30min"}
         passHref
         target="_blank"
       >

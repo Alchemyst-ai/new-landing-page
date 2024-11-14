@@ -1,10 +1,10 @@
 "use client";
+import { navItems } from "@/app/constants/navItems.constant";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "./Button";
-import { navItems } from "@/app/constants/navItems.constant";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
               {navItems[navItems.length - 1].name}
             </Button>
           </Link>
-          <Link href="https://calendly.com/getalchemystai/alchemyst-ai">
+          <Link href="https://calendly.com/uttaran-getalchemystai/30min">
             <Button variant="primary">Book a demo</Button>
           </Link>
         </div>
@@ -146,7 +146,7 @@ const Navbar: React.FC = () => {
                 </motion.div>
               ))}
               <Link
-                href="https://calendly.com/getalchemystai/alchemyst-ai"
+                href="https://calendly.com/uttaran-getalchemystai/30min"
                 onClick={toggleMenu}
               >
                 <Button variant="primary">Book a demo</Button>
