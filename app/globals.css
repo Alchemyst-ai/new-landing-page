@@ -116,32 +116,17 @@ body {
 }
 
 /* Custom cursor styles */
+
 .cursor {
   position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: all 0.1s ease;
-}
-
-.cursor-inner {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: url('../public/svg/cursor.svg') no-repeat center center;
+  background-size: contain;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.1s ease;
-}
-
-.cursor-inner.click {
-  transform: translate(-50%, -50%) scale(2);
 }
 
 @keyframes spin-slow {
