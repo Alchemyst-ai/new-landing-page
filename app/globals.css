@@ -115,8 +115,6 @@ body {
   box-shadow: 0 0 100px 130px rgba(255, 255, 255, 0.15);
 }
 
-/* Custom cursor styles */
-
 .cursor {
   position: fixed;
   width: 35px;
@@ -127,6 +125,7 @@ body {
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.1s ease;
+  transform: rotate(-45deg);
 }
 
 @keyframes spin-slow {
