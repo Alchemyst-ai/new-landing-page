@@ -19,6 +19,7 @@ import { flows } from "./constants/flows";
 import Head from "next/head";
 import GlobalAccelerators from "@/components/home/GlobalAccelerators";
 import Advisor from "@/components/home/Advisor";
+import  './globals.css'
 
 
 export default function HomePage() {

@@ -31,23 +31,23 @@ const Footer: React.FC = () => {
             rights reserved.
           </p>
           <div className="flex justify-center items-center gap-4 pt-4 text-gray-400 hover:text w-full md:max-w-max">
-            {/* <Link href='../../public/doc/termsofuse.pdf' target="_blank" locale={false}>Terms of use</Link>
-            <Link href='/privacy-policy' target="_blank" locale={false}>Privacy Policy</Link> */}
+            <Link href='/terms-of-use'>Terms of use</Link>
+            <Link href='/privacy-policy'>Privacy Policy</Link>
             {/* <p onClick={() => {
               window.open('/doc/termsofuse.pdf','_blank')
             }}>Terms of Use</p> */}
-            <p onClick={() => {
+            {/* <p onClick={() => {
                           window.open('/doc/termsofuse.pdf','_blank')
                         }} className="relative inline-block group">
               <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-[#3b3a3a] transition-all duration-300 group-hover:w-full"></span>
               Terms of Use
-            </p>
-            <p onClick={() => {
+            </p> */}
+            {/* <p onClick={() => {
               window.open('/doc/privacypolicy.pdf','_blank')
             }} className="relative inline-block group">
               <span className="absolute left-0 bottom-0 w-0 h-[0.5px] bg-[#3b3a3a] transition-all duration-300 group-hover:w-full"></span>
               Privacy Policy
-            </p>
+            </p> */}
           </div>
         </motion.div>
 
