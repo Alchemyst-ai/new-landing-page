@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center justify-center w-full sm:justify-start">
+          <div className="flex items-center justify-center w-full">
             <Image
               width={200}
               height={200}
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
             rights reserved.
           </p>
-          <div className="flex justify-center items-center gap-4 pt-4 text-gray-400 hover:text w-full">
+          <div className="flex justify-center items-center gap-4 pt-4 text-gray-400 hover:text w-full md:max-w-max">
             {/* <Link href='../../public/doc/termsofuse.pdf' target="_blank" locale={false}>Terms of use</Link>
             <Link href='/privacy-policy' target="_blank" locale={false}>Privacy Policy</Link> */}
             {/* <p onClick={() => {
