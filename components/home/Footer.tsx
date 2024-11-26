@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
             rights reserved.
           </p>
-          <div className="flex justify-center items-center gap-4 pt-4 text-gray-400 hover:text">
+          <div className="flex justify-center items-center gap-4 pt-4 text-gray-400 hover:text w-full">
             {/* <Link href='../../public/doc/termsofuse.pdf' target="_blank" locale={false}>Terms of use</Link>
             <Link href='/privacy-policy' target="_blank" locale={false}>Privacy Policy</Link> */}
             {/* <p onClick={() => {
