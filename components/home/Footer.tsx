@@ -31,8 +31,14 @@ const Footer: React.FC = () => {
             rights reserved.
           </p>
           <div className="flex justify-center items-center gap-4 pt-4">
-            <Link href='/terms-of-use'>Terms of use</Link>
-            <Link href='/privary-policy'>Privacy Policy</Link>
+            {/* <Link href='../../public/doc/termsofuse.pdf' target="_blank" locale={false}>Terms of use</Link>
+            <Link href='/privacy-policy' target="_blank" locale={false}>Privacy Policy</Link> */}
+            <p onClick={() => {
+              window.open('/doc/termsofuse.pdf','_blank')
+            }}>Terms of Use</p>
+            <p onClick={() => {
+              window.open('/doc/privacypolicy.pdf','_blank')
+            }}>Privacy Policy</p>
           </div>
         </motion.div>
 
