@@ -7,6 +7,7 @@ import { Twitter } from "../IconComponent/Twitter";
 import Button from "./Button";
 
 const Footer: React.FC = () => {
+
   return (
     <footer className="w-full flex justify-center items-center text-white border-t-[1px] border-t-[#1f1e1d] sm:border-none">
       <div className="py-6 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center md:w-2/3">
@@ -29,6 +30,10 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
             rights reserved.
           </p>
+          <div className="flex justify-center items-center gap-4 pt-4">
+            <Link href='/terms-of-use'>Terms of use</Link>
+            <Link href='/privary-policy'>Privacy Policy</Link>
+          </div>
         </motion.div>
 
         <motion.div
