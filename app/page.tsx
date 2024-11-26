@@ -68,9 +68,6 @@ export default function HomePage() {
           <MediaAndCoverage />
           <TalkToFounder />
           {/* <Testimonials testimonials={testimonials} /> */}
-          <div className="animated-line-w max-w-screen overflow-x-hidden absolute right-0 bottom-40 sm:flex flex-col justify-start items-start hidden">
-            <div className="h-1 w-72 bg-gradient-to-l from-black via-gray-300 to-white"></div>
-          </div>
         </main>
         <Footer />
       </div>
