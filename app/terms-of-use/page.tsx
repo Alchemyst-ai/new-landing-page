@@ -33,7 +33,7 @@ Last Updated on 26th November 2024
 1. AGREEMENT TO TERMS
 These Terms of Use constitute a legally binding agreement made between you, whether
 personally or on behalf of an entity (“you”) and Xalchemyst Technologies Private Limited,
-doing business as ("Company" “we," “us," or “our”), concerning your access to and use of
+doing business as (Company “we, “us, or “our”), concerning your access to and use of
 the https://getalchemystai.com/ website as well as any other media form (collectively, the
 “Site”). We are registered in India and have our registered office 3rd Floor, Flat 3/A, 20 P C
 Ghosh Road, Patipukur, North 24Parganas, Patipukur, West Bengal, India, 700048. You agree
@@ -202,7 +202,7 @@ any cognizable offence or prevents investigation of any offence or is insulting 
 nation;
 • Is misleading or known to be false in any way; and/ or
 • Attempts to do any of the foregoing.
-You acknowledge that the company has no obligation to monitor your – or anyone else's –
+You acknowledge that the company has no obligation to monitor your – or anyone elses –
 access to or use of the Services for violations of the terms, or to review or edit any content.
 However, we have the right to do so for the purpose of operating and improving the Services
 (including without limitation for fraud prevention, risk assessment, investigation and customer
@@ -264,7 +264,7 @@ Party Account, except the username and profile picture that become associated wi
 account.
 8. SUBMISSIONS
 You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or
-other information regarding the Alchemyst AI ("Submissions") provided by you to us are non-
+other information regarding the Alchemyst AI (Submissions) provided by you to us are non-
 confidential and shall become our sole property. We shall own exclusive rights, including all
 intellectual property rights, and shall be entitled to the unrestricted use and dissemination of
 these Submissions for any lawful purpose, commercial or otherwise, without acknowledgment
@@ -273,10 +273,10 @@ hereby warrant that any such Submissions are original with you or that you have 
 submit such Submissions. You agree there shall be no recourse against us for any alleged or
 actual infringement or misappropriation of any proprietary right in your Submissions.
 9. THIRD-PARTY WEBSITE AND CONTENT
-The Alchemyst AI may contain (or you may be sent via the Site) links to other websites ("Third-
-Party Websites") as well as articles, photographs, text, graphics, pictures, designs, music,
+The Alchemyst AI may contain (or you may be sent via the Site) links to other websites (Third-
+Party Websites) as well as articles, photographs, text, graphics, pictures, designs, music,
 sound, video, information, applications, software, and other content or items belonging to or
-originating from third parties ("Third-Party Content"). Such Third-Party Websites and Third-
+originating from third parties (Third-Party Content). Such Third-Party Websites and Third-
 Party Content are not investigated, monitored, or checked for accuracy, appropriateness, or
 completeness by us, and we are not responsible for any Third-Party Websites accessed through
 the Site or any Third-Party Content posted on, available through, or installed from the Site,
@@ -364,7 +364,7 @@ with these terms.
 16. DISPUTE RESOLUTION
 Informal Negotiations
 To expedite resolution and control the cost of any dispute, controversy, or claim related to these
-Terms of Use (each "Dispute" and collectively, the “Disputes”) brought by either you or us
+Terms of Use (each Dispute and collectively, the “Disputes”) brought by either you or us
 (individually, a “Party” and collectively, the “Parties”), the Parties agree to first attempt to
 negotiate any Dispute (except those Disputes expressly provided below) informally for at
 least Forty-Five (45) days before initiating arbitration. Such informal negotiations commence

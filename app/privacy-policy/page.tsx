@@ -60,7 +60,7 @@ notice link(s) here: https://razorpay.com/privacy/.
 Social Media Login Data. We may provide you with the option to register with us using your
 existing social media account details, like your Facebook, Twitter, or other social media
 account. If you choose to register in this way, we will collect the information described in the
-section called 'HOW DO WE HANDLE YOUR SOCIAL LOGINS?' below.
+section called HOW DO WE HANDLE YOUR SOCIAL LOGINS? below.
 All personal information that you provide to us must be true, complete, and accurate, and you
 must notify us of any changes to such personal information.
 Information collected from other sources
@@ -75,7 +75,7 @@ addresses, social media profiles, social media URLs, and custom profiles, for pu
 targeted advertising and event promotion. If you interact with us on a social media platform
 using your social media account (e.g. Facebook or Twitter), we receive personal information
 about you such as your name, email address, and gender. Any personal information that we
-collect from your social media account depends on your social media account's privacy
+collect from your social media account depends on your social media accounts privacy
 settings.
 2. HOW DO WE PROCESS YOUR INFORMATION?
 In Short: We process your information to provide, improve, and administer our Alchemyst AI,
@@ -91,7 +91,7 @@ information to provide you with the requested service.
 ▪ To send you marketing and promotional communications. We may process the
 personal information you send to us for our marketing purposes, if this is in accordance
 with your marketing preferences. You can opt out of our marketing emails at any time.
-For more information, see 'WHAT ARE YOUR PRIVACY RIGHTS?' below).
+For more information, see WHAT ARE YOUR PRIVACY RIGHTS? below).
 ▪ To evaluate and improve our Services, products, marketing, and your
 experience. We may process your information when we believe it is necessary to
 identify usage trends, determine the effectiveness of our promotional campaigns, and
@@ -103,7 +103,7 @@ our legal rights.
 In Short: We may share information in specific situations described in this section and/or with
 the following categories of third parties.
 Vendors, Consultants, and Other Third-Party Service Providers. We may share your data
-with third-party vendors, service providers, contractors, or agents ('third parties') who perform
+with third-party vendors, service providers, contractors, or agents (third parties) who perform
 services for us or on our behalf and require access to such information to do that
 work. The categories of third parties we may share personal information with are as follows:
 ▪ Data Analytics Services
@@ -141,7 +141,7 @@ We will only keep your personal information for as long as it is necessary for t
 out in this privacy notice, unless a longer retention period is required or permitted by law (such
 as tax, accounting, or other legal requirements). No purpose in this notice will require us
 keeping your personal information for longer than Thirty-Six (36) months past the termination
-of the user's account.
+of the users account.
 When we have no ongoing legitimate business need to process your personal information, we
 will either delete or anonymise such information, or, if this is not possible (for example,
 because your personal information has been stored in backup archives), then we will securely
@@ -173,15 +173,15 @@ In Short: You may review, change, or terminate your account at any time.
 Withdrawing your consent: If we are relying on your consent to process your personal
 information, which may be express and/or implied consent depending on the applicable
 law, you have the right to withdraw your consent at any time. You can withdraw your consent
-at any time by contacting us by using the contact details provided in the section 'HOW CAN
-YOU CONTACT US ABOUT THIS NOTICE?' below.
+at any time by contacting us by using the contact details provided in the section HOW CAN
+YOU CONTACT US ABOUT THIS NOTICE? below.
 However, please note that this will not affect the lawfulness of the processing before its
 withdrawal nor, when applicable law allows, will it affect the processing of your personal
 information conducted in reliance on lawful processing grounds other than consent.
 Opting out of marketing and promotional communications: You can unsubscribe from our
 marketing and promotional communications at any time by clicking on the unsubscribe link in
-the emails that we send, or by contacting us using the details provided in the section 'HOW
-CAN YOU CONTACT US ABOUT THIS NOTICE?' below. You will then be removed from
+the emails that we send, or by contacting us using the details provided in the section HOW
+CAN YOU CONTACT US ABOUT THIS NOTICE? below. You will then be removed from
 the marketing lists. However, we may still communicate with you — for example, to send you
 service-related messages that are necessary for the administration and use of your account, to
 respond to service requests, or for other non-marketing purposes.
@@ -197,7 +197,7 @@ If you have questions or comments about your privacy rights, you may email us
 at anuran@getalchemystai.com.
 9. CONTROLS FOR DO-NOT-TRACK FEATURES
 Most web browsers and some mobile operating systems and mobile applications include a Do-
-Not-Track ('DNT') feature or setting you can activate to signal your privacy preference not to
+Not-Track (DNT) feature or setting you can activate to signal your privacy preference not to
 have data about your online browsing activities monitored and collected. At this stage no
 uniform technology standard for recognising and implementing DNT signals has
 been finalised. As such, we do not currently respond to DNT browser signals or any other
@@ -207,7 +207,7 @@ practice in a revised version of this privacy notice.
 10. DO WE MAKE UPDATES TO THIS NOTICE?
 In Short: Yes, we will update this notice as necessary to stay compliant with relevant laws.
 We may update this privacy notice from time to time. The updated version will be indicated by
-an updated 'Revised' date and the updated version will be effective as soon as it is accessible.
+an updated Revised date and the updated version will be effective as soon as it is accessible.
 If we make material changes to this privacy notice, we may notify you either by prominently
 posting a notice of such changes or by directly sending you a notification. We encourage you
 to review this privacy notice frequently to be informed of how we are protecting your
