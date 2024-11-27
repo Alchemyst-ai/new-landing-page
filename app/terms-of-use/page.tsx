@@ -486,6 +486,14 @@ action, or proceeding which is subject to this indemnification upon becoming awa
         </p>
         </li>
 
+
+        <li className = "mb-4">
+        <h2> REFUND AND CANCELLATION</h2><br />
+        <p>
+          At the moment we do not have and refund or cancellation policy for our product
+        </p>
+        </li>
+
         <li className = "mb-4">
         <h2>MISCELLANEOUS</h2><br />
         <p>
