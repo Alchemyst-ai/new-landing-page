@@ -490,7 +490,7 @@ action, or proceeding which is subject to this indemnification upon becoming awa
         <li className = "mb-4">
         <h2> REFUND AND CANCELLATION</h2><br />
         <p>
-          At the moment we do not have and refund or cancellation policy for our product
+          At the moment we do not have any refund or cancellation policy for our product
         </p>
         </li>
 
