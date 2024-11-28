@@ -1,20 +1,20 @@
 const TermsOfUse = () => {
   return(
     <main className="w-screen p-8 flex flex-col justify-center items-center">
-      <div className="w-[80%]">
+      <div className="w-full md:w-[80%]">
       <section className="mb-8 w-full flex text-center justify-center items-center">
         <h1><strong>Terms Of Use</strong></h1>
       </section>
       <ol>
         <li className = "mb-4">
           <h1>AGREEMENT TO TERMS</h1><br/>
-          <p>
+          <p className="text-gray-400">
              These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (&ldquo;you&rdquo;) and Xalchemyst Technologies Private Limited, doing business as (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), concerning your access to and use of the <a href="https://getalchemystai.com/">https://getalchemystai.com/</a> website as well as any other media form (collectively, the &ldquo;Site&rdquo;).
               We are registered in India and have our registered office at 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, North 24Parganas, Patipukur, West Bengal, India, 700048. 
               You agree that by accessing the website, you have read, understood, and agreed to be bound by all of these Terms of Use. If you do not agree with all of these Terms of Use, then you are expressly prohibited from using the Site, and you must discontinue use immediately.
           </p>
           
-          <p>
+          <p className="text-gray-400">
               Supplemental terms and conditions or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. 
               We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Use at any time and for any reason. 
               We will alert you about any changes by updating the “Last updated” date of these Terms of Use, and you waive any right to receive specific notice of each such change. 
@@ -22,38 +22,38 @@ const TermsOfUse = () => {
               You will be subject to and will be deemed to have been made aware of and to have accepted the changes in any revised Terms of Use by your continued use of the Site after the date such revised Terms of Use are posted.
           </p>
 
-          <p>
+          <p className="text-gray-400">
               The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. 
               Accordingly, those persons who choose to access the Site from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.
           </p>
 
-          <p>
+          <p className="text-gray-400">
               The Website is owned and operated by Xalchemyst Technologies Private Limited. 
               We have been incorporated under the Companies Act, 2013 under CIN U62011WB2024PTC270934 having its registered office at 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, North 24Parganas, Patipukur, West Bengal, India, 700048.
           </p>
 
-          <p>
+          <p className="text-gray-400">
               Our artificial intelligence platform enables businesses by providing products/services which help them in automating various business processes like sales automation, marketing automation, communication, software development, technology platforms, cloud-based platforms, data storage, web designing, Information Technology, database, IT tools and information products, web and mobile application development, lead generation, and user interface solutions.
           </p>
         </li>
         <li className = "mb-4">
           <h2>INTELLECTUAL PROPERTY RIGHTS</h2><br/>
-          <p>
+          <p className="text-gray-400">
               Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the “Content”) and the trademarks, service marks, and logos contained therein (the “Marks”) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws of India, international copyright laws, and international conventions. 
               The Content and the Marks are provided on the Site “Alchemyst AI” for your information and personal use only. 
               Except as expressly provided in these Terms of Use, no part of the Site and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.
           </p>
           
-          <p>
+          <p className="text-gray-400">
               Provided that you are eligible to use the Site, you are granted a limited license to access and use the Site and to download or print a copy of any portion of the Content to which you have properly gained access solely for your personal, non-commercial use. 
               We reserve all rights not expressly granted to you in and to the Site, the Content and the Marks.
           </p>
         </li>
         <li className = "mb-4">
           <h2>USER REPRESENTATIONS</h2><br/>
-          <p>
+          <p className="text-gray-400">
               By using the Site, you represent and warrant that: 
-              <ol>
+              <ul className="pl-4 pb-2 text-gray-400">
                   <li>All registration information you submit will be true, accurate, current, and complete;</li>
                   <li>You will maintain the accuracy of such information and promptly update such registration information as necessary;</li>
                   <li>You have the legal capacity and you agree to comply with these Terms of Use;</li>
@@ -61,33 +61,33 @@ const TermsOfUse = () => {
                   <li>You will not access the Site through automated or non-human means, whether through a bot, script, or otherwise;</li>
                   <li>You will not use the Site for any illegal or unauthorized purpose; and</li>
                   <li>Your use of the Site will not violate any applicable law or regulation.</li>
-              </ol>
+              </ul>
           </p>
 
-          <p>
+          <p className="text-gray-400">
               If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Site (or any portion thereof).
           </p>
         </li>
         <li className = "mb-4">
           <h2>USER REGISTRATION</h2><br/>
-          <p>
+          <p className="text-gray-400">
               Our platform does not require any User Registration. For the purpose of submitting information, any user can submit the information through the Alchemyst Website. 
               By agreeing to the Terms, you agree to receive promotional, transactional or other communications, and newsletters from the Company. 
               You can opt out from such communications and/or newsletters by using or clicking the link for the opt-out options as available in such communications.
           </p>
 
-          <p>
+          <p className="text-gray-400">
               As part of the process for usage and access of the Alchemyst Website, the Company may collect your personally identifiable information/preferences, including but not limited to name, email address, age, address, mobile phone number, and other contact details, demographic profile (like your age, gender, occupation, education, address, etc.). 
               Information so collected is subject to the Company’s <a href="#">Privacy Policy</a>.
           </p>
         </li>
         <li className = "mb-4">
           <h2>PROHIBITED ACTIVITIES</h2><br/>
-          <p>
+          <p className="text-gray-400">
               You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavours except those that are specifically endorsed or approved by us.
           </p>
-          <p>As a user of the Site, you agree not to:</p>
-          <ul>
+          <p className="text-gray-400">As a user of the Site, you agree not to:</p>
+          <ul className="pl-4 pb-2 text-gray-400">
               <li>Systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.</li>
               <li>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.</li>
               <li>Circumvent, disable, or otherwise interfere with security-related features of the Site, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Site and/or the Content contained therein.</li>
@@ -116,16 +116,16 @@ const TermsOfUse = () => {
         </li>
         <li className = "mb-4">
           <h2>LICENSE AND ACCESS</h2><br/>
-          <p>
+          <p className="text-gray-400">
               Subject to the provisions set out in these Terms, the Company grants you a personal, limited, non-exclusive, non-transferable and revocable license to access (for personal use only) the Alchemyst Website and avail the Services, only as expressly permitted in these Terms.
           </p>
-          <p>
+          <p className="text-gray-400">
               Such limited license does not include/permit any resale or commercial use of the Alchemyst Website or its contents; any collection, use or derivative use of the Website, its contents, any product listings, descriptions, or prices; any downloading or copying of information for the benefit of another third party; or any use of data mining, robots, or similar data gathering and extraction tools.
           </p>
-          <p>
+          <p className="text-gray-400">
               You hereby agree and undertake not to use, host, display, upload, modify, publish, transmit, update or share any information/ content/ message/ language/ document (including pursuant to gifting services/ printing services/ orders to be delivered to someone else-3rd party recipients/ messages to be delivered along with the order) (whether in writing or otherwise while communicating on the Alchemyst AI Platform including but not limited to communicating with our support agents or delivery partners, through any medium) which (“Prohibited Conduct”):
           </p>
-          <ul>
+          <ul className="pl-4 pb-2 text-gray-400">
               <li>Belongs to another person and to which you do not have any right or full rights;</li>
               <li>Is harmful, threatening, abusive, indecent, discriminatory, tortious, vulgar, profane, harassing, blasphemous, defamatory, problematic, obscene, pornographic, paedophilic, libellous, invasive of another’s privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise offensive, objectionable, menacing, inappropriate or unlawful in any manner whatever;</li>
               <li>Contains material that violates the standards of the Services;</li>
@@ -140,28 +140,28 @@ const TermsOfUse = () => {
               <li>Is misleading or known to be false in any way; and/ or</li>
               <li>Attempts to do any of the foregoing.</li>
           </ul>
-          <p>
+          <p className="text-gray-400">
               You acknowledge that the company has no obligation to monitor your – or anyone elses – access to or use of the Services for violations of the terms, or to review or edit any content. However, we have the right to do so for the purpose of operating and improving the Services (including without limitation for fraud prevention, risk assessment, investigation and customer support purposes), to ensure your compliance with the terms and to comply with applicable law or the order or requirement of legal process, a court, consent decree, administrative agency or other governmental body.
           </p>
-          <p>
+          <p className="text-gray-400">
               Any and all liability arising out of or relating to violation of these Terms including in relation to the aforesaid information/ content/ message is your sole and absolute responsibility, and not of the company.
           </p>
-          <p>
+          <p className="text-gray-400">
               Alchemyst Website or any portion of the Website may not be reproduced, duplicated, copied, sold, resold, visited, or otherwise exploited for any commercial purpose without express prior written consent of the company.
           </p>
-          <p>
+          <p className="text-gray-400">
               You may not frame or utilize framing techniques to enclose any trademark, logo, or other proprietary information (including images, text, page layout, or form) of the Website or of the company and/or its group companies/ affiliates without the express prior written consent of the company.
           </p>
-          <p>
+          <p className="text-gray-400">
               You may not use any meta tags or any other “hidden text” utilizing the company’s name or trademarks without the express prior written consent of the company.
           </p>
-          <p>
+          <p className="text-gray-400">
               You shall not attempt to gain unauthorized access to any portion or feature of the Website, or any other systems or networks connected to the Website or to any server, computer, network, or to any of the services offered on or through the Website, by hacking, ‘password mining’ or any other illegitimate means.
           </p>
         </li>
         <li className = "mb-4">
           <h2>SOCIAL MEDIA</h2><br/>
-          <p>
+          <p className="text-gray-400">
 As part of the functionality of the Alchemyst AI, you may link your account with online
 accounts you have with third-party service providers (each such account, a “Third-Party
 Account”) by either: (1) providing your Third-Party Account login information through the
@@ -202,31 +202,31 @@ account.
         </li>
         <li className = "mb-4">
           <h2>SUBMISSIONS</h2>
-          <p>
+          <p className="text-gray-400">
               You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information regarding the Alchemyst AI (&lt;Submissions&gt;
 ) provided by you to us are non-confidential and shall become our sole property. We shall own exclusive rights, including all intellectual property rights, and shall be entitled to the unrestricted use and dissemination of these Submissions for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you.
           </p>
-          <p>
+          <p className="text-gray-400">
               You hereby waive all moral rights to any such Submissions, and you hereby warrant that any such Submissions are original with you or that you have the right to submit such Submissions. You agree there shall be no recourse against us for any alleged or actual infringement or misappropriation of any proprietary right in your Submissions.
           </p>
         </li>
         <li className = "mb-4">
           <h2>THIRD-PARTY WEBSITE AND CONTENT</h2><br/>
-          <p>
+          <p className="text-gray-400">
               The Alchemyst AI may contain (or you may be sent via the Site) links to other websites &quot;Third-Party Websites&quot;
 ) as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information, applications, software, and other content or items belonging to or originating from third parties (&quot;Third-Party Content&quot;
 ). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for accuracy, appropriateness, or completeness by us, and we are not responsible for any Third-Party Websites accessed through the Site or any Third-Party Content posted on, available through, or installed from the Site, including the content, accuracy, offensiveness, opinions, reliability, privacy practices, or other policies of or contained in the Third-Party Websites or the Third-Party Content.
           </p><br/>
-          <p>
+          <p className="text-gray-400">
               Inclusion of, linking to, or permitting the use or installation of any Third-Party Websites or any Third-Party Content does not imply approval or endorsement thereof by us. If you decide to leave the Site and access the Third-Party Websites or to use or install any Third-Party Content, you do so at your own risk, and you should be aware these Terms of Use no longer govern. You should review the applicable terms and policies, including privacy and data gathering practices, of any website to which you navigate from the Alchemyst AI or relating to any applications you use or install from the Alchemyst AI.
           </p><br/>
-          <p>
+          <p className="text-gray-400">
               Any purchases you make through Third-Party Websites will be through other websites and from other companies, and we take no responsibility whatsoever in relation to such purchases which are exclusively between you and the applicable third party. You agree and acknowledge that we do not endorse the products or services offered on Third-Party Websites and you shall hold us harmless from any harm caused by your purchase of such products or services. Additionally, you shall hold us harmless from any losses sustained by you or harm caused to you relating to or resulting in any way from any Third-Party Content or any contact with Third-Party Websites.
           </p>
         </li>
         <li className = "mb-4">
           <h2>SITE MANAGEMENT</h2><br/>
-          <p>
+          <p className="text-gray-400">
             We reserve the right, but not the obligation, to: (1) monitor the Alchemyst AI for violations of
             these Terms of Use; (2) take appropriate legal action against anyone who, in our sole discretion,
             violates the law or these Terms of Use, including without limitation, reporting such user to law
@@ -241,7 +241,7 @@ account.
         </li>    
         <li className = "mb-4">
           <h2>PRIVCY POLICY</h2>
-          <p>
+          <p className="text-gray-400">
             We care about data privacy and security. By using the Site, you agree to be bound by our
             Privacy Policy posted on the Site, which is incorporated into these Terms of Use. Please be
             advised the Site is hosted in India. If you access the Site from any other region of the world
@@ -253,7 +253,7 @@ account.
         </li>
         <li className = "mb-4">
           <h2> COPYRIGHT INFRINGEMENTS </h2><br/>
-          <p>
+          <p className="text-gray-400">
             We respect the intellectual property rights of others. If you believe that any material available
             on or through the Alchemyst AI infringes upon any copyright you own or control, please
             immediately notify us using the contact information provided below (a “Notification”). A copy
@@ -266,7 +266,7 @@ account.
         </li>
         <li className = "mb-4">
           <h2>TERM AND TERMINATION</h2><br />
-          <p>
+          <p className="text-gray-400">
             These Terms of Use shall remain in full force and effect while you use the Alchemyst AI.
             WITHOUT LIMITING ANY OTHER PROVISION OF THESE TERMS OF USE, WE
             RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR
@@ -283,14 +283,14 @@ account.
         </li>
         <li className = "mb-4">
           <h2>MODIFICATIONS AND INTERRUPTIONS</h2><br />
-          <p>
+          <p className="text-gray-400">
 We reserve the right to change, modify, or remove the contents of the Alchemyst AI at any time
 or for any reason at our sole discretion without notice. However, we have no obligation to
 update any information on our Alchemyst AI. We also reserve the right to modify or discontinue
 all or part of the Site without notice at any time. We will not be liable to you or any third party
 for any modification, price change, suspension, or discontinuance of the Alchemyst AI.
           </p><br />
-          <p>
+          <p className="text-gray-400">
 We cannot guarantee the Alchemyst AI will be available at all times. We may experience
 hardware, software, or other problems or need to perform maintenance related to the Alchemyst
 AI, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update,
@@ -304,7 +304,7 @@ releases in connection therewith
         </li>
         <li className = "mb-4">
           <h2>GOVERNING LAW</h2> <br />
-          <p>
+          <p className="text-gray-400">
 These Terms shall be governed by and defined following the laws of India. XALCHEMYST
 TECHNOLOGIES PRIVATE LIMITED and yourself irrevocably consent that the courts
 of India shall have exclusive jurisdiction to resolve any dispute which may arise in connection
@@ -316,7 +316,7 @@ with these terms
           <h2>DISPUTE RESOLUTION</h2><br />
 
           <h3>Informal Negotiations</h3>
-          <p>
+          <p className="text-gray-400">
               To expedite resolution and control the cost of any dispute, controversy, or claim related to these
               Terms of Use (each &quot;Dispute&quot;
  and collectively, the “Disputes”) brought by either you or us
@@ -327,7 +327,7 @@ with these terms
           </p><br /><br />
 
           <h3>Binding Arbitration</h3><br />
-          <p>
+          <p className="text-gray-400">
               Any dispute or claim under the Terms of Use shall be referred to and finally and exclusively
               resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996 or any
               statutory modification or re-enactment thereof for the time being in force. The arbitration shall
@@ -342,10 +342,10 @@ with these terms
           </p><br /><br />
 
           <h3>Restrictions</h3><br />
-          <p>
+          <p className="text-gray-400">
               The Parties agree that any arbitration shall be limited to the Dispute between the Parties
               individually. To the full extent permitted by law, 
-              <ul>
+              <ul className="pl-4 pb-2 text-gray-400">
                   <li>No arbitration shall be joined with any other proceeding;</li>
                   <li>There is no right or authority for any Dispute to be arbitrated on a class-action basis or to utilize class action procedures; and</li>
                   <li>There is no right or authority for any Dispute to be brought in a purported representative capacity on behalf of the general public or any other persons.</li>
@@ -353,10 +353,10 @@ with these terms
           </p><br /><br />
 
           <h3>Exceptions to Informal Negotiations and Arbitration</h3><br />
-          <p>
+          <p className="text-gray-400">
               The Parties agree that the following Disputes are not subject to the above provisions concerning
               informal negotiations and binding arbitration:
-              <ul>
+              <ul className="pl-4 pb-2 text-gray-400">
                   <li>Any Disputes seeking to enforce or protect, or concerning the validity of, any of the intellectual property rights of a Party;</li>
                   <li>Any Dispute related to, or arising from, allegations of theft, piracy, invasion of privacy, or unauthorized use; and</li>
                   <li>Any claim for injunctive relief.</li>
@@ -370,7 +370,7 @@ with these terms
 
         <li className = "mb-4">
           <h2>CORRECTIONS</h2><br />
-          <p>
+          <p className="text-gray-400">
 There may be information on the Alchemyst AI that contains typographical errors, inaccuracies,
 or omissions, including descriptions, pricing, availability, and various other information. We
 reserve the right to correct any errors, inaccuracies, or omissions and to change or update the
@@ -379,7 +379,7 @@ information on the Alchemyst AI at any time, without prior notice.
         </li>
         <li className = "mb-4">
           <h2>DISCLAIMER</h2> <br />
-          <p>
+          <p className="text-gray-400">
 THE ALCHEMYST AI IS PROVIDED ON AN HTTPS://GETALCHEMYSTAI.COM/ AND
 AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE ALCHEMYST AI
 SOFTWARE AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST
@@ -417,7 +417,7 @@ BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.
 
         <li className = "mb-4">
           <h2>LIMITATIONS OF LIABILITY</h2><br />
-          <p>
+          <p className="text-gray-400">
 N NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE
 LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT,
 CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE
@@ -440,7 +440,7 @@ RIGHTS.
 
         <li className = "mb-4">
           <h2>INDEMNIFICATION</h2><br />
-          <p>
+          <p className="text-gray-400">
 ou agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates,
 and all of our respective officers, agents, partners, and employees, from and against any loss,
 damage, liability, claim, or demand, including reasonable attorneys’ fees and expenses, made
@@ -458,7 +458,7 @@ action, or proceeding which is subject to this indemnification upon becoming awa
 
         <li className = "mb-4">
         <h2>USER DATA</h2><br />
-        <p>
+        <p className="text-gray-400">
         We will maintain certain data that you transmit to the Alchemyst AI for the purpose of managing
         the performance of the Alchemyst AI, as well as data relating to your use of the Alchemyst AI.
         Although we perform regular routine backups of data, you are solely responsible for all data
@@ -471,7 +471,7 @@ action, or proceeding which is subject to this indemnification upon becoming awa
 
         <li className = "mb-4">
         <h2> ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h2><br />
-        <p>
+        <p className="text-gray-400">
         Visiting the Alchemyst AI, sending us emails, and completing online forms constitute electronic
         communications. You consent to receive electronic communications, and you agree that all
         agreements, notices, disclosures, and other communications we provide to you electronically,
@@ -489,14 +489,14 @@ action, or proceeding which is subject to this indemnification upon becoming awa
 
         <li className = "mb-4">
         <h2> REFUND AND CANCELLATION</h2><br />
-        <p>
+        <p className="text-gray-400">
           At the moment we do not have any refund or cancellation policy for our product
         </p>
         </li>
 
         <li className = "mb-4">
         <h2>MISCELLANEOUS</h2><br />
-        <p>
+        <p className="text-gray-400">
         These Terms of Use and any policies or operating rules posted by us on the Alchemyst AI or in
         respect to the Alchemyst AI constitute the entire agreement and understanding between you and
         us. Our failure to exercise or enforce any right or provision of these Terms of Use shall not
@@ -517,7 +517,7 @@ action, or proceeding which is subject to this indemnification upon becoming awa
 
         <li className = "mb-4">
         <h2>CONTACT US</h2><br />
-        <p>
+        <p className="text-gray-400">
         n order to resolve a complaint regarding the Alchemyst AI or to receive further information
         regarding use of the Alchemyst AI, please contact us at:
         XALCHEMYST TECHNOLOGIES PRIVATE LIMITED

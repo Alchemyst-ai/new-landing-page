@@ -49,7 +49,7 @@ const sections = [
 const page = () => {
   return (
     <main className=" w-screen p-8 flex justify-center" >
-      <div className="w-[80%]">
+      <div className="w-full md:w-[80%]">
       <section className="mb-8 w-full flex text-center justify-center items-center">
         <h1><strong>Privacy Policy</strong></h1>
       </section>
@@ -80,7 +80,7 @@ const page = () => {
                   <p className="text-gray-400">We collect personal information that you voluntarily provide to us when you register on the Alchemyst AI, express an interest in obtaining information about us or our products and services, when you participate in activities on the Services, or otherwise when you contact us.</p>
                   <h3>Personal Information Provided by You</h3>
                   <p className="text-gray-400">The personal information that we collect depends on the context of your interactions with us and the Alchemyst AI, the choices you make, and the products and features you use. The personal information we collect may include the following:</p><br />
-                  <ul className="ml-4 text-gray-400">
+                  <ul className="pl-4 pb-2 text-gray-400">
                       <li>Names</li>
                       <li>Phone numbers</li>
                       <li>Email addresses</li>
@@ -103,7 +103,7 @@ const page = () => {
                   <h2>Information collected from other sources</h2>
                   <p className="text-gray-400"><strong>In Short:</strong> We may collect limited data from public databases, marketing partners, social media platforms, and other outside sources.</p>
                   <p className="text-gray-400">In order to enhance our ability to provide relevant marketing, offers, and services to you and update our records, we may obtain information about you from other sources, such as public databases, joint marketing partners, affiliate programs, data providers, social media platforms, and from other third parties. This information includes:</p>
-                  <ul>
+                  <ul className="pl-4 pb-2 text-gray-400">
                       <li>Mailing addresses</li>
                       <li>Job titles</li>
                       <li>Email addresses</li>
@@ -114,7 +114,7 @@ const page = () => {
                       <li>Social media URLs</li>
                       <li>Custom profiles</li>
                   </ul>
-                  <p>These are used for purposes of targeted advertising and event promotion. If you interact with us on a social media platform using your social media account (e.g., Facebook or Twitter), we receive personal information about you such as your name, email address, and gender. Any personal information that we collect from your social media account depends on your social media accounts privacy settings.</p>
+                  <p className="text-gray-400">These are used for purposes of targeted advertising and event promotion. If you interact with us on a social media platform using your social media account (e.g., Facebook or Twitter), we receive personal information about you such as your name, email address, and gender. Any personal information that we collect from your social media account depends on your social media accounts privacy settings.</p>
                 </li>
 
                 <li className = "mb-4">
@@ -128,7 +128,7 @@ const page = () => {
                     We process your personal information for a variety of reasons, depending on how you
                     interact with our Services, including:
                   </p><br />
-                  <ul className="ml-4">
+                  <ul className="pl-4 pb-2 text-gray-400">
                     <li>
                       <strong>To facilitate account creation and authentication and otherwise manage user accounts.</strong> 
                       We may process your information so you can create and log in to your account, as well as keep your account in working order.
