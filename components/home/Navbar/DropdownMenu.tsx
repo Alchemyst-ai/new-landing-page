@@ -5,14 +5,12 @@ import Link from "next/link";
 import { ChevronDown } from 'lucide-react';
 import { MenuObject } from "../../types/menu";
 
-// Props interface for the DropdownMenu component
 interface DropdownMenuProps {
   item: MenuObject;
   isOpen: boolean;
   onClose: () => void;
 }
 
-// DropdownMenu component
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   item,
   isOpen,
@@ -21,8 +19,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-
-  // useEffect to handle mouse leave to close the menu
   useEffect(() => {
     const handleMouseLeave = () => {
       onClose();
@@ -39,20 +35,21 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
     };
   }, [onClose]);
 
+  useEffect(() => {
+    if (isOpen && item.title === "Product" && item.children) {
+      setActiveSubMenu(item.children[0].title);
+    }
+  }, [isOpen, item]);
 
-  // Function to set active submenu on hover
   const handleSubMenuEnter = (title: string) => {
     setActiveSubMenu(title);
   };
 
-
-  // Function to render the content of the "Product" submenu
   const renderProductContent = () => {
     const activeContent = item.children?.find(
       (child) => child.title === activeSubMenu
     );
     if (!activeContent) return null;
-
 
     return (
       <div className="grid grid-cols-3 gap-8">
@@ -87,7 +84,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
       </div>
     );
   };
-
 
   return (
     <AnimatePresence>
