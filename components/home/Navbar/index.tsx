@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronLeft, Menu, X } from "lucide-react";
 import Button from "../Button";
 import DropdownMenu from "./DropdownMenu";
 import { menuData, MenuObject } from "../../types/menu";
@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<MenuObject | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,14 +35,120 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    setMobileSubmenu(null);
   };
 
   const handleMouseEnter = (title: string) => {
     setActiveMenu(title);
   };
 
-  const handleMouseLeave = () => {
-    // Remove this function as we'll handle closing in DropdownMenu
+  const handleMobileSubmenu = (item: MenuObject) => {
+    setMobileSubmenu(item);
+  };
+
+  const handleBackToMainMenu = () => {
+    setMobileSubmenu(null);
+  };
+
+  const renderMobileMenuItem = (item: MenuObject) => {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2 }}
+        className="w-full py-2"
+      >
+        {item.children ? (
+          <button
+            onClick={() => handleMobileSubmenu(item)}
+            className="flex items-center justify-between w-full text-white hover:text-yellow-500 transition-colors duration-200"
+          >
+            <span>{item.title}</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        ) : (
+          <Link
+            href={item.link || "#"}
+            className="flex items-center w-full text-white hover:text-yellow-500 transition-colors duration-200"
+            onClick={toggleMenu}
+          >
+            {item.icon && (
+              <Image
+                src={item.icon}
+                alt={item.title}
+                width={24}
+                height={24}
+                className="mr-3"
+              />
+            )}
+            <span>{item.title}</span>
+          </Link>
+        )}
+      </motion.div>
+    );
+  };
+
+  const renderMobileSubmenu = (item: MenuObject) => {
+    return (
+      <motion.div
+        key="submenu"
+        initial={{ opacity: 0, x: "100%" }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: "100%" }}
+        transition={{ duration: 0.3 }}
+        className="w-full"
+      >
+        <motion.button
+          onClick={handleBackToMainMenu}
+          className="flex items-center bg-gray-400 text-white py-1 px-4 pl-2 rounded-2xl mb-6"
+          whileTap={{ scale: 0.95 }}
+        >
+          <ChevronLeft className="w-5 h-5 mr-2" />
+          Back
+        </motion.button>
+        <h2 className="text-xl font-bold mb-4">{item.title}</h2>
+        {item.children?.map((subItem, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, delay: index * 0.05 }}
+          >
+            {item.title === "Solutions" ? (
+              <div className="mb-4">
+                <Link
+                  href={subItem.link || "#"}
+                  className="flex items-start text-white hover:text-yellow-500 transition-colors duration-200"
+                  onClick={toggleMenu}
+                >
+                  {subItem.icon && (
+                    <Image
+                      src={subItem.icon}
+                      alt={subItem.title}
+                      width={24}
+                      height={24}
+                      className="mr-3 mt-1"
+                    />
+                  )}
+                  <div>
+                    <span className="font-semibold">{subItem.title}</span>
+                    {subItem.description && (
+                      <p className="text-sm text-gray-400 mt-1">
+                        {subItem.description}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              </div>
+            ) : (
+              renderMobileMenuItem(subItem)
+            )}
+          </motion.div>
+        ))}
+      </motion.div>
+    );
   };
 
   return (
@@ -49,7 +156,6 @@ const Navbar: React.FC = () => {
       ref={navRef}
       className="top-0 py-4 px-8 flex justify-between items-center w-full md:w-[70%]"
     >
-
       {/* Alchemyst Logo */}
       <div className="flex items-center space-x-4">
         <Link href="/" className="mr-4 -ml-4">
@@ -61,7 +167,6 @@ const Navbar: React.FC = () => {
             className="h-11 w-auto -mt-4"
           />
         </Link>
-
 
         {/* Nav Items Dropdown */}
         <div className="hidden md:flex items-center space-x-4">
@@ -108,7 +213,6 @@ const Navbar: React.FC = () => {
             </motion.div>
           </Link>
         </div>
-
 
         {/* Centralized Dropdown Menu */}
         <AnimatePresence>
@@ -157,20 +261,7 @@ const Navbar: React.FC = () => {
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -179,91 +270,73 @@ const Navbar: React.FC = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-start pt-20 px-8 space-y-4 overflow-y-auto"
+              className="md:hidden fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-start pt-4 px-8 space-y-4 overflow-y-auto"
               initial={{ opacity: 0, x: "-100%" }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "-100%" }}
               transition={{ duration: 0.5 }}
             >
-              <button
-                className="absolute top-4 right-4 focus:outline-none"
-                onClick={toggleMenu}
-                aria-label="Close menu"
-              >
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
+              <div className="flex justify-between items-center w-full mb-6">
+                <Link href="/" onClick={toggleMenu}>
+                  <Image
+                    src="/logo/alchemyst_long_dark.svg"
+                    alt="Alchemyst AI"
+                    width={150}
+                    height={150}
+                    className="h-8 w-auto"
                   />
-                </svg>
-              </button>
-              {menuData.map((item, index) => (
-                <MobileMenuItem key={index} item={item} />
-              ))}
-              <Link
-                href="https://calendly.com/uttaran-getalchemystai/30min"
-                onClick={toggleMenu}
-                className="mt-8"
-              >
-                <Button variant="primary">Book a demo</Button>
-              </Link>
+                </Link>
+                <button
+                  className="focus:outline-none"
+                  onClick={toggleMenu}
+                  aria-label="Close menu"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+              <div className="flex space-x-2 w-full mb-6">
+                <Link href="/partner-with-us" className="flex-1">
+                  <Button variant="secondary" className="w-full text-sm py-2">
+                    Partner with us
+                  </Button>
+                </Link>
+                <Link
+                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  className="flex-1"
+                >
+                  <Button variant="primary" className="w-full text-sm py-2">
+                    Book a demo
+                  </Button>
+                </Link>
+              </div>
+              <AnimatePresence mode="wait">
+                {mobileSubmenu ? (
+                  renderMobileSubmenu(mobileSubmenu)
+                ) : (
+                  <motion.div
+                    key="mainmenu"
+                    initial={{ opacity: 0, x: "-100%" }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: "-100%" }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full"
+                  >
+                    {menuData.map((item, index) => renderMobileMenuItem(item))}
+                    <Link
+                      href="/pricing"
+                      className="block py-2 text-white hover:text-yellow-500 transition-colors duration-200"
+                      onClick={toggleMenu}
+                    >
+                      Pricing
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
       )}
     </nav>
-  );
-};
-
-const MobileMenuItem: React.FC<{ item: MenuObject }> = ({ item }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSubMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <div className="w-full">
-      <button
-        onClick={item.children ? toggleSubMenu : undefined}
-        className="flex items-center justify-between w-full py-2 text-white hover:text-yellow-500 transition-colors duration-200"
-      >
-        <span>{item.title}</span>
-        {item.children && (
-          <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ChevronDown className="w-4 h-4" />
-          </motion.div>
-        )}
-      </button>
-      {item.children && (
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="ml-4 mt-2 space-y-2"
-            >
-              {item.children.map((child, index) => (
-                <MobileMenuItem key={index} item={child} />
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
-    </div>
   );
 };
 

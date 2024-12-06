@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from "lucide-react";
 import { MenuObject } from "../../types/menu";
 
 interface DropdownMenuProps {
@@ -11,6 +11,7 @@ interface DropdownMenuProps {
   onClose: () => void;
 }
 
+//  This component renders a dropdown menu for the main navigation.
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   item,
   isOpen,
@@ -19,6 +20,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // This useEffect adds the mouseleave event listener to the menu element when the menu is opened. The event listener is removed when the menu is closed.
   useEffect(() => {
     const handleMouseLeave = () => {
       onClose();
@@ -36,19 +38,31 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   }, [onClose]);
 
   useEffect(() => {
+    /**
+     * This useEffect sets the activeSubMenu state when the menu is opened. It does this by finding the first child of the item
+     * and setting the activeSubMenu state to the title of that child.
+     * The component uses the isOpen state to determine whether the menu should be rendered or not.
+     */
     if (isOpen && item.title === "Product" && item.children) {
       setActiveSubMenu(item.children[0].title);
     }
   }, [isOpen, item]);
 
   const handleSubMenuEnter = (title: string) => {
+    /**
+     * This function sets the activeSubMenu state when the user enters a submenu.
+     * It does this by setting the title of the submenu as the activeSubMenu state.
+     */
     setActiveSubMenu(title);
   };
 
+  // This function renders the content of the product dropdown menu.
   const renderProductContent = () => {
+    // The menu is rendered based on the children of the item passed to the component. */
     const activeContent = item.children?.find(
       (child) => child.title === activeSubMenu
     );
+    // If the item has no children, the component renders nothing.
     if (!activeContent) return null;
 
     return (
@@ -58,10 +72,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
             <h4 className="font-semibold text-lg">{column.title}</h4>
             <ul className="space-y-2">
               {column.children?.map((link, idx) => (
-                <li
-                  key={idx}
-                  className="list-none"
-                >
+                <li key={idx} className="list-none">
                   <Link
                     href={link.link || "#"}
                     className="flex items-center space-x-2 hover:text-yellow-500 transition-colors duration-200"
@@ -86,6 +97,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   };
 
   return (
+    // AnimatePresence to animate the nav bar menu in and out.
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -148,7 +160,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                           />
                         )}
                         <div>
-                          <h3 className="font-semibold text-lg">{child.title}</h3>
+                          <h3 className="font-semibold text-lg">
+                            {child.title}
+                          </h3>
                           {child.description && (
                             <p className="text-sm text-gray-400">
                               {child.description}
@@ -163,19 +177,20 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                   <h3 className="font-semibold text-lg mb-4">
                     Watch our latest demo
                   </h3>
-                  <a
-                    href="https://youtu.be/_HZM0QiuUS8?si=qaXE1-2fUBMfFtVS"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      width={200}
-                      height={200}
-                      src="/demo-img.png"
-                      alt="Demo Image"
-                      className="rounded-md border-b-[2px] border-yellow-700"
-                    />
-                  </a>
+
+                  {/* embedding the demo yt video */}
+                  <iframe
+                    width="252"
+                    height="142"
+                    src="https://www.youtube.com/embed/m7qiEo9AXT8"
+                    title="Alchemyst AI Walkthrough"
+                    // @ts-ignore
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    className="rounded-md border-b-[2px] border-yellow-700"
+                  ></iframe>
                 </div>
               </div>
             ) : item.title === "Resources" ? (
@@ -270,4 +285,3 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 };
 
 export default DropdownMenu;
-
