@@ -113,7 +113,7 @@ function Hero() {
             </div>
 
             {/* The company image carousal section */}
-            <div className="flex flex-col justify-center items-center overflow-hidden mb-16 mt-16 bg-gradient-to-b from-[#000000] to-[#fe9833]">
+            <div className="flex flex-col justify-center items-center overflow-hidden mb-16 mt-28 bg-gradient-to-b from-black to-[#fe9833] opacity-80">
                 <h2 className="text-xl sm:text-2xl mb-8 text-center">
                     Best Enterprises and Startups trust us
                 </h2>

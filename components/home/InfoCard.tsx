@@ -3,91 +3,97 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 export default function InfoCard() {
   return (
-    <div className="flex flex-col md:flex-row gap-6">
-      <CardSpotlight className="h-auto w-96">
-        <p className="text-xl font-bold relative z-20 mt-2 text-white">
-          Sales Automation Section
-        </p>
-        <p className="text-gray-500 relative z-20 text-sm mt-2">
-          Smarter Sales, Every Step of the Way
-        </p>
-        <div className="text-neutral-200 mt-4 relative z-20 ">
-          <ul className="list-item mt-2">
-            <li>End-to-End Automation:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Streamline your workflow with AI-driven B2B sales solutions that
-              manage outreach, follow-ups, and lead qualification.
-            </p>
-            <li>Omni-Channel Reach:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Connect with prospects through emails, WhatsApp, Telegram, and
-              more — all in one platform.
-            </p>
-            <li>Boost Deliverability:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Maya&apos;s email warm-up features enhance open rates and prevent
-              spam issues, keeping your campaigns effective.
-            </p>
-          </ul>
-        </div>
-      </CardSpotlight>
+    <div>
+      <h1 className="flex text-4xl items-center justify-center text-gray-400 mt-16 mb-16">
+        Product Information
+      </h1>
 
-      <CardSpotlight className="h-auto w-96">
-        <p className="text-xl font-bold relative z-20 mt-2 text-white">
-          B2B Data Section
-        </p>
-        <p className="text-gray-500 relative z-20 text-sm mt-2">
-          Quality Leads, No Guesswork
-        </p>
-        <div className="text-neutral-200 mt-4 relative z-20">
-          <ul className="list-item  mt-2">
-            <li>300M+ B2B Sales Leads Database:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Tap into one of the largest repositories of business contacts,
-              tailored to your ICP.
-            </p>
-            <li>Web Search & Personalization:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Maya combines advanced web search capabilities with AI to create a
-              hyper-personalized list of prospects.
-            </p>
-            <li>Affordable & Accurate:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Enjoy more cost-effective solutions than traditional providers
-              without sacrificing personalization.
-            </p>
-          </ul>
-        </div>
-      </CardSpotlight>
+      <div className="flex flex-col md:flex-row gap-6">
+        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
+          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            Sales Automation Section
+          </p>
+          <p className="text-gray-500 relative z-20 text-sm mt-2">
+            Smarter Sales, Every Step of the Way
+          </p>
+          <div className="text-neutral-200 mt-4 relative z-20 ">
+            <ul className="list-item mt-2">
+              <li>End-to-End Automation:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Streamline your workflow with AI-driven B2B sales solutions that
+                manage outreach, follow-ups, and lead qualification.
+              </p>
+              <li>Omni-Channel Reach:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Connect with prospects through emails, WhatsApp, Telegram, and
+                more — all in one platform.
+              </p>
+              <li>Boost Deliverability:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Maya&apos;s email warm-up features enhance open rates and
+                prevent spam issues, keeping your campaigns effective.
+              </p>
+            </ul>
+          </div>
+        </CardSpotlight>
 
-      <CardSpotlight className="h-auto w-96">
-        <p className="text-xl font-bold relative z-20 mt-2 text-white">
-          Security and Compliance Section
-        </p>
-        <p className="text-gray-500 relative z-20 text-sm mt-2">
-          Built on Trust: Secure and Scalable
-        </p>
+        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
+          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            B2B Data Section
+          </p>
+          <p className="text-gray-500 relative z-20 text-sm mt-2">
+            Quality Leads, No Guesswork
+          </p>
+          <div className="text-neutral-200 mt-4 relative z-20">
+            <ul className="list-item  mt-2">
+              <li>300M+ B2B Sales Leads Database:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Tap into one of the largest repositories of business contacts,
+                tailored to your ICP.
+              </p>
+              <li>Web Search & Personalization:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Maya combines advanced web search capabilities with AI to create
+                a hyper-personalized list of prospects.
+              </p>
+              <li>Affordable & Accurate:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Enjoy more cost-effective solutions than traditional providers
+                without sacrificing personalization.
+              </p>
+            </ul>
+          </div>
+        </CardSpotlight>
 
-        <div className="text-neutral-200 mt-4 relative z-20">
-          <ul className="list-item  mt-2">
-            <li>Enterprise-Grade Compliance:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Your business data is protected with SOC 2, ISO 27001, and PCI-DSS
-              certifications.
-            </p>
-            <li>High Performance & Scalability:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Designed to handle high-volume operations while ensuring seamless
-              uptime.
-            </p>
-            <li>Spam-Free Deliverability:</li>
-            <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-              Achieve higher inbox placement rates and avoid spam filters with
-              intelligent safeguards.
-            </p>
-          </ul>
-        </div>
-      </CardSpotlight>
+        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
+          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            Security and Compliance Section
+          </p>
+          <p className="text-gray-500 relative z-20 text-sm mt-2">
+            Built on Trust: Secure and Scalable
+          </p>
+
+          <div className="text-neutral-200 mt-4 relative z-20">
+            <ul className="list-item  mt-2">
+              <li>Enterprise-Grade Compliance:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Your business data is protected with SOC 2, ISO 27001, and
+                PCI-DSS certifications.
+              </p>
+              <li>High Performance & Scalability:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Designed to handle high-volume operations while ensuring
+                seamless uptime.
+              </p>
+              <li>Spam-Free Deliverability:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Achieve higher inbox placement rates and avoid spam filters with
+                intelligent safeguards.
+              </p>
+            </ul>
+          </div>
+        </CardSpotlight>
+      </div>
     </div>
   );
 }

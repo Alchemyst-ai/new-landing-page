@@ -17,8 +17,8 @@ const Howitworks: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   return (
-    <div className="w-full py-16 bg-gradient-to-tr   from-[#000000] to-[#fe9833]">
-      <h1 className="text-4xl font-bold text-center text-gray-300 mb-12">
+    <div className="w-full py-16 bg-gradient-to-bl from-black via-black to-[#fe9833]">
+      <h1 className="text-4xl font-bold text-center text-gray-400 mb-12">
         How It Works
       </h1>
       <div className="max-w-6xl mx-auto px-4">

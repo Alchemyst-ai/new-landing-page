@@ -13,14 +13,14 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, imageSrc, isLarge = false }) => {
   return (
     <motion.div
-      className={`bg-gradient-to-br from-black to-teal-900 rounded-lg p-6 flex flex-col ${
+      className={`bg-gradient-to-br from-black via-black to-teal-950 rounded-lg p-6 flex flex-col border border-gray-700 ${
         isLarge ? 'h-full' : ''
       }`}
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(4,44,43,255)' }}
       transition={{ duration: 0.3 }}
     >
       <h3 className={`font-bold text-white mb-4 ${isLarge ? 'text-3xl' : 'text-2xl'}`}>{title}</h3>
-      <p className={`text-gray-300 mb-6 flex-grow ${isLarge ? 'text-lg' : 'text-base'}`}>{description}</p>
+      <p className={`text-gray-500 mb-6 flex-grow ${isLarge ? 'text-lg' : 'text-base'}`}>{description}</p>
       <div className={`relative w-full ${isLarge ? 'h-64' : 'h-14'}`}>
         <Image
           src={imageSrc}
@@ -54,9 +54,9 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="w-full py-16 bg-black">
+    <div className="w-full py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-gray-500 mb-12 text-center">Features</h2>
+        <h2 className="text-4xl font-bold text-gray-400 mb-12 text-center">Features</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-8">
             <FeatureCard {...features[0]} />
