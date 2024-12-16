@@ -24,6 +24,7 @@ import  './globals.css'
 import Howitworks from "@/components/home/Howitworks";
 import InfoCard from "@/components/home/InfoCard";
 import CaseStudies from "@/components/home/CaseStudies";
+import AboutUs from "@/components/home/Aboutus";
 
 export default function HomePage() {
   return (
@@ -65,6 +66,7 @@ export default function HomePage() {
           <Architecture />
           <InfoCard />
           <CaseStudies />
+          <AboutUs />
           {/* <Features features={features} /> */}
           {/* <BackedBy /> */}
           {/* <ModelsIntro /> */}

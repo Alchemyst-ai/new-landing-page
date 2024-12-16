@@ -52,7 +52,7 @@ const caseStudies: CaseStudy[] = [
 const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
   <motion.div
     className="bg-gradient-to-b from-gray-900 via-gray-900 to-black p-6 rounded-lg shadow-lg h-full mb-6"
-    whileHover={{ scale: 1.02, boxShadow: '0 0 15px rgba(255, 215, 0, 0.6)' }}
+    whileHover={{ scale: 1.02, boxShadow: '0 0 15px rgba(254,152,51,255)' }}
     transition={{ duration: 0.3 }}
   >
     <div className="flex justify-between items-start mb-4">
