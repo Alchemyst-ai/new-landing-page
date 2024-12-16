@@ -162,6 +162,29 @@ body {
 
 }
 
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.feature-card-hover {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.7);
+}
+
+@keyframes neon-glow {
+  0% {
+    box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.7);
+  }
+}
+
+.feature-card-hover:hover {
+  animation: neon-glow 1.5s ease-in-out infinite;
+}

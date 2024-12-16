@@ -21,6 +21,8 @@ import GlobalAccelerators from "@/components/home/GlobalAccelerators";
 import Advisor from "@/components/home/Advisor";
 import  './globals.css'
 
+import Howitworks from "@/components/home/Howitworks";
+
 
 export default function HomePage() {
   return (
@@ -55,10 +57,12 @@ export default function HomePage() {
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
-          <FlowLayout flows={flows} />
+          <Howitworks />
+          <Features />
+          {/* <FlowLayout flows={flows} /> */}
           <Advisor />
           <Architecture />
-          <Features features={features} />
+          {/* <Features features={features} /> */}
           <BackedBy />
           <ModelsIntro />
           <GlobalAccelerators />
