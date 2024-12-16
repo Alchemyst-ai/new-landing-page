@@ -3,7 +3,7 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 export default function InfoCard() {
   return (
-    <div className="flex gap-6">
+    <div className="flex flex-col md:flex-row gap-6">
       <CardSpotlight className="h-auto w-96">
         <p className="text-xl font-bold relative z-20 mt-2 text-white">
           Sales Automation Section

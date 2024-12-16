@@ -23,7 +23,7 @@ import  './globals.css'
 
 import Howitworks from "@/components/home/Howitworks";
 import InfoCard from "@/components/home/InfoCard";
-
+import CaseStudies from "@/components/home/CaseStudies";
 
 export default function HomePage() {
   return (
@@ -64,6 +64,7 @@ export default function HomePage() {
           {/* <Advisor /> */}
           <Architecture />
           <InfoCard />
+          <CaseStudies />
           {/* <Features features={features} /> */}
           {/* <BackedBy /> */}
           {/* <ModelsIntro /> */}
