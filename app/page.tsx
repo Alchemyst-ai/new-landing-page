@@ -22,6 +22,7 @@ import Advisor from "@/components/home/Advisor";
 import  './globals.css'
 
 import Howitworks from "@/components/home/Howitworks";
+import InfoCard from "@/components/home/InfoCard";
 
 
 export default function HomePage() {
@@ -60,18 +61,19 @@ export default function HomePage() {
           <Howitworks />
           <Features />
           {/* <FlowLayout flows={flows} /> */}
-          <Advisor />
+          {/* <Advisor /> */}
           <Architecture />
+          <InfoCard />
           {/* <Features features={features} /> */}
-          <BackedBy />
-          <ModelsIntro />
-          <GlobalAccelerators />
-          <Integrations />
-          <Applications applications={applications} />
+          {/* <BackedBy /> */}
+          {/* <ModelsIntro /> */}
+          {/* <GlobalAccelerators />
+          <Integrations /> */}
+          {/* <Applications applications={applications} />
           <Team />
           <FeaturedIn />
           <MediaAndCoverage />
-          <TalkToFounder />
+          <TalkToFounder /> */}
           {/* <Testimonials testimonials={testimonials} /> */}
         </main>
         <Footer />

@@ -16,6 +16,8 @@
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
     "@notionhq/client": "^2.2.15",
+    "@react-three/fiber": "^8.17.10",
+    "@types/three": "^0.171.0",
     "@xyflow/react": "^12.0.3",
     "clsx": "^2.1.1",
     "framer-motion": "^11.14.4",
@@ -33,6 +35,7 @@
     "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^2.5.5",
+    "three": "^0.171.0",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
