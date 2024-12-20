@@ -26,6 +26,7 @@ import InfoCard from "@/components/home/InfoCard";
 import CaseStudies from "@/components/home/CaseStudies";
 import AboutUs from "@/components/home/Aboutus";
 import EndingCard from "@/components/home/EndingCard";
+import MayaCard from "@/components/home/MayaCard";
 
 export default function HomePage() {
   return (
@@ -60,11 +61,15 @@ export default function HomePage() {
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
+          <h1 className="text-4xl font-bold text-center text-gray-400">
+        How It Works
+      </h1>
           <Howitworks />
           <Features />
           {/* <FlowLayout flows={flows} /> */}
           {/* <Advisor /> */}
           <Architecture />
+          < MayaCard />
           <InfoCard />
           <CaseStudies />
           <AboutUs />

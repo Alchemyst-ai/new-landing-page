@@ -1,0 +1,234 @@
+// "use client";
+// import React, { useState } from "react";
+// import Image from "next/image";
+// import { motion } from "framer-motion";
+// import Button from "./Button";
+// import Link from "next/link";
+
+// import mayaicp from "/public/media/mayaicp.png";
+
+// const options = [
+//   "Define Your ICP",
+//   "Generate High-Quality Leads",
+//   "Automate Your Outreach",
+// ];
+
+// const Howitworks: React.FC = () => {
+//   const [selectedOption, setSelectedOption] = useState(options[0]);
+
+//   return (
+//     <div className="w-full py-16 bg-gradient-to-bl from-black via-black to-[#9b4d00]">
+//       <h1 className="text-4xl font-bold text-center text-gray-400 mb-16">
+//         How It Works
+//       </h1>
+//       <div className="max-w-6xl mx-auto px-4">
+//         <div className="flex justify-between mb-12">
+//           {options.map((option) => (
+//             <motion.button
+//               key={option}
+//               className={`text-lg font-semibold px-4 py-2 rounded-full transition-colors duration-300 ${
+//                 selectedOption === option
+//                   ? "bg-yellow-500 text-black"
+//                   : "text-gray-400 hover:text-yellow-500"
+//               }`}
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//               onClick={() => setSelectedOption(option)}
+//             >
+//               {option}
+//             </motion.button>
+//           ))}
+//         </div>
+
+//         <div className="mt-8">
+//           {selectedOption === "Define Your ICP" && (
+//             <div className="flex items-center">
+//               <div className="w-1/2 pr-8">
+//                 <h2 className="text-3xl font-bold mb-4 text-white">
+//                   Define Your ICP
+//                 </h2>
+//                 <p className="text-gray-300 mb-6">
+//                 Maya&#39;s intuitive AI asks targeted questions to create a clear Ideal Customer Profile (ICP) for your business.
+//                 </p>
+//                 {/* enter your content here */}
+//                 <Link href=""> 
+//                   <Button variant="primary">Chat with Maya</Button>
+//                 </Link>
+//               </div>
+//               <div className="w-1/2">
+//                 <Image
+//                   src="/public/media/mayaicp.png"
+//                   alt="Define Your ICP"
+//                   width={500}
+//                   height={300}
+//                   className="rounded-lg shadow-lg"
+//                 />
+//               </div>
+//             </div>
+//           )}
+
+//           {selectedOption === "Generate High-Quality Leads" && (
+//             <div>
+//               {/* Content for Generate High-Quality Leads */}
+//               {/* Add your content here later */}
+//             </div>
+//           )}
+
+//           {selectedOption === "Automate Your Outreach" && (
+//             <div>
+//               {/* Content for Automate Your Outreach */}
+//               {/* Add your content here later */}
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Howitworks;
+
+
+
+
+
+
+
+
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { motion, useAnimation, useInView } from "framer-motion";
+import Button from "./Button";
+import Link from "next/link";
+
+const options = [
+  {
+    title: "Define Your ICP",
+    description: "Maya's intuitive AI asks targeted questions to create a clear Ideal Customer Profile (ICP) for your business.",
+    image: "/media/define-icp.png",
+  },
+  {
+    title: "Generate High-Quality Leads",
+    description: "Using your ICP, Maya identifies and generates a list of high-quality leads tailored to your business needs.",
+    image: "/media/generate-leads.png",
+  },
+  {
+    title: "Automate Your Outreach",
+    description: "Maya automates your outreach process, sending personalized messages to your leads and following up at optimal times.",
+    image: "/media/automate-outreach.png",
+  },
+];
+
+const Howitworks: React.FC = () => {
+  const [activeOption, setActiveOption] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+  const inView = useInView(containerRef, { once: false, amount: 0.3 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current && contentRef.current) {
+        const { top, height } = containerRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const scrollProgress = Math.max(0, Math.min(1, (windowHeight - top) / (height + windowHeight)));
+        const newActiveOption = Math.floor(scrollProgress * options.length);
+        setActiveOption(newActiveOption);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
+  return (
+    <motion.div
+      ref={containerRef}
+      className="w-full bg-gradient-to-bl from-black via-black to-[#9b4d00] py-16"
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
+    >
+      <div className="max-w-6xl mx-auto px-4">
+        <h1 className="text-4xl font-bold text-center text-gray-400 mb-16">
+          How It Works
+        </h1>
+        <div className="hidden md:flex justify-between mb-12">
+          {options.map((option, index) => (
+            <motion.button
+              key={option.title}
+              className={`text-lg font-semibold px-4 py-2 rounded-full transition-colors duration-300 ${
+                activeOption === index
+                  ? "bg-yellow-500 text-black"
+                  : "text-gray-400 hover:text-yellow-500"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {option.title}
+            </motion.button>
+          ))}
+        </div>
+
+        <div ref={contentRef} className="relative">
+          {options.map((option, index) => (
+            <motion.div
+              key={option.title}
+              className={`${index === activeOption ? 'block' : 'hidden'} mb-16`}
+              variants={contentVariants}
+              initial="hidden"
+              animate={activeOption === index ? "visible" : "hidden"}
+            >
+              <div className="md:flex items-center">
+                <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
+                  <h2 className="text-3xl font-bold mb-4 text-white">
+                    {option.title}
+                  </h2>
+                  <p className="text-gray-300 mb-6">{option.description}</p>
+                  <Link href="/chat-with-maya">
+                    <Button variant="primary">Chat with Maya</Button>
+                  </Link>
+                </div>
+                <div className="md:w-1/2">
+                  <Image
+                    src={option.image}
+                    alt={option.title}
+                    width={500}
+                    height={300}
+                    className="rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default Howitworks;
+
