@@ -2,28 +2,28 @@ import { Check } from "lucide-react";
 
 export default function EnterpriseCard() {
   const features = [
-    "Custom AI model training",
+    "All core Maya Features",
+    "CRM Integration",
+    "Remove Alchemyst Branding",
+    "Email warm-up",
+    "1-1 White Glove Human",
+    "Onboarding",
+    "Premium Support",
+    "Accounts Manager",
+    "For 5+ Person Sales Team",
+    "Advanced and Custom Features",
     "Dedicated account manager",
-    "Onsite training and support",
-    "Advanced analytics and reporting",
-    "Unlimited API access",
-    "Custom integrations",
-    "24/7 priority support",
-    "Customizable dashboards",
-    "Multi-user collaboration",
-    "Bulk data processing",
-    "Advanced security features",
-    "Compliance assistance",
+    "Direct Slack Connection",
   ];
 
   return (
     <div className="mt-20 w-full px-4 sm:px-6 lg:px-8">
-      <div className="bg-orange-500 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_20px_rgba(255,165,0,0.5)] hover:scale-110 border border-yellow-400">
+      <div className="bg-orange-400 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_20px_rgba(255,165,0,0.5)] hover:scale-110 border border-yellow-400">
         <div className="p-8 sm:p-10 lg:flex lg:items-center lg:justify-between">
-          <div className="lg:w-1/3">
-            <h3 className="text-7xl font-bold text-black mb-8">Enterprise</h3>
-            <p className="text-2xl text-gray-800 mb-2">Unlimited Leads</p>
-            <p className="text-2xl text-gray-800 mb-16">Unlimited Emails</p>
+          <div className=" lg:w-1/3">
+            <h3 className="text-7xl font-bold text-white mb-8">Enterprise</h3>
+            <p className="text-2xl text-white mb-2">Unlimited Leads</p>
+            <p className="text-2xl text-white mb-16">Unlimited Emails</p>
             <button className="min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
               Start now
             </button>

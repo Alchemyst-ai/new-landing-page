@@ -38,9 +38,10 @@ export default function PricingPage() {
 
           {/* Description */}
           <p className="text-gray-400 text-lg sm:text-2xl text-center mb-12 mt-16 max-w-4xl mx-auto">
-            Discover the perfect plan for your business, whether you're just getting
-            started or scaling to new heights. Our flexible pricing tiers are designed to
-            suit companies of all sizes, from startups to large enterprises.
+            Discover the perfect plan for your business, whether you're just
+            getting started or scaling to new heights. Our flexible pricing
+            tiers are designed to suit companies of all sizes, from startups to
+            large enterprises.
           </p>
 
           {/* Pricing Toggle */}
@@ -50,13 +51,7 @@ export default function PricingPage() {
           />
 
           {/* Pricing Cards */}
-          <div
-            className={`mt-12 space-y-8 sm:space-y-0 ${
-              billingCycle === "monthly"
-                ? "sm:grid sm:grid-cols-3 sm:gap-6"
-                : "flex justify-center"
-            }`}
-          >
+          <div className="mt-12 space-y-8 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6">
             {PRICING_PLANS[billingCycle].map((plan, index) => (
               <PricingCard
                 key={index}
@@ -76,4 +71,3 @@ export default function PricingPage() {
     </div>
   );
 }
-
