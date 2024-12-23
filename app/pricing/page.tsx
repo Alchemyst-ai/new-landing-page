@@ -60,7 +60,7 @@ export default function PricingPage() {
           </h1>
 
           <p className="text-gray-400 text-lg sm:text-2xl text-center mb-16 mt-16 max-w-4xl mx-auto">
-            Discover the perfect plan for your business, whether you're just
+            Discover the perfect plan for your business, whether you are just
             getting started or scaling to new heights. Our flexible pricing
             tiers are designed to suit companies of all sizes, from startups to
             large enterprises.
