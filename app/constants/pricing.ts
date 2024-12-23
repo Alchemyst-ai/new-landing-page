@@ -1,3 +1,4 @@
+// all the pricing plans for india and international + the features and information for each plan are defined here
 export const PRICING_PLANS = {
         india: {
                 monthly: [
@@ -234,4 +235,3 @@ export const PRICING_PLANS = {
                 ],
         },
 };
-

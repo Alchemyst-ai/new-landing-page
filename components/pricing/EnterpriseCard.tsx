@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function EnterpriseCard() {
   const features = [
@@ -24,9 +25,14 @@ export default function EnterpriseCard() {
             <h3 className="text-7xl font-bold text-white mb-8">Enterprise</h3>
             <p className="text-2xl text-white mb-2">Unlimited Leads</p>
             <p className="text-2xl text-white mb-16">Unlimited Emails</p>
-            <button className="min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
-              Talk to us
-            </button>
+            <Link
+              href="https://calendly.com/uttaran-getalchemystai/30min"
+              target="_blank"
+            >
+              <button className="min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
+                Talk to us
+              </button>
+            </Link>
           </div>
           <div className="mt-8 lg:mt-0 lg:w-2/3 lg:flex">
             <ul className="space-y-4 lg:w-1/2 lg:flex-grow">

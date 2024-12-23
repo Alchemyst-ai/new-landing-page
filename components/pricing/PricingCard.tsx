@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 interface PricingCardProps {
   plan: {
@@ -20,7 +21,6 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
         <h2 className="text-6xl font-bold text-white mb-8 group-hover:text-white">
           {plan.tier}
         </h2>
-
         <p className="text-4xl font-bold text-white mb-6 group-hover:text-white">
           {billingCycle === "annually" ? (
             <>
@@ -42,20 +42,18 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
           <span className="text-xl font-normal text-gray-400 group-hover:text-white">
             {billingCycle === "monthly" ? "/mo" : ""}
           </span>
-          <span>
-
-          </span>
+          <span></span>
         </p>
-
         {plan.info.map((item, index) => (
           <p key={index} className="text-gray-400 mb-1 group-hover:text-white">
             {item}
           </p>
         ))}
-
-        <button className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
-          Start now
-        </button>
+        <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
+          <button className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
+            Start now
+          </button>
+        </Link>
       </div>
 
       <div className="px-6 pb-8">
