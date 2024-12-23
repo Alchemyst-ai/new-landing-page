@@ -29,10 +29,11 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
               </span>
               ${plan.price}
               <span className="text-xl font-normal text-gray-400 group-hover:text-white">
-                /yr&nbsp;
+                /yr
               </span>
-              <span className="text-sm font-normal text-gray-400 group-hover:text-white">
-                ({`$${(plan.price / 12).toFixed(2)}/mo`})
+              <br />
+              <span className="text-xl font-normal text-gray-400 group-hover:text-white">
+                {`$${(plan.price / 12).toFixed(2)}/mo`}
               </span>
             </>
           ) : (

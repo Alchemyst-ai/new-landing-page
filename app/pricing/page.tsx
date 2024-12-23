@@ -2,28 +2,42 @@
 
 import { useState, useEffect } from "react";
 import { PRICING_PLANS } from "@/app/constants/pricing";
-import PricingToggle from "@/components/PricingToggle";
-import PricingCard from "@/components/PricingCard";
-import EnterpriseCard from "@/components/EnterpriseCard";
+import PricingToggle from "@/components/pricing/PricingToggle";
+import PricingCard from "@/components/pricing/PricingCard";
+import CustomPricingCard from "@/components/pricing/CustomPricingCard";
+import EnterpriseCard from "@/components/pricing/EnterpriseCard";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import { useCountryDetection } from "@/components/CountryDetector";
 
 export default function PricingPage() {
-  const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("monthly");
-  const [country, setCountry] = useState('');
+  const [billingCycle, setBillingCycle] = useState<
+    "monthly" | "annually" | "custom"
+  >("monthly");
+  const [country, setCountry] = useState("");
   const detectedCountry = useCountryDetection();
 
+  // Add state for slider values
+  const [emails, setEmails] = useState(7000);
+  const [leads, setLeads] = useState(750);
+  const [enrichments, setEnrichments] = useState(375);
+
   useEffect(() => {
-    console.log('Detected country:', detectedCountry);
+    console.log("Detected country:", detectedCountry);
     setCountry(detectedCountry);
   }, [detectedCountry]);
 
-  const pricingRegion = country === 'IN' ? 'india' : 'international';
-  console.log('Selected pricing region:', pricingRegion);
+  const pricingRegion = country === "IN" ? "india" : "international";
+  console.log("Selected pricing region:", pricingRegion);
 
   useEffect(() => {
-    console.log('Current pricing plans:', PRICING_PLANS[pricingRegion][billingCycle]);
+    console.log("Current billing cycle:", billingCycle);
+    if (billingCycle !== "custom") {
+      console.log(
+        "Current pricing plans:",
+        PRICING_PLANS[pricingRegion][billingCycle]
+      );
+    }
   }, [pricingRegion, billingCycle]);
 
   return (
@@ -58,14 +72,28 @@ export default function PricingPage() {
           />
 
           <div className="mt-12 space-y-8 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6">
-            {PRICING_PLANS[pricingRegion][billingCycle].map((plan, index) => (
-              <PricingCard
-                key={index}
-                plan={plan}
-                billingCycle={billingCycle}
-                country={country || ''}
-              />
-            ))}
+            {billingCycle === "custom" ? (
+              <div className="col-span-3">
+                <CustomPricingCard
+                  country={country}
+                  emails={emails}
+                  setEmails={setEmails}
+                  leads={leads}
+                  setLeads={setLeads}
+                  enrichments={enrichments}
+                  setEnrichments={setEnrichments}
+                />
+              </div>
+            ) : (
+              PRICING_PLANS[pricingRegion][billingCycle].map((plan, index) => (
+                <PricingCard
+                  key={index}
+                  plan={plan}
+                  billingCycle={billingCycle}
+                  country={country || ""}
+                />
+              ))
+            )}
           </div>
 
           <EnterpriseCard />

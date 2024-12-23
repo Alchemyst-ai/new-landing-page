@@ -25,7 +25,7 @@ export default function EnterpriseCard() {
             <p className="text-2xl text-white mb-2">Unlimited Leads</p>
             <p className="text-2xl text-white mb-16">Unlimited Emails</p>
             <button className="min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
-              Start now
+              Talk to us
             </button>
           </div>
           <div className="mt-8 lg:mt-0 lg:w-2/3 lg:flex">
