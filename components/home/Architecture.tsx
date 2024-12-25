@@ -15,14 +15,15 @@ const Architecture: React.FC = () => {
       </header>
 
       <motion.div
-        className="w-[80vw] md:w-[25vw] h-[10vh] md:h-[12vh] rounded-lg md:rounded-xl overflow-hidden "
+        className="w-[80vw] md:w-[25vw] h-[10vh] md:h-[12vh] rounded-lg md:rounded-2xl overflow-hidden border border-gray-600 shadow-md"
+        style={{ boxShadow: "0 0 10px 1px rgba(255,165,0,0.5)" }}
         variants={boxVariants}
         initial="hidden"
         whileInView="visible"
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#fe9833]">
+        <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-gray-900 via-black to-black">
           <h2 className="text-3xl font-semibold text-gray-400">
             Gen-AI Employees
           </h2>
@@ -37,14 +38,14 @@ const Architecture: React.FC = () => {
           (title, index) => (
             <motion.div
               key={index}
-              className="w-[80vw] md:w-[15vw] h-[10vh] md:h-[8vh] rounded-lg md:rounded-xl overflow-hidden"
+              className="w-[80vw] md:w-[15vw] h-[10vh] md:h-[8vh] rounded-lg md:rounded-2xl overflow-hidden border border-gray-600"
               variants={boxVariants}
               initial="hidden"
               whileInView="visible"
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: false }}
             >
-              <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#1f9c9a]">
+              <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746]">
                 <h2
                   className={`${
                     title === "Customer Support"
@@ -71,15 +72,15 @@ const Architecture: React.FC = () => {
         ].map((title, index) => (
           <motion.div
             key={index}
-            className="w-[80vw] md:w-[25vw] h-[12vh] md:h-[14vh] rounded-lg md:rounded-xl overflow-hidden"
+            className="w-[80vw] md:w-[20vw] h-[12vh] md:h-[10vh] rounded-lg md:rounded-2xl overflow-hidden border border-gray-600"
             variants={boxVariants}
             initial="hidden"
             whileInView="visible"
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: false }}
           >
-            <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#1f9c9a]">
-              <h2 className="text-2xl md:text-2xl font-semibold text-gray-400 text-center">
+            <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746]">
+              <h2 className="text-2xl md:text-xl font-semibold text-gray-400 text-center">
                 {title}
               </h2>
             </div>
@@ -91,3 +92,4 @@ const Architecture: React.FC = () => {
 };
 
 export default Architecture;
+

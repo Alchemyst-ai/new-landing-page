@@ -1,5 +1,4 @@
 import Applications from "@/components/home/Applications";
-import Architecture from "@/components/home/Architecture";
 import BackedBy from "@/components/home/BackedBy";
 import CustomCursor from "@/components/home/CustomCursor";
 
@@ -28,6 +27,7 @@ import AboutUs from "@/components/home/Aboutus";
 import EndingCard from "@/components/home/EndingCard";
 import MayaCard from "@/components/home/MayaCard";
 import Features from "@/components/home/Features";
+import Architecture from "@/components/home/Architecture";
 
 export default function HomePage() {
   return (
@@ -81,6 +81,8 @@ export default function HomePage() {
 
           {/* Architecture Component*/}
           <Architecture />
+
+          {/* Maya Card Component */}
           <MayaCard />
           <InfoCard />
           <CaseStudies />
