@@ -90,6 +90,8 @@ export default function HomePage() {
 
           {/* Case Studies Component */}
           <CaseStudies />
+
+          {/* About Us Component */}
           <AboutUs />
           <EndingCard />
           {/* <Features features={features} /> */}
