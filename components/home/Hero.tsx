@@ -56,30 +56,28 @@ function Hero() {
   };
 
   return (
-    <section>
+    
       <div className="w-full h-screen">
         {/* Heading Section */}
         <div className="mt-56 pl-10 md:pl-40">
-          <h1 className="text-6xl">Transform Business with </h1>
-          <h1 className="text-6xl">Next-Gen AI Employees ✨</h1>
+          <h1 className="text-7xl">Transform Your Sales with </h1>
+          <h1 className="text-7xl">AI-Driven Employees ✨</h1>
         </div>
 
         {/* The description Section */}
         <div className="mt-8 pl-10 md:pl-40">
-          <h2 className="text-gray-400">
-            You can get fully set up in our platform in just three days and we
-            offer
+          <h2 className="text-gray-400 max-w-2xl">
+            Alchemyst.ai empowers your team with an AI-powered sales platform
+            that automates lead generation, outreach, and
+            personalization — boosting productivity and driving growth.
           </h2>
-          <h2 className="text-gray-400">
-            on hand support to ensure you will get maximum value out of
-            outbound.
-          </h2>
+          
         </div>
 
         {/* The button section */}
         <div className="flex items-center space-x-4 mt-14 pl-10 md:pl-40">
           <div className="flex items-center space-x-4">
-            <Link href="https://calendly.com/uttaran-getalchemystai/30min">
+            <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
               <Button variant="primary">Book a demo</Button>
             </Link>
 
@@ -113,7 +111,7 @@ function Hero() {
         </div>
 
         {/* The company image carousal section */}
-        <div className="flex flex-col justify-center items-center overflow-hidden mt-28 bg-gradient-to-b from-black to-[#9b4d00]">
+        <div className="flex flex-col justify-center items-center overflow-hidden mt-16 bg-gradient-to-b from-black to-[#9b4d00]">
           <h2 className="text-xl sm:text-2xl mb-8 text-center">
             Best Enterprises and Startups trust us
           </h2>
@@ -135,7 +133,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    
   );
 }
 

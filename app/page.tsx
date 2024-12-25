@@ -2,7 +2,7 @@ import Applications from "@/components/home/Applications";
 import Architecture from "@/components/home/Architecture";
 import BackedBy from "@/components/home/BackedBy";
 import CustomCursor from "@/components/home/CustomCursor";
-import Features from "@/components/home/Features";
+
 import FlowLayout from "@/components/home/FlowLayout";
 import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
@@ -19,14 +19,15 @@ import { flows } from "./constants/flows";
 import Head from "next/head";
 import GlobalAccelerators from "@/components/home/GlobalAccelerators";
 import Advisor from "@/components/home/Advisor";
-import  './globals.css'
+import "./globals.css";
 
-import Howitworks from "@/components/home/Howitworks";
+import Steps from "@/components/home/Steps";
 import InfoCard from "@/components/home/InfoCard";
 import CaseStudies from "@/components/home/CaseStudies";
 import AboutUs from "@/components/home/Aboutus";
 import EndingCard from "@/components/home/EndingCard";
 import MayaCard from "@/components/home/MayaCard";
+import Features from "@/components/home/Features";
 
 export default function HomePage() {
   return (
@@ -42,7 +43,10 @@ export default function HomePage() {
           content="AI, Technology, Innovation, Features, Team, Integrations, Architecture, Applications"
         />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Company Name - Leading in AI and Technology" />
+        <meta
+          property="og:title"
+          content="Company Name - Leading in AI and Technology"
+        />
         <meta
           property="og:description"
           content="Discover our powerful AI solutions and learn how we're shaping the future."
@@ -60,16 +64,24 @@ export default function HomePage() {
         </div>
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
+          {/* Hero Component */}
           <Hero />
-          <h1 className="text-4xl font-bold text-center text-gray-400">
-        How It Works
-      </h1>
-          <Howitworks />
+
+          {/* Steps Heading and component */}
+          <h1 className="text-4xl font-bold text-center text-gray-400 mt-64 p-4 md:mt-0 mb-8">
+            3 Simple Steps to Boost Sales with AI-Powered Precision
+          </h1>
+          <Steps />
+
+          {/* Features Component*/}
           <Features />
+
           {/* <FlowLayout flows={flows} /> */}
           {/* <Advisor /> */}
+
+          {/* Architecture Component*/}
           <Architecture />
-          < MayaCard />
+          <MayaCard />
           <InfoCard />
           <CaseStudies />
           <AboutUs />
