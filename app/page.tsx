@@ -93,6 +93,8 @@ export default function HomePage() {
 
           {/* About Us Component */}
           <AboutUs />
+
+          {/* Ending Card Component */}
           <EndingCard />
           {/* <Features features={features} /> */}
           {/* <BackedBy /> */}
