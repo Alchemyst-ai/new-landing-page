@@ -1,128 +1,191 @@
 "use client";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import Image from "next/image";
+import Button from "./Button";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function InfoCard() {
   return (
-    <div>
-      <h1 className="flex text-4xl items-center justify-center text-gray-400 mt-16 mb-16">
+    <div className="container mx-auto px-4">
+      <h1 className="text-4xl text-center text-gray-400 mt-16 mb-16">
         Product Information
       </h1>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
-          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
-            Sales Automation Section
+      <div className="flex flex-col lg:flex-row gap-6 justify-center">
+        <CardSpotlight className="w-full lg:w-[400px] transition-all duration-500 ease-in-out hover:scale-105 relative z-20">
+          <p className="text-2xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            Smarter Sales, Every Step of the Way with AI Sales Automation
           </p>
           <p className="text-gray-500 relative z-20 text-sm mt-2">
-            Smarter Sales, Every Step of the Way
+            Discover how Maya&#39;s AI-powered sales automation tools can
+            transform your B2B sales strategy for better results.
           </p>
           <div className="text-neutral-200 mt-4 relative z-20 ">
             <ul className="list-item mt-2">
               <li>End-to-End Automation:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Streamline your workflow with AI-driven B2B sales solutions that
-                manage outreach, follow-ups, and lead qualification.
+                Revolutionize your process with AI-driven B2B sales automation
+                that takes care of everything—from outreach and follow-ups to
+                lead qualification. Say goodbye to manual tasks and hello to
+                effortless efficiency.
               </p>
               <li>Omni-Channel Reach:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Connect with prospects through emails, WhatsApp, Telegram, and
-                more — all in one platform.
+                Reach your prospects wherever they are. Maya integrates
+                seamlessly across email, WhatsApp, Telegram, and more, enabling
+                a unified omni-channel sales strategy from one platform.
               </p>
               <li>Boost Deliverability:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Maya&apos;s email warm-up features enhance open rates and
-                prevent spam issues, keeping your campaigns effective.
+                Maximize the impact of your campaigns with Maya&#39;s email
+                warm-up tool, designed to improve deliverability, prevent spam
+                issues, and ensure higher engagement for your sales emails.
               </p>
             </ul>
           </div>
-        </CardSpotlight>
-
-        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
-          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
-            B2B Data Section
-          </p>
-          <p className="text-gray-500 relative z-20 text-sm mt-2">
-            Quality Leads, No Guesswork
-          </p>
-          <div className="text-neutral-200 mt-4 relative z-20">
-            <ul className="list-item  mt-2">
-              <li>300M+ B2B Sales Leads Database:</li>
-              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Tap into one of the largest repositories of business contacts,
-                tailored to your ICP.
-              </p>
-              <li>Web Search & Personalization:</li>
-              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Maya combines advanced web search capabilities with AI to create
-                a hyper-personalized list of prospects.
-              </p>
-              <li>Affordable & Accurate:</li>
-              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Enjoy more cost-effective solutions than traditional providers
-                without sacrificing personalization.
-              </p>
-            </ul>
+          <motion.div
+            className="relative z-30"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              href={"https://tripetto.app/run/60HWNW0WQN"}
+              target="_blank noopen"
+              className="block pointer-events-auto"
+            >
+              <Button variant="primary" className="w-full md:w-fit text-nowrap">
+                Automate Sales Today
+              </Button>
+            </Link>
+          </motion.div>
+          <div className="mt-20 relative z-20">
+            <Image
+              src="/media/cardleft.png"
+              alt="AI Sales Automation"
+              width={350}
+              height={200}
+              className="rounded-md"
+            />
           </div>
         </CardSpotlight>
 
-        <CardSpotlight className="h-auto w-96 transition-all duration-500 ease-in-out hover:scale-105">
-          <p className="text-xl font-bold relative z-20 mt-2 text-[#fe9833]">
-            Security and Compliance Section
+        <CardSpotlight className="w-full lg:w-[400px] transition-all duration-500 ease-in-out hover:scale-105 relative z-20">
+          <p className="text-2xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            Quality B2B Leads, Powered by AI for Sales Success
           </p>
           <p className="text-gray-500 relative z-20 text-sm mt-2">
-            Built on Trust: Secure and Scalable
+            Transform your B2B sales process with AI-powered tools designed for
+            lead quality, scalability, and conversion success.
+          </p>
+          <div className="text-neutral-200 mt-4 relative z-20">
+            <ul className="list-item  mt-2">
+              <li>Tap Into a 300M+ Verified B2B Sales Leads Database:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Access one of the world&#39;s largest and most reliable B2B
+                sales lead databases, tailored to your Ideal Customer Profile
+                (ICP). Maya&#39;s AI ensures you connect with the right
+                prospects, faster.
+              </p>
+              <li>AI-Powered Web Search for Hyper-Personalized Prospecting:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Maya uses advanced AI-driven web search tools to create a
+                hyper-personalized prospect list, combining precision and
+                relevance to fuel your B2B lead generation strategy.
+              </p>
+              <li>Affordable, Accurate, and Results-Driven Solutions:</li>
+              <p className="text-gray-500 pt-2 pl-4 relative pb-4">
+                Maximize your ROI with Alchemyst.ai&#39;s cost-effective B2B
+                sales tools that deliver unmatched accuracy and personalization,
+                outperforming traditional lead generation platforms.
+              </p>
+            </ul>
+          </div>
+          <motion.div
+            className="relative z-30"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              href={"https://tripetto.app/run/60HWNW0WQN"}
+              target="_blank noopen"
+              className="block pointer-events-auto"
+            >
+              <Button variant="primary" className="w-full md:w-fit text-nowrap">
+                Find Leads Now
+              </Button>
+            </Link>
+          </motion.div>
+          <div className="mt-20 relative z-20">
+            <Image
+              src="/media/cardmiddleee.png"
+              alt="B2B Leads"
+              width={350}
+              height={200}
+              className="rounded-md"
+            />
+          </div>
+        </CardSpotlight>
+
+        <CardSpotlight className="w-full lg:w-[400px] transition-all duration-500 ease-in-out hover:scale-105 relative z-20">
+          <p className="text-2xl font-bold relative z-20 mt-2 text-[#fe9833]">
+            Built on Trust: Secure, Compliant, and Scalable B2B Sales Platform
+          </p>
+          <p className="text-gray-500 relative z-20 text-sm mt-2">
+            Discover how Alchemyst.ai delivers secure, scalable, and compliant
+            sales automation tools for unmatched performance and trust.
           </p>
 
           <div className="text-neutral-200 mt-4 relative z-20">
             <ul className="list-item  mt-2">
-              <li>Enterprise-Grade Compliance:</li>
+              <li>Enterprise-Grade Security for Your Data:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Your business data is protected with SOC 2, ISO 27001, and
-                PCI-DSS certifications.
+                Protect your business with industry-leading SOC 2, ISO 27001,
+                and PCI-DSS certifications. Alchemyst.ai ensures data security
+                and compliance at every level, so your sensitive information
+                stays safe.
               </p>
-              <li>High Performance & Scalability:</li>
+              <li>High-Performance Scalability for B2B Sales:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Designed to handle high-volume operations while ensuring
-                seamless uptime.
+                Scale your sales operations effortlessly with a platform
+                designed for high performance and reliability. Alchemyst.ai
+                supports large-scale lead generation and outreach without
+                downtime, enabling consistent growth.
               </p>
-              <li>Spam-Free Deliverability:</li>
+              <li>Spam-Free Email Deliverability with AI Safeguards:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Achieve higher inbox placement rates and avoid spam filters with
-                intelligent safeguards.
+                Increase your email success rates with AI-driven spam
+                protection. Maya optimizes email deliverability for higher inbox
+                placement and prevents campaigns from landing in spam folders.
               </p>
             </ul>
+          </div>
+          <motion.div
+            className="relative z-30"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              href={"https://tripetto.app/run/60HWNW0WQN"}
+              target="_blank noopen"
+              className="block pointer-events-auto"
+            >
+              <Button variant="primary" className="w-full md:w-fit text-nowrap">
+                Explore Security Features
+              </Button>
+            </Link>
+          </motion.div>
+          <div className="mt-4 relative z-20">
+            <Image
+              src="/media/cardright.png"
+              alt="Secure B2B Platform"
+              width={350}
+              height={200}
+              className="rounded-md"
+            />
           </div>
         </CardSpotlight>
       </div>
     </div>
   );
 }
-
-const Step = ({ title }: { title: string }) => {
-  return (
-    <li className="flex gap-2 items-start">
-      <CheckIcon />
-      <p className="text-white">{title}</p>
-    </li>
-  );
-};
-
-const CheckIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-4 w-4 text-blue-500 mt-1 flex-shrink-0"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path
-        d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm2.293 7.293a1 1 0 0 1 1.497 1.32l-.083 .094l-4 4a1 1 0 0 1 -1.32 .083l-.094 -.083l-2 -2a1 1 0 0 1 1.32 -1.497l.094 .083l1.293 1.292l3.293 -3.292z"
-        fill="currentColor"
-        strokeWidth="0"
-      />
-    </svg>
-  );
-};

@@ -84,6 +84,8 @@ export default function HomePage() {
 
           {/* Maya Card Component */}
           <MayaCard />
+
+          {/* Product Information Card */}
           <InfoCard />
           <CaseStudies />
           <AboutUs />
