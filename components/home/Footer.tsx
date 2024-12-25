@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LinkedIn } from "../IconComponent/Linkedin";
 import { Twitter } from "../IconComponent/Twitter";
 import Button from "./Button";
+import { Facebook, Instagram } from "lucide-react";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -126,6 +127,34 @@ const Footer: React.FC = () => {
                   whileTap={{ scale: 0.9 }}
                 >
                   <LinkedIn />
+                </motion.div>
+              </Link>
+              <Link
+                href="https://www.facebook.com/getalchemyst"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="h-6 w-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Facebook />
+                </motion.div>
+              </Link>
+              <Link
+                href="https://instagram.com/getalchemyst"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="h-6 w-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Instagram />
                 </motion.div>
               </Link>
             </motion.div>
