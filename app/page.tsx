@@ -87,6 +87,8 @@ export default function HomePage() {
 
           {/* Product Information Card */}
           <InfoCard />
+
+          {/* Case Studies Component */}
           <CaseStudies />
           <AboutUs />
           <EndingCard />

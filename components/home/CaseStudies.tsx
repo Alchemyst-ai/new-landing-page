@@ -1,13 +1,13 @@
 "use client";
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
-import Slider from 'react-slick';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import Slider from "react-slick";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Ensure you import the CSS for react-slick
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface CaseStudy {
   id: number;
@@ -19,58 +19,50 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: 'Case Study 1',
-    description: 'Helped a tech startup increase their sales by 200% in 6 months using our AI-powered outreach tools.',
-    image: '/images/startup-icon.png',
+    title: "Case Study 1",
+    description:
+      '"With Maya, our small team was able to double lead conversions and cut outreach time in half. The AI-powered sales platform is a game-changer!" - InnovateTech',
+    image: "/media/casestudiesicon.png",
   },
   {
     id: 2,
-    title: 'Case Study 2',
-    description: 'Streamlined the sales process for a Fortune 500 company, resulting in a 35% increase in conversion rates.',
-    image: '/images/enterprise-icon.png',
+    title: "Case Study 2",
+    description:
+      '"We scaled from 10 to 100 qualified leads weekly using Maya\'s sales copilot for small teams - a must have for startups." - GrowthEdge',
+    image: "/media/casestudiesicon.png",
   },
   {
     id: 3,
-    title: 'Case Study 3',
-    description: 'Enabled a small business to acquire 1000+ new customers in just 3 months through targeted AI campaigns.',
-    image: '/images/smb-icon.png',
-  },
-  {
-    id: 4,
-    title: 'Case Study 4',
-    description: 'Generated over 10,000 qualified leads for a B2B SaaS company using our advanced AI algorithms.',
-    image: '/images/b2b-icon.png',
-  },
-  {
-    id: 5,
-    title: 'Case Study 5',
-    description: 'Increased sales team productivity by 50% for a mid-sized company by automating routine tasks.',
-    image: '/images/productivity-icon.png',
-  },
-  {
-    id: 6,
-    title: 'Case Study 6',
-    description: 'Increased sales team productivity by 50% for a mid-sized company by automating routine tasks.',
-    image: '/images/productivity-icon.png',
+    title: "Case Study 3",
+    description:
+      "Reward your customers and incentivize engagement with our innovative digital credit tokens. Our tokens can be customized to match.",
+    image: "/media/casestudiesicon.png",
   },
 ];
 
 const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
   <motion.div
-    className="bg-gradient-to-b from-gray-900 via-gray-900 to-black p-6 rounded-lg shadow-lg h-full mb-6 border border-gray-700"
-    whileHover={{ scale: 1.02, boxShadow: '0 0 15px rgba(254,152,51,255)' }}
+    className="bg-gradient-to-b from-gray-900 via-gray-900 to-black rounded-lg shadow-lg h-full mb-6 border border-gray-700"
+    whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(254,152,51,255)" }}
     transition={{ duration: 0.3 }}
   >
-    <div className="flex justify-between items-start mb-4">
-      <Image src={image} alt={title} width={30} height={30} className="rounded-full" />
-      
+    <div className="flex justify-between items-start">
+      <Image
+        src={image}
+        alt={title}
+        width={80}
+        height={80}
+        className="rounded-full"
+      />
     </div>
-    <h3 className="text-xl font-bold text-gray-300">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+    <div className="p-6">
+      <h3 className="text-xl font-bold text-gray-300 mb-4">{title}</h3>
+      <p className="text-gray-500">{description}</p>
+    </div>
   </motion.div>
 );
 
-const CaseStudies: React.FC = () => {           
+const CaseStudies: React.FC = () => {
   const sliderRef = useRef<Slider>(null);
 
   const settings = {
@@ -105,7 +97,10 @@ const CaseStudies: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full h-full relative px-4 py-16">
-      <h1 className="flex text-4xl items-center justify-center text-gray-400 mt-16 mb-16">Case Studies</h1>
+      <h1 className="flex text-4xl items-center justify-center text-center text-gray-400 mt-16 mb-16">
+        Real Stories, Real Results: <br /> How Alchemyst.ai Transforms B2B Sales
+      </h1>
+      
       <div className="relative">
         <Slider ref={sliderRef} {...settings}>
           {caseStudies.map((study) => (
@@ -136,4 +131,3 @@ const CaseStudies: React.FC = () => {
 };
 
 export default CaseStudies;
-
