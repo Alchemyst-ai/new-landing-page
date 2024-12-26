@@ -59,10 +59,10 @@ const Steps: React.FC = () => {
 
   return (
     <div className="w-full md:bg-gradient-to-bl from-black via-black to-[#9b4d00] py-16 ">
-      
+
       {/* Desktop View */}
       <div className="hidden md:block">
-        
+
         {/* Horizontal Scrollable Options */}
         <div
           ref={containerRef}
@@ -85,7 +85,7 @@ const Steps: React.FC = () => {
                 </span>
               </div>
 
-              {/* Arrow (except the last option) */}
+              {/* Displaying arrow from first two options (except from the last option) */}
               {index < options.length - 1 && (
                 <div className="flex items-center mx-2">
                   <svg
@@ -112,7 +112,7 @@ const Steps: React.FC = () => {
           ))}
         </div>
 
-        {/* Dynamic Content with Animation */}
+        {/* Dynamically Rendered Content with Animation */}
         <div className="relative max-w-6xl mx-auto mt-16 px-4 h-96 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
@@ -123,9 +123,11 @@ const Steps: React.FC = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="absolute w-full h-full flex items-center"
             >
+
               {/* Dynamically Rendered Content */}
               <div className="flex items-center w-full">
                 <div className="w-3/5 pr-8">
+
                   {/* Title of the dynamic content */}
                   <h2 className="text-5xl font-bold mb-6 text-white">
                     {options[activeOption].title}
@@ -160,7 +162,7 @@ const Steps: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile View */}
+      {/* Mobile View - Displaying all options as cards */}
       <div className="md:hidden p-4 ">
         {options.map((option, index) => (
           <div

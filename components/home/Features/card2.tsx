@@ -12,8 +12,10 @@ export default function Card2() {
             height={300}
             className="object-cover rounded-lg mb-4 md:mb-0"
           />
-          <h2 className="text-4xl font-bold mb-4 text-white">Why Choose Alchemyst.ai</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-400">
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            Why Choose Alchemyst.ai
+          </h2>
+          <ul className="list-disc list-inside space-y-2 text-gray-400 mb-14">
             <li>Increase B2B lead generation efficiency.</li>
             <li>Enhance sales automation with AI.</li>
             <li>Achieve secure, compliant, and reliable results.</li>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { RetroGrid } from "../magicui/Retrogrid";
 
 function Hero() {
   // Logos and settings for the carousal
@@ -56,28 +57,41 @@ function Hero() {
   };
 
   return (
-    
-      <div className="w-full h-screen">
-        {/* Heading Section */}
-        <div className="mt-56 pl-10 md:pl-40">
-          <h1 className="text-7xl">Transform Your Sales with </h1>
-          <h1 className="text-7xl">AI-Driven Employees ✨</h1>
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Retro Grid Background */}
+      <RetroGrid />
+
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        
+        {/* Heading Section for Desktop */}
+        <div className="mt-40 md:flex flex-col items-center hidden">
+          <h1 className="text-4xl md:text-7xl">Transform Your Sales with </h1>
+          <h1 className="text-4xl md:text-7xl">AI-Driven Employees ✨</h1>
+        </div>
+
+        {/* Heading Section for Mobile */}
+        <div className="mt-40 md:hidden flex flex-col items-center justify-center text-center">
+          <h1 className="text-5xl pl-2 pr-2 md:pl-0 md:pr-0 md:text-7xl">
+            Transform Your Sales with AI-Driven Employees ✨
+          </h1>
         </div>
 
         {/* The description Section */}
-        <div className="mt-8 pl-10 md:pl-40">
-          <h2 className="text-gray-400 max-w-2xl">
+        <div className="mt-8">
+          <h2 className="text-gray-400 pl-10 pr-10 md:pl-0 md:pr-0 max-w-2xl text-center">
             Alchemyst.ai empowers your team with an AI-powered sales platform
-            that automates lead generation, outreach, and
-            personalization — boosting productivity and driving growth.
+            that automates lead generation, outreach, and personalization -
+            boosting productivity and driving growth.
           </h2>
-          
         </div>
 
         {/* The button section */}
-        <div className="flex items-center space-x-4 mt-14 pl-10 md:pl-40">
+        <div className="flex items-center space-x-4 mt-14">
           <div className="flex items-center space-x-4">
-            <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
+            <Link
+              href="https://calendly.com/uttaran-getalchemystai/30min"
+              target="_blank"
+            >
               <Button variant="primary">Book a demo</Button>
             </Link>
 
@@ -111,11 +125,8 @@ function Hero() {
         </div>
 
         {/* The company image carousal section */}
-        <div className="flex flex-col justify-center items-center overflow-hidden mt-16 bg-gradient-to-b from-black to-[#9b4d00]">
-          <h2 className="text-xl sm:text-2xl mb-8 text-center">
-            Best Enterprises and Startups trust us
-          </h2>
-          <div className="w-[100vw] sm:w-[100vw]">
+        <div className="flex flex-col justify-center items-center overflow-hidden mt-16">
+          <div className="w-[100vw] sm:w-[100vw] mt-8">
             <Slider {...settings}>
               {logos.map((logo, index) => (
                 <div key={index}>
@@ -133,7 +144,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    
+    </div>
   );
 }
 

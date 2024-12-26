@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function InfoCard() {
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl text-center text-gray-400 mt-16 mb-16">
+      <h1 className="text-4xl text-center text-gray-400 mt-4 md:mt-16 mb-16">
         Product Information
       </h1>
 

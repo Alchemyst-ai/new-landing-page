@@ -23,7 +23,7 @@ const Architecture: React.FC = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-gray-900 via-black to-black">
+        <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-black via-black to-[#9e671a]">
           <h2 className="text-3xl font-semibold text-gray-400">
             Gen-AI Employees
           </h2>
@@ -92,4 +92,3 @@ const Architecture: React.FC = () => {
 };
 
 export default Architecture;
-

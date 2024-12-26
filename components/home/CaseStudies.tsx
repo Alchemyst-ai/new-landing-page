@@ -1,3 +1,8 @@
+/*
+The feature to show chevron arrows on both ends of these cards in the event that there are more than 3 cards is already built in the slider component.
+The component only needs to be adjusted to handle the case where there are less than 3 cards.
+*/
+
 "use client";
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
@@ -96,11 +101,11 @@ const CaseStudies: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full relative px-4 py-16">
+    <div className="flex flex-col w-full h-full relative -mt-14 md:mt-0 px-4 py-16">
       <h1 className="flex text-4xl items-center justify-center text-center text-gray-400 mt-16 mb-16">
         Real Stories, Real Results: <br /> How Alchemyst.ai Transforms B2B Sales
       </h1>
-      
+
       <div className="relative">
         <Slider ref={sliderRef} {...settings}>
           {caseStudies.map((study) => (

@@ -44,13 +44,13 @@ export default function Card3() {
             </Button>
           </Link>
         </div>
-        <div className="mt-6 md:mt-8 hidden md:block">
+        <div className="mt-6 md:mt-8 ">
           <Image
             src="/media/ledgenandpersonal.png"
             alt="AI-Powered Lead Generation"
             width={500}
             height={300}
-            className="w-full h-64 md:h-auto object-cover rounded-lg"
+            className="w-full h-30 md:h-auto object-cover rounded-lg"
           />
         </div>
       </div>

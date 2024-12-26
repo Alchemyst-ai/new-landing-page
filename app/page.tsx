@@ -1,33 +1,17 @@
-import Applications from "@/components/home/Applications";
-import BackedBy from "@/components/home/BackedBy";
 import CustomCursor from "@/components/home/CustomCursor";
-
-import FlowLayout from "@/components/home/FlowLayout";
-import Footer from "@/components/home/Footer";
-import Hero from "@/components/home/Hero";
-import Integrations from "@/components/home/Integrations";
-import MediaAndCoverage from "@/components/home/MediaAndCoverage";
-import ModelsIntro from "@/components/home/ModelsIntro";
-import Navbar from "@/components/home/Navbar";
-import TalkToFounder from "@/components/home/TalkToFounder";
-import Team from "@/components/home/Team";
-import FeaturedIn from "@/components/media-awards/FeaturedIn";
-import applications from "./constants/applications";
-import { features } from "./constants/features";
-import { flows } from "./constants/flows";
-import Head from "next/head";
-import GlobalAccelerators from "@/components/home/GlobalAccelerators";
-import Advisor from "@/components/home/Advisor";
-import "./globals.css";
-
-import Steps from "@/components/home/Steps";
-import InfoCard from "@/components/home/InfoCard";
-import CaseStudies from "@/components/home/CaseStudies";
-import AboutUs from "@/components/home/Aboutus";
-import EndingCard from "@/components/home/EndingCard";
-import MayaCard from "@/components/home/MayaCard";
-import Features from "@/components/home/Features";
 import Architecture from "@/components/home/Architecture";
+import CaseStudies from "@/components/home/CaseStudies";
+import EndingCard from "@/components/home/EndingCard";
+import Features from "@/components/home/Features";
+import MayaCard from "@/components/home/MayaCard";
+import InfoCard from "@/components/home/InfoCard";
+import AboutUs from "@/components/home/Aboutus";
+import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
+import Steps from "@/components/home/Steps";
+import Hero from "@/components/home/Hero";
+import Head from "next/head";
+import "./globals.css";
 
 export default function HomePage() {
   return (
@@ -64,49 +48,18 @@ export default function HomePage() {
         </div>
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
-          {/* Hero Component */}
           <Hero />
-
-          {/* Steps Heading and component */}
-          <h1 className="text-4xl font-bold text-center text-gray-400 mt-64 p-4 md:mt-0 mb-8">
+          <h1 className="text-4xl font-bold text-center text-gray-400 mt-12 p-4 md:mt-8 md:mb-8">
             3 Simple Steps to Boost Sales with AI-Powered Precision
           </h1>
           <Steps />
-
-          {/* Features Component*/}
           <Features />
-
-          {/* <FlowLayout flows={flows} /> */}
-          {/* <Advisor /> */}
-
-          {/* Architecture Component*/}
           <Architecture />
-
-          {/* Maya Card Component */}
           <MayaCard />
-
-          {/* Product Information Card */}
           <InfoCard />
-
-          {/* Case Studies Component */}
           <CaseStudies />
-
-          {/* About Us Component */}
           <AboutUs />
-
-          {/* Ending Card Component */}
           <EndingCard />
-          {/* <Features features={features} /> */}
-          {/* <BackedBy /> */}
-          {/* <ModelsIntro /> */}
-          {/* <GlobalAccelerators />
-          <Integrations /> */}
-          {/* <Applications applications={applications} />
-          <Team />
-          <FeaturedIn />
-          <MediaAndCoverage />
-          <TalkToFounder /> */}
-          {/* <Testimonials testimonials={testimonials} /> */}
         </main>
         <Footer />
       </div>

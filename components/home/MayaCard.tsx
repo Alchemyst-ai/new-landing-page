@@ -17,42 +17,44 @@ const MayaCard: React.FC = () => {
           </div>
         </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          {/* Column 1 */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="aspect-w-3 aspect-h-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:mt-14">
+          {/* Column 1 for Desktop. Row 1 for Mobile */}
+          <div className="col-span-1 md:col-span-1 flex items-center justify-center">
+            <div className="h-full">
               <Image
                 src="/media/maya-TSR-Left.png"
                 alt="Maya 1"
                 width={500}
                 height={500}
-                className="rounded-lg mt-24"
+                className="rounded-lg mt-24 md:mt-0"
               />
             </div>
           </div>
 
-          {/* Column 2 */}
-          <div className="col-span-2 md:col-span-1">
-            <div className="aspect-w-3 aspect-h-4">
-              <Image
-                src="/media/maya-TSR-Middle.png"
-                alt="Maya 2"
-                width={300}
-                height={300}
-                className="rounded-lg mt-20 pl-12 md:mt-32 md:pl-10"
-              />
+          {/* Column 2 for Desktop. Row 2 for Mobile*/}
+          <div className="hidden md:block">
+            <div className="col-span-2 md:col-span-1 flex items-center justify-center ">
+              <div className="h-full">
+                <Image
+                  src="/media/maya.png"
+                  alt="Maya 2"
+                  width={250}
+                  height={300}
+                  className="rounded-lg mt-20 pl-12 md:mt-8 md:pl-10"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Column 3 */}
-          <div className="">
-            <div className="aspect-w-3 aspect-h-4">
+          {/* Column 3 for Desktop. Row 3 for Mobile*/}
+          <div className="flex items-center justify-center">
+            <div className="h-full">
               <Image
                 src="/media/maya-TSR-Right.png"
                 alt="Maya 4"
                 width={500}
                 height={500}
-                className="rounded-lg mt-28 pr-10"
+                className="rounded-lg mt-28 pr-10 md:mt-0"
               />
             </div>
           </div>

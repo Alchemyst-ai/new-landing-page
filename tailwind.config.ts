@@ -8,14 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // screens: {
-      //   'xs' : '375px',
-      //   'sm': '640px',
-      //   'md': '768px',
-      //   'lg': '1024px',
-      //   'xl': '1280px',
-      //   '2xl': '1536px',
-      // },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -27,8 +19,18 @@ const config: Config = {
       boxShadow: {
         announcement: "0 0 100px 90px rgba(255, 255, 255, 0.15)",
       },
+      animation: {
+        grid: "grid 15s linear infinite",
+      },
+      keyframes: {
+        grid: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

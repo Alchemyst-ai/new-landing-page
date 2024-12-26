@@ -20,7 +20,10 @@ const EndingCard: React.FC = () => {
             </p>
             <div className="flex justify-center md:justify-start">
               <Link href="" className="flex-1 md:flex-none">
-                <Button variant="primary" className="w-full md:w-auto text-sm py-2 ">
+                <Button
+                  variant="primary"
+                  className="w-full md:w-auto text-sm py-2 "
+                >
                   Try Maya for Free
                 </Button>
               </Link>
