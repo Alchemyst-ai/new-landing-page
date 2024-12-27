@@ -14,6 +14,15 @@ export default function InfoCard() {
 
       <div className="flex flex-col lg:flex-row gap-6 justify-center">
         <CardSpotlight className="w-full lg:w-[400px] transition-all duration-500 ease-in-out hover:scale-105 relative z-20">
+          <div className="mb-14 relative z-20">
+            <Image
+              src="/media/cardleft.png"
+              alt="AI Sales Automation"
+              width={350}
+              height={200}
+              className="rounded-md"
+            />
+          </div>
           <p className="text-2xl font-bold relative z-20 mt-2 text-[#fe9833]">
             Smarter Sales, Every Step of the Way with AI Sales Automation
           </p>
@@ -59,15 +68,6 @@ export default function InfoCard() {
               </Button>
             </Link>
           </motion.div>
-          <div className="mt-20 relative z-20">
-            <Image
-              src="/media/cardleft.png"
-              alt="AI Sales Automation"
-              width={350}
-              height={200}
-              className="rounded-md"
-            />
-          </div>
         </CardSpotlight>
 
         <CardSpotlight className="w-full lg:w-[400px] transition-all duration-500 ease-in-out hover:scale-105 relative z-20">

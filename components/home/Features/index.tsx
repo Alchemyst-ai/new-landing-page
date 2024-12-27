@@ -9,12 +9,12 @@ export default function Features() {
         Features
       </h2>
       <div className="container mx-auto max-w-fit">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-10">
             <Card1 />
             <Card2 />
           </div>
-          <div className="lg:h-full">
+          <div className="md:h-fit">
             <Card3 />
           </div>
         </div>

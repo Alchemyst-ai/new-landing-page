@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Card2() {
   return (
-    <div className="bg-gradient-to-br from-[#9b4d00] via-black to-[#9b4d00] border border-gray-500 shadow-lg shadow-gray-600 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-500 h-1/2">
+    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 h-1/2">
       <div className="p-6 flex flex-col md:flex-row">
         <div className="md:w-80 md:pr-4 order-2 md:order-1">
           <Image
@@ -13,7 +13,7 @@ export default function Card2() {
             className="object-cover rounded-lg mb-4 md:mb-0"
           />
           <h2 className="text-4xl font-bold mb-4 text-white">
-            Why Choose Alchemyst.ai
+            Why Choose Alchemyst AI?
           </h2>
           <ul className="list-disc list-inside space-y-2 text-gray-400 mb-14">
             <li>Increase B2B lead generation efficiency.</li>
@@ -27,7 +27,7 @@ export default function Card2() {
               src="/media/whyalchemyst2.png"
               alt="Alchemyst.ai Features"
               width={400}
-              height={200}
+              height={400}
               className="w-full h-auto object-cover rounded-lg"
             />
           </div>

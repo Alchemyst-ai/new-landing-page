@@ -58,11 +58,9 @@ const Steps: React.FC = () => {
   }, [activeOption]);
 
   return (
-    <div className="w-full md:bg-gradient-to-bl from-black via-black to-[#9b4d00] py-16 ">
-
+    <div className="w-full  py-16 ">
       {/* Desktop View */}
       <div className="hidden md:block">
-
         {/* Horizontal Scrollable Options */}
         <div
           ref={containerRef}
@@ -76,7 +74,7 @@ const Steps: React.FC = () => {
                 onClick={() => setActiveOption(index)}
                 className={`flex-shrink-0 flex items-center justify-center w-48 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${
                   activeOption === index
-                    ? "text-yellow-700 border-yellow-700 drop-shadow-[0_0_10px_rgba(255,255,0,0.6)]"
+                    ? "text-yellow-700 border-yellow-700 drop-shadow-[0_0_5px_rgba(255,255,0,0.3)]"
                     : "text-gray-400 border-gray-600 hover:text-yellow-700 hover:border-yellow-700"
                 }`}
               >
@@ -123,11 +121,9 @@ const Steps: React.FC = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="absolute w-full h-full flex items-center"
             >
-
               {/* Dynamically Rendered Content */}
               <div className="flex items-center w-full">
                 <div className="w-3/5 pr-8">
-
                   {/* Title of the dynamic content */}
                   <h2 className="text-5xl font-bold mb-6 text-white">
                     {options[activeOption].title}
