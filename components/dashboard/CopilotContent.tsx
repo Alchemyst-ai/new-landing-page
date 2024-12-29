@@ -203,7 +203,7 @@ export default function CopilotContent() {
               <Image
                 src={feature.image}
                 alt="Circle"
-                className="absolute top-0 bottom-0 left-0 right-0 w-full h-full p-5 pt-0 hidden md:block"
+                className="absolute top-0 bottom-0 left-0 right-0 w-full h-full p-5 pt-0"
                 layout="fill"
                 objectFit="cover"
               />
@@ -232,17 +232,17 @@ export default function CopilotContent() {
       >
         <div className="flex flex-col md:flex-row items-center overflow-hidden">
           <div className="md:w-1/2 p-4 md:p-8">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 md:pl-20">
+            <h2 className="text-center md:text-start text-4xl md:text-6xl font-bold mb-4 md:pl-20">
               Why Choose MAYA
             </h2>
-            <p className="mb-4 md:w-3/2 md:pl-20 text-gray-400">
+            <p className="text-center md:text-start mb-4 md:w-3/2 md:pl-20 text-gray-400">
               Maya transforms how sales teams work by automating repetitive
               tasks, offering predictive insights, and enhancing overall
               productivity. With Maya, you save time, target the right
               customers, and see a measurable ROI increase.
             </p>
 
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col items-center md:items-start md:flex-row">
               <div className="md:pl-20 mt-6 md:mt-10">
                 <Link
                   href="https://calendly.com/uttaran-getalchemystai/30min"
@@ -278,7 +278,7 @@ export default function CopilotContent() {
 
       {/* Section 6 -How to Get Started Section */}
       <Howitworks flows={flows} />
-      
+
       {/* Section 7 - Ending Card */}
       <motion.section
         initial="hidden"

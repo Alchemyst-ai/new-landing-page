@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import DashboardToggle from "@/components/dashboard/DashboardToggle";
@@ -10,6 +10,14 @@ import AutopilotContent from "@/components/dashboard/AutopilotContent";
 
 export default function Dashboard() {
   const [mode, setMode] = useState<"copilot" | "autopilot">("copilot");
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const initialMode = searchParams.get("mode");
+    if (initialMode === "autopilot") {
+      setMode("autopilot");
+    }
+  }, [searchParams]);
 
   return (
     <div>
