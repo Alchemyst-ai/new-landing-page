@@ -18,7 +18,9 @@ const Howitworks: React.FC<FlowLayoutProps> = ({ flows }) => {
     triggerOnce: false,
   });
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(
+    document.getElementById("how-it-works")as never
+  );
 
   useEffect(() => {
     if (inView) {
@@ -29,8 +31,11 @@ const Howitworks: React.FC<FlowLayoutProps> = ({ flows }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current) {
-        const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-        const scrollAmount = containerRef.current.scrollWidth * scrollPercentage;
+        const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) - 0.5;
+        const scrollAmount = Math.max(
+          0,
+          containerRef.current.scrollWidth * scrollPercentage
+        );
         containerRef.current.scrollLeft = scrollAmount;
       }
     };
@@ -52,14 +57,14 @@ const Howitworks: React.FC<FlowLayoutProps> = ({ flows }) => {
           {flows.map((flow, index) => (
             <motion.div
               key={index}
-              className="w-full flex-shrink-0 flex flex-col items-center justify-center p-4"
+              className="w-full flex-shrink-0 flex flex-col items-center justify-center px-2 py-4"
               initial="visible"
               animate={controls}
               variants={{
                 visible: { opacity: 1, x: 0 },
                 hidden: { opacity: 0, x: 300 },
               }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              transition={{ duration: 0.2, delay: index * 0.2 }}
               ref={ref}
             >
               <div className="video-container w-full max-w-2xl aspect-video bg-black rounded-xl overflow-hidden">

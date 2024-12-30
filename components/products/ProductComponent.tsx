@@ -1,10 +1,8 @@
 "use client";
 
 import EndingCard from "@/components/home/EndingCard";
-import Button from "@/components/home/Button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 
 const fadeInUp = {
@@ -16,7 +14,7 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; text: string }> = ({
   icon,
   text,
 }) => (
-  <div className="mt-4 flex items-center p-6 gap-4 hover:bg-[#ed9640] border border-gray-600 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-105">
+  <div className="mt-4 flex items-center p-6 gap-4 bg-gray-950 hover:bg-[#ed9640] border border-gray-600 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-105">
     {icon}
     <p className="font-medium"> {text} </p>
   </div>
@@ -499,8 +497,8 @@ const ProductComponent: React.FC = () => {
               </div>
               <div className="lg:w-2/3 order-1 lg:order-2 md:mt-4">
                 <p className="text-xl mb-6 text-gray-400">
-                  Maya seamlessly integrates all its tools—sales, WhatsApp,
-                  Telegram, and email automation—into one unified platform, so
+                  Maya seamlessly integrates all its tools - sales, WhatsApp,
+                  Telegram, and email automation - into one unified platform, so
                   you can manage everything without switching between multiple
                   systems.
                 </p>
@@ -560,25 +558,7 @@ const ProductComponent: React.FC = () => {
                     }
                     text="Enhanced productivity with centralized automation."
                   />
-                  <FeatureCard
-                    icon={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-purple-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                    }
-                    text="Compatibility with major email platforms like Gmail and Outlook."
-                  />
+                  
                 </div>
               </div>
             </div>

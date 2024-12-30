@@ -31,7 +31,7 @@ export default function AutopilotContent() {
               Efficient, Reliable, and Always Learning
             </h2>
             <p className="text-lg w-3/4 text-gray-500 text-center md:text-left">
-              AlchemystAI empowers your team with an AI-powered sales platform
+              Alchemyst AI empowers your team with an AI-powered sales platform
               that automates lead generation, outreach, and personalization -
               boosting productivity and driving growth.
             </p>

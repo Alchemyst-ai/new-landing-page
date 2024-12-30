@@ -11,8 +11,8 @@ import { RetroGrid } from "../magicui/Retrogrid";
 function Hero() {
   // Logos and settings for the carousal
   const logos = [
-    "/enterprises/chainrisk.svg",
-    "/enterprises/forethought.png",
+    "/enterprises/decathlon.png",
+    "/enterprises/bajajallianz.png",
     "/enterprises/plat.png",
     "/enterprises/tesco.png",
     "/enterprises/fourkites.webp",

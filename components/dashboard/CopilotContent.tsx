@@ -18,8 +18,8 @@ const fadeInUp = {
 
 export default function CopilotContent() {
   const logos = [
-    "/enterprises/chainrisk.svg",
-    "/enterprises/forethought.png",
+    "/enterprises/decathlon.png",
+    "/enterprises/bajajallianz.png",
     "/enterprises/plat.png",
     "/enterprises/tesco.png",
     "/enterprises/fourkites.webp",
@@ -67,7 +67,7 @@ export default function CopilotContent() {
         className="text-center mb-16"
       >
         <h1 className="text-4xl md:text-6xl font-bold mt-8 md:mt-16 mb-4">
-          MAYA, The Sales Platform
+          <span className="text-orange-400">Maya</span>, The Sales Platform
         </h1>
         <p className="text-xl md:text-2xl mb-8">
           Empower Your Sales Strategy with Intelligent Automation
@@ -223,6 +223,7 @@ export default function CopilotContent() {
 
       {/* Section 5 - Why choose Maya */}
       <motion.section
+        id="why-choose-maya"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -275,6 +276,8 @@ export default function CopilotContent() {
           </div>
         </div>
       </motion.section>
+
+      <div id="how-it-works"></div>
 
       {/* Section 6 -How to Get Started Section */}
       <Howitworks flows={flows} />

@@ -14,7 +14,7 @@ const EndingCard: React.FC = () => {
             </h2>
             <p className="text-lg mb-6 text-gray-400">
               Don&#39;t let repetitive tasks hold your business back. Maya is
-              built to revolutionize how you work—combining sales automation,
+              built to revolutionize how you work - combining sales automation,
               WhatsApp and Telegram outreach, and email warm-up to supercharge
               your productivity and results.
             </p>

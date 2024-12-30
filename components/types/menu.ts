@@ -60,16 +60,16 @@ export const menuData: MenuObject[] = [
                 link: "/products#telegram-automation",
               },
               {
-                title: "B2B data",
-                level: "tertiary",
-                icon: "/icons/B2B.png",
-                link: "/products",
-              },
-              {
                 title: "Email Warmup",
                 level: "tertiary",
                 icon: "/icons/Fire.png",
                 link: "/products#email-warmup ",
+              },
+              {
+                title: "B2B data",
+                level: "tertiary",
+                icon: "/icons/B2B.png",
+                link: "/b2b",
               },
             ],
           },
