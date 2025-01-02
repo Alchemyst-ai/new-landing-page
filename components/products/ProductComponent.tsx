@@ -14,7 +14,7 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; text: string }> = ({
   icon,
   text,
 }) => (
-  <div className="mt-4 flex items-center p-6 gap-4 bg-gray-950 hover:bg-[#ed9640] border border-gray-600 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-105">
+  <div className="mt-4 flex items-center p-6 gap-4 bg-gray-950 border border-gray-600 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-105">
     {icon}
     <p className="font-medium"> {text} </p>
   </div>
@@ -53,8 +53,8 @@ const ProductComponent: React.FC = () => {
         <Image
           src="/products/products_01.svg"
           alt="Maya Platform"
-          width={700}
-          height={700}
+          width={900}
+          height={900}
           className="mt-16 mx-auto transition-all duration-500 ease-in-out hover:scale-110 max-w-full h-auto"
           loading="lazy"
         />
@@ -142,15 +142,15 @@ const ProductComponent: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/3 order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
+              <div className="lg:w-auto order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
                   src="/products/whatsapp_automation.svg"
                   alt="WhatsApp Automation"
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-full h-auto object-cover rounded-lg mt-8 md:mt-0"
                 />
               </div>
               <div className="lg:w-2/3 order-1 lg:order-2 md:mt-4">
-                <p className="text-xl mb-6 text-gray-400">
+                <p className="text-xl mb-6 text-gray-400 text-center md:mt-8 md:text-start">
                   Reach your customers directly on their favorite messaging app.
                   Maya automates everything from instant replies to bulk
                   broadcasts, ensuring your business stays connected
@@ -159,17 +159,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -195,17 +195,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-yellow-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -214,17 +214,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-purple-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -258,14 +258,14 @@ const ProductComponent: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/3 order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
+              <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
                   src="/products/telegram_automation.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg"
                 />
               </div>
-              <div className="lg:w-2/3 order-1 lg:order-2 md:mt-4">
+              <div className="lg:w-2/3 order-1 lg:order-2 md:mt-8 md:text-start text-center">
                 <p className="text-xl mb-6 text-gray-400">
                   With Telegram&#39;s growing popularity, Maya enables
                   businesses to leverage this platform efficiently. Automate
@@ -276,17 +276,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -312,17 +312,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-yellow-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -331,17 +331,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-purple-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -373,15 +373,15 @@ const ProductComponent: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/3 order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
+              <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
                   src="/products/email_warmup.svg"
                   alt="WhatsApp Automation"
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-full h-auto object-cover rounded-lg "
                 />
               </div>
               <div className="lg:w-2/3 order-1 lg:order-2 md:mt-4">
-                <p className="text-xl mb-6 text-gray-400">
+                <p className="text-xl mb-6 text-gray-400 mt-8 text-center md:text-start">
                   Increase your email deliverability with Maya&#39;s automated
                   email warm-up tool. Gradually build credibility with email
                   providers to ensure your campaigns are seen.
@@ -390,17 +390,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -426,17 +426,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-yellow-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -445,17 +445,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-purple-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -488,14 +488,14 @@ const ProductComponent: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/3 order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105 p-8">
+              <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105 p-8">
                 <img
                   src="/products/unified_automation_platform.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg"
                 />
               </div>
-              <div className="lg:w-2/3 order-1 lg:order-2 md:mt-4">
+              <div className="lg:w-2/3 order-1 lg:order-2 md:mt-14 text-center md:text-start">
                 <p className="text-xl mb-6 text-gray-400">
                   Maya seamlessly integrates all its tools - sales, WhatsApp,
                   Telegram, and email automation - into one unified platform, so
@@ -506,17 +506,17 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-blue-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
@@ -542,23 +542,22 @@ const ProductComponent: React.FC = () => {
                   <FeatureCard
                     icon={
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-yellow-500"
+                        width="44"
+                        height="35"
+                        viewBox="0 0 24 25"
                         fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M9 20.8386H4V15.8386L14.5858 5.25278C15.3668 4.47173 16.6332 4.47173 17.4142 5.25278L19.5858 7.42435C20.3668 8.2054 20.3668 9.47173 19.5858 10.2528L9 20.8386ZM9 20.8386H21"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     }
                     text="Enhanced productivity with centralized automation."
                   />
-                  
                 </div>
               </div>
             </div>

@@ -87,7 +87,7 @@ export const menuData: MenuObject[] = [
                 title: "Security and Compliance",
                 level: "tertiary",
                 icon: "/icons/SecurityShield.png",
-                link: "#",
+                link: "/security&compliance",
               },
             ],
           },

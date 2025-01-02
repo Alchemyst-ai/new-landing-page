@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const EndingCard: React.FC = () => {
   return (
-    <div className="w-full bg-gradient-to-b from-[#0a0b08] via-black to-[#7c4711] text-white">
+    <div className="w-full bg-gradient-to-b from-[#0a0b08] via-black to-[#7c4711] text-white p-5 md:p-0">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center">
           {/* Left Column */}

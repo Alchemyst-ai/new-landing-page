@@ -79,7 +79,7 @@ const B2BComponent = () => {
     },
   ];
 
-	const solutions = [
+  const solutions = [
     {
       icon: "/b2b/b2blast01.svg",
       title: "Sales Teams:",
@@ -101,7 +101,7 @@ const B2BComponent = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 max-w-full">
+    <div className="container mx-auto max-w-full">
       {/* Section 1 - Empower Your Business with Reliable B2B Data */}
       <motion.section
         initial="hidden"
@@ -110,17 +110,17 @@ const B2BComponent = () => {
         transition={{ duration: 2.0 }}
         className="mb-20 mt-40 pl-0 md:pl-32"
       >
-        <div className="flex flex-col md:flex-row items-center md:p-10">
-          <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center p-5 md:p-10">
+          <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Empower Your Business with{" "}
               <span className="text-orange-400">Reliable B2B Data</span>
             </h1>
-            <h2 className="text-2xl md:text-2xl w-3/4 mb-4 text-center md:text-left mt-14">
+            <h2 className="text-xl md:text-2xl md:w-3/4 mb-4 mt-14">
               Access Accurate, Real-Time Insights to Drive Your Sales and
               Marketing Strategies
             </h2>
-            <p className="text-lg text-gray-400 text-center md:text-left">
+            <p className="text-lg text-gray-400">
               Access Accurate, Real-Time Insights to Drive Your Sales and
               Marketing Strategies
             </p>
@@ -169,7 +169,6 @@ const B2BComponent = () => {
               alt="B2B DATA IMAGE"
               width={600}
               height={400}
-              className=""
             />
           </div>
         </div>
@@ -183,18 +182,17 @@ const B2BComponent = () => {
         transition={{ duration: 2.0 }}
         className="mb-20 mt-40 pl-0 md:pl-32"
       >
-        <div className="flex flex-col md:flex-row items-center md:p-10">
-          <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
+        <div className="flex flex-col md:flex-row items-center md:p-10 p-5">
+          <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105 mb-10 md:mb-0">
             <Image
               src="/b2b/b2b-02.svg"
-              alt="B2B DATA IMAGE"
+              alt="B2B IMAGE"
               width={600}
               height={400}
-              className=""
             />
           </div>
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl mb-4 text-center md:text-left">
               Transform Your Outreach with{" "}
               <span className="text-orange-400">Actionable B2B Data</span>
             </h1>
@@ -230,7 +228,7 @@ const B2BComponent = () => {
         transition={{ duration: 2.0 }}
         className="mb-20 mt-40"
       >
-        <div className="py-12 px-4 md:px-8 max-w-6xl mx-auto">
+        <div className="py-12 px-4 md:px-8 max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Key Features of Our B2B Data Platform
           </h2>
@@ -248,11 +246,11 @@ const B2BComponent = () => {
                     height={24}
                     className="w-10 h-10 mr-3 "
                   />
-                  <h3 className="text-xl font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
-                    {feature.title}
-                  </h3>
                 </div>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-2xl font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 mt-4">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -285,7 +283,7 @@ const B2BComponent = () => {
                   className="w-20 h-20 mr-4 transition-all duration-500 ease-in-out hover:scale-110"
                 />
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+                  <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                     {reason.title}
                   </h3>
                   <p className="text-gray-500 text-md">{reason.description}</p>
@@ -315,9 +313,9 @@ const B2BComponent = () => {
         animate="visible"
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-40"
+        className="mb-20 mt-40 p-5 md:p-0"
       >
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-20">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
           Tailored Solutions for Your Business Needs
         </h2>
         <div className="flex flex-col md:flex-row items-center md:pl-32 md:pr-32">
@@ -325,13 +323,12 @@ const B2BComponent = () => {
             <Image
               src="/b2b/b2blast.svg"
               alt="B2B DATA IMAGE"
-              width={600}
-              height={400}
-              className=""
+              width={900}
+              height={900}
             />
           </div>
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center md:text-left">
               Intent Data Analysis
             </h1>
             <div className="grid grid-cols-1 gap-8 mt-12 mb-12">

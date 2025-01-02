@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
-import B2BComponent from "@/components/b2b/B2BComponent";
+import SandC_Component from "@/components/security&compliance/SandC_Component";
 
 const page = () => {
   return (
@@ -10,7 +10,7 @@ const page = () => {
         <Navbar />
         <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
       </header>
-      <B2BComponent />
+      <SandC_Component />
       <Footer />
     </div>
   );
