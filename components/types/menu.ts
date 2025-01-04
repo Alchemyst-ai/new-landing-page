@@ -113,7 +113,7 @@ export const menuData: MenuObject[] = [
         icon: "/icons/Rocket.png",
         description:
           "Let Maya handle your entire outbound operations to keep your team streamlined and productive.",
-        link: "#",
+        link: "/solutions/startups",
       },
       {
         title: "Midmarket",
@@ -121,7 +121,7 @@ export const menuData: MenuObject[] = [
         icon: "/icons/Stall.png",
         description:
           "Optimize your outbound workflow by automating up to 80% of repetitive tasks.",
-        link: "#",
+        link: "/solutions/midmarket",
       },
       {
         title: "Enterprise",
@@ -129,7 +129,7 @@ export const menuData: MenuObject[] = [
         icon: "/icons/Company.png",
         description:
           "Empower your team with advanced tools for every stage of the outbound process, supported by an AI assistant to ensure seamless tracking and management.",
-        link: "#",
+        link: "/solutions/enterprise",
       },
       {
         title: "SMEs and MSMEs",
@@ -137,7 +137,7 @@ export const menuData: MenuObject[] = [
         icon: "/icons/Home.png",
         description:
           "Enhance client outcomes by reducing manual effort and focusing on strategic priorities.",
-        link: "#",
+        link: "/solutions/sme-msme",
       },
     ],
   },
