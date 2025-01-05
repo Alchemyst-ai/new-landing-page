@@ -89,7 +89,7 @@ function Hero() {
         {/* The description Section */}
         <div className="mt-8">
           <h2 className="text-gray-400 pl-10 pr-10 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start">
-            Alchemyst.ai empowers your team with an AI-powered sales platform
+            Alchemyst AI empowers your team with an AI-powered sales platform
             that automates lead generation, outreach, and personalization -
             boosting productivity and driving growth.
           </h2>

@@ -200,7 +200,7 @@ const StartupComponent = () => {
         </div>
       </motion.section>
 
-      {/* Section 2 - Why Your Emails Aren’t Reaching the Inbox */}
+      {/* Section 2 - Why Startups Need Alchemyst AI */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -247,7 +247,7 @@ const StartupComponent = () => {
                   alt="feature Image"
                   className="absolute w-full h-full p-2"
                   layout="fill"
-									objectFit="contain"
+                  objectFit="contain"
                 />
 
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
