@@ -153,7 +153,7 @@ export const menuData: MenuObject[] = [
             title: "About Us",
             level: "tertiary",
             icon: "/icons/Info.png",
-            link: "#",
+            link: "/about-us",
           },
           {
             title: "Careers",
