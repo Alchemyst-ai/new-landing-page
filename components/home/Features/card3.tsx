@@ -16,7 +16,7 @@ export default function Card3() {
                 Find the Best B2B Sales Leads Instantly:
               </p>
               <p>
-                Leverage Alchemyst's AI for lead generation and access a
+                Leverage Alchemyst&apos;s AI for lead generation and access a
                 database of over{" "}
                 <span className="text-orange-400">300M+ B2B leads</span> to
                 identify perfect prospects faster.

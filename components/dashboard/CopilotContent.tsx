@@ -135,7 +135,7 @@ export default function CopilotContent() {
               <span className="text-orange-400">automated workflows</span>,{" "}
               <span className="text-orange-400">intelligent lead scoring</span>,
               and <span className="text-orange-400">actionable insights </span>
-              that drive conversions. Whether you're looking to boost efficiency
+              that drive conversions. Whether you&apos;re looking to boost efficiency
               or close deals faster, Maya delivers the tools you need to grow.
             </p>
           </div>
