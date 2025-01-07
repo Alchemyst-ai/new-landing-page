@@ -1,40 +1,46 @@
+import localFont from "next/font/local";
+
 import { Metadata } from "next";
+import "../globals.css";
 
-// Metadata for the Alchemyst AI Pricing page to aid the search engines and social media.
+const satoshi = localFont({
+  src: "../../public/fonts/Satoshi-Variable.ttf",
+  variable: "--font-satoshi",
+  display: "swap",
+});
 
-// Remember to optimise this. This is keyword stuffing and often penalized by search engines.
 export const metadata: Metadata = {
-  title: "Alchemyst AI Pricing",
+  title: "Alchemyst AI",
   description:
-    "Alchemyst AI offers flexible pricing plans to suit your business needs. Automate your processes with our cutting-edge AI technology, without breaking the bank.",
+    "Alchemyst AI - Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
   keywords: [
-    "AI employee pricing",
-    "AI automation pricing",
-    "AI solutions pricing",
-    "AI company pricing",
-    "AI marketing pricing",
-    "AI hiring pricing",
-    "AI design pricing",
-    "AI processes pricing",
-    "AI solutions pricing",
-    "machine learning pricing",
-    "artificial intelligence pricing",
-    "business automation pricing",
-    "intelligent systems pricing",
-    "data analysis pricing",
-    "predictive analytics pricing",
-    "deep learning pricing",
-    "AI-powered applications pricing",
-    "automated workflows pricing",
-    "digital transformation pricing",
-    "AI-driven innovation pricing",
+    "AI employee",
+    "AI agent",
+    "AI company",
+    "automate workforce",
+    "AI marketing",
+    "AI hiring",
+    "AI design",
+    "AI processes",
+    "AI solutions",
+    "machine learning",
+    "artificial intelligence",
+    "business automation",
+    "intelligent systems",
+    "data analysis",
+    "predictive analytics",
+    "deep learning",
+    "AI-powered applications",
+    "automated workflows",
+    "digital transformation",
+    "AI-driven innovation",
   ],
   openGraph: {
     type: "website",
-    url: "https://getalchemystai.com/pricing",
-    title: "Alchemyst AI Pricing",
+    url: "https://getalchemystai.com",
+    title: "Alchemyst AI",
     description:
-      "Alchemyst AI offers flexible pricing plans to suit your business needs. Automate your processes with our cutting-edge AI technology, without breaking the bank.",
+      "Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
     images: [
       {
         url: "https://getalchemystai.com/logo/alchemyst-ai.jpeg",
@@ -47,9 +53,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@AlchemystAI",
-    title: "Alchemyst AI Pricing",
+    title: "Alchemyst AI",
     description:
-      "Alchemyst AI offers flexible pricing plans to suit your business needs. Automate your processes with our cutting-edge AI technology, without breaking the bank.",
+      "Revolutionizing the workforce with AI-driven solutions. Automate your processes with our cutting-edge AI technology.",
     images: "https://getalchemystai.com/logo/alchemyst-ai.jpeg",
   },
 };
@@ -62,7 +68,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      
+      <body
+        className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
+

@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import Link from "next/link";
+import { Target } from "lucide-react";
 
 // Data for each option
 const options = [
@@ -11,25 +11,28 @@ const options = [
     title: "Define Your ICP",
     description:
       "Maya's intuitive AI sales assistant asks smart, targeted questions to build a precise Ideal Customer Profile for your business, ensuring you target the right prospects every time.",
-    image: "/media/defineyouricp.png",
+    // image: "/media/defineyouricp.png",
+    video: "/media/icp.mp4",
     buttonText: "Watch Maya in Action",
-    link: "/chat-with-maya",
+    link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
   {
     title: "Generate High-Quality Leads",
     description:
       "Unlock the power of AI for lead generation to access a database of over 300M+ B2B sales leads instantly. Maya delivers leads that perfectly match your ICP, helping you close deals faster.",
-    image: "/media/generatehighqualityleads.png",
+    // image: "/media/generatehighqualityleads.png",
+    video: "/media/data_enrichment.mp4",
     buttonText: "Enrich your Data",
-    link: "/enrich-data",
+    link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
   {
     title: "Automate Your Outreach",
     description:
       "Scale your sales outreach with ease using AI-driven sales automation tools. Maya enables tailored communication across email, WhatsApp, and Telegram, ensuring higher engagement and conversions.",
-    image: "/media/automateyouroutreach.png",
+    // image: "/media/automateyouroutreach.png",
+    video: "/media/campaign.mp4",
     buttonText: "Generate Emails Now!",
-    link: "/generate-emails",
+    link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
 ];
 
@@ -37,7 +40,7 @@ const Steps: React.FC = () => {
   const [activeOption, setActiveOption] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll through options every 10 seconds (desktop only)
+  // Auto-scroll through options every 60 seconds (desktop only)
   useEffect(() => {
     const interval = setInterval(() => {
       if (window.innerWidth >= 768) {
@@ -52,7 +55,7 @@ const Steps: React.FC = () => {
           });
         }
       }
-    }, 10000);
+    }, 60000);
 
     return () => clearInterval(interval);
   }, [activeOption]);
@@ -61,7 +64,7 @@ const Steps: React.FC = () => {
     <div className="w-full  py-16 ">
       {/* Desktop View */}
       <div className="hidden md:block">
-        {/* Horizontal Scrollable Options */}
+        {/* Horizontal Clickable Options */}
         <div
           ref={containerRef}
           className="w-full max-w-6xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-none px-4"
@@ -69,7 +72,7 @@ const Steps: React.FC = () => {
         >
           {options.map((option, index) => (
             <div key={index} className="flex items-center">
-              {/* Option */}
+              {/* Options */}
               <div
                 onClick={() => setActiveOption(index)}
                 className={`flex-shrink-0 flex items-center justify-center w-48 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${
@@ -118,7 +121,7 @@ const Steps: React.FC = () => {
               initial={{ x: "100%", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
+              transition={{ duration: 1.0, ease: "easeOut" }}
               className="absolute w-full h-full flex items-center"
             >
               {/* Dynamically Rendered Content */}
@@ -135,22 +138,29 @@ const Steps: React.FC = () => {
                   </p>
 
                   {/* Button of the dynamic content */}
-                  <Link href={options[activeOption].link}>
+                  <Link
+                    href={options[activeOption].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Button variant="primary">
                       {options[activeOption].buttonText}
                     </Button>
                   </Link>
                 </div>
 
-                {/* Image of the dynamic content */}
+                {/* Video of the dynamic content */}
                 <div className="w-full">
-                  <Image
-                    src={options[activeOption].image}
-                    alt={options[activeOption].title}
-                    width={600}
-                    height={500}
-                    className="rounded-lg shadow-lg"
-                  />
+                  <video
+                    src={options[activeOption].video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    width="95%"
+                    height="100%"
+                    className="rounded-xl shadow-lg border border-orange-400"
+                  ></video>
                 </div>
               </div>
             </motion.div>
@@ -172,13 +182,14 @@ const Steps: React.FC = () => {
             <Link href={option.link} className="mb-6 inline-block">
               <Button variant="primary">{option.buttonText}</Button>
             </Link>
-            <Image
-              src={option.image}
-              alt={option.title}
-              width={500}
-              height={300}
-              className="rounded-lg shadow-lg w-full"
-            />
+            <video
+              src={option.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="rounded-xl shadow-lg w-full"
+            ></video>
           </div>
         ))}
       </div>

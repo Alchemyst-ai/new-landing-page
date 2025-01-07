@@ -195,15 +195,15 @@ const MidmarketComponent = () => {
         viewport={{ once: true }}
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-40"
+        className="mt-40"
       >
         <div>
           {/* Heading for the section */}
           <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-4xl md:text-5xl">
+            <h1 className="text-4xl md:text-5xl font-bold">
               <span className="text-orange-400">Alchemyst AI&apos;s</span>{" "}
               Tailored Solutions for{" "}
-              <span className="text-orange-400">Mid-Market</span>
+              <span className="text-orange-400">Mid-Market </span>
               Businesses
             </h1>
           </div>
@@ -307,7 +307,6 @@ const MidmarketComponent = () => {
         viewport={{ once: true }}
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-20"
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center">
@@ -349,12 +348,12 @@ const MidmarketComponent = () => {
         viewport={{ once: true }}
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-56"
+        className="mb-20 mt-36"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-center">
             {/* Left Column */}
-            <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
+            <div className="md:w-3/4 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Why Choose <span className="text-orange-400">Alchemyst AI</span>
               </h1>

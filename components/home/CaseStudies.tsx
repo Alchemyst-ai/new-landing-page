@@ -48,7 +48,7 @@ const caseStudies: CaseStudy[] = [
 const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
   <motion.div
     className="bg-gradient-to-b from-gray-900 via-gray-900 to-black rounded-lg shadow-lg h-full mb-6 border border-gray-700"
-    whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(254,152,51,255)" }}
+    whileHover={{ scale: 1.02, boxShadow: "0 0 5px 1px rgba(254,152,51,255)" }}
     transition={{ duration: 0.3 }}
   >
     <div className="flex justify-between items-start">
@@ -61,8 +61,8 @@ const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
       />
     </div>
     <div className="p-6">
-      <h3 className="text-xl font-bold text-gray-300 mb-4">{title}</h3>
-      <p className="text-gray-500">{description}</p>
+      <h3 className="text-2xl font-bold mb-4">{title}</h3>
+      <p className="text-lg text-gray-400">{description}</p>
     </div>
   </motion.div>
 );
@@ -102,8 +102,8 @@ const CaseStudies: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full h-full relative -mt-14 md:mt-0 px-4 py-16">
-      <h1 className="flex text-4xl items-center justify-center text-center text-gray-400 mt-16 mb-16">
-        Real Stories, Real Results: <br /> How Alchemyst.ai Transforms B2B Sales
+      <h1 className="font-bold flex text-5xl items-center justify-center text-center mt-16 mb-16">
+        Real Stories, Real Results: <br /> How Alchemyst AI Transforms B2B Sales
       </h1>
 
       <div className="relative">

@@ -119,7 +119,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       onMouseEnter={() => handleSubMenuEnter(subMenu.title)}
                     >
                       <button
-                        className={`flex items-center space-x-1 hover:text-yellow-500 transition-colors duration-200 ${
+                        className={`flex items-center mr-8 space-x-1 hover:text-yellow-500 transition-colors duration-200 ${
                           activeSubMenu === subMenu.title
                             ? "text-yellow-500"
                             : ""

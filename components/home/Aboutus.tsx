@@ -25,7 +25,7 @@ const AboutUs: React.FC = () => {
             Join the revolution in AI-powered B2B sales automation with
             Alchemyst.ai - where technology meets results-driven innovation.
           </p>
-          <Link href="">
+          <Link href="/about-us">
             <button className="inline-block px-10 py-2 mt-8 text-black font-semibold text-center rounded-full bg-[#fe9833] transition-all duration-500 ease-in-out hover:scale-125">
               Connect Now!
             </button>

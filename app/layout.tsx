@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import "./globals.css";
 
 const satoshi = localFont({
-  src: [{ path: "../public/fonts/Satoshi-Variable.ttf", weight: "500" }],
+  src: "../public/fonts/Satoshi-Variable.ttf",
   variable: "--font-satoshi",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -76,3 +77,4 @@ export default function RootLayout({
     </html>
   );
 }
+

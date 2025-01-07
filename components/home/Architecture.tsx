@@ -10,7 +10,7 @@ const Architecture: React.FC = () => {
 
   return (
     <section className="flex w-full flex-col justify-center items-center p-4">
-      <header className="mb-20 text-3xl md:text-4xl flex flex-col md:flex-row text-center text-gray-400">
+      <header className="font-bold mb-20 text-3xl md:text-6xl flex flex-col md:flex-row text-center bg-gradient-to-r from-orange-400 to-teal-600 bg-clip-text text-transparent">
         <span>Service Oriented Architecture</span>
       </header>
 
@@ -23,8 +23,8 @@ const Architecture: React.FC = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-black via-black to-[#9e671a]">
-          <h2 className="text-3xl font-semibold text-gray-400">
+        <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-black via-black to-[#9e671a] transform transition-all duration-500 hover:scale-110">
+          <h2 className="text-3xl text-gray-400">
             Gen-AI Employees
           </h2>
         </div>
@@ -45,13 +45,13 @@ const Architecture: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: false }}
             >
-              <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746]">
+              <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746] transform transition-all duration-500 hover:scale-110">
                 <h2
                   className={`${
                     title === "Customer Support"
                       ? "text-sm md:text-xl"
                       : "text-xl"
-                  } font-semibold text-gray-400 text-center`}
+                  } text-gray-400 text-center `}
                 >
                   {title}
                 </h2>
@@ -79,8 +79,8 @@ const Architecture: React.FC = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: false }}
           >
-            <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746]">
-              <h2 className="text-2xl md:text-xl font-semibold text-gray-400 text-center">
+            <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746] transform transition-all duration-500 hover:scale-110">
+              <h2 className="text-2xl md:text-xl text-gray-400 text-center">
                 {title}
               </h2>
             </div>

@@ -68,19 +68,30 @@ function Hero() {
         <source src="/media/landingpagevideo.mp4" type="video/mp4" />
       </video>
 
-      <RetroGrid className="md:hidden block"/>
+      <RetroGrid className="md:hidden block" />
 
       <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black to-black opacity-90 hidden md:block" />
 
+      <div>
+        <Image
+          src="/media/top_card.svg"
+          alt=""
+          width={100}
+          height={100}
+          className="h-[18%] w-auto rounded-3xl top-20 left-8 absolute"
+          priority
+        />
+      </div>
+
       <div className="relative z-10 flex flex-col h-full">
         {/* Heading Section for Desktop */}
-        <div className="mt-56 md:flex flex-col items-start pl-20 hidden">
-          <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
-          <h1 className="text-4xl md:text-6xl">AI-Driven Employees ✨</h1>
+        <div className="mt-56 md:flex flex-col items-start pl-20 hidden font-bold">
+          <h1 className="text-4xl md:text-7xl">Transform Your Sales with </h1>
+          <h1 className="text-4xl md:text-7xl">AI-Driven Employees ✨</h1>
         </div>
 
         {/* Heading Section for Mobile */}
-        <div className="mt-40 md:hidden flex flex-col items-center justify-center text-center">
+        <div className="mt-40 md:hidden flex flex-col items-center justify-center text-center font-bold">
           <h1 className="text-5xl pl-2 pr-2 md:pl-0 md:pr-0 md:text-7xl">
             Transform Your Sales with AI-Driven Employees ✨
           </h1>
@@ -88,7 +99,7 @@ function Hero() {
 
         {/* The description Section */}
         <div className="mt-8">
-          <h2 className="text-gray-400 pl-10 pr-10 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start">
+          <h2 className="text-gray-400 pl-10 pr-10 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold">
             Alchemyst AI empowers your team with an AI-powered sales platform
             that automates lead generation, outreach, and personalization -
             boosting productivity and driving growth.
@@ -159,4 +170,3 @@ function Hero() {
 }
 
 export default Hero;
-

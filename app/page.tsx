@@ -3,7 +3,7 @@ import Architecture from "@/components/home/Architecture";
 import CaseStudies from "@/components/home/CaseStudies";
 import EndingCard from "@/components/home/EndingCard";
 import Features from "@/components/home/Features";
-import MayaCard from "@/components/home/MayaCard";
+import AgentsCard from "@/components/home/AgentsCard";
 import InfoCard from "@/components/home/InfoCard";
 import AboutUs from "@/components/home/Aboutus";
 import Footer from "@/components/home/Footer";
@@ -49,13 +49,13 @@ export default function HomePage() {
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
-          <h1 className="text-4xl font-bold text-center text-gray-400 mt-12 p-4 md:mt-8 md:mb-8">
+          <h1 className="text-5xl font-bold text-center mt-12 p-4 md:mt-16 md:mb-4">
             3 Simple Steps to Boost Sales with AI-Powered Precision
           </h1>
           <Steps />
           <Features />
           <Architecture />
-          <MayaCard />
+          <AgentsCard />
           <InfoCard />
           <CaseStudies />
           <AboutUs />
