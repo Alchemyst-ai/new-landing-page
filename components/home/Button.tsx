@@ -18,7 +18,7 @@ interface ButtonProps {
 
 const buttonStyles: Record<ButtonProps["variant"], string> = {
   primary: "btn-primary",
-  secondary: "btn-secondary",
+  secondary: "btn-secondary border border-orange-300",
   secondaryWithBg: "btn-secondary-with-bg",
   secondaryNoHover: "btn-secondary-no-hover",
   primaryHoverIcon: "hover:bg-blue-400",
@@ -53,3 +53,4 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default Button;
+

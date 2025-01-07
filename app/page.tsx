@@ -1,26 +1,17 @@
-import Applications from "@/components/home/Applications";
-import Architecture from "@/components/home/Architecture";
-import BackedBy from "@/components/home/BackedBy";
 import CustomCursor from "@/components/home/CustomCursor";
+import Architecture from "@/components/home/Architecture";
+import CaseStudies from "@/components/home/CaseStudies";
+import EndingCard from "@/components/home/EndingCard";
 import Features from "@/components/home/Features";
-import FlowLayout from "@/components/home/FlowLayout";
+import AgentsCard from "@/components/home/AgentsCard";
+import InfoCard from "@/components/home/InfoCard";
+import AboutUs from "@/components/home/Aboutus";
 import Footer from "@/components/home/Footer";
-import Hero from "@/components/home/Hero";
-import Integrations from "@/components/home/Integrations";
-import MediaAndCoverage from "@/components/home/MediaAndCoverage";
-import ModelsIntro from "@/components/home/ModelsIntro";
 import Navbar from "@/components/home/Navbar";
-import TalkToFounder from "@/components/home/TalkToFounder";
-import Team from "@/components/home/Team";
-import FeaturedIn from "@/components/media-awards/FeaturedIn";
-import applications from "./constants/applications";
-import { features } from "./constants/features";
-import { flows } from "./constants/flows";
+import Steps from "@/components/home/Steps";
+import Hero from "@/components/home/Hero";
 import Head from "next/head";
-import GlobalAccelerators from "@/components/home/GlobalAccelerators";
-import Advisor from "@/components/home/Advisor";
-import  './globals.css'
-
+import "./globals.css";
 
 export default function HomePage() {
   return (
@@ -36,7 +27,10 @@ export default function HomePage() {
           content="AI, Technology, Innovation, Features, Team, Integrations, Architecture, Applications"
         />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Company Name - Leading in AI and Technology" />
+        <meta
+          property="og:title"
+          content="Company Name - Leading in AI and Technology"
+        />
         <meta
           property="og:description"
           content="Discover our powerful AI solutions and learn how we're shaping the future."
@@ -55,20 +49,17 @@ export default function HomePage() {
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
           <Hero />
-          <FlowLayout flows={flows} />
-          <Advisor />
+          <h1 className="text-5xl font-bold text-center mt-12 p-4 md:mt-16 md:mb-4">
+            3 Simple Steps to Boost Sales with AI-Powered Precision
+          </h1>
+          <Steps />
+          <Features />
           <Architecture />
-          <Features features={features} />
-          <BackedBy />
-          <ModelsIntro />
-          <GlobalAccelerators />
-          <Integrations />
-          <Applications applications={applications} />
-          <Team />
-          <FeaturedIn />
-          <MediaAndCoverage />
-          <TalkToFounder />
-          {/* <Testimonials testimonials={testimonials} /> */}
+          <AgentsCard />
+          <InfoCard />
+          <CaseStudies />
+          <AboutUs />
+          <EndingCard />
         </main>
         <Footer />
       </div>
