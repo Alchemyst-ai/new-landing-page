@@ -280,7 +280,7 @@ export default function CopilotContent() {
       <div id="how-it-works"></div>
 
       {/* Section 6 -How to Get Started Section */}
-      <Howitworks flows={flows} />
+      <Howitworks/>
 
       {/* Section 7 - Ending Card */}
       <motion.section
