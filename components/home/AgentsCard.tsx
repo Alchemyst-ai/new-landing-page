@@ -128,7 +128,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import chevron icons
 
@@ -179,6 +179,7 @@ export default function MeetAlchemysts() {
           {alchemysts.map((alchemyst, index) => (
             <motion.div
               key={alchemyst.id}
+              className="absolute inset-0 flex items-center justify-center px-4"
               initial={{ opacity: 0, x: index > activeCard ? "100%" : "-100%" }}
               animate={{
                 opacity: index === activeCard ? 1 : 0,
@@ -193,11 +194,10 @@ export default function MeetAlchemysts() {
               exit={{ opacity: 0, x: index < activeCard ? "-100%" : "100%" }}
               transition={{
                 type: "spring",
-                stiffness: 300,
-                damping: 20,
+                stiffness: 500,
+                damping: 50,
                 duration: 1.5,
               }}
-              className="absolute inset-0 flex items-center justify-center px-4"
             >
               <AlchemystCard {...alchemyst} />
             </motion.div>
@@ -221,6 +221,8 @@ function AlchemystCard({ id, name, role }: AlchemystCardProps) {
         src={`/media/agent-${id}.svg`}
         loading="eager"
         alt={`${name} background`}
+        blurDataURL={`/media/agent-${id}.svg`}
+        placeholder="blur"
         width={1000}
         height={1000}
         className="w-full h-full transition-opacity duration-300"

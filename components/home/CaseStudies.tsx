@@ -33,7 +33,7 @@ const caseStudies: CaseStudy[] = [
     id: 2,
     title: "Case Study 2",
     description:
-      '"We scaled from 10 to 100 qualified leads weekly using Maya\'s sales copilot for small teams - a must have for startups." - GrowthEdge',
+      '"We scaled from 10 to 100 qualified leads weekly using Maya\'s sales copilot for small teams - it is definately a must have for startups." - GrowthEdge',
     image: "/media/casestudiesicon.png",
   },
   {
