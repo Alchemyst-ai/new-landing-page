@@ -57,12 +57,12 @@ function Hero() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden ">
+    <div className="relative w-full h-screen overflow-hidden">
       <video
         autoPlay
         loop
         muted
-        className="absolute inset-0 w-full h-[90%] object-cover hidden md:block overflow-hidden"
+        className="absolute inset-0 w-full h-full object-cover hidden md:block overflow-hidden"
         preload="none"
         playsInline
         style={{ overflow: 'hidden' }}
@@ -85,7 +85,7 @@ function Hero() {
         quality={100}
       />
 
-      <div className="relative z-10 flex flex-col h-full">
+      <div className="relative z-10 flex flex-col h-full overflow-y-hidden">
         {/* Heading Section for Desktop */}
         <div className="mt-60 md:flex flex-col items-start pl-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
@@ -173,3 +173,4 @@ function Hero() {
 }
 
 export default Hero;
+
