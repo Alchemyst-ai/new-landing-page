@@ -80,11 +80,11 @@ const TermsOfUse: React.FC = () => {
           <div className="space-y-4">
             <p>
               These Terms of Use constitute a legally binding agreement made
-              between you, whether personally or on behalf of an entity (“you”)
+              between you, whether personally or on behalf of an entity (&quot;you&quot;)
               and Xalchemyst Technologies Private Limited, doing business as (
-              <strong>"Company"</strong> <strong>"we"</strong>
+              <strong>&quot;Company&quot;</strong> <strong>&quot;we&quot;</strong>
               {", "}
-              <strong>"us"</strong>, or <strong>"our" </strong>), concerning
+              <strong>&quot;us&quot;</strong>, or <strong>&quot;our&quot; </strong>), concerning
               your access to and use of the{" "}
               <a
                 href="https://getalchemystai.com/"
@@ -157,19 +157,20 @@ const TermsOfUse: React.FC = () => {
               Unless otherwise indicated, the Site is our proprietary property
               and all source code, databases, functionality, software, website
               designs, audio, video, text, photographs, and graphics on the Site
-              (collectively, the “Content”) and the trademarks, service marks,
-              and logos contained therein (the “Marks”) are owned or controlled
-              by us or licensed to us, and are protected by copyright and
-              trademark laws and various other intellectual property rights and
-              unfair competition laws of the India, international copyright
-              laws, and international conventions. The Content and the Marks are
-              provided on the Site “Alchemyst AI” for your information and
-              personal use only. Except as expressly provided in these Terms of
-              Use, no part of the Site and no Content or Marks may be copied,
-              reproduced, aggregated, republished, uploaded, posted, publicly
-              displayed, encoded, translated, transmitted, distributed, sold,
-              licensed, or otherwise exploited for any commercial purpose
-              whatsoever, without our express prior written permission.
+              (collectively, the &quot;Content&quot;) and the trademarks, service
+              marks, and logos contained therein (the &quot;Marks&quot;) are owned
+              or controlled by us or licensed to us, and are protected by
+              copyright and trademark laws and various other intellectual
+              property rights and unfair competition laws of the India,
+              international copyright laws, and international conventions. The
+              Content and the Marks are provided on the Site &quot;Alchemyst
+              AI&quot; for your information and personal use only. Except as
+              expressly provided in these Terms of Use, no part of the Site and
+              no Content or Marks may be copied, reproduced, aggregated,
+              republished, uploaded, posted, publicly displayed, encoded,
+              translated, transmitted, distributed, sold, licensed, or
+              otherwise exploited for any commercial purpose whatsoever,
+              without our express prior written permission.
             </p>
             <p>
               Provided that you are eligible to use the Site, you are granted a
@@ -188,20 +189,19 @@ const TermsOfUse: React.FC = () => {
           </h2>
           <div className="space-y-4">
             <p>
-              By using the Site, you represent and warrant that: <br />
+              By using the Site, you represent and warrant that: &lt;br /&gt;
               (1) all registration information you submit will be true,
-              accurate, current, and complete; <br />
+              accurate, current, and complete; &lt;br /&gt;
               (2) you will maintain the accuracy of such information and
-              promptly update such registration information as necessary; <br />
+              promptly update such registration information as necessary; &lt;br /&gt;
               (3) you have the legal capacity and you agree to comply with these
-              Terms of Use;
-              <br />
+              Terms of Use; &lt;br /&gt;
               (4) you are not a minor in the jurisdiction in which you reside;{" "}
-              <br />
+              &lt;br /&gt;
               (5) you will not access the Site through automated or non- human
-              means, whether through a bot, script, or otherwise; <br />
+              means, whether through a bot, script, or otherwise; &lt;br /&gt;
               (6) you will not use the Site for any illegal or unauthorized
-              purpose; and <br />
+              purpose; and &lt;br /&gt;
               (7) your use of the Site will not violate any applicable law or
               regulation.
             </p>
@@ -252,7 +252,7 @@ const TermsOfUse: React.FC = () => {
             </p>
             <div>
               As a user of the Site, you agree{" "}
-              <span className="text-red-500 text-xl">NOT</span> to:
+              <span className="text-red-500 text-xl">&quot;NOT&quot;</span> to:
               <ul className="space-y-4 mt-4 pl-3">
                 <li>
                   Systematically retrieve data or other content from the Site to
@@ -318,10 +318,10 @@ const TermsOfUse: React.FC = () => {
                   Upload or transmit (or attempt to upload or to transmit) any
                   material that acts as a passive or active information
                   collection or transmission mechanism, including without
-                  limitation, clear graphics interchange formats (“gifs”),
+                  limitation, clear graphics interchange formats (&quot;gifs&quot;),
                   1&times;1 pixels, web bugs, cookies, or other similar devices
-                  (sometimes referred to as “spyware” or “passive collection
-                  mechanisms” or “pcms”).
+                  (sometimes referred to as &quot;spyware&quot; or &quot;passive
+                  collection mechanisms&quot; or &quot;pcms&quot;).
                 </li>
                 <li>
                   Interfere with, disrupt, or create an undue burden on the Site
@@ -400,7 +400,7 @@ const TermsOfUse: React.FC = () => {
               (whether in writing or otherwise while communicating on the
               Alchemyst AI Platform including but not limited to communicating
               with our support agents or delivery partners, through any medium)
-              which (“Prohibited Conduct”):
+              which (&quot;Prohibited Conduct&quot;):
             </p>
             <ul className="space-y-4 pl-3">
               <li>
@@ -458,7 +458,7 @@ const TermsOfUse: React.FC = () => {
             </ul>
             <p>
               You acknowledge that the company has no obligation to monitor your
-              - or anyone else's - access to or use of the Services for
+              - or anyone else&apos;s - access to or use of the Services for
               violations of the terms, or to review or edit any content.
               However, we have the right to do so for the purpose of operating
               and improving the Services (including without limitation for fraud
@@ -488,7 +488,7 @@ const TermsOfUse: React.FC = () => {
               prior written consent of the company.
             </p>
             <p>
-              You may not use any meta tags or any other “hidden text” utilizing
+              You may not use any meta tags or any other &quot;hidden text&quot; utilizing
               the company&apos;s name or trademarks without the express prior
               written consent of the company.
             </p>
@@ -497,7 +497,7 @@ const TermsOfUse: React.FC = () => {
               or feature of the Website, or any other systems or networks
               connected to the Website or to any server, computer, network, or
               to any of the services offered on or through the Website, by
-              hacking, 'password mining' or any other illegitimate means.
+              hacking, &apos;password mining&apos; or any other illegitimate means.
             </p>
           </div>
         </section>
@@ -508,7 +508,7 @@ const TermsOfUse: React.FC = () => {
             <p>
               As part of the functionality of the Alchemyst AI, you may link
               your account with online accounts you have with third-party
-              service providers (each such account, a “Third-Party Account”) by
+              service providers (each such account, a &quot;Third-Party Account&quot;) by
               either: (1) providing your Third-Party Account login information
               through the Site; or (2) allowing us to access your Third-Party
               Account, as is permitted under the applicable terms and conditions
@@ -523,7 +523,7 @@ const TermsOfUse: React.FC = () => {
               to any Third-Party Accounts, you understand that (1) we may
               access, make available, and store (if applicable) any content that
               you have provided to and stored in your Third-Party Account (the
-              “Social Network Content”) so that it is available on and through
+              &quot;Social Network Content&quot;) so that it is available on and through
               the Site via your account, including without limitation any friend
               lists and (2) we may submit to and receive from your Third-Party
               Account additional information to the extent you are notified when
@@ -539,11 +539,11 @@ const TermsOfUse: React.FC = () => {
               through the Site. You will have the ability to disable the
               connection between your account on the Site and your Third-Party
               Accounts at any time. PLEASE NOTE THAT YOUR RELATIONSHIP WITH THE
-              THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD- PARTY
+              THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY
               ACCOUNTS IS GOVERNED SOLELY BY YOUR AGREEMENT(S) WITH SUCH
               THIRD-PARTY SERVICE PROVIDERS. We make no effort to review any
               Social Network Content for any purpose, including but not limited
-              to, for accuracy, legality, or non- infringement, and we are not
+              to, for accuracy, legality, or non-infringement, and we are not
               responsible for any Social Network Content. You acknowledge and
               agree that we may access your email address book associated with a
               Third-Party Account and your contacts list stored on your mobile
@@ -553,7 +553,7 @@ const TermsOfUse: React.FC = () => {
               your Third-Party Account by contacting us using the contact
               information below or through your account settings (if
               applicable). We will attempt to delete any information stored on
-              our servers that was obtained through such Third- Party Account,
+              our servers that was obtained through such Third-Party Account,
               except the username and profile picture that become associated
               with your account.
             </p>
@@ -566,7 +566,7 @@ const TermsOfUse: React.FC = () => {
             <p>
               You acknowledge and agree that any questions, comments,
               suggestions, ideas, feedback, or other information regarding the
-              Alchemyst AI ("Submissions") provided by you to us are non-
+              Alchemyst AI (&quot;Submissions&quot;) provided by you to us are non-
               confidential and shall become our sole property. We shall own
               exclusive rights, including all intellectual property rights, and
               shall be entitled to the unrestricted use and dissemination of
@@ -588,11 +588,11 @@ const TermsOfUse: React.FC = () => {
           <div className="space-y-10">
             <p>
               The <i>Alchemyst AI</i> may contain (or you may be sent via the
-              Site) links to other websites ("Third- Party Websites") as well as
+              Site) links to other websites (&quot;Third- Party Websites&quot;) as well as
               articles, photographs, text, graphics, pictures, designs, music,
               sound, video, information, applications, software, and other
               content or items belonging to or originating from third parties
-              ("Third-Party Content"). Such Third-Party Websites and Third-
+              (&quot;Third-Party Content&quot;). Such Third-Party Websites and Third-
               Party Content are not investigated, monitored, or checked for
               accuracy, appropriateness, or completeness by us, and we are not
               responsible for any Third-Party Websites accessed through the Site
@@ -675,25 +675,22 @@ const TermsOfUse: React.FC = () => {
           <div className="space-y-10">
             <p>
               We respect the intellectual property rights of others. If you
-              believe that any material available on or through the{" "}
-              <i>Alchemyst AI</i>
-              infringes upon any copyright you own or control, please
-              immediately notify us using the contact information provided below
-              (a “Notification”). A copy of your Notification will be sent to
-              the person who posted or stored the material addressed in the
-              Notification. Please be advised that pursuant to applicable law
-              you may be held liable for damages if you make material
-              misrepresentations in a Notification. Thus, if you are not sure
-              that material located on or linked to by the <i>
-                Alchemyst AI
-              </i>{" "}
-              infringes your copyright, you should consider first contacting an
-              attorney.
+              believe that any material available on or through the &quot;
+              <i>Alchemyst AI</i>&quot; infringes upon any copyright you own or
+              control, please immediately notify us using the contact
+              information provided below (a &quot;Notification&quot;). A copy of
+              your Notification will be sent to the person who posted or stored
+              the material addressed in the Notification. Please be advised that
+              pursuant to applicable law you may be held liable for damages if
+              you make material misrepresentations in a Notification. Thus, if
+              you are not sure that material located on or linked to by the &quot;
+              <i>Alchemyst AI</i>&quot; infringes your copyright, you should
+              consider first contacting an attorney.
             </p>
           </div>
         </section>
 
-        <section id="copyright-infringements" className="mt-28 mb-8">
+        <section id="term-and-termination" className="mt-28 mb-8">
           <h2 className="text-4xl font-semibold mb-4">
             13. TERM AND TERMINATION
           </h2>
@@ -787,13 +784,14 @@ const TermsOfUse: React.FC = () => {
               <p>
                 To expedite resolution and control the cost of any dispute,
                 controversy, or claim related to these Terms of Use (each
-                "Dispute" and collectively, the “Disputes”) brought by either
-                you or us (individually, a “Party” and collectively, the
-                “Parties”), the Parties agree to first attempt to negotiate any
-                Dispute (except those Disputes expressly provided below)
-                informally for at least Forty-Five (45) days before initiating
-                arbitration. Such informal negotiations commence upon written
-                notice from one Party to the other Party.
+                &quot;Dispute&quot; and collectively, the &quot;Disputes&quot;)
+                brought by either you or us (individually, a &quot;Party&quot;
+                and collectively, the &quot;Parties&quot;), the Parties agree to
+                first attempt to negotiate any Dispute (except those Disputes
+                expressly provided below) informally for at least Forty-Five
+                (45) days before initiating arbitration. Such informal
+                negotiations commence upon written notice from one Party to the
+                other Party.
               </p>
             </div>
             <div>
@@ -805,7 +803,7 @@ const TermsOfUse: React.FC = () => {
                 any statutory modification or re-enactment thereof for the time
                 being in force. The arbitration shall be held at West Bengal and
                 all proceedings in any such arbitration shall be conducted in
-                English. There shall be 3 (three) arbitrators (“Arbitrators”),
+                English. There shall be 3 (three) arbitrators (&quot;Arbitrators&quot;),
                 all of whom shall be fluent in English. Within thirty 30
                 (thirty) Days of the reference of the dispute to arbitration,
                 the Party raising the dispute and making the reference to
@@ -956,14 +954,14 @@ const TermsOfUse: React.FC = () => {
               agents, partners, and employees, from and against any loss,
               damage, liability, claim, or demand, including reasonable
               attorneys&apos; fees and expenses, made by any third party due to
-              or arising out of: <br />
-              (1) your Contributions; <br />
-              (2) use of the Alchemyst AI; <br />
-              (3) breach of these Terms of Use; <br />
+              or arising out of: &lt;br /&gt;
+              (1) your Contributions; &lt;br /&gt;
+              (2) use of the Alchemyst AI; &lt;br /&gt;
+              (3) breach of these Terms of Use; &lt;br /&gt;
               (4) any breach of your representations and warranties set forth in
-              these Terms of Use; <br />
+              these Terms of Use; &lt;br /&gt;
               (5) your violation of the rights of a third party, including but
-              not limited to intellectual property rights; or <br />
+              not limited to intellectual property rights; or &lt;br /&gt;
               (6) any overt harmful act toward any other user of the Alchemyst
               AI with whom you connected via the Alchemyst AI. Notwithstanding
               the foregoing, we reserve the right, at your expense, to assume
@@ -981,8 +979,8 @@ const TermsOfUse: React.FC = () => {
           <h2 className="text-4xl font-semibold mb-4">21. USER DATA</h2>
           <div className="space-y-10">
             <p>
-              We will maintain certain data that you transmit to the{" "}
-              <i>Alchemyst AI</i> for the purpose of managing the performance of
+              We will maintain certain data that you transmit to the
+              <i> Alchemyst AI</i> for the purpose of managing the performance of
               the <i>Alchemyst AI</i>, as well as data relating to your use of
               the <i>Alchemyst AI</i>. Although we perform regular routine
               backups of data, you are solely responsible for all data that you
@@ -1005,13 +1003,13 @@ const TermsOfUse: React.FC = () => {
               completing online forms constitute electronic communications. You
               consent to receive electronic communications, and you agree that
               all agreements, notices, disclosures, and other communications we
-              provide to you electronically, via email and on the{" "}
-              <i>Alchemyst AI</i>, satisfy any legal requirement that such
+              provide to you electronically, via email and on the
+              <i> Alchemyst AI</i>, satisfy any legal requirement that such
               communication be in writing. <b></b>YOU HEREBY AGREE TO THE USE OF
               ELECTRONIC SIGNATURES, CONTRACTS, ORDERS, AND OTHER RECORDS, AND
               TO ELECTRONIC DELIVERY OF NOTICES, POLICIES, AND RECORDS OF
-              TRANSACTIONS INITIATED OR COMPLETED BY US OR VIA THE{" "}
-              <i>Alchemyst AI</i>.<b /> You hereby waive any rights or
+              TRANSACTIONS INITIATED OR COMPLETED BY US OR VIA THE
+              <i> Alchemyst AI</i>.<b /> You hereby waive any rights or
               requirements under any statutes, regulations, rules, ordinances,
               or other laws in any jurisdiction which require an original
               signature or delivery or retention of non-electronic records, or
@@ -1026,8 +1024,8 @@ const TermsOfUse: React.FC = () => {
           <div className="space-y-10">
             <p>
               These Terms of Use and any policies or operating rules posted by
-              us on the <i>Alchemyst AI</i> or in respect to the{" "}
-              <i>Alchemyst AI</i>
+              us on the <i>Alchemyst AI</i> or in respect to the
+              <i> Alchemyst AI</i>
               constitute the entire agreement and understanding between you and
               us. Our failure to exercise or enforce any right or provision of
               these Terms of Use shall not operate as a waiver of such right or
@@ -1067,8 +1065,8 @@ const TermsOfUse: React.FC = () => {
               India
             </p>
             <p>
-              <b>Phone:</b> (+91) 8910016942 <br /> <b>Email:</b>{" "}
-              uttaran@getalchemystai.com
+              <b>Phone:</b> (+91) 8910016942 <br /> <b>Email:</b>
+               uttaran@getalchemystai.com
             </p>
           </div>
         </section>
