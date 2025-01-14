@@ -62,9 +62,10 @@ function Hero() {
         autoPlay
         loop
         muted
-        className="absolute inset-0 w-full h-full object-cover hidden md:block"
+        className="absolute inset-0 w-full h-full object-cover hidden md:block overflow-hidden"
         preload="none"
         playsInline
+        style={{ overflow: 'hidden' }}
       >
         <source src="/media/landingpagevideo60_2.mp4" type="video/mp4" />
       </video>
