@@ -10,14 +10,14 @@ import AutopilotContent from "@/components/dashboard/AutopilotContent";
 
 export default function Dashboard() {
   const [mode, setMode] = useState<"copilot" | "autopilot">("copilot");
-  //const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
-  // useEffect(() => {
-  //   const initialMode = searchParams.get("mode");
-  //   if (initialMode === "autopilot") {
-  //     setMode("autopilot");
-  //   }
-  // }, [searchParams]);
+  useEffect(() => {
+    const initialMode = searchParams.get("mode");
+    if (initialMode === "autopilot") {
+      setMode("autopilot");
+    }
+  }, [searchParams]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

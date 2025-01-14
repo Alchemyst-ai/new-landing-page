@@ -88,13 +88,13 @@ function Hero() {
         {/* Heading Section for Desktop */}
         <div className="mt-60 md:flex flex-col items-start pl-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
-          <h1 className="text-4xl md:text-6xl">AI-Driven Employees &#x2728;</h1>
+          <h1 className="text-4xl md:text-6xl">AI-Driven Employees</h1>
         </div>
 
         {/* Heading Section for Mobile */}
         <div className="mt-40 md:hidden flex items-center justify-center self-center text-center font-bold">
           <h1 className="text-5xl pl-2 pr-2 md:pl-0 md:pr-0 md:text-7xl">
-            Transform Your Sales with AI-Driven Employees ✨
+            Transform Your Sales with AI-Driven Employees
           </h1>
         </div>
 
