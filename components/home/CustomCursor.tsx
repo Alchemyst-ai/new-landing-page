@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 const CustomCursor: React.FC = () => {
   useEffect(() => {
+    document.body.style.cursor = "none";
     const cursor = document.querySelector(".cursor");
     const cursorInner = document.querySelector(".cursor-inner");
 
@@ -39,3 +40,5 @@ const CustomCursor: React.FC = () => {
 };
 
 export default CustomCursor;
+
+

@@ -277,8 +277,6 @@ export default function CopilotContent() {
         </div>
       </motion.section>
 
-      <div id="how-it-works"></div>
-
       {/* Section 6 -How to Get Started Section */}
       <Howitworks/>
 
@@ -296,3 +294,4 @@ export default function CopilotContent() {
     </div>
   );
 }
+

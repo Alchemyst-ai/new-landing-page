@@ -32,132 +32,20 @@ const Footer: React.FC = () => {
               © {currentYear} XAlchemyst Technologies Pvt. Ltd. All rights
               reserved.
             </p>
-            <div className="flex flex-col items-center md:items-start gap-2 pt-4 text-gray-400">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-40 text-gray-400">
               <Link
                 href="/terms-of-use"
-                className="hover:text-white transition-colors"
+                className="hover:text-white transition-colors text-md"
               >
                 Terms of use
               </Link>
               <Link
                 href="/privacy-policy"
-                className="hover:text-white transition-colors"
+                className="hover:text-white transition-colors text-md"
               >
                 Privacy Policy
               </Link>
             </div>
-            <div className="flex flex-col gap-4 mt-4 w-full items-center md:items-start">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://tripetto.app/run/60HWNW0WQN"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="primary" className="w-full text-nowrap">
-                    Get in touch
-                  </Button>
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    className="w-full"
-                    variant="secondary"
-                    icon={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                        />
-                      </svg>
-                    }
-                  >
-                    <span>Book a demo</span>
-                  </Button>
-                </Link>
-              </motion.div>
-            </div>
-            <motion.div
-              className="flex items-center space-x-5 mt-4 justify-center md:justify-start"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Link
-                href="https://twitter.com/getalchemyst"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-                className="h-6 w-6"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Twitter />
-                </motion.div>
-              </Link>
-              <Link
-                href="https://www.linkedin.com/company/alchemystai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="h-6 w-6"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <LinkedIn />
-                </motion.div>
-              </Link>
-              <Link
-                href="https://www.facebook.com/getalchemyst"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="h-6 w-6"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Facebook />
-                </motion.div>
-              </Link>
-              <Link
-                href="https://instagram.com/getalchemyst"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="h-6 w-6"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Instagram />
-                </motion.div>
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
 
@@ -167,19 +55,22 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Product</h3>
             {[
-              "Maya, Sales Platform",
-              "Maya, The AI Sales Employee",
-              "Sales Automation",
-              "B2B Data",
-              "Deliverability",
-              "Security and Compliance",
+              { name: "Maya, Sales Platform", link: "/dashboard?mode=copilot" },
+              {
+                name: "Maya, The AI Sales Employee",
+                link: "/dashboard?mode=autopilot",
+              },
+              { name: "Sales Automation", link: "/products" },
+              { name: "B2B Data", link: "/b2b" },
+              { name: "Deliverability", link: "/deliverability" },
+              { name: "Security and Compliance", link: "/security&compliance" },
             ].map((item, index) => (
               <Link
                 key={index}
-                href="#"
+                href={item.link}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </div>
@@ -187,50 +78,69 @@ const Footer: React.FC = () => {
           {/* Column 3 - Solutions */}
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Solutions</h3>
-            {["Startups", "Midmarket", "Enterprises", "SMEs and MSMEs"].map(
-              (item, index) => (
-                <Link
-                  key={index}
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {item}
-                </Link>
-              )
-            )}
+            {[
+              { name: "Startups", link: "/solutions/startups" },
+              { name: "Midmarket", link: "/solutions/midmarket" },
+              { name: "Enterprises", link: "/solutions/enterprises" },
+              { name: "SMEs and MSMEs", link: "/solutions/sme-msme" },
+            ].map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            <div className="mt-7">
+              <Link
+                href="/pricing"
+                className="font-bold text-lg hover:text-gray-300 transition-colors"
+              >
+                Pricing
+              </Link>
+            </div>
           </div>
 
           {/* Column 4 - Resources */}
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
-              "About Us",
-              "Careers",
-              "Alchemyst Labs",
-              "Demo",
-              "Support",
-              "FAQs",
-              "Case Study",
-              "ChangeLog",
+              { name: "About Us", link: "/about-us" },
+              { name: "Careers", link: null },
+              { name: "Alchemyst Labs", link: null },
+              {
+                name: "Demo",
+                link: "https://www.youtube.com/watch?v=m7qiEo9AXT8",
+              },
+              { name: "Support", link: null },
+              { name: "FAQs", link: null },
+              { name: "Case Study", link: "/case-study" },
+              { name: "ChangeLog", link: null },
             ].map((item, index) => (
               <Link
                 key={index}
-                href="#"
+                href={item.link === null ? "#" : item.link}
+                onClick={(e) => {
+                  if (item.link === null) {
+                    e.preventDefault();
+                  }
+                }}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                {item}
+                {item.link === null ? (
+                  <div className="flex items-center gap-1">
+                    {item.name}
+                    <div className="bg-gray-400 text-black rounded-full px-2 py-1 text-xs">
+                      Soon
+                    </div>
+                  </div>
+                ) : (
+                  item.name
+                )}
               </Link>
             ))}
-          </div>
-
-          {/* Column 5 - Pricing */}
-          <div className="flex flex-col gap-2">
-            <Link
-              href="/pricing"
-              className="font-bold text-lg hover:text-gray-300 transition-colors"
-            >
-              Pricing
-            </Link>
           </div>
 
           {/* Column 6 - Contact */}
@@ -248,29 +158,10 @@ const Footer: React.FC = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                />
-              </svg>
-              <span className="text-gray-400">(033)12345678</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
                   d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                 />
               </svg>
-              <span className="text-gray-400">
-                gethelpalchemustai@gmail.com
-              </span>
+              <span className="text-gray-400">getalchemystai@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <svg
@@ -292,9 +183,98 @@ const Footer: React.FC = () => {
                   d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                 />
               </svg>
-              <span className="text-gray-400">
-                123 1st lane, 2nd road, 3rd city, 4th state, india-998877
-              </span>
+              <span className="text-gray-400">Bangaluru, Karnataka, India</span>
+            </div>
+            <motion.div
+              className="flex items-center space-x-16 mt-6 mb-6 justify-center md:justify-start"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Link
+                href="https://x.com/getalchemyst"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="h-6 w-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="hover:text-blue-500"
+                >
+                  <Twitter />
+                </motion.div>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/alchemystai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="h-6 w-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="hover:text-blue-500"
+                >
+                  <LinkedIn />
+                </motion.div>
+              </Link>
+              <Link
+                href="https://www.instagram.com/alchemyst.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="h-6 w-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="hover:text-blue-500"
+                >
+                  <Instagram />
+                </motion.div>
+              </Link>
+            </motion.div>
+            <div className="flex flex-col gap-4">
+              <Link
+                href="https://tripetto.app/run/60HWNW0WQN"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="primary" className="w-full text-nowrap">
+                  Get in touch
+                </Button>
+              </Link>
+              <Link
+                href="https://calendly.com/uttaran-getalchemystai/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  className="w-full mx-auto"
+                  variant="secondary"
+                  icon={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                      />
+                    </svg>
+                  }
+                >
+                  <span>Book a demo</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -10,14 +10,6 @@ import AutopilotContent from "@/components/dashboard/AutopilotContent";
 
 export default function Dashboard() {
   const [mode, setMode] = useState<"copilot" | "autopilot">("copilot");
-  //const searchParams = useSearchParams();
-
-  // useEffect(() => {
-  //   const initialMode = searchParams.get("mode");
-  //   if (initialMode === "autopilot") {
-  //     setMode("autopilot");
-  //   }
-  // }, [searchParams]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -27,7 +19,9 @@ export default function Dashboard() {
           <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
         </header>
         <div className="min-h-screen mt-36">
-          <DashboardToggle mode={mode} setMode={setMode} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <DashboardToggle mode={mode} setMode={setMode} />
+          </Suspense>
           {mode === "copilot" ? <CopilotContent /> : <AutopilotContent />}
         </div>
         <Footer />

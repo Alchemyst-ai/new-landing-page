@@ -1,3 +1,249 @@
+// "use client";
+
+// import React from "react";
+// import Link from "next/link";
+// import Footer from "@/components/home/Footer";
+// import { ChevronLeft } from "lucide-react";
+
+// const PrivacyPolicy: React.FC = () => {
+//   return (
+//     <div>
+//       <div className="flex items-center justify-center mt-12">
+//         <Link
+//           href="/"
+//           className="flex items-center rounded-full border border-white hover:scale-110 transition-transform duration-700 ease-in-out hover:bg-orange-400"
+//         >
+//           <div className="flex items-center w-full h-full">
+//             <ChevronLeft className="w-11 h-11 text-white border border-white rounded-full" />
+//             <span className="ml-4 text-lg pr-5 p-2 font-medium text-white">
+//               Back to Home
+//             </span>
+//           </div>
+//         </Link>
+//       </div>
+//       <div className="md:w-[70%] mx-auto p-6">
+//         <h1 className="text-5xl font-bold mb-2 mt-16">PRIVACY NOTICE</h1>
+//         <p className="mb-4 text-gray-400">Last Updated on 26th November 2024</p>
+
+//         <div className="space-y-4">
+//           <p>
+//             This privacy notice for Xalchemyst Technologies Private Limited
+//             (doing business as “Company”) (<b>'Company'</b>, <b>'we'</b>,{" "}
+//             <b>'us'</b>, or
+//             <b> 'our'</b>), describes how and why we might collect, store, use,
+//             and/or share <b>('process')</b> your information when you use our
+//             services <b>('Services')</b>, such as when you:
+//           </p>
+//           <ul className="pl-3">
+//             <li>
+//               Visit our website at{" "}
+//               <a
+//                 href="https://getalchemystai.com/"
+//                 target="_blank"
+//                 className="hover:text-blue-500"
+//               >
+//                 <u>https://getalchemystai.com</u>
+//               </a>
+//               , or any website of ours that links to this privacy notice
+//             </li>
+//             <li>
+//               Engage with us in other related ways, including any sales,
+//               marketing, or events
+//             </li>
+//           </ul>
+//           <p>
+//             <b>Questions or concerns?</b> Reading this privacy notice will help
+//             you understand your privacy rights and choices. If you do not agree
+//             with our policies and practices, please do not use our Services. If
+//             you still have any questions or concerns, please contact us at
+//             getalchemystai@gmail.com
+//           </p>
+//         </div>
+
+//         <section className="mt-28 mb-8">
+//           <h2 className="text-4xl font-semibold mb-4">SUMMARY OF KEY POINTS</h2>
+//           <div className="space-y-4">
+//             <p>
+//               <b>
+//                 <i>
+//                   This summary provides key points from our privacy notice, but
+//                   you can find out more details about any of these topics by
+//                   clicking the link following each key point.
+//                 </i>
+//               </b>{" "}
+//             </p>
+//             <p>
+//               <b>What personal information do we process?</b> When you visit,
+//               use, or navigate our Services, we may process personal information
+//               depending on how you interact with <i>Alchemyst AI</i> and the
+//               Services, the choices you make, and the products and features you
+//               use. Click here to learn more.
+//             </p>
+//             <p>
+//               <b>Do we process any sensitive personal information?</b> We may
+//               process sensitive personal information when necessary with your
+//               consent or as otherwise permitted by applicable law. Click here to
+//               learn more.
+//             </p>
+//             <p>
+//               <b>Do we receive any information from third parties?</b> We may
+//               receive information from public databases, marketing partners,
+//               social media platforms, and other outside sources.
+//             </p>
+//             <p>
+//               <b>How do we process your information?</b> We process your
+//               information to provide, improve, and administer our Services,
+//               communicate with you, for security and fraud prevention, and to
+//               comply with law. We may also process your information for other
+//               purposes with your consent. We process your information only when
+//               we have a valid legal reason to do so.
+//             </p>
+//             <p>
+//               <b>
+//                 In what situations and with which types of parties do we share
+//                 personal information?
+//               </b>{" "}
+//               We may share information in specific situations and with specific
+//               categories of third parties.
+//             </p>
+//             <p>
+//               <b>How do we keep your information safe?</b> We have
+//               organisational and technical processes and procedures in place to
+//               protect your personal information. However, no electronic
+//               transmission over the internet or information storage technology
+//               can be guaranteed to be 100% secure, so we cannot promise or
+//               guarantee that hackers, cybercriminals, or other unauthorised
+//               third parties will not be able to defeat our security and
+//               improperly collect, access, steal, or modify your information.
+//             </p>
+//             <p>
+//               <b>What are your rights?</b> Depending on where you are located
+//               geographically, the applicable privacy law may mean you have
+//               certain rights regarding your personal information.
+//             </p>
+//             <p>
+//               <b>How do you exercise your rights?</b> The easiest way to
+//               exercise your rights is by filling out our data subject request
+//               form, or by contacting us. We will consider and act upon any
+//               request in accordance with applicable data protection laws.
+//             </p>
+//           </div>
+//         </section>
+
+//         <section className="mt-28 mb-8">
+//           <h2 className="text-4xl font-semibold mb-4">
+//             1. WHAT INFORMATION DO WE COLLECT?
+//           </h2>
+//           <div className="space-y-4">
+//             <p>
+//               <b>Personal information you disclose to us</b>
+//             </p>
+//             <p>
+//               <i>
+//                 <b>In Short:</b> We collect personal information that you
+//                 provide to us.
+//               </i>
+//             </p>
+//             <p>
+//               We collect personal information that you voluntarily provide to us
+//               when you register on the Alchemyst AI, express an interest in
+//               obtaining information about us or our products and Services, when
+//               you participate in activities on the Services, or otherwise when
+//               you contact us.
+//             </p>
+//             <p>
+//               <b>Personal Information Provided by You.</b> The personal
+//               information that we collect depends on the context of your
+//               interactions with us and the Alchemyst AI, the choices you make,
+//               and the products and features you use. The personal information we
+//               collect may include the following:
+//             </p>
+//             <ul className="p-4">
+//               <li>Names</li>
+//               <li>Phone numbers</li>
+//               <li>Email addresses</li>
+
+//               <li>Mailing addresses</li>
+//               <li>Username</li>
+//               <li>Passwords</li>
+//               <li>Billing Address</li>
+//               <li>Debit/Credit card numbers</li>
+//             </ul>
+//             <p>
+//               <b>Sensitive Information.</b> When necessary, with your consent or
+//               as otherwise permitted by applicable law, we process the following
+//               categories of sensitive information:
+//             </p>
+//             <ul className="p-4">
+//               <li>financial data Payment</li>
+//             </ul>
+//             <p>
+//               <b>Payment Data.</b> We may collect data necessary to process your
+//               payment if you make purchases, such as your payment instrument
+//               number, and the security code associated with your payment
+//               instrument. All payment data is stored by Razorpay. You may find
+//               their privacy notice link(s) here:{" "}
+//               <a
+//                 href="https://razorpay.com/privacy/"
+//                 target="_blank"
+//                 className="hover:text-blue-500"
+//               >
+//                 <u>https://razorpay.com/privacy/</u>
+//               </a>
+//             </p>
+//             <p>
+//               <b>Social Media Login Data.</b> We may provide you with the option
+//               to register with us using your existing social media account
+//               details, like your Facebook, Twitter, or other social media
+//               account. If you choose to register in this way, we will collect
+//               the information described in the section called{" "}
+//               <u>'HOW DO WE HANDLE YOUR SOCIAL LOGINS?'</u> below.
+//             </p>
+//             <p>
+//               All personal information that you provide to us must be true,
+//               complete, and accurate, and you must notify us of any changes to
+//               such personal information.
+//             </p>
+//             <p>
+//               <b>Information collected from other sources</b>
+//               <br />{" "}
+//               <b>
+//                 <i>In Short:</i>
+//               </b>{" "}
+//               <i>
+//                 We may collect limited data from public databases, marketing
+//                 partners, social media platforms, and other outside sources.
+//               </i>{" "}
+//             </p>
+//             <p>
+//               In order to enhance our ability to provide relevant marketing,
+//               offers, and services to you and update our records, we may obtain
+//               information about you from other sources, such as public
+//               databases, joint marketing partners, affiliate programs, data
+//               providers, social media platforms, and from other third parties.
+//               This information includes mailing addresses, job titles, email
+//               addresses, phone numbers, intent data (or user behaviour data),
+//               Internet Protocol (IP) addresses, social media profiles, social
+//               media URLs, and custom profiles, for purposes of targeted
+//               advertising and event promotion. If you interact with us on a
+//               social media platform using your social media account (e.g.
+//               Facebook or Twitter), we receive personal information about you
+//               such as your name, email address, and gender. Any personal
+//               information that we collect from your social media account depends
+//               on your social media account's privacy settings.
+//             </p>
+//           </div>
+//         </section>
+//       </div>
+//       <div>
+//         <Footer />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PrivacyPolicy;
+
 import React from 'react'
 import styles from './style.module.scss'
 
@@ -130,24 +376,24 @@ const page = () => {
                   </p><br />
                   <ul className="pl-4 pb-2 text-gray-400">
                     <li>
-                      <strong>To facilitate account creation and authentication and otherwise manage user accounts.</strong> 
+                      <strong>To facilitate account creation and authentication and otherwise manage user accounts.</strong>
                       We may process your information so you can create and log in to your account, as well as keep your account in working order.
                     </li>
                     <li>
                       <strong>To deliver and facilitate delivery of services to the user.</strong> We may process your information to provide you with the requested service.
                     </li>
                     <li>
-                      <strong>To send you marketing and promotional communications.</strong> 
-                      We may process the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences. 
+                      <strong>To send you marketing and promotional communications.</strong>
+                      We may process the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences.
                       You can opt out of our marketing emails at any time. For more information, see <a href="#privacy-rights">WHAT ARE YOUR PRIVACY RIGHTS?</a>.
                     </li>
                     <li>
-                      <strong>To evaluate and improve our Services, products, marketing, and your experience.</strong> 
-                      We may process your information when we believe it is necessary to identify usage trends, determine the effectiveness of our promotional campaigns, 
+                      <strong>To evaluate and improve our Services, products, marketing, and your experience.</strong>
+                      We may process your information when we believe it is necessary to identify usage trends, determine the effectiveness of our promotional campaigns,
                       and to evaluate and improve our Services, products, marketing, and your experience.
                     </li>
                     <li>
-                      <strong>To comply with our legal obligations.</strong> 
+                      <strong>To comply with our legal obligations.</strong>
                       We may process your information to comply with our legal obligations, respond to legal requests, and exercise, establish, or defend our legal rights.
                     </li>
                   </ul>
@@ -339,7 +585,7 @@ const page = () => {
                   </section>
 
                 </li>
-                
+
                 <li className = "mb-4">
                   <section id="updates-to-notice">
                     <h2>DO WE MAKE UPDATES TO THIS NOTICE?</h2>
@@ -363,7 +609,7 @@ const page = () => {
                   <section id="contact-us-about-notice">
                     <h2>HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
                     <p className="text-gray-400">
-                      If you have questions or comments about this notice, you may email us at 
+                      If you have questions or comments about this notice, you may email us at
                       <a href="mailto:uttaran@getalchemystai.com">uttaran@getalchemystai.com</a> or by post to:
                     </p><br />
                     <address>

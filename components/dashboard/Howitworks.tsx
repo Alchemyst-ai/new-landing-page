@@ -7,7 +7,6 @@
 // import Button from "@/components/home/Button";
 // import useScreenDimensions from "@/app/hooks/useScreenDimensions";
 
-
 // interface FlowLayoutProps {
 //   flows: Flow[];
 // }
@@ -22,7 +21,6 @@
 //   const [containerRef, setContainerRef] = useState<HTMLDivElement | null>(
 //     null
 //   );
-
 
 //   useEffect(() => {
 //     if (!containerRef) {
@@ -111,7 +109,6 @@
 
 // export default Howitworks;
 
-
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -173,13 +170,15 @@ const Steps: React.FC = () => {
 
   return (
     <div className="w-full  py-16 ">
-      <h1 className="text-5xl font-bold text-center mb-16">How to Get Started</h1>
+      <h1 className="text-5xl font-bold text-center mb-16">
+        How to Get Started
+      </h1>
       {/* Desktop View */}
       <div className="hidden md:block">
         {/* Horizontal Clickable Options */}
         <div
           ref={containerRef}
-          className="w-full max-w-6xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-none px-4"
+          className="w-full max-w-3xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-none px-4"
           style={{ scrollSnapType: "x mandatory" }}
         >
           {options.map((option, index) => (
@@ -187,7 +186,7 @@ const Steps: React.FC = () => {
               {/* Options */}
               <div
                 onClick={() => setActiveOption(index)}
-                className={`flex-shrink-0 flex items-center justify-center w-48 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${
+                className={`flex-shrink-0 flex items-center justify-center w-32 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${
                   activeOption === index
                     ? "text-yellow-700 border-yellow-700 drop-shadow-[0_0_5px_rgba(255,255,0,0.3)]"
                     : "text-gray-400 border-gray-600 hover:text-yellow-700 hover:border-yellow-700"
