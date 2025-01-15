@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
                 link: "https://www.youtube.com/watch?v=m7qiEo9AXT8",
               },
               { name: "Support", link: null },
-              { name: "FAQs", link: null },
+              { name: "FAQs", link: "/faqs" },
               { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
