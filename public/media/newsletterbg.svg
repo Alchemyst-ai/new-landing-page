@@ -1,0 +1,27 @@
+<svg width="2576" height="371" viewBox="0 0 2576 371" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_4554_2009)">
+<g filter="url(#filter0_i_4554_2009)">
+<ellipse cx="1288" cy="483" rx="1288" ry="483" fill="url(#paint0_radial_4554_2009)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_i_4554_2009" x="0" y="0" width="2576" height="975" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="22" operator="erode" in="SourceAlpha" result="effect1_innerShadow_4554_2009"/>
+<feOffset dy="9"/>
+<feGaussianBlur stdDeviation="30.75"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+<feBlend mode="color-dodge" in2="shape" result="effect1_innerShadow_4554_2009"/>
+</filter>
+<radialGradient id="paint0_radial_4554_2009" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1288 483) rotate(90) scale(483 1288)">
+<stop offset="0.595" stop-opacity="0"/>
+<stop offset="1" stop-color="#858585"/>
+</radialGradient>
+<clipPath id="clip0_4554_2009">
+<rect width="2576" height="371" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -8,7 +8,7 @@ export default function Features() {
       <h2 className="text-6xl font-bold mb-12 text-center">
         Features
       </h2>
-      <div className="container mx-auto max-w-fit">
+      <div className="container mx-auto max-w-[90%]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-10">
             <Card1 />

@@ -17,44 +17,6 @@ const fadeInUp = {
 };
 
 export default function CopilotContent() {
-  const logos = [
-    "/enterprises/decathlon.png",
-    "/enterprises/bajajallianz.png",
-    "/enterprises/plat.png",
-    "/enterprises/tesco.png",
-    "/enterprises/fourkites.webp",
-  ];
-  const settings = {
-    infinite: true,
-    speed: 5000,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    cssEase: "linear",
-    pauseOnHover: false,
-    arrows: false,
-    slidesToShow: 4,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
 
   return (
     <div className="container mx-auto px-4 max-w-full">
@@ -80,35 +42,6 @@ export default function CopilotContent() {
           className="mx-auto transition-all duration-500 ease-in-out hover:scale-110 max-w-full h-auto"
           loading="lazy"
         />
-      </motion.section>
-
-      {/* Section 2 - Company Carousal */}
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 2.0 }}
-        className="text-center mb-16"
-      >
-        {/* Company Carousal */}
-        <div className="flex flex-col justify-center items-center mt-12 md:mt-24 relative">
-          <div className="w-full">
-            <Slider {...settings}>
-              {logos.map((logo, index) => (
-                <div key={index} className="flex justify-center">
-                  <Image
-                    src={logo}
-                    alt={`Company ${index + 1}`}
-                    width={125}
-                    height={50}
-                    className="h-8 md:h-12 w-auto rounded"
-                    priority
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </div>
       </motion.section>
 
       {/* Section 3 - 50x Sales - Card */}
@@ -203,12 +136,12 @@ export default function CopilotContent() {
               <Image
                 src={feature.image}
                 alt="Circle"
-                className="absolute top-0 bottom-0 left-0 right-0 w-full h-full p-5 pt-0"
+                className="absolute top-0 bottom-0 left-0 right-0 p-10 pt-0"
                 layout="fill"
                 objectFit="cover"
               />
 
-              <div className="absolute inset-0 rounded-3xl bg-black bg-opacity-60"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent bg-opacity-100"></div>
 
               <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center transition-all duration-500 ease-in-out hover:scale-105">
                 <h3 className="text-3xl md:text-5xl font-bold mb-2">

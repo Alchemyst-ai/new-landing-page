@@ -37,14 +37,14 @@ export default function InfoCard() {
               </p>
               <li className="font-semibold">Boost Email Deliverability:</li>
               <p className="text-gray-500 pt-2 pl-4 relative pb-4">
-                Improve open rates and engagement with Maya’s email warm-up
+                Improve open rates and engagement with Maya&apos;s email warm-up
                 tool.
               </p>
             </ul>
           </div>
           <div className="flex items-center justify-center">
             <motion.div
-              className="relative z-30 mt-32 pt-2"
+              className="relative z-30 pt-4 md:mt-32 md:pt-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -53,7 +53,10 @@ export default function InfoCard() {
                 target="_blank noopen"
                 className="block pointer-events-auto"
               >
-                <Button variant="primary" className="w-full md:w-fit text-nowrap">
+                <Button
+                  variant="primary"
+                  className="w-full md:w-fit text-nowrap"
+                >
                   Automate Sales Today
                 </Button>
               </Link>
@@ -65,7 +68,7 @@ export default function InfoCard() {
               alt="AI Sales Automation"
               width={350}
               height={200}
-              className="rounded-md"
+              className="rounded-md hidden md:block"
             />
           </div>
         </CardSpotlight>
@@ -124,7 +127,7 @@ export default function InfoCard() {
               alt="B2B Leads"
               width={350}
               height={200}
-              className="rounded-md"
+              className="rounded-md hidden md:block"
             />
           </div>
         </CardSpotlight>
@@ -184,7 +187,7 @@ export default function InfoCard() {
               alt="Secure B2B Platform"
               width={250}
               height={200}
-              className="rounded-md"
+              className="rounded-md hidden md:block"
             />
           </div>
         </CardSpotlight>

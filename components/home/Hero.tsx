@@ -11,11 +11,12 @@ import { RetroGrid } from "../magicui/Retrogrid";
 function Hero() {
   // Logos and settings for the carousal
   const logos = [
-    "/enterprises/decathlon.png",
-    "/enterprises/bajajallianz.png",
-    "/enterprises/plat.png",
-    "/enterprises/tesco.png",
-    "/enterprises/fourkites.webp",
+    "/enterprises/tesco.svg",
+    "/enterprises/fourkites.svg",
+    "/enterprises/decathlon.svg",
+    "/enterprises/bajaj.svg",
+    "/enterprises/fourthought.svg",
+    "/enterprises/plat.svg",
   ];
 
   const settings = {
@@ -63,23 +64,25 @@ function Hero() {
         loop
         muted
         className="absolute inset-0 w-full h-full object-cover hidden md:block overflow-hidden"
-        preload="none"
+        preload="auto"
         playsInline
-        style={{ overflow: 'hidden' }}
+        style={{ overflow: "hidden" }}
       >
         <source src="/media/landingpagevideo60_2.mp4" type="video/mp4" />
       </video>
 
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B09] via-transparent to-transparent opacity-100" />
+
       <RetroGrid className="md:hidden block" />
 
-      <div className="w-2/3 absolute inset-0 bg-gradient-to-l from-transparent via-black to-black opacity-90 hidden md:block" />
+      <div className="w-2/3 absolute inset-0 bg-gradient-to-l from-transparent via-[#0B0B09] to-[#0B0B09] opacity-90 hidden md:block" />
 
       <Image
         src="/media/topcard.svg"
         alt="Top GenAI Startup Card"
         width={50}
         height={50}
-        className="h-20 md:h-20 w-auto rounded-3xl top-25 left-7 md:top-40 md:left-14 absolute"
+        className="h-14 md:h-20 w-auto rounded-3xl top-24 left-16 md:top-48 md:left-14 absolute"
         loading="eager"
         priority
         quality={100}
@@ -87,7 +90,7 @@ function Hero() {
 
       <div className="relative z-10 flex flex-col h-full overflow-y-hidden">
         {/* Heading Section for Desktop */}
-        <div className="mt-60 md:flex flex-col items-start pl-20 hidden font-bold">
+        <div className="mt-72 md:flex flex-col items-start pl-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
           <h1 className="text-4xl md:text-6xl">AI-Driven Employees</h1>
         </div>
@@ -156,9 +159,9 @@ function Hero() {
                   <Image
                     src={logo}
                     alt={`Company ${index + 1}`}
-                    width={125}
-                    height={50}
-                    className="h-12 w-auto rounded"
+                    width={50}
+                    height={10}
+                    className="h-12 w-52"
                     loading="eager"
                     quality={100}
                   />
@@ -173,4 +176,3 @@ function Hero() {
 }
 
 export default Hero;
-

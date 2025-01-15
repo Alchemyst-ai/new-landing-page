@@ -156,10 +156,10 @@ export const menuData: MenuObject[] = [
             link: "/about-us",
           },
           {
-            title: "Careers",
+            title: "News Studio",
             level: "tertiary",
-            icon: "/icons/Goal.png",
-            link: "#",
+            icon: "/icons/newsstudio.svg",
+            link: "/news-studio",
           },
           {
             title: "Alchemyst Labs",
@@ -189,7 +189,7 @@ export const menuData: MenuObject[] = [
             title: "FAQ",
             level: "tertiary",
             icon: "/icons/FAQ.png",
-            link: "#",
+            link: "/faqs",
           },
         ],
       },
@@ -198,10 +198,16 @@ export const menuData: MenuObject[] = [
         level: "secondary",
         children: [
           {
+            title: "Blog",
+            level: "tertiary",
+            icon: "/icons/blog.svg",
+            link: "/blogs",
+          },
+          {
             title: "Case Study",
             level: "tertiary",
             icon: "/icons/Case Study.png",
-            link: "#",
+            link: "/case-study",
           },
           {
             title: "Change Log",

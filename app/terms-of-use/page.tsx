@@ -66,7 +66,7 @@ const TermsOfUse: React.FC = () => {
               <li key={section.id} className="mb-2">
                 <Link
                   href={`#${section.id}`}
-                  className="text-blue-600 hover:underline"
+                  className="text-orange-500 hover:underline"
                 >
                   {section.title}
                 </Link>
@@ -189,19 +189,19 @@ const TermsOfUse: React.FC = () => {
           </h2>
           <div className="space-y-4">
             <p>
-              By using the Site, you represent and warrant that: &lt;br /&gt;
+              By using the Site, you represent and warrant that: <br/>
               (1) all registration information you submit will be true,
-              accurate, current, and complete; &lt;br /&gt;
+              accurate, current, and complete; <br/>
               (2) you will maintain the accuracy of such information and
-              promptly update such registration information as necessary; &lt;br /&gt;
+              promptly update such registration information as necessary; <br/>
               (3) you have the legal capacity and you agree to comply with these
-              Terms of Use; &lt;br /&gt;
+              Terms of Use; <br/>
               (4) you are not a minor in the jurisdiction in which you reside;{" "}
-              &lt;br /&gt;
+              <br/>
               (5) you will not access the Site through automated or non- human
-              means, whether through a bot, script, or otherwise; &lt;br /&gt;
+              means, whether through a bot, script, or otherwise; <br/>
               (6) you will not use the Site for any illegal or unauthorized
-              purpose; and &lt;br /&gt;
+              purpose; and <br/>
               (7) your use of the Site will not violate any applicable law or
               regulation.
             </p>
@@ -954,14 +954,14 @@ const TermsOfUse: React.FC = () => {
               agents, partners, and employees, from and against any loss,
               damage, liability, claim, or demand, including reasonable
               attorneys&apos; fees and expenses, made by any third party due to
-              or arising out of: &lt;br /&gt;
-              (1) your Contributions; &lt;br /&gt;
-              (2) use of the Alchemyst AI; &lt;br /&gt;
-              (3) breach of these Terms of Use; &lt;br /&gt;
+              or arising out of: <br/>
+              (1) your Contributions; <br/>
+              (2) use of the Alchemyst AI; <br/>
+              (3) breach of these Terms of Use; <br/>
               (4) any breach of your representations and warranties set forth in
-              these Terms of Use; &lt;br /&gt;
+              these Terms of Use; <br/>
               (5) your violation of the rights of a third party, including but
-              not limited to intellectual property rights; or &lt;br /&gt;
+              not limited to intellectual property rights; or <br/>
               (6) any overt harmful act toward any other user of the Alchemyst
               AI with whom you connected via the Alchemyst AI. Notwithstanding
               the foregoing, we reserve the right, at your expense, to assume

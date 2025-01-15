@@ -7,15 +7,15 @@ export default function Card3() {
     <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 h-full">
       <div className="p-6 md:p-8 flex flex-col justify-between h-full">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-6 text-white">
+          <h2 className="text-2xl md:text-2xl font-bold mb-6 md:mb-6 text-white">
             AI-Powered Lead Generation & Personalized Outreach
           </h2>
           <ul className="space-y-4 mb-6 text-gray-400 pl-3">
             <li>
-              <p className="font-semibold text-white">
+              <p className="font-semibold text-white text-md">
                 Find the Best B2B Sales Leads Instantly:
               </p>
-              <p>
+              <p className="text-sm">
                 Leverage Alchemyst&apos;s AI for lead generation and access a
                 database of over{" "}
                 <span className="text-orange-400">300M+ B2B leads</span> to
@@ -23,10 +23,10 @@ export default function Card3() {
               </p>
             </li>
             <li>
-              <p className="font-semibold text-white">
+              <p className="font-semibold text-white text-md">
                 Personalized Sales Automation for Higher Engagement:
               </p>
-              <p>
+              <p className="text-sm">
                 Say goodbye to low-response outreach! Alchemyst.ai uses{" "}
                 <span className="text-orange-400">
                   AI-driven sales automation to create tailored campaigns{" "}
@@ -46,13 +46,13 @@ export default function Card3() {
             </Button>
           </Link>
         </div>
-        <div className="mt-6 md:mt-8 mb-10">
+        <div className="mt-6 md:mt-8">
           <Image
             src="/media/ledgenandpersonal.png"
             alt="AI-Powered Lead Generation"
             width={500}
             height={300}
-            className="w-full h-30 md:h-auto object-cover rounded-lg"
+            className="w-full h-32 md:h-auto object-cover rounded-lg hidden md:block"
           />
         </div>
       </div>

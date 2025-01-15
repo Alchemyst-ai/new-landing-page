@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               © {currentYear} XAlchemyst Technologies Pvt. Ltd. All rights
               reserved.
             </p>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-40 text-gray-400">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-44 text-gray-400">
               <Link
                 href="/terms-of-use"
                 className="hover:text-white transition-colors text-md"
@@ -108,14 +108,15 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
               { name: "About Us", link: "/about-us" },
-              { name: "Careers", link: null },
+              { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
               {
                 name: "Demo",
                 link: "https://www.youtube.com/watch?v=m7qiEo9AXT8",
               },
               { name: "Support", link: null },
-              { name: "FAQs", link: null },
+              { name: "FAQs", link: "/faqs" },
+              { name: "Blogs", link: "/blogs" },
               { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
@@ -161,7 +162,7 @@ const Footer: React.FC = () => {
                   d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                 />
               </svg>
-              <span className="text-gray-400">getalchemystai@gmail.com</span>
+              <span className="text-gray-400">sales@getalchemystai.com</span>
             </div>
             <div className="flex items-center gap-2">
               <svg
@@ -186,7 +187,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-400">Bangaluru, Karnataka, India</span>
             </div>
             <motion.div
-              className="flex items-center space-x-16 mt-6 mb-6 justify-center md:justify-start"
+              className="flex items-center space-x-16 mt-12 mb-6 justify-center md:justify-start"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}

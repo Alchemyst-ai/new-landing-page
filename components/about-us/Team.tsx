@@ -16,7 +16,7 @@ const Team: React.FC = () => {
         className="flex flex-col items-center justify-center w-[90vw] md:w-[70vw] my-20"
       >
         <h1 className="mb-10 text-4xl md:text-7xl text-center flex flex-row sm:flex-col md:flex-row">
-          Our Team
+          <b>Our Team</b>
         </h1>
         <div className="flex flex-row gap-x-8">
           {team.map((member, index) => (

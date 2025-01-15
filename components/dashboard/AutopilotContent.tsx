@@ -30,7 +30,7 @@ export default function AutopilotContent() {
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center md:text-left">
               Efficient, Reliable, and Always Learning
             </h2>
-            <p className="text-lg w-3/4 text-gray-500 text-center md:text-left">
+            <p className="text-lg w-3/4 text-gray-400 text-center md:text-left">
               Alchemyst AI empowers your team with an AI-powered sales platform
               that automates lead generation, outreach, and personalization -
               boosting productivity and driving growth.
@@ -201,7 +201,7 @@ export default function AutopilotContent() {
               />
 
               {/* <div className="absolute inset-0 rounded-3xl bg-black bg-opacity-0"></div> */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-black via-black to-transparent opacity-90 md:opacity-60"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-black to-transparent opacity-90 md:opacity-60"></div>
 
               <div className="absolute flex flex-col left-4 right-4 items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
                 <h3 className="text-3xl md:text-4xl font-bold mb-2">
@@ -284,7 +284,7 @@ export default function AutopilotContent() {
       >
         <div className="flex flex-col md:flex-row items-center p-10 ">
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center md:text-left">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">
               Make Maya Your Own
             </h2>
             <ul className="list-disc list-inside text-lg text-gray-400 text-center md:text-left">
@@ -299,7 +299,7 @@ export default function AutopilotContent() {
                 tailored for your business.
               </li>
             </ul>
-            <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
+            <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-8">
               <div className="flex items-center space-x-4">
                 <Link
                   href="https://calendly.com/uttaran-getalchemystai/30min"
