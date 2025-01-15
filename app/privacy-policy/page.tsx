@@ -77,13 +77,26 @@ const PrivacyPolicy: React.FC = () => {
               use, or navigate our Services, we may process personal information
               depending on how you interact with <i>Alchemyst AI</i> and the
               Services, the choices you make, and the products and features you
-              use. Click here to learn more.
+              use. Click{" "}
+              <a
+                href="https://app.termly.io/builder/websites/4014c97c-ca2d-490e-85e4-e6cac81d7f02/documents/2484790/Final%20Details/Version%20Date#personalinfo"
+                className="hover:text-blue-500"
+              >
+                <u>here</u>{" "}
+              </a>
+              to learn more.
             </p>
             <p>
               <b>Do we process any sensitive personal information?</b> We may
               process sensitive personal information when necessary with your
-              consent or as otherwise permitted by applicable law. Click here to
-              learn more.
+              consent or as otherwise permitted by applicable law. Click{" "}
+              <a
+                href="https://app.termly.io/builder/websites/4014c97c-ca2d-490e-85e4-e6cac81d7f02/documents/2484790/Final%20Details/Version%20Date#sensitiveinfo"
+                className="hover:text-blue-500"
+              >
+                <u>here</u>{" "}
+              </a>{" "}
+              to learn more.
             </p>
             <p>
               <b>Do we receive any information from third parties?</b> We may
