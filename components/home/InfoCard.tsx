@@ -68,7 +68,7 @@ export default function InfoCard() {
               alt="AI Sales Automation"
               width={350}
               height={200}
-              className="rounded-md hidden md:block"
+              className="rounded-md hidden md:block h-[200px]"
             />
           </div>
         </CardSpotlight>
@@ -121,13 +121,13 @@ export default function InfoCard() {
               </Button>
             </Link>
           </motion.div>
-          <div className="mt-12 relative z-20">
+          <div className="mt-20 relative z-20">
             <Image
-              src="/media/cardmiddleee.png"
+              src="/media/cardmiddle.svg"
               alt="B2B Leads"
               width={350}
               height={200}
-              className="rounded-md hidden md:block"
+              className="rounded-md hidden md:block w-[500px]"
             />
           </div>
         </CardSpotlight>
