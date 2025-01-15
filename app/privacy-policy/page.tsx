@@ -244,7 +244,7 @@ const PrivacyPolicy: React.FC = () => {
               Facebook or Twitter), we receive personal information about you
               such as your name, email address, and gender. Any personal
               information that we collect from your social media account depends
-              on your social media account's privacy settings.
+              on your social media account&#39;s privacy settings.
             </p>
           </div>
         </section>
@@ -421,7 +421,7 @@ const PrivacyPolicy: React.FC = () => {
               tax, accounting, or other legal requirements). No purpose in this
               notice will require us keeping your personal information for
               longer than Thirty-Six (36) months past the termination of the
-              user's account.
+              user&#39;s account.
             </p>
             <p>
               When we have no ongoing legitimate business need to process your
@@ -590,10 +590,10 @@ const PrivacyPolicy: React.FC = () => {
             </p>
             <p>
               We may update this privacy notice from time to time. The updated
-              version will be indicated by an updated 'Revised' date and the
-              updated version will be effective as soon as it is accessible. If
-              we make material changes to this privacy notice, we may notify you
-              either by prominently posting a notice of such changes or by
+              version will be indicated by an updated &#39;Revised&#39; date and
+              the updated version will be effective as soon as it is accessible.
+              If we make material changes to this privacy notice, we may notify
+              you either by prominently posting a notice of such changes or by
               directly sending you a notification. We encourage you to review
               this privacy notice frequently to be informed of how we are
               protecting your information.

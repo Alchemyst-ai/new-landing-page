@@ -329,7 +329,7 @@ const FAQComponent = () => {
               href="https://calendly.com/uttaran-getalchemystai/30min"
               target="_blank"
             >
-              <Button variant="primary">I've got a question</Button>
+              <Button variant="primary">I&#39;ve got a question</Button>
             </Link>
 
             <Link href="https://tripetto.app/run/60HWNW0WQN" target="_blank">
