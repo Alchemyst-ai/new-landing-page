@@ -2,9 +2,6 @@
 
 import Button from "@/components/home/Button";
 import EndingCard from "@/components/home/EndingCard";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-import Slider from "react-slick";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,32 +45,6 @@ function FeatureCard({
 }
 
 const StartupComponent = () => {
-  const reasons = [
-    {
-      icon: "/deliverability/feature_01.svg",
-      title: "Warmups",
-      description:
-        "Build trust with ISPs by gradually increasing sending volume for new domains and IPs",
-    },
-    {
-      icon: "/deliverability/feature_02.svg",
-      title: "DNS Optimization",
-      description:
-        "Ensure your SPF, DKIM, and DMARC records are configured for maximum deliverability.",
-    },
-    {
-      icon: "/deliverability/feature_03.svg",
-      title: "Mailbox Health Monitoring",
-      description:
-        "Stay ahead with real-time reputation insights for your domain and IPs.",
-    },
-    {
-      icon: "/deliverability/feature_04.svg",
-      title: "Placement Tests",
-      description:
-        "Measure inbox versus spam placement and optimize campaigns for better results",
-    },
-  ];
 
 	const features = [
     {
@@ -98,45 +69,6 @@ const StartupComponent = () => {
       image: "/solutions/startups/feature04.svg",
     },
   ];
-
-  const logos = [
-    "/enterprises/decathlon.png",
-    "/enterprises/bajajallianz.png",
-    "/enterprises/plat.png",
-    "/enterprises/tesco.png",
-    "/enterprises/fourkites.webp",
-  ];
-  const settings = {
-    infinite: true,
-    speed: 5000,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    cssEase: "linear",
-    pauseOnHover: false,
-    arrows: false,
-    slidesToShow: 4,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
 
   return (
     <div className="container mx-auto max-w-full">
@@ -180,23 +112,6 @@ const StartupComponent = () => {
               />
             </div>
           </div>
-        </div>
-        {/* Company Carousel */}
-        <div className="mt-12 md:mt-24">
-          <Slider {...settings}>
-            {logos.map((logo, index) => (
-              <div key={index} className="flex justify-center">
-                <Image
-                  src={logo}
-                  alt={`Company ${index + 1}`}
-                  width={125}
-                  height={50}
-                  className="h-8 md:h-12 w-auto rounded"
-                  priority
-                />
-              </div>
-            ))}
-          </Slider>
         </div>
       </motion.section>
 

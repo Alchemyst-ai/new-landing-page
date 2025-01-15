@@ -162,7 +162,7 @@ export const menuData: MenuObject[] = [
             link: "/news-studio",
           },
           {
-            title: "Alchemyst Labs",
+            title: "Alchemyst Labs (coming soon)",
             level: "tertiary",
             icon: "/icons/Lab Items.png",
             link: "#",
@@ -174,13 +174,13 @@ export const menuData: MenuObject[] = [
         level: "secondary",
         children: [
           {
-            title: "Demo",
+            title: "Demo (coming soon)",
             level: "tertiary",
             icon: "/icons/Video.png",
             link: "#",
           },
           {
-            title: "Support",
+            title: "Support (coming soon)",
             level: "tertiary",
             icon: "/icons/Technical Support.png",
             link: "#",
@@ -210,7 +210,7 @@ export const menuData: MenuObject[] = [
             link: "/case-study",
           },
           {
-            title: "Change Log",
+            title: "Change Log (coming soon)",
             level: "tertiary",
             icon: "/icons/Layers.png",
             link: "#",
