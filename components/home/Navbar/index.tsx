@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
         {item.children ? (
           <button
             onClick={() => handleMobileSubmenu(item)}
-            className="flex items-center justify-between w-full text-white hover:text-yellow-500 transition-colors duration-200"
+            className="flex items-center justify-between w-full text-white hover:text-orange-400 transition-colors duration-200"
           >
             <span>{item.title}</span>
             <ChevronRight className="w-4 h-4" />
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
         ) : (
           <Link
             href={item.link || "#"}
-            className="flex items-center w-full text-white hover:text-yellow-500 transition-colors duration-200"
+            className="flex items-center w-full text-white hover:text-orange-400 transition-colors duration-200"
             onClick={toggleMenu}
           >
             {item.icon && (
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
               <div className="mb-4">
                 <Link
                   href={subItem.link || "#"}
-                  className="flex items-start text-white hover:text-yellow-500 transition-colors duration-200"
+                  className="flex items-start text-white hover:text-orange-400 transition-colors duration-200"
                   onClick={toggleMenu}
                 >
                   {subItem.icon && (
@@ -183,8 +183,8 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   href={item.link || "#"}
-                  className={`flex items-center space-x-1 hover:text-yellow-500 transition-colors duration-200 ${
-                    activeMenu === item.title ? "text-yellow-500" : ""
+                  className={`flex items-center space-x-1 hover:text-orange-400 transition-colors duration-200 ${
+                    activeMenu === item.title ? "text-orange-400" : ""
                   }`}
                 >
                   <span>{item.title}</span>
@@ -207,7 +207,7 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="hover:text-yellow-500 transition-colors duration-200"
+              className="hover:text-orange-400 transition-colors duration-200"
             >
               Pricing
             </motion.div>
@@ -324,7 +324,7 @@ const Navbar: React.FC = () => {
                     {menuData.map((item, index) => renderMobileMenuItem(item))}
                     <Link
                       href="/pricing"
-                      className="block py-2 text-white hover:text-yellow-500 transition-colors duration-200"
+                      className="block py-2 text-white hover:text-orange-400 transition-colors duration-200"
                       onClick={toggleMenu}
                     >
                       Pricing
@@ -341,3 +341,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+

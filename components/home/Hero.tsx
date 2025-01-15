@@ -63,7 +63,7 @@ function Hero() {
         loop
         muted
         className="absolute inset-0 w-full h-full object-cover hidden md:block overflow-hidden"
-        preload="none"
+        preload="auto"
         playsInline
         style={{ overflow: "hidden" }}
       >

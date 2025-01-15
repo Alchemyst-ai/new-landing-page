@@ -31,7 +31,7 @@ const EndingCard: React.FC = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full md:w-2/3 relative h-[300px] md:h-[400px]">
+          <div className="w-full md:w-2/3 relative h-[200px] md:h-[400px]">
             <Image
               src="/media/endingcard.svg"
               alt="Background"

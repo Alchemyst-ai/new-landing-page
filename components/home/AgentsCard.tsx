@@ -225,7 +225,18 @@ function AlchemystCard({ id, name, role }: AlchemystCardProps) {
         placeholder="blur"
         width={1000}
         height={1000}
-        className="w-full h-full transition-opacity duration-300"
+        className="w-full h-full transition-opacity duration-300 hidden md:block"
+        style={{ opacity: 1 }}
+      />
+      <Image
+        src={`/media/mobileagent-${id}.svg`}
+        loading="eager"
+        alt={`${name} background`}
+        blurDataURL={`/media/mobileagent-${id}.svg`}
+        placeholder="blur"
+        width={1000}
+        height={1000}
+        className="w-full h-full transition-opacity duration-300 block md:hidden"
         style={{ opacity: 1 }}
       />
     </div>
