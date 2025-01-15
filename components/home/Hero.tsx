@@ -16,6 +16,7 @@ function Hero() {
     "/enterprises/decathlon.svg",
     "/enterprises/bajaj.svg",
     "/enterprises/fourthought.svg",
+    "/enterprises/plat.svg",
   ];
 
   const settings = {
@@ -70,9 +71,11 @@ function Hero() {
         <source src="/media/landingpagevideo60_2.mp4" type="video/mp4" />
       </video>
 
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B09] via-transparent to-transparent opacity-100" />
+
       <RetroGrid className="md:hidden block" />
 
-      <div className="w-2/3 absolute inset-0 bg-gradient-to-l from-transparent via-black to-black opacity-90 hidden md:block" />
+      <div className="w-2/3 absolute inset-0 bg-gradient-to-l from-transparent via-[#0B0B09] to-[#0B0B09] opacity-90 hidden md:block" />
 
       <Image
         src="/media/topcard.svg"
@@ -157,8 +160,8 @@ function Hero() {
                     src={logo}
                     alt={`Company ${index + 1}`}
                     width={50}
-                    height={25}
-                    className="h-8 w-full"
+                    height={10}
+                    className="h-12 w-52"
                     loading="eager"
                     quality={100}
                   />

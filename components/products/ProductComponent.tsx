@@ -39,7 +39,7 @@ const ProductComponent: React.FC = () => {
         transition={{ duration: 2.0 }}
         className="text-center mb-16 mt-20"
       >
-        <h1 className="text-4xl md:text-8xl font-bold mt-8 md:mt-4 mb-4">
+        <h1 className="text-4xl md:text-7xl font-bold mt-8 md:mt-4 mb-4">
           Sales Automation
         </h1>
         <p className="text-xl md:text-2xl mb-8">
@@ -109,11 +109,11 @@ const ProductComponent: React.FC = () => {
                 objectFit="fit"
               />
 
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transperant"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transperant bg-opacity-90"></div>
 
               <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center transition-all duration-500 ease-in-out hover:scale-105">
-                <h3 className="text-center text-3xl md:text-4xl mb-2">
-                  {feature.title}
+                <h3 className="text-center text-3xl md:text-2xl mb-2">
+                  <b>{feature.title}</b>
                 </h3>
               </div>
             </div>

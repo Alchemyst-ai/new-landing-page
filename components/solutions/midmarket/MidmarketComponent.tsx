@@ -62,18 +62,18 @@ const MidmarketComponent = () => {
       question:
         "How does Alchemyst AI help mid-market businesses scale email campaigns?",
       answer:
-        "Our return policy allows you to return items within 30 days of purchase for a full refund.",
+        "Alchemyst AI boosts email campaign performance by up to 300% using advanced AI for hyper-personalization, automation, and optimization, helping mid-market businesses achieve scalable growth without extra resources.",
     },
     {
       question:
         "Can your solutions integrate with our current marketing stack?",
       answer:
-        "Shipping typically takes 3-5 business days for domestic orders and 7-14 business days for international orders.",
+        "Yes, Alchemyst AI integrates seamlessly with 95% of popular marketing tools, ensuring quick setup and compatibility for uninterrupted workflows and maximum ROI",
     },
     {
       question: "What kind of reporting and insights can we expect?",
       answer:
-        "Yes, we offer gift wrapping services for an additional $5 per item. You can select this option during checkout.",
+        "Expect detailed reports with 99% accuracy, covering audience segmentation, campaign engagement rates, and ROI analysis, empowering data-driven decision-making to enhance results",
     },
   ];
 
@@ -162,7 +162,7 @@ const MidmarketComponent = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             The <span className="text-orange-400">Mid-Market</span> Advantage with <span className="text-orange-400">Alchemyst AI</span>
           </h2>
-          <p className="text-xl text-gray-400 text-center mb-8">Email Solutions Designed for Growth-Focused Businesses</p>
+          <p className="text-xl text-gray-300 text-center mb-8">Email Solutions Designed for Growth-Focused Businesses</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
@@ -181,7 +181,7 @@ const MidmarketComponent = () => {
                 <h3 className="text-2xl text-center font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
                   {feature.title}
                 </h3>
-                <p className="text-center text-gray-500 mt-4">{feature.description}</p>
+                <p className="text-center text-gray-300 mt-4">{feature.description}</p>
               </div>
             ))}
           </div>

@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               © {currentYear} XAlchemyst Technologies Pvt. Ltd. All rights
               reserved.
             </p>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-40 text-gray-400">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-44 text-gray-400">
               <Link
                 href="/terms-of-use"
                 className="hover:text-white transition-colors text-md"
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
               { name: "About Us", link: "/about-us" },
-              { name: "Careers", link: null },
+              { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
               {
                 name: "Demo",
@@ -116,6 +116,7 @@ const Footer: React.FC = () => {
               },
               { name: "Support", link: null },
               { name: "FAQs", link: "/faqs" },
+              { name: "Blogs", link: "/blogs" },
               { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
@@ -186,7 +187,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-400">Bangaluru, Karnataka, India</span>
             </div>
             <motion.div
-              className="flex items-center space-x-16 mt-6 mb-6 justify-center md:justify-start"
+              className="flex items-center space-x-16 mt-12 mb-6 justify-center md:justify-start"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
