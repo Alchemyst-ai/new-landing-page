@@ -122,7 +122,7 @@ const options = [
     title: "Sign Up",
     description: "Start your free trial in minutes.",
     // image: "/media/defineyouricp.png",
-    video: "/media/icp.mp4",
+    video: "/dashboard/signup.mp4",
     buttonText: "Requeset a Demo",
     link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
@@ -130,7 +130,7 @@ const options = [
     title: "Accelerate",
     description: "Let Maya handle the heavy lifting while you close more deals",
     // image: "/media/generatehighqualityleads.png",
-    video: "/media/data_enrichment.mp4",
+    video: "/dashboard/accelerate.mp4",
     buttonText: "Requeset a Demo",
     link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
@@ -138,7 +138,7 @@ const options = [
     title: "Integrate",
     description: "Sync Maya with your CRM for a seamless experience.",
     // image: "/media/automateyouroutreach.png",
-    video: "/media/campaign.mp4",
+    video: "/dashboard/integrate.mp4",
     buttonText: "Requeset a Demo",
     link: "https://calendly.com/uttaran-getalchemystai/30min",
   },
@@ -163,7 +163,7 @@ const Steps: React.FC = () => {
           });
         }
       }
-    }, 60000);
+    }, 27000);
 
     return () => clearInterval(interval);
   }, [activeOption]);

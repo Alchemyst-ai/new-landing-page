@@ -18,11 +18,11 @@ const fadeInUp = {
 
 export default function CopilotContent() {
   const logos = [
-    "/enterprises/decathlon.png",
-    "/enterprises/bajajallianz.png",
-    "/enterprises/plat.png",
-    "/enterprises/tesco.png",
-    "/enterprises/fourkites.webp",
+    "/enterprises/tesco.svg",
+    "/enterprises/fourkites.svg",
+    "/enterprises/decathlon.svg",
+    "/enterprises/bajaj.svg",
+    "/enterprises/fourthought.svg",
   ];
   const settings = {
     infinite: true,
