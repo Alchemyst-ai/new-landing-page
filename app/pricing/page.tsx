@@ -14,7 +14,6 @@ import { useCountryDetection } from "@/components/CountryDetector";
 type BasePlan = "Starter" | "Accelerate" | "Supercharge";
 
 export default function PricingPage() {
-
   // State variables for billing cycle and country
   const [billingCycle, setBillingCycle] = useState<
     "monthly" | "annually" | "topup"
@@ -39,7 +38,6 @@ export default function PricingPage() {
 
   return (
     <div>
-
       {/* Navbar component */}
       <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
         <Navbar />
@@ -49,17 +47,17 @@ export default function PricingPage() {
       {/* Pricing page content */}
       <div className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center mt-28 mb-12">
+          <div className="flex justify-center mt-8 md:mt-28 mb-12">
             <div className="px-6 py-1 bg-gray-900 text-orange-400 text-xl font-semibold rounded-full shadow-[0_0_20px_4px_rgba(255,165,0,0.5)] transition-all duration-500 ease-in-out transform hover:scale-110 border border-orange-400">
               Pricing
             </div>
           </div>
 
-          <h1 className="text-6xl sm:text-9xl font-bold text-center mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-center">
             Choose the Perfect Plan for Your Business
           </h1>
 
-          <p className="text-gray-400 text-lg sm:text-2xl text-center mb-16 mt-16 max-w-4xl mx-auto">
+          <p className="text-gray-400 text-lg md:text-xl text-center mb-16 mt-4 max-w-4xl mx-auto">
             Discover the perfect plan for your business, whether you are just
             getting started or scaling to new heights. Our flexible pricing
             tiers are designed to suit companies of all sizes, from startups to
@@ -98,7 +96,7 @@ export default function PricingPage() {
               ))
             )}
           </div>
-          
+
           {/* Enterprise card  */}
           <EnterpriseCard />
         </div>
@@ -108,4 +106,3 @@ export default function PricingPage() {
     </div>
   );
 }
-

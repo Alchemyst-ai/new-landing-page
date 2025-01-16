@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
               { name: "Alchemyst Labs", link: null },
               {
                 name: "Demo",
-                link: "https://www.youtube.com/watch?v=m7qiEo9AXT8",
+                link: "/demopage",
               },
               { name: "Support", link: null },
               { name: "FAQs", link: "/faqs" },

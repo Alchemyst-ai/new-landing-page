@@ -47,24 +47,24 @@ export const menuData: MenuObject[] = [
                 icon: "/icons/IncreaseProfits.png",
                 link: "/products",
               },
-              {
-                title: "Whatsapp Automation",
-                level: "tertiary",
-                icon: "/icons/WhatsApp.png",
-                link: "/products#whatsapp-automation",
-              },
-              {
-                title: "Telegram Automation",
-                level: "tertiary",
-                icon: "/icons/TelegramApp.png",
-                link: "/products#telegram-automation",
-              },
-              {
-                title: "Email Warmup",
-                level: "tertiary",
-                icon: "/icons/Fire.png",
-                link: "/products#email-warmup ",
-              },
+              // {
+              //   title: "Whatsapp Automation",
+              //   level: "tertiary",
+              //   icon: "/icons/WhatsApp.png",
+              //   link: "/products#whatsapp-automation",
+              // },
+              // {
+              //   title: "Telegram Automation",
+              //   level: "tertiary",
+              //   icon: "/icons/TelegramApp.png",
+              //   link: "/products#telegram-automation",
+              // },
+              // {
+              //   title: "Email Warmup",
+              //   level: "tertiary",
+              //   icon: "/icons/Fire.png",
+              //   link: "/products#email-warmup ",
+              // },
               {
                 title: "B2B data",
                 level: "tertiary",
@@ -162,7 +162,7 @@ export const menuData: MenuObject[] = [
             link: "/news-studio",
           },
           {
-            title: "Alchemyst Labs (coming soon)",
+            title: "Alchemyst Labs (soon)",
             level: "tertiary",
             icon: "/icons/Lab Items.png",
             link: "#",
@@ -174,13 +174,13 @@ export const menuData: MenuObject[] = [
         level: "secondary",
         children: [
           {
-            title: "Demo (coming soon)",
+            title: "Demo",
             level: "tertiary",
             icon: "/icons/Video.png",
-            link: "#",
+            link: "/demopage",
           },
           {
-            title: "Support (coming soon)",
+            title: "Support (soon)",
             level: "tertiary",
             icon: "/icons/Technical Support.png",
             link: "#",
@@ -210,7 +210,7 @@ export const menuData: MenuObject[] = [
             link: "/case-study",
           },
           {
-            title: "Change Log (coming soon)",
+            title: "Change Log (soon)",
             level: "tertiary",
             icon: "/icons/Layers.png",
             link: "#",

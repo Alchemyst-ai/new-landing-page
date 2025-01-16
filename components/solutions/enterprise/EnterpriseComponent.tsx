@@ -577,11 +577,7 @@ const EnterpriseComponent = () => {
         transition={{ duration: 2.0 }}
         className="w-full flex flex-col justify-center items-center px-4 py-8 md:py-16"
       >
-        <h1 className="text-4xl md:text-5xl mb-14">
-          Why <span className="text-orange-400">Enterprises</span> trust{" "}
-          <span className="text-orange-400">Alchemysts</span>
-        </h1>
-        <div className="border border-gray-800 relative w-full max-w-7xl h-[300px] md:h-[500px] overflow-hidden rounded-3xl transition-all duration-500 ease-in-out hover:scale-105">
+        <div className="border border-gray-800 relative w-full md:max-w-[88%] h-[300px] md:h-[500px] overflow-hidden rounded-3xl">
           <Image
             src="/solutions/startups/startup_02.svg"
             alt="All in one subscription Image"

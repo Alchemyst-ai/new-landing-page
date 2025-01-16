@@ -2,14 +2,13 @@ import Image from "next/image";
 
 export default function Card1() {
   return (
-    // bg-gradient-to-tl from-black via-black to-[#5c2e00] border border-gray-500 shadow-lg shadow-gray-600 rounded-xl
-    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 h-[400px] relative">
+    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden relative">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 p-10 md:pr-4">
+        <div className="p-10 md:w-1/2">
           <h2 className="text-2xl font-bold mb-8 text-white">
             Secure and Compliant Sales Tools
           </h2>
-          <ul className="space-y-8 text-gray-400 ">
+          <ul className="space-y-8 text-gray-400">
             <li>
               <p className="font-semibold text-white text-md">
                 Top-Notch Sales Data Security:
@@ -35,17 +34,16 @@ export default function Card1() {
             </li>
           </ul>
         </div>
-        <div className="md:w-1/2 absolute -top-8 right-0 h-full hidden md:block">
+        <div className="w-full h-64 md:w-1/2 md:h-full md:absolute -top-28 md:-top-5 md:right-0 relative">
           <Image
             src="/media/sandcsalestools.png"
             alt="Secure and Compliant Sales Tools"
             width={500}
             height={500}
-            className="object-cover rounded-lg"
+            className="md:rounded-r-3xl"
           />
         </div>
       </div>
     </div>
   );
 }
-

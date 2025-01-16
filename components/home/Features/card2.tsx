@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Card2() {
   return (
-    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 h-[400px]">
+    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden h-[400px]">
       <div className="p-6 flex flex-col md:flex-row">
         <div className="md:w-80 md:pr-4 order-2 md:order-1">
           <Image

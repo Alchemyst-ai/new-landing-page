@@ -11,7 +11,6 @@ interface DropdownMenuProps {
   onClose: () => void;
 }
 
-//  This component renders a dropdown menu for the main navigation.
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   item,
   isOpen,
@@ -20,7 +19,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // This useEffect adds the mouseleave event listener to the menu element when the menu is opened. The event listener is removed when the menu is closed.
   useEffect(() => {
     const handleMouseLeave = () => {
       onClose();
@@ -38,34 +36,55 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   }, [onClose]);
 
   useEffect(() => {
-    /**
-     * This useEffect sets the activeSubMenu state when the menu is opened. It does this by finding the first child of the item
-     * and setting the activeSubMenu state to the title of that child.
-     * The component uses the isOpen state to determine whether the menu should be rendered or not.
-     */
     if (isOpen && item.title === "Product" && item.children) {
       setActiveSubMenu(item.children[0].title);
     }
   }, [isOpen, item]);
 
   const handleSubMenuEnter = (title: string) => {
-    /**
-     * This function sets the activeSubMenu state when the user enters a submenu.
-     * It does this by setting the title of the submenu as the activeSubMenu state.
-     */
     const subMenu = item.children?.find((child) => child.title === title);
     if (subMenu && subMenu.children && subMenu.children.length > 0) {
       setActiveSubMenu(title);
     }
   };
 
-  // This function renders the content of the product dropdown menu.
+  const renderLink = (link: MenuObject) => {
+    const isClickable = link.link && link.link !== "#";
+    const linkClass = `flex items-center space-x-2 transition-colors duration-200 ${
+      isClickable ? "hover:text-orange-400" : "text-gray-500 cursor-not-allowed"
+    }`;
+
+    return isClickable ? (
+      <Link href={link.link!} className={linkClass}>
+        {link.icon && (
+          <Image
+            src={link.icon || "/placeholder.svg"}
+            alt={link.title}
+            width={20}
+            height={20}
+          />
+        )}
+        <span>{link.title}</span>
+      </Link>
+    ) : (
+      <span className={linkClass}>
+        {link.icon && (
+          <Image
+            src={link.icon || "/placeholder.svg"}
+            alt={link.title}
+            width={20}
+            height={20}
+          />
+        )}
+        <span>{link.title}</span>
+      </span>
+    );
+  };
+
   const renderProductContent = () => {
-    // The menu is rendered based on the children of the item passed to the component. */
     const activeContent = item.children?.find(
       (child) => child.title === activeSubMenu
     );
-    // If the item has no children, the component renders nothing.
     if (!activeContent) return null;
 
     return (
@@ -76,20 +95,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
             <ul className="space-y-2">
               {column.children?.map((link, idx) => (
                 <li key={idx} className="list-none">
-                  <Link
-                    href={link.link || "#"}
-                    className="flex items-center space-x-2 hover:text-orange-400 transition-colors duration-200"
-                  >
-                    {link.icon && (
-                      <Image
-                        src={link.icon || "/placeholder.svg"}
-                        alt={link.title}
-                        width={20}
-                        height={20}
-                      />
-                    )}
-                    <span>{link.title}</span>
-                  </Link>
+                  {renderLink(link)}
                 </li>
               ))}
             </ul>
@@ -100,7 +106,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   };
 
   return (
-    // AnimatePresence to animate the nav bar menu in and out.
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -157,7 +162,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       >
                         {child.icon && (
                           <Image
-                            src={child.icon || "/placeholder.svg"}
+                            src={child.icon}
                             alt={child.title}
                             width={30}
                             height={30}
@@ -207,20 +212,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       <ul className="space-y-2 list-none">
                         {child.children.map((grandchild, idx) => (
                           <li key={idx} className="list-none">
-                            <Link
-                              href={grandchild.link || "#"}
-                              className="flex items-center space-x-2 hover:text-orange-400 transition-colors duration-200"
-                            >
-                              {grandchild.icon && (
-                                <Image
-                                  src={grandchild.icon || "/placeholder.svg"}
-                                  alt={grandchild.title}
-                                  width={20}
-                                  height={20}
-                                />
-                              )}
-                              <span>{grandchild.title}</span>
-                            </Link>
+                            {renderLink(grandchild)}
                           </li>
                         ))}
                       </ul>
@@ -237,46 +229,12 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       <ul className="space-y-2 list-none">
                         {child.children.map((grandchild, idx) => (
                           <li key={idx} className="list-none">
-                            <Link
-                              href={grandchild.link || "#"}
-                              className="flex items-center space-x-2 hover:text-orange-400 transition-colors duration-200"
-                            >
-                              {grandchild.icon && (
-                                <Image
-                                  src={grandchild.icon || "/placeholder.svg"}
-                                  alt={grandchild.title}
-                                  width={20}
-                                  height={20}
-                                />
-                              )}
-                              <span>{grandchild.title}</span>
-                            </Link>
+                            {renderLink(grandchild)}
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <Link
-                        href={child.link || "#"}
-                        className="flex items-center space-x-2 hover:text-orange-400 transition-colors duration-200"
-                      >
-                        {child.icon && (
-                          <Image
-                            src={child.icon || "/placeholder.svg"}
-                            alt={child.title}
-                            width={50}
-                            height={50}
-                            className="mr-2"
-                          />
-                        )}
-                        <div>
-                          <span>{child.title}</span>
-                          {child.description && (
-                            <p className="text-sm text-gray-400">
-                              {child.description}
-                            </p>
-                          )}
-                        </div>
-                      </Link>
+                      renderLink(child)
                     )}
                   </div>
                 ))}

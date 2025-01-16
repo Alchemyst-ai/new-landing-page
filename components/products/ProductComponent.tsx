@@ -14,9 +14,9 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; text: string }> = ({
   icon,
   text,
 }) => (
-  <div className="mt-4 flex items-center p-6 gap-4 bg-gray-950 border border-gray-600 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-105">
+  <div className="mt-4 flex items-center p-2 md:p-8 gap-4 bg-gray-950 border border-gray-600 rounded-2xl shadow-md">
     {icon}
-    <p className="font-medium"> {text} </p>
+    <p className="font-medium md:text-xl text-start"> {text} </p>
   </div>
 );
 
@@ -97,7 +97,7 @@ const ProductComponent: React.FC = () => {
           ].map((feature, index) => (
             <div
               key={index}
-              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative transition-all duration-500 ease-in-out hover:scale-105 ${
+              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative ${
                 index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
               }`}
             >
@@ -112,7 +112,7 @@ const ProductComponent: React.FC = () => {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transperant bg-opacity-90"></div>
 
               <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center transition-all duration-500 ease-in-out hover:scale-105">
-                <h3 className="text-center text-3xl md:text-2xl mb-2">
+                <h3 className="text-center text-xl md:text-2xl md:mb-2">
                   <b>{feature.title}</b>
                 </h3>
               </div>
@@ -155,7 +155,7 @@ const ProductComponent: React.FC = () => {
                   Maya automates everything from instant replies to bulk
                   broadcasts, ensuring your business stays connected
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
                   <FeatureCard
                     icon={
                       <svg

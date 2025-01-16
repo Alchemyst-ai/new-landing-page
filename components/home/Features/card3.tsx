@@ -4,7 +4,7 @@ import Button from "../Button";
 
 export default function Card3() {
   return (
-    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 h-full">
+    <div className="bg-gradient-to-r from-black to-[#272727] border border-gray-600 shadow-[0_5px_20px_1px_rgba(255,153,153,0.2)] rounded-3xl overflow-hidden h-full">
       <div className="p-6 md:p-8 flex flex-col justify-between h-full">
         <div>
           <h2 className="text-2xl md:text-2xl font-bold mb-6 md:mb-6 text-white">
@@ -46,13 +46,13 @@ export default function Card3() {
             </Button>
           </Link>
         </div>
-        <div className="mt-6 md:mt-8">
+        <div className="mb-7">
           <Image
             src="/media/ledgenandpersonal.png"
             alt="AI-Powered Lead Generation"
             width={500}
             height={300}
-            className="w-full h-32 md:h-auto object-cover rounded-lg hidden md:block"
+            className="w-full h-64 md:h-auto object-cover rounded-lg"
           />
         </div>
       </div>

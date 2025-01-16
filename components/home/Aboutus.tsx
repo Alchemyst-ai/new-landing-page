@@ -4,7 +4,7 @@ import Image from "next/image";
 const AboutUs: React.FC = () => {
   return (
     <div className="w-full mx-auto p-6">
-      <div className="relative overflow-hidden rounded-lg shadow-xl bg-gradient-to-b from-black via-black to-gray-900 border border-gray-700 transition duration-500 ease-in-out hover:scale-95">
+      <div className="relative overflow-hidden rounded-lg shadow-xl bg-gradient-to-b from-black via-black to-gray-900 border border-gray-700">
         <div className="absolute inset-0 z-0">
           <Image
             src="/media/aboutcircle.svg"
@@ -27,7 +27,7 @@ const AboutUs: React.FC = () => {
             Alchemyst.ai - where technology meets results-driven innovation.
           </p>
           <Link href="/about-us">
-            <button className="inline-block px-10 py-2 mt-8 text-black font-semibold text-center rounded-full bg-[#fe9833] transition-all duration-200 ease-in-out hover:scale-110">
+            <button className="inline-block px-10 py-2 mt-8 text-black font-semibold text-center rounded-full bg-[#fe9833] transition-all duration-500 ease-in-out hover:scale-110">
               Connect Now!
             </button>
           </Link>

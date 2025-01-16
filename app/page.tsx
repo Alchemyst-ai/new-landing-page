@@ -86,7 +86,7 @@ export default function HomePage() {
           <CustomCursor />
         </div>
 
-        <main className="flex-grow flex flex-col gap-8 justify-center items-center pt-16">
+        <main className="flex-grow flex flex-col gap-8 justify-center items-center md:pt-16">
           {[
             { Component: Hero, title: null },
             { Component: Steps, title: null },

@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CaseStudy {
   id: number;
@@ -33,19 +34,21 @@ const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
     whileHover={{ scale: 1.02, boxShadow: "0 0 5px 1px rgba(254,152,51,255)" }}
     transition={{ duration: 0.3 }}
   >
-    <div className="flex justify-between items-start pt-6 pl-6">
-      <Image
-        src={image || "/placeholder.svg"}
-        alt={title}
-        width={80}
-        height={80}
-        className="rounded-full"
-      />
-    </div>
-    <div className="p-6">
-      <h3 className="text-4xl font-bold mb-4">{title}</h3>
-      <p className="text-lg text-gray-400">{description}</p>
-    </div>
+    <Link href={`/case-study/`}>
+      <div className="flex justify-between items-start pt-6 pl-6">
+        <Image
+          src={image || "/placeholder.svg"}
+          alt={title}
+          width={80}
+          height={80}
+          className="rounded-full"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="text-4xl font-bold mb-4">{title}</h3>
+        <p className="text-lg text-gray-400">{description}</p>
+      </div>
+    </Link>
   </motion.div>
 );
 

@@ -33,13 +33,13 @@ const Newsletter: React.FC = () => {
             </div>
 
             {/* Right Column */}
-            <div className="w-full md:w-1/2 relative h-[200px] md:h-[500px]">
+            <div className="w-full md:w-1/2 relative h-[300px] md:h-[500px]">
               <Image
                 src="/media/mailbox.svg"
                 alt="Background"
                 fill
                 style={{ objectFit: "cover" }}
-                className="rounded-lg mt-14 hidden md:block"
+                className="rounded-lg md:mt-14 mt-8"
               />
             </div>
           </div>
