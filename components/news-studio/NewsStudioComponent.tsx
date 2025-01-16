@@ -147,7 +147,7 @@ export default function NewsStudioComponent() {
             <div className="flex flex-col md:flex-row gap-8">
               <div className="md:w-1/2">
                 <div className="text-center md:text-start md:pl-20 md:mt-16">
-                  <h1 className="md:text-8xl font-bold mb-4">News Studio</h1>
+                  <h1 className="text-5xl md:text-8xl font-bold mb-4">News Studio</h1>
                   <p className="text-xl mb-6">
                     Your Gateway to Insights, Trends, and Stories from Alchemyst
                     AI

@@ -236,7 +236,7 @@ const B2BComponent = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-gray-950 border border-gray-700 p-6 rounded-2xl shadow-md transition-all duration-500 ease-in-out hover:scale-110"
+                className="bg-gray-950 border border-gray-700 p-6 rounded-2xl shadow-md"
               >
                 <div className="flex items-start mb-4">
                   <Image
@@ -250,7 +250,7 @@ const B2BComponent = () => {
                 <h3 className="text-2xl font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 mt-4">{feature.description}</p>
+                <p className="text-gray-400 mt-4">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -286,7 +286,7 @@ const B2BComponent = () => {
                   <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                     {reason.title}
                   </h3>
-                  <p className="text-gray-500 text-md">{reason.description}</p>
+                  <p className="text-gray-400 text-md">{reason.description}</p>
                 </div>
               </div>
             ))}

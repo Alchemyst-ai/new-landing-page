@@ -129,7 +129,7 @@ export default function CopilotContent() {
           ].map((feature, index) => (
             <div
               key={index}
-              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative transition-all duration-500 ease-in-out hover:scale-105 ${
+              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative ${
                 index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
               }`}
             >

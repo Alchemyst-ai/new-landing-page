@@ -85,7 +85,7 @@ const StartupComponent = () => {
           <div className="flex flex-col md:flex-row items-center justify-center">
             {/* Left Column */}
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
-              <h1 className="text-4xl md:text-7xl font-bold mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">
                 Powering Startups with Seamless Email Deliverability
               </h1>
               <p className="text-xl text-gray-400 mt-4">
@@ -155,7 +155,7 @@ const StartupComponent = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-72 relative transition-all duration-500 ease-in-out hover:scale-105"
+                className="bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-72 relative"
               >
                 <Image
                   src={feature.image}
@@ -165,7 +165,7 @@ const StartupComponent = () => {
                   objectFit="contain"
                 />
 
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
                   <h3 className="text-lg md:text-2xl font-bold mb-2">
@@ -178,35 +178,7 @@ const StartupComponent = () => {
         </div>
       </motion.section>
 
-      {/* Section 3 - All Included In One Subscription CARD */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        transition={{ duration: 2.0 }}
-        className="w-full flex justify-center items-center px-4 py-8 md:py-16"
-      >
-        <div className="border border-gray-800 relative w-full max-w-7xl h-[300px] md:h-[500px] overflow-hidden rounded-3xl transition-all duration-500 ease-in-out hover:scale-105">
-          <Image
-            src="/solutions/startups/startup_02.svg"
-            alt="All in one subscription Image"
-            layout="fill"
-            objectFit="cover"
-            className="absolute inset-0 w-full h-full"
-          />
-          <div className="absolute inset-0 flex flex-col bg-black bg-opacity-30 items-center justify-center text-center p-6">
-            <h3 className="text-2xl md:text-4xl font-bold mb-4 text-white transition-all duration-500 ease-in-out hover:scale-105">
-              All Included In One Subscription
-            </h3>
-            <p className="text-lg md:text-xl text-white max-w-2xl transition-all duration-500 ease-in-out hover:scale-105">
-              Access all of these features and so many more with Maya.
-            </p>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Section 4 - Features Tailored for Startups */}
+      {/* Section 3 - Features Tailored for Startups */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -234,6 +206,34 @@ const StartupComponent = () => {
           </div>
           <div className="md:col-span-1">
             <FeatureCard {...features[3]} />
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 4 - All Included In One Subscription CARD */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        transition={{ duration: 2.0 }}
+        className="w-full flex justify-center items-center px-4 py-8 md:py-16"
+      >
+        <div className="border border-gray-800 relative w-full max-w-[88%] h-[300px] md:h-[500px] overflow-hidden rounded-3xl">
+          <Image
+            src="/solutions/startups/startup_02.svg"
+            alt="All in one subscription Image"
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0 w-full h-full"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+            <h3 className="text-2xl md:text-4xl font-bold mb-4 text-white transition-all duration-500 ease-in-out hover:scale-105">
+              All Included In One Subscription
+            </h3>
+            <p className="text-lg md:text-xl text-white max-w-2xl transition-all duration-500 ease-in-out hover:scale-105">
+              Access all of these features and so many more with Maya.
+            </p>
           </div>
         </div>
       </motion.section>
