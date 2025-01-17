@@ -10,11 +10,11 @@ export default function Features() {
       </h2>
       <div className="container mx-auto max-w-[90%]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-10">
+          <div className="flex flex-col justify-between space-y-10">
             <Card1 />
             <Card2 />
           </div>
-          <div className="md:h-fit">
+          <div className="flex flex-col justify-between md:h-full">
             <Card3 />
           </div>
         </div>
@@ -22,3 +22,4 @@ export default function Features() {
     </section>
   );
 }
+

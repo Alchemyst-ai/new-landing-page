@@ -34,16 +34,18 @@ export default function Card1() {
             </li>
           </ul>
         </div>
-        <div className="w-full h-64 md:w-1/2 md:h-full -top-28 md:-top-5 md:right-0 relative">
-          <Image
-            src="/media/sandcsalestools.png"
-            alt="Secure and Compliant Sales Tools"
-            width={500}
-            height={500}
-            className="md:rounded-r-3xl"
-          />
+        <div className="w-full h-64 md:w-1/2 md:h-full md:absolute -top-28 md:-top-5 md:right-0 relative">
+          <div className="relative w-full h-full">
+            <Image
+              src="/media/sandcsalestools.png"
+              alt="Secure and Compliant Sales Tools"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
