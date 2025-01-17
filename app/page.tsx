@@ -98,7 +98,7 @@ export default function HomePage() {
             { Component: AboutUs, title: null },
             { Component: EndingCard, title: null },
           ].map(({ Component, title }, index) => (
-            <Component />
+            <Component key={index} />
           ))}
         </main>
         <motion.section
