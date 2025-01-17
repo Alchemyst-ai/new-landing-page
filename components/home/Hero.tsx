@@ -84,7 +84,7 @@ function Hero() {
         quality={100}
       />
 
-      <div className="relative z-10 flex flex-col max-h-screen max-w-screen overflow-hidden">
+      <div className="relative z-10 flex flex-col max-w-[100vw] max-h-[100vw] overflow-hidden">
         {/* Heading Section for Desktop */}
         <div className="mt-72 md:flex flex-col items-start ml-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
