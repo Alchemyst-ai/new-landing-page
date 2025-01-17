@@ -55,17 +55,18 @@ const Navbar: React.FC = () => {
 
     return (
       <div key={item.title} className={`w-full ${depth > 0 ? "ml-4" : ""}`}>
-        <button
-          onClick={() => toggleSubmenu(item.title)}
-          className={`flex items-center justify-between w-full py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
-            item.style
-              ? Object.entries(item.style)
-                  .map(([k, v]) => `${k}:${v}`)
-                  .join(";")
-              : ""
-          }`}
-        >
-          <div className="flex items-center">
+        <div className="flex items-center justify-between w-full">
+          <Link
+            href={item.link || "#"}
+            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
+              item.style
+                ? Object.entries(item.style)
+                    .map(([k, v]) => `${k}:${v}`)
+                    .join(";")
+                : ""
+            }`}
+            onClick={toggleMenu}
+          >
             {item.icon && (
               <Image
                 src={item.icon || "/placeholder.svg"}
@@ -76,14 +77,23 @@ const Navbar: React.FC = () => {
               />
             )}
             <span>{item.title}</span>
-          </div>
-          {item.children &&
-            (isSubmenuOpen ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            ))}
-        </button>
+          </Link>
+          {item.children && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                toggleSubmenu(item.title);
+              }}
+              className="p-2"
+            >
+              {isSubmenuOpen ? (
+                <ChevronUp className="w-4 h-4 text-white" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-white" />
+              )}
+            </button>
+          )}
+        </div>
         <AnimatePresence>
           {isSubmenuOpen && item.children && (
             <motion.div
