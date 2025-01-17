@@ -191,7 +191,7 @@ const Navbar: React.FC = () => {
       {/* Partner with us button and Book a Demo */}
       <div className="flex items-center space-x-4">
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="/partner-with-us">
+          <Link href="https://tripetto.app/run/60HWNW0WQN" target="_blank">
             <Button
               variant="secondary"
               icon={
@@ -211,10 +211,13 @@ const Navbar: React.FC = () => {
                 </svg>
               }
             >
-              Partner with us
+              Get in Touch
             </Button>
           </Link>
-          <Link href="https://calendly.com/uttaran-getalchemystai/30min">
+          <Link
+            href="https://calendly.com/uttaran-getalchemystai/30min"
+            target="_blank"
+          >
             <Button variant="primary">Book a demo</Button>
           </Link>
         </div>

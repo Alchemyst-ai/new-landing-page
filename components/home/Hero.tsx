@@ -57,18 +57,15 @@ function Hero() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute inset-0 w-full h-full object-cover hidden md:block"
-          preload="auto"
-          playsInline
-        >
-          <source src="/media/landingpagevideo.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover hidden md:block"
+        preload="auto"
+      >
+        <source src="/media/landingpagevideo60_2.mp4" type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B09] via-transparent to-transparent opacity-100" />
 
@@ -160,7 +157,7 @@ function Hero() {
                     alt={`Company ${index + 1}`}
                     width={50}
                     height={10}
-                    className="h-16 w-44 mt-32 md:h-12 md:w-52"
+                    className="h-12 w-32 mt-20 md:h-12 md:w-52"
                     loading="eager"
                     quality={100}
                   />

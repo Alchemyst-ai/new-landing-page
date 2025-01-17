@@ -18,7 +18,7 @@ const Team: React.FC = () => {
         <h1 className="mb-10 text-4xl md:text-7xl text-center flex flex-row sm:flex-col md:flex-row">
           <b>Our Team</b>
         </h1>
-        <div className="flex flex-row gap-x-8">
+        <div className="flex flex-col md:flex-row gap-x-8 gap-y-4 md:gap-y-0">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -36,3 +36,4 @@ const Team: React.FC = () => {
 };
 
 export default Team;
+
