@@ -52,7 +52,7 @@ export default function Card3() {
             alt="AI-Powered Lead Generation"
             width={500}
             height={300}
-            className="w-full h-auto object-cover rounded-lg"
+            className="w-[86%] h-full mx-auto my-auto object-cover rounded-lg"
             style={{ maxWidth: "100%", height: "auto" }}
           />
         </div>
