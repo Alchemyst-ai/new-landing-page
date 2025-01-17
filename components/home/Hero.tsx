@@ -56,7 +56,7 @@ function Hero() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-x-hidden overflow-y-auto">
+    <div className="relative w-full h-screen overflow-x-hidden overflow-y-hidden">
       <video
         autoPlay
         loop

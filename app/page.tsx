@@ -98,17 +98,7 @@ export default function HomePage() {
             { Component: AboutUs, title: null },
             { Component: EndingCard, title: null },
           ].map(({ Component, title }, index) => (
-            <motion.section
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              transition={{ duration: 2.0 }}
-              className="w-full"
-            >
-              <Component />
-            </motion.section>
+            <Component />
           ))}
         </main>
         <motion.section
@@ -125,7 +115,6 @@ export default function HomePage() {
     </div>
   );
 }
-
 
 // !!!!!!!!!!   STATIC IMPORT APPROACH   !!!!!!!!!!!
 // "use client";
