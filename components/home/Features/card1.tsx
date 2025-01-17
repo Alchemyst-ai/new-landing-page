@@ -34,7 +34,7 @@ export default function Card1() {
             </li>
           </ul>
         </div>
-        <div className="w-full h-64 md:w-1/2 md:h-full md:absolute -top-28 md:-top-5 md:right-0 relative">
+        <div className="w-full h-64 md:w-1/2 md:h-full md:absolute -top-8 md:-top-5 md:right-0 relative">
           <div className="relative w-full h-full">
             <Image
               src="/media/sandcsalestools.png"

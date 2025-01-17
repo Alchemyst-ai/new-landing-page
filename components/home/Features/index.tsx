@@ -4,8 +4,8 @@ import Card3 from "./card3";
 
 export default function Features() {
   return (
-    <section className="w-full py-12 -mt-28 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8">
-      <h2 className="text-6xl font-bold mb-12 text-center">
+    <section className="w-full -mt-28 md:py-24 lg:py-32 md:px-6 lg:px-8">
+      <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
         Features
       </h2>
       <div className="container mx-auto max-w-[90%]">

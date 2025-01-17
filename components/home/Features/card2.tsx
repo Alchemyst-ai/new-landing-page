@@ -22,7 +22,7 @@ export default function Card1() {
           </ul>
         </div>
         <div className="w-full md:w-1/2 md:h-full md:absolute -top-28 md:top-12 md:right-0 relative">
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full hidden md:block">
             <Image
               src="/media/whyalchemyst2.png"
               alt="Secure and Compliant Sales Tools"

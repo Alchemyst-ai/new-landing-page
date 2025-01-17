@@ -49,7 +49,7 @@ const DeliverabilityComponent = () => {
         animate="visible"
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-40 pl-0 md:pl-32"
+        className="mb-20 mt-20 md:mt-40 pl-0 md:pl-32"
       >
         <div className="flex flex-col md:flex-row items-center p-5 md:p-10">
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
@@ -64,7 +64,7 @@ const DeliverabilityComponent = () => {
             </p>
 
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col md:flex-row gap-7 md:gap-0 items-center space-x-4">
                 <Link
                   href="https://calendly.com/uttaran-getalchemystai/30min"
                   target="_blank"
@@ -122,19 +122,19 @@ const DeliverabilityComponent = () => {
       >
         <div>
           <div>
-            <div className="flex flex-col items-center text-center ">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <div className="flex flex-col items-center text-center p-4 md:p-0">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Why Your{" "}
                 <span className="text-orange-400">
                   Emails Aren&apos;t Reaching
                 </span>{" "}
                 the Inbox
               </h1>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <h3 className="text-2xl md:text-2xl font-bold mb-4">
                 Deliverability challenges can cost you customers, revenue, and
                 trust
               </h3>
-              <p className="text-lg text-gray-400 mt-8 text-center md:w-1/2">
+              <p className="text-lg text-gray-400 text-center md:w-[40%]">
                 Getting emails delivered is harder than ever. Spam filters, poor
                 domain reputation, and invalid contacts prevent your emails from
                 reaching the right people. Without effective solutions, your
@@ -171,13 +171,14 @@ const DeliverabilityComponent = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-72 relative transition-all duration-500 ease-in-out hover:scale-105"
+                className="bg-black border border-gray-800 rounded-3xl h-60 md:h-80 relative"
               >
                 <Image
                   src={feature.image}
                   alt={`${feature.title} Image`}
-                  className="absolute w-full h-full"
+                  className="absolute w-full h-full p-2 pb-10"
                   layout="fill"
+                  objectFit = "cover"
                 />
 
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
@@ -202,8 +203,9 @@ const DeliverabilityComponent = () => {
         className="mb-20 mt-40 py-12 px-4 md:px-8"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-8">
-            Features Designed to Guarantee Deliverability
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            Features Designed to Guarantee{" "}
+            <span className="text-orange-400">Deliverability</span>
           </h2>
           <p className="text-lg md:text-2xl font-bold text-center mb-12">
             Explore how Alchemyst AI ensures your campaigns always hit the mark.
@@ -225,7 +227,7 @@ const DeliverabilityComponent = () => {
                   <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                     {reason.title}
                   </h3>
-                  <p className="text-gray-500 text-md">{reason.description}</p>
+                  <p className="text-gray-400 text-md">{reason.description}</p>
                 </div>
               </div>
             ))}
@@ -318,14 +320,14 @@ const DeliverabilityComponent = () => {
       >
         <div>
           <div>
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <div className="flex flex-col items-center p-2">
+              <h1 className="text-3xl md:text-6xl font-bold mb-4 text-center">
                 How Alchemyst AI Works
               </h1>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <h3 className="text-xl md:text-3xl font-bold mb-4 text-center">
                 Your Path to Email Deliverability Excellence
               </h3>
-              <p className="text-lg text-gray-400 mt-8 text-center w-1/2">
+              <p className="text-lg text-gray-400 md:mt-8 text-center md:w-1/2 w-3/4">
                 Here&apos;s how we make your emails impossible to ignore
               </p>
             </div>
@@ -340,7 +342,7 @@ const DeliverabilityComponent = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-10 md:pl-32 md:pr-32">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 md:p-10 md:pl-32 md:pr-32">
             {[
               {
                 title: "Audit Your Current Deliverability",
