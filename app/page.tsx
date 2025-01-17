@@ -48,10 +48,7 @@ export default function HomePage() {
           property="og:description"
           content="Discover our powerful AI solutions and learn how we're shaping the future."
         />
-        <meta
-          property="og:url"
-          content="https://https://getalchemystai.com"
-        />
+        <meta property="og:url" content="https://https://getalchemystai.com" />
         <meta property="og:type" content="website" />
       </Head>
       <noscript>
@@ -104,16 +101,7 @@ export default function HomePage() {
             <Component key={index} />
           ))}
         </main>
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ duration: 2.0 }}
-          className="w-full"
-        >
-          <Footer />
-        </motion.section>
+        <Footer />
       </div>
     </div>
   );
