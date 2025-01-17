@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import { RetroGrid } from "../magicui/Retrogrid";
 
 function Hero() {
-  // Logos and settings for the carousal
+  // Logos and settings for the carousel (unchanged)
   const logos = [
     "/enterprises/tesco.svg",
     "/enterprises/fourkites.svg",
@@ -47,7 +47,7 @@ function Hero() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           centerMode: true,
           centerPadding: "20px",
         },
@@ -56,7 +56,7 @@ function Hero() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-x-hidden overflow-y-hidden">
+    <div className="relative w-full min-h-screen overflow-x-hidden">
       <video
         autoPlay
         loop
@@ -84,23 +84,23 @@ function Hero() {
         quality={100}
       />
 
-      <div className="relative z-10 flex flex-col max-w-[100vw] max-h-[100vw] overflow-hidden">
+      <div className="relative z-10 flex flex-col max-w-full py-16 md:py-0">
         {/* Heading Section for Desktop */}
-        <div className="mt-72 md:flex flex-col items-start ml-20 hidden font-bold">
+        <div className="mt-32 md:mt-72 md:flex flex-col items-start md:ml-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
           <h1 className="text-4xl md:text-6xl">AI-Driven Employees</h1>
         </div>
 
         {/* Heading Section for Mobile */}
-        <div className="mt-40 md:hidden flex items-center justify-center self-center text-center font-bold">
-          <h1 className="text-5xl pl-2 pr-2 md:pl-0 md:pr-0 md:text-7xl">
+        <div className="mt-20 md:hidden flex items-center justify-center self-center text-center font-bold px-4">
+          <h1 className="text-4xl md:text-7xl">
             Transform Your Sales with AI-Driven Employees
           </h1>
         </div>
 
         {/* The description Section */}
-        <div className="mt-4">
-          <h2 className="text-lg text-gray-400 pl-10 pr-10 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold overflow-hidden">
+        <div className="mt-4 px-4 md:px-0">
+          <h2 className="text-lg text-gray-400 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold">
             Alchemyst AI empowers your team with an AI-powered sales platform
             that automates lead generation, outreach, and personalization -
             boosting productivity and driving growth.
@@ -108,47 +108,51 @@ function Hero() {
         </div>
 
         {/* The button section */}
-        <div className="flex items-center justify-center md:justify-start md:items-start md:ml-20 space-x-4 mt-14 overflow-hidden">
-          <div className="flex items-center space-x-4">
-            <Link
-              href="https://calendly.com/uttaran-getalchemystai/30min"
-              target="_blank"
-            >
-              <Button variant="primary">Book a demo</Button>
-            </Link>
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-start md:items-start md:ml-20 space-y-4 md:space-y-0 md:space-x-4 mt-8 md:mt-14 px-4 md:px-0">
+          <Link
+            href="https://calendly.com/uttaran-getalchemystai/30min"
+            target="_blank"
+            className="w-full md:w-auto"
+          >
+            <Button variant="primary" className="w-full md:w-auto">
+              Book a demo
+            </Button>
+          </Link>
 
-            <Link
-              href="https://www.youtube.com/watch?v=m7qiEo9AXT8"
-              target="_blank"
+          <Link
+            href="https://www.youtube.com/watch?v=m7qiEo9AXT8"
+            target="_blank"
+            className="w-full md:w-auto"
+          >
+            <Button
+              variant="secondary"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0V11.25"
+                  />
+                </svg>
+              }
+              className="w-full md:w-auto"
             >
-              <Button
-                variant="secondary"
-                icon={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0V11.25"
-                    />
-                  </svg>
-                }
-              >
-                Watch Demo
-              </Button>
-            </Link>
-          </div>
+              Watch Demo
+            </Button>
+          </Link>
         </div>
       </div>
-      {/* The company image carousal section */}
-      <div className="flex flex-col justify-center items-center overflow-hidden mt-32 md:mt-24">
-        <div className="w-[100vw] sm:w-[100vw] mt-16 mb-20">
+
+      {/* The company image carousel section */}
+      <div className="flex flex-col justify-center items-center overflow-hidden mt-16 md:mt-24">
+        <div className="w-full sm:w-[100vw] mt-8 md:mt-16 mb-20">
           <Slider {...settings}>
             {logos.map((logo, index) => (
               <div key={index} className="max-w-[100vw]">
