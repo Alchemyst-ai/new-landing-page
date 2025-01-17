@@ -15,7 +15,7 @@ const fadeInUp = {
 export default function CopilotContent() {
   return (
     <div>
-      <div className="container mt-32 mx-auto px-4 max-w-[90%] flex flex-col items-center">
+      <div className="container mt-32 mx-auto px-4 md:max-w-[90%] flex flex-col items-center">
         {/* Section 1 - Our Vision */}
         <motion.section
           initial="hidden"
@@ -24,10 +24,10 @@ export default function CopilotContent() {
           transition={{ duration: 2.0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-7xl font-bold mt-8 md:mt-8 mb-4">
+          <h1 className="text-6xl md:text-7xl font-bold md:mt-8 mb-4">
             Our Vision
           </h1>
-          <p className="text-gray-400 text-center text-xl md:text-lg mb-8 w-3/5 md:w-3/4 mx-auto">
+          <p className="text-gray-400 text-center text-xl md:text-lg mb-8 md:w-3/4 mx-auto">
             At Alchemyst AI, our vision is to transform industries by unlocking
             the limitless potential of artificial intelligence. We strive to
             empower organizations with innovative AI solutions that enhance
@@ -88,10 +88,10 @@ export default function CopilotContent() {
           transition={{ duration: 2.0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-7xl font-bold mt-8 md:mt-16 mb-4">
+          <h1 className="text-6xl md:text-7xl font-bold md:mt-16 mb-4">
             Our Mission
           </h1>
-          <p className="text-gray-400 text-center text-xl md:text-lg mb-8 w-3/5 md:w-3/4 mx-auto">
+          <p className="text-gray-400 text-center text-xl md:text-lg mb-8 md:w-3/4 mx-auto">
             Our mission is to deliver cutting-edge AI technologies that are
             accessible, scalable, and impactful. Through relentless innovation
             and collaboration, we aim to solve real-world problems, foster
