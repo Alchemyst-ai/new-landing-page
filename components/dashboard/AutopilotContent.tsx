@@ -14,7 +14,7 @@ const fadeInUp = {
 export default function AutopilotContent() {
   return (
     <div>
-      <div className="container mx-auto px-4 max-w-[90%]">
+      <div className="container mx-auto px-4 md:max-w-[90%]">
         {/* Section 1 - Your Virtual AI Employee */}
         <motion.section
           initial="hidden"
@@ -25,13 +25,13 @@ export default function AutopilotContent() {
         >
           <div className="flex flex-col md:flex-row items-center md:p-10">
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left">
+              <h1 className="text-5xl md:text-5xl font-bold mb-4 text-center md:text-left">
                 Your Virtual AI Employee
               </h1>
               <h2 className="text-2xl md:text-2xl font-semibold mb-4 text-center md:text-left">
                 Efficient, Reliable, and Always Learning
               </h2>
-              <p className="text-lg w-3/4 text-gray-400 text-center md:text-left">
+              <p className="text-lg w-3/4 text-gray-400 text-center mx-auto md:text-left">
                 Alchemyst AI empowers your team with an AI-powered sales
                 platform that automates lead generation, outreach, and
                 personalization - boosting productivity and driving growth.

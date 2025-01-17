@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               © {currentYear} XAlchemyst Technologies Pvt. Ltd. All rights
               reserved.
             </p>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-10 md:mt-44 text-gray-400">
+            <div className="flex flex-row items-center md:items-start gap-10 mt-5 md:mt-44 text-gray-400">
               <Link
                 href="/terms-of-use"
                 className="hover:text-white transition-colors text-md"

@@ -66,7 +66,7 @@ function Hero() {
           preload="auto"
           playsInline
         >
-          <source src="/media/landingpagevideo60_2.mp4" type="video/mp4" />
+          <source src="/media/landingpagevideo.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -75,7 +75,6 @@ function Hero() {
       <RetroGrid className="md:hidden block" />
 
       <div className="w-2/3 absolute inset-0 bg-gradient-to-l from-transparent via-[#0B0B09] to-[#0B0B09] opacity-90 hidden md:block" />
-      <div className="w-2/3 absolute inset-0 bg-gradient-to-b from-black via-[#0B0B09] to-[#0B0B09] opacity-90 block md:hidden" />
 
       <Image
         src="/media/topcard.svg"
@@ -152,7 +151,7 @@ function Hero() {
 
         {/* The company image carousal section */}
         <div className="flex flex-col justify-center items-center overflow-hidden mt-32 md:mt-24">
-          <div className="absolute w-[100vw] sm:w-[100vw] mt-8 mb-20 md:bottom-0">
+          <div className="absolute w-[100vw] sm:w-[100vw] mt-28 mb-20 md:bottom-0">
             <Slider {...settings}>
               {logos.map((logo, index) => (
                 <div key={index}>
@@ -161,7 +160,7 @@ function Hero() {
                     alt={`Company ${index + 1}`}
                     width={50}
                     height={10}
-                    className="h-12 w-32 mt-32 md:h-12 md:w-52"
+                    className="h-16 w-44 mt-32 md:h-12 md:w-52"
                     loading="eager"
                     quality={100}
                   />
