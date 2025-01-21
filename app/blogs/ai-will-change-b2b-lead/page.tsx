@@ -10,9 +10,10 @@ import { ClipboardCopyIcon } from "@heroicons/react/outline";
 const BlogLinkCopy = () => {
   const [copied, setCopied] = useState(false);
   const blogLink = typeof window !== "undefined" ? window.location.href : "";
+  const slug = blogLink.split("/").pop() || "";
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(blogLink).then(() => {
+    navigator.clipboard.writeText(`https://getalchemyst.ai/blogs/${slug}`).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -43,7 +44,7 @@ const page = () => {
         <main>
           <div className="text-xl p-5 mt-16 md:mt-0 md:p-52 md:max-w-[90%] mx-auto">
             <p className="text-teal-700">Sales</p>
-            <h1 className="text-4xl md:text-6xl">
+            <h1 className="text-4xl md:text-5xl">
               <b>How AI Will Change B2B Lead Generation</b>
             </h1>
             <div>
