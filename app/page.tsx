@@ -1,8 +1,6 @@
 // !!!!!!!!!!   DYNAMIC IMPORT APPROACH   !!!!!!!!!!!
 "use client";
-
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import Head from "next/head";
 import "./globals.css";
 
@@ -20,11 +18,6 @@ const Footer = dynamic(() => import("@/components/home/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
 const Steps = dynamic(() => import("@/components/home/Steps"));
 const Hero = dynamic(() => import("@/components/home/Hero"));
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export default function HomePage() {
   return (
