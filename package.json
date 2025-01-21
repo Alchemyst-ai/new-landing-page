@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@heroicons/react": "^1.0.6",
     "@notion-render/bookmark-plugin": "^0.0.2",
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
