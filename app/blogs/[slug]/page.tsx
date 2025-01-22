@@ -18,7 +18,7 @@ import { ClipboardIcon } from "@heroicons/react/outline";
 
 const BlogLinkCopy = () => {
   const [copied, setCopied] = useState(false);
-  const blogLink = typeof window !== "undefined" ? window.location.href : "";
+  const blogLink = process.env.NODE_ENV === "production" ? window.location.href : "";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(blogLink).then(() => {
