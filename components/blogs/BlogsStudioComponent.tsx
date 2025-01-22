@@ -18,19 +18,12 @@ const fadeInUp = {
 };
 
 // BlogCard Component
-function BlogCard({
-  data,
-  onClick,
-}: {
-  data: BlogContentType;
-  onClick: () => void;
-}) {
+function BlogCard({ data }: { data: BlogContentType }) {
   return (
     <motion.div
-      className="rounded-2xl border border-gray-500 overflow-hidden shadow-md cursor-pointer"
+      className="rounded-2xl border border-gray-500 overflow-hidden shadow-md cursor-pointer h-full"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
-      onClick={onClick}
     >
       <Image
         src={data.image || "/placeholder.svg"}
@@ -68,18 +61,10 @@ function BlogCard({
 
 // Main BlogsStudioComponent
 export default function BlogsStudioComponent() {
-  const [blogs] = useState<BlogContentType[]>(blogContents);
-  const featuredBlog = blogs.find((blog) => blog.id === "featured") || blogs[0];
-  const [selectedBlog, setSelectedBlog] = useState<BlogContentType | null>(
-    null
-  );
+  const [visibleBlogs, setVisibleBlogs] = useState(8);
 
-  const handleBlogClick = (blog: BlogContentType) => {
-    setSelectedBlog(blog);
-  };
-
-  const handleCloseBlog = () => {
-    setSelectedBlog(null);
+  const loadMore = () => {
+    setVisibleBlogs((prevVisible) => prevVisible + 8);
   };
 
   return (
@@ -93,54 +78,40 @@ export default function BlogsStudioComponent() {
       >
         <div className="min-h-screen">
           {/* Hero Section */}
-          <div className="container mx-auto px-4 py-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-1/2">
-                <div className="text-center md:text-start md:pl-20 md:mt-28">
-                  <h1 className="text-5xl md:text-8xl font-bold mb-4">
-                    Blogs Studio
-                  </h1>
-                  <p className="text-xl mb-6">
-                    Discover Insights and Trends in AI and B2B Lead Generation
-                  </p>
-                </div>
-                <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 md:pl-20">
-                  <div className="flex items-center space-x-4">
-                    <Link
-                      href="https://calendly.com/uttaran-getalchemystai/30min"
-                      target="_blank"
-                    >
-                      <Button variant="primary">Book a demo</Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:w-1/2">
-                <Link href={`${featuredBlog.redirectLink}`}>
-                  <BlogCard data={featuredBlog} onClick={() => {}} />
-                </Link>
-              </div>
+          <div className="container mx-auto px-4 py-8 text-center">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+              Blogs Studio
+            </h1>
+            <p className="text-xl mb-6">
+              Discover Insights and Trends in AI and B2B Lead Generation
+            </p>
+            <div className="flex justify-center">
+              <Link
+                href="https://calendly.com/uttaran-getalchemystai/30min"
+                target="_blank"
+              >
+                <Button variant="primary">Book a demo</Button>
+              </Link>
             </div>
           </div>
 
-          {/* Blogs Grid Section
+          {/* Blogs Grid Section */}
           <div id="blogs" className="container mx-auto px-4 py-8">
-            <div>
-              <p className="text-4xl text-center font-bold mt-16 mb-16">
-                Browse All Blogs
-              </p>
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {blogs
-                .filter((blog) => blog.id !== "featured")
-                .map((item) => (
-                  <Link href={`${item.redirectLink}`}>
-                    <BlogCard data={featuredBlog} onClick={() => {}} />
-                  </Link>
-                ))}
+              {blogContents.slice(0, visibleBlogs).map((blog) => (
+                <Link key={blog.id} href={blog.redirectLink}>
+                  <BlogCard data={blog} />
+                </Link>
+              ))}
             </div>
-          </div> */}
+            {visibleBlogs < blogContents.length && (
+              <div className="text-center mt-8">
+                <Button variant="secondary" onClick={loadMore}>
+                  Load More
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </motion.section>
       <motion.section
