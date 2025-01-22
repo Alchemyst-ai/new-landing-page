@@ -19,24 +19,30 @@ import { ClipboardIcon } from "@heroicons/react/outline";
 // Component to copy blog link to clipboard
 const BlogLinkCopy = () => {
   const [copied, setCopied] = useState(false);
-  const [blogLink, setBlogLink] = useState("");
 
-  // Function to copy link to clipboard
   const copyToClipboard = () => {
-    if (!blogLink) {
-      setBlogLink(window.location.href);
-    }
-    navigator.clipboard.writeText(blogLink).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy:", err);
+      });
   };
 
-  // JSX for the link copy component
   return (
     <div
       className="flex items-center space-x-2 cursor-pointer"
       onClick={copyToClipboard}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          copyToClipboard();
+        }
+      }}
     >
       <ClipboardIcon className="h-6 w-6 text-gray-500 hover:text-teal-700" />
       {copied && <span className="text-sm text-teal-700">Link copied!</span>}
@@ -183,4 +189,3 @@ export default function BlogPage() {
     </div>
   );
 }
-
