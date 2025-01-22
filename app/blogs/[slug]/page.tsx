@@ -1,5 +1,6 @@
 "use client";
 
+// Import necessary components and hooks
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,18 +16,23 @@ import EndingCard from "@/components/home/EndingCard";
 import { useState } from "react";
 import { ClipboardIcon } from "@heroicons/react/outline";
 
+// Component to copy blog link to clipboard
 const BlogLinkCopy = () => {
   const [copied, setCopied] = useState(false);
-  const blogLink =
-    process.env.NODE_ENV === "production" ? window.location.href : "";
+  const [blogLink, setBlogLink] = useState("");
 
+  // Function to copy link to clipboard
   const copyToClipboard = () => {
+    if (!blogLink) {
+      setBlogLink(window.location.href);
+    }
     navigator.clipboard.writeText(blogLink).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
   };
 
+  // JSX for the link copy component
   return (
     <div
       className="flex items-center space-x-2 cursor-pointer"
@@ -38,29 +44,46 @@ const BlogLinkCopy = () => {
   );
 };
 
+// Main component for the blog page
 export default function BlogPage() {
+  // Get the slug from the URL
   const params = useParams();
   const slug = params.slug as string;
+
+  // Find the blog content from the database
   const blog = blogContents.find((b) => b.redirectLink.endsWith(slug));
 
+  // If the blog is not found, render a 404 page
   if (!blog) {
     return <div>Blog not found</div>;
   }
 
+  // JSX for the blog page
   return (
     <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
+      {/* Custom cursor for large screens */}
       <div className="hidden lg:block">
         <CustomCursor />
       </div>
+
+      {/* Header with navigation */}
       <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
         <Navbar />
         <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
       </header>
+
+      {/* Main content */}
       <main className="flex-grow">
         <div className="text-xl p-5 mt-16 md:mt-0 md:p-52 md:max-w-[90%] mx-auto">
+          {/* Blog category */}
           <p className="text-teal-700">{blog.blogCategory}</p>
+
+          {/* Blog title */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{blog.title}</h1>
+
+          {/* Blog author and read time */}
           <div className="flex items-center mt-8">
+            {/* Blog author image and name */}
             {blog.authorImage && (
               <Image
                 src={blog.authorImage || "/placeholder.svg"}
@@ -74,10 +97,14 @@ export default function BlogPage() {
               <p className="text-lg font-bold">{blog.authorName}</p>
               <p className="text-gray-400">| {blog.readTime} read |</p>
             </div>
+
+            {/* Link copy component */}
             <div className="pl-1">
               <BlogLinkCopy />
             </div>
           </div>
+
+          {/* Blog image */}
           <div className="overflow-hidden w-full mt-8">
             <Image
               src={blog.image || "/placeholder.svg"}
@@ -87,11 +114,15 @@ export default function BlogPage() {
               className="w-full rounded-3xl object-cover"
             />
           </div>
+
+          {/* Blog content */}
           <div className="mt-8 prose prose-invert max-w-none">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
+              // Custom components for code blocks, links, images, paragraphs, headings, lists, and blockquotes
               components={{
                 code({ className, children, ...props }) {
+                  // Use Prism syntax highlighter for code blocks
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <SyntaxHighlighter
@@ -143,8 +174,13 @@ export default function BlogPage() {
           </div>
         </div>
       </main>
+
+      {/* Call-to-action card */}
       <EndingCard />
+
+      {/* Footer */}
       <Footer />
     </div>
   );
 }
+
