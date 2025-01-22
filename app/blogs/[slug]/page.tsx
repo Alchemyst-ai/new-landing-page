@@ -8,7 +8,6 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { blogContents } from "@/components/blogs/blog-content-data";
-import Button from "@/components/home/Button";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CustomCursor from "@/components/home/CustomCursor";
@@ -18,7 +17,8 @@ import { ClipboardIcon } from "@heroicons/react/outline";
 
 const BlogLinkCopy = () => {
   const [copied, setCopied] = useState(false);
-  const blogLink = process.env.NODE_ENV === "production" ? window.location.href : "";
+  const blogLink =
+    process.env.NODE_ENV === "production" ? window.location.href : "";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(blogLink).then(() => {

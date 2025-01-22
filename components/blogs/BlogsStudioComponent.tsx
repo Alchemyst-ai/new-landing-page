@@ -5,26 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/home/Button";
 import EndingCard from "@/components/home/EndingCard";
-import { motion } from "framer-motion";
 import Newsletter from "@/components/home/Newsletter";
 import {
   blogContents,
   type BlogContent as BlogContentType,
 } from "./blog-content-data";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 // BlogCard Component
 function BlogCard({ data }: { data: BlogContentType }) {
   return (
-    <motion.div
-      className="rounded-2xl border border-gray-500 overflow-hidden shadow-md cursor-pointer h-full"
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="rounded-2xl border border-gray-500 overflow-hidden shadow-md cursor-pointer h-full">
       <Image
         src={data.image || "/placeholder.svg"}
         alt={data.title}
@@ -55,7 +45,7 @@ function BlogCard({ data }: { data: BlogContentType }) {
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -69,13 +59,7 @@ export default function BlogsStudioComponent() {
 
   return (
     <div>
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 2.0 }}
-        className="mb-20 mt-40"
-      >
+      <div className="mb-20 mt-40">
         <div className="min-h-screen">
           {/* Hero Section */}
           <div className="container mx-auto px-4 py-8 text-center">
@@ -113,23 +97,13 @@ export default function BlogsStudioComponent() {
             )}
           </div>
         </div>
-      </motion.section>
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 2.0 }}
-      >
+      </div>
+      <div>
         <Newsletter />
-      </motion.section>
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 2.0 }}
-      >
+      </div>
+      <div>
         <EndingCard />
-      </motion.section>
+      </div>
     </div>
   );
 }
