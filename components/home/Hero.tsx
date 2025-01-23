@@ -78,13 +78,13 @@ function Hero() {
         alt="Top GenAI Startup Card"
         width={50}
         height={50}
-        className="h-14 md:h-20 w-auto rounded-3xl top-24 left-16 md:top-48 md:left-14 absolute"
+        className="h-14 md:h-20 w-auto rounded-3xl top-48 left-16 md:top-48 md:left-14 absolute"
         loading="eager"
         priority
         quality={100}
       />
 
-      <div className="relative z-10 flex flex-col max-w-full py-16 md:py-0">
+      <div className="relative z-10 flex flex-col max-w-full py-16 md:py-0 mt-28 md:mt-0">
         {/* Heading Section for Desktop */}
         <div className="mt-32 md:mt-72 md:flex flex-col items-start md:ml-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
