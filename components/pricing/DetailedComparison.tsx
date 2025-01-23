@@ -124,6 +124,7 @@ export default function DetailedComparison() {
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent className="space-y-2">
+          <div className="block md:hidden text-center text-lg text-gray-400"> Scroll right to see the full table </div>
           <div className="w-full overflow-x-auto rounded-lg border bg-card">
             <table className="w-full border-collapse">
               <thead>
