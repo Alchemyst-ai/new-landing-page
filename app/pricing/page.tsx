@@ -9,6 +9,7 @@ import EnterpriseCard from "@/components/pricing/EnterpriseCard";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import { useCountryDetection } from "@/components/CountryDetector";
+import DetailedComparison from "@/components/pricing/DetailedComparison";
 
 // Base plan types for topup pricing
 type BasePlan = "Starter" | "Accelerate" | "Supercharge";
@@ -95,6 +96,11 @@ export default function PricingPage() {
                 />
               ))
             )}
+          </div>
+
+          {/* Detailed Comparison Card */}
+          <div className="mt-24">
+            <DetailedComparison />
           </div>
 
           {/* Enterprise card  */}

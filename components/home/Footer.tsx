@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
             {[
               { name: "Startups", link: "/solutions/startups" },
               { name: "Midmarket", link: "/solutions/midmarket" },
-              { name: "Enterprises", link: "/solutions/enterprises" },
+              { name: "Enterprises", link: "/solutions/enterprise" },
               { name: "SMEs and MSMEs", link: "/solutions/sme-msme" },
             ].map((item, index) => (
               <Link
