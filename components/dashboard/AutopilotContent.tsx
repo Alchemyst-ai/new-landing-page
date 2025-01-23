@@ -31,7 +31,7 @@ export default function AutopilotContent() {
               <h2 className="text-2xl md:text-2xl font-semibold mb-4 text-center md:text-left">
                 Efficient, Reliable, and Always Learning
               </h2>
-              <p className="text-lg w-3/4 text-gray-400 text-center mx-auto md:text-left">
+              <p className="text-lg w-3/4 text-gray-400 text-center mx-auto md:text-left md:mx-0">
                 Alchemyst AI empowers your team with an AI-powered sales
                 platform that automates lead generation, outreach, and
                 personalization - boosting productivity and driving growth.
