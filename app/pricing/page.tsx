@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { PRICING_PLANS } from "@/app/constants/pricing";
 import PricingToggle from "@/components/pricing/PricingToggle";
 import PricingCard from "@/components/pricing/PricingCard";
@@ -20,22 +20,54 @@ export default function PricingPage() {
     "monthly" | "annually" | "topup"
   >("monthly");
   const [country, setCountry] = useState("");
-  const detectedCountry = useCountryDetection();
+  // const detectedCountry = useCountryDetection();
 
   // State variables for topup pricing inputs and base plan
   const [emails, setEmails] = useState(7000);
   const [leads, setLeads] = useState(750);
   const [enrichments, setEnrichments] = useState(375);
   const [basePlan, setBasePlan] = useState<BasePlan>("Starter");
+  const [countryCode, setCountryCode] = useState<string | null>(localStorage.getItem('country-code'))
 
   // useEffect to update country based on detectedCountry
-  useEffect(() => {
-    console.log("Detected country:", detectedCountry);
-    setCountry(detectedCountry);
-  }, [detectedCountry]);
+  // useEffect(() => {
+  //   console.log("Detected country:", detectedCountry);
+  //   setCountry(detectedCountry);
+  // }, [detectedCountry]);
 
-  const pricingRegion = country === "IN" ? "india" : "international";
-  //console.log("Selected pricing region:", pricingRegion);
+  // const pricingRegion = country === "IN" ? "india" : "international";
+  useLayoutEffect(() => {
+    const cachedCountryCode = localStorage.getItem('country-code');
+
+    async function detectCountry() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        return {
+          country: data.country_name,
+          countryCode: data.country_code,
+          city: data.city,
+          region: data.region
+        };
+      } catch (error) {
+        console.error('Error detecting country:', error);
+        return null;
+      }
+    }
+
+    
+    if (!cachedCountryCode) {
+      detectCountry().then(location => {
+        if (location) {
+          setCountryCode(location.countryCode)
+          localStorage.setItem("country-code", location.countryCode);
+        }
+      });
+    }
+  }, []);
+
+  const pricingRegion = countryCode === 'IN' ? "india" : "international";
+  // console.log("Selected pricing region:", localStorage.getItem('country-code'));
 
   return (
     <div>

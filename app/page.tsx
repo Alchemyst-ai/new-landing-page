@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import "./globals.css";
+import { useCountryDetection } from "@/components/CountryDetector";
+import { useEffect } from "react";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
@@ -20,6 +22,33 @@ const Steps = dynamic(() => import("@/components/home/Steps"));
 const Hero = dynamic(() => import("@/components/home/Hero"));
 
 export default function HomePage() {
+
+  useEffect(() => {
+
+    async function detectCountry() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        return {
+          country: data.country_name,
+          countryCode: data.country_code,
+          city: data.city,
+          region: data.region
+        };
+      } catch (error) {
+        console.error('Error detecting country:', error);
+        return null;
+      }
+    }
+    
+    detectCountry().then(location => {
+      if (location) {
+        // console.log(`User is from ${location.countryCode}`);
+        localStorage.setItem("country-code", `${location.countryCode}`)
+      }
+    });
+  },[])
+  
   return (
     <div>
       <Head>
