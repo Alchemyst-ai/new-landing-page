@@ -27,7 +27,7 @@ export default function PricingPage() {
   const [leads, setLeads] = useState(750);
   const [enrichments, setEnrichments] = useState(375);
   const [basePlan, setBasePlan] = useState<BasePlan>("Starter");
-  const [countryCode, setCountryCode] = useState<string | null>(localStorage.getItem('country-code'))
+  const [countryCode, setCountryCode] = useState<string | null>(null)
 
   // useEffect to update country based on detectedCountry
   // useEffect(() => {
@@ -36,8 +36,8 @@ export default function PricingPage() {
   // }, [detectedCountry]);
 
   // const pricingRegion = country === "IN" ? "india" : "international";
-  useLayoutEffect(() => {
-    const cachedCountryCode = localStorage.getItem('country-code');
+  useEffect(() => {
+    // const cachedCountryCode = localStorage.getItem('country-code');
 
     async function detectCountry() {
       try {
@@ -55,15 +55,16 @@ export default function PricingPage() {
       }
     }
 
-    
-    if (!cachedCountryCode) {
+    // if (!cachedCountryCode) {
       detectCountry().then(location => {
         if (location) {
           setCountryCode(location.countryCode)
           localStorage.setItem("country-code", location.countryCode);
         }
       });
-    }
+    // }else{
+    //   setCountryCode(cachedCountryCode)
+    // }
   }, []);
 
   const pricingRegion = countryCode === 'IN' ? "india" : "international";
@@ -103,32 +104,74 @@ export default function PricingPage() {
           />
 
           {/* Pricing cards based on billing cycle */}
-          <div className="mt-12 space-y-8 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6">
-            {billingCycle === "topup" ? (
-              <div className="col-span-3">
-                <TopupPricingCard
-                  country={country}
-                  emails={emails}
-                  setEmails={setEmails}
-                  leads={leads}
-                  setLeads={setLeads}
-                  enrichments={enrichments}
-                  setEnrichments={setEnrichments}
-                  basePlan={basePlan}
-                  setBasePlan={setBasePlan}
-                />
+          {
+            !countryCode ? (
+              <div className=" mt-12 text-center ">
+                {/* <p className="text-gray-500 py-2">Getting pricing for your region...</p> */}
+                <div className="grid grid-cols-3 gap-6 justify-center mb-6 h-[42rem]">
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-800 rounded-2xl shadow-xl overflow-hidden animate-pulse"
+                    >
+                      <div className="px-6 py-10">
+                        <div className="h-10 bg-gray-700 rounded-lg mb-8"></div>
+                        <div className="h-8 bg-gray-700 rounded-lg mb-6 w-2/3"></div>
+                        {/* Info Skeleton */}
+                        <div className="space-y-2 mb-8">
+                          {Array.from({ length: 3 }).map((_, i) => (
+                            <div key={i} className="h-4 bg-gray-700 rounded-lg"></div>
+                          ))}
+                        </div>
+                        {/* Button Skeleton */}
+                        <div className="h-12 bg-gray-700 rounded-xl"></div>
+                      </div>
+                      <div className="px-6 pb-8">
+                        <ul className="space-y-4">
+                          {Array.from({ length: 6 }).map((_, i) => (
+                            <li
+                              key={i}
+                              className="flex items-center"
+                            >
+                              <div className="h-5 w-5 bg-gray-700 rounded-full mr-4"></div>
+                              <div className="h-4 bg-gray-700 rounded-lg w-3/4"></div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ) : (
-              PRICING_PLANS[pricingRegion][billingCycle].map((plan, index) => (
-                <PricingCard
-                  key={index}
-                  plan={plan}
-                  billingCycle={billingCycle}
-                  country={country || ""}
-                />
-              ))
-            )}
-          </div>
+          <div className="mt-12 space-y-8 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6">
+              {billingCycle === "topup" ? (
+                <div className="col-span-3">
+                  <TopupPricingCard
+                    country={country}
+                    emails={emails}
+                    setEmails={setEmails}
+                    leads={leads}
+                    setLeads={setLeads}
+                    enrichments={enrichments}
+                    setEnrichments={setEnrichments}
+                    basePlan={basePlan}
+                    setBasePlan={setBasePlan}
+                  />
+                </div>
+              ) : (
+                PRICING_PLANS[pricingRegion][billingCycle].map((plan, index) => (
+                  <PricingCard
+                    key={index}
+                    plan={plan}
+                    billingCycle={billingCycle}
+                    country={country || ""}
+                  />
+                ))
+              )}
+            </div>
+            )
+          }
 
           {/* Detailed Comparison Card */}
           <div className="mt-24">
@@ -141,6 +184,42 @@ export default function PricingPage() {
       </div>
 
       <Footer />
+    </div>
+  );
+}
+
+function SkeletonPricingCard() {
+  return (
+    <div className="bg-gray-800 rounded-2xl shadow-xl overflow-hidden animate-pulse">
+      <div className="px-6 py-8">
+        {/* Title Skeleton */}
+        <div className="h-10 bg-gray-700 rounded-lg mb-8"></div>
+
+        {/* Price Skeleton */}
+        <div className="h-8 bg-gray-700 rounded-lg mb-6 w-2/3"></div>
+
+        {/* Info Skeleton */}
+        <div className="space-y-2 mb-8">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className="h-4 bg-gray-700 rounded-lg"></div>
+          ))}
+        </div>
+
+        {/* Button Skeleton */}
+        <div className="h-12 bg-gray-700 rounded-xl"></div>
+      </div>
+
+      <div className="px-6 pb-8">
+        {/* Features Skeleton */}
+        <ul className="space-y-4">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <li key={index} className="flex items-center">
+              <div className="h-5 w-5 bg-gray-700 rounded-full mr-4"></div>
+              <div className="h-4 bg-gray-700 rounded-lg w-3/4"></div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
