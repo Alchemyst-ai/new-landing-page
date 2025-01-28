@@ -152,7 +152,7 @@ function Hero() {
 
       {/* The company image carousel section */}
       <div className="flex flex-col justify-center items-center overflow-hidden mt-16 md:mt-24">
-        <div className="w-full sm:w-[100vw] mt-8 md:mt-16 mb-20">
+        {/**<div className="w-full sm:w-[100vw] mt-8 md:mt-16 mb-20">
           <Slider {...settings}>
             {logos.map((logo, index) => (
               <div key={index} className="max-w-[100vw]">
@@ -168,7 +168,7 @@ function Hero() {
               </div>
             ))}
           </Slider>
-        </div>
+        </div>**/}
       </div>
     </div>
   );
