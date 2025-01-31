@@ -77,12 +77,12 @@ export function getBlogContents() {
   try {
     const blogFiles = fs.readdirSync(BLOGS_DIR).filter(file => file.endsWith(".md")).sort();
 
-    return blogFiles.map((fileName, index) => {
+    return blogFiles.map((fileName) => {
       const filePath = path.join(BLOGS_DIR, fileName);
       const fileContent = fs.readFileSync(filePath, "utf-8");
-
       const { metadata, content } = parseFile(fileContent);
-      const id = (index + 1).toString();
+
+      const id = getUrlFromFileName(fileName);
       const title = metadata.title || "Untitled";
       const image = metadata.image;
       const authorImage = metadata.authorImage;
@@ -91,7 +91,7 @@ export function getBlogContents() {
       const dateOfBlog = metadata.date;
       const keywords = metadata.keywords || "";
       const readTime = calculateReadTime(content);
-      const redirectLink = `/blogs/${id}`;
+      const redirectLink = getUrlFromFileName(fileName);
 
       if (!metadata.title || !metadata.author || !metadata.date) {
         console.warn(`Skipping file ${fileName} due to missing important metadata.`);
