@@ -2,13 +2,14 @@
 
 // Import necessary components and hooks
 import { useParams } from "next/navigation";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { blogContents } from "@/components/blogs/blog-content-data";
+import { fetchBlogs } from "@/components/blogs/blog-content-data";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CustomCursor from "@/components/home/CustomCursor";
@@ -57,7 +58,28 @@ export default function BlogPage() {
   const slug = params.slug as string;
 
   // Find the blog content from the database
-  const blog = blogContents.find((b) => b.redirectLink.endsWith(slug));
+  interface Blog {
+    redirectLink: string;
+    blogCategory: string;
+    title: string;
+    authorImage?: string;
+    authorName: string;
+    readTime: string;
+    image?: string;
+    content: string;
+  }
+
+  const [blog, setBlog] = useState<Blog | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      const blogs = await fetchBlogs();
+      const foundBlog = blogs.find((b: Blog) => b.redirectLink.endsWith(slug));
+      setBlog(foundBlog);
+    };
+
+    fetchBlogData();
+  }, [slug]);
 
   // If the blog is not found, render a 404 page
   if (!blog) {

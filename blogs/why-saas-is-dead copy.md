@@ -97,5 +97,3 @@ AI delivers actionable insights through real-time analytics, helping teams make 
 
 ### Our Tools
 [**Alchemyst AI**](https://calendly.com/uttaran-getalchemystai/30min) provides intuitive dashboards that track KPIs such as lead quality, conversion rates, and ROI, ensuring your strategies stay data-driven.
-
-&nbsp;

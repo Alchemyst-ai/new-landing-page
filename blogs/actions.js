@@ -86,14 +86,14 @@ export function getBlogContents() {
       const title = metadata.title || "Untitled";
       const image = metadata.image;
       const authorImage = metadata.authorImage;
-      const authorName = metadata.author;
+      const authorName = metadata.authorName;
       const blogCategory = metadata.category || "General";
       const dateOfBlog = metadata.date;
       const keywords = metadata.keywords || "";
       const readTime = calculateReadTime(content);
-      const redirectLink = getUrlFromFileName(fileName);
+      const redirectLink = metadata.redirectLink;
 
-      if (!metadata.title || !metadata.author || !metadata.date) {
+      if (!metadata.title || !metadata.authorName || !metadata.date) {
         console.warn(`Skipping file ${fileName} due to missing important metadata.`);
         return null;
       }
