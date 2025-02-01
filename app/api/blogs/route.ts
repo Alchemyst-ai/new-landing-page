@@ -1,5 +1,5 @@
+import { getBlogContents } from "@/actions";
 import { NextResponse } from "next/server";
-import { getBlogContents } from "@/blogs/actions"; // FIXED PATH
 
 export function GET() {
   try {
