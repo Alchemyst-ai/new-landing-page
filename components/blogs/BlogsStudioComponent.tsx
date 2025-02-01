@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/home/Button";
 import EndingCard from "@/components/home/EndingCard";
 import Newsletter from "@/components/home/Newsletter";
-import {
-  blogContents,
-  type BlogContent as BlogContentType,
-} from "./blog-content-data";
+import { fetchBlogs, type BlogContent } from "./blog-content-data";
 
 // BlogCard Component
-function BlogCard({ data }: { data: BlogContentType }) {
+function BlogCard({ data }: { data: BlogContent }) {
   return (
     <div className="rounded-2xl border border-gray-500 overflow-hidden shadow-md cursor-pointer h-full">
       <Image
@@ -51,7 +48,23 @@ function BlogCard({ data }: { data: BlogContentType }) {
 
 // Main BlogsStudioComponent
 export default function BlogsStudioComponent() {
+  const [blogs, setBlogs] = useState<BlogContent[]>([]);
   const [visibleBlogs, setVisibleBlogs] = useState(8);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadBlogs() {
+      try {
+        const data = await fetchBlogs();
+        setBlogs(data);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadBlogs();
+  }, []);
 
   const loadMore = () => {
     setVisibleBlogs((prevVisible) => prevVisible + 8);
@@ -81,19 +94,25 @@ export default function BlogsStudioComponent() {
 
           {/* Blogs Grid Section */}
           <div id="blogs" className="container mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {blogContents.slice(0, visibleBlogs).map((blog) => (
-                <Link key={blog.id} href={blog.redirectLink}>
-                  <BlogCard data={blog} />
-                </Link>
-              ))}
-            </div>
-            {visibleBlogs < blogContents.length && (
-              <div className="text-center mt-8">
-                <Button variant="secondary" onClick={loadMore}>
-                  Load More
-                </Button>
-              </div>
+            {loading ? (
+              <p className="text-center text-gray-500">Loading blogs...</p>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {blogs.slice(0, visibleBlogs).map((blog) => (
+                    <Link key={blog.id} href={blog.redirectLink}>
+                      <BlogCard data={blog} />
+                    </Link>
+                  ))}
+                </div>
+                {visibleBlogs < blogs.length && (
+                  <div className="text-center mt-8">
+                    <Button variant="secondary" onClick={loadMore}>
+                      Load More
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
