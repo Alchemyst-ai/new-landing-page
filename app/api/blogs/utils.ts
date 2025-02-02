@@ -33,12 +33,6 @@ function parseFile(fileContent: string) {
 
     const content = contentParts.join("\n");
 
-    metadataBlock.split("\n").forEach(line => {
-        const [key, value] = line.split(":").map(item => item.trim());
-        if (key && value) {
-            metadata[key] = parseMetadataValue(value);
-        }
-    })
     return { metadata, content };
 }
 
