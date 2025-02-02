@@ -6,6 +6,7 @@ category: "Sales"
 date: "Jan 20th, 2025"
 redirectLink: "/blogs/why-saas-is-dead"
 keywords: ["ai", "saas", "digital employee"]
+draft: true
 
 ---
 

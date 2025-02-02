@@ -85,6 +85,7 @@ export function processFile(fileName: string) {
     const title = metadata.title || "Untitled";
     const image = metadata.image || "";
     const authorImage = metadata.authorImage || "";
+    const draftStatus = metadata.draft || false;
     const authorName = metadata.authorName || "Team Alchemyst";
     const blogCategory = metadata.category || "General";
     const dateOfBlog = metadata.date ?? new Date().toUTCString();
@@ -101,6 +102,7 @@ export function processFile(fileName: string) {
         id,
         title,
         image,
+        draftStatus,
         authorImage,
         authorName,
         blogCategory,
@@ -123,7 +125,7 @@ export function getBlogContents() {
         const blogFiles = readdirSync(BLOGS_DIR).filter(file => file.endsWith(".md")).sort();
         console.log("Blog Files: ", blogFiles);
 
-        return blogFiles.map((fileName) => processFile(fileName)).filter(entry => !!entry);
+        return blogFiles.map((fileName) => processFile(fileName)).filter(entry => !!entry).filter(entry => !entry.draftStatus);
     } catch (error) {
         console.error("Error reading Blog Content: ", error)
     }
