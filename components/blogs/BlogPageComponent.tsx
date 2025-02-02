@@ -141,7 +141,7 @@ export default function BlogPageComponent({ data }: { data: BlogContent | undefi
                   <a {...props} className="text-blue-400 hover:text-blue-300" />
                 ),
                 img: ({ ...props }) => (
-                  <img {...props} className="max-w-full h-auto" />
+                  <Image {...props as any} className="max-w-full h-auto" />
                 ),
                 p: ({ ...props }) => <p {...props} className="mb-4" />,
                 h1: ({ ...props }) => (

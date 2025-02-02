@@ -45,7 +45,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "react-twitter-embed": "^4.0.4",
     "remark-gfm": "^4.0.0",
-    "sharp": "^0.33.4",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^2.6.0",
     "three": "^0.171.0",
