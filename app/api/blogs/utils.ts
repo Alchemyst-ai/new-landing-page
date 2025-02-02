@@ -5,6 +5,8 @@ import YAML from 'yaml'
 const BLOGS_DIR = (process.env.ENV ?? "debug").toLowerCase() === "debug" ? join(process.cwd(), "/public/content/blogs") : resolve("/content/blogs");
 const WORDS_PER_MIN = 200;
 
+console.log("BLOGS_DIR: ", BLOGS_DIR);
+
 /**
  * Parsing the md file by splitting metadata and content
  * @param {string} fileContent
@@ -116,7 +118,10 @@ export function processFile(fileName: string) {
  */
 export function getBlogContents() {
     try {
+        console.log("Reading Blog Content...");
+        console.log("BLOGS_DIR: ", BLOGS_DIR);
         const blogFiles = readdirSync(BLOGS_DIR).filter(file => file.endsWith(".md")).sort();
+        console.log("Blog Files: ", blogFiles);
 
         return blogFiles.map((fileName) => processFile(fileName)).filter(entry => !!entry);
     } catch (error) {
