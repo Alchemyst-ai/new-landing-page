@@ -10,7 +10,12 @@ const nextConfig = {
             }
         }
         return config;
-    }
+    },
+    experimental: {
+        outputFileTracingIncludes: {
+            '/api/blogs': ['./blogs/**/*', './public/blogs/content/**/*'],
+        },
+    },
 };
 
 export default nextConfig;
