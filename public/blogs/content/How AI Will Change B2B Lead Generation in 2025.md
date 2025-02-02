@@ -1,6 +1,6 @@
 title: "How AI Will Change B2B Lead Generation in 2025"
-image: "/blogs/ai-will-change-b2b-lead.svg"
-authorImage: "/blogs/authors/uttaran.jpg"
+image: "/blogs/assets/ai-will-change-b2b-lead.svg"
+authorImage: "/blogs/assets/authors/uttaran.jpg"
 authorName: "Uttaran Nayak"
 category: "Sales"
 date: "Jan 20th, 2025"
