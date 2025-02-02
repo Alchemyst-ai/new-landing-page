@@ -7,7 +7,7 @@ import Button from "@/components/home/Button";
 import EndingCard from "@/components/home/EndingCard";
 import Newsletter from "@/components/home/Newsletter";
 import { fetchBlogs } from "./blog-content-data";
-import { BlogContent } from "../types/blog-content";
+import { BlogContent } from "../../app/types/blog-content";
 // BlogCard Component
 function BlogCard({ data }: { data: BlogContent }) {
   return (

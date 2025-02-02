@@ -11,3 +11,14 @@ export interface BlogContent {
     content: string;
     keywords: string[];
 }
+
+export interface Blog {
+    redirectLink: string;
+    blogCategory: string;
+    title: string;
+    authorImage?: string;
+    authorName: string;
+    readTime: string;
+    image?: string;
+    content: string;
+}

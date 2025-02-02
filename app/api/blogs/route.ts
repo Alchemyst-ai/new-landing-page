@@ -1,4 +1,4 @@
-import { BlogContent } from "@/components/types/blog-content";
+import { BlogContent } from "@/app/types/blog-content";
 import { getBlogContents } from "./utils";
 import { NextResponse } from "next/server";
 

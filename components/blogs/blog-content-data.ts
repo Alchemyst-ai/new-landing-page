@@ -1,4 +1,4 @@
-import { BlogContent } from "../types/blog-content";
+import { BlogContent } from "../../app/types/blog-content";
 
 export async function fetchBlogs(): Promise<BlogContent[]> {
   try {

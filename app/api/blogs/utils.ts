@@ -1,8 +1,8 @@
 import { readFileSync, readdirSync } from 'node:fs'
-import { resolve, join } from 'node:path'
+import { join } from 'node:path'
 import YAML from 'yaml'
 
-const BLOGS_DIR = (process.env.ENV ?? "debug").toLowerCase() === "debug" ? join(process.cwd(), "/public/blogs/content") : resolve("/blogs/content");
+const BLOGS_DIR = join(process.cwd(), "/public/blogs/content");
 const WORDS_PER_MIN = 200;
 
 console.log("BLOGS_DIR: ", BLOGS_DIR);
