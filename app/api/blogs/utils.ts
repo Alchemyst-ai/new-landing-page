@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { resolve, join } from 'node:path'
 import YAML from 'yaml'
 
-const BLOGS_DIR = resolve("./blogs");
+const BLOGS_DIR = resolve("./public/content/blogs");
 const WORDS_PER_MIN = 200;
 
 /**
