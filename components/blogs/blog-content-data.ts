@@ -1,20 +1,9 @@
-export interface BlogContent {
-  id: string;
-  title: string;
-  image: string;
-  authorImage?: string;
-  authorName: string;
-  blogCategory: string;
-  dateOfBlog: string;
-  readTime: string;
-  redirectLink: string;
-  content: string;
-}
+import { BlogContent } from "../types/blog-content";
 
 export async function fetchBlogs(): Promise<BlogContent[]> {
   try {
     const apiUrl =
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/blogs";
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:4163/api/blogs";
 
     const response = await fetch(apiUrl);
     if (!response.ok) throw new Error("Failed to fetch blogs");

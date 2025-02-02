@@ -5,6 +5,7 @@ authorName: "Uttaran Nayak"
 category: "Sales"
 date: "Jan 20th, 2025"
 redirectLink: "/blogs/ai-will-change-b2b-lead"
+keywords: ["agentic", "saas", "ai"]
 
 ---
 

@@ -6,8 +6,8 @@ import Link from "next/link";
 import Button from "@/components/home/Button";
 import EndingCard from "@/components/home/EndingCard";
 import Newsletter from "@/components/home/Newsletter";
-import { fetchBlogs, type BlogContent } from "./blog-content-data";
-
+import { fetchBlogs } from "./blog-content-data";
+import { BlogContent } from "../types/blog-content";
 // BlogCard Component
 function BlogCard({ data }: { data: BlogContent }) {
   return (
@@ -40,6 +40,18 @@ function BlogCard({ data }: { data: BlogContent }) {
           <span className="text-lg text-gray-500">
             {data.dateOfBlog} | {data.readTime} read
           </span>
+        </div>
+        <div className="mx-2 my-2">
+          {data.keywords.map(keyword => (
+            <a
+              className="px-2 rounded-full"
+              target="_blank"
+              href={`/blogs/tags/${keyword.replace(" ", "-")}`}
+            >
+              {keyword}
+            </a>
+          ))
+          }
         </div>
       </div>
     </div>
