@@ -44,6 +44,7 @@ function BlogCard({ data }: { data: BlogContent }) {
         <div className="mx-2 my-2">
           {data.keywords.map(keyword => (
             <a
+              key={`tags-${keyword}-${data.id}`}
               className="px-2 rounded-full"
               target="_blank"
               href={`/blogs/tags/${keyword.replace(" ", "-")}`}
