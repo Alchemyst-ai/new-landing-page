@@ -10,6 +10,7 @@ import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import { useCountryDetection } from "@/components/CountryDetector";
 import DetailedComparison from "@/components/pricing/DetailedComparison";
+import { useUserStore } from "@/hooks/useUserStore";
 
 // Base plan types for topup pricing
 type BasePlan = "Starter" | "Accelerate" | "Supercharge";
@@ -23,6 +24,7 @@ export default function PricingPage() {
   // const detectedCountry = useCountryDetection();
 
   // State variables for topup pricing inputs and base plan
+  const setStoreState = useUserStore(store => store.setStoreState)
   const [emails, setEmails] = useState(7000);
   const [leads, setLeads] = useState(750);
   const [enrichments, setEnrichments] = useState(375);
@@ -60,12 +62,19 @@ export default function PricingPage() {
         if (location) {
           setCountryCode(location.countryCode)
           localStorage.setItem("country-code", location.countryCode);
+          if(countryCode === "IN"){setStoreState({
+            paymentGateway :'razorpay'
+          })}else {
+            setStoreState({
+              paymentGateway: 'paypal'
+            })
+          }
         }
       });
     // }else{
     //   setCountryCode(cachedCountryCode)
     // }
-  }, []);
+  }, [countryCode, setStoreState]);
 
   const pricingRegion = countryCode === 'IN' ? "india" : "international";
   // console.log("Selected pricing region:", localStorage.getItem('country-code'));
@@ -165,7 +174,7 @@ export default function PricingPage() {
                     key={index}
                     plan={plan}
                     billingCycle={billingCycle}
-                    country={country || ""}
+                    countryCode={countryCode || ""}
                   />
                 ))
               )}
