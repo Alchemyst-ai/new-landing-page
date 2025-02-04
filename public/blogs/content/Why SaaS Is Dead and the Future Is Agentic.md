@@ -3,7 +3,7 @@ image: "/blogs/assets/ai-will-change-b2b-lead.svg"
 authorImage: "/blogs/assets/authors/uttaran.jpg"
 authorName: "Uttaran Nayak"
 category: "Sales"
-date: "Jan 20th, 2025"
+date: "Jan 29th, 2025"
 redirectLink: "/blogs/why-saas-is-dead"
 keywords: ["ai", "saas", "digital employee"]
 draft: false
