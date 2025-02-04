@@ -1,5 +1,5 @@
 title: "Why SaaS Is Dead and the Future Is Agentic"
-image: "/blogs/assets/ai-will-change-b2b-lead.svg"
+image: "/blogs/assets/Frame 40053.png"
 authorImage: "/blogs/assets/authors/uttaran.jpg"
 authorName: "Uttaran Nayak"
 category: "Sales"
