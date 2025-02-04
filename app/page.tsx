@@ -5,6 +5,7 @@ import Head from "next/head";
 import "./globals.css";
 import { useCountryDetection } from "@/components/CountryDetector";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
@@ -99,6 +100,10 @@ export default function HomePage() {
           </p>
         </div>
       </noscript>
+      {/* <Script
+        strategy="beforeInteractive"
+        src="https://checkout.razorpay.com/v1/checkout.js"
+      /> */}
       <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
         <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
           <Navbar />
