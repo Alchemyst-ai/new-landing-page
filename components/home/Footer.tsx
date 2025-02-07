@@ -93,14 +93,14 @@ const Footer: React.FC = () => {
               </Link>
             ))}
 
-            <div className="mt-7">
+            {/* <div className="mt-7">
               <Link
                 href="/pricing"
                 className="font-bold text-lg hover:text-gray-300 transition-colors"
               >
                 Pricing
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 4 - Resources */}

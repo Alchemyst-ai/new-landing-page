@@ -58,13 +58,12 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between w-full">
           <Link
             href={item.link || "#"}
-            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
-              item.style
+            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${item.style
                 ? Object.entries(item.style)
-                    .map(([k, v]) => `${k}:${v}`)
-                    .join(";")
+                  .map(([k, v]) => `${k}:${v}`)
+                  .join(";")
                 : ""
-            }`}
+              }`}
             onClick={toggleMenu}
           >
             {item.icon && (
@@ -145,9 +144,8 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   href={item.link || "#"}
-                  className={`flex items-center space-x-1 hover:text-orange-00 transition-colors duration-200 ${
-                    activeMenu === item.title ? "text-orange-00" : ""
-                  }`}
+                  className={`flex items-center space-x-1 hover:text-orange-00 transition-colors duration-200 ${activeMenu === item.title ? "text-orange-00" : ""
+                    }`}
                 >
                   <span>{item.title}</span>
                   {item.children && (
@@ -164,7 +162,7 @@ const Navbar: React.FC = () => {
           ))}
 
           {/* Pricing Link */}
-          <Link href="/pricing">
+          {/* <Link href="/pricing">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -173,7 +171,7 @@ const Navbar: React.FC = () => {
             >
               Pricing
             </motion.div>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Centralized Dropdown Menu */}
