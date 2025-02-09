@@ -20,4 +20,14 @@ export const team: Team[] = [
     achievement:
       "Ex-AI Engineering Team @AI4Bharat | Deep Learning & AI Research Intern @Google DeepMind | Ex-Founding AI Engineering Team @Quantum Leap AI | GDC Fellow 2022 | Ex-Applied AI Engineering Team @Arakoo AI",
   },
+  {
+    id: 3,
+    name: "Sid Bains",
+    role: "UK Country Director",
+    image: "/team/uk-sid_bains.png",
+    linkedin: "https://www.linkedin.com/in/sidbains",
+    twitter: "https://twitter.com/sidbains1",
+    achievement:
+      "AI & IT Sales Consultant | International Business Development Director/Country Manager with over 25 years in technical, consultative solution sales | 30+ Years in Business Consulting & IT Sales",
+  },
 ];

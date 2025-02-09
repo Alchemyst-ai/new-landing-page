@@ -11,8 +11,8 @@ interface TeamMemberCardProps {
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <div className="relative flex flex-col items-end justify-end max-h-min overflow-hidden rounded-lg bg-gradient-radial to-[#04022eed] via-[#15107aed] from-[#353B92] group "> 
-        <Image src={member.image} alt={member.name} width={400} height={500} />
+      <div className="relative flex flex-col items-end justify-end max-h-min overflow-hidden rounded-lg bg-gradient-radial to-[#04022eed] via-[#15107aed] from-[#353B92] group ">
+        <Image src={member.image} alt={member.name} width={400} height={500} objectFit="fit" />
         <HoverOverlay member={member} />
         <BottomOverlay member={member} />
       </div>

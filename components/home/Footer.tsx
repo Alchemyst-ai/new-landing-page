@@ -21,15 +21,18 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Image
-              width={200}
+            <span className="flex flex-row w-auto gap-3 align-middle w-auto"><Image
+              width={180}
               height={50}
               src="/logo/alchemyst_long_dark.svg"
               alt="Alchemyst AI logo"
-              className="h-16 w-auto"
-            />
+              className="h-12"
+            /><Image src={`https://flagsapi.com/GB/flat/64.png`} width={75} height={30}
+              alt="UK Flag"
+              className="h-12"
+              /></span>
             <p className="text-sm text-gray-400 mt-4 text-center md:text-left">
-              © {currentYear} XAlchemyst Technologies Pvt. Ltd. All rights
+              © {currentYear} Ionida Limited trading as AlchemystAI UK, Solihull, West Midlands. All rights
               reserved.
             </p>
             <div className="flex flex-row items-center md:items-start gap-10 mt-5 md:mt-44 text-gray-400">
