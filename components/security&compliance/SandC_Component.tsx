@@ -145,7 +145,7 @@ const SandC_Component = () => {
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet Your AI Employee</Button>
@@ -223,7 +223,7 @@ const SandC_Component = () => {
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet Your AI Employee</Button>
@@ -404,7 +404,7 @@ const SandC_Component = () => {
         animate="visible"
         variants={fadeInUp}
         transition={{ duration: 2.0 }}
-        className="mb-20 mt-40 md:pl-20 md:pr-20" 
+        className="mb-20 mt-40 md:pl-20 md:pr-20"
       >
         <div>
           <div className="flex justify-center mb-12">

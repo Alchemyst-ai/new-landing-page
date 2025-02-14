@@ -252,7 +252,7 @@ const Footer: React.FC = () => {
                 </Button>
               </Link>
               <Link
-                href="https://calendly.com/uttaran-getalchemystai/30min"
+                href="https://calendly.com/sid-bains-alchemystai"
                 target="_blank"
                 rel="noopener noreferrer"
               >

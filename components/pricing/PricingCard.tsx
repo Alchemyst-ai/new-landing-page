@@ -49,7 +49,7 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
             {item}
           </p>
         ))}
-        <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
+        <Link href="https://calendly.com/sid-bains-alchemystai" target="_blank">
           <button className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
             Start now
           </button>

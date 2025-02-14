@@ -40,7 +40,7 @@ export default function AutopilotContent() {
               <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
                 <div className="flex items-center space-x-4">
                   <Link
-                    href="https://calendly.com/uttaran-getalchemystai/30min"
+                    href="https://calendly.com/sid-bains-alchemystai"
                     target="_blank"
                   >
                     <Button variant="primary">Meet Your AI Employee</Button>
@@ -119,7 +119,7 @@ export default function AutopilotContent() {
               <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
                 <div className="flex items-center space-x-4">
                   <Link
-                    href="https://calendly.com/uttaran-getalchemystai/30min"
+                    href="https://calendly.com/sid-bains-alchemystai"
                     target="_blank"
                   >
                     <Button variant="primary">Request a Demo</Button>
@@ -190,9 +190,8 @@ export default function AutopilotContent() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative transition-all duration-500 ease-in-out hover:scale-105 ${
-                  index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
-                }`}
+                className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative transition-all duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
+                  }`}
               >
                 <Image
                   src={feature.image}
@@ -304,7 +303,7 @@ export default function AutopilotContent() {
               <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-8">
                 <div className="flex items-center space-x-4">
                   <Link
-                    href="https://calendly.com/uttaran-getalchemystai/30min"
+                    href="https://calendly.com/sid-bains-alchemystai"
                     target="_blank"
                   >
                     <Button variant="primary">Request a Demo</Button>

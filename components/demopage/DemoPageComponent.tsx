@@ -89,7 +89,7 @@ export default function DemoPageComponent() {
             </p>
             <div className="flex items-center justify-center space-x-4">
               <Link
-                href="https://calendly.com/uttaran-getalchemystai/30min"
+                href="https://calendly.com/sid-bains-alchemystai"
                 target="_blank"
               >
                 <Button variant="primary">Schedule a Demo</Button>

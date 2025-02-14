@@ -128,7 +128,7 @@ const B2BComponent = () => {
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet Your AI Employee</Button>
@@ -209,7 +209,7 @@ const B2BComponent = () => {
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet Your AI Employee</Button>
@@ -294,7 +294,7 @@ const B2BComponent = () => {
           <div className="flex items-center justify-center text-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="https://calendly.com/uttaran-getalchemystai/30min"
+                href="https://calendly.com/sid-bains-alchemystai"
                 target="_blank"
                 rel="noopener noreferrer"
               >

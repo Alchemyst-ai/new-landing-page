@@ -59,10 +59,10 @@ const Navbar: React.FC = () => {
           <Link
             href={item.link || "#"}
             className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${item.style
-                ? Object.entries(item.style)
-                  .map(([k, v]) => `${k}:${v}`)
-                  .join(";")
-                : ""
+              ? Object.entries(item.style)
+                .map(([k, v]) => `${k}:${v}`)
+                .join(";")
+              : ""
               }`}
             onClick={toggleMenu}
           >
@@ -213,7 +213,7 @@ const Navbar: React.FC = () => {
             </Button>
           </Link>
           <Link
-            href="https://calendly.com/uttaran-getalchemystai/30min"
+            href="https://calendly.com/sid-bains-alchemystai"
             target="_blank"
           >
             <Button variant="primary">Book a demo</Button>
@@ -264,7 +264,7 @@ const Navbar: React.FC = () => {
                   </Button>
                 </Link>
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   className="flex-1"
                 >
                   <Button variant="primary" className="w-full text-sm py-2">
@@ -553,7 +553,7 @@ export default Navbar;
 //               Partner with us
 //             </Button>
 //           </Link>
-//           <Link href="https://calendly.com/uttaran-getalchemystai/30min">
+//           <Link href="https://calendly.com/sid-bains-alchemystai">
 //             <Button variant="primary">Book a demo</Button>
 //           </Link>
 //         </div>
@@ -602,7 +602,7 @@ export default Navbar;
 //                   </Button>
 //                 </Link>
 //                 <Link
-//                   href="https://calendly.com/uttaran-getalchemystai/30min"
+//                   href="https://calendly.com/sid-bains-alchemystai"
 //                   className="flex-1"
 //                 >
 //                   <Button variant="primary" className="w-full text-sm py-2">

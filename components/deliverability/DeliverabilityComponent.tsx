@@ -66,7 +66,7 @@ const DeliverabilityComponent = () => {
             <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
               <div className="flex flex-col md:flex-row gap-7 md:gap-0 items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Start Optimizing Now</Button>
@@ -144,7 +144,7 @@ const DeliverabilityComponent = () => {
             <div className="flex items-center justify-center mt-8 mb-8">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet your AI Employee</Button>
@@ -178,7 +178,7 @@ const DeliverabilityComponent = () => {
                   alt={`${feature.title} Image`}
                   className="absolute w-full h-full p-2 pb-10"
                   layout="fill"
-                  objectFit = "cover"
+                  objectFit="cover"
                 />
 
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
@@ -334,7 +334,7 @@ const DeliverabilityComponent = () => {
             <div className="flex items-center justify-center mt-8 mb-8">
               <div className="flex items-center space-x-4">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   target="_blank"
                 >
                   <Button variant="primary">Meet your AI Employee</Button>

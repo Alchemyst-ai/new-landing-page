@@ -95,9 +95,9 @@ const Hero: React.FC = () => {
         },
       },
       {
-        breakpoint : 375,
+        breakpoint: 375,
         settings: {
-          slidesToShow : 1
+          slidesToShow: 1
         }
       }
     ],
@@ -146,14 +146,14 @@ const Hero: React.FC = () => {
                 components across enterprises.
               </p>
               <div className="flex flex-col md:flex-row gap-2">
-                  <Link
-                    href="https://calendly.com/uttaran-getalchemystai/30min"
-                    target="_blank noopener"
-                  >
-                    <Button variant={"primary"} className="w-full sm:w-full md:w-auto">
-                      Book a demo
-                    </Button>
-                  </Link>
+                <Link
+                  href="https://calendly.com/sid-bains-alchemystai"
+                  target="_blank noopener"
+                >
+                  <Button variant={"primary"} className="w-full sm:w-full md:w-auto">
+                    Book a demo
+                  </Button>
+                </Link>
                 <Link href="https://tripetto.app/run/60HWNW0WQN">
                   <Button
                     variant={"secondary"}

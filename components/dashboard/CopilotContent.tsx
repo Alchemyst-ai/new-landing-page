@@ -129,9 +129,8 @@ export default function CopilotContent() {
           ].map((feature, index) => (
             <div
               key={index}
-              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative ${
-                index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
-              }`}
+              className={`bg-black border border-gray-800 rounded-3xl p-6 h-60 md:h-80 relative ${index % 2 === 0 ? "md:col-span-1" : "md:col-span-1"
+                }`}
             >
               <Image
                 src={feature.image}
@@ -179,7 +178,7 @@ export default function CopilotContent() {
             <div className="flex flex-col items-center md:items-start md:flex-row">
               <div className="md:pl-20 mt-6 md:mt-10">
                 <Link
-                  href="https://calendly.com/uttaran-getalchemystai/30min"
+                  href="https://calendly.com/sid-bains-alchemystai"
                   className="flex-1"
                 >
                   <Button variant="primary" className="text-sm py-2">
@@ -211,7 +210,7 @@ export default function CopilotContent() {
       </motion.section>
 
       {/* Section 6 -How to Get Started Section */}
-      <Howitworks/>
+      <Howitworks />
 
       {/* Section 7 - Ending Card */}
       <motion.section

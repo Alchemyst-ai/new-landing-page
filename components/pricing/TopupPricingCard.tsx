@@ -116,11 +116,10 @@ export default function TopupPricingCard({
                 <button
                   key={plan}
                   onClick={() => setBasePlan(plan as BasePlan)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                    basePlan === plan
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${basePlan === plan
                       ? "bg-orange-400 text-gray-900"
                       : "bg-gray-800 text-white hover:bg-gray-700"
-                  }`}
+                    }`}
                 >
                   {plan}
                 </button>
@@ -191,7 +190,7 @@ export default function TopupPricingCard({
             ${price.calculatePrice}
           </p>
           <Link
-            href="https://calendly.com/uttaran-getalchemystai/30min"
+            href="https://calendly.com/sid-bains-alchemystai"
             target="_blank"
           >
             <button className="w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 mb-6">

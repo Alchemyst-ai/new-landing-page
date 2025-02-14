@@ -97,7 +97,7 @@ export default function BlogsStudioComponent() {
             </p>
             <div className="flex justify-center">
               <Link
-                href="https://calendly.com/uttaran-getalchemystai/30min"
+                href="https://calendly.com/sid-bains-alchemystai"
                 target="_blank"
               >
                 <Button variant="primary">Book a demo</Button>

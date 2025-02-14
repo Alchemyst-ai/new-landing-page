@@ -8,7 +8,7 @@ export const flows: Flow[] = [
     description:
       "She prioritizes and matches you with your dream customers. Maya has access to every buyer your business needs, in real time. Only targeting companies that need your solution right now.",
     linkText: "Learn More",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export const flows: Flow[] = [
     description:
       "Maya researches each target account and contact across dozens of sources, and generates prospect insights unique to your business. This enables highly-customized outreach based on AI powered, research-led insights.",
     linkText: "Learn More",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ export const flows: Flow[] = [
     description:
       "Maya hyper-personalizes outreach with human-level depth and precision. Her customized emails lead to higher engagement and conversion rates, at scale beyond human capability. This personal touch in outreach has a direct impact on conversion rates. Get more done with less - 50x the productivity at 90% less expense.",
     linkText: "Book a demo",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

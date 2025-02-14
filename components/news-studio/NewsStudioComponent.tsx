@@ -156,7 +156,7 @@ export default function NewsStudioComponent() {
                 <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 md:pl-20">
                   <div className="flex items-center space-x-4">
                     <Link
-                      href="https://calendly.com/uttaran-getalchemystai/30min"
+                      href="https://calendly.com/sid-bains-alchemystai"
                       target="_blank"
                     >
                       <Button variant="primary">Meet Your AI Employee</Button>

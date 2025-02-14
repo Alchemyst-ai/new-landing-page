@@ -110,7 +110,7 @@ function Hero() {
         {/* The button section */}
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-start md:items-start md:ml-20 space-y-4 md:space-y-0 md:space-x-4 mt-8 md:mt-14 px-4 md:px-0">
           <Link
-            href="https://calendly.com/uttaran-getalchemystai/30min"
+            href="https://calendly.com/sid-bains-alchemystai"
             target="_blank"
             className="w-full md:w-auto"
           >

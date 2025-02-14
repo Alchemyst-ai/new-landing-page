@@ -26,7 +26,7 @@ export default function EnterpriseCard() {
             <p className="text-2xl text-gray-700 mb-2">Unlimited Leads</p>
             <p className="text-2xl text-gray-700 mb-16">Unlimited Emails</p>
             <Link
-              href="https://calendly.com/uttaran-getalchemystai/30min"
+              href="https://calendly.com/sid-bains-alchemystai"
               target="_blank"
             >
               <button className="w-full sm:min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">

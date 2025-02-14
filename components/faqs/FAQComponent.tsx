@@ -326,7 +326,7 @@ const FAQComponent = () => {
           {/* CTA buttons */}
           <div className="flex items-center justify-center md:justify-start md:items-start space-x-4 mt-14">
             <Link
-              href="https://calendly.com/uttaran-getalchemystai/30min"
+              href="https://calendly.com/sid-bains-alchemystai"
               target="_blank"
             >
               <Button variant="primary">I&#39;ve got a question</Button>

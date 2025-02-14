@@ -14,7 +14,7 @@ const options = [
     // image: "/media/defineyouricp.png",
     video: "/media/icp.mp4",
     buttonText: "Watch Maya in Action",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
   },
   {
     title: "Generate High-Quality Leads",
@@ -23,7 +23,7 @@ const options = [
     // image: "/media/generatehighqualityleads.png",
     video: "/media/data_enrichment.mp4",
     buttonText: "Enrich your Data",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
   },
   {
     title: "Automate Your Outreach",
@@ -32,7 +32,7 @@ const options = [
     // image: "/media/automateyouroutreach.png",
     video: "/media/campaign.mp4",
     buttonText: "Generate Emails Now!",
-    link: "https://calendly.com/uttaran-getalchemystai/30min",
+    link: "https://calendly.com/sid-bains-alchemystai",
   },
 ];
 
@@ -78,11 +78,10 @@ const Steps: React.FC = () => {
               {/* Options */}
               <div
                 onClick={() => setActiveOption(index)}
-                className={`flex-shrink-0 flex items-center justify-center w-48 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${
-                  activeOption === index
+                className={`flex-shrink-0 flex items-center justify-center w-48 h-20 px-4 py-2 cursor-pointer border-2 border-dashed rounded-full transition duration-300 ${activeOption === index
                     ? "text-yellow-700 border-yellow-700 drop-shadow-[0_0_5px_rgba(255,255,0,0.3)]"
                     : "text-gray-400 border-gray-600 hover:text-yellow-700 hover:border-yellow-700"
-                }`}
+                  }`}
               >
                 <span className="text-lg font-semibold text-center">
                   {option.title}
