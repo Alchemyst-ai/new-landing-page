@@ -1,3 +1,5 @@
+import z from 'zod'
+
 export interface ImageData {
   id: string;
   url: string;
@@ -81,3 +83,30 @@ export interface AIMessage {
 }
 
 export type ChatMessage = UserMessage | AIMessage;
+
+export const LangChainJSONSchema = z.object({
+  lc: z.number().describe('LangChain-specific number field'),
+  type: z.string().describe('Type of the LangChain message'),
+  id: z.array(z.string()).describe('Array of IDs associated with the message'),
+  lc_kwargs: z
+    .object({
+      content: z.string().describe('Content of the message'),
+      additional_kwargs: z
+        .record(z.any())
+        .describe('Additional keyword arguments'),
+      response_metadata: z
+        .record(z.any())
+        .describe('Metadata related to the response'),
+      tool_calls: z
+        .array(z.any())
+        .optional()
+        .describe('Optional array of tool calls'),
+      invalid_tool_calls: z
+        .array(z.any())
+        .optional()
+        .describe('Optional array of invalid tool calls'),
+    })
+    .describe('Key arguments related to the LangChain message'),
+});
+
+export type LangChainJSON = z.infer<typeof LangChainJSONSchema>;

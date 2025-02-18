@@ -1,7 +1,7 @@
 'use client'
 
 import useCanvas from "@/hooks/useCanvas";
-import { Attachments, ChatMessage, FileData } from "@/app/types/message";
+import { Attachments, ChatMessage, FileData, LangChainJSON } from "@/app/types/message";
 import { Send, Upload, UploadCloud, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
@@ -106,7 +106,8 @@ const RenderChatMedia = ({
                   width={24}
                   // onClick={() => handleRenderInCanvas(image)}
                     key={index}
-                    src={image.data ? URL.createObjectURL(image.data) : ""}
+                    src={image.url ? image.url : ""}
+                    // src={image.data ? URL.createObjectURL(image.data) : ""}
                     className="h-24 w-24 object-cover rounded"
                   />
                 ))
@@ -174,13 +175,13 @@ const ChatMessageComponent: React.FC<{
     flex flex-col max-w-[70%] p-3 m-2 rounded-lg break-words
     ${
       isUserMessage
-        ? "bg-blue-500 text-white self-end"
-        : "bg-gray-200 text-black self-start"
+        ? "bg-[#313131] text-white self-end"
+        : "bg-blue-500 text-black self-start"
     }
     relative
   `;
 
-  // console.log("MESSAGE", message);
+  console.log("MESSAGE", message.attachments);
 
   return (
     <div className={messageClasses}>
@@ -213,7 +214,15 @@ const ChatMessageComponent: React.FC<{
 const ChatInterface: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  // const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>(() => {
+    const savedMessages = localStorage.getItem("chatMessages");
+    return savedMessages ? JSON.parse(savedMessages) : [];
+  });
+  const [platformMessages, setPlatformMessages] = useState<LangChainJSON[]>(() => {
+    const savedPlatformMessages = localStorage.getItem("platformMessages");
+    return savedPlatformMessages? JSON.parse(savedPlatformMessages) : [];
+  })
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -223,6 +232,13 @@ const ChatInterface: React.FC = () => {
   const setStoreState = useCanvas(store => store.setStoreState);
   const context = useCanvas(store => store.context)
 
+  useEffect(() => {
+    localStorage.setItem("chatMessages", JSON.stringify(messages));
+  }, [messages]);
+
+  useEffect(() => {
+    localStorage.setItem("platformMessages", JSON.stringify(platformMessages));
+  }, [platformMessages]);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -249,6 +265,8 @@ const ChatInterface: React.FC = () => {
         },
       };
 
+      const newadditional_kwargs_id = crypto.randomUUID()
+
       selectedFiles.forEach((file) => {
         const attachment = {
           id: `${file.type.split("/")[0]}-${Date.now()}`,
@@ -268,10 +286,29 @@ const ChatInterface: React.FC = () => {
         }
       });
 
+      const newPlatformMessage: LangChainJSON = {
+        id: [],
+        type: "user",
+        lc: 0,
+        lc_kwargs: {
+          content: newMessage.text,
+          additional_kwargs: {
+            id: `${newadditional_kwargs_id}`,
+            json: ''
+          },
+        response_metadata: {},
+        tool_calls: [],
+        invalid_tool_calls: []
+        },
+      }
+
       setMessages((prev) => [...prev, newMessage]);
+      setPlatformMessages((prev) => [...prev, newPlatformMessage]);
       setInputText("");
       setSelectedFiles([]);
       setIsLoading(true);
+
+      console.log("THE PLAFORM", platformMessages)
 
       setStoreState({messages : [
         ...messages, newMessage
@@ -294,13 +331,59 @@ const ChatInterface: React.FC = () => {
 
       try {
 
-        const response = await fetch(
-          "https://3a87-122-167-37-50.ngrok-free.app/getResponse",
-          {
-            method: "POST",
-            body: formData,
+        const chatHistoryBody = {
+            chat_history: [...platformMessages,
+                {
+                  id: [],
+                  type: "user",
+                  lc: 0,
+                  lc_kwargs: {
+                    content: newMessage.text,
+                    additional_kwargs: {
+                      id: `${newadditional_kwargs_id}`,
+                      json: ''
+                    },
+                  response_metadata: {},
+                  tool_calls: [],
+                  invalid_tool_calls: []
+                  },
+                }
+              , {
+              id: [],
+              lc: 0,
+              type: "user",
+              lc_kwargs: {
+                content: inputText,
+                additional_kwargs: {},
+                response_metadata: {},
+                tool_calls: [],
+                invalid_tool_calls: []
+              }
+            }],
+            "researchMode": false,
+            "stream": false
           }
-        );
+                    // console.log("THE REQ BODY", reqBody)
+        const response = await 
+        // fetch(
+        //   "https://3a87-122-167-37-50.ngrok-free.app/getResponse",
+        //   {
+        //     method: "POST",
+        //     body: formData,
+        //   }
+        // );
+        fetch("http://localhost:3001/api/chat/generate", {
+          method: "POST",
+          headers: {
+            'Origin': 'http://localhost:3002',
+            "Authorization": `Bearer sk-QLOBX-JOAY3-91KUQ-2Z723`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...chatHistoryBody, 
+            chatId:localStorage.getItem("chatId"),
+          }),
+        })
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -310,7 +393,8 @@ const ChatInterface: React.FC = () => {
         console.log("THE RESULT",result)
           setMessages((prev) => [...prev, {
             id:crypto.randomUUID(),
-            text: result.text || result.description || result.response,
+            text: result.result.response.kwargs.content,
+            // text: result.text || result.description || result.response,
             chartData : result.chart_data,
             chartType: result.chart_type,
             createdAt: new Date().toISOString(),
@@ -319,9 +403,20 @@ const ChatInterface: React.FC = () => {
             isEditing: false
         }
         ]);
-      setStoreState({messages : [
-        ...messages, newMessage
-      ]})
+        if(result.chatId) localStorage.setItem('chatId', result.chatId)
+        setPlatformMessages((prev) => [
+          ...prev,
+          (() => {
+            const { kwargs, ...rest } = result.result.response;
+            return {
+              ...rest,
+              lc_kwargs: result.result.response.kwargs,
+            };
+          })(),
+        ]);
+        setStoreState({messages : [
+          ...messages, newMessage
+        ]})
 
       // let contextValue;
       
@@ -502,15 +597,8 @@ const handleExportChatAsPdf = async () => {
 
   
   return (
-    <div className="flex justify-center items-center h-full bg-gray-100 relative border-2 boder-red-600 w-full rounded-lg">
-      {/* <div className="absolute top-5 right-5">
-        <Button onClick={handleExportChatAsPdf}>
-          {
-            exportingAsPdf ? "Loading...": "Export as PDF"
-          }
-        </Button>
-      </div> */}
-      <Card className="w-[50rem] h-full flex flex-col align-baseline overflow-y-scroll">
+      <>
+      <Card className=" h-full flex flex-col align-baseline overflow-y-scroll bg-inherit justify-center items-center relative w-full rounded-lg bg-[#1C1A1B]">
         <CardContent
           className="flex-1 overflow-y-auto p-4 flex flex-col"
           ref={chatContainerRef}
@@ -566,21 +654,22 @@ const handleExportChatAsPdf = async () => {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Type your message..."
-                className="flex-1"
+                className="flex-1 text-white"
                 disabled={isLoading}
               />
 
               <label className="mr-2 cursor-pointer">
-                <Upload className="h-6 w-6" />
+                <Upload className="h-6 w-6" color="white" />
                 <input
                   type="file"
                   accept="image/*,application/pdf,text/*,application/json,application/json+ld,application/xml"
                   onChange={handleFileSelect}
                   multiple
+                  color="white"
                   className="hidden"
                 />
               </label>
-              <Button onClick={handleSendMessage} disabled={isLoading}>
+              <Button onClick={handleSendMessage} disabled={isLoading} className="bg-[#FF9933] text-black">
                 {isLoading ? (
                   <div className="flex items-center">
                     <span className="loader h-4 w-4 mr-2" /> Sending...
@@ -595,7 +684,7 @@ const handleExportChatAsPdf = async () => {
           </div>
         </div>
       </Card>
-    </div>
+      </>
   );
 };
 
