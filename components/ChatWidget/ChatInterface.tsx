@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Input } from "../ui/input";
-import {jsPDF} from "jspdf";
+import { jsPDF } from "jspdf";
 // import { bucketName, s3Client } from "@/config/aws-s3";
 // import { PutObjectCommand } from "@aws-sdk/client-s3";
 import {
@@ -27,7 +27,7 @@ type renderChartProps = {
   chartType: 'bar' | 'line' | 'pie';
 };
 
-const RenderCharts = ({ chartData, chartType } : renderChartProps) => {
+const RenderCharts = ({ chartData, chartType }: renderChartProps) => {
 
   const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1', '#d0ed57', '#a4de6c', '#d84d8d', '#84d8a4'];
 
@@ -38,7 +38,7 @@ const RenderCharts = ({ chartData, chartType } : renderChartProps) => {
     value: values[index],
   }));
 
-  
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
       {chartType === 'bar' && (
@@ -86,75 +86,75 @@ const RenderCharts = ({ chartData, chartType } : renderChartProps) => {
 
 const RenderChatMedia = ({
   media
-} : { media : Attachments}) => {
+}: { media: Attachments }) => {
 
   const setStoreState = useCanvas((store) => store.setStoreState);
-  
+
 
   // const handleRenderInCanvas = (file: FileData) => {
   //   console.log("Selected file type = ", file.data?.type);
   //   setStoreState({ openCanvas: true, canvasData: file });
   // };
-  
+
   return (
-          <div className="mt-2 grid grid-cols-5 gap-2">
-            {media.images.length > 0 && (
-                media.images.map((image, index) => (
-                  <Image
-                  alt="image"
-                  height={24}
-                  width={24}
-                  // onClick={() => handleRenderInCanvas(image)}
-                    key={index}
-                    src={image.url ? image.url : ""}
-                    // src={image.data ? URL.createObjectURL(image.data) : ""}
-                    className="h-24 w-24 object-cover rounded"
-                  />
-                ))
-            )}
+    <div className="mt-2 grid grid-cols-5 gap-2">
+      {media.images.length > 0 && (
+        media.images.map((image, index) => (
+          <Image
+            alt="image"
+            height={24}
+            width={24}
+            // onClick={() => handleRenderInCanvas(image)}
+            key={index}
+            src={image.url ? image.url : ""}
+            // src={image.data ? URL.createObjectURL(image.data) : ""}
+            className="h-24 w-24 object-cover rounded"
+          />
+        ))
+      )}
 
-            {media.videos.length > 0 && (
-                media.videos.map((video, index) => (
-                  <video
-                  //  onClick={() => handleRenderInCanvas(video)}
-                    key={index}
-                    controls
-                    src={video.data ? URL.createObjectURL(video.data) : ""}
-                    className="h-32 w-full rounded"
-                  />
-                ))
-            )}
+      {media.videos.length > 0 && (
+        media.videos.map((video, index) => (
+          <video
+            //  onClick={() => handleRenderInCanvas(video)}
+            key={index}
+            controls
+            src={video.data ? URL.createObjectURL(video.data) : ""}
+            className="h-32 w-full rounded"
+          />
+        ))
+      )}
 
-            {media.audio.length > 0 && (
-              <div className="space-y-2">
-                {media.audio.map((audio, index) => (
-                  <div key={index} className="flex items-center space-x-2" 
-                  // onClick={() => handleRenderInCanvas(audio)}
-                  >
-                    <audio controls src={audio.data ? URL.createObjectURL(audio.data) : ""} />
-                  </div>
-                ))}
-              </div>
-            )}
+      {media.audio.length > 0 && (
+        <div className="space-y-2">
+          {media.audio.map((audio, index) => (
+            <div key={index} className="flex items-center space-x-2"
+            // onClick={() => handleRenderInCanvas(audio)}
+            >
+              <audio controls src={audio.data ? URL.createObjectURL(audio.data) : ""} />
+            </div>
+          ))}
+        </div>
+      )}
 
-            {media.files.length > 0 && (
-                media.files.map((file, index) => (
-                  <div
-                    key={index}
-                    className="p-2 bg-gray-300 text-sm rounded text-black"
-                    // onClick={() => handleRenderInCanvas(file)}
-                  >
-                    <a
-                      href={file.data ? URL.createObjectURL(file.data) : ""}
-                      download={file?.data ? file.data.name : ""}
-                      className="underline text-blue-600"
-                    >
-                      {file?.data?.name ?? "Unknown file"}
-                    </a>
-                  </div>
-                ))
-            )}
+      {media.files.length > 0 && (
+        media.files.map((file, index) => (
+          <div
+            key={index}
+            className="p-2 bg-gray-300 text-sm rounded text-black"
+          // onClick={() => handleRenderInCanvas(file)}
+          >
+            <a
+              href={file.data ? URL.createObjectURL(file.data) : ""}
+              download={file?.data ? file.data.name : ""}
+              className="underline text-blue-600"
+            >
+              {file?.data?.name ?? "Unknown file"}
+            </a>
           </div>
+        ))
+      )}
+    </div>
   )
 }
 
@@ -173,10 +173,9 @@ const ChatMessageComponent: React.FC<{
   const isUserMessage = message.sender === "user";
   const messageClasses = `
     flex flex-col max-w-[70%] p-3 m-2 rounded-lg break-words
-    ${
-      isUserMessage
-        ? "bg-[#313131] text-white self-end"
-        : "bg-blue-500 text-black self-start"
+    ${isUserMessage
+      ? "bg-[#313131] text-white self-end"
+      : "bg-blue-500 text-black self-start"
     }
     relative
   `;
@@ -221,7 +220,7 @@ const ChatInterface: React.FC = () => {
   });
   const [platformMessages, setPlatformMessages] = useState<LangChainJSON[]>(() => {
     const savedPlatformMessages = localStorage.getItem("platformMessages");
-    return savedPlatformMessages? JSON.parse(savedPlatformMessages) : [];
+    return savedPlatformMessages ? JSON.parse(savedPlatformMessages) : [];
   })
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -296,9 +295,9 @@ const ChatInterface: React.FC = () => {
             id: `${newadditional_kwargs_id}`,
             json: ''
           },
-        response_metadata: {},
-        tool_calls: [],
-        invalid_tool_calls: []
+          response_metadata: {},
+          tool_calls: [],
+          invalid_tool_calls: []
         },
       }
 
@@ -310,16 +309,18 @@ const ChatInterface: React.FC = () => {
 
       console.log("THE PLAFORM", platformMessages)
 
-      setStoreState({messages : [
-        ...messages, newMessage
-      ]})
+      setStoreState({
+        messages: [
+          ...messages, newMessage
+        ]
+      })
 
       const fileToSend = newMessage.attachments?.files?.[0] || newMessage.attachments?.images?.[0];
 
       const formData = new FormData();
       if (fileToSend && fileToSend.data) {
-          formData.append("file", fileToSend?.data, fileToSend.data?.name);
-          formData.append('query', `${newMessage.text}`);
+        formData.append("file", fileToSend?.data, fileToSend.data?.name);
+        formData.append('query', `${newMessage.text}`);
       } else {
 
         const contextStringified = context.join('\n\n')
@@ -332,78 +333,78 @@ const ChatInterface: React.FC = () => {
       try {
 
         const chatHistoryBody = {
-            chat_history: [...platformMessages,
-                {
-                  id: [],
-                  type: "user",
-                  lc: 0,
-                  lc_kwargs: {
-                    content: newMessage.text,
-                    additional_kwargs: {
-                      id: `${newadditional_kwargs_id}`,
-                      json: ''
-                    },
-                  response_metadata: {},
-                  tool_calls: [],
-                  invalid_tool_calls: []
-                  },
-                }
-              , {
-              id: [],
-              lc: 0,
-              type: "user",
-              lc_kwargs: {
-                content: inputText,
-                additional_kwargs: {},
-                response_metadata: {},
-                tool_calls: [],
-                invalid_tool_calls: []
-              }
-            }],
-            "researchMode": false,
-            "stream": false
+          chat_history: [...platformMessages,
+          {
+            id: [],
+            type: "user",
+            lc: 0,
+            lc_kwargs: {
+              content: newMessage.text,
+              additional_kwargs: {
+                id: `${newadditional_kwargs_id}`,
+                json: ''
+              },
+              response_metadata: {},
+              tool_calls: [],
+              invalid_tool_calls: []
+            },
           }
-                    // console.log("THE REQ BODY", reqBody)
-        const response = await 
-        // fetch(
-        //   "https://3a87-122-167-37-50.ngrok-free.app/getResponse",
-        //   {
-        //     method: "POST",
-        //     body: formData,
-        //   }
-        // );
-        fetch("http://localhost:3001/api/chat/generate", {
-          method: "POST",
-          headers: {
-            'Origin': 'http://localhost:3002',
-            "Authorization": `Bearer sk-QLOBX-JOAY3-91KUQ-2Z723`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...chatHistoryBody, 
-            chatId:localStorage.getItem("chatId"),
-          }),
-        })
+            , {
+            id: [],
+            lc: 0,
+            type: "user",
+            lc_kwargs: {
+              content: inputText,
+              additional_kwargs: {},
+              response_metadata: {},
+              tool_calls: [],
+              invalid_tool_calls: []
+            }
+          }],
+          "researchMode": false,
+          "stream": false
+        }
+        // console.log("THE REQ BODY", reqBody)
+        const response = await
+          // fetch(
+          //   "https://3a87-122-167-37-50.ngrok-free.app/getResponse",
+          //   {
+          //     method: "POST",
+          //     body: formData,
+          //   }
+          // );
+          fetch("/api/getResponse", {
+            method: "POST",
+            headers: {
+              'Origin': `${window.location.protocol ?? "http"}://${window.location.host ?? "localhost:4163"}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...chatHistoryBody,
+              chatId: localStorage.getItem("chatId"),
+              source: "integrations.others",
+            }),
+          })
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
 
-        console.log("THE RESULT",result)
-          setMessages((prev) => [...prev, {
-            id:crypto.randomUUID(),
-            text: result.result.response.kwargs.content,
-            // text: result.text || result.description || result.response,
-            chartData : result.chart_data,
-            chartType: result.chart_type,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-            sender: "ai",
-            isEditing: false
+        console.log("THE RESULT", result)
+        setMessages((prev) => [...prev, {
+          id: crypto.randomUUID(),
+          text: result.result.response.kwargs.content,
+          // text: result.text || result.description || result.response,
+          chartData: result.chart_data,
+          chartType: result.chart_type,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          sender: "ai",
+          isEditing: false
         }
         ]);
-        if(result.chatId) localStorage.setItem('chatId', result.chatId)
+        if (result.chatId) localStorage.setItem('chatId', result.chatId)
         setPlatformMessages((prev) => [
           ...prev,
           (() => {
@@ -414,43 +415,49 @@ const ChatInterface: React.FC = () => {
             };
           })(),
         ]);
-        setStoreState({messages : [
-          ...messages, newMessage
-        ]})
+        setStoreState({
+          messages: [
+            ...messages, newMessage
+          ]
+        })
 
-      // let contextValue;
-      
-      // try {
-      //   contextValue = JSON.parse(result.context);
+        // let contextValue;
 
-      //   console.log("THE CONTEXT VALUE", contextValue)
-      //   setStoreState({context : [
-      //     ...context, JSON.stringify(contextValue)
-      //   ]})
-      // } catch (error) {
-      //   console.log("JSON parse error", error)
-        
-      // }
-      setStoreState({context : [
-        ...context, result.context
-      ]})
+        // try {
+        //   contextValue = JSON.parse(result.context);
+
+        //   console.log("THE CONTEXT VALUE", contextValue)
+        //   setStoreState({context : [
+        //     ...context, JSON.stringify(contextValue)
+        //   ]})
+        // } catch (error) {
+        //   console.log("JSON parse error", error)
+
+        // }
+        setStoreState({
+          context: [
+            ...context, result.context
+          ]
+        })
       } catch (error) {
         console.error("Error fetching AI response:", error);
-          setMessages((prev) => [...prev, {
-            id:crypto.randomUUID(),
-            text: "There was an error in processing your request",
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-            sender: "ai",
-            chartType: null,
-            chartData :null,
-            isEditing: false
+        setMessages((prev) => [...prev, {
+          id: crypto.randomUUID(),
+          text: "There was an error in processing your request",
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          sender: "ai",
+          chartType: null,
+          chartData: null,
+          isEditing: false
         }
         ]);
 
-      setStoreState({messages : [
-        ...messages, newMessage
-      ]})
+        setStoreState({
+          messages: [
+            ...messages, newMessage
+          ]
+        })
       } finally {
         setIsLoading(false);
       }
@@ -474,7 +481,7 @@ const ChatInterface: React.FC = () => {
       setSelectedFiles([...selectedFiles, ...Array.from(e.target.files)]);
     }
 
-   Array.from(e.target.files!).forEach(fileItem => {
+    Array.from(e.target.files!).forEach(fileItem => {
       console.log("THE FILE ITEM", fileItem)
       // uploadFileToS3(fileItem)
     })
@@ -484,28 +491,72 @@ const ChatInterface: React.FC = () => {
     setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
-const handleExportChatAsPdf = async () => {
-  setExportingAsPdf(true);
-  const doc = new jsPDF();
+  const handleExportChatAsPdf = async () => {
+    setExportingAsPdf(true);
+    const doc = new jsPDF();
 
-  doc.setFontSize(16);
-  doc.text("Chat Export", 10, 10);
+    doc.setFontSize(16);
+    doc.text("Chat Export", 10, 10);
 
-  let yPosition = 20;
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const margin = 10;
-  const maxWidth = pageWidth - 2 * margin;
-  const lineHeight = 8;
+    let yPosition = 20;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 10;
+    const maxWidth = pageWidth - 2 * margin;
+    const lineHeight = 8;
 
-  doc.setFontSize(12);
+    doc.setFontSize(12);
 
-  for (const msg of messages) {
-    const msgText = `${msg.sender}: ${msg.text}`;
-    const wrappedText = doc.splitTextToSize(msgText, maxWidth);
+    for (const msg of messages) {
+      const msgText = `${msg.sender}: ${msg.text}`;
+      const wrappedText = doc.splitTextToSize(msgText, maxWidth);
 
-    for (const line of wrappedText) {
-      doc.text(line, margin, yPosition);
-      yPosition += lineHeight;
+      for (const line of wrappedText) {
+        doc.text(line, margin, yPosition);
+        yPosition += lineHeight;
+
+        if (yPosition > 280) {
+          doc.addPage();
+          yPosition = 10;
+        }
+      }
+
+      if (msg.attachments && msg.attachments.images && msg.attachments.images.length > 0) {
+        const imageWidth = 20;
+        const imageHeight = 20;
+        const spacing = 4;
+
+        let xPosition = margin;
+
+        for (const image of msg.attachments.images) {
+          if (image.data) {
+            const img = await fetch(URL.createObjectURL(image.data))
+              .then((res) => res.blob())
+              .then(
+                (blob) =>
+                  new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.readAsDataURL(blob);
+                  })
+              );
+
+            doc.addImage(img as string, "JPEG", xPosition, yPosition, imageWidth, imageHeight);
+            xPosition += imageWidth + spacing;
+
+            if (xPosition + imageWidth + margin > pageWidth) {
+              xPosition = margin;
+              yPosition += imageHeight + spacing;
+
+              // Check for page overflow after adding images
+              if (yPosition > 280) {
+                doc.addPage();
+                yPosition = 10;
+              }
+            }
+          }
+        }
+        yPosition += imageHeight + spacing;
+      }
 
       if (yPosition > 280) {
         doc.addPage();
@@ -513,53 +564,9 @@ const handleExportChatAsPdf = async () => {
       }
     }
 
-    if (msg.attachments && msg.attachments.images && msg.attachments.images.length > 0) {
-      const imageWidth = 20;
-      const imageHeight = 20;
-      const spacing = 4;
-
-      let xPosition = margin;
-
-      for (const image of msg.attachments.images) {
-        if (image.data) {
-          const img = await fetch(URL.createObjectURL(image.data))
-            .then((res) => res.blob())
-            .then(
-              (blob) =>
-                new Promise((resolve) => {
-                  const reader = new FileReader();
-                  reader.onload = () => resolve(reader.result);
-                  reader.readAsDataURL(blob);
-                })
-            );
-
-          doc.addImage(img as string, "JPEG", xPosition, yPosition, imageWidth, imageHeight);
-          xPosition += imageWidth + spacing;
-
-          if (xPosition + imageWidth + margin > pageWidth) {
-            xPosition = margin;
-            yPosition += imageHeight + spacing;
-
-            // Check for page overflow after adding images
-            if (yPosition > 280) {
-              doc.addPage();
-              yPosition = 10;
-            }
-          }
-        }
-      }
-      yPosition += imageHeight + spacing;
-    }
-
-    if (yPosition > 280) {
-      doc.addPage();
-      yPosition = 10;
-    }
-  }
-
-  setExportingAsPdf(false);
-  doc.save("chat_with_attachments.pdf");
-};
+    setExportingAsPdf(false);
+    doc.save("chat_with_attachments.pdf");
+  };
 
 
   const uploadFileToS3 = async (file: File) => {
@@ -577,16 +584,16 @@ const handleExportChatAsPdf = async () => {
     try {
       // const command = new PutObjectCommand(params);
       // await s3Client.send(command);
-          await new Promise((resolve) => {
-            setTimeout(() => {
-              resolve({dats:"dfjnk"});
-            }, 2000);
-          });
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ dats: "dfjnk" });
+        }, 2000);
+      });
 
     } catch (error) {
       console.error("File upload error:", error);
     }
-     finally {
+    finally {
       setUploadingFileIds((prev) => {
         const updated = new Set(prev);
         updated.delete(fileKey);
@@ -595,9 +602,9 @@ const handleExportChatAsPdf = async () => {
     }
   };
 
-  
+
   return (
-      <>
+    <>
       <Card className=" h-full flex flex-col align-baseline overflow-y-scroll bg-inherit justify-center items-center relative w-full rounded-lg bg-[#1C1A1B]">
         <CardContent
           className="flex-1 overflow-y-auto p-4 flex flex-col"
@@ -627,8 +634,8 @@ const handleExportChatAsPdf = async () => {
                     )}
                     {file.type.startsWith("image/") ? (
                       <Image
-                      height={14}
-                      width={14}
+                        height={14}
+                        width={14}
                         src={URL.createObjectURL(file)}
                         alt={file.name}
                         className="h-14 w-14 object-cover rounded border-[1px] border-gray-400"
@@ -684,7 +691,7 @@ const handleExportChatAsPdf = async () => {
           </div>
         </div>
       </Card>
-      </>
+    </>
   );
 };
 
