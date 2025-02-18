@@ -68,9 +68,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+
       <body
-        className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
+        className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden text-[#e9e9e9] bg-[#0e0e0c]`}
       >
         {children}
       </body>
