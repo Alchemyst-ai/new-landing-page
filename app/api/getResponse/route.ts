@@ -37,6 +37,9 @@ const handler = async (req: NextRequest, { params }: any) => {
 
     const responseData = await response.json();
 
+    console.log("Response from backend")
+    console.log(JSON.stringify(responseData, null, 2));
+
     return NextResponse.json(responseData);
 }
 
