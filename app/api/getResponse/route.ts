@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+export const maxDuration = 300;
+
 const requestSchema = z.object({
     chatHistory: z.array(z.record(z.any())).optional().default([]),
     chatId: z.string().optional().nullable(),
