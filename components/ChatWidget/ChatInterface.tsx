@@ -409,17 +409,21 @@ const ChatInterface: React.FC = () => {
         const result = await response.json();
 
         console.log("THE RESULT", result);
-        let text = "";
+        let text = result.result.response.kwargs.content;
 
         try {
-          text = JSON.parse(result.result.response.kwargs.content)
+          text = JSON.parse(text)
         } catch (error) {
           text = result.result.response.kwargs.content
         }
 
+        if (text.startsWith("\"") && text.endsWith("\"")) {
+          text = text.slice(1, -1)
+        }
+
         setMessages((prev) => [...prev, {
           id: crypto.randomUUID(),
-          text: result.result.response.kwargs.content,
+          text: text,
           // text: result.text || result.description || result.response,
           chartData: result.chart_data,
           chartType: result.chart_type,
