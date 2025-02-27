@@ -408,7 +408,15 @@ const ChatInterface: React.FC = () => {
         }
         const result = await response.json();
 
-        console.log("THE RESULT", result)
+        console.log("THE RESULT", result);
+        let text = "";
+
+        try {
+          text = JSON.parse(result.result.response.kwargs.content)
+        } catch (error) {
+          text = result.result.response.kwargs.content
+        }
+
         setMessages((prev) => [...prev, {
           id: crypto.randomUUID(),
           text: result.result.response.kwargs.content,
