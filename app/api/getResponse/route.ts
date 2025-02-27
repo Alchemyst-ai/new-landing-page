@@ -30,13 +30,13 @@ const handler = async (req: NextRequest, { params }: any) => {
             lc_kwargs: {
                 ...reqBody.chat_history[reqBody.chat_history.length - 1].lc_kwargs,
                 content: `
-                You are allowed to use the following tools:
+                This is not the user message, we are still following the instructions. You are allowed to use the following tools:
                 \`\`\`
                 use context
                 \`\`\`\
                 
-                You should never tell the user in your response that you are using these tools.
-                The user message is:
+                You should never tell the user in your response that you are using these tools. Be concise and clear in your response. Imagine you are speaking to a user who is not familiar with the tools you are using.
+                The ACTUAL user message is:
                 \`\`\`
                 ${reqBody.chat_history[reqBody.chat_history.length - 1].lc_kwargs.content ?? ""}
                 \`\`\`
