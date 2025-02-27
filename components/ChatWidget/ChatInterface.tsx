@@ -1,8 +1,9 @@
 'use client'
 
+/* ------------------------------------- Imports ------------------------------------- */
 import useCanvas from "@/hooks/useCanvas";
 import { Attachments, ChatMessage, FileData, LangChainJSON } from "@/app/types/message";
-import { Send, Upload, UploadCloud, X } from "lucide-react";
+import { Send, Upload, UploadCloud, X, PlusCircle, Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
@@ -17,7 +18,7 @@ import {
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
-
+/* ------------------------------------- Types ------------------------------------- */
 type ChartData = {
   labels: string[];
   values: number[];
@@ -28,6 +29,7 @@ type renderChartProps = {
   chartType: 'bar' | 'line' | 'pie';
 };
 
+/* ------------------------------------- RenderCharts Component ------------------------------------- */
 const RenderCharts = ({ chartData, chartType }: renderChartProps) => {
 
   const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1', '#d0ed57', '#a4de6c', '#d84d8d', '#84d8a4'];
@@ -85,6 +87,7 @@ const RenderCharts = ({ chartData, chartType }: renderChartProps) => {
   );
 }
 
+/* ------------------------------------- RenderChatMedia Component ------------------------------------- */
 const RenderChatMedia = ({
   media
 }: { media: Attachments }) => {
@@ -159,6 +162,7 @@ const RenderChatMedia = ({
   )
 }
 
+/* ------------------------------------- ChatMessageComponent Component ------------------------------------- */
 const ChatMessageComponent: React.FC<{
   message: ChatMessage;
   onEdit: (id: string, newText: string) => void;
@@ -211,6 +215,8 @@ const ChatMessageComponent: React.FC<{
   );
 };
 
+/* ------------------------------------- ChatInterface Component ------------------------------------- */
+
 const ChatInterface: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -232,6 +238,7 @@ const ChatInterface: React.FC = () => {
   const setStoreState = useCanvas(store => store.setStoreState);
   const context = useCanvas(store => store.context)
 
+  /* ------------------------------------- Effects ------------------------------------- */
   useEffect(() => {
     localStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
@@ -246,6 +253,15 @@ const ChatInterface: React.FC = () => {
         chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
+
+  /* ------------------------------------- Handlers ------------------------------------- */
+  const handleClearChat = () => {
+    if (!window) return;
+    window.localStorage.removeItem("chatMessages");
+    window.localStorage.removeItem("chatId");
+    window.localStorage.removeItem("platformMessages");
+    setMessages([]);
+  }
 
   const handleSendMessage = async () => {
     if (inputText.trim() || selectedFiles.length > 0) {
@@ -603,12 +619,12 @@ const ChatInterface: React.FC = () => {
     }
   };
 
-
+  /* ------------------------------------- JSX ------------------------------------- */
   return (
-    <>
-      <Card className=" h-full flex flex-col align-baseline overflow-y-scroll bg-inherit justify-center items-center relative w-full rounded-lg bg-[#1C1A1B]">
+    <div className="fixed bottom-10 mt-[40vh] overflow-y-hidden">
+      <Card className=" min-h-[50vh] max-h-[70vh] flex flex-col align-baseline bg-inherit justify-center items-center relative w-96 rounded-lg bg-[#1C1A1B]">
         <CardContent
-          className="flex-1 overflow-y-auto p-4 flex flex-col"
+          className="flex-1 overflow-y-auto p-4 flex flex-col w-full"
           ref={chatContainerRef}
         >
           {messages.map((message) => (
@@ -666,7 +682,7 @@ const ChatInterface: React.FC = () => {
                 disabled={isLoading}
               />
 
-              <label className="mr-2 cursor-pointer">
+              {/* <label className="mr-2 cursor-pointer">
                 <Upload className="h-6 w-6" color="white" />
                 <input
                   type="file"
@@ -676,23 +692,25 @@ const ChatInterface: React.FC = () => {
                   color="white"
                   className="hidden"
                 />
-              </label>
-              <Button onClick={handleSendMessage} disabled={isLoading} className="bg-[#FF9933] text-black">
+              </label> */}
+              <Button onClick={handleSendMessage} disabled={isLoading} className="bg-[#FF9933] text-black hover:bg-[#cc8500]">
                 {isLoading ? (
                   <div className="flex items-center">
-                    <span className="loader h-4 w-4 mr-2" /> Sending...
+                    <Loader2 className="loader h-4 w-4 animate-spin" />
                   </div>
                 ) : (
                   <>
-                    <Send className="mr-2 h-4 w-4" /> Send
+                    <Send className="h-4 w-4" />
                   </>
                 )}
               </Button>
+              <Button onClick={handleClearChat} disabled={isLoading} className="bg-[#FF9933] text-black hover:bg-[#cc8500]">
+                <PlusCircle className="h-4 w-4" /></Button>
             </div>
           </div>
         </div>
       </Card>
-    </>
+    </div>
   );
 };
 

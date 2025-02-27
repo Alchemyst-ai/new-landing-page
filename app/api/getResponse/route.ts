@@ -20,13 +20,40 @@ const handler = async (req: NextRequest, { params }: any) => {
     console.log("Request body", JSON.stringify(reqBody, null, 2));
     // const { chatHistory: chat_history, chatId } = data;
 
+    console.log("Received chat history = ", reqBody.chat_history);
+    let modifiedChatHistory: typeof reqBody.chat_history = [];
+
+    if (reqBody.chat_history.length > 0) {
+        console.log("\n\n========== Chat History size is more than zero ==============\n\n")
+        modifiedChatHistory = reqBody.chat_history.slice(0, -1).concat({
+            ...reqBody.chat_history[reqBody.chat_history.length - 1],
+            lc_kwargs: {
+                ...reqBody.chat_history[reqBody.chat_history.length - 1].lc_kwargs,
+                content: `
+                You are allowed to use the following tools:
+                \`\`\`
+                use context
+                \`\`\`\
+                
+                You should never tell the user in your response that you are using these tools.
+                The user message is:
+                \`\`\`
+                ${reqBody.chat_history[reqBody.chat_history.length - 1].lc_kwargs.content ?? ""}
+                \`\`\`
+                `
+            }
+        }
+        )
+        console.log(`\n\n========== Modified Chat History size = ${modifiedChatHistory.length} ==============\n\n`)
+    }
+
     const response = await fetch(process.env.CONVERSE_BACKEND_URL ?? "http://localhost:3001/api/chat/generate", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${process.env.ADMIN_API_KEY ?? "sk-SW5Q0-D3RTB-UMOSW-LFTRU"}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(reqBody),
+        body: JSON.stringify({ ...reqBody, mode: "external", chat_history: modifiedChatHistory }),
     }
     )
 
