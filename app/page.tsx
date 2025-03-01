@@ -25,7 +25,7 @@ const Hero = dynamic(() => import("@/components/home/Hero"));
 
 export default function HomePage() {
 
-  const [openWidget,setOpenWidget] = useState(false)
+  const [openWidget, setOpenWidget] = useState(false)
 
   useEffect(() => {
 
@@ -44,14 +44,14 @@ export default function HomePage() {
         return null;
       }
     }
-    
+
     detectCountry().then(location => {
       if (location) {
         // console.log(`User is from ${location.countryCode}`);
         localStorage.setItem("country-code", `${location.countryCode}`)
       }
     });
-  },[])
+  }, [])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -67,9 +67,9 @@ export default function HomePage() {
 
   const openChatWidget = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
-    setOpenWidget(prev=>!prev)
+    setOpenWidget(prev => !prev)
   }
-  
+
   return (
     <div className="relative">
       <Head>
@@ -146,12 +146,12 @@ export default function HomePage() {
         </main>
         <Footer />
       </div>
-      <div className="text-white fixed bottom-5 right-5 max-w-max max max-h-max cursor-pointer z-[100000]" onClick={openChatWidget}>
+      {/* <div className="text-white fixed bottom-5 right-5 max-w-max max max-h-max cursor-pointer z-[100000]" onClick={openChatWidget}>
         <Image alt="bot image" src="https://alchemyst-updated.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmaya.57854fbf.png&w=256&q=75" height={60} width={60} />
       </div>
       {
         openWidget && <AppWidget />
-      }
+      } */}
     </div>
   );
 }
