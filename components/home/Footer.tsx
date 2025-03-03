@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               className="h-12"
               /></span>
             <p className="text-sm text-gray-400 mt-4 text-center md:text-left">
-              © {currentYear} Ionida Limited trading as AlchemystAI UK, Solihull, West Midlands. All rights
+              © {currentYear} Ionida Limited trading as AlchemystAI UK, West Midlands, UK. All rights
               reserved.
             </p>
             <div className="flex flex-row items-center md:items-start gap-10 mt-5 md:mt-44 text-gray-400">
@@ -187,7 +187,7 @@ const Footer: React.FC = () => {
                   d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                 />
               </svg>
-              <span className="text-gray-400">AlchemystAI UK, St Helens Road, Solihull, West Midlands, B91 2DA</span>
+              <span className="text-gray-400">AlchemystAI UK, West Midlands, UK</span>
             </div>
             <motion.div
               className="flex items-center space-x-16 mt-12 mb-6 justify-center md:justify-start"
