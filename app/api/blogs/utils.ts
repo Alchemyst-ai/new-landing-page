@@ -1,6 +1,8 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import YAML from 'yaml'
+import { execSync } from 'child_process'
+import { ProcessedFile } from '@/app/types/blog-api';
 
 const BLOGS_DIR = join(process.cwd(), "/public/blogs/content");
 const WORDS_PER_MIN = 200;
@@ -30,6 +32,7 @@ function parseFile(fileContent: string) {
         console.warn("Files Missing in Markdown. Skipping...");
         return { metadata: {}, content: "" };
     }
+
 
     const content = contentParts.join("\n");
 
@@ -70,10 +73,20 @@ function calculateReadTime(text: string) {
     return `${Math.ceil(wordCount / WORDS_PER_MIN)} min`;
 }
 
-export function processFile(fileName: string) {
+export function processFile(fileName: string): ProcessedFile | null {
     const filePath = join(BLOGS_DIR, fileName);
     const fileContent = readFileSync(filePath, "utf-8");
-    const { metadata, content } = parseFile(fileContent);
+    let { metadata, content } = parseFile(fileContent);
+
+    const cmd = `echo $(git log -1 --pretty="format:%ci" "${filePath}")`
+    console.log("Generated CMD = \n", cmd);
+    try {
+        let lastModifiedDate = execSync(cmd);
+        metadata.lastModifiedDate = lastModifiedDate.toString().trim();
+        console.log("Last Modified Date: ", metadata.lastModifiedDate);
+    } catch (err) {
+        console.error("Error getting last modified date: ", err);
+    }
 
     const id = getUrlFromFileName(fileName);
     const title = metadata.title || "Untitled";
@@ -86,6 +99,7 @@ export function processFile(fileName: string) {
     const keywords = metadata.keywords || [];
     const readTime = calculateReadTime(content);
     const redirectLink = metadata.redirectLink;
+    const lastModifiedDate = metadata.lastModifiedDate;
 
     if (!metadata.title || !metadata.authorName || !metadata.date) {
         console.warn(`Skipping file ${fileName} due to missing important metadata.`);
@@ -105,6 +119,7 @@ export function processFile(fileName: string) {
         readTime,
         redirectLink,
         content,
+        lastModified: lastModifiedDate
     };
 }
 
