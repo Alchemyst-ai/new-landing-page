@@ -13,14 +13,14 @@ export const GET = async (req: NextRequest) => {
 
     const rawBlogs: ProcessedFile[] = await apiResults.json();
 
-    const blogs = rawBlogs.map(blog => {
-        const { id, title, image, draftStatus, ...blogObject } = {
-            url: `${baseUrl}${blog.redirectLink}`,
-            ...blog,
+    const blogs = rawBlogs.map(blog => ({
+        url: {
+            loc: `${baseUrl}${blog.redirectLink}`,
+            lastmod: blog.lastModified,
+            changefreq: 'weekly',
+            priority: '0.8'
         }
-
-        return blogObject
-    })
+    }))
 
     const xmlObject = { urlset: blogs }
 
