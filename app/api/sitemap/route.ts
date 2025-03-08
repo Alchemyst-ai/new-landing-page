@@ -11,7 +11,16 @@ export const GET = async (req: NextRequest) => {
         return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
     }
 
-    const blogs: ProcessedFile[] = await apiResults.json();
+    const rawBlogs: ProcessedFile[] = await apiResults.json();
+
+    const blogs = rawBlogs.map(blog => ({
+        url: `${baseUrl}${blog.redirectLink}`,
+        ...blog,
+        id: undefined,
+        title: undefined,
+        image: undefined,
+        draftStatus: undefined,
+    }))
 
     const xmlObject = { urlset: blogs }
 
