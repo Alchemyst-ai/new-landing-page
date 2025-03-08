@@ -16,7 +16,7 @@ export const GET = async (req: NextRequest) => {
     const blogs = rawBlogs.map(blog => ({
         url: {
             loc: `${baseUrl}${blog.redirectLink}`,
-            lastmod: blog.lastModified,
+            lastmod: new Date(blog.lastModified).toISOString(),
             changefreq: 'weekly',
             priority: '0.8'
         }
