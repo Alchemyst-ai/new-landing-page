@@ -3,7 +3,7 @@ import { toXML } from 'jstoxml';
 import { ProcessedFile } from "@/app/types/blog-api";
 
 export const GET = async (req: NextRequest) => {
-    const baseUrl = process.env.BASE_URL ?? 'http://localhost:4163'
+    const baseUrl = process.env.BLOGS_BASE_URL ?? 'http://localhost:4163'
 
     const apiResults = await fetch(`${baseUrl}/api/blogs`);
 
