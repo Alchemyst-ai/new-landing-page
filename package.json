@@ -17,6 +17,7 @@
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
     "@notionhq/client": "^2.2.15",
+    "@paypal/react-paypal-js": "^8.8.1",
     "@radix-ui/react-collapsible": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@react-three/drei": "^9.120.5",
@@ -53,7 +54,8 @@
     "three": "^0.171.0",
     "three-globe": "^2.39.1",
     "typewriter-effect": "^2.21.0",
-    "yaml": "^2.7.0"
+    "yaml": "^2.7.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

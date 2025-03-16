@@ -1,5 +1,10 @@
+'use client'
+
+import { useUserStore } from '@/hooks/useUserStore';
 import { Check } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Script from 'next/script';
 
 interface PricingCardProps {
   plan: {
@@ -8,13 +13,17 @@ interface PricingCardProps {
     price: number;
     info: string[];
     features: string[];
+    planId? : string
   };
   billingCycle: "monthly" | "annually";
-  country: string;
+  countryCode: string;
 }
 
-export default function PricingCard({ plan, billingCycle, country }: PricingCardProps) {
-  // console.log('Rendering PricingCard for country:', country);
+export default function PricingCard({ plan, billingCycle, countryCode }: PricingCardProps) {
+
+  const setStoreState = useUserStore((store) => store.setStoreState)
+  const router = useRouter()
+
   return (
     <div className="bg-gray-900 hover:bg-orange-400 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_10px_rgba(255,165,0,0.5)] hover:border-yellow-400 hover:border-2 hover:scale-105 group h-[42rem]">
       <div className="px-6 py-8">
@@ -49,11 +58,17 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
             {item}
           </p>
         ))}
-        <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
-          <button className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
-            Start now
+        {/* <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank"> */}
+          <button onClick={() => {
+            // handlePayment(plan.planId)
+            setStoreState({
+              planId : plan.planId,
+            })
+            router.push('checkout')
+          }} className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
+            Subscribe
           </button>
-        </Link>
+        {/* </Link> */}
       </div>
 
       <div className="px-6 pb-8">
