@@ -7,7 +7,7 @@ export const PRICING_PLANS = {
         price: "₹16000 + GST",
         info: [
           "750 Verified Leads/Month",
-          "7000+ Emails",
+          "7000+ LLM Responses (Emails, Whatsapp, etc.)",
           "375+ Lead Enrichment",
         ],
         features: [
@@ -24,7 +24,7 @@ export const PRICING_PLANS = {
         price: "₹28000 + GST",
         info: [
           "3000 Verified Leads/Month",
-          "15000+ Emails",
+          "15000+ LLM Responses (Emails, Whatsapp, etc.)",
           "500+ Lead Enrichment",
         ],
         features: [
@@ -42,7 +42,7 @@ export const PRICING_PLANS = {
         price: "₹52000 + GST",
         info: [
           "10,000 Verified Leads/Month",
-          "32,000+ Emails",
+          "32,000+ LLM Responses (Emails, Whatsapp, etc.)",
           "3000+ Lead Enrichment",
         ],
         features: [
@@ -64,7 +64,7 @@ export const PRICING_PLANS = {
         price: "₹160000 + GST",
         info: [
           "750 Verified Leads/Month",
-          "7000+ Emails",
+          "7000+ LLM Responses (Emails, Whatsapp, etc.)",
           "375+ Lead Enrichment",
         ],
         features: [
@@ -82,7 +82,7 @@ export const PRICING_PLANS = {
         price: "₹280000 + GST",
         info: [
           "3000 Verified Leads/Month",
-          "15000+ Emails",
+          "15000+ LLM Responses (Emails, Whatsapp, etc.)",
           "500+ Lead Enrichment",
         ],
         features: [
@@ -101,7 +101,7 @@ export const PRICING_PLANS = {
         price: "₹520000 + GST",
         info: [
           "10,000 Verified Leads/Month",
-          "32,000+ Emails",
+          "32,000+ LLM Responses (Emails, Whatsapp, etc.)",
           "3000+ Lead Enrichment",
         ],
         features: [
@@ -124,7 +124,7 @@ export const PRICING_PLANS = {
         price: "$299",
         info: [
           "750 Verified Leads/Month",
-          "7000+ Emails",
+          "7000+ LLM Responses (Emails, Whatsapp, etc.)",
           "375+ Lead Enrichment",
         ],
         features: [
@@ -141,7 +141,7 @@ export const PRICING_PLANS = {
         price: "$499",
         info: [
           "3000 Verified Leads/Month",
-          "15000+ Emails",
+          "15000+ LLM Responses (Emails, Whatsapp, etc.)",
           "500+ Lead Enrichment",
         ],
         features: [
@@ -159,7 +159,7 @@ export const PRICING_PLANS = {
         price: "$899",
         info: [
           "10,000 Verified Leads/Month",
-          "32,000+ Emails",
+          "32,000+ LLM Responses (Emails, Whatsapp, etc.)",
           "3000+ Lead Enrichment",
         ],
         features: [
@@ -181,7 +181,7 @@ export const PRICING_PLANS = {
         price: "$2988",
         info: [
           "750 Verified Leads/Month",
-          "7000+ Emails",
+          "7000+ LLM Responses (Emails, Whatsapp, etc.)",
           "375+ Lead Enrichment",
         ],
         features: [
@@ -199,7 +199,7 @@ export const PRICING_PLANS = {
         price: "$4788",
         info: [
           "3000 Verified Leads/Month",
-          "15000+ Emails",
+          "15000+ LLM Responses (Emails, Whatsapp, etc.)",
           "500+ Lead Enrichment",
         ],
         features: [
@@ -218,7 +218,7 @@ export const PRICING_PLANS = {
         price: "$8388",
         info: [
           "10,000 Verified Leads/Month",
-          "32,000+ Emails",
+          "32,000+ LLM Responses (Emails, Whatsapp, etc.)",
           "3000+ Lead Enrichment",
         ],
         features: [
