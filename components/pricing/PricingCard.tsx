@@ -1,11 +1,11 @@
-import { Check } from 'lucide-react';
-import Link from 'next/link';
+import { Check } from "lucide-react";
+import Link from "next/link";
 
 interface PricingCardProps {
   plan: {
     tier: string;
-    originalPrice?: number;
-    price: number;
+    originalPrice?: string;
+    price: string;
     info: string[];
     features: string[];
   };
@@ -13,7 +13,11 @@ interface PricingCardProps {
   country: string;
 }
 
-export default function PricingCard({ plan, billingCycle, country }: PricingCardProps) {
+export default function PricingCard({
+  plan,
+  billingCycle,
+  country,
+}: PricingCardProps) {
   // console.log('Rendering PricingCard for country:', country);
   return (
     <div className="bg-gray-900 hover:bg-orange-400 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_10px_rgba(255,165,0,0.5)] hover:border-yellow-400 hover:border-2 hover:scale-105 group h-[42rem]">
@@ -21,35 +25,36 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
         <h2 className="text-5xl font-bold text-white mb-8 group-hover:text-white">
           {plan.tier}
         </h2>
-        <p className="text-4xl font-bold text-white mb-6 group-hover:text-white">
-          {billingCycle === "annually" ? (
-            <>
-              <span className="text-2xl line-through text-gray-400 mr-2">
-                ${plan.originalPrice}
-              </span>
-              ${plan.price}
-              <span className="text-xl font-normal text-gray-400 group-hover:text-white">
-                /yr
-              </span>
-              <br />
-              <span className="text-xl font-normal text-gray-400 group-hover:text-white">
-                {`$${(plan.price / 12).toFixed(2)}/mo`}
-              </span>
-            </>
-          ) : (
-            `$${plan.price}`
+        <div className="mb-6">
+          {billingCycle === "annually" && plan.originalPrice && (
+            <p className="text-2xl line-through text-gray-400 mb-1 group-hover:text-white">
+              {plan.originalPrice}
+            </p>
           )}
-          <span className="text-xl font-normal text-gray-400 group-hover:text-white">
-            {billingCycle === "monthly" ? "/mo" : ""}
-          </span>
-          <span></span>
-        </p>
+          <p className="text-4xl font-bold text-white group-hover:text-white">
+            {plan.price}
+            <span className="text-xl font-normal text-gray-400 group-hover:text-white">
+              {billingCycle === "monthly" ? "/mo" : "/yr"}
+            </span>
+          </p>
+          {billingCycle === "annually" && (
+            <p className="text-xl font-normal text-gray-400 group-hover:text-white mt-1">
+              {/* Calculate monthly price from annual price */}
+              {`${plan.price.charAt(0)}${(
+                parseFloat(plan.price.substring(1)) / 12
+              ).toFixed(2)}/mo`}
+            </p>
+          )}
+        </div>
         {plan.info.map((item, index) => (
           <p key={index} className="text-gray-400 mb-1 group-hover:text-white">
             {item}
           </p>
         ))}
-        <Link href="https://calendly.com/uttaran-getalchemystai/30min" target="_blank">
+        <Link
+          href="https://calendly.com/uttaran-getalchemystai/30min"
+          target="_blank"
+        >
           <button className="mt-8 w-full bg-white text-gray-900 font-semibold py-3 px-4 rounded-xl hover:bg-purple-600 hover:text-white transition-colors duration-300 group-hover:bg-white group-hover:text-orange-400 group-hover:hover:bg-purple-800 group-hover:hover:text-white">
             Start now
           </button>
@@ -72,4 +77,3 @@ export default function PricingCard({ plan, billingCycle, country }: PricingCard
     </div>
   );
 }
-
