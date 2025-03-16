@@ -132,7 +132,7 @@ export default function TopupPricingCard({
           <div className="space-y-6">
             {[
               {
-                label: "Emails",
+                label: "Llm Responses",
                 value: emails,
                 setter: setEmails,
                 min: 7000,
@@ -204,7 +204,7 @@ export default function TopupPricingCard({
             <ul className="space-y-2 md:w-1/2">
               <li className="flex items-center text-gray-400">
                 <Check className="h-5 w-5 text-green-500 mr-2" />
-                {emails} Emails
+                {emails} Llm Responses (Emails,Whatsapp)
               </li>
               <li className="flex items-center text-gray-400">
                 <Check className="h-5 w-5 text-green-500 mr-2" />

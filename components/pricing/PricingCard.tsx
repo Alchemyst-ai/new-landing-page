@@ -20,7 +20,7 @@ export default function PricingCard({
 }: PricingCardProps) {
   // console.log('Rendering PricingCard for country:', country);
   return (
-    <div className="bg-gray-900 hover:bg-orange-400 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_10px_rgba(255,165,0,0.5)] hover:border-yellow-400 hover:border-2 hover:scale-105 group h-[42rem]">
+    <div className="bg-gray-900 hover:bg-orange-400 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_10px_rgba(255,165,0,0.5)] hover:border-yellow-400 hover:border-2 hover:scale-105 group h-[44rem]">
       <div className="px-6 py-8">
         <h2 className="text-5xl font-bold text-white mb-8 group-hover:text-white">
           {plan.tier}
@@ -32,10 +32,12 @@ export default function PricingCard({
             </p>
           )}
           <p className="text-4xl font-bold text-white group-hover:text-white">
-            {plan.price}
-            <span className="text-xl font-normal text-gray-400 group-hover:text-white">
-              {billingCycle === "monthly" ? "/mo" : "/yr"}
-            </span>
+          {plan.price.split('+')[0]} 
+          <span className="text-xl font-normal text-gray-400 group-hover:text-white">
+            {billingCycle === "monthly" ? "/mo" : "/yr"}
+          </span> 
+          {' + ' + plan.price.split('+')[1]}
+              {/* {billingCycle === "monthly" ? "/mo" : "/yr"} */}
           </p>
           {billingCycle === "annually" && (
             <p className="text-xl font-normal text-gray-400 group-hover:text-white mt-1">

@@ -60,7 +60,7 @@ export const PRICING_PLANS = {
     annually: [
       {
         tier: "Starter",
-        originalPrice: "₹192000 + GST",
+        originalPrice: "₹192000 /yr + GST",
         price: "₹160000 + GST",
         info: [
           "750 Verified Leads/Month",
@@ -78,7 +78,7 @@ export const PRICING_PLANS = {
       },
       {
         tier: "Accelerate",
-        originalPrice: "₹336000 + GST",
+        originalPrice: "₹336000 /yr + GST",
         price: "₹280000 + GST",
         info: [
           "3000 Verified Leads/Month",
@@ -97,7 +97,7 @@ export const PRICING_PLANS = {
       },
       {
         tier: "Supercharge",
-        originalPrice: "₹624000 + GST",
+        originalPrice: "₹624000 /yr + GST",
         price: "₹520000 + GST",
         info: [
           "10,000 Verified Leads/Month",
