@@ -11,8 +11,8 @@ export default function Features() {
       <div className="container mx-auto max-w-[90%]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col justify-between space-y-10">
-            <Card1 />
             <Card2 />
+            <Card1 />
           </div>
           <div className="flex flex-col justify-between md:h-full">
             <Card3 />
@@ -22,4 +22,3 @@ export default function Features() {
     </section>
   );
 }
-
