@@ -40,15 +40,15 @@ export default function HomePage() {
         return null;
       }
     }
-    
+
     detectCountry().then(location => {
       if (location) {
         // console.log(`User is from ${location.countryCode}`);
         localStorage.setItem("country-code", `${location.countryCode}`)
       }
     });
-  },[])
-  
+  }, [])
+
   return (
     <div>
       <Head>
@@ -59,7 +59,7 @@ export default function HomePage() {
         />
         <meta
           name="keywords"
-          content="AI, Technology, Innovation, Features, Team, Integrations, Architecture, Applications"
+          content="AI, AI SDR, AI Employee, AI Ecosystem, AI Sales Development"
         />
         <meta name="robots" content="index, follow" />
         <meta
