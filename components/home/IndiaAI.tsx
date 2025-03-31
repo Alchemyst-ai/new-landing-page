@@ -33,8 +33,9 @@ const IndiaAI: React.FC = () => {
               {" "}
               AI-driven automation
             </span>
-            , we've got you covered. Our solutions help businesses scale faster
-            than ever before, with technology tailored for the Indian market.
+            , we&apos;ve got you covered. Our solutions help businesses scale
+            faster than ever before, with technology tailored for the Indian
+            market.
           </p>
           <Link
             href="https://calendly.com/uttaran-getalchemystai/30min"
