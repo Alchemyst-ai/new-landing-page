@@ -87,23 +87,27 @@ function Hero() {
       <div className="relative z-10 flex flex-col max-w-full py-16 md:py-0 mt-28 md:mt-0">
         {/* Heading Section for Desktop */}
         <div className="mt-32 md:mt-72 md:flex flex-col items-start md:ml-20 hidden font-bold">
-          <h1 className="text-4xl md:text-6xl">Transform Your Sales with </h1>
-          <h1 className="text-4xl md:text-6xl">AI-Driven Employees</h1>
+          <h1 className="text-4xl md:text-6xl mb-4">
+            Revolutionizing Sales with
+          </h1>
+          <h1 className="text-4xl md:text-6xl">AI SDRs & AI Employees</h1>
         </div>
 
         {/* Heading Section for Mobile */}
         <div className="mt-20 md:hidden flex items-center justify-center self-center text-center font-bold px-4">
           <h1 className="text-4xl md:text-7xl">
-            Transform Your Sales with AI-Driven Employees
+            Revolutionizing Sales with AI SDRs & AI Employees
           </h1>
         </div>
 
         {/* The description Section */}
         <div className="mt-4 px-4 md:px-0">
           <h2 className="text-lg text-gray-400 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold">
-            Alchemyst AI empowers your team with an AI-powered sales platform
-            that automates lead generation, outreach, and personalization -
-            boosting productivity and driving growth.
+            At Alchemyst AI, we’re transforming how businesses generate leads
+            and close deals with our AI SDRs and AI Employees. Say goodbye to
+            hiring bottlenecks—our AI-powered sales agents handle prospecting,
+            follow-ups, and engagement 24/7 across platforms like WhatsApp,
+            Email, and CRM systems.
           </h2>
         </div>
 
