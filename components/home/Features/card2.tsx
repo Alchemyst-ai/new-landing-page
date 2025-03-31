@@ -15,10 +15,19 @@ export default function Card1() {
           <h2 className="text-3xl font-bold my-4 text-white">
             Why Choose Alchemyst AI?
           </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-400 text-sm">
-            <li>Increase B2B lead generation efficiency.</li>
-            <li>Enhance sales automation with AI.</li>
-            <li>Achieve secure, compliant, and reliable results.</li>
+          <ul className="list-none space-y-2 text-gray-400 text-sm">
+            {[
+              "Automate lead qualification & outreach at scale",
+              "Trusted by top brands for AI-driven growth",
+              "Engage prospects directly across chat apps",
+              "Personalize conversations to convert leads effortlessly",
+              "AI-driven pipeline management",
+            ].map((item, index) => (
+              <li key={index} className="flex">
+                <span className="mr-2">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="w-full md:w-1/2 md:h-full md:absolute -top-28 md:top-12 md:right-0 relative">
