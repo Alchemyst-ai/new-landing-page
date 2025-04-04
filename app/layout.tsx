@@ -68,7 +68,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+      {/* Google tag (gtag.js) */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX2RDBB209"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){
+          // @ts-ignore
+          window.dataLayer.push(arguments)
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LX2RDBB209');
+      </script>
       <body
         className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
       >
