@@ -1,6 +1,8 @@
-import localFont from "next/font/local";
+// app/layout.tsx or app/layout.js depending on your setup
 
+import localFont from "next/font/local";
 import { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const satoshi = localFont({
@@ -60,32 +62,31 @@ export const metadata: Metadata = {
   },
 };
 
-// RootLayout component
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      {/* Google tag (gtag.js) */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX2RDBB209"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){
-          // @ts-ignore
-          window.dataLayer.push(arguments)
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-LX2RDBB209');
-      </script>
-      <body
-        className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
-      >
+    <html lang="en" className={satoshi.variable}>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LX2RDBB209"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LX2RDBB209');
+          `}
+        </Script>
+      </head>
+      <body className="font-satoshi max-w-screen overflow-x-hidden">
         {children}
       </body>
     </html>
   );
 }
-
