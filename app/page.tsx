@@ -16,39 +16,38 @@ const Features = dynamic(() => import("@/components/home/Features"));
 const AgentsCard = dynamic(() => import("@/components/home/AgentsCard"));
 const InfoCard = dynamic(() => import("@/components/home/InfoCard"));
 const AboutUs = dynamic(() => import("@/components/home/Aboutus"));
+const IndiaAI = dynamic(() => import("@/components/home/IndiaAI"));
 const Footer = dynamic(() => import("@/components/home/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
 const Steps = dynamic(() => import("@/components/home/Steps"));
 const Hero = dynamic(() => import("@/components/home/Hero"));
 
 export default function HomePage() {
-
   useEffect(() => {
-
     async function detectCountry() {
       try {
-        const response = await fetch('https://ipapi.co/json/');
+        const response = await fetch("https://ipapi.co/json/");
         const data = await response.json();
         return {
           country: data.country_name,
           countryCode: data.country_code,
           city: data.city,
-          region: data.region
+          region: data.region,
         };
       } catch (error) {
-        console.error('Error detecting country:', error);
+        console.error("Error detecting country:", error);
         return null;
       }
     }
-    
+
     detectCountry().then(location => {
       if (location) {
         // console.log(`User is from ${location.countryCode}`);
-        localStorage.setItem("country-code", `${location.countryCode}`)
+        localStorage.setItem("country-code", `${location.countryCode}`);
       }
     });
-  },[])
-  
+  }, [])
+
   return (
     <div>
       <Head>
@@ -59,7 +58,7 @@ export default function HomePage() {
         />
         <meta
           name="keywords"
-          content="AI, Technology, Innovation, Features, Team, Integrations, Architecture, Applications"
+          content="AI, AI SDR, AI Employee, AI Ecosystem, AI Sales Development"
         />
         <meta name="robots" content="index, follow" />
         <meta
@@ -115,9 +114,10 @@ export default function HomePage() {
             { Component: Features, title: null },
             { Component: Architecture, title: null },
             { Component: AgentsCard, title: null },
-            { Component: InfoCard, title: null },
-            { Component: CaseStudies, title: null },
             { Component: AboutUs, title: null },
+            // { Component: InfoCard, title: null },
+            { Component: CaseStudies, title: null },
+            { Component: IndiaAI, title: null },
             { Component: EndingCard, title: null },
           ].map(({ Component, title }, index) => (
             <Component key={index} />
