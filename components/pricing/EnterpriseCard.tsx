@@ -22,14 +22,16 @@ export default function EnterpriseCard() {
       <div className="bg-gradient-to-br from-orange-400 via-orange-400 to-orange-700 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_20px_rgba(255,165,0,0.5)] hover:scale-110 border border-yellow-400">
         <div className="p-8 sm:p-10 lg:flex lg:items-center lg:justify-between">
           <div className=" lg:w-1/3">
-            <h3 className="text-6xl md:text-7xl font-bold text-gray-700 mb-8">Enterprise</h3>
+            <h3 className="text-6xl md:text-6xl font-bold text-gray-700 mb-8">
+              Enterprise
+            </h3>
             <p className="text-2xl text-gray-700 mb-2">Unlimited Leads</p>
             <p className="text-2xl text-gray-700 mb-16">Unlimited Emails</p>
             <Link
               href="https://calendly.com/uttaran-getalchemystai/30min"
               target="_blank"
             >
-              <button className="w-full sm:min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
+              <button className="w-3/4 sm:min-w-80 bg-white text-orange-500 font-semibold py-3 px-4 rounded-xl hover:bg-purple-800 hover:text-white transition-colors duration-300">
                 Talk to us
               </button>
             </Link>

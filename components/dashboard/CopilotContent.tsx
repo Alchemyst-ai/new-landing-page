@@ -17,7 +17,6 @@ const fadeInUp = {
 };
 
 export default function CopilotContent() {
-
   return (
     <div className="container mx-auto px-4 max-w-full">
       {/* Section 1 - Maya, The Sales Platform */}
@@ -59,7 +58,7 @@ export default function CopilotContent() {
           transition={{ duration: 0.5 }}
         >
           <div className="md:w-2/3 p-8">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8 md:w-2/3">
+            <h2 className="text-3xl md:text-5xl font-helvetica mb-4 md:mb-8 md:w-2/3">
               50x Your Sales Pipeline with Maya
             </h2>
             <p className="text-base md:text-lg md:w-2/3">
@@ -68,8 +67,9 @@ export default function CopilotContent() {
               <span className="text-orange-400">automated workflows</span>,{" "}
               <span className="text-orange-400">intelligent lead scoring</span>,
               and <span className="text-orange-400">actionable insights </span>
-              that drive conversions. Whether you&apos;re looking to boost efficiency
-              or close deals faster, Maya delivers the tools you need to grow.
+              that drive conversions. Whether you&apos;re looking to boost
+              efficiency or close deals faster, Maya delivers the tools you need
+              to grow.
             </p>
           </div>
           <div className="md:w-1/3 pt-10 hidden md:block">
@@ -98,7 +98,7 @@ export default function CopilotContent() {
             Core Features
           </div>
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-14 text-center">
+        <h2 className="text-3xl text-[#8f8f8f] md:text-4xl font-bold mb-8 md:mb-14 text-center">
           Key Features of Alchemyst Sales Platform
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -144,7 +144,7 @@ export default function CopilotContent() {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent bg-opacity-100"></div>
 
               <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center transition-all duration-500 ease-in-out hover:scale-105">
-                <h3 className="text-3xl md:text-5xl font-bold mb-2">
+                <h3 className="text-3xl font-helvetica md:text-5xl mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300">{feature.description}</p>
@@ -211,7 +211,7 @@ export default function CopilotContent() {
       </motion.section>
 
       {/* Section 6 -How to Get Started Section */}
-      <Howitworks/>
+      <Howitworks />
 
       {/* Section 7 - Ending Card */}
       <motion.section
@@ -227,4 +227,3 @@ export default function CopilotContent() {
     </div>
   );
 }
-

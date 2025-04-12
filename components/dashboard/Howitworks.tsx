@@ -170,7 +170,7 @@ const Steps: React.FC = () => {
 
   return (
     <div className="w-full  py-16 ">
-      <h1 className="text-5xl font-bold text-center mb-16">
+      <h1 className="text-4xl text-[#8f8f8f] font-bold text-center mb-16">
         How to Get Started
       </h1>
       {/* Desktop View */}
@@ -239,7 +239,7 @@ const Steps: React.FC = () => {
               <div className="flex items-center w-full">
                 <div className="w-3/5 pr-8">
                   {/* Title of the dynamic content */}
-                  <h2 className="text-8xl font-bold mb-6 text-white">
+                  <h2 className="text-6xl font-helvetica mb-6 text-white">
                     {options[activeOption].title}
                   </h2>
 

@@ -118,7 +118,8 @@ const MidmarketComponent = () => {
             {/* Left Column */}
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
               <h1 className="text-5xl md:text-6xl font-bold mb-4">
-                Empowering Mid-Market Businesses
+                <div className="mb-4">Empowering Mid-</div>
+                <div>Market Businesses</div>
               </h1>
               <p className="text-2xl text-gray-300 mt-4">
                 With Scalable Email Deliverability Solutions
@@ -160,9 +161,12 @@ const MidmarketComponent = () => {
       >
         <div className="py-12 px-4 md:px-8 max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            The <span className="text-orange-400">Mid-Market</span> Advantage with <span className="text-orange-400">Alchemyst AI</span>
+            The <span className="text-orange-400">Mid-Market</span> Advantage
+            with <span className="text-orange-400">Alchemyst AI</span>
           </h2>
-          <p className="text-xl text-gray-300 text-center mb-8">Email Solutions Designed for Growth-Focused Businesses</p>
+          <p className="text-xl text-gray-300 text-center mb-8">
+            Email Solutions Designed for Growth-Focused Businesses
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
@@ -181,7 +185,9 @@ const MidmarketComponent = () => {
                 <h3 className="text-2xl text-center font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
                   {feature.title}
                 </h3>
-                <p className="text-center text-gray-300 mt-4">{feature.description}</p>
+                <p className="text-center text-gray-300 mt-4">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -322,8 +328,11 @@ const MidmarketComponent = () => {
             {/* Right Column */}
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Challenges <span className="text-orange-400">Mid-Market </span>
-                Businesses Face
+                <div className="mb-4">
+                  Challenges{" "}
+                  <span className="text-orange-400">Mid-Market </span>
+                </div>
+                <div>Businesses Face</div>
               </h1>
               <h3 className="text-2xl md:text-2xl text-white">
                 Overcome Common Email Deliverability Challenges

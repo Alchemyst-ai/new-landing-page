@@ -10,7 +10,7 @@ const Architecture: React.FC = () => {
 
   return (
     <section className="flex w-full flex-col justify-center items-center p-4">
-      <header className="font-bold mb-20 text-3xl md:text-6xl flex flex-col md:flex-row text-center bg-gradient-to-r from-orange-400 to-teal-600 bg-clip-text text-transparent">
+      <header className="font-base-neue font-bold mb-20 text-3xl md:text-5xl flex flex-col md:flex-row text-center bg-gradient-to-r text-[#8f8f8f] bg-clip-text">
         <span>Service Oriented Architecture</span>
       </header>
 
@@ -24,9 +24,7 @@ const Architecture: React.FC = () => {
         viewport={{ once: false }}
       >
         <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-black via-black to-[#9e671a] transform transition-all duration-500 hover:scale-110">
-          <h2 className="text-3xl text-gray-400">
-            Gen-AI Employees
-          </h2>
+          <h2 className="text-3xl text-gray-400">Gen-AI Employees</h2>
         </div>
       </motion.div>
 

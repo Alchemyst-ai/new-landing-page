@@ -5,9 +5,15 @@ import { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
-const satoshi = localFont({
-  src: "../public/fonts/Satoshi-Variable.ttf",
-  variable: "--font-satoshi",
+const helvetica = localFont({
+  src: "../public/fonts/Helvetica.ttf",
+  variable: "--font-helvetica",
+  display: "swap",
+});
+
+const baseNeue = localFont({
+  src: "../public/fonts/BaseNeue.ttf",
+  variable: "--font-base-neue",
   display: "swap",
 });
 
@@ -68,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={satoshi.variable}>
+    <html lang="en" className={`${helvetica.variable} ${baseNeue.variable}`}>
       <head>
         {/* Google Analytics */}
         <Script
@@ -84,7 +90,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-satoshi max-w-screen overflow-x-hidden">
+      <body className="max-w-screen overflow-x-hidden">
         {children}
       </body>
     </html>

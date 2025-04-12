@@ -78,7 +78,7 @@ function Hero() {
         alt="Top GenAI Startup Card"
         width={50}
         height={50}
-        className="h-14 md:h-20 w-auto rounded-3xl top-48 left-16 md:top-48 md:left-14 absolute"
+        className="h-14 md:h-20 w-auto rounded-3xl top-40 left-16 md:top-36 md:left-14 absolute"
         loading="eager"
         priority
         quality={100}
@@ -86,28 +86,30 @@ function Hero() {
 
       <div className="relative z-10 flex flex-col max-w-full py-16 md:py-0 mt-28 md:mt-0">
         {/* Heading Section for Desktop */}
-        <div className="mt-32 md:mt-72 md:flex flex-col items-start md:ml-20 hidden font-bold">
-          <h1 className="text-4xl md:text-6xl mb-4">
+        <div className="mt-32 md:mt-72 mb-4 md:flex flex-col items-start md:ml-20 hidden font-bold">
+          <h1 className="text-4xl md:text-7xl mb-4 font-base-neue">
             India&apos;s First Outbound
           </h1>
-          <h1 className="text-4xl md:text-6xl">Sales Platform</h1>
+          <h1 className="text-4xl md:text-7xl font-base-neue">
+            Sales Platform
+          </h1>
         </div>
 
         {/* Heading Section for Mobile */}
         <div className="mt-20 md:hidden flex items-center justify-center self-center text-center font-bold px-4">
-          <h1 className="text-4xl md:text-7xl">
+          <h1 className="text-4xl md:text-7xl font-base-neue">
             India&apos;s First Outbound Sales Platform
           </h1>
         </div>
 
         {/* The description Section */}
         <div className="mt-4 px-4 md:px-0">
-          <h2 className="text-lg text-gray-400 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold">
+          <h2 className="font-helvetica text-lg text-gray-400 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start">
             Our AI SDRs handle prospecting, follow-ups, and engagement 24/7.
             Alchemyst AI books meetings by turning LinkedIn and CRM data into
             smart outreach across Email, WhatsApp, and more. Transform your
             business by generating leads from the 500M+ leads database we have.
-          </h2> 
+          </h2>
         </div>
 
         {/* The button section */}

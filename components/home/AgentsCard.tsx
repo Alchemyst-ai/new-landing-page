@@ -153,7 +153,7 @@ export default function MeetAlchemysts() {
 
   return (
     <div className="w-full max-w-[90vw] mx-auto px-4 py-8">
-      <h1 className="text-4xl md:text-6xl font-bold text-center mt-20">
+      <h1 className="text-4xl md:text-5xl text-[#8f8f8f] font-bold text-center mt-20">
         Meet Your Alchemysts
       </h1>
       <div className="relative h-[70vh] overflow-hidden">

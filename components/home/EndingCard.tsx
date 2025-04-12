@@ -9,7 +9,7 @@ const EndingCard: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center">
           {/* Left Column */}
           <div className="w-full md:w-1/3 md:pr-8 text-center md:text-start">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl font-helvetica md:text-4xl mb-4">
               Struggling with Manual Work? Let Maya Transform Your Workflow!
             </h2>
             <p className="text-lg mb-6 text-gray-400">
@@ -20,10 +20,7 @@ const EndingCard: React.FC = () => {
             </p>
             <div className="flex justify-center md:justify-start">
               <Link href="" className="flex-1 md:flex-none">
-                <Button
-                  variant="primary"
-                  className="w-full md:w-auto text-sm"
-                >
+                <Button variant="primary" className="w-full md:w-auto text-sm">
                   Try Maya for Free
                 </Button>
               </Link>

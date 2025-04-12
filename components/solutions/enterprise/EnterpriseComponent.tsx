@@ -39,7 +39,7 @@ function FeatureCard({
       />
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-black to-transparent opacity-90 md:opacity-60"></div>
       <div className="relative z-10 h-full flex flex-col">
-        <h3 className="text-2xl md:text-3xl font-bold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+        <h3 className="text-2xl md:text-3xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
           {title}
         </h3>
         <p className="text-gray-400 text-sm md:text-base transition-all duration-500 ease-in-out hover:scale-105">
@@ -558,7 +558,7 @@ const EnterpriseComponent = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-lg md:text-2xl font-bold mb-2">
+                  <h3 className="text-lg md:text-2xl font-helvetica mb-2">
                     {feature.title}
                   </h3>
                 </div>
