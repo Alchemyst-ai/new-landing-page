@@ -88,27 +88,26 @@ function Hero() {
         {/* Heading Section for Desktop */}
         <div className="mt-32 md:mt-72 md:flex flex-col items-start md:ml-20 hidden font-bold">
           <h1 className="text-4xl md:text-6xl mb-4">
-            Revolutionizing Sales with
+            India&apos;s First Outbound
           </h1>
-          <h1 className="text-4xl md:text-6xl">AI SDRs & AI Employees</h1>
+          <h1 className="text-4xl md:text-6xl">Sales Platform</h1>
         </div>
 
         {/* Heading Section for Mobile */}
         <div className="mt-20 md:hidden flex items-center justify-center self-center text-center font-bold px-4">
           <h1 className="text-4xl md:text-7xl">
-            Revolutionizing Sales with AI SDRs & AI Employees
+            India&apos;s First Outbound Sales Platform
           </h1>
         </div>
 
         {/* The description Section */}
         <div className="mt-4 px-4 md:px-0">
           <h2 className="text-lg text-gray-400 md:pl-20 md:pr-0 max-w-2xl text-center md:text-start font-semibold">
-            At Alchemyst AI, we’re transforming how businesses generate leads
-            and close deals with our AI SDRs and AI Employees. Say goodbye to
-            hiring bottlenecks—our AI-powered sales agents handle prospecting,
-            follow-ups, and engagement 24/7 across platforms like WhatsApp,
-            Email, and CRM systems.
-          </h2>
+            Our AI SDRs handle prospecting, follow-ups, and engagement 24/7.
+            Alchemyst AI books meetings by turning LinkedIn and CRM data into
+            smart outreach across Email, WhatsApp, and more. Transform your
+            business by generating leads from the 500M+ leads database we have.
+          </h2> 
         </div>
 
         {/* The button section */}
@@ -119,7 +118,7 @@ function Hero() {
             className="w-full md:w-auto"
           >
             <Button variant="primary" className="w-full md:w-auto">
-              Book a demo
+              Try for Free
             </Button>
           </Link>
 

@@ -63,7 +63,7 @@ const Steps: React.FC = () => {
   return (
     <div className="w-full  py-16 ">
       <h1 className="text-3xl md:text-5xl font-bold text-center p-4 md:mt-16 md:mb-20">
-        3 Simple Steps to Boost Sales with AI-Powered Precision
+        Here&apos;s How Our AI SDR Works
       </h1>
       {/* Desktop View */}
       <div className="hidden md:block">
