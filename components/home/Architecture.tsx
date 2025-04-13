@@ -15,15 +15,18 @@ const Architecture: React.FC = () => {
       </header>
 
       <motion.div
-        className="w-[80vw] md:w-[25vw] h-[10vh] md:h-[12vh] rounded-lg md:rounded-2xl overflow-hidden border border-gray-600 shadow-md"
-        style={{ boxShadow: "0 0 10px 1px rgba(255,165,0,0.5)" }}
+        className="w-[80vw] md:w-[25vw] h-[10vh] md:h-[12vh] rounded-lg md:rounded-2xl overflow-hidden border border-gray-600"
+        style={{
+          filter:
+            "drop-shadow(0 3px 2px rgba(244,144,37,1)) drop-shadow(0 -4px 70px rgba(187,155,255,0.15))",
+        }}
         variants={boxVariants}
         initial="hidden"
         whileInView="visible"
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <div className="w-full h-full flex justify-center items-center bg-gradient-to-br from-black via-black to-[#9e671a] transform transition-all duration-500 hover:scale-110">
+        <div className="w-full h-full flex justify-center items-center bg-[linear-gradient(174deg,#323232_0%,#000000_80%,rgba(244,144,37,0.05)_100%)] transform transition-all duration-500">
           <h2 className="text-3xl text-gray-400">Gen-AI Employees</h2>
         </div>
       </motion.div>
@@ -43,7 +46,12 @@ const Architecture: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: false }}
             >
-              <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746] transform transition-all duration-500 hover:scale-110">
+              <div
+                className="w-full h-full flex justify-center items-center bg-gradient-to-b from-[#A3A3A3]/65 from-0% via-black/65 via-25% to-black/65 transform transition-all duration-500 hover:scale-110"
+                style={{
+                  filter: "drop-shadow(0 -4px 70px rgba(187,155,255,0.15))",
+                }}
+              >
                 <h2
                   className={`${
                     title === "Customer Support"
@@ -77,7 +85,12 @@ const Architecture: React.FC = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: false }}
           >
-            <div className="w-full h-full flex justify-center items-center bg-gradient-to-b from-black via-black to-[#004746] transform transition-all duration-500 hover:scale-110">
+            <div
+              className="w-full h-full flex justify-center items-center bg-gradient-to-b from-[#A3A3A3]/65 from-0% via-black/65 via-25% to-black/65 transform transition-all duration-500 hover:scale-110"
+              style={{
+                filter: "drop-shadow(0 -4px 70px rgba(187,155,255,0.15))",
+              }}
+            >
               <h2 className="text-2xl md:text-xl text-gray-400 text-center">
                 {title}
               </h2>
