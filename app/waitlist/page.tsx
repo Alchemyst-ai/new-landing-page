@@ -1,7 +1,22 @@
+"use client";
+
 import Navbar from "@/components/home/Navbar";
 import Image from "next/image";
+import { useState } from "react";
+import WaitlistModal from "@/components/WaitlistModal";
 
 export default function WaitlistPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [painPoint, setPainPoint] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Show the modal after form submission
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-black">
       <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
@@ -24,16 +39,16 @@ export default function WaitlistPage() {
 
           {/* Text content - increased negative margin to create more overlap */}
           <div className="text-center -mt-28 relative z-10">
-            <h2 className="text-white text-3xl md:text-5xl font-helvetica mb-4">
+            <h2 className="text-white text-xl md:text-5xl font-helvetica mb-4">
               Step into the Top 1% Club of AI Users.
             </h2>
-            <h3 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#FF6A00] to-[#FF9A35] bg-clip-text text-transparent">
+            <h3 className="text-3xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#FF6A00] to-[#FF9A35] bg-clip-text text-transparent">
               Join the Waitlist Now!
             </h3>
           </div>
 
           {/* Form */}
-          <form className="w-full max-w-md space-y-4 relative z-10 bg-black/80 p-6 rounded-lg shadow-lg">
+          <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4 relative z-10 bg-black/80 p-6 rounded-lg shadow-lg">
             <div className="relative">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <svg
@@ -54,6 +69,8 @@ export default function WaitlistPage() {
                 placeholder="Full Name..."
                 className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#0E0E0C] text-white border border-white/20 focus:border-[#FF9A35] focus:outline-none"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="relative">
@@ -76,6 +93,8 @@ export default function WaitlistPage() {
                 placeholder="Email Address..."
                 className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#0E0E0C] text-white border border-white/20 focus:border-[#FF9A35] focus:outline-none"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="relative">
@@ -97,6 +116,8 @@ export default function WaitlistPage() {
                 placeholder="One dire pain point you want us to solve..."
                 className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#0E0E0C] text-white border border-white/20 focus:border-[#FF9A35] focus:outline-none resize-none h-24"
                 required
+                value={painPoint}
+                onChange={(e) => setPainPoint(e.target.value)}
               />
             </div>
             <button
@@ -108,6 +129,13 @@ export default function WaitlistPage() {
           </form>
         </div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        email={email} 
+      />
     </div>
   );
 }
