@@ -10,7 +10,7 @@ const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
 });
 const Architecture = dynamic(() => import("@/components/home/Architecture"));
-const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
+// const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
 const EndingCard = dynamic(() => import("@/components/home/EndingCard"));
 // const Features = dynamic(() => import("@/components/home/Features"));
 const AgentsCard = dynamic(() => import("@/components/home/AgentsCard"));
@@ -115,7 +115,7 @@ export default function HomePage() {
             { Component: AgentsCard, title: null },
             // { Component: AboutUs, title: null },
             // { Component: InfoCard, title: null },
-            { Component: CaseStudies, title: null },
+            // { Component: CaseStudies, title: null },
             { Component: IndiaAI, title: null },
             { Component: EndingCard, title: null },
           ].map(({ Component, title }, index) => (
