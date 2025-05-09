@@ -80,9 +80,13 @@ const SMEandMSMEComponent = () => {
             {/* Left Column */}
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Empowering Indian <span className="text-orange-400">SMEs</span>{" "}
-                and <span className="text-orange-400">MSMEs</span> with Email
-                Solutions That Work
+                <div className="mb-4">Empowering Indian</div>
+                <div className="mb-4">
+                  <span className="text-orange-400">SMEs</span>
+                  and <span className="text-orange-400">MSMEs</span>
+                </div>{" "}
+                <div className="mb-4">with Email Solutions</div>
+                <div>That Work</div>
               </h1>
               <p className="text-xl text-gray-400 mt-4">
                 Localized data, multilingual support, and custom strategies for
@@ -162,7 +166,7 @@ const SMEandMSMEComponent = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-lg md:text-2xl font-bold mb-2">
+                  <h3 className="text-lg md:text-2xl font-helvetica mb-2">
                     {feature.title}
                   </h3>
                 </div>
@@ -201,25 +205,25 @@ const SMEandMSMEComponent = () => {
               />
             </div>
             <div className="md:w-3/4 p-5 md:pl-6 md:p-0 mb-8 md:mb-0">
-              <h2 className="mt-4 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-4 text-2xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                 Localized B2B Data
               </h2>
               <p className="text-gray-400">
                 Access region-specific data to improve outreach and engagement
               </p>
-              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-12 text-2xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                 Mailbox Health Monitoring
               </h2>
               <p className="text-gray-400">
                 Ensure optimal deliverability with regular health checks
               </p>
-              <h2 className="mt-14 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-14 text-2xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                 Custom Playbooks
               </h2>
               <p className="text-gray-400">
                 Receive personalized strategies tailored to your business goals
               </p>
-              <h2 className="mt-10 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-10 text-2xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                 Indian Language Support
               </h2>
               <p className="text-gray-400">

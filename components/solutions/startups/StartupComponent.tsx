@@ -22,9 +22,7 @@ function FeatureCard({
   image: string;
 }) {
   return (
-    <div
-      className="bg-gradient-to-r from-[#272626] to-black border border-gray-800 shadow-[0_0_5px_2px_rgba(50,37,41,255)] rounded-3xl p-6 h-[40vh] relative overflow-hidden"
-    >
+    <div className="bg-gradient-to-r from-[#272626] to-black border border-gray-800 shadow-[0_0_5px_2px_rgba(50,37,41,255)] rounded-3xl p-6 h-[40vh] relative overflow-hidden">
       <Image
         src={image}
         alt={`${title} image`}
@@ -45,8 +43,7 @@ function FeatureCard({
 }
 
 const StartupComponent = () => {
-
-	const features = [
+  const features = [
     {
       title: "Domain and IP Warmups",
       description: "Boost your sender reputation to ensure inbox placement.",
@@ -86,7 +83,9 @@ const StartupComponent = () => {
             {/* Left Column */}
             <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Powering Startups with Seamless Email Deliverability
+                <div className="mb-4">Powering Startups</div>
+                <div className="mb-4">with Seamless</div>
+                <div>Email Deliverability</div>
               </h1>
               <p className="text-xl text-gray-400 mt-4">
                 Set your email campaigns up for success from day one with
@@ -168,7 +167,7 @@ const StartupComponent = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-lg md:text-2xl font-bold mb-2">
+                  <h3 className="text-lg md:text-2xl font-helvetica mb-2">
                     {feature.title}
                   </h3>
                 </div>

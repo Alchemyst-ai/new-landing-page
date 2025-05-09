@@ -14,7 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        satoshi: ["var(--font-satoshi)"],
+        helvetica: ["var(--font-helvetica)", "sans-serif"],
+        baseNeue: ["var(--font-base-neue)", "sans-serif"],
       },
       boxShadow: {
         announcement: "0 0 100px 90px rgba(255, 255, 255, 0.15)",

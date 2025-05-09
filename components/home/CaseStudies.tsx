@@ -55,7 +55,7 @@ const CaseStudyCard: React.FC<CaseStudy> = ({ title, description, image }) => (
 const CaseStudies: React.FC = () => {
   return (
     <div className="flex flex-col md:w-[80%] h-full relative -mt-14 md:mt-0 px-4 py-16 mx-auto">
-      <h1 className="font-bold flex text-5xl items-center justify-center text-center mt-16 mb-16">
+      <h1 className="font-bold flex text-5xl text-[#8f8f8f] items-center justify-center text-center mt-16 mb-16">
         Real Stories, Real Results: <br /> How Alchemyst AI Transforms B2B Sales
       </h1>
 

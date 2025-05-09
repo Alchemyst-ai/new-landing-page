@@ -10,12 +10,11 @@ const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
 });
 const Architecture = dynamic(() => import("@/components/home/Architecture"));
-const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
+// const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
 const EndingCard = dynamic(() => import("@/components/home/EndingCard"));
-const Features = dynamic(() => import("@/components/home/Features"));
+// const Features = dynamic(() => import("@/components/home/Features"));
 const AgentsCard = dynamic(() => import("@/components/home/AgentsCard"));
-const InfoCard = dynamic(() => import("@/components/home/InfoCard"));
-const AboutUs = dynamic(() => import("@/components/home/Aboutus"));
+// const AboutUs = dynamic(() => import("@/components/home/Aboutus"));
 const IndiaAI = dynamic(() => import("@/components/home/IndiaAI"));
 const Footer = dynamic(() => import("@/components/home/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
@@ -40,13 +39,13 @@ export default function HomePage() {
       }
     }
 
-    detectCountry().then(location => {
+    detectCountry().then((location) => {
       if (location) {
         // console.log(`User is from ${location.countryCode}`);
         localStorage.setItem("country-code", `${location.countryCode}`);
       }
     });
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -111,12 +110,12 @@ export default function HomePage() {
           {[
             { Component: Hero, title: null },
             { Component: Steps, title: null },
-            { Component: Features, title: null },
+            // { Component: Features, title: null },
             { Component: Architecture, title: null },
             { Component: AgentsCard, title: null },
-            { Component: AboutUs, title: null },
+            // { Component: AboutUs, title: null },
             // { Component: InfoCard, title: null },
-            { Component: CaseStudies, title: null },
+            // { Component: CaseStudies, title: null },
             { Component: IndiaAI, title: null },
             { Component: EndingCard, title: null },
           ].map(({ Component, title }, index) => (

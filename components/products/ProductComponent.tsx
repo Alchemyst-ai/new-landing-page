@@ -39,13 +39,13 @@ const ProductComponent: React.FC = () => {
         transition={{ duration: 2.0 }}
         className="text-center mb-16 mt-20"
       >
-        <h1 className="text-4xl md:text-7xl font-bold mt-8 md:mt-4 mb-4">
+        <h1 className="text-4xl md:text-7xl font-base-neue mt-8 md:mt-4 mb-4">
           Sales Automation
         </h1>
-        <p className="text-xl md:text-2xl mb-8">
+        <p className="text-xl md:text-2xl mb-8 font-helvetica">
           Close Deals Faster with Sales Automation
         </p>
-        <p className="text-sm md:text-xl mb-8 text-gray-400">
+        <p className="text-sm md:text-xl mb-8 text-gray-400 font-helvetica">
           Maya&#39;s sales automation tools are built to streamline your <br />
           pipeline, prioritize leads, and ensure follow-ups happen at the right
           time
@@ -112,8 +112,8 @@ const ProductComponent: React.FC = () => {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black via-transparent to-transperant bg-opacity-90"></div>
 
               <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center transition-all duration-500 ease-in-out hover:scale-105">
-                <h3 className="text-center text-xl md:text-2xl md:mb-2">
-                  <b>{feature.title}</b>
+                <h3 className="text-center font-helvetica text-xl md:text-2xl md:mb-2">
+                  {feature.title}
                 </h3>
               </div>
             </div>

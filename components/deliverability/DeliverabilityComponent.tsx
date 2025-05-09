@@ -13,7 +13,6 @@ const fadeInUp = {
 };
 
 const DeliverabilityComponent = () => {
-
   const reasons = [
     {
       icon: "/deliverability/feature_01.svg",
@@ -54,8 +53,8 @@ const DeliverabilityComponent = () => {
         <div className="flex flex-col md:flex-row items-center p-5 md:p-10">
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-start">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Land <span className="text-orange-400">Every Email</span> in the
-              Inbox, <span className="text-orange-400">Every Time</span>
+              <div className="mb-4">Land Every Email in the</div>
+              <div>Inbox, Every Time</div>
             </h1>
             <p className="text-lg text-gray-400 mt-8">
               Empower your campaigns with cutting-edge email deliverability
@@ -178,13 +177,13 @@ const DeliverabilityComponent = () => {
                   alt={`${feature.title} Image`}
                   className="absolute w-full h-full p-2 pb-10"
                   layout="fill"
-                  objectFit = "cover"
+                  objectFit="cover"
                 />
 
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">
+                  <h3 className="text-lg font-helvetica md:text-xl mb-2">
                     {feature.title}
                   </h3>
                 </div>
@@ -214,17 +213,17 @@ const DeliverabilityComponent = () => {
             {reasons.map((reason, index) => (
               <div
                 key={index}
-                className="flex items-start p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out hover:scale-105"
+                className="flex items-start p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out"
               >
                 <Image
                   src={reason.icon}
                   alt={reason.title}
                   width={48}
                   height={48}
-                  className="w-20 h-20 mr-4 transition-all duration-500 ease-in-out hover:scale-110"
+                  className="w-20 h-20 mr-4 transition-all duration-500 ease-in-out"
                 />
                 <div>
-                  <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+                  <h3 className="text-3xl mb-2 font-helvetica transition-all duration-500 ease-in-out">
                     {reason.title}
                   </h3>
                   <p className="text-gray-400 text-md">{reason.description}</p>
@@ -232,7 +231,7 @@ const DeliverabilityComponent = () => {
               </div>
             ))}
           </div>
-          <div className="flex items-center justify-center p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out hover:scale-105">
+          <div className="flex items-center justify-center p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out">
             <Image
               src="/deliverability/feature_05.svg"
               alt="feature_icon"
@@ -241,7 +240,7 @@ const DeliverabilityComponent = () => {
               className="w-20 h-20 mr-4 transition-all duration-500 ease-in-out hover:scale-110"
             />
             <div>
-              <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h3 className="text-3xl font-helvetica mb-2 transition-all duration-500 ease-in-out">
                 Spam Filter Optimization
               </h3>
               <p className="text-gray-500 text-md">
@@ -268,7 +267,7 @@ const DeliverabilityComponent = () => {
             Results you can count on with every email campaign
           </p>
           <div className="flex flex-col md:flex-row items-center md:p-20">
-            <div className="p-5 md:p-0 md:w-3/4 transition-all duration-500 ease-in-out hover:scale-105">
+            <div className="p-5 md:p-0 md:w-3/4 transition-all duration-500 ease-in-out">
               <Image
                 src="/deliverability/d_05.svg"
                 alt="Benefits"
@@ -278,27 +277,27 @@ const DeliverabilityComponent = () => {
               />
             </div>
             <div className="md:w-3/4 p-5 md:pr-8 md:pl-4 mb-8 md:mb-0">
-              <h2 className="text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="text-2xl mb-2 transition-all duration-500 ease-in-out font-helvetica">
                 Higher Inbox Rates
               </h2>
               <p className="text-gray-400">
                 Improve open rates by ensuring your emails consistently land in
                 the inbox
               </p>
-              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out font-helvetica">
                 Increased ROI
               </h2>
               <p className="text-gray-400">
                 Maximize campaign success with fewer bounces and better
                 engagement.
               </p>
-              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out font-helvetica">
                 Reputation Protection
               </h2>
               <p className="text-gray-400">
                 Build long-term trust with your audience and ISPs.
               </p>
-              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+              <h2 className="mt-12 text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out font-helvetica">
                 Ease of Use
               </h2>
               <p className="text-gray-400">
@@ -377,7 +376,7 @@ const DeliverabilityComponent = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center">
-                  <h3 className="text-lg md:text-2xl font-bold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+                  <h3 className="text-lg md:text-2xl font-helvetica mb-2 transition-all duration-500 ease-in-out hover:scale-105">
                     {feature.title}
                   </h3>
                   <p className="text-gray-300 text-sm md:text-sm transition-all duration-500 ease-in-out hover:scale-105">

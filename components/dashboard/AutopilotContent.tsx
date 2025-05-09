@@ -158,7 +158,7 @@ export default function AutopilotContent() {
               Core Features
             </div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-14 text-center">
+          <h2 className="text-3xl md:text-4xl text-[#8f8f8f] font-bold mb-8 md:mb-14 text-center">
             Key Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -206,7 +206,7 @@ export default function AutopilotContent() {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-black to-transparent opacity-90 md:opacity-60"></div>
 
                 <div className="absolute flex flex-col left-4 right-4 items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-2">
+                  <h3 className="text-3xl md:text-4xl font-helvetica mb-2">
                     {feature.title}
                   </h3>
                   <p className="text-gray-300">{feature.description}</p>
@@ -225,7 +225,7 @@ export default function AutopilotContent() {
           transition={{ duration: 2.0 }}
           className="mb-16 px-4 md:px-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-14 text-center">
+          <h2 className="text-3xl md:text-4xl text-[#8f8f8f] font-bold mb-8 md:mb-14 text-center">
             How Maya Transforms Your Workflow
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -263,7 +263,7 @@ export default function AutopilotContent() {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black to-transparent opacity-90 md:opacity-100"></div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center text-center transition-all duration-500 ease-in-out hover:scale-105">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                  <h3 className="text-2xl md:text-3xl font-helvetica mb-2">
                     {feature.title}
                   </h3>
                   <p className="text-gray-300 text-sm md:text-base">

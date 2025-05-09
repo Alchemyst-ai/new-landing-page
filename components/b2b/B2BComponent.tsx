@@ -229,7 +229,7 @@ const B2BComponent = () => {
         className="mb-20 mt-40"
       >
         <div className="py-12 px-4 md:px-8 max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-base-neue text-[#8f8f8f] text-center mb-12">
             Key Features of Our B2B Data Platform
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -247,10 +247,12 @@ const B2BComponent = () => {
                     className="w-10 h-10 mr-3 "
                   />
                 </div>
-                <h3 className="text-2xl font-semibold mt-1 transition-all duration-500 ease-in-out hover:scale-105">
+                <h3 className="text-2xl mt-1 font-helvetica transition-all duration-500 ease-in-out hover:scale-105">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 mt-4">{feature.description}</p>
+                <p className="text-gray-400 mt-4 font-helvetica">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -266,7 +268,7 @@ const B2BComponent = () => {
         className="mb-20 mt-40 py-12 px-4 md:px-8"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-base-neue text-[#8f8f8f] text-center mb-12">
             Why Choose Our B2B Data Solution?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -283,7 +285,7 @@ const B2BComponent = () => {
                   className="w-20 h-20 mr-4 transition-all duration-500 ease-in-out hover:scale-110"
                 />
                 <div>
-                  <h3 className="text-3xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+                  <h3 className="text-3xl mb-2 font-helvetica transition-all duration-500 ease-in-out hover:scale-105">
                     {reason.title}
                   </h3>
                   <p className="text-gray-400 text-md">{reason.description}</p>
@@ -315,7 +317,7 @@ const B2BComponent = () => {
         transition={{ duration: 2.0 }}
         className="mb-20 mt-40 p-5 md:p-0"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
+        <h2 className="text-4xl md:text-4xl font-bold font-base-neue text-[#8f8f8f] text-center mb-8">
           Tailored Solutions for Your Business Needs
         </h2>
         <div className="flex flex-col md:flex-row items-center md:pl-32 md:pr-32">
@@ -328,7 +330,7 @@ const B2BComponent = () => {
             />
           </div>
           <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl mb-4 font-helvetica text-center md:text-left">
               Intent Data Analysis
             </h1>
             <div className="grid grid-cols-1 gap-8 mt-12 mb-12">
@@ -345,10 +347,10 @@ const B2BComponent = () => {
                     className="w-12 h-12 mr-4 transition-all duration-500 ease-in-out hover:scale-125"
                   />
                   <div>
-                    <h3 className="text-2xl font-semibold mb-2 transition-all duration-500 ease-in-out hover:scale-105">
+                    <h3 className="text-2xl mb-2 font-helvetica transition-all duration-500 ease-in-out hover:scale-105">
                       {solutions.title}
                     </h3>
-                    <p className="text-gray-400 text-md">
+                    <p className="text-gray-400 text-md font-helvetica">
                       {solutions.description}
                     </p>
                   </div>
