@@ -27,12 +27,12 @@ const TrustedBySection = () => {
 
   // Array of image sources from the trusted folder with scaling
   const images = [
-    { src: '/trusted/AFT.png', scale: -0.5 },
-    { src: '/trusted/chainrisk.png', scale: 1 },
-    { src: '/trusted/hyundai.png', scale: 0.9 },
-    { src: '/trusted/kotak.png', scale: 0.7 },
-    { src: '/trusted/kuberns.png', scale: 0.5 },
-    { src: '/trusted/toyota.png', scale: 0.85 },
+    { src: '/public-new/trusted/AFT.png', scale: -0.5 },
+    { src: '/public-new/trusted/chainrisk.png', scale: 1 },
+    { src: '/public-new/trusted/hyundai.png', scale: 0.9 },
+    { src: '/public-new/trusted/kotak.png', scale: 0.7 },
+    { src: '/public-new/trusted/kuberns.png', scale: 0.5 },
+    { src: '/public-new/trusted/toyota.png', scale: 0.85 },
   ];
 
   // Duplicate images to create infinite scroll effect

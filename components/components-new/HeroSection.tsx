@@ -11,9 +11,9 @@ export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
 
   // Use refs for constants to avoid them being dependencies in useEffect
-  const typingSpeed = useRef(150); // Speed for typing in ms
-  const deletingSpeed = useRef(100); // Speed for deleting in ms
-  const delayAfterWord = useRef(1000); // Delay after word is fully typed
+  const typingSpeed = useRef(150); 
+  const deletingSpeed = useRef(100); 
+  const delayAfterWord = useRef(1000); 
 
   // Use useMemo to prevent the words array from being recreated on each render
   const words = useMemo(() => ["Agents", "Projects", "Copilot"], []);
@@ -76,7 +76,7 @@ export default function HeroSection() {
         <div className="inline-flex items-center tracking-tighter gap-2 px-4 py-2 bg-black/70 rounded-full text-white text-base font-medium animate-fade-in">
           <span>✨ #1 in Gen AI category</span>
           <Image
-            src="/f6s_0.png"
+            src="/public-new/f6s_0.png"
             alt="F6S"
             width={30}
             height={30}
@@ -112,7 +112,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap gap-16 -mt-10 items-center justify-center">
             <div className="relative h-32 w-32">
               <Image
-                src="/ipv.png"
+                src="/public-new/ipv.png"
                 alt="IPV"
                 fill
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
@@ -120,7 +120,7 @@ export default function HeroSection() {
             </div>
             <div className="relative h-32 w-32">
               <Image
-                src="/earlyseed.png"
+                src="/public-new/earlyseed.png"
                 alt="Early Seed"
                 fill
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
@@ -128,7 +128,7 @@ export default function HeroSection() {
             </div>
             <div className="relative h-24 w-32">
               <Image
-                src="/100x.png"
+                src="/public-new/100x.png"
                 alt="100x"
                 fill
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
