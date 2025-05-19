@@ -4,6 +4,16 @@ import Head from "next/head";
 import "./globals.css";
 import { useEffect } from "react";
 import Link from "next/link";
+import HeroSection from "@/components/components-new/HeroSection";
+import { FeatureCard } from "@/components/components-new/features/feature-card";
+import { FeaturesSection } from "@/components/components-new/features";
+import UseCasesSection from "@/components/components-new/UseCasesSection";
+import HowItWorks from "@/components/components-new/HowItWorks";
+import CodeCompiler from "@/components/components-new/CodeCompiler";
+import Ecosystem from "@/components/components-new/Ecosystem";
+import TechnologyIntegration from "@/components/components-new/TechnologyIntegration";
+import Testimonials from "@/components/components-new/Testimonials";
+import FAQSection from "@/components/components-new/FAQSection";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
@@ -96,19 +106,22 @@ export default function HomePage() {
           <CustomCursor />
         </div>
 
-        <main className="flex-grow flex flex-col justify-center items-center pt-20">
-          <div className="text-center px-4 py-20 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to Alchemyst AI</h1>
-            <p className="text-xl mb-8">Transforming business through intelligent AI solutions</p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center mt-8">
-              <Link href="/b2b" className="px-8 py-3 bg-white text-black font-medium rounded-md hover:bg-opacity-90 transition-all">
-                Explore B2B Solutions
-              </Link>
-              <Link href="/products" className="px-8 py-3 border border-white text-white font-medium rounded-md hover:bg-white hover:bg-opacity-10 transition-all">
-                View Products
-              </Link>
-            </div>
-          </div>
+        <main className="w-full">
+          <HeroSection />
+
+          <FeaturesSection />
+
+          <UseCasesSection />
+
+          <HowItWorks />
+
+          <CodeCompiler />
+
+          <Ecosystem />
+
+          <TechnologyIntegration />
+
+          <FAQSection />
         </main>
         <Footer />
       </div>
