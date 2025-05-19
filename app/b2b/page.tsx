@@ -1,17 +1,26 @@
 "use client";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import "./globals.css";
+import "../globals.css";
 import { useEffect } from "react";
-import Link from "next/link";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
 });
+const Architecture = dynamic(() => import("@/components/home/Architecture"));
+const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
+const EndingCard = dynamic(() => import("@/components/home/EndingCard"));
+const Features = dynamic(() => import("@/components/home/Features"));
+const AgentsCard = dynamic(() => import("@/components/home/AgentsCard"));
+const InfoCard = dynamic(() => import("@/components/home/InfoCard"));
+const AboutUs = dynamic(() => import("@/components/home/Aboutus"));
+const IndiaAI = dynamic(() => import("@/components/home/IndiaAI"));
 const Footer = dynamic(() => import("@/components/home/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
+const Steps = dynamic(() => import("@/components/home/Steps"));
+const Hero = dynamic(() => import("@/components/home/Hero"));
 
-export default function HomePage() {
+export default function B2BPage() {
   useEffect(() => {
     async function detectCountry() {
       try {
@@ -31,7 +40,6 @@ export default function HomePage() {
 
     detectCountry().then(location => {
       if (location) {
-        // console.log(`User is from ${location.countryCode}`);
         localStorage.setItem("country-code", `${location.countryCode}`);
       }
     });
@@ -40,25 +48,25 @@ export default function HomePage() {
   return (
     <div>
       <Head>
-        <title>Alchemyst AI - Leading in AI and Technology</title>
+        <title>Alchemyst AI for B2B - Leading in AI and Technology</title>
         <meta
           name="description"
-          content="Explore our cutting-edge AI technology, our team, features, and success stories. Backed by industry leaders."
+          content="B2B solutions with our cutting-edge AI technology, our team, features, and success stories. Backed by industry leaders."
         />
         <meta
           name="keywords"
-          content="AI, AI SDR, AI Employee, AI Ecosystem, AI Sales Development"
+          content="AI, AI SDR, AI Employee, AI Ecosystem, AI Sales Development, B2B"
         />
         <meta name="robots" content="index, follow" />
         <meta
           property="og:title"
-          content="Alchemyst AI - Leading in AI and Technology"
+          content="Alchemyst AI for B2B - Leading in AI and Technology"
         />
         <meta
           property="og:description"
-          content="Discover our powerful AI solutions and learn how we're shaping the future."
+          content="Discover our powerful AI solutions for B2B and learn how we're shaping the future."
         />
-        <meta property="og:url" content="https://https://getalchemystai.com" />
+        <meta property="og:url" content="https://getalchemystai.com/b2b" />
         <meta property="og:type" content="website" />
       </Head>
       <noscript>
@@ -78,12 +86,12 @@ export default function HomePage() {
           `}
         </style>
         <div className="no-js-header">
-          <h1>Alchemyst AI - Leading in AI and Technology</h1>
+          <h1>Alchemyst AI for B2B - Leading in AI and Technology</h1>
         </div>
         <div className="no-js-footer">
           <p>
             Explore our cutting-edge AI technology, our team, features, and
-            success stories. Backed by industry leaders.
+            success stories for B2B. Backed by industry leaders.
           </p>
         </div>
       </noscript>
@@ -96,22 +104,24 @@ export default function HomePage() {
           <CustomCursor />
         </div>
 
-        <main className="flex-grow flex flex-col justify-center items-center pt-20">
-          <div className="text-center px-4 py-20 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to Alchemyst AI</h1>
-            <p className="text-xl mb-8">Transforming business through intelligent AI solutions</p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center mt-8">
-              <Link href="/b2b" className="px-8 py-3 bg-white text-black font-medium rounded-md hover:bg-opacity-90 transition-all">
-                Explore B2B Solutions
-              </Link>
-              <Link href="/products" className="px-8 py-3 border border-white text-white font-medium rounded-md hover:bg-white hover:bg-opacity-10 transition-all">
-                View Products
-              </Link>
-            </div>
-          </div>
+        <main className="flex-grow flex flex-col gap-8 justify-center items-center md:pt-16">
+          {[
+            { Component: Hero, title: null },
+            { Component: Steps, title: null },
+            { Component: Features, title: null },
+            { Component: Architecture, title: null },
+            { Component: AgentsCard, title: null },
+            { Component: AboutUs, title: null },
+            // { Component: InfoCard, title: null },
+            { Component: CaseStudies, title: null },
+            { Component: IndiaAI, title: null },
+            { Component: EndingCard, title: null },
+          ].map(({ Component, title }, index) => (
+            <Component key={index} />
+          ))}
         </main>
         <Footer />
       </div>
     </div>
   );
-}
+} 
