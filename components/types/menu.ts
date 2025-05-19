@@ -69,7 +69,7 @@ export const menuData: MenuObject[] = [
                 title: "B2B data",
                 level: "tertiary",
                 icon: "/icons/B2B.png",
-                link: "/b2b",
+                link: "/b2b-old",
               },
             ],
           },
