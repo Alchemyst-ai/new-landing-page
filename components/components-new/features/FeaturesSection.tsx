@@ -21,7 +21,7 @@ export default function FeaturesSection() {
             <div className="mt-6 flex gap-2">
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/generative.png"
+                  src="/public-new/generative.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -30,7 +30,7 @@ export default function FeaturesSection() {
               </div>
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/nlp.png"
+                  src="/public-new/nlp.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -47,10 +47,10 @@ export default function FeaturesSection() {
           >
             <div className="mt-6 flex gap-2">
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
-                <Image src="/money.png" alt="Alchemyst Systems Logo" width={28} height={28} className="object-contain" />
+                <Image src="/public-new/money.png" alt="Alchemyst Systems Logo" width={28} height={28} className="object-contain" />
               </div>
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
-                <Image src="/chart.png" alt="Alchemyst Systems Logo" width={28} height={28} className="object-contain" />
+                <Image src="/public-new/chart.png" alt="Alchemyst Systems Logo" width={28} height={28} className="object-contain" />
               </div>
             </div>
           </FeatureCard>
@@ -64,7 +64,7 @@ export default function FeaturesSection() {
             <div className="mt-8">
               <div className="flex items-center mb-4">
                 <Image
-                  src="/Group 81.png"
+                  src="/public-new/Group 81.png"
                   alt="Alchemyst Systems Logo"
                   width={30}
                   height={30}
@@ -131,7 +131,7 @@ export default function FeaturesSection() {
             <div className="mt-6 flex gap-2">
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/accuracy.png"
+                  src="/public-new/accuracy.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -140,7 +140,7 @@ export default function FeaturesSection() {
               </div>
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/integration.png"
+                  src="/public-new/integration.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -158,7 +158,7 @@ export default function FeaturesSection() {
             <div className="mt-6 flex gap-2">
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/claudeai.png"
+                  src="/public-new/claudeai.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -167,7 +167,7 @@ export default function FeaturesSection() {
               </div>
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/openai.png"
+                  src="/public-new/openai.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
@@ -176,7 +176,7 @@ export default function FeaturesSection() {
               </div>
               <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center">
                 <Image
-                  src="/gemini.png"
+                  src="/public-new/gemini.png"
                   alt="Alchemyst Systems Logo"
                   width={28}
                   height={28}
