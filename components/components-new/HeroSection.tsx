@@ -16,7 +16,8 @@ export default function HeroSection() {
   const delayAfterWord = useRef(1000);
 
   // Use useMemo to prevent the words array from being recreated on each render
-  const words = useMemo(() => ["Agents", "Projects", "Copilots"], []);
+  const words = useMemo(() => ["Agent", "Project", "Copilot"], []);
+  const maxWordLength = useMemo(() => Math.max(...words.map(word => word.length)), [words]);
 
   useEffect(() => {
     let timer;
@@ -84,11 +85,11 @@ export default function HeroSection() {
           />
         </div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative">The Swiss Army Knife</span>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 pb-6 tracking-tight text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-6">The Swiss Army Knife</span>
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative">
-            for your GenAI <span className="inline-block text-left">{displayText}<span className="animate-pulse">|</span>
+          <span className="py-3">
+            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[150px] w-[18vw] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
             </span>
           </span>
         </h1>
