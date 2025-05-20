@@ -1,6 +1,6 @@
 "use client";
 
-import {ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function TechnologyIntegration() {
   return (
@@ -18,7 +18,7 @@ export default function TechnologyIntegration() {
             for complete control.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Alchemyst AI Platform</h3>
@@ -30,12 +30,17 @@ export default function TechnologyIntegration() {
               applications with Alchemyst AI&apos;s memory capabilities. Ideal for teams
               looking for quick deployment and hassle-free maintenance.
             </p>
-            <button className="w-1/3 py-2 rounded-md bg-[#EAEAEA] text-gray-900 hover:bg-gray-700 font-bold flex items-center justify-center">
+            <a
+              className="w-1/3 py-2 rounded-md bg-[#EAEAEA] text-gray-900 hover:bg-gray-700 font-bold flex items-center justify-center"
+              href="https://platform.getalchemystai.com/auth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Sign Up Now
               <ArrowUpRight className="ml-2 h-4 w-4" />
-            </button>
+            </a>
           </div>
-          
+
           <div className="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Alchemyst AI Open Source</h3>
             <p className="text-muted-foreground mb-6">
@@ -46,10 +51,15 @@ export default function TechnologyIntegration() {
               to tailor Alchemyst AI to your exact requirements. Self-host on your
               infrastructure for maximum data control and customization.
             </p>
-            <button className="w-1/3 py-2 rounded-md border border-gray-600 text-gray-300 hover:bg-gray-800 font-bold flex items-center justify-center">
-              View GitHub Repos
+            <a
+              className="w-1/3 py-2 rounded-md border border-gray-600 text-gray-300 hover:bg-gray-800 font-bold flex items-center justify-center"
+              href="https://github.com/alchemyst-ai/awesome-saas"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Build on Alchemyst
               <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            </a>
           </div>
         </div>
       </div>
