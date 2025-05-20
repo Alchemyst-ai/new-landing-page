@@ -1,6 +1,6 @@
 "use client";
 
-import { IconHeadset, IconBrain, IconRobot, IconShoppingBag } from "@/components/components-new/ui/icons";
+import { IconHeadset, IconBrain, IconRobot, IconShoppingBag } from "@/components/ui/icons";
 
 const UseCaseCard = ({
   icon,

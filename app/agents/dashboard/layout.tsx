@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import "../globals.css";
 
 const satoshi = localFont({
-  src: "../../public/fonts/Satoshi-Variable.ttf",
+  src: "../../../public/fonts/Satoshi-Variable.ttf",
   variable: "--font-satoshi",
   display: "swap",
 });
@@ -68,7 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+
       <body
         className={`${satoshi.variable} font-satoshi max-w-screen overflow-x-hidden`}
       >
