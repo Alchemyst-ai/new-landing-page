@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TrustedBySection from "./TrustedBySection";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [displayText, setDisplayText] = useState("");
@@ -99,12 +100,12 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <Button className="bg-white hover:bg-white/90 text-black text-lg py-6 px-8 font-bold">
+          <Link href="https://platform.getalchemystai.com/auth"><Button className="bg-white hover:bg-white/90 text-black text-lg py-6 px-8 font-bold">
             Get Started
-          </Button>
-          <Button variant="outline" className="border-2 border-white text-white text-lg py-6 px-8 bg-black/30 font-medium">
-            Book a Demo
-          </Button>
+          </Button></Link>
+          <Link href="https://github.com/alchemyst-ai/awesome-saas"><Button variant="outline" className="border-2 border-white text-white text-lg py-6 px-8 bg-black/30 font-medium">
+            See Cookbook
+          </Button></Link>
         </div>
 
         {/* Backed By Section */}

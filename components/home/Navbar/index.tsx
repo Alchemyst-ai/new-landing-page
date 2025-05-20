@@ -8,6 +8,7 @@ import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import Button from "../Button";
 import DropdownMenu from "./DropdownMenu";
 import { menuData, MenuObject } from "../../types/menu";
+import { FaGithub } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -58,13 +59,12 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between w-full">
           <Link
             href={item.link ? `/agents${item.link}` : "#"}
-            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
-              item.style
-                ? Object.entries(item.style)
-                    .map(([k, v]) => `${k}:${v}`)
-                    .join(";")
-                : ""
-            }`}
+            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${item.style
+              ? Object.entries(item.style)
+                .map(([k, v]) => `${k}:${v}`)
+                .join(";")
+              : ""
+              }`}
             onClick={toggleMenu}
           >
             {item.icon && (
@@ -146,9 +146,8 @@ const Navbar: React.FC = () => {
                 >
                   <Link
                     href={"/agents" + (item.link || "")}
-                    className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm ${
-                      activeMenu === item.title ? "text-white" : ""
-                    }`}
+                    className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm ${activeMenu === item.title ? "text-white" : ""
+                      }`}
                   >
                     <span>{item.title}</span>
                     {item.children && (
@@ -192,7 +191,10 @@ const Navbar: React.FC = () => {
         {/* Partner with us button and Book a Demo */}
         <div className="flex items-center space-x-3">
           <div className="hidden md:flex items-center space-x-3">
-            <Link href="https://tripetto.app/run/60HWNW0WQN" target="_blank">
+            <Link
+              href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
+              target="_blank"
+            >
               <Button
                 variant="secondary"
                 icon={
@@ -217,10 +219,10 @@ const Navbar: React.FC = () => {
               </Button>
             </Link>
             <Link
-              href="https://calendly.com/uttaran-getalchemystai/30min"
+              href="https://github.com/alchemyst-ai/awesome-saas"
               target="_blank"
             >
-              <Button variant="primary" className="text-sm h-8 px-4 rounded-full">Book a demo</Button>
+              <Button variant="secondaryNoHover" className="bg-transparent py-2 mx-2 text-4xl hover:scale-[1.1] rounded-full"><FaGithub /></Button>
             </Link>
           </div>
           <button
@@ -243,7 +245,7 @@ const Navbar: React.FC = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex space-x-2 w-full mb-6">
+                {/* <div className="flex space-x-2 w-full mb-6">
                   <Link href="https://tripetto.app/run/60HWNW0WQN" className="flex-1">
                     <Button variant="secondary" className="w-full text-sm py-2 border-white/10">
                       Get in Touch
@@ -257,7 +259,7 @@ const Navbar: React.FC = () => {
                       Book a demo
                     </Button>
                   </Link>
-                </div>
+                </div> */}
                 <motion.div
                   key="mainmenu"
                   initial={{ opacity: 0, x: "-100%" }}
