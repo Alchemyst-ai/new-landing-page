@@ -85,16 +85,16 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight">
-          Kickstart GenAI<br />
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative">The Swiss Army Knife</span>
+          <br />
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative">
-            in your AI <span className="inline-block w-[120px] md:w-[180px] lg:w-[280px] text-left">
-              {displayText}<span className="animate-pulse">|</span>
+            for your GenAI <span className="inline-block text-left">{displayText}<span className="animate-pulse">|</span>
             </span>
           </span>
         </h1>
 
-        <p className="text-base md:text-lg text-gray-200 max-w-3xl mx-auto mb-10">
-          Alchemyst is a self-improving infrastructure layer for LLM-based AI Agents, enabling personalized experiences that save costs and help ship products 20x faster.
+        <p className="text-base md:text-lg text-gray-200 max-w-6xl mx-auto mb-10">
+          Deliver products, not surveys on the next AI tool to use. <br /><b className="text-bold">Ship 20x faster with the cookiecutter of the GenAI Stack.</b>
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">

@@ -43,13 +43,12 @@ export default function UseCasesSection() {
           <UseCaseCard
             icon={<IconHeadset className="w-10 h-10" />}
             title="Customer Support"
-            description="Enhance customer satisfaction with chatbots that remember past interactions, reducing repetition and speeding up resolution times"
+            description="Make your chatbots remember past interactions. Reduce repetition and speeding up resolution times by upto 64%"
           />
-
           <UseCaseCard
             icon={<IconBrain className="w-10 h-10" />}
-            title="Personal AI Companion"
-            description="Create AI companions that truly know you, recalling preferences and past conversations for more meaningful interactions."
+            title="Deep Research"
+            description="Create AI companions that truly do deep research, remembering your preferences and your past work."
           />
 
           <UseCaseCard
