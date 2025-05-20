@@ -85,11 +85,11 @@ export default function HeroSection() {
           />
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 pb-6 tracking-tight text-center">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-6">The Swiss Army Knife</span>
           <br />
           <span className="py-3">
-            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[150px] w-[18vw] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
+            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[125px] w-[18vw] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
             </span>
           </span>
         </h1>
