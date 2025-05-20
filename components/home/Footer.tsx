@@ -108,16 +108,16 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
               { name: "About Us", link: "/about-us" },
-              // { name: "News Studio", link: "/news-studio" },
+              { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
-              // {
-              //   name: "Demo",
-              //   link: "/demopage",
-              // },
+              {
+                name: "Demo",
+                link: "/demopage",
+              },
               { name: "Support", link: null },
-              // { name: "FAQs", link: "/faqs" },
-              // { name: "Blogs", link: "/blogs" },
-              // { name: "Case Study", link: "/case-study" },
+              { name: "FAQs", link: "/faqs" },
+              { name: "Blogs", link: "/blogs" },
+              { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
               <Link
@@ -238,7 +238,7 @@ const Footer: React.FC = () => {
                 </motion.div>
               </Link>
             </motion.div>
-            <div className="flex flex-col gap-4">
+            {/* <div className="flex flex-col gap-4">
               <Link
                 href="https://tripetto.app/run/60HWNW0WQN"
                 target="_blank"
@@ -276,7 +276,7 @@ const Footer: React.FC = () => {
                   <span>Book a demo</span>
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
