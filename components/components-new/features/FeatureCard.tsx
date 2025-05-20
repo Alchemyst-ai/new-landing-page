@@ -14,7 +14,13 @@ const FeatureCard = ({ title, description, className, children }: FeatureCardPro
   return (
     <div className={cn("p-6 rounded-xl", className)}>
       <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="opacity-80 text-sm">{description}</p>
+      <p className="opacity-80 text-sm">
+        {description.split("\n").map((line, index) => (
+          <div key={index} className="mb-2">
+            {line}
+          </div>
+        ))}
+      </p>
       {children}
     </div>
   );

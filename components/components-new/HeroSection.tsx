@@ -100,11 +100,11 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <Link href="https://platform.getalchemystai.com/auth"><Button className="bg-white hover:bg-white/90 text-black text-lg py-6 px-8 font-bold">
+          <Link href="#get-started"><Button className="bg-white hover:bg-white/90 text-black text-lg py-6 px-8 font-bold">
             Get Started
           </Button></Link>
-          <Link href="https://github.com/alchemyst-ai/awesome-saas"><Button variant="outline" className="border-2 border-white text-white text-lg py-6 px-8 bg-black/30 font-medium">
-            See Cookbook
+          <Link href="https://platform.getalchemystai.com/auth"><Button variant="outline" className="border-2 border-white text-white text-lg py-6 px-8 bg-black/30 font-medium">
+            Sign Up
           </Button></Link>
         </div>
 

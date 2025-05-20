@@ -14,7 +14,7 @@ const CodeCompiler = () => {
   const [activeTab, setActiveTab] = useState<CodeLanguage>("javascript");
 
   const codeCaptions: Record<CodeLanguage, string> = {
-    javascript: "Use it as a proxy to call OpenAI API - get started without any code changes - all you need is an API key.",
+    javascript: "Use the proxy to call OpenAI API for memory management without any code changes - all you need is an API key.",
     python: "Use our upcoming Python SDK",
     typescript: "Use our upcoming JavaScript/TypeScript SDK",
   };
@@ -68,17 +68,17 @@ client.add(messages, { user_id: "alex" })
   };
 
   return (
-    <section className="py-20">
+    <section className="py-10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center mb-16">
           <div className="bg-[#000000] border border-[#FF9E3C] text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
             QUICK-START
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6" id="get-started">
             Get Started Today
           </h2>
           <p className="text-center text-gray-400 max-w-3xl leading-relaxed">
-            Empower Your AI applications with MemoAI&apos;s Intelligent Memory Layer in Minutes
+            Empower Your AI applications with AlchemystAI&apos;s GenAI Stack in Minutes
           </p>
           <a
             href="/docs"

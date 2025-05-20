@@ -113,7 +113,7 @@ export default function HomePage() {
 
           <UseCasesSection />
 
-          <HowItWorks />
+          {/* <HowItWorks /> */}
 
           <CodeCompiler />
 
@@ -123,7 +123,7 @@ export default function HomePage() {
 
           <FAQSection />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

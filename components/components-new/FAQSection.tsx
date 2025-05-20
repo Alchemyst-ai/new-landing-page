@@ -27,10 +27,10 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
           <ChevronDown className="h-5 w-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
         </motion.div>
       </button>
-      
+
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -49,7 +49,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  
+
   const faqs = [
     {
       question: "How does Alchemyst AI enhance my business conversations?",
@@ -57,23 +57,23 @@ const FAQSection = () => {
     },
     {
       question: "What integration options are available for Alchemyst AI?",
-      answer: "We offer seamless integration with popular CRM systems, e-commerce platforms, and communication tools. Our API allows for custom integrations with your existing tech stack, and our team provides full support throughout the implementation process to ensure a smooth transition."
+      answer: "Right off the platform, we offer seamless integration with popular CRM systems, e-commerce platforms, and communication tools. With our API? As many as you can build :)"
     },
     {
       question: "How secure is my data with Alchemyst AI?",
       answer: "Security is our top priority. All data is encrypted end-to-end, and we comply with global data protection regulations including GDPR and CCPA. We implement strict access controls, regular security audits, and never share your data with third parties without explicit consent."
     }
   ];
-  
+
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  
+
   return (
     <section className="py-20 px-4 bg-black">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -82,8 +82,8 @@ const FAQSection = () => {
           >
             FAQ
           </motion.p>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -92,8 +92,8 @@ const FAQSection = () => {
           >
             Questions & Answers
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -103,8 +103,8 @@ const FAQSection = () => {
             Get answers to commonly asked questions about Alchemyst AI and how it can transform your business.
           </motion.p>
         </div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -121,8 +121,8 @@ const FAQSection = () => {
             />
           ))}
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}

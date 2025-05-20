@@ -18,7 +18,11 @@ export const featureCardsData: FeatureCardData[] = [
   },
   {
     title: "Reliable and Stable Platform You can trust",
-    description: "With average 99.9% uptime and effortless fallback, we ensure your agents are always production-ready.",
+    description: `With average 99.9% uptime and effortless fallback, we ensure your agents are always production-ready.
+    
+    For custom requirements, we're ready to help!
+    
+    Just drop us an e-mail at sales@getalchemystai.com`,
     className: "bg-card border border-border",
     rowSpan: true,
   },

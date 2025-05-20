@@ -9,7 +9,7 @@ export default function FeaturesSection() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-          Build <span className="bg-gradient-text">Enterprise-Grade</span> AI Agents At Scale
+          Build <span className="bg-gradient-text">Enterprise-Grade</span> AI Agents Within Weekends
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -64,7 +64,7 @@ export default function FeaturesSection() {
               <iframe src="https://status.getalchemystai.com" allowFullScreen className="h-[25vh] min-w-[18vw] max-w-[25vw]"></iframe>
             </div> */}
             <div className="flex flex-row w-full align-center justify-center">
-              <iframe src="https://status.getalchemystai.com/badge?theme=dark" scrolling="no" className="text-center max-h-[5vh] sm:mt-[5vh] lg:mt-[10vh]"></iframe>
+              <iframe src="https://status.getalchemystai.com/badge?theme=dark" scrolling="no" className="text-center max-h-4xl sm:mt-5 lg:mt-10"></iframe>
             </div>
           </FeatureCard>
 

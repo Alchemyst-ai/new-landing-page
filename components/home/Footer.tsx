@@ -34,13 +34,13 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex flex-row items-center md:items-start gap-10 mt-5 md:mt-44 text-gray-400">
               <Link
-                href="/terms-of-use"
+                href="/agents/terms-of-use"
                 className="hover:text-white transition-colors text-md"
               >
                 Terms of use
               </Link>
               <Link
-                href="/privacy-policy"
+                href="/agents/privacy-policy"
                 className="hover:text-white transition-colors text-md"
               >
                 Privacy Policy
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         {/* Columns 2-6 - Hidden on mobile */}
         <div className="hidden md:flex w-5/6 justify-between gap-8">
           {/* Column 2 - Product */}
-          <div className="flex flex-col gap-2">
+          {/* <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Product</h3>
             {[
               { name: "Maya, Sales Platform", link: "/dashboard?mode=copilot" },
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 {item.name}
               </Link>
             ))}
-          </div>
+          </div> */}
 
           {/* Column 3 - Solutions */}
           <div className="flex flex-col gap-2">
@@ -93,31 +93,42 @@ const Footer: React.FC = () => {
               </Link>
             ))}
 
-            <div className="mt-7">
+            {/* <div className="mt-7">
               <Link
-                href="/pricing"
+                href="/agents/pricing"
+                className="font-bold text-lg hover:text-gray-300 transition-colors"
+              >
+                Pricing
+              </Link>
+            </div> */}
+          </div>
+
+          {/* Column 4 - Pricing */}
+          <div className="flex flex-col gap-2">
+            <div >
+              <Link
+                href="/agents/pricing"
                 className="font-bold text-lg hover:text-gray-300 transition-colors"
               >
                 Pricing
               </Link>
             </div>
           </div>
-
           {/* Column 4 - Resources */}
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
               { name: "About Us", link: "/about-us" },
-              { name: "News Studio", link: "/news-studio" },
+              // { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
-              {
-                name: "Demo",
-                link: "/demopage",
-              },
-              { name: "Support", link: null },
-              { name: "FAQs", link: "/faqs" },
-              { name: "Blogs", link: "/blogs" },
-              { name: "Case Study", link: "/case-study" },
+              // {
+              //   name: "Demo",
+              //   link: "/demopage",
+              // },
+              // { name: "Support", link: null },
+              // { name: "FAQs", link: "/faqs" },
+              // { name: "Blogs", link: "/blogs" },
+              // { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
               <Link
