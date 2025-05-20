@@ -238,7 +238,7 @@ const Footer: React.FC = () => {
                 </motion.div>
               </Link>
             </motion.div>
-            <div className="flex flex-col gap-4">
+            {/* <div className="flex flex-col gap-4">
               <Link
                 href="https://tripetto.app/run/60HWNW0WQN"
                 target="_blank"
@@ -276,7 +276,7 @@ const Footer: React.FC = () => {
                   <span>Book a demo</span>
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

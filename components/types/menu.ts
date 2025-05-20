@@ -155,12 +155,12 @@ export const menuData: MenuObject[] = [
             icon: "/icons/Info.png",
             link: "/about-us",
           },
-          {
-            title: "News Studio",
-            level: "tertiary",
-            icon: "/icons/newsstudio.svg",
-            link: "/news-studio",
-          },
+          // {
+          //   title: "News Studio",
+          //   level: "tertiary",
+          //   icon: "/icons/newsstudio.svg",
+          //   link: "/news-studio",
+          // },
           {
             title: "Alchemyst Labs (soon)",
             level: "tertiary",
@@ -173,42 +173,42 @@ export const menuData: MenuObject[] = [
         title: "Learn",
         level: "secondary",
         children: [
-          {
-            title: "Demo",
-            level: "tertiary",
-            icon: "/icons/Video.png",
-            link: "/demopage",
-          },
+          // {
+          //   title: "Demo",
+          //   level: "tertiary",
+          //   icon: "/icons/Video.png",
+          //   link: "/demopage",
+          // },
           {
             title: "Support (soon)",
             level: "tertiary",
             icon: "/icons/Technical Support.png",
             link: "#",
           },
-          {
-            title: "FAQ",
-            level: "tertiary",
-            icon: "/icons/FAQ.png",
-            link: "/faqs",
-          },
+          // {
+          //   title: "FAQ",
+          //   level: "tertiary",
+          //   icon: "/icons/FAQ.png",
+          //   link: "/faqs",
+          // },
         ],
       },
       {
         title: "Discover",
         level: "secondary",
         children: [
-          {
-            title: "Blog",
-            level: "tertiary",
-            icon: "/icons/blog.svg",
-            link: "/blogs",
-          },
-          {
-            title: "Case Study",
-            level: "tertiary",
-            icon: "/icons/Case Study.png",
-            link: "/case-study",
-          },
+          // {
+          //   title: "Blog",
+          //   level: "tertiary",
+          //   icon: "/icons/blog.svg",
+          //   link: "/blogs",
+          // },
+          // {
+          //   title: "Case Study",
+          //   level: "tertiary",
+          //   icon: "/icons/Case Study.png",
+          //   link: "/case-study",
+          // },
           {
             title: "Change Log (soon)",
             level: "tertiary",
