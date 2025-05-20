@@ -108,16 +108,16 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
               { name: "About Us", link: "/about-us" },
-              { name: "News Studio", link: "/news-studio" },
+              // { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
-              {
-                name: "Demo",
-                link: "/demopage",
-              },
+              // {
+              //   name: "Demo",
+              //   link: "/demopage",
+              // },
               { name: "Support", link: null },
-              { name: "FAQs", link: "/faqs" },
-              { name: "Blogs", link: "/blogs" },
-              { name: "Case Study", link: "/case-study" },
+              // { name: "FAQs", link: "/faqs" },
+              // { name: "Blogs", link: "/blogs" },
+              // { name: "Case Study", link: "/case-study" },
               { name: "ChangeLog", link: null },
             ].map((item, index) => (
               <Link
