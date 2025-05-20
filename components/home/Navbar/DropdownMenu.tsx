@@ -54,8 +54,12 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
       isClickable ? "hover:text-orange-400" : "text-gray-500 cursor-not-allowed"
     }`;
 
+    // Check if it's an external link (starts with http or https)
+    const isExternalLink = link.link && (link.link.startsWith('http://') || link.link.startsWith('https://'));
+    const href = isExternalLink ? link.link! : `/agents${link.link!}`;
+
     return isClickable ? (
-      <Link href={link.link!} className={linkClass}>
+      <Link href={href} className={linkClass}>
         {link.icon && (
           <Image
             src={link.icon || "/placeholder.svg"}
@@ -157,7 +161,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                   {item.children?.map((child, index) => (
                     <div key={index} className="space-y-2">
                       <Link
-                        href={child.link || "#"}
+                        href={child.link ? `/agents${child.link}` : "#"}
                         className="flex items-start hover:text-orange-400 transition-colors duration-200"
                       >
                         {child.icon && (
