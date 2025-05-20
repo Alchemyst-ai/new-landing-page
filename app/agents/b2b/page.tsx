@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import "../globals.css";
+import "../../globals.css";
 import { useEffect } from "react";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
