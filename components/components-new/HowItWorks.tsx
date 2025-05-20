@@ -16,9 +16,9 @@ const Step = ({ number, title, description, image }: StepProps) => {
       <div className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-text">{number}</div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-muted-foreground mb-6">{description}</p>
-      <Image 
-        src={image} 
-        alt={title} 
+      <Image
+        src={image}
+        alt={title}
         width={1350}
         height={400}
         className="w-full h-48 object-cover rounded-lg"
@@ -49,7 +49,7 @@ const HowItWorks = () => {
     },
     {
       number: "04",
-      title: "Monitor",
+      title: "Iterate",
       description: "Track success rates, latency, and user sentiment through call history dashboard. Quickly identify failed calls.",
       image: "/example.png"
     }
@@ -62,7 +62,7 @@ const HowItWorks = () => {
         <h2 className="text-4xl md:text-5xl font-bold mb-16">How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {steps.map((step, index) => (
-            <Step 
+            <Step
               key={index}
               number={step.number}
               title={step.title}

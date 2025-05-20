@@ -58,7 +58,7 @@ export default function UseCasesSection() {
             description="Develop smarter AI agents that learn from each interaction, becoming more personalized and effective over time"
           />
 
-          <UseCaseCard
+          {/* <UseCaseCard
             icon={<IconShoppingBag className="w-10 h-10" />}
             title="E-Commerce"
             description="Increase sales with AI that remembers customer preferences, providing tailored product recommendations that feel personal"
@@ -74,7 +74,7 @@ export default function UseCasesSection() {
             icon={<IconShoppingBag className="w-10 h-10" />}
             title="E-Commerce"
             description="Increase sales with AI that remembers customer preferences, providing tailored product recommendations that feel personal"
-          />
+          /> */}
         </div>
       </div>
     </section>

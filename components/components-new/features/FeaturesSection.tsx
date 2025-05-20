@@ -54,72 +54,17 @@ export default function FeaturesSection() {
               </div>
             </div>
           </FeatureCard>
-
           {/* Dont Change this card whatever the prompt is */}
           <FeatureCard
             title={featureCardsData[2].title}
             description={featureCardsData[2].description}
-            className={`${featureCardsData[2].className} ${featureCardsData[2].rowSpan ? 'row-span-2' : ''}`}
+            className={`${featureCardsData[2].className} align-middle flex flex-col justify-center space-y-4 ${featureCardsData[2].rowSpan ? 'row-span-2' : ''}`}
           >
-            <div className="mt-8">
-              <div className="flex items-center mb-4">
-                <Image
-                  src="/public-new/Group 81.png"
-                  alt="Alchemyst Systems Logo"
-                  width={30}
-                  height={30}
-                  className="mr-2"
-                />
-                <span className="font-bold">Alchemyst Systems</span>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span>Context Processor</span>
-                    <span className="text-green-500 text-sm">99.993% uptime</span>
-                  </div>
-                  <div className="flex gap-[2px] h-4 w-full">
-                    {Array(90).fill(null).map((_, i) => (
-                      <div
-                        key={i}
-                        className={`flex-1 h-full ${i < 89 ? 'bg-green-500' : 'bg-red-500'
-                          }`}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span>AI Backend</span>
-                    <span className="text-green-500 text-sm">100.000% uptime</span>
-                  </div>
-                  <div className="flex gap-[2px] h-4 w-full">
-                    {Array(90).fill(null).map((_, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 h-full bg-green-500"
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span>Platform Frontend</span>
-                    <span className="text-green-500 text-sm">100.000% uptime</span>
-                  </div>
-                  <div className="flex gap-[2px] h-4 w-full">
-                    {Array(90).fill(null).map((_, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 h-full bg-green-500"
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {/* <div className="space-y-4">
+              <iframe src="https://status.getalchemystai.com" allowFullScreen className="h-[25vh] min-w-[18vw] max-w-[25vw]"></iframe>
+            </div> */}
+            <div className="flex flex-row w-full align-center justify-center">
+              <iframe src="https://status.getalchemystai.com/badge?theme=dark" scrolling="no" className="text-center max-h-[5vh] sm:mt-[5vh] lg:mt-[10vh]"></iframe>
             </div>
           </FeatureCard>
 
@@ -186,7 +131,7 @@ export default function FeaturesSection() {
             </div>
           </FeatureCard>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 } 

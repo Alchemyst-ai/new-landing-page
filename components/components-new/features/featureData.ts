@@ -18,7 +18,7 @@ export const featureCardsData: FeatureCardData[] = [
   },
   {
     title: "Reliable and Stable Platform You can trust",
-    description: "With average 99.99% uptime and effortless fallback, Retell AI ensures your agents are always production-ready.",
+    description: "With average 99.9% uptime and effortless fallback, we ensure your agents are always production-ready.",
     className: "bg-card border border-border",
     rowSpan: true,
   },

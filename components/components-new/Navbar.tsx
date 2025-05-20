@@ -160,7 +160,7 @@ const ResourcesDropdown = () => (
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
-  
+
   const toggleMobileDropdown = (dropdown: string) => {
     setMobileOpenDropdown(mobileOpenDropdown === dropdown ? null : dropdown);
   };
@@ -173,16 +173,16 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/">
-                <Image 
-                  src="/Group 79.png" 
-                  alt="Retell AI" 
+                <Image
+                  src="/Group 79.png"
+                  alt="Alchemyst AI"
                   width={100}
                   height={28}
-                  className="h-7 w-auto object-contain" 
+                  className="h-7 w-auto object-contain"
                 />
               </Link>
             </div>
-            
+
             {/* Desktop Navigation - Centered */}
             <div className="hidden md:flex items-center justify-center flex-1 mx-4">
               <div className="flex space-x-6 items-center">
@@ -220,7 +220,7 @@ const Navbar = () => {
                 </Popover>
               </div>
             </div>
-              
+
             {/* Login/Contact Buttons */}
             <div className="hidden md:flex items-center">
               <Button variant="outline" className="text-white/80 border-white/50 hover:text-white mr-2 transition-colors text-sm h-8 px-3">
@@ -230,7 +230,7 @@ const Navbar = () => {
                 Get Started
               </Button>
             </div>
-            
+
             {/* Mobile Navigation Toggle */}
             <div className="md:hidden">
               <button
@@ -247,9 +247,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Navigation Menu */}
-      <div 
+      <div
         className={cn(
           "md:hidden fixed inset-x-4 top-[60px] bg-black/30 backdrop-blur-md border border-white/10 rounded-xl shadow-lg transition-all duration-300 ease-in-out",
           isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
@@ -257,7 +257,7 @@ const Navbar = () => {
       >
         <div className="px-4 py-6 space-y-4">
           <div className="border-b border-white/10 pb-3">
-            <button 
+            <button
               onClick={() => toggleMobileDropdown('features')}
               className="flex items-center justify-between w-full text-white py-1"
             >
@@ -273,23 +273,23 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          
+
           <div className="border-b border-white/10 pb-3">
-            <Link 
-              href="/pricing" 
+            <Link
+              href="/pricing"
               className="text-white/80 hover:text-white transition-colors text-lg"
               onClick={() => setMobileOpenDropdown(null)}
             >
               Pricing
             </Link>
           </div>
-          
+
           <div className="border-b border-white/10 pb-3">
             <a href="#" className="block py-1 text-white">Documentation</a>
           </div>
-          
+
           <div className="border-b border-white/10 pb-3">
-            <button 
+            <button
               onClick={() => toggleMobileDropdown('solutions')}
               className="flex items-center justify-between w-full text-white py-1"
             >
@@ -305,9 +305,9 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          
+
           <div className="border-b border-white/10 pb-3">
-            <button 
+            <button
               onClick={() => toggleMobileDropdown('resources')}
               className="flex items-center justify-between w-full text-white py-1"
             >
@@ -323,7 +323,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          
+
           <div className="pt-2 space-y-3">
             <Button variant="outline" className="w-full border-white/10 justify-center">Book a Demo</Button>
             <Button className="w-full justify-center bg-gradient-to-br from-gray-200 to-white text-black">

@@ -11,12 +11,12 @@ export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
 
   // Use refs for constants to avoid them being dependencies in useEffect
-  const typingSpeed = useRef(150); 
-  const deletingSpeed = useRef(100); 
-  const delayAfterWord = useRef(1000); 
+  const typingSpeed = useRef(50);
+  const deletingSpeed = useRef(50);
+  const delayAfterWord = useRef(1000);
 
   // Use useMemo to prevent the words array from being recreated on each render
-  const words = useMemo(() => ["Agents", "Projects", "Copilot"], []);
+  const words = useMemo(() => ["Agents", "Projects", "Copilots"], []);
 
   useEffect(() => {
     let timer;
@@ -85,9 +85,9 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight">
-          The Memory Layer<br />
+          Kickstart GenAI<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative">
-            for your AI <span className="inline-block w-[120px] md:w-[180px] lg:w-[280px] text-left">
+            in your AI <span className="inline-block w-[120px] md:w-[180px] lg:w-[280px] text-left">
               {displayText}<span className="animate-pulse">|</span>
             </span>
           </span>
