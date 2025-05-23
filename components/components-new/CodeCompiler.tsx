@@ -20,7 +20,7 @@ const CodeCompiler = () => {
   };
   const codeSnippets: Record<CodeLanguage, string> = {
     javascript: `import { ChatOpenAI } from '@langchain/openai';
-const BASE_URL_WITH_PROXY = 'http://platform-backend.getalchemystai.com/api/v1/proxy/https://api.openai.com/v1/YOUR_OPENAI_API_KEY';
+const BASE_URL_WITH_PROXY = 'https://platform-backend.getalchemystai.com/api/v1/proxy/https://api.openai.com/v1/YOUR_OPENAI_API_KEY';
 
 const lcClientWithProxy = new ChatOpenAI({
     apiKey: 'YOUR ALCHEMYST PLATFORM API KEY',
