@@ -40,7 +40,7 @@ const TrustedBySection = () => {
 
   return (
     <div className="mt-16 animate-fade-in-up">
-      <p className="text-lg text-gray-300 uppercase tracking-wider mb-8 font-medium text-center">Trusted by Developers from</p>
+      <p className="text-base sm:text-lg text-gray-300 uppercase tracking-wider mb-8 font-medium text-center">Trusted by Developers from</p>
       
       <div className="relative overflow-hidden">
         <div 
@@ -54,7 +54,7 @@ const TrustedBySection = () => {
         >
           {/* Duplicated images for infinite scroll */}
           {duplicatedImages.map((image, index) => (
-            <div key={`img-${index}`} className="flex-shrink-0 flex items-center justify-center w-52 h-28">
+            <div key={`img-${index}`} className="flex-shrink-0 flex items-center justify-center w-40 h-20 sm:w-52 sm:h-28">
               <div className="w-full h-full flex items-center justify-center p-4">
                 <Image 
                   src={image.src} 

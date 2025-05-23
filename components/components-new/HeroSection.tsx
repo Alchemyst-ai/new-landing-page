@@ -54,65 +54,55 @@ export default function HeroSection() {
   }, [displayText, isDeleting, wordIndex, words]);
 
   return (
-    <section className="pt-20 pb-32 px-4 relative overflow-hidden min-h-[90vh] flex items-center">
+    <section className="pt-10 md:pt-20 pb-16 md:pb-32 px-4 relative overflow-hidden min-h-[90vh] flex items-center justify-center">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        {/* <video 
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/landingpagevideo60_2.mp4" type="video/mp4" />
-        </video> */}
-
         {/* Gradient & Blur Overlays */}
         <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/25 to-black/15"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-background"></div>
       </div>
 
-      <div className="max-w-6xl mt-20 mx-auto text-center relative z-10">
+      <div className="w-full max-w-6xl mt-10 md:mt-20 mx-auto text-center relative z-10 px-4">
         {/* F6S Badge */}
-        <div className="inline-flex items-center tracking-tighter gap-2 px-4 py-2 bg-black/70 rounded-full text-white text-base font-medium animate-fade-in">
+        <div className="inline-flex items-center tracking-tighter gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-black/70 rounded-full text-white text-sm md:text-base font-medium animate-fade-in">
           <span>✨ #1 in Gen AI category</span>
           <Image
             src="/public-new/f6s_0.png"
             alt="F6S"
             width={30}
             height={30}
-            className="h-auto"
+            className="h-auto w-6 md:w-auto"
           />
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-6">The Swiss Army Knife</span>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-3 md:pb-6">The Swiss Army Knife</span>
           <br />
-          <span className="py-3">
-            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[125px] w-[18vw] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
+          <span className="py-2 md:py-3">
+            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[80px] sm:h-[100px] md:h-[125px] w-[120px] sm:w-[150px] md:w-[180px] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
             </span>
           </span>
         </h1>
 
-        <p className="text-base md:text-lg text-gray-200 max-w-6xl mx-auto mb-10">
+        <p className="text-sm sm:text-base md:text-lg text-gray-200 max-w-6xl mx-auto mb-6 md:mb-10 px-2">
           Deliver products, not surveys on the next AI tool to use. <br /><b className="text-bold">Ship 20x faster with the cookiecutter of the GenAI Stack.</b>
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link href="#get-started"><Button className="bg-white hover:bg-white/90 text-black text-lg py-6 px-8 font-bold">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          <Link href="#get-started"><Button className="bg-white hover:bg-white/90 text-black text-base md:text-lg py-4 md:py-6 px-6 md:px-8 font-bold">
             Get Started
           </Button></Link>
-          <Link href="https://platform.getalchemystai.com/auth"><Button variant="outline" className="border-2 border-white text-white text-lg py-6 px-8 bg-black/30 font-medium">
+          <Link href="https://platform.getalchemystai.com/auth"><Button variant="outline" className="border-2 border-white text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8 bg-black/30 font-medium">
             Sign Up
           </Button></Link>
         </div>
 
         {/* Backed By Section */}
-        <div className="mt-32 animate-fade-in-up">
-          <p className="text-lg text-gray-300 uppercase tracking-wider mb-8 font-medium">Backed by</p>
-          <div className="flex flex-wrap gap-16 -mt-10 items-center justify-center">
-            <div className="relative h-32 w-32">
+        <div className="mt-16 md:mt-32 animate-fade-in-up">
+          <p className="text-base md:text-lg text-gray-300 uppercase tracking-wider mb-4 md:mb-8 font-medium">Backed by</p>
+          <div className="flex flex-wrap gap-8 md:gap-16 -mt-6 md:-mt-10 items-center justify-center">
+            <div className="relative h-20 w-20 md:h-32 md:w-32">
               <Image
                 src="/public-new/ipv.png"
                 alt="IPV"
@@ -120,7 +110,7 @@ export default function HeroSection() {
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-            <div className="relative h-32 w-32">
+            <div className="relative h-20 w-20 md:h-32 md:w-32">
               <Image
                 src="/public-new/earlyseed.png"
                 alt="Early Seed"
@@ -128,7 +118,7 @@ export default function HeroSection() {
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-            <div className="relative h-24 w-32">
+            <div className="relative h-16 w-20 md:h-24 md:w-32">
               <Image
                 src="/public-new/100x.png"
                 alt="100x"
@@ -136,12 +126,11 @@ export default function HeroSection() {
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
           </div>
         </div>
 
         {/* Trusted By Section */}
-        <div className="mt-32 animate-fade-in-up">
+        <div className="mt-16 md:mt-32 animate-fade-in-up">
           <TrustedBySection />
         </div>
       </div>
