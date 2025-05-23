@@ -18,7 +18,7 @@ const caseStudies = [
     customerUrl: "https://www.forethought.co.in/",
     content: `
     <i>
-        <p>"This has helped me scale our operations and will continue to do so for the next 6 months. We're expecting this model to become even more structured and refined in the coming months." <strong>- Bhartesh Bhasker, Founder of Forethought India</strong></p>
+        <div>"This has helped me scale our operations and will continue to do so for the next 6 months. We're expecting this model to become even more structured and refined in the coming months." <strong>- Bhartesh Bhasker, Founder of Forethought India</strong></div>
     </i>
     <br/>
     <br/>
@@ -66,7 +66,7 @@ const caseStudies = [
     <br/>
     <h2><b>Testimonial</b></h2>
     <i>
-        <p>"This AI-powered approach has been a game-changer for us. We onboarded 73 educators in just 3 weeks, generated ₹8 Lakh+ in revenue, and listed 400+ courses. This kind of scale and speed was previously unimaginable." <strong>- Bhartesh Bhasker, Founder, Forethought India Pvt. Ltd.</strong></p>
+        <div>"This AI-powered approach has been a game-changer for us. We onboarded 73 educators in just 3 weeks, generated ₹8 Lakh+ in revenue, and listed 400+ courses. This kind of scale and speed was previously unimaginable." <strong>- Bhartesh Bhasker, Founder, Forethought India Pvt. Ltd.</strong></div>
     </i>
     <br/>
     <br/>
@@ -83,7 +83,7 @@ const caseStudies = [
     customerUrl: "https://www.chainrisk.xyz/",
     content: `
     <i>
-    <p>"Alchemyst AI has been a game-changer for us. Their platform helped us onboard our first two clients—Compound and Angle Protocol—generating $55k in revenue in just a few months. The AI-driven automation has not only streamlined our outreach but also validated our product in the market." <strong>- Arka Datta, Co-Founder & CPO of Chainrisk</strong></p>
+    <div>"Alchemyst AI has been a game-changer for us. Their platform helped us onboard our first two clients—Compound and Angle Protocol—generating $55k in revenue in just a few months. The AI-driven automation has not only streamlined our outreach but also validated our product in the market." <strong>- Arka Datta, Co-Founder & CPO of Chainrisk</strong></div>
     </i>
     <br/>
     <br/>
@@ -129,7 +129,7 @@ const caseStudies = [
     <br/>
     <h2><b>Testimonial</b></h2>
     <i>
-        <p>"We&apos;ve seen a significant improvement in our outreach with Alchemyst AI. The ability to send automated personalized emails with follow-ups has streamlined our sales process. We onboarded Compound and Angle Protocol as our first clients, generating $55k in revenue. I&apos;m excited to see how Maya&apos;s integration with Telegram will further boost our sales efforts, as Web3 thrives on platforms like Twitter and Telegram." <strong>- Arka Datta, Co-Founder & CPO, Chainrisk</strong></p>
+        <div>"We&apos;ve seen a significant improvement in our outreach with Alchemyst AI. The ability to send automated personalized emails with follow-ups has streamlined our sales process. We onboarded Compound and Angle Protocol as our first clients, generating $55k in revenue. I&apos;m excited to see how Maya&apos;s integration with Telegram will further boost our sales efforts, as Web3 thrives on platforms like Twitter and Telegram." <strong>- Arka Datta, Co-Founder & CPO, Chainrisk</strong></div>
     </i>
     <br/>
     <br/>

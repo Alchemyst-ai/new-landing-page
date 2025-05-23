@@ -40,7 +40,7 @@ const TrustedBySection = () => {
 
   return (
     <div className="mt-16 animate-fade-in-up">
-      <p className="text-base sm:text-lg text-gray-300 uppercase tracking-wider mb-8 font-medium text-center">Trusted by Developers from</p>
+      <div className="text-base sm:text-lg text-gray-300 uppercase tracking-wider mb-8 font-medium text-center">Trusted by Developers from</div>
       
       <div className="relative overflow-hidden">
         <div 

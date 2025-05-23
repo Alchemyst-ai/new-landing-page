@@ -188,7 +188,7 @@ const TermsOfUse: React.FC = () => {
             3. USER REPRESENTATIONS
           </h2>
           <div className="space-y-4">
-            <p>
+            <div className="mb-4">
               By using the Site, you represent and warrant that: <br/>
               (1) all registration information you submit will be true,
               accurate, current, and complete; <br/>
@@ -204,7 +204,7 @@ const TermsOfUse: React.FC = () => {
               purpose; and <br/>
               (7) your use of the Site will not violate any applicable law or
               regulation.
-            </p>
+            </div>
             <p>
               If you provide any information that is untrue, inaccurate, not
               current, or incomplete, we have the right to suspend or terminate
@@ -872,36 +872,43 @@ const TermsOfUse: React.FC = () => {
         <section id="disclaimer" className="mt-28 mb-8">
           <h2 className="text-4xl font-semibold mb-4">18. DISCLAIMER</h2>
           <div className="space-y-10">
-            <p>
-              THE <i>Alchemyst AI</i> IS PROVIDED ON AN{" "}
-              <a
-                href="https://getalchemystai.com/"
-                className="hover:text-blue-500"
-              >
-                <u>HTTPS://GETALCHEMYSTAI.COM/</u>
-              </a>{" "}
-              AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE{" "}
-              <i>Alchemyst AI</i>
-              SOFTWARE AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE
-              FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES,
-              EXPRESS OR IMPLIED, IN CONNECTION WITH THE <i>Alchemyst AI</i> AND
-              YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-              WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-              AND NON- INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS
-              ABOUT THE ACCURACY OR COMPLETENESS OF THE SITE&apos;S CONTENT OR
-              THE CONTENT OF ANY WEBSITES LINKED TO THE <i>Alchemyst AI</i> AND
-              WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY <br />
-              (1) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS,
-              <br /> (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE
-              WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE
-              <i>Alchemyst AI</i>,<br /> (3) ANY UNAUTHORIZED ACCESS TO OR USE
-              OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION
-              AND/OR FINANCIAL INFORMATION STORED THEREIN, <br />
-              (4) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE{" "}
-              <i>Alchemyst AI</i>, <br />
-              (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE
-              TRANSMITTED TO OR THROUGH THE <i>Alchemyst AI</i> BY ANY THIRD
-              PARTY, AND/OR <br />
+            <div>
+              <b>
+                <i>In Short:</i>
+              </b>{" "}
+              <i>
+                WE DO NOT GUARANTEE, REPRESENT OR WARRANT THAT YOUR USE OF OUR
+                SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE OR ERROR-FREE.
+              </i>
+            </div>
+            <div>
+              We are not responsible for any loss, injury, claim, liability, or
+              damage of any kind resulting from your use of the <i>Alchemyst AI</i> or
+              any third-party websites or any material or software available
+              through the <i>Alchemyst AI</i> or any other website. You expressly
+              understand and agree that: <br />
+              (1) THE <i>Alchemyst AI</i> IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS
+              AVAILABLE&quot; BASIS. <i>Alchemyst AI</i> MAKES NO REPRESENTATIONS OR
+              WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF
+              THE <i>Alchemyst AI</i> OR THE INFORMATION, CONTENT, MATERIALS, OR
+              PRODUCTS INCLUDED ON THE <i>Alchemyst AI</i>; <br />
+              (2) <i>Alchemyst AI</i> DOES NOT WARRANT THAT THE <i>Alchemyst AI</i>, ITS
+              SERVERS, OR EMAIL SENT FROM THE <i>Alchemyst AI</i> ARE FREE OF VIRUSES OR
+              OTHER HARMFUL COMPONENTS; <br />
+              (3) <i>Alchemyst AI</i> DISCLAIMS ANY AND ALL WARRANTIES INCLUDING, BUT
+              NOT LIMITED TO, NON-INFRINGEMENT OF THIRD PARTY RIGHTS,
+              MERCHANTABILITY, AND THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+              FITNESS FOR A PARTICULAR PURPOSE; <br />
+              (4) <i>Alchemyst AI</i> WILL NOT BE LIABLE FOR ANY DAMAGES OF ANY KIND
+              ARISING FROM THE USE OF THE <i>Alchemyst AI</i>, INCLUDING, BUT NOT LIMITED
+              TO DIRECT, INDIRECT, INCIDENTAL, PUNITIVE, AND CONSEQUENTIAL
+              DAMAGES; <br />
+              (5) ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE
+              OF THE <i>Alchemyst AI</i> IS DONE AT YOUR OWN DISCRETION AND RISK AND THAT
+              YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER
+              SYSTEM OR LOSS OF DATA THAT RESULTS FROM THE DOWNLOAD OF ANY SUCH
+              MATERIAL OR DATA OR TRANSMISSION OF VIRUSES THROUGH THE <i>Alchemyst AI</i>
+              BY ANY THIRD PARTY, AND/OR <br />
               (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR
               ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF
               ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA
@@ -915,7 +922,7 @@ const TermsOfUse: React.FC = () => {
               AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR
               IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE
               CAUTION WHERE APPROPRIATE.
-            </p>
+            </div>
           </div>
         </section>
 
