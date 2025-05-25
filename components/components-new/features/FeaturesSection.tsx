@@ -63,8 +63,55 @@ export default function FeaturesSection() {
             {/* <div className="space-y-4">
               <iframe src="https://status.getalchemystai.com" allowFullScreen className="h-[25vh] min-w-[18vw] max-w-[25vw]"></iframe>
             </div> */}
-            <div className="flex flex-row w-full align-center justify-center">
-              <iframe src="https://status.getalchemystai.com/badge?theme=dark" scrolling="no" className="text-center max-h-4xl sm:mt-5 lg:mt-10"></iframe>
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span>Context Processor</span>
+                  <span className="text-green-500 text-sm">99.993% uptime</span>
+                </div>
+                <div className="flex gap-[2px] h-4 w-full">
+                  {Array(90).fill(null).map((_, i) => (
+                    <div
+                      key={i}
+                      className={`flex-1 h-full ${i < 89 ? 'bg-green-500' : 'bg-red-500'
+                        }`}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span>AI Backend</span>
+                  <span className="text-green-500 text-sm">100.000% uptime</span>
+                </div>
+                <div className="flex gap-[2px] h-4 w-full">
+                  {Array(90).fill(null).map((_, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 h-full bg-green-500"
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span>Platform Frontend</span>
+                  <span className="text-green-500 text-sm">100.000% uptime</span>
+                </div>
+                <div className="flex gap-[2px] h-4 w-full">
+                  {Array(90).fill(null).map((_, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 h-full bg-green-500"
+                    ></div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-row w-full align-center max-h-xl">
+                <iframe src="https://status.getalchemystai.com/badge?theme=dark" scrolling="no" className="text-center max-h-lg sm:mt-5" style={{ maxHeight: '4vh' }}></iframe>
+              </div>
             </div>
           </FeatureCard>
 

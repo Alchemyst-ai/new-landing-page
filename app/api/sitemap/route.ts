@@ -4,15 +4,19 @@ import { ProcessedFile } from "@/app/types/blog-api";
 
 export const GET = async (req: NextRequest) => {
     const baseUrl = process.env.BLOGS_BASE_URL ?? 'http://localhost:4163'
+    let rawBlogs: ProcessedFile[] = [];
+    try {
+        const apiResults = await fetch(`${baseUrl}/api/blogs`);
 
-    const apiResults = await fetch(`${baseUrl}/api/blogs`);
+        if (apiResults.status !== 200) {
+            return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
+        }
 
-    if (apiResults.status !== 200) {
+        rawBlogs = await apiResults.json();
+    } catch (error) {
+        console.error("Error fetching blogs:", error);
         return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
     }
-
-    const rawBlogs: ProcessedFile[] = await apiResults.json();
-
     const blogs = rawBlogs.map(blog => ({
         url: {
             loc: `${baseUrl}${blog.redirectLink}`,
