@@ -164,7 +164,7 @@ const Navbar: React.FC = () => {
             ))}
 
             {/* Pricing Link */}
-            <Link href="/agents/pricing">
+            <Link href="/pricing">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
