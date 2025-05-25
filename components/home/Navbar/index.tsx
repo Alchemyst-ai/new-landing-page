@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                className="md:hidden fixed top-[70px] inset-x-4 bg-black/30 backdrop-blur-md border border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto"
+                className="md:hidden fixed top-[70px] inset-x-4 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
