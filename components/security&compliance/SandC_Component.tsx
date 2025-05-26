@@ -182,7 +182,7 @@ const SandC_Component = () => {
           </div>
           <div className="md:w-1/2 pl-12 md:pl-20 transition-all duration-500 ease-in-out hover:scale-105">
             <Image
-              src="/SandC/sandc_01.svg"
+              src="/SandC/img01.svg"
               alt="SandC_IMAGE"
               width={500}
               height={400}
@@ -202,7 +202,7 @@ const SandC_Component = () => {
         <div className="flex flex-col md:flex-row items-center md:p-10">
           <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
             <Image
-              src="/SandC/sandc_02.svg"
+              src="/SandC/img02.svg"
               alt="SandC_IMAGE"
               width={600}
               height={400}
@@ -356,7 +356,7 @@ const SandC_Component = () => {
             <div className="flex flex-col md:flex-row items-center md:p-20">
               <div className="md:w-3/4 transition-all duration-500 ease-in-out hover:scale-105">
                 <Image
-                  src="/SandC/sandc_benefits.svg"
+                  src="/SandC/img03.svg"
                   alt="Benefits"
                   width={600}
                   height={400}
@@ -444,7 +444,7 @@ const SandC_Component = () => {
             </div>
             <div className="md:w-1/2 md:pl-10 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/SandC/sandc_howitworks.svg"
+                src="/SandC/img04.svg"
                 alt="SandC_IMAGE"
                 width={600}
                 height={400}

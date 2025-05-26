@@ -83,19 +83,19 @@ const MidmarketComponent = () => {
 
   const features = [
     {
-      icon: "/solutions/midmarket/card01.svg",
+      icon: "/solutions/midmarket/icon01.svg",
       title: "Agile Solutions",
       description:
         "Bridge startup agility with enterprise solutions, utilizing tools and strategies to improve efficiency, scalability, and long-term business success",
     },
     {
-      icon: "/solutions/midmarket/card02.svg",
+      icon: "/solutions/midmarket/icon02.svg",
       title: "Inbox Impact",
       description:
         "Boost revenue and engagement by achieving optimal inbox placement, ensuring emails effectively reach audiences at the perfect time.",
     },
     {
-      icon: "/solutions/midmarket/card03.svg",
+      icon: "/solutions/midmarket/icon03.svg",
       title: "Smart Emails",
       description:
         "Enhance email strategies with data insights and automation to deliver personalized campaigns, achieving impactful, measurable results ",
@@ -140,7 +140,7 @@ const MidmarketComponent = () => {
             {/* Right Column */}
             <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/solutions/midmarket/01.svg"
+                src="/solutions/midmarket/img01.svg"
                 alt="MidmarketComponent Image 01"
                 width={600}
                 height={400}
@@ -213,7 +213,7 @@ const MidmarketComponent = () => {
             {/* Background Image */}
             <div className="absolute inset-0 lg:flex items-center justify-center hidden">
               <Image
-                src="/solutions/midmarket/03.svg"
+                src="/solutions/midmarket/img02.svg"
                 alt="Background Pattern"
                 className="object-cover"
                 width={600}
