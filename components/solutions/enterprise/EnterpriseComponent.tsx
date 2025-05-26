@@ -442,22 +442,22 @@ const EnterpriseComponent = () => {
       title: "DNS Management",
       description:
         "Ensure SPF, DKIM, and DMARC alignment for security and compliance",
-      image: "/solutions/enterprise/feature01.svg",
+      image: "/solutions/enterprise/img04.svg",
     },
     {
       title: "Warmups at Scale",
       description: "Maintain sender reputation even with high-volume emails",
-      image: "/solutions/enterprise/feature02.svg",
+      image: "/solutions/enterprise/img05.svg",
     },
     {
       title: "Custom Campaign Playbooks",
       description: "Strategies tailored to your enterprise goals",
-      image: "/solutions/enterprise/feature03.svg",
+      image: "/solutions/enterprise/img06.svg",
     },
     {
       title: "Comprehensive Reporting",
       description: "Track and optimize campaigns with real-time data",
-      image: "/solutions/enterprise/feature04.svg",
+      image: "/solutions/enterprise/img07.svg",
     },
   ];
 
@@ -496,7 +496,7 @@ const EnterpriseComponent = () => {
             {/* Right Column */}
             <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/solutions/enterprise/01.svg"
+                src="/solutions/enterprise/main.svg"
                 alt="Image for the Enterprise-Grade Email Deliverability and Compliance section"
                 width={600}
                 height={400}
@@ -531,16 +531,16 @@ const EnterpriseComponent = () => {
             {[
               {
                 title: "Scalable infrastructure for high-volume campaigns",
-                image: "/solutions/enterprise/card01.svg",
+                image: "/solutions/enterprise/img01.svg",
               },
               {
                 title:
                   "Compliance with global regulations like GDPR, SOC-2, and ISO.",
-                image: "/solutions/enterprise/card02.svg",
+                image: "/solutions/enterprise/img02.svg",
               },
               {
                 title: "Advanced DNS and mailbox health management.",
-                image: "/solutions/enterprise/card03.svg",
+                image: "/solutions/enterprise/img03.svg",
               },
             ].map((feature, index) => (
               <div
@@ -579,7 +579,7 @@ const EnterpriseComponent = () => {
       >
         <div className="border border-gray-800 relative w-full md:max-w-[88%] h-[300px] md:h-[500px] overflow-hidden rounded-3xl">
           <Image
-            src="/solutions/startups/startup_02.svg"
+            src="/solutions/enterprise/img08.svg"
             alt="All in one subscription Image"
             layout="fill"
             objectFit="cover"

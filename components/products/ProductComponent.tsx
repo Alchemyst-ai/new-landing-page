@@ -51,7 +51,7 @@ const ProductComponent: React.FC = () => {
           time
         </p>
         <Image
-          src="/products/products_01.svg"
+          src="/sales_automation/img01.svg"
           alt="Maya Platform"
           width={900}
           height={900}
@@ -80,19 +80,19 @@ const ProductComponent: React.FC = () => {
             {
               title:
                 "Intelligent lead management to track and nurture prospects",
-              image: "/products/card_01.svg",
+              image: "/sales_automation/img02.svg",
             },
             {
               title: "Automated follow-ups to keep conversations going.",
-              image: "/products/card_02.svg",
+              image: "/sales_automation/img03.svg",
             },
             {
               title: "Visualized sales pipelines for clear progress tracking.",
-              image: "/products/card_03.svg",
+              image: "/sales_automation/img04.svg",
             },
             {
               title: "Real-time analytics for data-backed decisions.",
-              image: "/products/card_04.svg",
+              image: "/sales_automation/img05.svg",
             },
           ].map((feature, index) => (
             <div
@@ -144,7 +144,7 @@ const ProductComponent: React.FC = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-auto order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
-                  src="/products/whatsapp_automation.svg"
+                  src="/sales_automation/img06.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg mt-8 md:mt-0"
                 />
@@ -260,7 +260,7 @@ const ProductComponent: React.FC = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
-                  src="/products/telegram_automation.svg"
+                  src="/sales_automation/img07.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg"
                 />
@@ -375,7 +375,7 @@ const ProductComponent: React.FC = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105">
                 <img
-                  src="/products/email_warmup.svg"
+                  src="/sales_automation/img08.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg "
                 />
@@ -490,7 +490,7 @@ const ProductComponent: React.FC = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="order-2 lg:order-1 transition-all duration-500 ease-in-out hover:scale-105 p-8">
                 <img
-                  src="/products/unified_automation_platform.svg"
+                  src="/sales_automation/img09.svg"
                   alt="WhatsApp Automation"
                   className="w-full h-auto object-cover rounded-lg"
                 />

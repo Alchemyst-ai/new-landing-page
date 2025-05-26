@@ -71,7 +71,7 @@ export default function CopilotContent() {
             </div>
           </div>
           <Image
-            src="/about-us/01.svg"
+            src="/about-us/1.svg"
             alt="About Us"
             width={1000}
             height={1000}
@@ -99,7 +99,7 @@ export default function CopilotContent() {
             large.
           </p>
           <Image
-            src="/about-us/02.svg"
+            src="/about-us/2.svg"
             alt="About Us"
             width={1000}
             height={1000}

@@ -77,7 +77,7 @@ export default function AutopilotContent() {
             </div>
             <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/dashboard/yourvirtualaiempployee.svg"
+                src="/maya_sales_employee/img01.svg"
                 alt="Autopilot Mode"
                 width={600}
                 height={400}
@@ -167,25 +167,25 @@ export default function AutopilotContent() {
                 title: "Task Automation and Scheduling",
                 description:
                   "Stay organized effortlessly with advanced automation.",
-                image: "/dashboard/keycapabilities_01.svg",
+                image: "/maya_sales_employee/img02.svg",
               },
               {
                 title: "Seamless Integrations",
                 description:
                   "Connect Maya with tools like Slack, Jira, and more for a unified experience.",
-                image: "/dashboard/keycapabilities_02.svg",
+                image: "/maya_sales_employee/img03.svg",
               },
               {
                 title: "Sentiment Analysis",
                 description:
                   "Improve customer interactions with intelligent emotion tracking.",
-                image: "/dashboard/keycapabilities_03.svg",
+                image: "/maya_sales_employee/img04.svg",
               },
               {
                 title: "Data Entry and Reporting",
                 description:
                   "Turn raw data into meaningful insights in seconds.",
-                image: "/dashboard/keycapabilities_04.svg",
+                image: "/maya_sales_employee/img05.svg",
               },
             ].map((feature, index) => (
               <div
@@ -234,19 +234,19 @@ export default function AutopilotContent() {
                 title: "Boost Productivity",
                 description:
                   "Always available, delivering uninterrupted support 24/7.",
-                image: "/dashboard/50xboost.svg",
+                image: "/maya_sales_employee/img08.svg",
               },
               {
                 title: "Eliminate Repetition",
                 description:
                   "Automate mundane tasks and free up human resources for innovation.",
-                image: "/dashboard/eliminaterepetition.svg",
+                image: "/maya_sales_employee/img06.svg",
               },
               {
                 title: "Enhance Decision-Making",
                 description:
                   "Leverage real-time analytics to make informed choices.",
-                image: "/dashboard/enhancedecisionmaking.svg",
+                image: "/maya_sales_employee/img07.svg",
               },
             ].map((feature, index) => (
               <div

@@ -74,7 +74,7 @@ export default function CopilotContent() {
           </div>
           <div className="md:w-1/3 pt-10 hidden md:block">
             <Image
-              src="/dashboard/dashboard_02.svg"
+              src="/maya_sales_employee/img08.svg"
               alt="Circle"
               width={200}
               height={200}
@@ -106,25 +106,25 @@ export default function CopilotContent() {
             {
               title: "AI-Driven Lead Scoring ",
               description: "Focus on high-value opportunities with precision.",
-              image: "/dashboard/dashboard_03.svg",
+              image: "/maya_sales_rep/img01.svg",
             },
             {
               title: "Automated Follow-Ups",
               description:
                 "Never miss a deal with timely, personalized reminders.",
-              image: "/dashboard/dashboard_04.svg",
+              image: "/maya_sales_rep/img02.svg",
             },
             {
               title: "CRM Integration",
               description:
                 "Keep your tools connected for a streamlined workflow.",
-              image: "/dashboard/dashboard_05.svg",
+              image: "/maya_sales_rep/img03.svg",
             },
             {
               title: "Predictive Analytics",
               description:
                 "Plan ahead with accurate forecasts powered by data.",
-              image: "/dashboard/dashboard_06.svg",
+              image: "/maya_sales_rep/img04.svg",
             },
           ].map((feature, index) => (
             <div
@@ -189,7 +189,7 @@ export default function CopilotContent() {
               </div>
               <div className="mt-6 md:mt-0">
                 <Image
-                  src="/dashboard/dashboard_tc.svg"
+                  src="/maya_sales_rep/img05.svg"
                   alt="Sales Process Transformation"
                   width={300}
                   height={600}
