@@ -136,15 +136,15 @@ const SMEandMSMEComponent = () => {
             {[
               {
                 title: "Limited resources for email deliverability.",
-                image: "/solutions/startups/card01.svg", // remember to change these images - jan 4th
+                image: "/solutions/startups/img02.svg", // remember to change these images - jan 4th
               },
               {
                 title: "Difficulty accessing localized and relevant data.",
-                image: "/solutions/startups/card02.svg",
+                image: "/solutions/startups/img03.svg",
               },
               {
                 title: "Lack of compliance with global email standards.",
-                image: "/solutions/startups/card03.svg",
+                image: "/solutions/startups/img04.svg",
               },
             ].map((feature, index) => (
               <div

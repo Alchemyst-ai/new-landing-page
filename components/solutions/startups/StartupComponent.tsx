@@ -50,23 +50,23 @@ const StartupComponent = () => {
     {
       title: "Domain and IP Warmups",
       description: "Boost your sender reputation to ensure inbox placement.",
-      image: "/solutions/startups/feature01.svg",
+      image: "/solutions/startups/img05.svg",
     },
     {
       title: "Placement Tests",
       description:
         "Identify and fix deliverability issues before launching campaigns.",
-      image: "/solutions/startups/feature02.svg",
+      image: "/solutions/startups/img06.svg",
     },
     {
       title: "Custom Playbooks",
       description: "Personalized strategies to maximize your early outreach.",
-      image: "/solutions/startups/feature03.svg",
+      image: "/solutions/startups/img07.svg",
     },
     {
       title: "Real-Time Analytics",
       description: "Get actionable insights to refine your campaigns.",
-      image: "/solutions/startups/feature04.svg",
+      image: "/solutions/startups/img08.svg",
     },
   ];
 
@@ -105,7 +105,7 @@ const StartupComponent = () => {
             {/* Right Column */}
             <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/solutions/startups/startup_01.svg"
+                src="/solutions/startups/img01.svg"
                 alt="StartupComponent Image 01"
                 width={600}
                 height={400}
@@ -141,16 +141,16 @@ const StartupComponent = () => {
             {[
               {
                 title: "Warmup strategies for new domains and IPs",
-                image: "/solutions/startups/card01.svg",
+                image: "/solutions/startups/img02.svg",
               },
               {
                 title: "Scalable solutions that grow with your business",
-                image: "/solutions/startups/card02.svg",
+                image: "/solutions/startups/img03.svg",
               },
               {
                 title:
                   "Cost-effective packages designed for early-stage companies",
-                image: "/solutions/startups/card03.svg",
+                image: "/solutions/startups/img04.svg",
               },
             ].map((feature, index) => (
               <div
@@ -221,7 +221,7 @@ const StartupComponent = () => {
       >
         <div className="border border-gray-800 relative w-full max-w-[88%] h-[300px] md:h-[500px] overflow-hidden rounded-3xl">
           <Image
-            src="/solutions/startups/startup_02.svg"
+            src="/solutions/startups/img09.svg"
             alt="All in one subscription Image"
             layout="fill"
             objectFit="cover"
