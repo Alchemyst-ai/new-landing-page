@@ -28,13 +28,14 @@ export default function TechnologyIntegration() {
               With seamless integration options - either as a proxy, or as a fully managed service - you can up and running in minutes. No need to worry about infrastructure or scaling - pay as you go.
             </p>
             <a
-              className="w-1/3 py-2 rounded-md bg-[#EAEAEA] text-gray-900 hover:bg-gray-700 hover:text-gray-100 font-bold flex items-center justify-center"
+              className="w-full md:w-1/3 py-2 rounded-md bg-[#EAEAEA] text-gray-900 hover:bg-gray-700 hover:text-gray-100 font-bold flex items-center justify-center text-xs md:text-base"
               href="https://platform.getalchemystai.com/auth"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Sign Up Now
-              <ArrowUpRight className="ml-2 h-4 w-4" />
+              <span className="hidden md:inline">Sign Up Now</span>
+              <span className="md:hidden">Sign Up</span>
+              <ArrowUpRight className="ml-1 md:ml-2 h-3 md:h-4 w-3 md:w-4" />
             </a>
           </div>
 
@@ -47,13 +48,14 @@ export default function TechnologyIntegration() {
               With infinite possibilities to leverage our platform, and with an ever-expanding cookbook of examples, ideas and community-powered templates, your next big AI-native SaaS startup idea is just a weekend away.
             </p>
             <a
-              className="w-1/3 py-2 rounded-md border border-gray-600 text-gray-300 hover:bg-gray-800 font-bold flex items-center justify-center"
+              className="w-full md:w-1/3 py-2 rounded-md border border-gray-600 text-gray-300 hover:bg-gray-800 font-bold flex items-center justify-center text-xs md:text-base"
               href="https://github.com/alchemyst-ai/awesome-saas"
               target="_blank"
               rel="noopener noreferrer"
             >
-              See Samples
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <span className="hidden md:inline">See Samples</span>
+              <span className="md:hidden">Samples</span>
+              <ArrowRight className="ml-1 md:ml-2 h-3 md:h-4 w-3 md:w-4" />
             </a>
           </div>
         </div>
