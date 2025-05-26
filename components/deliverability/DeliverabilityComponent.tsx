@@ -234,7 +234,7 @@ const DeliverabilityComponent = () => {
           </div>
           <div className="flex items-center justify-center p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out hover:scale-105">
             <Image
-              src="/deliverability/feature_05.svg"
+              src="/deliverability/icon05.svg"
               alt="feature_icon"
               width={48}
               height={48}
