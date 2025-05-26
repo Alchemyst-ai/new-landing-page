@@ -101,7 +101,7 @@ const SMEandMSMEComponent = () => {
             {/* Right Column */}
             <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/solutions/sme-msme/01.svg"
+                src="/solutions/sme-msme/img01.svg"
                 alt="StartupComponent Image 01"
                 width={600}
                 height={400}
@@ -193,7 +193,7 @@ const SMEandMSMEComponent = () => {
           <div className="flex flex-col md:flex-row items-center md:p-20">
             <div className="p-5 md:p-0 md:w-3/4 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/solutions/sme-msme/02.svg"
+                src="/solutions/sme-msme/img02.svg"
                 alt="Benefits"
                 width={700}
                 height={500}
