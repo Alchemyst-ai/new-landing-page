@@ -16,25 +16,25 @@ const DeliverabilityComponent = () => {
 
   const reasons = [
     {
-      icon: "/deliverability/feature_01.svg",
+      icon: "/deliverability/icon01.svg",
       title: "Warmups",
       description:
         "Build trust with ISPs by gradually increasing sending volume for new domains and IPs",
     },
     {
-      icon: "/deliverability/feature_02.svg",
+      icon: "/deliverability/icon02.svg",
       title: "DNS Optimization",
       description:
         "Ensure your SPF, DKIM, and DMARC records are configured for maximum deliverability.",
     },
     {
-      icon: "/deliverability/feature_03.svg",
+      icon: "/deliverability/icon03.svg",
       title: "Mailbox Health Monitoring",
       description:
         "Stay ahead with real-time reputation insights for your domain and IPs.",
     },
     {
-      icon: "/deliverability/feature_04.svg",
+      icon: "/deliverability/icon04.svg",
       title: "Placement Tests",
       description:
         "Measure inbox versus spam placement and optimize campaigns for better results",
@@ -103,7 +103,7 @@ const DeliverabilityComponent = () => {
           </div>
           <div className="md:w-1/2 transition-all duration-500 ease-in-out hover:scale-105">
             <Image
-              src="/deliverability/d_01.svg"
+              src="/deliverability/img01.svg"
               alt="DELIVERABILITY IMAGE"
               width={600}
               height={400}
@@ -156,17 +156,17 @@ const DeliverabilityComponent = () => {
             {[
               {
                 title: "1 in 5 emails never makes it to the inbox.",
-                image: "/deliverability/card01.svg",
+                image: "/deliverability/img08.svg",
               },
               {
                 title:
                   "68% of customers lose trust after receiving spam-marked emails.",
-                image: "/deliverability/card02.svg",
+                image: "/deliverability/img02.svg",
               },
               {
                 title:
                   "Poor deliverability can reduce campaign ROI by up to 50%.",
-                image: "/deliverability/card03.svg",
+                image: "/deliverability/img03.svg",
               },
             ].map((feature, index) => (
               <div
@@ -270,7 +270,7 @@ const DeliverabilityComponent = () => {
           <div className="flex flex-col md:flex-row items-center md:p-20">
             <div className="p-5 md:p-0 md:w-3/4 transition-all duration-500 ease-in-out hover:scale-105">
               <Image
-                src="/deliverability/d_05.svg"
+                src="/deliverability/img04.svg"
                 alt="Benefits"
                 width={600}
                 height={400}
@@ -348,19 +348,19 @@ const DeliverabilityComponent = () => {
                 title: "Audit Your Current Deliverability",
                 description:
                   "Automated tools and seamless integration for hassle-free deliverability management.",
-                image: "/deliverability/card04.svg",
+                image: "/deliverability/img05.svg",
               },
               {
                 title: "Optimize Content and Strategy",
                 description:
                   "Leverage AI insights to create spam-proof and engaging campaigns",
-                image: "/deliverability/card05.svg",
+                image: "/deliverability/img06.svg",
               },
               {
                 title: "Track Performance in Real Time",
                 description:
                   "Adapt on the go with actionable analytics and monitoring tools.",
-                image: "/deliverability/card06_2.svg",
+                image: "/deliverability/img07.svg",
               },
             ].map((feature, index) => (
               <div
