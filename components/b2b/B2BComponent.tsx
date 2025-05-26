@@ -15,37 +15,37 @@ const fadeInUp = {
 const B2BComponent = () => {
   const features = [
     {
-      icon: "/b2b/card01.svg",
+      icon: "/b2b/icon01.svg",
       title: "AI Data Enrichment",
       description:
         "Discover which prospects are actively searching for your products or services with intent data insights. By understanding the purchasing signals of your audience, you can prioritize high-value leads and approach them with tailored messaging at the right time.",
     },
     {
-      icon: "/b2b/card02.svg",
+      icon: "/b2b/icon02.svg",
       title: "Intent Data Analysis",
       description:
         "Discover which prospects are actively searching for your products or services with intent data insights. By understanding the purchasing signals of your audience, you can prioritize high-value leads and approach them with tailored messaging at the right time.",
     },
     {
-      icon: "/b2b/card03.svg",
+      icon: "/b2b/icon03.svg",
       title: "Technographic Insights",
       description:
         "Gain a competitive edge by learning about the technology stacks your prospects are using. Use this information to tailor your outreach strategies, positioning your offerings as complementary solutions to their existing tools and workflows.",
     },
     {
-      icon: "/b2b/card04.svg",
+      icon: "/b2b/icon04.svg",
       title: "Comprehensive Coverage",
       description:
         "Access a vast database of millions of contacts across industries and regions. Our platform provides you with detailed profiles, including job roles, company ",
     },
     {
-      icon: "/b2b/card05.svg",
+      icon: "/b2b/icon05.svg",
       title: "Customizable Workflows",
       description:
         "Automate repetitive tasks like lead qualification and data segmentation. Our platform enables you to build workflows that align with your unique business processes, ensuring efficiency and scalability.",
     },
     {
-      icon: "/b2b/card06.svg",
+      icon: "/b2b/icon06.svg",
       title: "Customizable Workflows",
       description:
         "Automate repetitive tasks like lead qualification and data segmentation. Our platform enables you to build workflows that align with your unique business processes, ensuring efficiency and scalability.",
@@ -54,25 +54,25 @@ const B2BComponent = () => {
 
   const reasons = [
     {
-      icon: "/b2b/card07.svg",
+      icon: "/b2b/icon07.svg",
       title: "Save Time",
       description:
         "Our platform eliminates the need for manual data collection and verification, saving countless hours for your team. Instead of spending time cleaning spreadsheets or sourcing information, your sales and marketing teams can focus on closing deals and creating impactful campaigns.",
     },
     {
-      icon: "/b2b/card08.svg",
+      icon: "/b2b/icon08.svg",
       title: "Target High-Value Prospects",
       description:
         "Precision targeting is the cornerstone of our platform. By leveraging accurate data, your team can focus on prospects that are more likely to convert. This ensures that resources are spent wisely, maximizing the effectiveness of every campaign.",
     },
     {
-      icon: "/b2b/card09.svg",
+      icon: "/b2b/icon09.svg",
       title: "Boost ROI",
       description:
         "With actionable insights derived from our advanced analytics, you can make smarter investments in your outreach efforts. Businesses that use our platform report a significant increase in their return on investment by achieving better results",
     },
     {
-      icon: "/b2b/card10.svg",
+      icon: "/b2b/icon10.svg",
       title: "Improve Efficiency",
       description:
         "Our platform is designed to streamline your operations. From automated workflows to predictive analytics, every feature is aimed at enhancing productivity. This allows your team to achieve more in less time, setting the stage for sustained growth.",

@@ -234,7 +234,7 @@ export default function AutopilotContent() {
                 title: "Boost Productivity",
                 description:
                   "Always available, delivering uninterrupted support 24/7.",
-                image: "/dashboard/50xboost.svg",
+                image: "/maya_sales_employee/img08.svg",
               },
               {
                 title: "Eliminate Repetition",
