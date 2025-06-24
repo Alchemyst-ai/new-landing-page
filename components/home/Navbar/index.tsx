@@ -144,21 +144,28 @@ const Navbar: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Link
-                    href={"/agents" + (item.link || "")}
-                    className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm ${activeMenu === item.title ? "text-white" : ""
-                      }`}
-                  >
-                    <span>{item.title}</span>
-                    {item.children && (
+                  {item.children ? (
+                    <div
+                      className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm cursor-pointer ${activeMenu === item.title ? "text-white" : ""
+                        }`}
+                    >
+                      <span>{item.title}</span>
                       <motion.div
                         animate={{ rotate: activeMenu === item.title ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
                         <ChevronDown className="w-3 h-3 opacity-60" />
                       </motion.div>
-                    )}
-                  </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      href={"/agents" + (item.link || "")}
+                      className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm ${activeMenu === item.title ? "text-white" : ""
+                        }`}
+                    >
+                      <span>{item.title}</span>
+                    </Link>
+                  )}
                 </motion.div>
               </div>
             ))}
