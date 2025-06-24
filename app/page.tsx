@@ -119,7 +119,7 @@ export default function HomePage() {
 
           <FAQSection />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

@@ -132,8 +132,8 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Nav Items Dropdown */}
-          <div className="hidden md:flex items-center space-x-6">
-            {menuData.map((item, index) => (
+          {/* <div className="hidden md:flex items-center space-x-6"> */}
+            {/* {menuData.map((item, index) => (
               <div
                 key={index}
                 className="relative"
@@ -168,20 +168,10 @@ const Navbar: React.FC = () => {
                   )}
                 </motion.div>
               </div>
-            ))}
+            ))} */}
 
-            {/* Pricing Link */}
-            <Link href="/pricing">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
-              >
-                Pricing
-              </motion.div>
-            </Link>
-          </div>
+
+          {/* </div> */}
 
           {/* Centralized Dropdown Menu */}
           <AnimatePresence>
@@ -198,6 +188,17 @@ const Navbar: React.FC = () => {
         {/* Partner with us button and Book a Demo */}
         <div className="flex items-center space-x-3">
           <div className="hidden md:flex items-center space-x-3">
+            {/* Pricing Link */}
+            <Link href="/pricing">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="text-white/80 hover:text-white transition-colors duration-200 text-sm mr-4"
+              >
+                Pricing
+              </motion.div>
+            </Link>
             <Link
               href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
               target="_blank"
