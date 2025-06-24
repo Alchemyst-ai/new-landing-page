@@ -79,10 +79,10 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Solutions</h3>
             {[
-              { name: "Startups", link: "/solutions/startups" },
-              { name: "Midmarket", link: "/solutions/midmarket" },
-              { name: "Enterprises", link: "/solutions/enterprise" },
-              { name: "SMEs and MSMEs", link: "/solutions/sme-msme" },
+              { name: "Startups", link: "/agents/solutions/startups" },
+              { name: "Midmarket", link: "/agents/solutions/midmarket" },
+              { name: "Enterprises", link: "/agents/solutions/enterprise" },
+              { name: "SMEs and MSMEs", link: "/agents/solutions/sme-msme" },
             ].map((item, index) => (
               <Link
                 key={index}
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-2">
             <div >
               <Link
-                href="/agents/pricing"
+                href="/pricing"
                 className="font-bold text-lg hover:text-gray-300 transition-colors"
               >
                 Pricing
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg mb-2">Resources</h3>
             {[
-              { name: "About Us", link: "/about-us" },
+              { name: "About Us", link: "/agents/about-us" },
               // { name: "News Studio", link: "/news-studio" },
               { name: "Alchemyst Labs", link: null },
               // {
