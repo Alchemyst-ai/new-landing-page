@@ -12,6 +12,7 @@ interface PricingCardProps {
   description: string;
   features: PricingFeature[];
   ctaText: string;
+  ctaLink?: string;
   popular?: boolean;
   customColor?: string;
 }
@@ -23,6 +24,7 @@ const PricingCard = ({
   description,
   features,
   ctaText,
+  ctaLink,
   popular = false,
   customColor,
 }: PricingCardProps) => {
@@ -73,6 +75,7 @@ const PricingCard = ({
         }}
         className={popular ? "border-2 hover:opacity-90" : ""}
         variant={popular ? "default" : "outline"}
+        onClick={() => ctaLink && window.open(ctaLink, '_blank')}
       >
         {ctaText}
       </Button>

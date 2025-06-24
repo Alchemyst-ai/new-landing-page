@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import PricingCard from "./PricingCard";
 
@@ -16,7 +17,8 @@ const pricingPlans = [
       { text: "50 DeepResearch uses/day" },
       { text: "Contextual Research" }
     ],
-    ctaText: "Start now"
+    ctaText: "Talk to the Team",
+    ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true&layout=mobile"
   },
   {
     title: "Accelerate",
@@ -32,7 +34,8 @@ const pricingPlans = [
       { text: "250 DeepResearch uses/day" },
       { text: "Contextual Research" }
     ],
-    ctaText: "Start now",
+    ctaText: "Talk to the Team",
+    ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true&layout=mobile",
     popular: true,
     customColor: "#FF7900"
   },
@@ -50,7 +53,8 @@ const pricingPlans = [
       { text: "1000 DeepResearch uses/day" },
       { text: "Contextual Research" }
     ],
-    ctaText: "Start now"
+    ctaText: "Talk to the Team",
+    ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true&layout=mobile"
   },
   {
     title: "Enterprise",
@@ -66,7 +70,8 @@ const pricingPlans = [
       { text: "Custom DeepResearch uses/day" },
       { text: "Contextual Research" }
     ],
-    ctaText: "Start now"
+    ctaText: "Talk to the Team",
+    ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true&layout=mobile"
   }
 ];
 
@@ -96,6 +101,7 @@ const PricingSection = () => {
               description={plan.description}
               features={plan.features}
               ctaText={plan.ctaText}
+              ctaLink={plan.ctaLink}
               popular={plan.popular}
               customColor={plan.title === "Pro" ? "#ED9F36" : undefined}
             />
