@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import SandC_Component from "@/components/security&compliance/SandC_Component";
 
 const page = () => {

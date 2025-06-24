@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import { ChevronLeft } from "lucide-react";
 
 const PrivacyPolicy: React.FC = () => {

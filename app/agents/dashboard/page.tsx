@@ -2,7 +2,7 @@
 import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import DashboardToggle from "@/components/dashboard/DashboardToggle";
 import CopilotContent from "@/components/dashboard/CopilotContent";
 import AutopilotContent from "@/components/dashboard/AutopilotContent";

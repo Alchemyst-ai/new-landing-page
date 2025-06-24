@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import CustomCursor from "@/components/home/CustomCursor";
 import NewsStudioComponent from "@/components/news-studio/NewsStudioComponent";
 

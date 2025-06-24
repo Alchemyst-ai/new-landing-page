@@ -7,7 +7,7 @@ import PricingCard from "@/components/pricing/PricingCard";
 import TopupPricingCard from "@/components/pricing/TopupPricingCard";
 import EnterpriseCard from "@/components/pricing/EnterpriseCard";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import { useCountryDetection } from "@/components/CountryDetector";
 import DetailedComparison from "@/components/pricing/DetailedComparison";
 

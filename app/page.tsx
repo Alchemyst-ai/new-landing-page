@@ -3,22 +3,18 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import "./globals.css";
 import { useEffect } from "react";
-import Link from "next/link";
 import HeroSection from "@/components/components-new/HeroSection";
-import { FeatureCard } from "@/components/components-new/features/feature-card";
 import { FeaturesSection } from "@/components/components-new/features";
 import UseCasesSection from "@/components/components-new/UseCasesSection";
-import HowItWorks from "@/components/components-new/HowItWorks";
 import CodeCompiler from "@/components/components-new/CodeCompiler";
 import Ecosystem from "@/components/components-new/Ecosystem";
 import TechnologyIntegration from "@/components/components-new/TechnologyIntegration";
-import Testimonials from "@/components/components-new/Testimonials";
 import FAQSection from "@/components/components-new/FAQSection";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
 });
-const Footer = dynamic(() => import("@/components/home/Footer"));
+const Footer = dynamic(() => import("@/components/components-new/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
 
 export default function HomePage() {
@@ -123,7 +119,7 @@ export default function HomePage() {
 
           <FAQSection />
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

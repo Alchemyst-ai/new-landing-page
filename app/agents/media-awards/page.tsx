@@ -1,5 +1,5 @@
 import CustomCursor from "@/components/home/CustomCursor";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import MediaAndCoverage from "@/components/home/MediaAndCoverage";
 import Navbar from "@/components/home/Navbar";
 import TalkToFounder from "@/components/home/TalkToFounder";

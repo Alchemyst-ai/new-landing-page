@@ -1,4 +1,4 @@
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import Navbar from "@/components/home/Navbar";
 import PricingSection from "@/components/PricingSection";
 import CustomCursor from "@/components/home/CustomCursor";

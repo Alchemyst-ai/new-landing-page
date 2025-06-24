@@ -15,7 +15,7 @@ const AgentsCard = dynamic(() => import("@/components/home/AgentsCard"));
 const InfoCard = dynamic(() => import("@/components/home/InfoCard"));
 const AboutUs = dynamic(() => import("@/components/home/Aboutus"));
 const IndiaAI = dynamic(() => import("@/components/home/IndiaAI"));
-const Footer = dynamic(() => import("@/components/home/Footer"));
+const Footer = dynamic(() => import("@/components/components-new/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
 const Steps = dynamic(() => import("@/components/home/Steps"));
 const Hero = dynamic(() => import("@/components/home/Hero"));

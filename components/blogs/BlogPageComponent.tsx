@@ -8,7 +8,7 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/components-new/Footer";
 import CustomCursor from "@/components/home/CustomCursor";
 import EndingCard from "@/components/home/EndingCard";
 import { useState } from "react";
