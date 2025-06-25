@@ -16,7 +16,7 @@ export default function PricingPage() {
       <main className="flex-grow">
         <PricingSection />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 } 
