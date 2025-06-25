@@ -274,15 +274,37 @@ const Navbar: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: "-100%" }}
                   transition={{ duration: 0.3 }}
-                  className="w-full space-y-2"
+                  className="w-full space-y-4"
                 >
-                  {menuData.map((item) => renderMobileMenuItem(item))}
+                  {/* {menuData.map((item) => renderMobileMenuItem(item))} */}
+                  
+                  {/* Pricing Link */}
                   <Link
-                    href="/agents/pricing"
-                    className="block py-2 text-white hover:text-orange-00 transition-colors duration-200"
+                    href="/pricing"
+                    className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
                     onClick={toggleMenu}
                   >
                     Pricing
+                  </Link>
+                  
+                  {/* Get in Touch */}
+                  <Link
+                    href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
+                    className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                    onClick={toggleMenu}
+                  >
+                    Get in Touch
+                  </Link>
+                  
+                  {/* GitHub Link */}
+                  <Link
+                    href="https://github.com/alchemyst-ai/awesome-saas"
+                    target="_blank"
+                    className="flex items-center py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                    onClick={toggleMenu}
+                  >
+                    <FaGithub className="mr-3 text-xl" />
+                    GitHub
                   </Link>
                 </motion.div>
               </motion.div>
