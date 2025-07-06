@@ -9,6 +9,7 @@ import Button from "../Button";
 import DropdownMenu from "./DropdownMenu";
 import { menuData, MenuObject } from "../../types/menu";
 import { FaGithub } from "react-icons/fa";
+import GitHubButtonWithStars from "./GithubButtonWithStars";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -226,12 +227,13 @@ const Navbar: React.FC = () => {
                 Get in Touch
               </Button>
             </Link>
-            <Link
+            <GitHubButtonWithStars />
+            {/* <Link
               href="https://github.com/alchemyst-ai/awesome-saas"
               target="_blank"
             >
               <Button variant="secondaryNoHover" className="bg-transparent py-2 mx-2 text-4xl hover:scale-[1.1] rounded-full"><FaGithub /></Button>
-            </Link>
+            </Link> */}
           </div>
           <button
             className="md:hidden focus:outline-none p-2 rounded-full text-white hover:bg-white/10 transition-colors"
@@ -297,7 +299,7 @@ const Navbar: React.FC = () => {
                   </Link>
                   
                   {/* GitHub Link */}
-                  <Link
+                  {/* <Link
                     href="https://github.com/alchemyst-ai/awesome-saas"
                     target="_blank"
                     className="flex items-center py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
@@ -305,7 +307,8 @@ const Navbar: React.FC = () => {
                   >
                     <FaGithub className="mr-3 text-xl" />
                     GitHub
-                  </Link>
+                  </Link> */}
+                  <GitHubButtonWithStars />
                 </motion.div>
               </motion.div>
             )}
