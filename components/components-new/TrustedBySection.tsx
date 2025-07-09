@@ -33,6 +33,12 @@ const TrustedBySection = () => {
     { src: '/public-new/trusted/kotak.png', scale: 0.7 },
     { src: '/public-new/trusted/kuberns.png', scale: 0.5 },
     { src: '/public-new/trusted/toyota.png', scale: 0.85 },
+    { src: '/public-new/trusted/razorpay.png', scale: 0.85 },
+    { src: '/public-new/trusted/microsoft.png', scale: 0.85 },
+    { src: '/public-new/trusted/ycombinator.png', scale: 0.85 },
+    { src: '/public-new/trusted/texasinstruments.png', scale: 0.85 },
+    { src: '/public-new/trusted/entrepreneurfirst.png', scale: 0.5 },
+    { src: '/public-new/trusted/google1.png', scale: 0.85 },
   ];
 
   // Duplicate images to create infinite scroll effect
