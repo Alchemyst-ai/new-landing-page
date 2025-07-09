@@ -10,6 +10,7 @@ import DropdownMenu from "./DropdownMenu";
 import { menuData, MenuObject } from "../../types/menu";
 import { FaGithub } from "react-icons/fa";
 import GitHubButtonWithStars from "./GithubButtonWithStars";
+import TwitterButtonWithFollowers from "./TwitterButtonFollowers";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -228,6 +229,7 @@ const Navbar: React.FC = () => {
               </Button>
             </Link>
             <GitHubButtonWithStars />
+            <TwitterButtonWithFollowers />
             {/* <Link
               href="https://github.com/alchemyst-ai/awesome-saas"
               target="_blank"

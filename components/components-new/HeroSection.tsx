@@ -76,14 +76,27 @@ export default function HeroSection() {
           />
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-3 md:pb-6">The Swiss Army Knife</span>
-          <br />
-          <span className="py-2 md:py-3">
-            <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">for your next GenAI</span>&nbsp;<span className={`inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[80px] sm:h-[100px] md:h-[125px] w-[120px] sm:w-[180px] md:w-[220px] lg:w-[250px] text-transparent bg-clip-text`}>{displayText}<span className="animate-pulse">|</span>
+        <div className="w-full md:w-[80%] xl:w-[60%] mx-auto text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-3 md:pb-6">
+              The Memory and Retrieval Layer for your next GenAI
             </span>
-          </span>
-        </h1>
+            <br />
+            <span className="py-2 md:py-3">
+              <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">
+                for your next GenAI
+              </span>
+              &nbsp;
+              <span
+                className="inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[80px] sm:h-[100px] md:h-[125px] w-[120px] sm:w-[180px] md:w-[220px] lg:w-[250px] text-transparent bg-clip-text"
+              >
+                {displayText}
+                <span className="animate-pulse">|</span>
+              </span>
+            </span>
+          </h1>
+        </div>
+
 
         <div className="text-sm sm:text-base md:text-lg text-gray-200 max-w-6xl mx-auto mb-6 md:mb-10 px-2">
           Deliver products, not surveys on the next AI tool to use. <br /><b className="text-bold">Ship 20x faster with the cookiecutter of the GenAI Stack.</b>
