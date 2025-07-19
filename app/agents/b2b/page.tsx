@@ -4,9 +4,9 @@ import Head from "next/head";
 import "../../globals.css";
 import { useEffect } from "react";
 
-const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
-  ssr: false,
-});
+// const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
+//   ssr: false,
+// });
 const Architecture = dynamic(() => import("@/components/home/Architecture"));
 const CaseStudies = dynamic(() => import("@/components/home/CaseStudies"));
 const EndingCard = dynamic(() => import("@/components/home/EndingCard"));
@@ -101,7 +101,7 @@ export default function B2BPage() {
           <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
         </header>
         <div className="hidden lg:block">
-          <CustomCursor />
+          {/* <CustomCursor /> */}
         </div>
 
         <main className="flex-grow flex flex-col gap-8 justify-center items-center md:pt-16">
