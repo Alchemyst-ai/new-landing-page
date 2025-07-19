@@ -6,7 +6,7 @@ const USER_ID = process.env.TWITTER_USER_ID!;
 export async function GET() {
   try {
     const res = await fetch(
-      `https://api.twitter.com/2/users/${USER_ID}?user.fields=public_metrics`,
+      `https://api.twitter.com/2/users/${USER_ID}/followers`,
       {
         headers: {
           Authorization: `Bearer ${BEARER_TOKEN}`,
@@ -16,6 +16,7 @@ export async function GET() {
 
     if (!res.ok) {
       const errorData = await res.json();
+      console.log("TEH ERROR DATA", errorData)
       return NextResponse.json({ error: errorData }, { status: res.status });
     }
 
