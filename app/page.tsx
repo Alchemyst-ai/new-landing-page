@@ -11,6 +11,7 @@ import Ecosystem from "@/components/components-new/Ecosystem";
 import TechnologyIntegration from "@/components/components-new/TechnologyIntegration";
 import FAQSection from "@/components/components-new/FAQSection";
 import StatsSection from "@/components/components-new/StatsSection";
+import SchedulePage from "./Schedule";
 
 const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
   ssr: false,
@@ -117,6 +118,7 @@ export default function HomePage() {
           <StatsSection />
 
           <Ecosystem />
+          <SchedulePage />
 
           <TechnologyIntegration />
 
