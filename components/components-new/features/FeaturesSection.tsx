@@ -9,7 +9,7 @@ export default function FeaturesSection() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-          Build <span className="bg-gradient-text">Enterprise-Grade</span> AI Agents Within Weekends
+          From <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">prototype to production</span>-ready AI in 48 hours.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

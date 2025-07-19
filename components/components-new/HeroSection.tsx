@@ -65,48 +65,38 @@ export default function HeroSection() {
 
       <div className="w-full max-w-8xl mt-10 md:mt-20 mx-auto text-center relative z-10 px-4">
         {/* F6S Badge */}
-        <div className="inline-flex items-center tracking-tighter gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-black/70 rounded-full text-white text-sm md:text-base font-medium animate-fade-in">
+        <div className="inline-flex items-center tracking-tighter gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white text-sm md:text-base font-medium animate-fade-in">
           <span>✨ #1 in Gen AI category</span>
           <Image
             src="/public-new/f6s_0.png"
             alt="F6S"
-            width={30}
-            height={30}
-            className="h-auto w-6 md:w-auto"
+            width={20}
+            height={20}
+            className="h-6 w-7"
           />
         </div>
 
-        <div className="w-full md:w-[80%] xl:w-[60%] mx-auto text-center">
+        <div className="w-full md:w-[80%] xl:w-[80%] mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg relative pb-3 md:pb-6">
-              The Memory and Retrieval Layer for your next GenAI
-            </span>
-            <br />
-            <span className="py-2 md:py-3">
-              <span className="bg-clip-text drop-shadow-lg relative text-transparent bg-gradient-to-b from-white to-gray-400">
-                for your next GenAI
-              </span>
-              &nbsp;
-              <span
-                className="inline-block text-left bg-gradient-to-br to-[#ff0000] from-[#ffee00] h-[80px] sm:h-[100px] md:h-[125px] w-[120px] sm:w-[180px] md:w-[220px] lg:w-[250px] text-transparent bg-clip-text"
-              >
-                {displayText}
-                <span className="animate-pulse">|</span>
-              </span>
+              AI agents forget, <br />
+              Alchemyst remembers.
             </span>
           </h1>
         </div>
 
-
-        <div className="text-sm sm:text-base md:text-lg text-gray-200 max-w-6xl mx-auto mb-6 md:mb-10 px-2">
-          Deliver products, not surveys on the next AI tool to use. <br /><b className="text-bold">Ship 20x faster with the cookiecutter of the GenAI Stack.</b>
+        <div className="text-sm sm:text-base md:text-lg text-gray-200 max-w-6xl mt-10 mx-auto mb-6 md:mb-10 px-2">
+          Context, intent, and everything in between <br />
+          <b className="text-bold bg-clip-text text-transparent bg-gradient-to-b from-[#d1d5db] to-white">
+            Launch production-ready AI agents 20x faster with prebuilt templates and tools
+          </b>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-          <Link href="#get-started"><Button className="bg-white hover:bg-white/90 text-black text-base md:text-lg py-4 md:py-6 px-6 md:px-8 font-bold">
+          <Link href="#get-started"><Button className="border border-white bg-white hover:bg-white/90 text-black text-base md:text-lg py-4 md:py-6 px-6 md:px-8 font-bold rounded-lg">
             Get Started
           </Button></Link>
-          <Link href="https://platform.getalchemystai.com/auth"><Button variant="outline" className="border-2 border-white text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8 bg-black/30 font-medium">
+          <Link href="https://platform.getalchemystai.com/auth"><Button className="border border-white text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8 bg-transparent hover:bg-white/20 font-bold rounded-lg">
             Sign Up
           </Button></Link>
         </div>
