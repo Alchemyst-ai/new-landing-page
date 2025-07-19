@@ -136,20 +136,50 @@ const Navbar: React.FC = () => {
 
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
-          <Link href="/case-study" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
-            Case Studies
+          <Link 
+            href="/case-study" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Case Studies
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link href="/security&compliance" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
-            Security
+          <Link 
+            href="/security&compliance" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Security
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link href="#" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
-            Docs
+          <Link 
+            href="#" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Docs
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link href="/pricing" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
-            Pricing
+          <Link 
+            href="/pricing" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Pricing
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link href="/research" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
-            Research
+          <Link 
+            href="/research" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Research
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
           </Link>
         </div>
 
