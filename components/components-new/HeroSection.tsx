@@ -88,7 +88,7 @@ export default function HeroSection() {
         <div className="text-sm sm:text-base md:text-lg text-gray-200 max-w-6xl mt-10 mx-auto mb-6 md:mb-10 px-2">
           Context, intent, and everything in between <br />
           <b className="text-bold bg-clip-text text-transparent bg-gradient-to-b from-[#d1d5db] to-white">
-            Launch production-ready AI agents 20x faster with prebuilt templates and tools
+            Launch production-ready AI agents 20x faster with pre-built templates and tools
           </b>
         </div>
 

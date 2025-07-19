@@ -94,7 +94,7 @@ const FAQSection = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-6 text-white bg-clip-text text-transparent"
           >
-            Questions & Answers
+            Got Questions?
           </motion.h2>
 
           <motion.p
@@ -104,7 +104,7 @@ const FAQSection = () => {
             viewport={{ once: true }}
             className="text-gray-400 mb-12"
           >
-            Get answers to commonly asked questions about Alchemyst AI and how it can transform your business.
+            Get answers to commonly asked questions about Alchemyst AI and how it can transform your business. We're here to help.
           </motion.p>
         </div>
 

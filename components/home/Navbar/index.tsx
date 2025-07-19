@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
 
         {/* Partner with us button and Book a Demo */}
         <div className="flex items-center space-x-3">
-          <TwitterButtonWithFollowers />
+          {/* <TwitterButtonWithFollowers /> */}
           <GitHubButtonWithStars />
           
         </div>
