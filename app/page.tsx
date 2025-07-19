@@ -13,9 +13,7 @@ import FAQSection from "@/components/components-new/FAQSection";
 import StatsSection from "@/components/components-new/StatsSection";
 import SchedulePage from "./Schedule";
 
-const CustomCursor = dynamic(() => import("@/components/home/CustomCursor"), {
-  ssr: false,
-});
+
 const Footer = dynamic(() => import("@/components/components-new/Footer"));
 const Navbar = dynamic(() => import("@/components/home/Navbar"));
 
@@ -100,9 +98,10 @@ export default function HomePage() {
           <Navbar />
           <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
         </header>
-        <div className="hidden lg:block">
+        {/* Commented out custom cursor */}
+        {/* <div className="hidden lg:block">
           <CustomCursor />
-        </div>
+        </div> */}
 
         <main className="w-full">
           <HeroSection />

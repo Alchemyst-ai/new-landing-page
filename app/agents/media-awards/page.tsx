@@ -1,4 +1,4 @@
-import CustomCursor from "@/components/home/CustomCursor";
+// import CustomCursor from "@/components/home/CustomCursor";
 import Footer from "@/components/components-new/Footer";
 import MediaAndCoverage from "@/components/home/MediaAndCoverage";
 import Navbar from "@/components/home/Navbar";
@@ -14,7 +14,8 @@ export default function ProductPage() {
         <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />
       </header>
       <div className="hidden md:block">
-        <CustomCursor />
+        {/* Commented out custom cursor */}
+        {/* <CustomCursor /> */}
       </div>
       <main className="flex-grow flex flex-col gap-8 justify-center items-center w-full">
         <Hero />

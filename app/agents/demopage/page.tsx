@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/components-new/Footer";
-import CustomCursor from "@/components/home/CustomCursor";
+// import CustomCursor from "@/components/home/CustomCursor";
 import DemoPageComponent from "@/components/demopage/DemoPageComponent";
 
 const page = () => {
