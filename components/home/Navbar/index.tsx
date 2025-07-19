@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
     <div className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center">
       <nav
         ref={navRef}
-        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl shadow-lg py-3 px-6 flex justify-between items-center w-full md:w-[80%] max-w-6xl"
+        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl flex justify-between items-center w-[90%] px-6 py-2"
       >
         {/* Alchemyst Logo */}
         <div className="flex items-center space-x-4">
@@ -132,118 +132,32 @@ const Navbar: React.FC = () => {
               className="h-7 w-auto object-contain"
             />
           </Link>
+        </div>
 
-          {/* Nav Items Dropdown */}
-          {/* <div className="hidden md:flex items-center space-x-6"> */}
-            {/* {menuData.map((item, index) => (
-              <div
-                key={index}
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(item.title)}
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  {item.children ? (
-                    <div
-                      className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm cursor-pointer ${activeMenu === item.title ? "text-white" : ""
-                        }`}
-                    >
-                      <span>{item.title}</span>
-                      <motion.div
-                        animate={{ rotate: activeMenu === item.title ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ChevronDown className="w-3 h-3 opacity-60" />
-                      </motion.div>
-                    </div>
-                  ) : (
-                    <Link
-                      href={"/agents" + (item.link || "")}
-                      className={`flex items-center space-x-1 text-white/80 hover:text-white transition-colors duration-200 text-sm ${activeMenu === item.title ? "text-white" : ""
-                        }`}
-                    >
-                      <span>{item.title}</span>
-                    </Link>
-                  )}
-                </motion.div>
-              </div>
-            ))} */}
-
-
-          {/* </div> */}
-
-          {/* Centralized Dropdown Menu */}
-          <AnimatePresence>
-            {activeMenu && (
-              <DropdownMenu
-                item={menuData.find((item) => item.title === activeMenu)!}
-                isOpen={!!activeMenu}
-                onClose={() => setActiveMenu(null)}
-              />
-            )}
-          </AnimatePresence>
+        {/* Centered Navigation Sections */}
+        <div className="flex items-center space-x-6">
+          <Link href="/case-study" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
+            Case Studies
+          </Link>
+          <Link href="/security&compliance" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
+            Security
+          </Link>
+          <Link href="#" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
+            Docs
+          </Link>
+          <Link href="/pricing" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
+            Pricing
+          </Link>
+          <Link href="/research" className="text-white/80 hover:text-white transition-colors duration-200 text-sm">
+            Research
+          </Link>
         </div>
 
         {/* Partner with us button and Book a Demo */}
         <div className="flex items-center space-x-3">
-          <div className="hidden md:flex items-center space-x-3">
-            {/* Pricing Link */}
-            <Link href="/pricing">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="text-white/80 hover:text-white transition-colors duration-200 text-sm mr-4"
-              >
-                Pricing
-              </motion.div>
-            </Link>
-            <Link
-              href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
-              target="_blank"
-            >
-              <Button
-                variant="secondary"
-                icon={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0V11.25"
-                    />
-                  </svg>
-                }
-                className="text-sm h-8 px-3 border-white/50"
-              >
-                Get in Touch
-              </Button>
-            </Link>
-            <GitHubButtonWithStars />
-            <TwitterButtonWithFollowers />
-            {/* <Link
-              href="https://github.com/alchemyst-ai/awesome-saas"
-              target="_blank"
-            >
-              <Button variant="secondaryNoHover" className="bg-transparent py-2 mx-2 text-4xl hover:scale-[1.1] rounded-full"><FaGithub /></Button>
-            </Link> */}
-          </div>
-          <button
-            className="md:hidden focus:outline-none p-2 rounded-full text-white hover:bg-white/10 transition-colors"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <TwitterButtonWithFollowers />
+          <GitHubButtonWithStars />
+          
         </div>
 
         {/* Mobile Menu */}

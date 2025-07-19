@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
 
 const GitHubButtonWithStars = () => {
   const [stars, setStars] = useState<number | null>(null);
@@ -28,18 +28,18 @@ const GitHubButtonWithStars = () => {
       rel="noopener noreferrer"
       className="inline-flex items-center gap-2"
     >
-      <Button
-        variant="secondaryNoHover"
-        className="bg-transparent py-2 text-3xl hover:scale-[1.1] rounded-full flex gap-2 p-0"
+      <RainbowButton 
+        variant="default" 
+        size="default" 
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-black rounded-full"
       >
-        <FaGithub />
-      {stars !== null && (
-        <div className=" border border-gray-300 text-sm text-white px-2 py-1 rounded-md font-medium shadow-sm hover:shadow transition">
-          ⭐ {stars.toLocaleString()} Stars
-        </div>
-      )}
-      </Button>
-
+        <FaGithub className="size-5" />
+        {stars !== null && (
+          <span className="ml-2">
+            Star on GitHub ★ {stars.toLocaleString()}
+          </span>
+        )}
+      </RainbowButton>
     </Link>
   );
 };
