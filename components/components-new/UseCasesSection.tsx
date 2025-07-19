@@ -30,11 +30,10 @@ const TabButton = ({
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 font-semibold text-sm border-b-2 transition-colors ${
-        isActive
+      className={`px-6 py-3 font-semibold text-sm border-b-2 transition-colors ${isActive
           ? "border-[#FF9E3C] text-[#FF9E3C]"
           : "border-transparent text-gray-400 hover:text-white"
-      }`}
+        }`}
     >
       {label}
     </button>
@@ -113,11 +112,10 @@ export default function UseCasesSection() {
             USE CASES
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">
-            Perfect For Your AI Agents
+            Built for jobs that matter
           </h2>
           <p className="text-center text-gray-300 max-w-3xl leading-relaxed">
-            We&apos;re developers building tools for developers. Our mission: to make AI applications that understand
-            context and remember users, creating more natural and efficient interactions.
+            No more stateless AI agents. Alchemyst is designed to understand context, remember users, and power seamless, human-like interactions.
           </p>
         </div>
 

@@ -11,7 +11,7 @@ export default function TechnologyIntegration() {
             ROAD TO PROD: TWO POWERFUL WAYS
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            Hey Neo, choose your pill
+          Want speed AND control? We have got you covered!
           </h2>
           <p className="text-center text-muted-foreground max-w-6xl leading-relaxed">
             Choose the style that fits your needs: use our fully managed platform for convenience, or build on our APIs for complete control.

@@ -63,7 +63,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-background"></div>
       </div>
 
-      <div className="w-full max-w-8xl mt-10 md:mt-20 mx-auto text-center relative z-10 px-4">
+      <div className="w-full max-w-8xl mt-2 md:mt-20 mx-auto text-center relative z-10 px-4">
         {/* F6S Badge */}
         <div className="inline-flex items-center tracking-tighter gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white text-sm md:text-base font-medium animate-fade-in">
           <span>✨ #1 in Gen AI category</span>

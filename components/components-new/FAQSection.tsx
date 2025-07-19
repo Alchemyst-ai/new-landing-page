@@ -52,16 +52,20 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "How does Alchemyst AI enhance my business conversations?",
-      answer: "Alchemyst AI uses advanced voice technology to create natural, engaging conversations with your customers. Our platform analyzes context, remembers previous interactions, and delivers personalized responses that sound human-like, improving customer satisfaction and conversion rates."
+      question: "How does Alchemyst AI enhance customer conversations?",
+      answer: "Alchemyst blends voice AI with memory and context-awareness to deliver conversations that feel truly human. It remembers past interactions, adapts in real time, and personalizes every response—boosting satisfaction, loyalty, and conversion."
     },
     {
-      question: "What integration options are available for Alchemyst AI?",
-      answer: "Right off the platform, we offer seamless integration with popular CRM systems, e-commerce platforms, and communication tools. With our API? As many as you can build :)"
+      question: "What integrations does Alchemyst support?",
+      answer: "Alchemyst integrates effortlessly with your existing tools—from CRMs and e-commerce platforms to internal workflows—out of the box or via API. Anything can be connected to Alchemyst."
     },
     {
-      question: "How secure is my data with Alchemyst AI?",
-      answer: "Security is our top priority. All data is encrypted end-to-end, and we comply with global data protection regulations including GDPR and CCPA. We implement strict access controls, regular security audits, and never share your data with third parties without explicit consent."
+      question: "Is my data secure with Alchemyst?",
+      answer: "Yes. Alchemyst encrypts data end-to-end, enforces strict access controls, and adheres to major global standards like GDPR, HIPAA, and CCPA. Your data stays private, protected, and audit-ready."
+    },
+    {
+      question: "Is Alchemyst compliant with enterprise-grade standards?",
+      answer: "Absolutely. Alchemyst is SOC Type 2 certified and HIPAA-ready. We back this with robust deployment options—cloud, VPC, or on-prem—and real-time audit trails."
     }
   ];
 
