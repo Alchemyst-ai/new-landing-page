@@ -39,7 +39,7 @@ export default function TechnologyIntegration() {
             </a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6 bg-gradient-to-br to-blue-800/40 from-[#1a1a1a] border border-gray-800 rounded-lg p-6 hover:bg-[#1a1a1a]">
+          <div className="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6 bg-gradient-to-br to-blue-800/40 from-[#1a1a1a] hover:bg-[#1a1a1a]">
             <h3 className="text-xl font-bold mb-4">Build on Alchemyst AI</h3>
             <p className="text-muted-foreground mb-6">
               Unlimited Customization, Complete Control
