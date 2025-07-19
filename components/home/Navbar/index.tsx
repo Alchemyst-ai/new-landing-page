@@ -229,7 +229,7 @@ const Navbar: React.FC = () => {
               </Button>
             </Link>
             <GitHubButtonWithStars />
-            <TwitterButtonWithFollowers />
+            {/* <TwitterButtonWithFollowers /> */}
             {/* <Link
               href="https://github.com/alchemyst-ai/awesome-saas"
               target="_blank"
