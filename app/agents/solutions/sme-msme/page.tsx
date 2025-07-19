@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/components-new/Footer";
-import CustomCursor from "@/components/home/CustomCursor";
+// import CustomCursor from "@/components/home/CustomCursor";
 import Head from "next/head";
 import SMEandMSMEComponent from "@/components/solutions/sme-msme/SMEandMSMEComponent";
 
@@ -57,9 +57,8 @@ const page = () => {
         </div>
       </noscript>
       <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
-        <div className="hidden lg:block">
-          <CustomCursor />
-        </div>
+        {/* Commented out custom cursor */}
+        {/* <CustomCursor /> */}
         <header className="fixed top-0 z-40 bg-[#0E0E0C] w-full flex justify-center items-center flex-col">
           <Navbar />
           <div className="h-0.5 w-full bg-gradient-to-r from-black via-[#ffffff42] to-black" />

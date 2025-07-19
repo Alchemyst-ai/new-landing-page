@@ -9,7 +9,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/components-new/Footer";
-import CustomCursor from "@/components/home/CustomCursor";
+// import CustomCursor from "@/components/home/CustomCursor";
 import EndingCard from "@/components/home/EndingCard";
 import { useState } from "react";
 import { ClipboardIcon } from "@heroicons/react/outline";
@@ -62,7 +62,8 @@ export default function BlogPageComponent({ data }: { data: BlogContent | undefi
     <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
       {/* Custom cursor for large screens */}
       <div className="hidden lg:block">
-        <CustomCursor />
+        {/* Commented out custom cursor */}
+        {/* <CustomCursor /> */}
       </div>
 
       {/* Header with navigation */}

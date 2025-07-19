@@ -113,18 +113,38 @@ body {
   box-shadow: 0 0 100px 130px rgba(255, 255, 255, 0.15);
 }
 
+/* Custom cursor styles - commented out
 .cursor {
   position: fixed;
-  width: 35px;
-  height: 35px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   background: url('../public/svg/cursor.svg') no-repeat center center;
-  background-size: contain;
-  transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 10000;
-  transition: transform 0.1s ease;
-  transform: rotate(-45deg);
+  z-index: 9999;
+  transform: translate(-50%, -50%);
 }
+
+.cursor-inner {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-inner.click {
+  width: 12px;
+  height: 12px;
+}
+
+body {
+  cursor: url('../public/svg/cursor.svg') no-repeat center center;
+} */
 
 @keyframes spin-slow {
   0% {
