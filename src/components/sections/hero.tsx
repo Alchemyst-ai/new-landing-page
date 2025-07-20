@@ -21,32 +21,18 @@ function HeroPill() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-left text-xs font-medium text-primary sm:text-sm">
-        🛠️ New
-      </div>
       <p className="text-xs font-medium text-primary sm:text-sm">
-        Introducing AI Agent SDK
+        ✨ #1 in Gen AI category
+
       </p>
-      <svg
-        width="12"
-        height="12"
-        className="ml-1"
-        viewBox="0 0 12 12"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M8.78141 5.33312L5.20541 1.75712L6.14808 0.814453L11.3334 5.99979L6.14808 11.1851L5.20541 10.2425L8.78141 6.66645H0.666748V5.33312H8.78141Z"
-          fill="hsl(var(--primary))"
-        />
-      </svg>
+      
     </motion.a>
   );
 }
 
 function HeroTitles() {
   return (
-    <div className="flex w-full max-w-5xl flex-col overflow-hidden pt-8">
+    <div className="flex w-full max-w-5xl flex-col overflow-hidden mt-2">
       <motion.h1
         className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-6xl tracking-tighter"
         initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
@@ -74,30 +60,30 @@ function HeroTitles() {
       </motion.h1>
 
       <div className="flex flex-col gap-1 mt-5">
-      <motion.p
-        className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.6,
-          duration: 0.8,
-          ease,
-        }}
-      >
-        Context, intent, and everything in between.
-      </motion.p>
-      <motion.p
-        className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.6,
-          duration: 0.8,
-          ease,
-        }}
-      >
-        Launch production-ready AI agents 20x faster.
-      </motion.p>
+        <motion.p
+          className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            ease,
+          }}
+        >
+          Context, intent, and everything in between.
+        </motion.p>
+        <motion.p
+          className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            ease,
+          }}
+        >
+          Launch production-ready AI agents 20x faster.
+        </motion.p>
       </div>
     </div>
   );
@@ -177,7 +163,7 @@ export function Hero() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 1 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
                 >
                   <LazySpline
                     scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"
