@@ -142,16 +142,16 @@ export function Header() {
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
           <Link 
-            href="/case-study" 
+            href="/blogs" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
-              Case Studies
+              Blogs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
           <Link 
-            href="/security&compliance" 
+            href="/security" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">

@@ -15,9 +15,9 @@ export function CalBooking() {
         <div className="flex justify-center">
           <iframe
             src="https://cal.com/uttaran-nayak-alchemyst/30min?theme=light&hideEventTypeDetails=false&hideLandingPageDetails=false"
-            style={{ width: "100%", height: "full", border: "none" }}
+            style={{ width: "100%", height: "700px", border: "none" }}
             allowFullScreen
-            className="max-w-4xl rounded-xl shadow-2xl bg-white"
+            className="max-w-4xl rounded-xl shadow-2xl bg-gray-700"
           />
         </div>
       </div>

@@ -5,13 +5,8 @@ import { siteConfig } from "@/lib/config";
 export function Footer() {
   return (
     <footer className="flex flex-col gap-y-5 rounded-lg p-5  container max-w-[var(--container-max-width)] mx-auto">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-x-2">
-          <Icons.logo className="h-5 w-5" />
-          <h2 className="text-lg font-bold text-foreground">
-            {siteConfig.name}
-          </h2>
-        </div>
+      <div className="flex items-center justify-end">
+        
 
         <div className="flex gap-x-2">
           {siteConfig.footer.socialLinks.map((link, index) => (
