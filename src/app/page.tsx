@@ -11,6 +11,7 @@ import { Pricing } from "@/components/sections/pricing";
 import { Statistics } from "@/components/sections/statistics";
 import { Testimonials } from "@/components/sections/testimonials";
 import { UseCases } from "@/components/sections/use-cases";
+import { CalBooking } from "@/components/sections/cal-booking";
 
 export default function Home() {
   return (
@@ -23,7 +24,8 @@ export default function Home() {
       <Features />
       <Statistics />
       <Testimonials />
-      <Pricing />
+      <CalBooking />
+      {/* <Pricing /> */}
       <Community />
       <Blog />
       <CTA />
