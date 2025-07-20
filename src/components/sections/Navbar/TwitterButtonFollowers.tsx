@@ -34,7 +34,7 @@ const TwitterButtonWithFollowers = () => {
       className="inline-flex items-center gap-2"
     >
       <Button
-        variant="secondaryNoHover"
+        variant="ghost"
         className="bg-transparent py-2 text-3xl hover:scale-[1.1] rounded-full flex gap-2 p-0"
       >
         <FaTwitter className="text-[#1DA1F2]" />

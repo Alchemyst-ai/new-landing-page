@@ -80,6 +80,7 @@ export async function GET(req: NextRequest) {
         <img
           src={`${siteConfig.url}/cube.png`}
           width={500}
+          alt="Decorative cube background"
           style={{
             position: "relative",
             bottom: -100,

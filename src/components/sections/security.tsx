@@ -68,7 +68,7 @@ export const SecuritySection = () => {
                 </div>
                 <h3 className="text-2xl font-semibold mb-6">Secure by Architecture</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Security isn't an add-on—it's in our DNA. Alchemyst enforces best-in-class practices like zero-trust access, encryption at rest and in transit, and continuous monitoring to protect your workflows and sensitive data, every step of the way.
+                  Security isn&apos;t an add-on—it&apos;s in our DNA. Alchemyst enforces best-in-class practices like zero-trust access, encryption at rest and in transit, and continuous monitoring to protect your workflows and sensitive data, every step of the way.
                 </p>
               </Card>
             </div>

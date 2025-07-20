@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/sections/header";
+import { Footer } from "@/components/sections/footer";
 
 const ResearchComponent = () => {
   return (
@@ -25,7 +26,14 @@ const ResearchComponent = () => {
       </div>
 
       <div className="px-4 pb-20 flex justify-center">
-        <Image src="/research/sota.svg" alt="Alchemyst Agent" width={1000} height={1000} />
+        <Image 
+          src="/research/sota.gif" 
+          alt="Alchemyst Agent" 
+          width={1000} 
+          height={1000} 
+          unoptimized
+          priority // Add priority to load image immediately at start
+        />
       </div>
  
      {/* Benchmarking Section */}
@@ -139,6 +147,8 @@ const ResearchComponent = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
