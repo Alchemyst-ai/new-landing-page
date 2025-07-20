@@ -14,12 +14,12 @@ import {
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "AI Agent SDK",
+  name: "AI Alchemyst AI",
   description: "Create AI Agents with just a few lines of code.",
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
-    "AI Agent SDK",
+    "AI Alchemyst AI",
     "Multi-Agent Systems",
     "Tool Integration",
     "Workflow Automation",
@@ -32,7 +32,7 @@ export const siteConfig = {
     instagram: "https://instagram.com/aiagentsdk",
   },
   hero: {
-    title: "AI Agent SDK",
+    title: "AI Alchemyst AI",
     description:
       "Create powerful AI agent workflows with just a few lines of code, enabling complex task automation and decision-making processes.",
     cta: "Get Started",
@@ -117,13 +117,13 @@ export const siteConfig = {
       { text: "Contact", url: "#" },
     ],
     bottomText: "All rights reserved.",
-    brandText: "AGENT SDK",
+    brandText: "Alchemyst AI",
   },
 
   testimonials: [
     {
       id: 1,
-      text: "The AI Agent SDK has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
+      text: "The AI Alchemyst AI has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
       name: "Alice Johnson",
       company: "OpenMind Labs",
       image:
@@ -147,7 +147,7 @@ export const siteConfig = {
     },
     {
       id: 4,
-      text: "The AI Agent SDK's tool integration feature has streamlined our workflow automation processes.",
+      text: "The AI Alchemyst AI's tool integration feature has streamlined our workflow automation processes.",
       name: "Diana Evans",
       company: "AutomateX",
       image:
@@ -163,7 +163,7 @@ export const siteConfig = {
     },
     {
       id: 6,
-      text: "The AI Agent SDK's efficiency features have significantly improved our system's performance and scalability.",
+      text: "The AI Alchemyst AI's efficiency features have significantly improved our system's performance and scalability.",
       name: "Fiona Grant",
       company: "ScaleAI",
       image:
@@ -179,7 +179,7 @@ export const siteConfig = {
     },
     {
       id: 8,
-      text: "The AI Agent SDK's multi-agent system has enabled us to build complex, collaborative AI solutions with ease.",
+      text: "The AI Alchemyst AI's multi-agent system has enabled us to build complex, collaborative AI solutions with ease.",
       name: "Hannah Irving",
       company: "CollabAI",
       image:
@@ -195,7 +195,7 @@ export const siteConfig = {
     },
     {
       id: 10,
-      text: "The AI Agent SDK's documentation and support have made our learning curve much smoother.",
+      text: "The AI Alchemyst AI's documentation and support have made our learning curve much smoother.",
       name: "Julia Kim",
       company: "DevAI",
       image:
@@ -203,7 +203,7 @@ export const siteConfig = {
     },
     {
       id: 11,
-      text: "We've seen a significant boost in our AI's decision-making capabilities thanks to the AI Agent SDK.",
+      text: "We've seen a significant boost in our AI's decision-making capabilities thanks to the AI Alchemyst AI.",
       name: "Kevin Lee",
       company: "DecisionTech",
       image:
@@ -219,7 +219,7 @@ export const siteConfig = {
     },
     {
       id: 13,
-      text: "The customization options in the AI Agent SDK have allowed us to create truly unique AI solutions.",
+      text: "The customization options in the AI Alchemyst AI have allowed us to create truly unique AI solutions.",
       name: "Michael Chen",
       company: "UniqueAI",
       image:
@@ -227,7 +227,7 @@ export const siteConfig = {
     },
     {
       id: 14,
-      text: "The efficiency of the AI Agent SDK has significantly reduced our development time and costs.",
+      text: "The efficiency of the AI Alchemyst AI has significantly reduced our development time and costs.",
       name: "Natalie Wong",
       company: "FastTrackAI",
       image:

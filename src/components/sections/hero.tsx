@@ -22,7 +22,7 @@ function HeroPill() {
       transition={{ duration: 0.8, ease }}
     >
       <p className="text-xs font-medium text-black sm:text-sm">
-        ✨ #1 in Gen AI category
+        ✨ #1 in Gen AI category F6S
 
       </p>
       

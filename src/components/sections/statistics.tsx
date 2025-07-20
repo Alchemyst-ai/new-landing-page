@@ -7,19 +7,20 @@ import Link from "next/link";
 
 const stats = [
   {
-    title: "10K+",
-    subtitle: "Stars on GitHub",
-    icon: <Icons.github className="h-5 w-5" />,
+    title: "5K+",
+    subtitle: "Developers",
   },
   {
-    title: "50K+",
-    subtitle: "Discord Members",
-    icon: <Icons.discord className="h-5 w-5" />,
+    title: "400K+",
+    subtitle: "Queries",
   },
   {
-    title: "1M+",
-    subtitle: "Downloads",
-    icon: <Icons.npm className="h-5 w-5" />,
+    title: "60M+",
+    subtitle: "Documents",
+  },
+  {
+    title: "30B+",
+    subtitle: "Tokens",
   },
 ];
 
@@ -33,7 +34,7 @@ export function Statistics() {
             "radial-gradient(circle at bottom center, hsl(var(--secondary) / 0.4), hsl(var(--background)))",
         }}
       >
-        <div className="grid grid-cols-1 sm:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-4">
           {stats.map((stat, idx) => (
             <Link
               href="#"
@@ -59,7 +60,7 @@ export function Statistics() {
               <div className="text-center relative">
                 <BorderText text={stat.title} />
                 <div className="flex items-center justify-center gap-2 mt-2">
-                  {stat.icon}
+                  {/* Removed stat.icon */}
                   <p className="text-sm text-muted-foreground">
                     {stat.subtitle}
                   </p>
