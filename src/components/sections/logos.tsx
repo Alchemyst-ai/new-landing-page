@@ -6,21 +6,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const images1 = [
-  { src: '/trusted/AFT.png', alt: 'AFT', scale: 0.5 },
-  { src: '/trusted/chainrisk.png', alt: 'Chain Risk', scale: 1 },
-  { src: '/trusted/hyundai.png', alt: 'Hyundai', scale: 0.9 },
-  { src: '/trusted/kotak.png', alt: 'Kotak', scale: 0.7 },
-  { src: '/trusted/kuberns.png', alt: 'Kubernetes', scale: 0.5 },
-  { src: '/trusted/toyota.png', alt: 'Toyota', scale: 0.85 },
+  { src: '/trusted/AFT.png', alt: 'AFT', scale: 0.7 },
+  { src: '/trusted/chainrisk.png', alt: 'Chain Risk', scale: 1.2 },
+  { src: '/trusted/hyundai.png', alt: 'Hyundai', scale: 1.1 },
+  { src: '/trusted/kotak.png', alt: 'Kotak', scale: 0.9 },
+  { src: '/trusted/kuberns.png', alt: 'Kubernetes', scale: 0.7 },
+  { src: '/trusted/toyota.png', alt: 'Toyota', scale: 1 },
 ];
 
 const images2 = [
-  { src: '/trusted/razorpay.png', alt: 'Razorpay', scale: 0.85 },
-  { src: '/trusted/microsoft.png', alt: 'Microsoft', scale: 0.85 },
-  { src: '/trusted/ycombinator.png', alt: 'Y Combinator', scale: 0.85 },
-  { src: '/trusted/texasinstruments.png', alt: 'Texas Instruments', scale: 0.85 },
-  { src: '/trusted/entrepreneurfirst.png', alt: 'Entrepreneur First', scale: 0.5 },
-  { src: '/trusted/google1.png', alt: 'Google', scale: 0.85 },
+  { src: '/trusted/razorpay.png', alt: 'Razorpay', scale: 1 },
+  { src: '/trusted/microsoft.png', alt: 'Microsoft', scale: 1 },
+  { src: '/trusted/ycombinator.png', alt: 'Y Combinator', scale: 1 },
+  { src: '/trusted/texasinstruments.png', alt: 'Texas Instruments', scale: 1 },
+  { src: '/trusted/entrepreneurfirst.png', alt: 'Entrepreneur First', scale: 0.7 },
+  { src: '/trusted/google1.png', alt: 'Google', scale: 1 },
 ];
 
 export function Logos() {
@@ -57,8 +57,8 @@ export function Logos() {
                   className="w-full h-full flex items-center justify-center"
                 >
                   <Image
-                    width={120 * Math.abs(currentSet[idx].scale)}
-                    height={60 * Math.abs(currentSet[idx].scale)}
+                    width={150 * Math.abs(currentSet[idx].scale)}
+                    height={75 * Math.abs(currentSet[idx].scale)}
                     src={currentSet[idx].src}
                     className="object-cover opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:brightness-0 dark:hover:invert"
                     alt={currentSet[idx].alt}

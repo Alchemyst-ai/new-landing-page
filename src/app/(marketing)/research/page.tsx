@@ -108,11 +108,13 @@ const ResearchComponent = () => {
           
           <div className="flex justify-center">
             <Image 
-              src="/research/underHood01.svg" 
+              src="/research/chart01.gif" 
               alt="Under the Hood Architecture" 
               width={1200} 
               height={600} 
               className="w-full max-w-5xl h-auto"
+              unoptimized
+              priority
             />
           </div>
         </div>
@@ -129,11 +131,13 @@ const ResearchComponent = () => {
           
           <div className="flex justify-center mb-12">
             <Image 
-              src="/research/underHood02.svg" 
+              src="/research/chart02.gif" 
               alt="Alchemyst Architecture Pipeline" 
               width={1200} 
               height={600} 
               className="w-full max-w-5xl h-auto"
+              unoptimized
+              priority
             />
           </div>
           

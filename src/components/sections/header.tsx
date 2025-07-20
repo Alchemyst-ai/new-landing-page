@@ -124,7 +124,7 @@ export function Header() {
     <div className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center">
       <nav
         ref={navRef}
-        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl flex justify-between items-center w-[90%] px-6 py-2"
+        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl flex justify-between items-center w-[90%] px-6 py-4"
       >
         {/* Alchemyst Logo */}
         <div className="flex items-center space-x-4">
@@ -132,9 +132,9 @@ export function Header() {
             <Image
               src="/logo.png"
               alt="Alchemyst AI"
-              width={160}
-              height={160}
-              className="h-7 w-auto object-contain"
+              width={200}
+              height={200}
+              className="h-8 w-auto object-contain"
             />
           </Link>
         </div>
@@ -143,7 +143,7 @@ export function Header() {
         <div className="flex items-center space-x-6">
           <Link 
             href="/blogs" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Blogs
@@ -152,7 +152,7 @@ export function Header() {
           </Link>
           <Link 
             href="/security" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Security
@@ -161,7 +161,7 @@ export function Header() {
           </Link>
           <Link 
             href="#" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Docs
@@ -170,7 +170,7 @@ export function Header() {
           </Link>
           <Link 
             href="/pricing" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Pricing
@@ -179,7 +179,7 @@ export function Header() {
           </Link>
           <Link 
             href="/research" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Research
