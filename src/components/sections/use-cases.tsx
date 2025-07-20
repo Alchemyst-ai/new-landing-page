@@ -165,10 +165,10 @@ export function Card1() {
         </div>
         <div className="flex flex-col gap-y-1 px-5 pb-4 items-start w-full">
           <h2 className="font-semibold tracking-tight text-lg">
-            Tool Integration
+            Customer Support
           </h2>
           <p className="text-sm text-muted-foreground">
-            Seamlessly integrate external APIs and tools into agent workflows.
+            Add human touch to your chatbots with memory so it retains context. Speed up resolution times upto 64%.
           </p>
         </div>
       </motion.div>
@@ -290,11 +290,10 @@ const Card2 = () => {
         </div>
         <div className="flex flex-col gap-y-1 px-5 pb-4 items-start w-full">
           <h2 className="font-semibold tracking-tight text-lg">
-            Monitor agent activity
+            Healthcare
           </h2>
           <p className="text-sm text-muted-foreground">
-            Track and analyze your AI agent performance with detailed activity
-            logs.
+            Smarter care, lesser costs. AI your patients can trust. Powered by Memory.
           </p>
         </div>
       </motion.div>
@@ -338,10 +337,10 @@ const Card3 = () => {
         </div>
         <div className="flex flex-col gap-y-1 px-5 pb-4 items-start w-full">
           <h2 className="font-semibold tracking-tight text-lg">
-            Build once, run anywhere
+            Finance
           </h2>
           <p className="text-sm text-muted-foreground">
-            Create AI agents that work seamlessly across different platforms.
+            Transactions that think ahead. Memory backed ledger.
           </p>
         </div>
       </div>

@@ -16,12 +16,12 @@ function HeroPill() {
   return (
     <motion.a
       href="/blog/introducing-dev-ai"
-      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 ring-1 ring-accent whitespace-pre"
+      className="flex w-auto items-center space-x-2 rounded-full bg-[#EAEAEA] px-2 py-1 ring-1 ring-accent whitespace-pre"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <p className="text-xs font-medium text-primary sm:text-sm">
+      <p className="text-xs font-medium text-black sm:text-sm">
         ✨ #1 in Gen AI category
 
       </p>
@@ -44,7 +44,7 @@ function HeroTitles() {
         }}
       >
         <motion.span
-          className="block text-white font-bold"
+          className="block bg-gradient-to-b from-white to-gray-400 drop-shadow-lg text-transparent bg-clip-text font-bold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -102,7 +102,7 @@ function HeroCTA() {
           href="/download"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-background flex gap-2 rounded-lg"
+            "w-full sm:w-auto bg-[#EAEAEA] text-black flex gap-2 rounded-lg"
           )}
         >
           <Icons.logo className="h-6 w-6" />
