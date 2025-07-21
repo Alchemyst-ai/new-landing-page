@@ -22,7 +22,9 @@ export function Header() {
   const [mounted, setMounted] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
+  const [showUseCasesDropdown, setShowUseCasesDropdown] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const useCasesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -32,6 +34,9 @@ export function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setActiveMenu(null);
+      }
+      if (useCasesRef.current && !useCasesRef.current.contains(event.target as Node)) {
+        setShowUseCasesDropdown(false);
       }
     };
 
@@ -57,6 +62,12 @@ export function Header() {
         : [...prev, title]
     );
   };
+
+  const useCasesItems = [
+    { title: "Finance", href: "/use-cases/finance", gif: "/use-cases/financeLanding.gif" },
+    { title: "Customer Support", href: "/use-cases/customer-support", gif: "/use-cases/customerLanding.gif" },
+    { title: "EdTech", href: "/use-cases/edtech", gif: "/use-cases/edtech.gif" }
+  ];
 
   const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
     const isSubmenuOpen = openSubmenus.includes(subItem.title);
@@ -141,15 +152,66 @@ export function Header() {
 
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
-          <Link 
-            href="/blogs" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
+          {/* Use Cases Dropdown */}
+          <div 
+            ref={useCasesRef}
+            className="relative"
+            onMouseEnter={() => setShowUseCasesDropdown(true)}
+            onMouseLeave={() => setShowUseCasesDropdown(false)}
           >
-            <span className="relative pb-1">
-              Blogs
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+            <button className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group flex items-center">
+              <span className="relative pb-1">
+                Use Cases
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              </span>
+              <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200" style={{
+                transform: showUseCasesDropdown ? 'rotate(180deg)' : 'rotate(0deg)'
+              }} />
+            </button>
+
+            <AnimatePresence>
+              {showUseCasesDropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-xl overflow-hidden"
+                >
+                  <div className="p-4 space-y-3">
+                    {useCasesItems.map((item) => (
+                      <Link
+                        key={item.title}
+                        href={item.href}
+                        className="flex items-center space-x-4 p-3 rounded-lg hover:bg-white/10 transition-colors duration-200 group"
+                      >
+                        <div className="flex-shrink-0 w-16 h-12 bg-gray-800 rounded-lg overflow-hidden">
+                          <Image
+                            src={item.gif}
+                            alt={item.title}
+                            width={64}
+                            height={48}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-white font-medium group-hover:text-orange-400 transition-colors duration-200">
+                            {item.title}
+                          </h3>
+                          <p className="text-white/60 text-sm">
+                            {item.title === "Finance" && "Financial analysis and reporting solutions"}
+                            {item.title === "Customer Support" && "AI-powered customer service automation"}
+                            {item.title === "EdTech" && "Personalized learning and education tools"}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <Link 
             href="/security" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
@@ -205,6 +267,43 @@ export function Header() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
+                {/* Use Cases in Mobile */}
+                <div className="w-full">
+                  <button
+                    onClick={() => toggleSubmenu("Use Cases")}
+                    className="flex items-center justify-between w-full py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                  >
+                    Use Cases
+                    {openSubmenus.includes("Use Cases") ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {openSubmenus.includes("Use Cases") && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="space-y-2 ml-4"
+                      >
+                        {useCasesItems.map((item) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            className="block py-2 text-white/80 hover:text-white transition-colors duration-200"
+                            onClick={toggleMenu}
+                          >
+                            {item.title}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"

@@ -20,7 +20,7 @@ const ResearchComponent = () => {
           
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Alchemyst is a scalable memory-centric algorithm that dynamically extracts and retrieves key conversational facts—delivering 26% relative accuracy gains over OpenAI on the LOCOMO benchmark, with 91% lower p95 latency and 90% fewer tokens.
+          A scalable memory-first system that dynamically extracts and retrieves key conversational facts—delivering 20% higher accuracy over SOTA on the PopQA benchmark with 95% reduction in development time.
           </p>
         </div>
       </div>

@@ -63,7 +63,7 @@ export function Community() {
           <div className="flex justify-center">
             <Button variant="secondary" className="flex items-center gap-2">
               <Icons.github className="h-5 w-5" />
-              Become a contributor
+              Join the Alchemyst Community
             </Button>
           </div>
         </div>
