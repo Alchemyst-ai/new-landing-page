@@ -118,7 +118,7 @@ const EdTechPage = () => {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">No User-Centric Content</h3>
               <p className="text-gray-400">
-                Can't keep up with dynamic user pace or goals.
+                Doesn&apos;t keep up with dynamic user pace or goals.
               </p>
             </div>
           </div>
@@ -300,7 +300,7 @@ const EdTechPage = () => {
                     <span className="text-white"> </span>
                     <div className="text-purple-400">from</div>
                     <span className="text-white"> </span>
-                    <span className="text-green-400">'@alchemyst/memory'</span>
+                    <span className="text-green-400">&apos;@alchemyst/memory&apos;</span>
                     <span className="text-white">;</span>
                     <br /><br />
                     <div className="text-purple-400">const</div>
@@ -311,7 +311,7 @@ const EdTechPage = () => {
                     <span className="text-white"> </span>
                     <span className="text-blue-400">MemoryClient</span>
                     <span className="text-white">(</span>
-                    <span className="text-green-400">'your-api-key'</span>
+                    <span className="text-green-400">&apos;your-api-key&apos;</span>
                     <span className="text-white">);</span>
                   </div>
                 </div>
@@ -339,7 +339,7 @@ const EdTechPage = () => {
                     <span className="text-white"> = </span>
                     <span className="text-blue-400">MemoryClient</span>
                     <span className="text-white">(</span>
-                    <span className="text-green-400">"your-api-key"</span>
+                    <span className="text-green-400">&apos;your-api-key&apos;</span>
                     <span className="text-white">)</span>
                   </div>
                 </div>
