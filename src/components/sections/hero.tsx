@@ -52,7 +52,7 @@ function HeroTitles() {
             ease,
           }}
         >
-          Your Data, Your AI
+          Your Data, Your AI,
           <br />
           Our Memory
         </motion.span>

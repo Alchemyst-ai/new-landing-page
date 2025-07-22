@@ -27,7 +27,7 @@ const ResearchComponent = () => {
 
       <div className="px-4 pb-20 flex justify-center">
         <Image 
-          src="/research/sota.gif" 
+          src="/research/sota.png" 
           alt="Alchemyst Agent" 
           width={1000} 
           height={1000} 
