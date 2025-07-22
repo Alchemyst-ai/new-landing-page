@@ -111,12 +111,15 @@ export const siteConfig = {
         icon: <Icons.twitter className="h-5 w-5" />,
         url: "#",
       },
+      {
+        icon: <Icons.linkedin className="h-5 w-5" />,
+        url: "https://www.linkedin.com/company/alchemystai/posts/",
+      },
     ],
     links: [
-      { text: "Pricing", url: "#" },
-      { text: "Contact", url: "#" },
+
     ],
-    bottomText: "All rights reserved.",
+    bottomText: "© 2025 XAlchemyst Technologies Pvt. Ltd. All rights reserved.",
     brandText: "Alchemyst AI",
   },
 

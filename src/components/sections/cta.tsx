@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function CTA() {
   return (
@@ -9,9 +10,11 @@ export function CTA() {
           Ready to build your next AI agent?
         </p>
 
-        <div className="flex justify-center">
-          <Button className="flex items-center gap-2">Get Started</Button>
-        </div>
+        <Link href="https://platform.getalchemystai.com" target="_blank">
+          <div className="flex justify-center">
+            <Button className="flex items-center gap-2">Get Started</Button>
+          </div>
+        </Link>
       </div>
     </Section>
   );

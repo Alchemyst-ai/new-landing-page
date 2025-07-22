@@ -15,7 +15,7 @@ const ease = [0.16, 1, 0.3, 1];
 function HeroPill() {
   return (
     <motion.a
-      href="/blog/introducing-dev-ai"
+      href="/#"
       className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -25,7 +25,6 @@ function HeroPill() {
         ✨ #1 in Gen AI category F6S
 
       </p>
-      
     </motion.a>
   );
 }
@@ -53,13 +52,13 @@ function HeroTitles() {
             ease,
           }}
         >
-          AI Needs Memory
+          Your Data, Your AI
           <br />
-          We build it for them
+          Our Memory
         </motion.span>
       </motion.h1>
 
-      <div className="flex flex-col gap-1 mt-5">
+      <div className="flex flex-col gap-1 mt-2">
         <motion.p
           className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
           initial={{ opacity: 0, y: 20 }}
@@ -99,7 +98,8 @@ function HeroCTA() {
         transition={{ delay: 0.8, duration: 0.8, ease }}
       >
         <Link
-          href="/download"
+          href="https://platform.getalchemystai.com"
+          target="_blank"
           className={cn(
             buttonVariants({ variant: "default" }),
             "w-full sm:w-auto bg-[#EAEAEA] text-black flex gap-2 rounded-lg"

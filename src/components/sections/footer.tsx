@@ -4,16 +4,19 @@ import { siteConfig } from "@/lib/config";
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-y-5 rounded-lg p-5  container max-w-[var(--container-max-width)] mx-auto">
-      <div className="flex items-center justify-end">
-        
+    <footer className="flex flex-col gap-y-5 rounded-lg p-5 container max-w-[var(--container-max-width)] mx-auto">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col text-sm font-medium tracking-tight text-muted-foreground">
+          <p>© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
+          <p>All rights reserved.</p>
+        </div>
 
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-4">
           {siteConfig.footer.socialLinks.map((link, index) => (
             <a
               key={index}
               href={link.url}
-              className="flex h-5 w-5 items-center justify-center text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
+              className="flex h-5 w-5 gap-5 items-center justify-center text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
             >
               {link.icon}
             </a>
@@ -22,18 +25,8 @@ export function Footer() {
       </div>
       <div className="flex flex-col justify-between gap-y-5 md:flex-row md:items-center">
         <ul className="flex flex-col gap-x-5 gap-y-2 text-muted-foreground md:flex-row md:items-center">
-          {siteConfig.footer.links.map((link, index) => (
-            <li
-              key={index}
-              className="text-[15px]/normal font-medium text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
-            >
-              <a href={link.url}>{link.text}</a>
-            </li>
-          ))}
+          
         </ul>
-        <div className="flex items-center justify-between text-sm font-medium tracking-tight text-muted-foreground">
-          <p>{siteConfig.footer.bottomText}</p>
-        </div>
       </div>
       <BorderText
         text={siteConfig.footer.brandText}
