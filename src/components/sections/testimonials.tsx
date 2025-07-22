@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 export function Testimonials() {
   const [showAll, setShowAll] = useState(false);
@@ -40,10 +41,12 @@ export function Testimonials() {
               <div className="px-4 py-5 sm:p-6 flex-grow">
                 <div className="flex items-center gap-4 mb-4">
                   {testimonial.image && (
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      width={48}
+                      height={48}
+                      className="rounded-full object-cover"
                     />
                   )}
                   <div>

@@ -19,17 +19,18 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = menuRef.current;
     const handleMouseLeave = () => {
       onClose();
     };
 
-    if (menuRef.current) {
-      menuRef.current.addEventListener("mouseleave", handleMouseLeave);
+    if (currentRef) {
+      currentRef.addEventListener("mouseleave", handleMouseLeave);
     }
 
     return () => {
-      if (menuRef.current) {
-        menuRef.current.removeEventListener("mouseleave", handleMouseLeave);
+      if (currentRef) {
+        currentRef.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
   }, [onClose]);

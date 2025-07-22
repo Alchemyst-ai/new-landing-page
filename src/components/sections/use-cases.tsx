@@ -139,7 +139,7 @@ export function Card1() {
               </div>
               <div className="flex flex-col gap-y-1">
                 <div className="text-sm text-foreground/80 font-medium">Agent</div>
-                <div className="text-sm text-muted-foreground">Network error. The second pending payment will auto-refund in 5-7 days. I'll notify you once it's cleared.</div>
+                <div className="text-sm text-muted-foreground">Network error. The second pending payment will auto-refund in 5-7 days. I&apos;ll notify you once it&apos;s cleared.</div>
               </div>
             </motion.div>
             <motion.div
@@ -175,7 +175,7 @@ const Card2 = () => {
       id: 1,
       type: "context",
       timestamp: "2025-07-14 10:02:15",
-      message: "Detected prior note: \"Mild reaction to penicillin\"",
+      message: "Detected prior note: &quot;Mild reaction to penicillin&quot;",
       icon: (
         <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
           <InfoIcon className="h-5 w-5 text-white" />
