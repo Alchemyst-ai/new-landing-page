@@ -36,7 +36,7 @@ const EdTechPage = () => {
           {/* CTA Button */}
           <div className="text-center mb-16">
             <Link 
-              href="#"
+              href="https://platform.getalchemystai.com/"
               className="inline-block bg-white text-black px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-gray-200"
             >
               Build Adaptive Tutors
@@ -223,7 +223,7 @@ const EdTechPage = () => {
                {/* CTA Button */}
                <div className="pt-6">
                  <Link 
-                   href="#"
+                   href="https://platform.getalchemystai.com/"
                    className="inline-block bg-white text-black px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-gray-200"
                  >
                    Get Started
@@ -379,7 +379,7 @@ const EdTechPage = () => {
                 {/* CTA Button */}
                 <div className="pt-6">
                   <Link 
-                    href="#"
+                    href="https://platform.getalchemystai.com/"
                     className="inline-block bg-white text-black px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-gray-200"
                   >
                     Integrate Alchemyst

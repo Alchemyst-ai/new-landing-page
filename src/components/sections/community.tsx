@@ -5,6 +5,7 @@ import { Section } from "@/components/section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Ripple } from "@/components/ui/ripple";
+import Link from "next/link";
 
 const contributors = [
   {
@@ -61,10 +62,12 @@ export function Community() {
             ))}
           </div>
           <div className="flex justify-center">
-            <Button variant="secondary" className="flex items-center gap-2">
-              <Icons.github className="h-5 w-5" />
-              Join the Alchemyst Community
-            </Button>
+            <Link href="https://github.com/Alchemyst-ai" target="_blank">
+              <Button variant="secondary" className="flex items-center gap-2 cursor-pointer">
+                <Icons.github className="h-5 w-5" />
+                Join the Alchemyst Community
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
