@@ -1,21 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['prod-files-secure.s3.us-west-2.amazonaws.com'],
+        remotePatterns: [
+            { hostname: "localhost" },
+            { hostname: "randomuser.me" },
+            { hostname: "images.unsplash.com" }
+        ],
     },
-    webpack: (config, { isServer }) => {
-        if (!isServer) {
-            config.resolve.fallback = {
-                fs: false
-            }
-        }
-        return config;
-    },
-    experimental: {
-        outputFileTracingIncludes: {
-            '/api/blogs': ['./blogs/**/*', './public/blogs/content/**/*'],
-        },
-    },
+    transpilePackages: ["geist"],
 };
 
 export default nextConfig;
