@@ -64,9 +64,9 @@ export function Header() {
   };
 
   const useCasesItems = [
-    { title: "Finance", href: "/use-cases/finance", gif: "/use-cases/financeLanding.gif" },
-    { title: "Customer Support", href: "/use-cases/customer-support", gif: "/use-cases/customerLanding.gif" },
-    { title: "EdTech", href: "/use-cases/edtech", gif: "/use-cases/edtech.gif" }
+    { title: "Finance", href: "/use-cases/finance", gif: "/use-cases/finance.png" },
+    { title: "Customer Support", href: "/use-cases/customer-support", gif: "/use-cases/customerSupport.png" },
+    { title: "EdTech", href: "/use-cases/edtech", gif: "/use-cases/healthcare.png" }
   ];
 
   const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
@@ -213,6 +213,16 @@ export function Header() {
           </div>
 
           <Link 
+            href="/research" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1">
+              Research
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+
+          <Link 
             href="/security" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
@@ -221,15 +231,7 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
-            href="#" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              Docs
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+
           <Link 
             href="/pricing" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
@@ -239,12 +241,13 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
+
           <Link 
-            href="/research" 
+            href="#" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
-              Research
+              Docs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>

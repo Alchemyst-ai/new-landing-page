@@ -27,7 +27,7 @@ export default function Home() {
       <CalBooking />
       {/* <Pricing /> */}
       <Community />
-      <Blog />
+      {/* <Blog /> */}
       <CTA />
       <Footer />
     </main>

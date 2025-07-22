@@ -16,12 +16,12 @@ function HeroPill() {
   return (
     <motion.a
       href="/blog/introducing-dev-ai"
-      className="flex w-auto items-center space-x-2 rounded-full bg-[#EAEAEA] px-2 py-1 ring-1 ring-accent whitespace-pre"
+      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <p className="text-xs font-medium text-black sm:text-sm">
+      <p className="text-xs font-medium text-white/90 sm:text-sm">
         ✨ #1 in Gen AI category F6S
 
       </p>
@@ -32,9 +32,9 @@ function HeroPill() {
 
 function HeroTitles() {
   return (
-    <div className="flex w-full max-w-5xl flex-col overflow-hidden mt-2">
+    <div className="flex w-full max-w-5xl flex-col overflow-hidden mt-4">
       <motion.h1
-        className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-6xl tracking-tighter"
+        className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-5xl tracking-tighter"
         initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
         animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
         transition={{
@@ -53,9 +53,9 @@ function HeroTitles() {
             ease,
           }}
         >
-          Machines learn,
+          AI Needs Memory
           <br />
-          Alchemyst makes them Remember
+          We build it for them
         </motion.span>
       </motion.h1>
 
