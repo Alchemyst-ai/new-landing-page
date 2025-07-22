@@ -64,9 +64,10 @@ export function Header() {
   };
 
   const useCasesItems = [
-    { title: "Finance", href: "/use-cases/finance", gif: "/use-cases/finance.png" },
-    { title: "Customer Support", href: "/use-cases/customer-support", gif: "/use-cases/customerSupport.png" },
-    { title: "EdTech", href: "/use-cases/edtech", gif: "/use-cases/healthcare.png" }
+    { title: "Finance", href: "/use-cases/finance" },
+    { title: "Customer Support", href: "/use-cases/customer-support" },
+    { title: "EdTech", href: "/use-cases/edtech" },
+    { title: "Healthcare", href: "/use-cases/healthcare" }
   ];
 
   const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
@@ -185,24 +186,10 @@ export function Header() {
                         href={item.href}
                         className="flex items-center space-x-4 p-3 rounded-lg hover:bg-white/10 transition-colors duration-200 group"
                       >
-                        <div className="flex-shrink-0 w-16 h-12 bg-gray-800 rounded-lg overflow-hidden">
-                          <Image
-                            src={item.gif}
-                            alt={item.title}
-                            width={64}
-                            height={48}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
                         <div className="flex-1">
                           <h3 className="text-white font-medium group-hover:text-orange-400 transition-colors duration-200">
                             {item.title}
                           </h3>
-                          <p className="text-white/60 text-sm">
-                            {item.title === "Finance" && "Financial analysis and reporting solutions"}
-                            {item.title === "Customer Support" && "AI-powered customer service automation"}
-                            {item.title === "EdTech" && "Personalized learning and education tools"}
-                          </p>
                         </div>
                       </Link>
                     ))}
@@ -242,7 +229,7 @@ export function Header() {
             </span>
           </Link>
 
-          <Link 
+          {/* <Link 
             href="#" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-base group"
           >
@@ -250,7 +237,7 @@ export function Header() {
               Docs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Partner with us button and Book a Demo */}

@@ -77,9 +77,11 @@ export async function GET(req: NextRequest) {
           </div>
         </div>
 
+        {/* Note: We can't use next/image in OG Image generation as it's not supported */}
         <img
           src={`${siteConfig.url}/cube.png`}
           width={500}
+          height={500}
           alt="Decorative cube background"
           style={{
             position: "relative",

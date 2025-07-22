@@ -389,32 +389,6 @@ const EdTechPage = () => {
           </div>
         </div>
 
-      {/* CTA Section */}
-      <div className="w-full bg-black py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Education?
-          </h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Start building AI tutors that remember, adapt, and personalize learning experiences for every student.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="#"
-              className="bg-white text-black px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-gray-200"
-            >
-              Get Started Free
-            </Link>
-            <Link 
-              href="#"
-              className="border border-white text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-white hover:text-black"
-            >
-              View Documentation
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <Footer />
     </div>
   );

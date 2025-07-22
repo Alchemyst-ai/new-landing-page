@@ -18,19 +18,18 @@ const EdTechPage = () => {
           {/* Breadcrumb */}
           <div className="text-center mb-8">
             <span className="text-sm text-gray-400">Usecases / </span>
-            <span className="text-sm text-white">Customer Support</span>
+            <span className="text-sm text-white">Healthcare</span>
           </div>
 
           {/* Main Title */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-white">Transform Support<br />With Memory-Powered AI</span>
+              <span className="text-white">Transform Healthcare<br />with Intelligent Memory</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Enhance customer experience with AI agents that remember context, learn from interactions,
-              and deliver personalized support at scale.
+              Enhance patient care with memory-powered AI that understands context, history, and individual needs.
             </p>
           </div>
 
@@ -40,7 +39,7 @@ const EdTechPage = () => {
               href="#"
               className="inline-block bg-white text-black px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:bg-gray-200"
             >
-              Build Smarter Support
+              Build Healthcare Solutions
             </Link>
           </div>
         </div>
@@ -49,7 +48,7 @@ const EdTechPage = () => {
       {/* Main Content with GIF */}
       <div className="px-4 pb-20">
         <div className="max-w-6xl mx-auto">
-          {/* Large EdTech GIF Display */}
+          {/* Large Healthcare GIF Display */}
           <div className="flex justify-center mb-16">
             <div className="relative w-full max-w-5xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
               <Image
@@ -71,9 +70,9 @@ const EdTechPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Challenges</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems in Customer Support</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems Faced in Healthcare</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Traditional AI support tools lack context awareness and personalization, leading to frustrating customer experiences.
+              Current AI healthcare solutions struggle with context retention and personalization, leading to suboptimal patient care experiences.
             </p>
           </div>
 
@@ -87,9 +86,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Lost Conversation Context</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Very Generic Suggestions</h3>
               <p className="text-gray-400">
-                Customers repeat themselves as AI agents can't recall previous interactions and preferences.
+                Agents can't retain context of previous conversations, leading to unreliable treatment plans suggested.
               </p>
             </div>
 
@@ -102,9 +101,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Generic Responses</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">No Connection for Patients</h3>
               <p className="text-gray-400">
-                One-size-fits-all responses fail to address specific customer needs and history.
+                Patients have to give their details multiple times for each query.
               </p>
             </div>
 
@@ -117,9 +116,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">High Agent Workload</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">No Progress Retention</h3>
               <p className="text-gray-400">
-                Support teams waste time on repetitive queries that could be automated intelligently.
+                Sessions are not stored making past conversations lost.
               </p>
             </div>
           </div>
@@ -131,9 +130,9 @@ const EdTechPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Support Solutions with Alchemyst</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Healthcare Solutions with Alchemyst</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform customer support with memory-powered AI that remembers, learns, and delivers personalized experiences.
+              Transform healthcare with memory-powered AI that addresses core challenges in patient care and support.
             </p>
           </div>
 
@@ -147,9 +146,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Contextual Understanding</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Smarter Patient Support, Lower Costs</h3>
               <p className="text-gray-400">
-                Alchemyst-powered agents remember past interactions, reducing customer frustration and cutting resolution time by up to 40%.
+                Alchemyst cuts per-interaction costs by over 40% right away—and up to 99.7% at scale. Memory-enabled agents deliver personalized care without needing costly data integration each time.
               </p>
             </div>
 
@@ -162,9 +161,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Personalized Support</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Fewer Claim Denials, Better Accuracy</h3>
               <p className="text-gray-400">
-                Build comprehensive customer profiles by unifying interaction history, preferences, and support data. Results in 25% higher customer satisfaction.
+                Data-aware agents reduce errors in patient info, slashing denial rates from 8.5% to 6.8%. Support accuracy jumps by 34%, leading to faster, more reliable claims processing.
               </p>
             </div>
 
@@ -177,9 +176,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Secure & Compliant Support</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Trust Through Context</h3>
               <p className="text-gray-400">
-                Enterprise-grade security with role-based access control and audit logs. Reduces compliance risks while maintaining 99.9% uptime.
+                Alchemyst remembers patient history, treatment paths, and conversation details—turning AI into a reliable, context-aware care partner that patients can actually trust.
               </p>
             </div>
           </div>
@@ -193,10 +192,10 @@ const EdTechPage = () => {
             {/* Left Side Content */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Efficient Support at Scale
+                Cost optimized. Out of the box.
               </h2>
               <p className="text-lg text-gray-300 mb-8">
-                Handle more support tickets with less resources while maintaining quality.
+                Run agents with more power with lesser cost.
               </p>
 
               {/* Checklist */}
@@ -205,19 +204,19 @@ const EdTechPage = () => {
                   <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center mt-1 flex-shrink-0">
                     <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                   </div>
-                  <span className="text-gray-300">Automated context management reduces agent cognitive load.</span>
+                  <span className="text-gray-300">Does the heavy lifting of memory offloading by itself.</span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center mt-1 flex-shrink-0">
                     <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                   </div>
-                  <span className="text-gray-300">Smart token usage cuts operational costs by up to 40%.</span>
+                  <span className="text-gray-300">Optimizes token expenditure with efficient prompts.</span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center mt-1 flex-shrink-0">
                     <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                   </div>
-                  <span className="text-gray-300">Handle complex, multi-turn conversations effortlessly.</span>
+                  <span className="text-gray-300">Highly capable of handling longer tasks.</span>
                 </div>
               </div>
 
@@ -390,7 +389,6 @@ const EdTechPage = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
