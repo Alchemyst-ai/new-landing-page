@@ -38,7 +38,7 @@ const contributors = [
 export function Community() {
   return (
     <Section id="community" title="Community">
-      <div className="border-x border-t overflow-hidden relative">
+      <div className="border-x border-t overflow-hidden relative mt-2">
         <Ripple />
         <div className="p-6 text-center py-12">
           <p className="text-muted-foreground mb-6 text-balance max-w-prose mx-auto font-medium">

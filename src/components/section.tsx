@@ -33,7 +33,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
       <section id={id} ref={ref}>
         <div
           className={cn(
-            "relative mx-auto container max-w-[var(--container-max-width)]",
+            "relative mx-auto container max-w-[var(--container-max-width-very-small-mobile)] sm:max-w-[var(--container-max-width-mobile)] md:max-w-[var(--container-max-width-tablet)] lg:max-w-[var(--container-max-width)] ",
             className
           )}
         >

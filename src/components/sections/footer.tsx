@@ -4,8 +4,8 @@ import { siteConfig } from "@/lib/config";
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-y-5 rounded-lg p-5 container max-w-[var(--container-max-width)] mx-auto">
-      <div className="flex items-center justify-between">
+    <footer className="flex flex-col gap-y-5 rounded-lg p-5 container max-w-[var(--container-max-width-very-small-mobile)] sm:max-w-[var(--container-max-width-mobile)] lg:max-w-[var(--container-max-width)]  md:max-w-[var(--container-max-width-tablet)] mx-auto">
+      <div className="flex items-center justify-between flex-col gap-2 flex-col-reverse sm:flex-row">
         <div className="flex flex-col text-sm font-medium tracking-tight text-muted-foreground">
           <p>© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
           <p>All rights reserved.</p>

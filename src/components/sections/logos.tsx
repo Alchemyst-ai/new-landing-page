@@ -41,7 +41,18 @@ export function Logos() {
           {images1.map((_, idx) => (
             <div
               key={idx}
-              className="flex group items-center justify-center p-4 border-r border-t last:border-r-0 sm:last:border-r md:[&:nth-child(3n)]:border-r md:[&:nth-child(6n)]:border-r-0 md:[&:nth-child(3)]:border-r [&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(-n+3)]:border-t-0 sm:[&:nth-child(3n)]:border-r-0 md:[&:nth-child(-n+6)]:border-t-0 [&:nth-child(2n)]:border-r-0 sm:[&:nth-child(2n)]:border-r"
+              className="flex group items-center justify-center p-4 border-r border-t h-32
+                last:border-r-0
+                sm:last:border-r
+                md:[&:nth-child(3n)]:border-r
+                md:[&:nth-child(6n)]:border-r-0
+                md:[&:nth-child(3)]:border-r
+                [&:nth-child(-n+2)]:border-t-0
+                sm:[&:nth-child(-n+3)]:border-t-0
+                sm:[&:nth-child(3n)]:border-r-0
+                md:[&:nth-child(-n+6)]:border-t-0
+                [&:nth-child(2n)]:border-r-0
+                sm:[&:nth-child(2n)]:border-r"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -58,7 +69,7 @@ export function Logos() {
                 >
                   <Image
                     width={150 * Math.abs(currentSet[idx].scale)}
-                    height={75 * Math.abs(currentSet[idx].scale)}
+                    height={80 * Math.abs(currentSet[idx].scale)}
                     src={currentSet[idx].src}
                     className="object-cover opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:brightness-0 dark:hover:invert"
                     alt={currentSet[idx].alt}
