@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
+import { UseCaseFeature } from "@/components/ui/use-case-feature";
 
 const EdTechPage = () => {
   return (
@@ -131,57 +132,38 @@ const EdTechPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Support Solutions with Alchemyst</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Healthcare Solutions with Alchemyst</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform customer support with memory-powered AI that remembers, learns, and delivers personalized experiences.
+              Transform healthcare with memory-powered AI that addresses core challenges in patient care and support.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Contextual Understanding</h3>
-              <p className="text-gray-400">
-                Alchemyst-powered agents remember past interactions, reducing customer frustration and cutting resolution time by up to 40%.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Personalized Support</h3>
-              <p className="text-gray-400">
-                Build comprehensive customer profiles by unifying interaction history, preferences, and support data. Results in 25% higher customer satisfaction.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Secure & Compliant Support</h3>
-              <p className="text-gray-400">
-                Enterprise-grade security with role-based access control and audit logs. Reduces compliance risks while maintaining 99.9% uptime.
-              </p>
-            </div>
+          {/* Use Case Features Section */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <UseCaseFeature
+              title="Remembers Patient History"
+              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
+              imagePath="/use-cases/healthcare/current-session.png"
+              imageAlt="Patient history tracking interface showing multiple sessions"
+            />
+            <UseCaseFeature
+              title="Follows Ongoing Treatment Plans"
+              description="Knows what's been recommended and what's been done across visits and agents."
+              imagePath="/use-cases/healthcare/previous-session.png"
+              imageAlt="Treatment plan timeline showing multiple checkpoints"
+            />
+            <UseCaseFeature
+              title="Supports Better Mental Health Conversations"
+              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
+              imagePath="/use-cases/healthcare/UserA.png"
+              imageAlt="Mental health conversation interface showing progress tracking"
+            />
+            <UseCaseFeature
+              title="Delivers Personalized Care at Scale"
+              description="Provides consistent, context-aware support while adapting to individual patient needs."
+              imagePath="/use-cases/healthcare/UserB.png"
+              imageAlt="Personalized care interface showing patient-specific recommendations"
+            />
           </div>
         </div>
       </div>

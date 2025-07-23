@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
+import { UseCaseFeature } from '@/components/ui/use-case-feature'
 
 const EdTechPage = () => {
   return (
@@ -52,7 +53,7 @@ const EdTechPage = () => {
           <div className="flex justify-center mb-16">
             <div className="relative w-full max-w-5xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
               <Image
-                src="/use-cases/customer-support.gif"
+                src="/use-cases/healthcare.gif"
                 alt="EdTech AI Learning Interface"
                 width={1200}
                 height={800}
@@ -136,51 +137,32 @@ const EdTechPage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Smarter Patient Support, Lower Costs</h3>
-              <p className="text-gray-400">
-                Alchemyst cuts per-interaction costs by over 40% right away—and up to 99.7% at scale. Memory-enabled agents deliver personalized care without needing costly data integration each time.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Fewer Claim Denials, Better Accuracy</h3>
-              <p className="text-gray-400">
-                Data-aware agents reduce errors in patient info, slashing denial rates from 8.5% to 6.8%. Support accuracy jumps by 34%, leading to faster, more reliable claims processing.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Trust Through Context</h3>
-              <p className="text-gray-400">
-                Alchemyst remembers patient history, treatment paths, and conversation details—turning AI into a reliable, context-aware care partner that patients can actually trust.
-              </p>
-            </div>
+          {/* Use Case Features Section */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <UseCaseFeature
+              title="Remembers Patient History"
+              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
+              imagePath="/use-cases/healthcare/healthcare01.png"
+              imageAlt="Patient history tracking interface showing multiple sessions"
+            />
+            <UseCaseFeature
+              title="Follows Ongoing Treatment Plans"
+              description="Knows what's been recommended and what's been done across visits and agents."
+              imagePath="/use-cases/healthcare/healthcare02.png"
+              imageAlt="Treatment plan timeline showing multiple checkpoints"
+            />
+            <UseCaseFeature
+              title="Supports Better Mental Health Conversations"
+              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
+              imagePath="/use-cases/healthcare/healthcare03.png"
+              imageAlt="Mental health conversation interface showing progress tracking"
+            />
+            <UseCaseFeature
+              title="Delivers Personalized Care at Scale"
+              description="Provides consistent, context-aware support while adapting to individual patient needs."
+              imagePath="/use-cases/healthcare/healthcare04.png"
+              imageAlt="Personalized care interface showing patient-specific recommendations"
+            />
           </div>
         </div>
       </div>
