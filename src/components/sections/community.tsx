@@ -62,7 +62,7 @@ export function Community() {
             ))}
           </div>
           <div className="flex justify-center">
-            <Link href="https://github.com/Alchemyst-ai" target="_blank">
+            <Link href="https://github.com/Alchemyst-ai/awesome-saas" target="_blank">
               <Button variant="secondary" className="flex items-center gap-2 cursor-pointer">
                 <Icons.github className="h-5 w-5" />
                 Join the Alchemyst Community
