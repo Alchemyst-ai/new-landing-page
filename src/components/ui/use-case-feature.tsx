@@ -10,7 +10,7 @@ interface UseCaseFeatureProps {
 export function UseCaseFeature({ title, description, imagePath, imageAlt }: UseCaseFeatureProps) {
   return (
     <div className="rounded-2xl bg-[#1C1C1C] overflow-hidden">
-      <div className="relative w-[500px] h-[600px] bg-[#242424]">
+      <div className="relative w-full h-[300px] bg-[#242424]">
         <Image
           src={imagePath}
           alt={imageAlt}

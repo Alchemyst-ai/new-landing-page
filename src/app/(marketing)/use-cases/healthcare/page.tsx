@@ -130,38 +130,38 @@ const EdTechPage = () => {
       <div className="w-full bg-black py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Healthcare Solutions with Alchemyst</h2>
+            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Features</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Intelligent Healthcare Features</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform healthcare with memory-powered AI that addresses core challenges in patient care and support.
+              Transform patient care with memory-powered AI that understands each patient's unique journey.
             </p>
           </div>
 
           {/* Use Case Features Section */}
           <div className="grid md:grid-cols-2 gap-8">
             <UseCaseFeature
-              title="Remembers Patient History"
-              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
+              title="Full Context Awareness of Patient"
+              description="Retains the history, medications and preferences across all sessions."
               imagePath="/use-cases/healthcare/healthcare01.png"
-              imageAlt="Patient history tracking interface showing multiple sessions"
+              imageAlt="Patient context awareness interface showing comprehensive history"
             />
             <UseCaseFeature
-              title="Follows Ongoing Treatment Plans"
-              description="Knows what's been recommended and what's been done across visits and agents."
+              title="Patient-tailored Suggestions. At Scale."
+              description="Suggests solutions custom-suited for the patient."
               imagePath="/use-cases/healthcare/healthcare02.png"
-              imageAlt="Treatment plan timeline showing multiple checkpoints"
+              imageAlt="Personalized medical suggestions interface"
             />
             <UseCaseFeature
-              title="Supports Better Mental Health Conversations"
-              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
+              title="Remembers Your Quirks"
+              description="Tracks past conversations to be more consistent with each patient's queries."
               imagePath="/use-cases/healthcare/healthcare03.png"
-              imageAlt="Mental health conversation interface showing progress tracking"
+              imageAlt="Patient interaction history and preferences tracking"
             />
             <UseCaseFeature
-              title="Delivers Personalized Care at Scale"
-              description="Provides consistent, context-aware support while adapting to individual patient needs."
+              title="Plans Ahead Treatments For You"
+              description="Remembers what's next in line for your treatment."
               imagePath="/use-cases/healthcare/healthcare04.png"
-              imageAlt="Personalized care interface showing patient-specific recommendations"
+              imageAlt="Treatment planning and scheduling interface"
             />
           </div>
         </div>

@@ -72,9 +72,9 @@ const EdTechPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Challenges</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems in Customer Support</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems Faced</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Traditional AI support tools lack context awareness and personalization, leading to frustrating customer experiences.
+              Current support systems struggle with coordination, prioritization, and context retention.
             </p>
           </div>
 
@@ -88,9 +88,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Lost Conversation Context</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Escalation Ping-Pong</h3>
               <p className="text-gray-400">
-                Customers repeat themselves as AI agents can't recall previous interactions and preferences.
+                Issues bounce between departments without resolution ownership.
               </p>
             </div>
 
@@ -103,9 +103,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Generic Responses</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Priority Paralysis</h3>
               <p className="text-gray-400">
-                One-size-fits-all responses fail to address specific customer needs and history.
+                Critical issues buried in queue without proper urgency detection.
               </p>
             </div>
 
@@ -118,9 +118,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">High Agent Workload</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Case History Blackouts</h3>
               <p className="text-gray-400">
-                Support teams waste time on repetitive queries that could be automated intelligently.
+                Previous interactions invisible, forcing customers to restart explanations.
               </p>
             </div>
           </div>
@@ -131,38 +131,38 @@ const EdTechPage = () => {
       <div className="w-full bg-black py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Healthcare Solutions with Alchemyst</h2>
+            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Features</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Smart Support Features</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform healthcare with memory-powered AI that addresses core challenges in patient care and support.
+              Transform customer support with memory-powered AI that delivers personalized, context-aware experiences.
             </p>
           </div>
 
           {/* Use Case Features Section */}
           <div className="grid md:grid-cols-2 gap-8">
             <UseCaseFeature
-              title="Remembers Patient History"
-              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
-              imagePath="/use-cases/healthcare/current-session.png"
-              imageAlt="Patient history tracking interface showing multiple sessions"
+              title="Retain Customer History"
+              description="Agents remember past conversations and customer context without having to ask them."
+              imagePath="/use-cases/customer-support/history.png"
+              imageAlt="Customer history retention interface showing past conversations"
             />
             <UseCaseFeature
-              title="Follows Ongoing Treatment Plans"
-              description="Knows what's been recommended and what's been done across visits and agents."
-              imagePath="/use-cases/healthcare/previous-session.png"
-              imageAlt="Treatment plan timeline showing multiple checkpoints"
+              title="Tailored Solutions"
+              description="Each reply of the agent feels personalized for the customer."
+              imagePath="/use-cases/customer-support/tailored.png"
+              imageAlt="Personalized solution interface showing contextual responses"
             />
             <UseCaseFeature
-              title="Supports Better Mental Health Conversations"
-              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
-              imagePath="/use-cases/healthcare/UserA.png"
-              imageAlt="Mental health conversation interface showing progress tracking"
+              title="Pattern Recognition"
+              description="Helps agents detect patterns in customer interactions to help prepare them for the unexpected."
+              imagePath="/use-cases/customer-support/patterns.png"
+              imageAlt="Pattern recognition dashboard showing interaction trends"
             />
             <UseCaseFeature
-              title="Delivers Personalized Care at Scale"
-              description="Provides consistent, context-aware support while adapting to individual patient needs."
-              imagePath="/use-cases/healthcare/UserB.png"
-              imageAlt="Personalized care interface showing patient-specific recommendations"
+              title="Feels Human"
+              description="Past conversation context helps Agents remember things about the customer, making the customer feel more connected to the Agent."
+              imagePath="/use-cases/customer-support/human.png"
+              imageAlt="Human-like interaction interface showing personalized engagement"
             />
           </div>
         </div>
