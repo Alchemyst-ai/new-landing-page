@@ -6,16 +6,50 @@ import {
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
 	McpEnvironmentTypes,
 	mcpEnvironmentLabels,
 	mcpInstructions,
 } from "./getMcpInstructions";
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeStringify from 'rehype-stringify';
 
 function IntegrationsMcps() {
 	const [environment, setEnvironment] = useState<McpEnvironmentTypes>("claude");
 	const [mode, setMode] = useState<string>("docker");
+	const [renderedContent, setRenderedContent] = useState<string>("");
+
+	const renderMarkdown = async (content: string) => {
+		const result = await unified()
+			.use(remarkParse)
+			.use(remarkGfm)
+			.use(remarkRehype)
+			.use(rehypePrettyCode, {
+				theme: {
+					light: "min-light",
+					dark: "min-dark",
+				},
+				keepBackground: false,
+			})
+			.use(rehypeStringify)
+			.process(content);
+
+		return result.toString();
+	};
+
+	useEffect(() => {
+		const updateContent = async () => {
+			const content = mcpInstructions[environment][mode] || "";
+			const rendered = await renderMarkdown(content);
+			setRenderedContent(rendered);
+		};
+		updateContent();
+	}, [environment, mode]);
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -80,11 +114,10 @@ function IntegrationsMcps() {
 				</DropdownMenu>
 			</div>
 			<div className="my-5" />
-			<div className="prose dark:prose-invert max-w-none">
-				<pre className="whitespace-pre-wrap">
-					{mcpInstructions[environment][mode] || ""}
-				</pre>
-			</div>
+			<div 
+				className="prose dark:prose-invert max-w-none [&_pre]:!bg-[#1E1E1E] [&_pre]:p-4 [&_pre]:rounded-lg [&_code]:text-sm"
+				dangerouslySetInnerHTML={{ __html: renderedContent }}
+			/>
 		</div>
 	);
 }
