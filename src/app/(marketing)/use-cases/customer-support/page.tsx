@@ -143,25 +143,25 @@ const EdTechPage = () => {
             <UseCaseFeature
               title="Retain Customer History"
               description="Agents remember past conversations and customer context without having to ask them."
-              imagePath="/use-cases/customer-support/history.png"
+              imagePath="/use-cases/customer-care/customer01.png"
               imageAlt="Customer history retention interface showing past conversations"
             />
             <UseCaseFeature
               title="Tailored Solutions"
               description="Each reply of the agent feels personalized for the customer."
-              imagePath="/use-cases/customer-support/tailored.png"
+              imagePath="/use-cases/customer-care/customer02.png"
               imageAlt="Personalized solution interface showing contextual responses"
             />
             <UseCaseFeature
               title="Pattern Recognition"
               description="Helps agents detect patterns in customer interactions to help prepare them for the unexpected."
-              imagePath="/use-cases/customer-support/patterns.png"
+              imagePath="/use-cases/customer-care/customer03.png"
               imageAlt="Pattern recognition dashboard showing interaction trends"
             />
             <UseCaseFeature
               title="Feels Human"
               description="Past conversation context helps Agents remember things about the customer, making the customer feel more connected to the Agent."
-              imagePath="/use-cases/customer-support/human.png"
+              imagePath="/use-cases/customer-care/customer04.png"
               imageAlt="Human-like interaction interface showing personalized engagement"
             />
           </div>
