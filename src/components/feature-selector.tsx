@@ -2,20 +2,23 @@
 
 import React, { useState, useEffect } from "react";
 import { codeToHtml } from "shiki";
+import IntegrationsMcps from "./mcpsCode/IntegrationsMcps";
 
 interface FeatureOption {
   id: number;
   title: string;
   description: string;
-  code: string;
+  code?: string;
+  isMcp?: boolean;
 }
 
 interface RawFeature {
   id: number;
   title: string;
   description: string;
-  rawCode: string;
-  lang: string;
+  rawCode?: string;
+  lang?: string;
+  isMcp?: boolean;
 }
 
 const rawFeatures: RawFeature[] = [
@@ -107,7 +110,7 @@ while (true) {
     title: "Context Proxy API",
     description: "OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.",
     lang: "bash",
-      rawCode: `curl -X POST "/api/v1/proxy/https://api.openai.com/v1/sk-your-key/chat/completions" \
+    rawCode: `curl -X POST "/api/v1/proxy/https://api.openai.com/v1/sk-your-key/chat/completions" \
   -H "Authorization: Bearer <your-token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -119,6 +122,12 @@ while (true) {
       }
     ]
   }'`
+  },
+  {
+    id: 4,
+    title: "Model Context Protocol",
+    description: "Integrate our context processor MCP on the fly across different environments and modes.",
+    isMcp: true
   }
 ];
 
@@ -142,10 +151,11 @@ export const FeatureSelector: React.FC<FeatureSelectorProps> = ({
             id: feature.id,
             title: feature.title,
             description: feature.description,
-            code: await codeToHtml(feature.rawCode, {
-              lang: feature.lang,
+            code: feature.rawCode ? await codeToHtml(feature.rawCode, {
+              lang: feature.lang || "javascript",
               theme: "github-dark",
-            }),
+            }) : undefined,
+            isMcp: feature.isMcp
           }))
         );
         setProcessedFeatures(processed);
@@ -180,10 +190,16 @@ export const FeatureSelector: React.FC<FeatureSelectorProps> = ({
         </div>
       </div>
       <div className="col-span-1 md:col-span-3">
-        <div
-          className="bg-background font-mono text-sm [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all md:max-h-[45vh] overflow-scroll"
-          dangerouslySetInnerHTML={{ __html: processedFeatures[selectedIndex].code }}
-        />
+        {processedFeatures[selectedIndex].isMcp ? (
+          <div className="p-4">
+            <IntegrationsMcps />
+          </div>
+        ) : (
+          <div
+            className="bg-background font-mono text-sm [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all md:max-h-[45vh] overflow-scroll"
+            dangerouslySetInnerHTML={{ __html: processedFeatures[selectedIndex].code || '' }}
+          />
+        )}
       </div>
     </div>
   );

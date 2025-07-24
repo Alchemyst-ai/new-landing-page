@@ -21,6 +21,8 @@ const buttonVariants = cva(
 
         orange:
         "border border-input  hover:bg-accent hover:text-accent-foreground",
+        light:
+          "bg-[#EAEAEA] text-black hover:bg-[#EAEAEA]/90",
       },
       size: {
         default: "h-10 px-4 py-2",
