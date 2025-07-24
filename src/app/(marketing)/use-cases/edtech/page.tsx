@@ -130,38 +130,38 @@ const EdTechPage = () => {
       <div className="w-full bg-black py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Healthcare Solutions with Alchemyst</h2>
+            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Features</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Intelligent Education Features</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform healthcare with memory-powered AI that addresses core challenges in patient care and support.
+              Transform education with memory-powered AI that adapts and personalizes learning for each student.
             </p>
           </div>
 
           {/* Use Case Features Section */}
           <div className="grid md:grid-cols-2 gap-8">
             <UseCaseFeature
-              title="Remembers Patient History"
-              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
-              imagePath="/use-cases/healthcare/healthcare01.png"
-              imageAlt="Patient history tracking interface showing multiple sessions"
+              title="Personalized Learning at Scale"
+              description="Retains student goals, past performance, and pace → suggests content that actually fits."
+              imagePath="/use-cases/edtech/edtech01.png"
+              imageAlt="Personalized learning dashboard showing student progress and content recommendations"
             />
             <UseCaseFeature
-              title="Follows Ongoing Treatment Plans"
-              description="Knows what's been recommended and what's been done across visits and agents."
-              imagePath="/use-cases/healthcare/healthcare02.png"
-              imageAlt="Treatment plan timeline showing multiple checkpoints"
+              title="Real-time Learner Context Sync"
+              description="Keeps up with grading, attendance, quiz scores → reduces manual syncing & admin overhead."
+              imagePath="/use-cases/edtech/edtech02.png"
+              imageAlt="Real-time student data synchronization interface"
             />
             <UseCaseFeature
-              title="Supports Better Mental Health Conversations"
-              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
-              imagePath="/use-cases/healthcare/healthcare03.png"
-              imageAlt="Mental health conversation interface showing progress tracking"
+              title="Adaptive Tutoring Agents"
+              description="Alchemyst agents adjust tone, difficulty, and pace — tuned to each learner's trajectory."
+              imagePath="/use-cases/edtech/edtech03.png"
+              imageAlt="Adaptive tutoring interface showing personalized learning paths"
             />
             <UseCaseFeature
-              title="Delivers Personalized Care at Scale"
-              description="Provides consistent, context-aware support while adapting to individual patient needs."
-              imagePath="/use-cases/healthcare/UserB.png"
-              imageAlt="Personalized care interface showing patient-specific recommendations"
+              title="Secure, Governed Memory"
+              description="Role-based access + context-aware AI → safe classrooms and compliant edtech systems."
+              imagePath="/use-cases/edtech/edtech04.png"
+              imageAlt="Security and compliance dashboard for educational data"
             />
           </div>
         </div>
