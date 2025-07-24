@@ -70,9 +70,9 @@ const EdTechPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Challenges</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems in Financial Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Problems Faced</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Traditional AI solutions struggle with context retention and real-time decision making in financial operations.
+              Legacy financial systems struggle with efficiency, speed, and context retention.
             </p>
           </div>
 
@@ -86,9 +86,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">High False Positive Rates</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Repetitive Fraud Checks</h3>
               <p className="text-gray-400">
-                Current systems flag too many legitimate transactions, causing customer friction and operational overhead.
+                Legacy systems reprocess the same entities/devices each time → redundant and expensive.
               </p>
             </div>
 
@@ -101,9 +101,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Slow Processing Times</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Rigid Payments Logic</h3>
               <p className="text-gray-400">
-                Repeated database queries and redundant checks slow down critical financial operations.
+                No memory of past issuer quirks or merchant behavior → higher declines, lost revenue.
               </p>
             </div>
 
@@ -116,9 +116,9 @@ const EdTechPage = () => {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Fragmented Customer Data</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Fragmented Case Data</h3>
               <p className="text-gray-400">
-                Scattered information across systems leads to incomplete risk assessment and customer understanding.
+                KYC, device, and transaction info live in silos → agents can't act fast or see full context.
               </p>
             </div>
           </div>
@@ -129,38 +129,38 @@ const EdTechPage = () => {
       <div className="w-full bg-black py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Finance Solutions with Alchemyst</h2>
+            <span className="text-sm uppercase tracking-wider text-gray-400 mb-4 inline-block">Features</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Intelligent Financial Features</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Transform finance with memory-powered AI that addresses core challenges in financial operations.
+              Transform financial operations with memory-powered AI that learns and adapts from every transaction.
             </p>
           </div>
 
           {/* Use Case Features Section */}
           <div className="grid md:grid-cols-2 gap-8">
             <UseCaseFeature
-              title="Remembers Patient History"
-              description="Keeps track of conditions, allergies, medications, and preferences across sessions."
-              imagePath="/use-cases/healthcare/current-session.png"
-              imageAlt="Patient history tracking interface showing multiple sessions"
+              title="Persistent Memory for Fraud Prevention"
+              description="Remembers devices and prior entities → avoids duplicate checks → slashes token and infra costs."
+              imagePath="/use-cases/fintech/fintech01.png"
+              imageAlt="Fraud prevention system showing device and entity memory"
             />
             <UseCaseFeature
-              title="Follows Ongoing Treatment Plans"
-              description="Knows what's been recommended and what's been done across visits and agents."
-              imagePath="/use-cases/healthcare/previous-session.png"
-              imageAlt="Treatment plan timeline showing multiple checkpoints"
+              title="Checkout that Learns Over Time"
+              description="Alchemyst retains issuer quirks and merchant-specific logic → faster, more accurate auths."
+              imagePath="/use-cases/fintech/fintech02.png"
+              imageAlt="Adaptive checkout system with learning capabilities"
             />
             <UseCaseFeature
-              title="Supports Better Mental Health Conversations"
-              description="Tracks progress over time and maintains context for more meaningful therapeutic interactions."
-              imagePath="/use-cases/healthcare/UserA.png"
-              imageAlt="Mental health conversation interface showing progress tracking"
+              title="Smart Credit & BNPL Routing"
+              description="No more sending full loan ledgers → eligibility checks become 70% cheaper and smarter."
+              imagePath="/use-cases/fintech/fintech03.png"
+              imageAlt="Smart credit routing system showing optimized checks"
             />
             <UseCaseFeature
-              title="Delivers Personalized Care at Scale"
-              description="Provides consistent, context-aware support while adapting to individual patient needs."
-              imagePath="/use-cases/healthcare/UserB.png"
-              imageAlt="Personalized care interface showing patient-specific recommendations"
+              title="Unified View of Financial Cases"
+              description="KYC, payments, and user fingerprints stitched into one memory → faster resolution, fewer reruns."
+              imagePath="/use-cases/fintech/fintech04.png"
+              imageAlt="Unified financial case management interface"
             />
           </div>
         </div>
