@@ -118,7 +118,7 @@ const EdTechPage = () => {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Fragmented Case Data</h3>
               <p className="text-gray-400">
-                KYC, device, and transaction info live in silos → agents can't act fast or see full context.
+                KYC, device, and transaction info live in silos → agents can&apos;t act fast or see full context.
               </p>
             </div>
           </div>
