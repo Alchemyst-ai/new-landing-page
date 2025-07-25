@@ -77,7 +77,10 @@ export async function GET(req: NextRequest) {
           </div>
         </div>
 
-        {/* Note: We can't use next/image in OG Image generation as it's not supported */}
+        {/* 
+          Note: We can't use next/image in OG Image generation as it's not supported.
+          Keeping the img tag as it's used in ImageResponse which doesn't support Next/Image 
+        */}
         <img
           src={`${siteConfig.url}/cube.png`}
           width={500}
