@@ -124,7 +124,7 @@ const ResearchComponent = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Alchemyst delivers a four-stage processing pipeline—AsyncIO, OKG Orchestration, ThinkRAG, and Context Marketing—connecting Data Sources to Agents/MCPs with comprehensive observability across all stages.
+              Alchemyst delivers a four-stage processing pipeline—Asym0, OKG Orchestration, ThinkRAG, and Context Marketing—connecting Data Sources to Agents/MCPs with comprehensive observability across all stages.
             </p>
           </div>
           

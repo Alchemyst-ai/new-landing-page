@@ -105,11 +105,11 @@ export const siteConfig = {
     socialLinks: [
       {
         icon: <Icons.github className="h-5 w-5" />,
-        url: "#",
+        url: "https://github.com/Alchemyst-ai",
       },
       {
         icon: <Icons.twitter className="h-5 w-5" />,
-        url: "#",
+        url: "https://x.com/getalchemyst",
       },
       {
         icon: <Icons.linkedin className="h-5 w-5" />,
