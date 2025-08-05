@@ -14,14 +14,15 @@ import {
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "AI Alchemyst AI",
+  name: "Alchemyst AI",
   description: "Create AI Agents with just a few lines of code.",
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
-    "AI Alchemyst AI",
+    "Alchemyst AI",
     "Multi-Agent Systems",
     "Tool Integration",
+    "AI Memory",
     "Workflow Automation",
   ],
   links: {
@@ -32,11 +33,11 @@ export const siteConfig = {
     instagram: "https://instagram.com/aiagentsdk",
   },
   hero: {
-    title: "AI Alchemyst AI",
+    title: "Alchemyst AI",
     description:
-      "Create powerful AI agent workflows with just a few lines of code, enabling complex task automation and decision-making processes.",
-    cta: "Get Started",
-    ctaDescription: "Available for all major programming languages",
+      "Revolutionize Your Workflow with Intelligent Multi-Agent AI Systems. Create powerful, adaptive AI agents across multiple programming languages with unprecedented ease and flexibility.",
+    cta: "Build Your First AI Agent",
+    ctaDescription: "Supported in Python, JavaScript, Java, and more",
   },
   features: [
     {
@@ -126,7 +127,7 @@ export const siteConfig = {
   testimonials: [
     {
       id: 1,
-      text: "The AI Alchemyst AI has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
+      text: "The Alchemyst AI has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
       name: "Alice Johnson",
       company: "OpenMind Labs",
       image:
@@ -150,7 +151,7 @@ export const siteConfig = {
     },
     {
       id: 4,
-      text: "The AI Alchemyst AI's tool integration feature has streamlined our workflow automation processes.",
+      text: "The Alchemyst AI's tool integration feature has streamlined our workflow automation processes.",
       name: "Diana Evans",
       company: "AutomateX",
       image:
@@ -166,7 +167,7 @@ export const siteConfig = {
     },
     {
       id: 6,
-      text: "The AI Alchemyst AI's efficiency features have significantly improved our system's performance and scalability.",
+      text: "The Alchemyst AI's efficiency features have significantly improved our system's performance and scalability.",
       name: "Fiona Grant",
       company: "ScaleAI",
       image:
@@ -182,7 +183,7 @@ export const siteConfig = {
     },
     {
       id: 8,
-      text: "The AI Alchemyst AI's multi-agent system has enabled us to build complex, collaborative AI solutions with ease.",
+      text: "The Alchemyst AI's multi-agent system has enabled us to build complex, collaborative AI solutions with ease.",
       name: "Hannah Irving",
       company: "CollabAI",
       image:
@@ -198,7 +199,7 @@ export const siteConfig = {
     },
     {
       id: 10,
-      text: "The AI Alchemyst AI's documentation and support have made our learning curve much smoother.",
+      text: "The Alchemyst AI's documentation and support have made our learning curve much smoother.",
       name: "Julia Kim",
       company: "DevAI",
       image:
@@ -206,7 +207,7 @@ export const siteConfig = {
     },
     {
       id: 11,
-      text: "We've seen a significant boost in our AI's decision-making capabilities thanks to the AI Alchemyst AI.",
+      text: "We've seen a significant boost in our AI's decision-making capabilities thanks to the Alchemyst AI.",
       name: "Kevin Lee",
       company: "DecisionTech",
       image:
@@ -222,7 +223,7 @@ export const siteConfig = {
     },
     {
       id: 13,
-      text: "The customization options in the AI Alchemyst AI have allowed us to create truly unique AI solutions.",
+      text: "The customization options in the Alchemyst AI have allowed us to create truly unique AI solutions.",
       name: "Michael Chen",
       company: "UniqueAI",
       image:
@@ -230,7 +231,7 @@ export const siteConfig = {
     },
     {
       id: 14,
-      text: "The efficiency of the AI Alchemyst AI has significantly reduced our development time and costs.",
+      text: "The efficiency of the Alchemyst AI has significantly reduced our development time and costs.",
       name: "Natalie Wong",
       company: "FastTrackAI",
       image:

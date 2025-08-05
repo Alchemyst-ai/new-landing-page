@@ -24,32 +24,46 @@ export function constructMetadata({
 }): Metadata {
   return {
     title: {
-      template: "%s | " + siteConfig.name,
-      default: siteConfig.name,
+      template: "%s | AI Agent Development Platform",
+      default: "Alchemyst AI | Create Powerful AI Agents",
     },
-    description: description || siteConfig.description,
-    keywords: siteConfig.keywords,
+    description: description || "Revolutionize workflow automation with AI agents. Build complex, intelligent systems with just a few lines of code.",
+    keywords: [
+      "AI agents",
+      "multi-agent systems", 
+      "workflow automation", 
+      "AI development", 
+      "tool integration", 
+      "AI memory",
+      "agent SDK"
+    ],
     openGraph: {
       title,
-      description,
+      description: description || "Revolutionize workflow automation with AI agents",
       url: siteConfig.url,
-      siteName: siteConfig.name,
+      siteName: "Alchemyst AI",
       images: [
         {
           url: image,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: "Alchemyst AI - Powerful AI Agent Development Platform",
         },
       ],
       type: "website",
       locale: "en_US",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Alchemyst AI: Create Powerful AI Agents",
+      description: "Build complex, intelligent systems with just a few lines of code.",
+      images: [image],
+    },
     icons: "/favicon.ico",
     metadataBase: new URL(siteConfig.url),
     authors: [
       {
-        name: siteConfig.name,
+        name: "Alchemyst AI Team",
         url: siteConfig.url,
       },
     ],
