@@ -37,9 +37,6 @@ export default function RootLayout({
           "min-h-screen bg-background antialiased w-full mx-auto scroll-smooth font-sans"
         )}
       >
-        {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-558WGZR4"
-          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}>
-        </iframe></noscript> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -49,20 +46,6 @@ export default function RootLayout({
           <ThemeToggle />
           <TailwindIndicator />
         </ThemeProvider>
-        {/* <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHNWY5LTDN"></script>
-        <script>
-          { // @ts-ignore
-            window.dataLayer = window.dataLayer || [];
-          // @ts-ignore
-          function gtag(){
-            // @ts-ignore
-            dataLayer.push(arguments)
-          }
-          gtag('js', new Date());
-
-          gtag('config', 'G-WHNWY5LTDN')} 
-        </script> */}
         <GoogleAnalytics gaId="G-WHNWY5LTDN" />
       </body>
     </html>
