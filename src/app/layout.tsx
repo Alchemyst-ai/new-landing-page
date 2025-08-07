@@ -36,6 +36,9 @@ export default function RootLayout({
           "min-h-screen bg-background antialiased w-full mx-auto scroll-smooth font-sans"
         )}
       >
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-558WGZR4"
+          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}>
+        </iframe>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
