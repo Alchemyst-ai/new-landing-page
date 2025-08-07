@@ -6,7 +6,7 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import "./globals.css";
 
 export const metadata: Metadata = constructMetadata({
@@ -32,6 +32,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
+      <GoogleTagManager gtmId="GTM-558WGZR4" />
       <body
         className={cn(
           "min-h-screen bg-background antialiased w-full mx-auto scroll-smooth font-sans"
