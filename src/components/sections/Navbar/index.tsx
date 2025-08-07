@@ -132,6 +132,15 @@ const Navbar: React.FC = () => {
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
           <Link 
+            href="/about-us" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              About Us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link 
             href="/case-study" 
             className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
           >
@@ -173,6 +182,15 @@ const Navbar: React.FC = () => {
           >
             <span className="relative pb-1">
               Research
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link 
+            href="/blog" 
+            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Blog
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>

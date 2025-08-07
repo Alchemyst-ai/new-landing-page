@@ -1,12 +1,12 @@
-import Author from "@/components/blog-author";
 import { CTA } from "@/components/sections/cta";
-import { getPost } from "@/lib/blog";
+import { getPost, getBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
-import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import BlogHeader from "@/components/blog-header";
+import Image from "next/image";
+import Link from "next/link";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -53,8 +53,15 @@ export default async function Page(props: {
   if (!post) {
     notFound();
   }
+
+  // Get popular blogs (for now, just getting all blogs and taking the first 5)
+  const allPosts = await getBlogPosts();
+  const popularPosts = allPosts
+    .filter(p => p.slug !== post.metadata.slug) // Exclude current post
+    .slice(0, 5);
+
   return (
-    <section id="blog">
+    <section id="blog" className="bg-black min-h-screen">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -72,55 +79,146 @@ export default async function Page(props: {
             url: `${siteConfig.url}/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: siteConfig.name,
+              name: post.metadata.author,
             },
           }),
         }}
       />
-      <div className="mx-auto w-full max-w-[800px] px-4 sm:px-6 lg:px-8 space-y-4 my-12">
-        <Suspense
-          fallback={
-            <div className="mb-8 w-full h-64 bg-muted animate-pulse rounded-lg"></div>
-          }
-        >
-          {post.metadata.image && (
-            <div className="mb-8">
-              <Image
-                width={1920}
-                height={1080}
-                src={post.metadata.image}
-                alt={post.metadata.title}
-                className="w-full h-auto rounded-lg border"
-              />
+
+      <div className="max-w-screen-2xl mx-auto">
+        <div className="flex flex-col lg:flex-row">
+          {/* Main Content - 70% */}
+          <div className="w-full lg:w-[70%] px-4 sm:px-6 lg:px-8">
+            <BlogHeader
+              title={post.metadata.title}
+              category={post.metadata.category || "Trading"}
+              subcategory={post.metadata.subcategory || "Market Analysis"}
+              publishedAt={post.metadata.publishedAt}
+              author={{
+                name: post.metadata.author,
+                image: "/author.jpg"
+              }}
+              reviewer={{
+                name: "Shivam Gaba",
+                image: "/reviewer.jpg"
+              }}
+              featuredImage={post.metadata.image}
+            />
+
+            <div className="py-12">
+              <article
+                className="prose dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: post.source }}
+              ></article>
             </div>
-          )}
-        </Suspense>
-        <div className="flex flex-col">
-          <h1 className="title font-medium text-3xl tracking-tighter">
-            {post.metadata.title}
-          </h1>
-        </div>
-        <div className="flex justify-between items-center text-sm">
-          <Suspense fallback={<p className="h-5" />}>
-            <div className="flex items-center space-x-2">
-              <time dateTime={post.metadata.publishedAt} className="text-sm">
-                {formatDate(post.metadata.publishedAt)}
-              </time>
+          </div>
+
+          {/* Right Sidebar - 30% */}
+          <div className="hidden lg:flex lg:flex-col lg:w-[30%] px-4 sm:px-6 lg:px-8">
+            {/* Advertisement Section */}
+            <div className="sticky top-24 space-y-8">
+              <div className="bg-gray-900 rounded-xl overflow-hidden">
+                {/* Ad Header with Logo */}
+                <div className="p-4 border-b border-gray-800">
+                  <Image
+                    src="/public/logo.png"
+                    alt="HDFC Sky"
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto"
+                  />
+                </div>
+                
+                {/* Ad Content */}
+                <div className="p-6">
+                  <h3 className="text-2xl font-semibold text-white mb-2">Macro</h3>
+                  <p className="text-gray-400 text-sm mb-6">
+                    For active investors seeking swing trade ideas and a macro strategy
+                  </p>
+
+                  {/* Pricing */}
+                  <div className="mb-6">
+                    <div className="flex items-center mb-2">
+                      <span className="text-gray-500 line-through text-sm">$54.95</span>
+                      <span className="text-3xl font-bold text-white ml-2">$43.96</span>
+                      <span className="text-gray-400 text-sm ml-2">Monthly</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-gray-500 line-through text-sm">$659.40</span>
+                      <span className="text-xl font-semibold text-white ml-2">$527.52</span>
+                      <span className="text-gray-400 text-sm ml-2">Annually</span>
+                    </div>
+                    <p className="text-green-500 text-sm mt-2">You save $144.00 a year</p>
+                  </div>
+
+                  {/* Benefits */}
+                  <div className="space-y-3 mb-8">
+                    <div className="flex items-center text-gray-300">
+                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                      Real-time Trade Alerts
+                    </div>
+                    <div className="flex items-center text-gray-300">
+                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                      Premium Video Market Updates
+                    </div>
+                    <div className="flex items-center text-gray-300">
+                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                      Forecasting Models
+                    </div>
+                    <div className="flex items-center text-gray-300">
+                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                      Trading Educational Content
+                    </div>
+                    <div className="flex items-center text-gray-300">
+                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                      Covering Stocks, ETFs, Commodities
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors text-lg">
+                    Subscribe
+                  </button>
+
+                  {/* Footer */}
+                  <p className="text-center text-gray-500 text-sm mt-4">
+                    Access membership via our website and mobile app
+                  </p>
+                </div>
+              </div>
+
+              {/* Popular Blogs Section */}
+              <div className="bg-gray-900 rounded-xl overflow-hidden p-6">
+                <h3 className="text-xl font-semibold text-white mb-6">Popular Articles</h3>
+                <div className="space-y-6">
+                  {popularPosts.map((post, index) => (
+                    <Link 
+                      key={post.slug} 
+                      href={`/blog/${post.slug}`}
+                      className="group block"
+                    >
+                      <div className="flex items-start gap-4">
+                        <span className="text-2xl font-bold text-gray-600 group-hover:text-red-500 transition-colors">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <h4 className="text-white group-hover:text-red-500 transition-colors font-medium mb-1">
+                            {post.title}
+                          </h4>
+                          <p className="text-sm text-gray-400 line-clamp-2">
+                            {post.summary}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
-          </Suspense>
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <Author
-            twitterUsername={post.metadata.author}
-            name={post.metadata.author}
-            image={"/author.jpg"}
-          />
-        </div>
-        <article
-          className="prose dark:prose-invert mx-auto max-w-full"
-          dangerouslySetInnerHTML={{ __html: post.source }}
-        ></article>
       </div>
+      
       <CTA />
     </section>
   );

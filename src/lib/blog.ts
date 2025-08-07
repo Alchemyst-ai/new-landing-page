@@ -15,6 +15,8 @@ export type Post = {
   author: string;
   slug: string;
   image?: string;
+  category?: string;
+  subcategory?: string;
 };
 
 function parseFrontmatter(fileContent: string) {
