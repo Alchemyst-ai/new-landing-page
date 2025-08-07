@@ -51,12 +51,16 @@ export default function RootLayout({
         {/* <!-- Google tag (gtag.js) --> */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHNWY5LTDN"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          {/* @ts-ignore */}
-          function gtag(){dataLayer.push(arguments)}
+          { // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+          // @ts-ignore
+          function gtag(){
+            // @ts-ignore
+            dataLayer.push(arguments)
+          }
           gtag('js', new Date());
 
-          gtag('config', 'G-WHNWY5LTDN');
+          gtag('config', 'G-WHNWY5LTDN')}
         </script>
       </body>
     </html>
