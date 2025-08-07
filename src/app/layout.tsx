@@ -6,6 +6,7 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
 
 export const metadata: Metadata = constructMetadata({
@@ -48,7 +49,7 @@ export default function RootLayout({
           <ThemeToggle />
           <TailwindIndicator />
         </ThemeProvider>
-        {/* <!-- Google tag (gtag.js) --> */}
+        {/* <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHNWY5LTDN"></script>
         <script>
           { // @ts-ignore
@@ -60,8 +61,9 @@ export default function RootLayout({
           }
           gtag('js', new Date());
 
-          gtag('config', 'G-WHNWY5LTDN')}
-        </script>
+          gtag('config', 'G-WHNWY5LTDN')} 
+        </script> */}
+        <GoogleAnalytics gaId="G-WHNWY5LTDN" />
       </body>
     </html>
   );
