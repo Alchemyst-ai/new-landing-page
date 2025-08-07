@@ -1,4 +1,3 @@
-import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/config";
@@ -45,7 +44,6 @@ export default function RootLayout({
         >
           {children}
           <ThemeToggle />
-          <TailwindIndicator />
         </ThemeProvider>
         <GoogleAnalytics gaId="G-WHNWY5LTDN" />
       </body>

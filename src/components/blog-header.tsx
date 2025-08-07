@@ -31,29 +31,29 @@ export default function BlogHeader({
   readTime = 5
 }: BlogHeaderProps) {
   return (
-    <div className="w-full bg-black">
+    <div className="w-full bg-background">
       <div className="w-full lg:w-[800px] px-4 sm:px-6 lg:px-8 pt-24 pb-8">
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
           {title}
         </h1>
 
         {/* Breadcrumb */}
-        <nav className="flex items-center text-sm text-gray-400 mb-8">
-          <Link href="/" className="hover:text-white transition-colors">
+        <nav className="flex items-center text-sm text-muted-foreground mb-8">
+          <Link href="/" className="hover:text-foreground transition-colors">
             Bravos
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
-          <Link href={`/category/${category.toLowerCase()}`} className="hover:text-white transition-colors">
+          <Link href={`/category/${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
             {category}
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-white">{subcategory}</span>
+          <span className="text-foreground">{subcategory}</span>
         </nav>
 
         {/* Featured Image */}
         {featuredImage && (
-          <div className="w-full rounded-xl overflow-hidden mb-8 bg-white/5">
+          <div className="w-full rounded-xl overflow-hidden mb-8 bg-muted">
             <Image
               src={featuredImage}
               alt={title}
@@ -66,7 +66,7 @@ export default function BlogHeader({
         )}
 
         {/* Author Info Row */}
-        <div className="flex flex-wrap items-center gap-4 text-gray-300 text-sm">
+        <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
           {/* Written by */}
           <div className="flex items-center gap-2">
             <Image
@@ -76,7 +76,7 @@ export default function BlogHeader({
               height={24}
               className="rounded-full"
             />
-            <span>Written by <span className="text-white font-medium">{author.name}</span></span>
+            <span>Written by <span className="text-foreground font-medium">{author.name}</span></span>
           </div>
 
           {/* Reviewed by */}
@@ -89,7 +89,7 @@ export default function BlogHeader({
                 height={24}
                 className="rounded-full"
               />
-              <span>Reviewed by <span className="text-white font-medium">{reviewer.name}</span></span>
+              <span>Reviewed by <span className="text-foreground font-medium">{reviewer.name}</span></span>
             </div>
           )}
           

@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
     <div className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center">
       <nav
         ref={navRef}
-        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl flex justify-between items-center w-[70%] px-6 py-2"
+        className="bg-card/30 backdrop-blur-md border border-border rounded-xl flex justify-between items-center w-[70%] px-6 py-2"
       >
         {/* Alchemyst Logo */}
         <div className="flex items-center space-x-4">
@@ -132,75 +132,64 @@ const Navbar: React.FC = () => {
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
           <Link 
-            href="/about-us" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
-          >
-            <span className="relative pb-1">
-              About Us
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link 
             href="/case-study" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
               Case Studies
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
           <Link 
             href="/security&compliance" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
               Security
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link 
-            href="#" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
-          >
-            <span className="relative pb-1">
-              Docs
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link 
-            href="/pricing" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
-          >
-            <span className="relative pb-1">
-              Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link 
-            href="/research" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
-          >
-            <span className="relative pb-1">
-              Research
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
           <Link 
             href="/blog" 
-            className="relative text-white/80 hover:text-white transition-colors duration-200 text-sm group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
               Blog
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link 
+            href="#" 
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Docs
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link 
+            href="/pricing" 
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Pricing
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link 
+            href="/research" 
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
+          >
+            <span className="relative pb-1">
+              Research
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
         </div>
 
         {/* Partner with us button and Book a Demo */}
         <div className="flex items-center space-x-3">
-          {/* <TwitterButtonWithFollowers /> */}
           <GitHubButtonWithStars />
-          
         </div>
 
         {/* Mobile Menu */}
@@ -208,27 +197,12 @@ const Navbar: React.FC = () => {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                className="md:hidden fixed top-[70px] inset-x-4 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto"
+                className="md:hidden fixed top-[70px] inset-x-4 bg-card/90 backdrop-blur-md border border-border rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* <div className="flex space-x-2 w-full mb-6">
-                  <Link href="https://tripetto.app/run/60HWNW0WQN" className="flex-1">
-                    <Button variant="secondary" className="w-full text-sm py-2 border-white/10">
-                      Get in Touch
-                    </Button>
-                  </Link>
-                  <Link
-                    href="https://calendly.com/uttaran-getalchemystai/30min"
-                    className="flex-1"
-                  >
-                    <Button variant="primary" className="w-full text-sm py-2">
-                      Book a demo
-                    </Button>
-                  </Link>
-                </div> */}
                 <motion.div
                   key="mainmenu"
                   initial={{ opacity: 0, x: "-100%" }}
@@ -237,36 +211,22 @@ const Navbar: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   className="w-full space-y-4"
                 >
-                  {/* {menuData.map((item) => renderMobileMenuItem(item))} */}
-                  
-                  {/* Pricing Link */}
                   <Link
                     href="/pricing"
-                    className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                    className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"
                     onClick={toggleMenu}
                   >
                     Pricing
                   </Link>
                   
-                  {/* Get in Touch */}
                   <Link
                     href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
-                    className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                    className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"
                     onClick={toggleMenu}
                   >
                     Get in Touch
                   </Link>
                   
-                  {/* GitHub Link */}
-                  {/* <Link
-                    href="https://github.com/alchemyst-ai/awesome-saas"
-                    target="_blank"
-                    className="flex items-center py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
-                    onClick={toggleMenu}
-                  >
-                    <FaGithub className="mr-3 text-xl" />
-                    GitHub
-                  </Link> */}
                   <GitHubButtonWithStars />
                 </motion.div>
               </motion.div>

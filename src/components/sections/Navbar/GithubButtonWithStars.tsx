@@ -33,7 +33,7 @@ const GitHubButtonWithStars = () => {
       <RainbowButton 
         variant="default" 
         size="default" 
-        className="flex items-center px-3 py-2 text-sm font-medium text-black rounded-full"
+        className="flex items-center px-3 py-2 text-sm font-medium text-white dark:text-black rounded-full"
       >
         <FaGithub className="size-5" />
         {stars !== null && (

@@ -61,7 +61,7 @@ export default async function Page(props: {
     .slice(0, 5);
 
   return (
-    <section id="blog" className="bg-black min-h-screen">
+    <section id="blog" className="bg-background min-h-screen">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -117,9 +117,9 @@ export default async function Page(props: {
           <div className="hidden lg:flex lg:flex-col lg:w-[30%] px-4 sm:px-6 lg:px-8">
             {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
-              <div className="bg-gray-900 rounded-xl overflow-hidden">
+              <div className="bg-card rounded-xl overflow-hidden border">
                 {/* Ad Header with Logo */}
-                <div className="p-4 border-b border-gray-800">
+                <div className="p-4 border-b">
                   <Image
                     src="/public/logo.png"
                     alt="HDFC Sky"
@@ -131,65 +131,65 @@ export default async function Page(props: {
                 
                 {/* Ad Content */}
                 <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-white mb-2">Macro</h3>
-                  <p className="text-gray-400 text-sm mb-6">
+                  <h3 className="text-2xl font-semibold text-foreground mb-2">Macro</h3>
+                  <p className="text-muted-foreground text-sm mb-6">
                     For active investors seeking swing trade ideas and a macro strategy
                   </p>
 
                   {/* Pricing */}
                   <div className="mb-6">
                     <div className="flex items-center mb-2">
-                      <span className="text-gray-500 line-through text-sm">$54.95</span>
-                      <span className="text-3xl font-bold text-white ml-2">$43.96</span>
-                      <span className="text-gray-400 text-sm ml-2">Monthly</span>
+                      <span className="text-muted-foreground line-through text-sm">$54.95</span>
+                      <span className="text-3xl font-bold text-foreground ml-2">$43.96</span>
+                      <span className="text-muted-foreground text-sm ml-2">Monthly</span>
                     </div>
                     <div className="flex items-center">
-                      <span className="text-gray-500 line-through text-sm">$659.40</span>
-                      <span className="text-xl font-semibold text-white ml-2">$527.52</span>
-                      <span className="text-gray-400 text-sm ml-2">Annually</span>
+                      <span className="text-muted-foreground line-through text-sm">$659.40</span>
+                      <span className="text-xl font-semibold text-foreground ml-2">$527.52</span>
+                      <span className="text-muted-foreground text-sm ml-2">Annually</span>
                     </div>
-                    <p className="text-green-500 text-sm mt-2">You save $144.00 a year</p>
+                    <p className="text-emerald-600 dark:text-emerald-400 text-sm mt-2">You save $144.00 a year</p>
                   </div>
 
                   {/* Benefits */}
                   <div className="space-y-3 mb-8">
-                    <div className="flex items-center text-gray-300">
-                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                    <div className="flex items-center text-card-foreground">
+                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
                       Real-time Trade Alerts
                     </div>
-                    <div className="flex items-center text-gray-300">
-                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                    <div className="flex items-center text-card-foreground">
+                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
                       Premium Video Market Updates
                     </div>
-                    <div className="flex items-center text-gray-300">
-                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                    <div className="flex items-center text-card-foreground">
+                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
                       Forecasting Models
                     </div>
-                    <div className="flex items-center text-gray-300">
-                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                    <div className="flex items-center text-card-foreground">
+                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
                       Trading Educational Content
                     </div>
-                    <div className="flex items-center text-gray-300">
-                      <span className="text-red-500 mr-3 text-lg">✓</span>
+                    <div className="flex items-center text-card-foreground">
+                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
                       Covering Stocks, ETFs, Commodities
                     </div>
                   </div>
 
                   {/* CTA Button */}
-                  <button className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors text-lg">
+                  <button className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                     Subscribe
                   </button>
 
                   {/* Footer */}
-                  <p className="text-center text-gray-500 text-sm mt-4">
+                  <p className="text-center text-muted-foreground text-sm mt-4">
                     Access membership via our website and mobile app
                   </p>
                 </div>
               </div>
 
               {/* Popular Blogs Section */}
-              <div className="bg-gray-900 rounded-xl overflow-hidden p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Popular Articles</h3>
+              <div className="bg-card rounded-xl overflow-hidden p-6 border">
+                <h3 className="text-xl font-semibold text-foreground mb-6">Popular Articles</h3>
                 <div className="space-y-6">
                   {popularPosts.map((post, index) => (
                     <Link 
@@ -198,14 +198,14 @@ export default async function Page(props: {
                       className="group block"
                     >
                       <div className="flex items-start gap-4">
-                        <span className="text-2xl font-bold text-gray-600 group-hover:text-red-500 transition-colors">
+                        <span className="text-2xl font-bold text-muted-foreground group-hover:text-primary transition-colors">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                         <div>
-                          <h4 className="text-white group-hover:text-red-500 transition-colors font-medium mb-1">
+                          <h4 className="text-foreground group-hover:text-primary transition-colors font-medium mb-1">
                             {post.title}
                           </h4>
-                          <p className="text-sm text-gray-400 line-clamp-2">
+                          <p className="text-sm text-muted-foreground line-clamp-2">
                             {post.summary}
                           </p>
                         </div>
