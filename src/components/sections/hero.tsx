@@ -43,7 +43,7 @@ function HeroTitles() {
         }}
       >
         <motion.span
-          className="block bg-gradient-to-b from-white to-gray-400 drop-shadow-lg text-transparent bg-clip-text font-bold"
+          className="block bg-gradient-to-b from-foreground to-muted-foreground dark:from-white dark:to-gray-400 drop-shadow-lg text-transparent bg-clip-text font-bold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{

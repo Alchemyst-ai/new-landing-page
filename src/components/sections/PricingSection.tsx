@@ -77,7 +77,7 @@ const pricingPlans = [
 
 const PricingSection = () => {
   return (
-    <section className="py-20 bg-[#0a0a0a] pt-32" style={{ cursor: 'auto' }}>
+    <section className="py-20 bg-background pt-32" style={{ cursor: 'auto' }}>
       <div className="max-w-8xl mx-auto px-4">
         <div className="flex flex-col items-center mb-16">
           <div className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm dark:bg-muted/70">
@@ -86,7 +86,7 @@ const PricingSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-center text-gray-400 max-w-3xl leading-relaxed">
+          <p className="text-center text-muted-foreground max-w-3xl leading-relaxed">
             Choose the plan that works best for your needs. All plans include core features with different usage limits.
           </p>
         </div>

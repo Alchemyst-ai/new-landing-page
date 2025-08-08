@@ -137,7 +137,7 @@ export function Header() {
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center lg:px-4">
       <nav
         ref={navRef}
-        className="bg-white/70 dark:bg-black/30 backdrop-blur-md border border-gray-200/20 dark:border-white/10 flex justify-between items-center w-[95%] sm:w-[90%] sm:rounded-xl px-4 sm:px-6 py-3 sm:py-4"
+        className="bg-card/70 backdrop-blur-md border border-border flex justify-between items-center w-[95%] sm:w-[90%] sm:rounded-xl px-4 sm:px-6 py-3 sm:py-4"
       >
         {/* Alchemyst Logo */}
         <div className="flex items-center">
@@ -161,10 +161,10 @@ export function Header() {
             onMouseEnter={() => setShowUseCasesDropdown(true)}
             onMouseLeave={() => setShowUseCasesDropdown(false)}
           >
-            <button className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group flex items-center">
+            <button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
               <span className="relative pb-1">
                 Use Cases
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
               </span>
               <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200" style={{
                 transform: showUseCasesDropdown ? 'rotate(180deg)' : 'rotate(0deg)'
@@ -178,17 +178,17 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 w-80 bg-white/80 dark:bg-black/90 backdrop-blur-md border border-gray-200/20 dark:border-white/10 rounded-xl shadow-xl overflow-hidden"
+                  className="absolute top-full left-0 mt-2 w-80 bg-card/90 backdrop-blur-md border border-border rounded-xl shadow-xl overflow-hidden"
                 >
                   <div className="p-4 space-y-3">
                     {useCasesItems.map((item) => (
                       <Link
                         key={item.title}
                         href={item.href}
-                        className="flex items-center space-x-4 p-3 rounded-lg hover:bg-white/10 transition-colors duration-200 group"
+                        className="flex items-center space-x-4 p-3 rounded-lg hover:bg-muted/60 transition-colors duration-200 group"
                       >
                         <div className="flex-1">
-                          <h3 className="text-gray-800 dark:text-white font-medium group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
+                          <h3 className="text-foreground font-medium group-hover:text-foreground transition-colors duration-200">
                             {item.title}
                           </h3>
                         </div>
@@ -202,51 +202,51 @@ export function Header() {
 
           <Link 
             href="/research" 
-            className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Research
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
 
           <Link 
             href="/security" 
-            className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Security
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
 
           <Link 
             href="/pricing" 
-            className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
 
           <Link 
             href="/about-us" 
-            className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               About Us
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
 
           <Link 
             href="/blog" 
-            className="relative text-gray-800/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-base group"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
               Blog
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
         </div>
@@ -280,7 +280,7 @@ export function Header() {
                 <div className="w-full">
                   <button
                     onClick={() => toggleSubmenu("Use Cases")}
-                    className="flex items-center justify-between w-full py-3 text-gray-800 dark:text-white hover:text-gray-900 dark:hover:text-orange-400 transition-colors duration-200 text-lg"
+                    className="flex items-center justify-between w-full py-3 text-foreground transition-colors duration-200 text-lg"
                   >
                     Use Cases
                     {openSubmenus.includes("Use Cases") ? (
@@ -302,7 +302,7 @@ export function Header() {
                           <Link
                             key={item.title}
                             href={item.href}
-                            className="block py-2 text-gray-700/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                            className="block py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
                             onClick={toggleMenu}
                           >
                             {item.title}
@@ -316,7 +316,7 @@ export function Header() {
                 {/* Research Link */}
                 <Link
                   href="/research"
-                  className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
                   onClick={toggleMenu}
                 >
                   Research
@@ -325,7 +325,7 @@ export function Header() {
                 {/* Security Link */}
                 <Link
                   href="/security"
-                  className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
                   onClick={toggleMenu}
                 >
                   Security
@@ -334,7 +334,7 @@ export function Header() {
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"
-                  className="block py-3 text-white hover:text-orange-400 transition-colors duration-200 text-lg"
+                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
                   onClick={toggleMenu}
                 >
                   Pricing

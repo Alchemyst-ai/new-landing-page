@@ -9,8 +9,8 @@ interface UseCaseFeatureProps {
 
 export function UseCaseFeature({ title, description, imagePath, imageAlt }: UseCaseFeatureProps) {
   return (
-    <div className="rounded-2xl bg-[#1C1C1C] overflow-hidden">
-      <div className="relative w-full h-[320px] bg-[#242424] flex items-center justify-center">
+    <div className="rounded-2xl bg-card overflow-hidden">
+      <div className="relative w-full h-[320px] bg-muted flex items-center justify-center">
         <div className="relative w-full h-full max-w-full max-h-full">
           <Image
             src={imagePath}
@@ -21,10 +21,10 @@ export function UseCaseFeature({ title, description, imagePath, imageAlt }: UseC
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-2xl font-semibold text-white mb-3">
+        <h3 className="text-2xl font-semibold text-foreground mb-3">
           {title}
         </h3>
-        <p className="text-gray-400 text-base">
+        <p className="text-muted-foreground text-base">
           {description}
         </p>
       </div>

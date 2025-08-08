@@ -51,7 +51,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const renderLink = (link: any) => {
     const isClickable = link.link && link.link !== "#";
     const linkClass = `flex items-center space-x-2 transition-colors duration-200 ${
-      isClickable ? "hover:text-orange-400" : "text-gray-500 cursor-not-allowed"
+      isClickable ? "hover:text-foreground" : "text-muted-foreground cursor-not-allowed"
     }`;
 
     // Check if it's an external link (starts with http or https)
@@ -118,7 +118,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="flex absolute left-36 w-[80%] h-fit top-full bg-gradient-to-b from-[#0a0a0a] to-[#2c2c2c] rounded-[10px] border-b-[2px] border-yellow-700"
+          className="flex absolute left-36 w-[80%] h-fit top-full bg-gradient-to-b from-background to-secondary rounded-[10px] border-b-[2px] border-border"
         >
           <div className="container mx-auto px-6 py-6">
             {item.title === "Product" ? (
@@ -131,9 +131,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       onMouseEnter={() => handleSubMenuEnter(subMenu.title)}
                     >
                       <button
-                        className={`flex items-center mr-8 space-x-1 hover:text-orange-400 transition-colors duration-200 ${
+                        className={`flex items-center mr-8 space-x-1 hover:text-foreground transition-colors duration-200 ${
                           activeSubMenu === subMenu.title
-                            ? "text-orange-400"
+                            ? "text-foreground"
                             : ""
                         }`}
                         style={subMenu.style}
@@ -162,7 +162,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                     <div key={index} className="space-y-2">
                       <Link
                         href={child.link ? `/agents${child.link}` : "#"}
-                        className="flex items-start hover:text-orange-400 transition-colors duration-200"
+                        className="flex items-start hover:text-foreground transition-colors duration-200"
                       >
                         {child.icon && (
                           <Image
@@ -203,7 +203,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen
-                    className="rounded-md border-b-[2px] border-yellow-700"
+                    className="rounded-md border-b-[2px] border-border"
                   ></iframe>
                 </div>
               </div>
