@@ -1,5 +1,3 @@
-"use client";
-
 import { Icons } from "@/components/icons";
 import { Section } from "@/components/section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";

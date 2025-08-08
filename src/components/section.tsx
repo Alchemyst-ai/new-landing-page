@@ -1,8 +1,6 @@
-"use client";
-
 import FlickeringGrid from "@/components/ui/flickering-grid";
 import { cn } from "@/lib/utils";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef } from "react";
 
 interface SectionProps {
   id?: string;
@@ -19,8 +17,6 @@ const Section = forwardRef<HTMLElement, SectionProps>(
     { id, title, subtitle, description, children, className, align },
     forwardedRef
   ) => {
-    const internalRef = useRef<HTMLElement>(null);
-    const ref = forwardedRef || internalRef;
     const sectionId = title ? title.toLowerCase().replace(/\s+/g, "-") : id;
     const alignmentClass =
       align === "left"
@@ -30,7 +26,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
         : "text-center";
 
     return (
-      <section id={id} ref={ref}>
+      <section id={id}>
         <div
           className={cn(
             "relative mx-auto container max-w-[var(--container-max-width-very-small-mobile)] sm:max-w-[var(--container-max-width-mobile)] md:max-w-[var(--container-max-width-tablet)] lg:max-w-[var(--container-max-width)] ",

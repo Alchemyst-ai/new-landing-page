@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface PricingFeature {
   text: string;
@@ -67,18 +68,33 @@ const PricingCard = ({
         ))}
       </div>
       
-      <Button 
-        style={{ 
-          borderColor: popular ? customColor || '#ED9F36' : undefined,
-          backgroundColor: popular ? customColor || '#ED9F36' : undefined,
-          color: popular ? '#000000' : undefined,
-        }}
-        className={popular ? "border-2 hover:opacity-90" : ""}
-        variant={popular ? "default" : "outline"}
-        onClick={() => ctaLink && window.open(ctaLink, '_blank')}
-      >
-        {ctaText}
-      </Button>
+      {ctaLink ? (
+        <Link href={ctaLink} target="_blank" rel="noopener noreferrer" className="w-full">
+          <Button 
+            style={{ 
+              borderColor: popular ? customColor || '#ED9F36' : undefined,
+              backgroundColor: popular ? customColor || '#ED9F36' : undefined,
+              color: popular ? '#000000' : undefined,
+            }}
+            className={popular ? "w-full border-2 hover:opacity-90" : "w-full"}
+            variant={popular ? "default" : "outline"}
+          >
+            {ctaText}
+          </Button>
+        </Link>
+      ) : (
+        <Button 
+          style={{ 
+            borderColor: popular ? customColor || '#ED9F36' : undefined,
+            backgroundColor: popular ? customColor || '#ED9F36' : undefined,
+            color: popular ? '#000000' : undefined,
+          }}
+          className={popular ? "w-full border-2 hover:opacity-90" : "w-full"}
+          variant={popular ? "default" : "outline"}
+        >
+          {ctaText}
+        </Button>
+      )}
     </div>
   );
 };

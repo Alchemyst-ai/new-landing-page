@@ -1,5 +1,3 @@
-"use client";
-
 import { Icons } from "@/components/icons";
 import { Section } from "@/components/section";
 import { BorderText } from "@/components/ui/border-number";

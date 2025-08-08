@@ -1,5 +1,3 @@
-"use client";
-
 import React, { memo } from "react";
 
 interface AuroraTextProps {
@@ -29,7 +27,7 @@ export const AuroraText = memo(
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       animationDuration: `${10 / speed}s`,
-    };
+    } as React.CSSProperties;
 
     return (
       <span className={`relative inline-block ${className}`}>
