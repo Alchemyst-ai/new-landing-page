@@ -17,34 +17,34 @@ export default async function Blog() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900">
+    <div className="min-h-screen bg-background">
       {/* Website Header - this is handled by your layout.tsx */}
       
       {/* Breadcrumb */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-24 pb-4">
         <nav className="flex text-sm">
-          <Link href="/" className="text-gray-400 hover:text-white">
+          <Link href="/" className="text-muted-foreground hover:text-foreground">
             {siteConfig.name}
           </Link>
-          <span className="mx-2 text-gray-400">&gt;</span>
-          <span className="text-white">Blog</span>
+          <span className="mx-2 text-muted-foreground">&gt;</span>
+          <span className="text-foreground">Blog</span>
         </nav>
       </div>
 
       {/* Blog Header */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="text-center py-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text bg-gradient-to-r from-white to-gray-400">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Latest Market Insights
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Stay ahead with our expert analysis, trading strategies, and market updates
           </p>
         </div>
       </div>
 
       {/* Blog Grid */}
-      <div className="min-h-[50vh] bg-white/5 backdrop-blur-xl border-t border-white/10">
+      <div className="min-h-[50vh] bg-background border-t border-muted">
         <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-12">
           {/* Featured Post - Latest post gets special treatment */}
           {articles.length > 0 && (

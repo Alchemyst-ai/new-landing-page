@@ -19,8 +19,8 @@ export default function BlogCard({
       className={cn(
         "block overflow-hidden rounded-xl transition-all duration-200",
         featured
-          ? "bg-white/10 hover:bg-white/20"
-          : "bg-white/5 hover:bg-white/10",
+          ? "bg-card hover:bg-card/90 border"
+          : "bg-card hover:bg-card/90 border",
         featured ? "lg:grid lg:grid-cols-2 lg:gap-8" : ""
       )}
     >
@@ -38,28 +38,28 @@ export default function BlogCard({
             priority={priority}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-gray-700 to-gray-900" />
+          <div className="w-full h-full bg-muted" />
         )}
       </div>
       <div className="p-6">
         <p className="mb-4">
           <time
             dateTime={data.publishedAt}
-            className="text-sm text-gray-400"
+            className="text-sm text-muted-foreground"
           >
             {formatDate(data.publishedAt)}
           </time>
         </p>
         <h3 className={cn(
-          "font-bold mb-4 text-white",
+          "font-bold mb-4 text-foreground",
           featured ? "text-3xl" : "text-xl"
         )}>
           {data.title}
         </h3>
-        <p className="text-gray-400 line-clamp-3">{data.summary}</p>
+        <p className="text-muted-foreground line-clamp-3">{data.summary}</p>
         
         {featured && (
-          <div className="mt-6 inline-flex items-center text-white hover:text-gray-300">
+          <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">
             Read More
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
