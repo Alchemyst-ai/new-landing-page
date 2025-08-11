@@ -7,6 +7,8 @@ import { Suspense } from "react";
 import BlogHeader from "@/components/blog-header";
 import Image from "next/image";
 import Link from "next/link";
+import SummarySection from "@/components/summary-section";
+import AuthorBioCard from "@/components/author-bio-card";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -96,11 +98,11 @@ export default async function Page(props: {
               publishedAt={post.metadata.publishedAt}
               author={{
                 name: post.metadata.author,
-                image: "/author.jpg"
+                image: post.metadata.authorImage || "/logo.png"
               }}
               reviewer={{
-                name: "Shivam Gaba",
-                image: "/reviewer.jpg"
+                name: post.metadata.reviewer || "",
+                image: post.metadata.reviewerImage || "/logo.png"
               }}
               featuredImage={post.metadata.image}
             />
@@ -110,6 +112,31 @@ export default async function Page(props: {
                 className="prose dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: post.source }}
               ></article>
+            </div>
+
+            {/* Summary Box */}
+            <SummarySection summary={post.metadata.summary} />
+
+            {/* Author/Reviewer Bio Cards */}
+            <div className="w-full lg:w-[800px] mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <AuthorBioCard
+                name={post.metadata.author}
+                role={post.metadata.authorRole || "Author"}
+                image={post.metadata.authorImage}
+                bio={post.metadata.authorBio}
+              />
+              {(
+                !!post.metadata.reviewer ||
+                !!post.metadata.reviewerBio ||
+                !!post.metadata.reviewerImage
+              ) && (
+                <AuthorBioCard
+                  name={post.metadata.reviewer || ""}
+                  role={post.metadata.reviewerRole || "Reviewer"}
+                  image={post.metadata.reviewerImage}
+                  bio={post.metadata.reviewerBio}
+                />
+              )}
             </div>
           </div>
 

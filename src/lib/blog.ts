@@ -17,6 +17,15 @@ export type Post = {
   image?: string;
   category?: string;
   subcategory?: string;
+  // Optional enhanced metadata for author and reviewer bios
+  authorImage?: string;
+  authorRole?: string;
+  authorTwitter?: string;
+  authorBio?: string;
+  reviewer?: string;
+  reviewerImage?: string;
+  reviewerRole?: string;
+  reviewerBio?: string;
 };
 
 function parseFrontmatter(fileContent: string) {
