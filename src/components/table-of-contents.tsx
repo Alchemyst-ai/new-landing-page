@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SocialShare from "./social-share";
 
 interface TOCItem {
   id: string;
@@ -8,9 +9,11 @@ interface TOCItem {
 
 interface TableOfContentsProps {
   content: string;
+  title: string;
+  url: string;
 }
 
-export default function TableOfContents({ content }: TableOfContentsProps) {
+export default function TableOfContents({ content, title, url }: TableOfContentsProps) {
   const [tocItems, setTocItems] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
@@ -96,12 +99,9 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
             </button>
           ))}
         </nav>
-        <div className="mt-6 pt-4 border-t border-muted flex items-center text-muted-foreground">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <p className="text-xs">Quick navigation for your convenience</p>
-        </div>
+        
+        {/* Social Share Section */}
+        <SocialShare title={title} url={url} />
       </div>
     </div>
   );
