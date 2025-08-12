@@ -66,7 +66,23 @@ export async function markdownToHTML(markdown: string) {
     .use(rehypeStringify)
     .process(markdown);
 
-  return p.toString();
+  // Add IDs to headings for table of contents
+  const htmlString = p.toString();
+  const htmlWithIds = htmlString.replace(
+    /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
+    (match, level, attributes, content) => {
+      const id = content
+        .replace(/<[^>]*>/g, '') // Remove HTML tags
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .trim();
+      
+      return `<h${level}${attributes} id="${id}">${content}</h${level}>`;
+    }
+  );
+  
+  return htmlWithIds;
 }
 
 export async function getPost(slug: string) {

@@ -1,0 +1,108 @@
+import { useEffect, useState } from "react";
+
+interface TOCItem {
+  id: string;
+  text: string;
+  level: number;
+}
+
+interface TableOfContentsProps {
+  content: string;
+}
+
+export default function TableOfContents({ content }: TableOfContentsProps) {
+  const [tocItems, setTocItems] = useState<TOCItem[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    // Parse HTML content to extract headings
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+    const headings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    
+    const items: TOCItem[] = Array.from(headings).map((heading, index) => {
+      const text = heading.textContent || '';
+      const level = parseInt(heading.tagName.charAt(1));
+      const id = heading.id || `heading-${index}`;
+      
+      // Add ID to heading if it doesn't have one
+      if (!heading.id) {
+        heading.id = id;
+      }
+      
+      return { id, text, level };
+    });
+
+    setTocItems(items);
+  }, [content]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-100px 0px -66%' }
+    );
+
+    tocItems.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [tocItems]);
+
+  const scrollToHeading = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  if (tocItems.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="sticky top-24 mt-12 space-y-6">
+      <div className="bg-card rounded-xl border p-6 shadow-sm">
+        <div className="flex items-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          <h3 className="text-lg font-semibold text-foreground">Table of Contents</h3>
+        </div>
+        <nav className="space-y-3 pl-2 border-l border-muted">
+          {tocItems.map(({ id, text, level }) => (
+            <button
+              key={id}
+              onClick={() => scrollToHeading(id)}
+              className={`
+                block w-full text-left text-sm transition-colors duration-200 rounded-md px-3 py-1
+                ${level === 1 ? 'font-semibold text-foreground' : 'text-muted-foreground'}
+                ${level === 2 ? 'ml-3 text-sm' : ''}
+                ${level >= 3 ? 'ml-6 text-xs' : ''}
+                ${activeId === id 
+                  ? 'bg-primary/10 text-primary font-medium' 
+                  : 'hover:bg-muted/50 hover:text-foreground'
+                }
+              `}
+            >
+              {text}
+            </button>
+          ))}
+        </nav>
+        <div className="mt-6 pt-4 border-t border-muted flex items-center text-muted-foreground">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="text-xs">Quick navigation for your convenience</p>
+        </div>
+      </div>
+    </div>
+  );
+} 

@@ -1,14 +1,13 @@
 import { CTA } from "@/components/sections/cta";
-import { getPost, getBlogPosts } from "@/lib/blog";
+import { getPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogHeader from "@/components/blog-header";
-import Image from "next/image";
-import Link from "next/link";
 import SummarySection from "@/components/summary-section";
 import AuthorBioCard from "@/components/author-bio-card";
+import TableOfContentsClient from "@/components/table-of-contents-client";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -56,14 +55,8 @@ export default async function Page(props: {
     notFound();
   }
 
-  // Get popular blogs (for now, just getting all blogs and taking the first 5)
-  const allPosts = await getBlogPosts();
-  const popularPosts = allPosts
-    .filter(p => p.slug !== post.metadata.slug) // Exclude current post
-    .slice(0, 5);
-
   return (
-    <section id="blog" className="bg-background min-h-screen">
+    <section id="blog" className="bg-background min-h-screen pb-24">  {/* Added bottom padding */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -88,9 +81,14 @@ export default async function Page(props: {
       />
 
       <div className="max-w-screen-2xl mx-auto">
-        <div className="flex flex-col lg:flex-row">
-          {/* Main Content - 70% */}
-          <div className="w-full lg:w-[70%] px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col xl:flex-row xl:gap-8">
+          {/* Left Sidebar - Table of Contents */}
+          <div className="hidden xl:block xl:w-1/4 xl:flex-shrink-0 px-4">
+            <TableOfContentsClient content={post.source} />
+          </div>
+
+          {/* Main Content - 50% */}
+          <div className="w-full xl:w-1/2 xl:flex-shrink-0 px-4 sm:px-6 lg:px-8">
             <BlogHeader
               title={post.metadata.title}
               category={post.metadata.category || "Trading"}
@@ -118,7 +116,7 @@ export default async function Page(props: {
             <SummarySection summary={post.metadata.summary} />
 
             {/* Author/Reviewer Bio Cards */}
-            <div className="w-full lg:w-[800px] mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               <AuthorBioCard
                 name={post.metadata.author}
                 role={post.metadata.authorRole || "Author"}
@@ -140,105 +138,25 @@ export default async function Page(props: {
             </div>
           </div>
 
-          {/* Right Sidebar - 30% */}
-          <div className="hidden lg:flex lg:flex-col lg:w-[30%] px-4 sm:px-6 lg:px-8">
+          {/* Right Sidebar - 25% */}
+          <div className="hidden xl:flex xl:flex-col xl:w-1/4 xl:flex-shrink-0 px-4 mt-12">
             {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
-              <div className="bg-card rounded-xl overflow-hidden border">
-                {/* Ad Header with Logo */}
-                <div className="p-4 border-b">
-                  <Image
-                    src="/public/logo.png"
-                    alt="HDFC Sky"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto"
-                  />
-                </div>
-                
-                {/* Ad Content */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-foreground mb-2">Macro</h3>
-                  <p className="text-muted-foreground text-sm mb-6">
-                    For active investors seeking swing trade ideas and a macro strategy
-                  </p>
-
-                  {/* Pricing */}
-                  <div className="mb-6">
-                    <div className="flex items-center mb-2">
-                      <span className="text-muted-foreground line-through text-sm">$54.95</span>
-                      <span className="text-3xl font-bold text-foreground ml-2">$43.96</span>
-                      <span className="text-muted-foreground text-sm ml-2">Monthly</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground line-through text-sm">$659.40</span>
-                      <span className="text-xl font-semibold text-foreground ml-2">$527.52</span>
-                      <span className="text-muted-foreground text-sm ml-2">Annually</span>
-                    </div>
-                    <p className="text-emerald-600 dark:text-emerald-400 text-sm mt-2">You save $144.00 a year</p>
-                  </div>
-
-                  {/* Benefits */}
-                  <div className="space-y-3 mb-8">
-                    <div className="flex items-center text-card-foreground">
-                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
-                      Real-time Trade Alerts
-                    </div>
-                    <div className="flex items-center text-card-foreground">
-                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
-                      Premium Video Market Updates
-                    </div>
-                    <div className="flex items-center text-card-foreground">
-                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
-                      Forecasting Models
-                    </div>
-                    <div className="flex items-center text-card-foreground">
-                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
-                      Trading Educational Content
-                    </div>
-                    <div className="flex items-center text-card-foreground">
-                      <span className="text-red-600 dark:text-red-400 mr-3 text-lg">✓</span>
-                      Covering Stocks, ETFs, Commodities
-                    </div>
-                  </div>
-
-                  {/* CTA Button */}
-                  <button className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
-                    Subscribe
-                  </button>
-
-                  {/* Footer */}
-                  <p className="text-center text-muted-foreground text-sm mt-4">
-                    Access membership via our website and mobile app
-                  </p>
-                </div>
-              </div>
-
-              {/* Popular Blogs Section */}
-              <div className="bg-card rounded-xl overflow-hidden p-6 border">
-                <h3 className="text-xl font-semibold text-foreground mb-6">Popular Articles</h3>
-                <div className="space-y-6">
-                  {popularPosts.map((post, index) => (
-                    <Link 
-                      key={post.slug} 
-                      href={`/blog/${post.slug}`}
-                      className="group block"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="text-2xl font-bold text-muted-foreground group-hover:text-primary transition-colors">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <div>
-                          <h4 className="text-foreground group-hover:text-primary transition-colors font-medium mb-1">
-                            {post.title}
-                          </h4>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
-                            {post.summary}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+              {/* Advertisement Placeholder */}
+              <div className="bg-muted/20 rounded-xl border-2 border-dashed border-muted flex items-center justify-center h-[800px]">
+                <div className="text-center p-8">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-16 w-16 mx-auto text-muted-foreground mb-4" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <h3 className="text-lg font-medium text-muted-foreground mb-2">Advertisement</h3>
+                  <p className="text-sm text-muted-foreground/70">Long banner ad placement</p>
+                  <p className="text-xs text-muted-foreground/50 mt-2">300 x 800px</p>
                 </div>
               </div>
             </div>
@@ -246,7 +164,9 @@ export default async function Page(props: {
         </div>
       </div>
       
-      <CTA />
+      <div className="mt-24">  {/* Added top margin to CTA */}
+        <CTA />
+      </div>
     </section>
   );
 }

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useTheme } from "next-themes";
 
 
 // Temporary type definition
@@ -26,7 +27,7 @@ export function Header() {
   const [showUseCasesDropdown, setShowUseCasesDropdown] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const useCasesRef = useRef<HTMLDivElement>(null);
-
+  const { theme } = useTheme();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -143,7 +144,7 @@ export function Header() {
         <div className="flex items-center">
           <Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
             <Image
-              src="/logo.png"
+              src={theme === 'dark' ? '/logo.png' : '/logoDark.png'}
               alt="Alchemyst AI"
               width={200}
               height={200}
