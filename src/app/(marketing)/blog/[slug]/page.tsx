@@ -93,10 +93,10 @@ export default async function Page(props: {
         }}
       />
 
-      <div className="max-w-screen-3xl mx-28">
+      <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-6">
-          {/* Left Sidebar - Table of Contents */}
-          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pr-2">
+          {/* Left Sidebar - Table of Contents - Desktop Only */}
+          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2">
             <TableOfContentsClient 
               content={post.source} 
               title={post.metadata.title}
@@ -128,6 +128,20 @@ export default async function Page(props: {
             {/* About Section */}
             <AboutSection />
 
+            {/* Mobile Advertisement - Show on mobile after About section */}
+            <div className="xl:hidden mt-8 mb-8 px-4 sm:px-6">
+              <div className="flex justify-center">
+                <Image
+                  src="/ad.png"
+                  alt="Advertisement"
+                  width={300}
+                  height={400}
+                  className="w-full max-w-sm h-auto object-cover rounded-xl border"
+                  style={{ maxHeight: '50vh' }}
+                />
+              </div>
+            </div>
+
             <div className="py-12">
               <article
                 className="prose dark:prose-invert max-w-none"
@@ -156,14 +170,23 @@ export default async function Page(props: {
                 />
               )}
             </div>
+
+            {/* Mobile Table of Contents - Show after author bio on mobile */}
+            <div className="xl:hidden mt-8">
+              <TableOfContentsClient 
+                content={post.source} 
+                title={post.metadata.title}
+                url={fullUrl}
+              />
+            </div>
           </div>
 
           {/* Right Sidebar - 25% */}
-          <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 -ml-10 mt-12">
+          <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-2 pr-4 mt-12">
             {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
               {/* Advertisement Image */}
-              <div className="overflow-hidden">
+              <div className="rounded-xl overflow-hidden border">
                 <Image
                   src="/ad.png"
                   alt="Advertisement"

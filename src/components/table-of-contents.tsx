@@ -71,24 +71,24 @@ export default function TableOfContents({ content, title, url }: TableOfContents
   }
 
   return (
-    <div className="sticky top-24 mt-12 space-y-6">
+    <div className="xl:sticky xl:top-24 xl:mt-12 mt-6 space-y-6">
       <div className="bg-card rounded-xl border p-6 shadow-sm">
         <div className="flex items-center mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
           </svg>
-          <h3 className="text-lg font-semibold text-foreground">Table of Contents</h3>
+          <h3 className="text-base xl:text-lg font-semibold text-foreground">Table of Contents</h3>
         </div>
-        <nav className="space-y-3 pl-2 border-l border-muted">
+        <nav className="space-y-2 xl:space-y-3 pl-2 border-l border-muted">
           {tocItems.map(({ id, text, level }) => (
             <button
               key={id}
               onClick={() => scrollToHeading(id)}
               className={`
-                block w-full text-left text-sm transition-colors duration-200 rounded-md px-3 py-1
+                block w-full text-left text-xs xl:text-sm transition-colors duration-200 rounded-md px-2 xl:px-3 py-1
                 ${level === 1 ? 'font-semibold text-foreground' : 'text-muted-foreground'}
-                ${level === 2 ? 'ml-3 text-sm' : ''}
-                ${level >= 3 ? 'ml-6 text-xs' : ''}
+                ${level === 2 ? 'ml-2 xl:ml-3' : ''}
+                ${level >= 3 ? 'ml-4 xl:ml-6' : ''}
                 ${activeId === id 
                   ? 'bg-primary/10 text-primary font-medium' 
                   : 'hover:bg-muted/50 hover:text-foreground'
