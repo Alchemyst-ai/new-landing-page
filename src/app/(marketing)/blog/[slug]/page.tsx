@@ -11,6 +11,7 @@ import SummarySection from "@/components/summary-section";
 import AboutSection from "@/components/about-section";
 import AuthorBioCard from "@/components/author-bio-card";
 import TableOfContentsClient from "@/components/table-of-contents-client";
+import CommentsSection from "@/components/comments-section";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -179,6 +180,9 @@ export default async function Page(props: {
                 url={fullUrl}
               />
             </div>
+
+            {/* Comments Section */}
+            <CommentsSection postSlug={post.slug} />
           </div>
 
           {/* Right Sidebar - 25% */}
