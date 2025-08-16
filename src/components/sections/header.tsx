@@ -135,10 +135,10 @@ export function Header() {
   };
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center lg:px-4">
+    <div id="site-header" className="sticky top-0 z-50 w-full bg-background border-b">
       <nav
         ref={navRef}
-        className="bg-card/70 backdrop-blur-md border border-border flex justify-between items-center w-[95%] sm:w-[90%] sm:rounded-xl px-4 sm:px-6 py-3 sm:py-4"
+        className="flex justify-between items-center w-full px-4 sm:px-6 py-3 sm:py-4"
       >
         {/* Alchemyst Logo */}
         <div className="flex items-center">

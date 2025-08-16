@@ -94,10 +94,10 @@ export default async function Page(props: {
         }}
       />
 
-      <div className="max-w-screen-3xl mr-32 ml-28">
+      <div className="max-w-screen-3xl mr-20 ml-16">
         <div className="flex flex-col xl:flex-row xl:gap-6">
           {/* Left Sidebar - Table of Contents - Desktop Only */}
-          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pr-2">
+          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2">
             <TableOfContentsClient
               content={post.source}
               title={post.metadata.title}
@@ -186,7 +186,7 @@ export default async function Page(props: {
           </div>
 
           {/* Right Sidebar - 25% */}
-          <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-2 pr-4 mt-12">
+          <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2 mr-2">
             {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
               {/* Advertisement Image */}
