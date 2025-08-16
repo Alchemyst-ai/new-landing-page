@@ -94,10 +94,10 @@ export default async function Page(props: {
         }}
       />
 
-      <div className="max-w-screen-3xl mr-20 ml-16">
+      <div className="max-w-screen-3xl mr-24 ml-12">
         <div className="flex flex-col xl:flex-row xl:gap-6">
           {/* Left Sidebar - Table of Contents - Desktop Only */}
-          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2">
+          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
             <TableOfContentsClient
               content={post.source}
               title={post.metadata.title}
