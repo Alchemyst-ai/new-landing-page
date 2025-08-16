@@ -183,13 +183,6 @@ export default function CommentsSection({ postSlug }: CommentsSectionProps) {
           {replyingTo === comment.id && (
             <div className="mt-4">
               <div className="flex gap-3">
-                <Image
-                  src="/demo01.png"
-                  alt="Your avatar"
-                  width={32}
-                  height={32}
-                  className="rounded-full object-cover"
-                />
                 <div className="flex-1">
                   <textarea
                     value={replyText}
@@ -242,13 +235,6 @@ export default function CommentsSection({ postSlug }: CommentsSectionProps) {
         {/* Comment Form */}
         <form onSubmit={handleSubmitComment} className="mb-8">
           <div className="flex gap-4">
-            <Image
-              src="/demo01.png"
-              alt="Your avatar"
-              width={40}
-              height={40}
-              className="rounded-full object-cover"
-            />
             <div className="flex-1">
               <textarea
                 value={newComment}

@@ -94,12 +94,12 @@ export default async function Page(props: {
         }}
       />
 
-      <div className="max-w-screen-2xl mx-auto">
+      <div className="max-w-screen-3xl mr-32 ml-28">
         <div className="flex flex-col xl:flex-row xl:gap-6">
           {/* Left Sidebar - Table of Contents - Desktop Only */}
-          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2">
-            <TableOfContentsClient 
-              content={post.source} 
+          <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 pr-2">
+            <TableOfContentsClient
+              content={post.source}
               title={post.metadata.title}
               url={fullUrl}
             />
@@ -163,19 +163,19 @@ export default async function Page(props: {
                 !!post.metadata.reviewerBio ||
                 !!post.metadata.reviewerImage
               ) && (
-                <AuthorBioCard
-                  name={post.metadata.reviewer || ""}
-                  role={post.metadata.reviewerRole || "Reviewer"}
-                  image={post.metadata.reviewerImage}
-                  bio={post.metadata.reviewerBio}
-                />
-              )}
+                  <AuthorBioCard
+                    name={post.metadata.reviewer || ""}
+                    role={post.metadata.reviewerRole || "Reviewer"}
+                    image={post.metadata.reviewerImage}
+                    bio={post.metadata.reviewerBio}
+                  />
+                )}
             </div>
 
             {/* Mobile Table of Contents - Show after author bio on mobile */}
             <div className="xl:hidden mt-8">
-              <TableOfContentsClient 
-                content={post.source} 
+              <TableOfContentsClient
+                content={post.source}
                 title={post.metadata.title}
                 url={fullUrl}
               />
@@ -202,36 +202,48 @@ export default async function Page(props: {
               </div>
 
               {/* Recent Posts Section */}
-              <div className="bg-card rounded-xl border p-6">
+              <div className="bg-card rounded-xl border p-6 divide-y divide-muted">
                 <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                   </svg>
                   Recent Posts
                 </h3>
-                <div className="space-y-4">
+                <div className="divide-y divide-muted">
                   {recentPosts.map((recentPost, index) => (
-                    <Link 
-                      key={recentPost.slug} 
+                    <Link
+                      key={recentPost.slug}
                       href={`/blog/${recentPost.slug}`}
-                      className="group block p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                      className="group block py-3 first:pt-4 last:pb-4 hover:bg-muted/5 transition-colors"
                     >
-                      <div className="flex items-start gap-3">
-                        <span className="text-sm font-bold text-primary group-hover:text-primary/80 mt-1 min-w-[24px]">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <div className="flex-1">
-                          <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                            {recentPost.title}
-                          </h4>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {new Date(recentPost.publishedAt).toLocaleDateString('en-US', { 
-                              month: 'short', 
-                              day: 'numeric',
-                              year: 'numeric'
-                            })}
-                          </p>
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                          <span className="text-sm font-bold text-primary group-hover:text-primary/80 mt-1 min-w-[24px]">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                          <div className="flex-1">
+                            <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                              {recentPost.title}
+                            </h4>
+                            <div className="flex items-center gap-2 mt-2">
+                              <time className="text-xs text-muted-foreground">
+                                {new Date(recentPost.publishedAt).toLocaleDateString('en-US', { 
+                                  month: 'short', 
+                                  day: 'numeric',
+                                  year: 'numeric'
+                                })}
+                              </time>
+                              <span className="text-xs text-muted-foreground">•</span>
+                              <span className="text-xs text-muted-foreground">
+                                {recentPost.category || "Trading"}
+                              </span>
+                            </div>
+                            {/* <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed pl-[32px]">
+                              {recentPost.summary}
+                            </p> */}
+                          </div>
                         </div>
+
                       </div>
                     </Link>
                   ))}
@@ -241,7 +253,7 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      
+
       <div className="mt-24">  {/* Added top margin to CTA */}
         <CTA />
       </div>

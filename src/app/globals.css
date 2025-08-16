@@ -302,3 +302,20 @@
     background: hsl(var(--border));
   }
 }
+
+/* Custom prose styles for links */
+.prose a {
+  @apply text-foreground font-bold underline transition-colors duration-200;
+}
+
+.prose a:hover {
+  @apply text-blue-600;
+}
+
+.dark .prose a {
+  @apply text-foreground font-bold underline;
+}
+
+.dark .prose a:hover {
+  @apply text-blue-400;
+}
