@@ -7,6 +7,7 @@ import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import "./globals.css";
+import StickyAdFooter from "@/components/sticky-ad-footer";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -42,8 +43,12 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
+          {/* Wrapper adds bottom padding to prevent content being hidden under sticky footer */}
+          <div className="pb-10 sm:pb-12">
+            {children}
+          </div>
           <ThemeToggle />
+          <StickyAdFooter />
         </ThemeProvider>
         <GoogleAnalytics gaId="G-WHNWY5LTDN" />
       </body>
