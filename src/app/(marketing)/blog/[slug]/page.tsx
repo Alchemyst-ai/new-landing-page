@@ -94,7 +94,8 @@ export default async function Page(props: {
         }}
       />
 
-      <div className="max-w-screen-3xl mr-24 ml-12">
+      {/* Updated container margins for mobile */}
+      <div className="max-w-screen -mt-10 xl:max-w-screen-3xl mx-4 sm:mx-6 lg:mx-8 xl:ml-12 xl:mr-24">
         <div className="flex flex-col xl:flex-row xl:gap-6">
           {/* Left Sidebar - Table of Contents - Desktop Only */}
           <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
@@ -145,7 +146,7 @@ export default async function Page(props: {
 
             <div className="py-12">
               <article
-                className="prose dark:prose-invert max-w-none"
+                className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: post.source }}
               ></article>
             </div>
@@ -254,7 +255,7 @@ export default async function Page(props: {
         </div>
       </div>
 
-      <div className="mt-24">  {/* Added top margin to CTA */}
+      <div className="mt-12 sm:mt-16 md:mt-24">  {/* Added top margin to CTA */}
         <CTA />
       </div>
     </section>

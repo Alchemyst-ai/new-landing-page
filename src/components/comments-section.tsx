@@ -141,25 +141,25 @@ export default function CommentsSection({ postSlug }: CommentsSectionProps) {
   };
 
   const CommentItem = ({ comment, isReply = false, parentId }: { comment: Comment; isReply?: boolean; parentId?: number }) => (
-    <div className={`${isReply ? 'ml-12 mt-4' : 'mt-6'}`}>
-      <div className="flex items-start gap-4">
+    <div className={`${isReply ? 'ml-6 sm:ml-10 md:ml-12 mt-3 sm:mt-4' : 'mt-4 sm:mt-6'}`}>
+      <div className="flex items-start gap-3 sm:gap-4">
         <Image
           src={comment.avatar}
           alt={comment.author}
           width={40}
           height={40}
-          className="rounded-full object-cover"
+          className="rounded-full object-cover w-8 h-8 sm:w-10 sm:h-10"
         />
         <div className="flex-1">
-          <div className="bg-muted/30 rounded-lg p-4">
+          <div className="bg-muted/30 rounded-lg p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-2">
-              <h4 className="font-medium text-foreground">{comment.author}</h4>
+              <h4 className="font-medium text-foreground text-sm sm:text-base">{comment.author}</h4>
               <span className="text-xs text-muted-foreground">{comment.timestamp}</span>
             </div>
-            <p className="text-sm text-foreground leading-relaxed">{comment.content}</p>
+            <p className="text-[13px] sm:text-sm text-foreground leading-relaxed">{comment.content}</p>
           </div>
           
-          <div className="flex items-center gap-4 mt-2 text-sm">
+          <div className="flex items-center gap-3 sm:gap-4 mt-2 text-xs sm:text-sm">
             <button 
               onClick={() => handleLike(comment.id, isReply, parentId)}
               className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
@@ -181,7 +181,7 @@ export default function CommentsSection({ postSlug }: CommentsSectionProps) {
           </div>
 
           {replyingTo === comment.id && (
-            <div className="mt-4">
+            <div className="mt-3 sm:mt-4">
               <div className="flex gap-3">
                 <div className="flex-1">
                   <textarea
@@ -223,34 +223,34 @@ export default function CommentsSection({ postSlug }: CommentsSectionProps) {
   );
 
   return (
-    <section className="w-full mt-12">
-      <div className="bg-card rounded-xl border p-6 shadow-sm">
-        <div className="flex items-center mb-6">
+    <section className="w-full mt-8 sm:mt-10 md:mt-12">
+      <div className="bg-card rounded-xl border p-4 sm:p-6 shadow-sm">
+        <div className="flex items-center mb-4 sm:mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
-          <h3 className="text-xl font-semibold text-foreground">Comments ({comments.length + comments.reduce((acc, c) => acc + (c.replies?.length || 0), 0)})</h3>
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground">Comments ({comments.length + comments.reduce((acc, c) => acc + (c.replies?.length || 0), 0)})</h3>
         </div>
 
         {/* Comment Form */}
-        <form onSubmit={handleSubmitComment} className="mb-8">
-          <div className="flex gap-4">
+        <form onSubmit={handleSubmitComment} className="mb-6 sm:mb-8">
+          <div className="flex gap-3 sm:gap-4">
             <div className="flex-1">
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Share your thoughts on this article..."
-                className="w-full px-4 py-3 border border-muted rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
-                rows={4}
+                className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-muted rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                rows={3}
               />
-              <div className="flex justify-between items-center mt-3">
+              <div className="flex justify-between items-center mt-2 sm:mt-3">
                 <p className="text-xs text-muted-foreground">
                   Be respectful and constructive in your comments.
                 </p>
                 <button
                   type="submit"
                   disabled={!newComment.trim()}
-                  className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-3 py-1.5 text-xs sm:text-sm sm:px-6 sm:py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Post Comment
                 </button>

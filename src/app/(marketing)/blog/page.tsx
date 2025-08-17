@@ -21,7 +21,7 @@ export default async function Blog() {
       {/* Website Header - this is handled by your layout.tsx */}
       
       {/* Breadcrumb */}
-      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-24 pb-4">
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-2 sm:pb-4">
         <nav className="flex text-sm">
           <Link href="/" className="text-muted-foreground hover:text-foreground">
             {siteConfig.name}
@@ -33,11 +33,11 @@ export default async function Blog() {
 
       {/* Blog Header */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center py-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center py-8 sm:py-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Latest Market Insights
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             Stay ahead with our expert analysis, trading strategies, and market updates
           </p>
         </div>
@@ -45,16 +45,16 @@ export default async function Blog() {
 
       {/* Blog Grid */}
       <div className="min-h-[50vh] bg-background border-t border-muted">
-        <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Featured Post - Latest post gets special treatment */}
           {articles.length > 0 && (
-            <div className="mb-12">
+            <div className="mb-8 sm:mb-12">
               <BlogCard data={articles[0]} priority featured />
             </div>
           )}
 
           {/* Rest of the posts in a grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {articles.slice(1).map((data, idx) => (
               <BlogCard key={data.slug} data={data} priority={idx <= 1} />
             ))}
