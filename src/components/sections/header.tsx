@@ -261,7 +261,7 @@ export function Header() {
 
         {/* Mobile Menu Toggle - Only visible on mobile */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white p-1">
+          <button onClick={toggleMenu} className="dark:text-white text-black p-1">
             {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
         </div>

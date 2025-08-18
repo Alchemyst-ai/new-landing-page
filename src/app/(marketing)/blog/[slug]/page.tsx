@@ -127,6 +127,22 @@ export default async function Page(props: {
             {/* Summary Box - Moved to top */}
             <SummarySection summary={post.metadata.summary} />
 
+            {/* Mobile Table of Contents - below summary on mobile, collapsed by default */}
+            <div className="xl:hidden mt-6 mb-8">
+              <details>
+                <summary className="flex items-center justify-between bg-card px-4 py-3 rounded-lg border cursor-pointer">
+                  <span className="font-semibold text-foreground">Table of Contents</span>
+                </summary>
+                <div className="mt-3">
+                  <TableOfContentsClient
+                    content={post.source}
+                    title={post.metadata.title}
+                    url={fullUrl}
+                  />
+                </div>
+              </details>
+            </div>
+
             {/* About Section */}
             <AboutSection />
 
@@ -173,20 +189,12 @@ export default async function Page(props: {
                 )}
             </div>
 
-            {/* Mobile Table of Contents - Show after author bio on mobile */}
-            <div className="xl:hidden mt-8">
-              <TableOfContentsClient
-                content={post.source}
-                title={post.metadata.title}
-                url={fullUrl}
-              />
-            </div>
 
             {/* Comments Section */}
             <CommentsSection postSlug={post.slug} />
           </div>
 
-          {/* Right Sidebar - 25% */}
+          {/* Right Sidebar - Advertisement Only */}
           <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2 mr-2">
             {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
@@ -198,59 +206,54 @@ export default async function Page(props: {
                   width={300}
                   height={400}
                   className="w-full h-auto object-cover"
-                  style={{ maxHeight: '50vh' }}
+                  style={{ maxHeight: '100vh' }}
                 />
               </div>
-
-              {/* Recent Posts Section */}
-              <div className="bg-card rounded-xl border p-6 divide-y divide-muted">
-                <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                  </svg>
-                  Recent Posts
-                </h3>
-                <div className="divide-y divide-muted">
-                  {recentPosts.map((recentPost, index) => (
-                    <Link
-                      key={recentPost.slug}
-                      href={`/blog/${recentPost.slug}`}
-                      className="group block py-3 first:pt-4 last:pb-4 hover:bg-muted/5 transition-colors"
-                    >
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <span className="text-sm font-bold text-primary group-hover:text-primary/80 mt-1 min-w-[24px]">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
-                          <div className="flex-1">
-                            <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                              {recentPost.title}
-                            </h4>
-                            <div className="flex items-center gap-2 mt-2">
-                              <time className="text-xs text-muted-foreground">
-                                {new Date(recentPost.publishedAt).toLocaleDateString('en-US', { 
-                                  month: 'short', 
-                                  day: 'numeric',
-                                  year: 'numeric'
-                                })}
-                              </time>
-                              <span className="text-xs text-muted-foreground">•</span>
-                              <span className="text-xs text-muted-foreground">
-                                {recentPost.category || "Trading"}
-                              </span>
-                            </div>
-                            {/* <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed pl-[32px]">
-                              {recentPost.summary}
-                            </p> */}
-                          </div>
-                        </div>
-
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recently Published Section */}
+      <div className="border-t border-muted mt-16">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">Recently Published</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentPosts.map((post, idx) => (
+              <Link 
+                key={post.slug} 
+                href={`/blog/${post.slug}`}
+                className="group block bg-card rounded-xl border p-4 hover:border-primary transition-colors"
+              >
+                <div className="aspect-[16/9] relative mb-4 rounded-lg overflow-hidden">
+                  <Image
+                    src={post.image || "/demo.png"}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>{post.category || "Trading"}</span>
+                    <span>•</span>
+                    <time>
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {post.summary}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
