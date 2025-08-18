@@ -128,7 +128,7 @@ export default async function Page(props: {
             <SummarySection summary={post.metadata.summary} />
 
             {/* Mobile Table of Contents - below summary on mobile, collapsed by default */}
-            <div className="xl:hidden mt-6 mb-8">
+            <div className="xl:hidden mt-6 mb-8 mx-3">
               <details>
                 <summary className="flex items-center justify-between bg-card px-4 py-3 rounded-lg border cursor-pointer">
                   <span className="font-semibold text-foreground">Table of Contents</span>

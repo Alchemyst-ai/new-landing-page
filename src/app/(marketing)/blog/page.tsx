@@ -18,19 +18,6 @@ export default async function Blog() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Website Header - this is handled by your layout.tsx */}
-      
-      {/* Breadcrumb */}
-      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-2 sm:pb-4">
-        <nav className="flex text-sm">
-          <Link href="/" className="text-muted-foreground hover:text-foreground">
-            {siteConfig.name}
-          </Link>
-          <span className="mx-2 text-muted-foreground">&gt;</span>
-          <span className="text-foreground">Blog</span>
-        </nav>
-      </div>
-
       {/* Blog Header */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="text-center py-8 sm:py-12">
