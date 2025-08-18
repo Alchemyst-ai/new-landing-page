@@ -11,7 +11,8 @@ import SummarySection from "@/components/summary-section";
 import AboutSection from "@/components/about-section";
 import AuthorBioCard from "@/components/author-bio-card";
 import TableOfContentsClient from "@/components/table-of-contents-client";
-import CommentsSection from "@/components/comments-section";
+import DisqusComments from "@/components/disqus-comments";
+import SimpleCommentCount from "@/components/simple-comment-count";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -191,7 +192,11 @@ export default async function Page(props: {
 
 
             {/* Comments Section */}
-            <CommentsSection postSlug={post.slug} />
+            <DisqusComments 
+              postSlug={post.slug} 
+              postTitle={post.metadata.title}
+              postUrl={fullUrl}
+            />
           </div>
 
           {/* Right Sidebar - Advertisement Only */}
@@ -244,6 +249,8 @@ export default async function Page(props: {
                         year: 'numeric'
                       })}
                     </time>
+                    <span>•</span>
+                    <SimpleCommentCount postSlug={post.slug} postTitle={post.title} />
                   </div>
                   <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}

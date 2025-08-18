@@ -1,4 +1,4 @@
-import BlogCard from "@/components/blog-card";
+import BlogCardWithComments from "@/components/blog-card-with-comments";
 import { getBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
@@ -36,14 +36,14 @@ export default async function Blog() {
           {/* Featured Post - Latest post gets special treatment */}
           {articles.length > 0 && (
             <div className="mb-8 sm:mb-12">
-              <BlogCard data={articles[0]} priority featured />
+              <BlogCardWithComments data={articles[0]} priority featured />
             </div>
           )}
 
           {/* Rest of the posts in a grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {articles.slice(1).map((data, idx) => (
-              <BlogCard key={data.slug} data={data} priority={idx <= 1} />
+              <BlogCardWithComments key={data.slug} data={data} priority={idx <= 1} />
             ))}
           </div>
         </div>
