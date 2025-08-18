@@ -330,3 +330,17 @@
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* Fix for OKLCH color incompatibility with Disqus - https://github.com/disqus/disqus-react/issues/153 */
+:root,
+.comments {
+  background-color: #ffffff !important; /* white */
+  color: #1e293b !important; /* slate-800 */
+}
+
+/* Dark mode comments - using hex values */
+.dark :root,
+.dark .comments {
+  background-color: #0f172a !important; /* slate-900 */
+  color: #f8fafc !important; /* slate-50 */
+}
