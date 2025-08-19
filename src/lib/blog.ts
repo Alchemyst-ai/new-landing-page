@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/config";
 import fs from "fs";
 import path from "path";
+import { execSync } from "child_process";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
@@ -17,7 +18,6 @@ export type Post = {
   image?: string;
   category?: string;
   subcategory?: string;
-  // Optional enhanced metadata for author and reviewer bios
   authorImage?: string;
   authorRole?: string;
   authorTwitter?: string;
@@ -26,7 +26,27 @@ export type Post = {
   reviewerImage?: string;
   reviewerRole?: string;
   reviewerBio?: string;
+  draft?: boolean;
+  lastModified?: string | null;
+  readTime?: number;
 };
+
+function calculateReadTime(content: string): number {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const readTime = Math.ceil(words / wordsPerMinute);
+  return readTime;
+}
+
+function getLastModifiedDate(filePath: string): string | null {
+  try {
+    const cmd = `git log -1 --pretty="format:%ci" "${filePath}"`;
+    const result = execSync(cmd, { encoding: 'utf-8' }).trim();
+    return result || null;
+  } catch (error) {
+    return null;
+  }
+}
 
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -39,8 +59,13 @@ function parseFrontmatter(fileContent: string) {
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(": ");
     let value = valueArr.join(": ").trim();
-    value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof Post] = value;
+    value = value.replace(/^['"](.*)['"]$/, "$1");
+    
+    if (key.trim() === 'draft') {
+      (metadata as any)[key.trim()] = value.toLowerCase() === 'true';
+    } else {
+      (metadata as any)[key.trim()] = value;
+    }
   });
 
   return { data: metadata as Post, content };
@@ -56,7 +81,6 @@ export async function markdownToHTML(markdown: string) {
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      // https://rehype-pretty.pages.dev/#usage
       theme: {
         light: "min-light",
         dark: "min-dark",
@@ -66,16 +90,15 @@ export async function markdownToHTML(markdown: string) {
     .use(rehypeStringify)
     .process(markdown);
 
-  // Add IDs to headings for table of contents
   const htmlString = p.toString();
   const htmlWithIds = htmlString.replace(
     /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
     (match, level, attributes, content) => {
       const id = content
-        .replace(/<[^>]*>/g, '') // Remove HTML tags
+        .replace(/<[^>]*>/g, '')
         .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, '') // Remove special characters
-        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, '-')
         .trim();
       
       return `<h${level}${attributes} id="${id}">${content}</h${level}>`;
@@ -93,11 +116,17 @@ export async function getPost(slug: string) {
   const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
     metadata.title
   )}`;
+  
+  const lastModified = getLastModifiedDate(filePath);
+  const readTime = calculateReadTime(rawContent);
+  
   return {
     source: content,
     metadata: {
       ...metadata,
       image: metadata.image || defaultImage,
+      lastModified,
+      readTime,
     },
     slug,
   };
@@ -105,7 +134,7 @@ export async function getPost(slug: string) {
 
 async function getAllPosts(dir: string) {
   const mdxFiles = getMDXFiles(dir);
-  return Promise.all(
+  const posts = await Promise.all(
     mdxFiles.map(async (file) => {
       const slug = path.basename(file, path.extname(file));
       const { metadata, source } = await getPost(slug);
@@ -116,6 +145,8 @@ async function getAllPosts(dir: string) {
       };
     })
   );
+  
+  return posts.filter(post => !post.draft);
 }
 
 export async function getBlogPosts() {

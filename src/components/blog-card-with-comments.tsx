@@ -55,12 +55,17 @@ export default function BlogCardWithComments({
       </div>
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">
-          <time
-            dateTime={data.publishedAt}
-            className="text-sm text-muted-foreground"
-          >
-            {formatDate(data.publishedAt)}
-          </time>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <time dateTime={data.publishedAt}>
+              {formatDate(data.publishedAt)}
+            </time>
+            {data.readTime && (
+              <>
+                <span>•</span>
+                <span>{data.readTime} min read</span>
+              </>
+            )}
+          </div>
           <CommentCount
             shortname={disqusShortname}
             config={disqusConfig}

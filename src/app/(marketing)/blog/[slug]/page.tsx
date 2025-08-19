@@ -60,18 +60,16 @@ export default async function Page(props: {
     notFound();
   }
 
-  // Get recent posts (excluding current post)
   const allPosts = await getBlogPosts();
   const recentPosts = allPosts
-    .filter(p => p.slug !== post.metadata.slug) // Exclude current post
+    .filter(p => p.slug !== post.metadata.slug)
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, 5);
 
-  // Construct full URL for sharing
   const fullUrl = `${siteConfig.url}/blog/${post.slug}`;
 
   return (
-    <section id="blog" className="bg-background min-h-screen pb-24">  {/* Added bottom padding */}
+    <section id="blog" className="bg-background min-h-screen pb-24">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -81,7 +79,7 @@ export default async function Page(props: {
             "@type": "BlogPosting",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
+            dateModified: post.metadata.lastModified || post.metadata.publishedAt,
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${siteConfig.url}${post.metadata.image}`
@@ -95,10 +93,8 @@ export default async function Page(props: {
         }}
       />
 
-      {/* Updated container margins for mobile */}
       <div className="max-w-screen -mt-10 xl:max-w-screen-3xl mx-4 sm:mx-6 lg:mx-8 xl:ml-12 xl:mr-24">
         <div className="flex flex-col xl:flex-row xl:gap-6">
-          {/* Left Sidebar - Table of Contents - Desktop Only */}
           <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
             <TableOfContentsClient
               content={post.source}
@@ -107,7 +103,6 @@ export default async function Page(props: {
             />
           </div>
 
-          {/* Main Content - 50% */}
           <div className="w-full xl:w-3/5 xl:flex-shrink-0 px-4 sm:px-6 lg:px-8">
             <BlogHeader
               title={post.metadata.title}
@@ -125,10 +120,19 @@ export default async function Page(props: {
               featuredImage={post.metadata.image}
             />
 
-            {/* Summary Box - Moved to top */}
+            {post.metadata.readTime && (
+              <div className="mb-4 text-sm text-muted-foreground">
+                {post.metadata.readTime} min read
+                {post.metadata.lastModified && (
+                  <span className="ml-2">
+                    • Last updated: {new Date(post.metadata.lastModified).toLocaleDateString()}
+                  </span>
+                )}
+              </div>
+            )}
+
             <SummarySection summary={post.metadata.summary} />
 
-            {/* Mobile Table of Contents - below summary on mobile, collapsed by default */}
             <div className="xl:hidden mt-6 mb-8 mx-3">
               <details>
                 <summary className="flex items-center justify-between bg-card px-4 py-3 rounded-lg border cursor-pointer">
@@ -144,10 +148,8 @@ export default async function Page(props: {
               </details>
             </div>
 
-            {/* About Section */}
             <AboutSection />
 
-            {/* Mobile Advertisement - Show on mobile after About section */}
             <div className="xl:hidden mt-8 mb-8 px-4 sm:px-6">
               <div className="flex justify-center">
                 <Image
@@ -168,7 +170,6 @@ export default async function Page(props: {
               ></article>
             </div>
 
-            {/* Author/Reviewer Bio Cards */}
             <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               <AuthorBioCard
                 name={post.metadata.author}
@@ -190,8 +191,6 @@ export default async function Page(props: {
                 )}
             </div>
 
-
-            {/* Comments Section */}
             <DisqusComments 
               postSlug={post.slug} 
               postTitle={post.metadata.title}
@@ -199,11 +198,8 @@ export default async function Page(props: {
             />
           </div>
 
-          {/* Right Sidebar - Advertisement Only */}
           <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2 mr-2">
-            {/* Advertisement Section */}
             <div className="sticky top-24 space-y-8">
-              {/* Advertisement Image */}
               <div className="rounded-xl overflow-hidden border">
                 <Image
                   src="/ad.png"
@@ -219,7 +215,6 @@ export default async function Page(props: {
         </div>
       </div>
 
-      {/* Recently Published Section */}
       <div className="border-t border-muted mt-16">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">Recently Published</h2>
@@ -251,6 +246,12 @@ export default async function Page(props: {
                     </time>
                     <span>•</span>
                     <SimpleCommentCount postSlug={post.slug} postTitle={post.title} />
+                    {post.readTime && (
+                      <>
+                        <span>•</span>
+                        <span>{post.readTime} min read</span>
+                      </>
+                    )}
                   </div>
                   <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
@@ -265,7 +266,7 @@ export default async function Page(props: {
         </div>
       </div>
 
-      <div className="mt-12 sm:mt-16 md:mt-24">  {/* Added top margin to CTA */}
+      <div className="mt-12 sm:mt-16 md:mt-24">
         <CTA />
       </div>
     </section>

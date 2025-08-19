@@ -42,14 +42,17 @@ export default function BlogCard({
         )}
       </div>
       <div className="p-6">
-        <p className="mb-4">
-          <time
-            dateTime={data.publishedAt}
-            className="text-sm text-muted-foreground"
-          >
+        <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+          <time dateTime={data.publishedAt}>
             {formatDate(data.publishedAt)}
           </time>
-        </p>
+          {data.readTime && (
+            <>
+              <span>•</span>
+              <span>{data.readTime} min read</span>
+            </>
+          )}
+        </div>
         <h3 className={cn(
           "font-bold mb-4 text-foreground",
           featured ? "text-3xl" : "text-xl"
