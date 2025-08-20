@@ -22,7 +22,7 @@ export const SecuritySection = () => {
             Alchemyst is built with privacy and compliance at its core—HIPAA, GDPR, ISO 27001, and SOC 2 Type II certified—ensuring data trust and integrity across every AI workflow.
           </p>
 
-          <Link href="https://platform.getalchemystai.com/">
+          <Link href="/platform/signin">
             <Button size="lg" className="mt-8 bg-white">
               Request A Demo
             </Button>

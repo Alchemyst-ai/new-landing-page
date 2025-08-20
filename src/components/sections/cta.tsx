@@ -10,7 +10,7 @@ export function CTA() {
           Ready to build your next AI agent?
         </p>
 
-        <Link href="https://platform.getalchemystai.com" target="_blank">
+        <Link href="/platform/signin">
           <div className="flex justify-center">
             <Button className="flex items-center gap-2">Get Started</Button>
           </div>
