@@ -7,9 +7,9 @@ import Link from "next/link";
 import Spline from "@splinetool/react-spline";
 
 export default function PlatformSignInPage() {
-    
+
   // Backend URL - Baad me change krr dunga 
-  const backendUrl = "http://localhost:3001";
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
 
   const handleGoogleSignIn = () => {
     window.location.href = `${backendUrl}/api/auth/google`;
