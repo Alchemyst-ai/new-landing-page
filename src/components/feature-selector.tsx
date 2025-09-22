@@ -27,33 +27,35 @@ const rawFeatures: RawFeature[] = [
     title: "Context API",
     description: "Manage context data with user and organization-level access control.",
     lang: "javascript",
-    rawCode: `const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/add', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer <token>',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    documents: [
-      {
-        content: "User preferences for AI interactions"
-      }
-    ],
-    source: "platform/maya/smart-settings.upload",
-    context_type: "resource",
-    chained: "false",
-    scope: "internal",
-    metadata: {
-      file_name: "Name of file",
-      doc_type: "Type of file",
-      modalities: "['text', 'image']",
-      size: "Size of file"
-    }
-  })
-});
+    rawCode: `import AlchemystAI from '@alchemystai/sdk';
 
-const result = await response.json();
-console.log(result);`
+    const client = new AlchemystAI({
+      apiKey: process.env.ALCHEMYST_AI_API_KEY, // Make sure this is set in your env
+    });
+
+    async function main() {
+      const result = await client.v1.context.add({
+        documents: [
+          {
+            content: "User preferences for AI interactions",
+          },
+        ],
+        source: "platform/maya/smart-settings.upload",
+        context_type: "resource",
+        scope: "internal",
+        metadata: {
+          fileName: "Name of file",
+          fileType: "Type of file",
+          modalities: "['text','image']", // you can stringify or use array
+          fileSize: "Size of file",
+        },
+      });
+
+      console.log(result);
+    }
+
+    main().catch(console.error);
+    `
   },
   {
     id: 2,
