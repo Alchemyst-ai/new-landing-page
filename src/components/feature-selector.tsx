@@ -57,58 +57,58 @@ const rawFeatures: RawFeature[] = [
     main().catch(console.error);
     `
   },
+//   {
+//     id: 2,
+//     title: "Chat API",
+//     description: "Streaming chat functionality with AI-generated responses, thinking steps using memory, and metadata.",
+//     lang: "javascript",
+//     rawCode: `const response = await fetch('/api/v1/chat/generate/stream', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Authorization': 'Bearer your-token-here'
+//   },
+//   body: JSON.stringify({
+//     chat_history: [
+//       {
+//         content: 'Explain quantum computing',
+//         role: 'user'
+//       }
+//     ],
+//     persona: 'maya'
+//   })
+// });
+
+// const reader = response.body.getReader();
+// const decoder = new TextDecoder();
+
+// while (true) {
+//   const { value, done } = await reader.read();
+//   if (done) break;
+  
+//   const chunk = decoder.decode(value);
+//   const lines = chunk.split('\\n');
+  
+//   for (const line of lines) {
+//     if (line.startsWith('data: ')) {
+//       const data = line.slice(6);
+//       if (data === '[DONE]') {
+//         console.log('Stream completed');
+//         return;
+//       }
+      
+//       try {
+//         const parsed = JSON.parse(data);
+//         console.log('Received:', parsed);
+//       } catch (e) {
+//         // Handle parsing errors
+//       }
+//     }
+//   }
+// }`
+//   },
   {
     id: 2,
-    title: "Chat API",
-    description: "Streaming chat functionality with AI-generated responses, thinking steps using memory, and metadata.",
-    lang: "javascript",
-    rawCode: `const response = await fetch('/api/v1/chat/generate/stream', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer your-token-here'
-  },
-  body: JSON.stringify({
-    chat_history: [
-      {
-        content: 'Explain quantum computing',
-        role: 'user'
-      }
-    ],
-    persona: 'maya'
-  })
-});
-
-const reader = response.body.getReader();
-const decoder = new TextDecoder();
-
-while (true) {
-  const { value, done } = await reader.read();
-  if (done) break;
-  
-  const chunk = decoder.decode(value);
-  const lines = chunk.split('\\n');
-  
-  for (const line of lines) {
-    if (line.startsWith('data: ')) {
-      const data = line.slice(6);
-      if (data === '[DONE]') {
-        console.log('Stream completed');
-        return;
-      }
-      
-      try {
-        const parsed = JSON.parse(data);
-        console.log('Received:', parsed);
-      } catch (e) {
-        // Handle parsing errors
-      }
-    }
-  }
-}`
-  },
-  {
-    id: 3,
     title: "Context Proxy API",
     description: "OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.",
     lang: "bash",
@@ -126,7 +126,7 @@ while (true) {
   }'`
   },
   {
-    id: 4,
+    id: 3,
     title: "Model Context Protocol",
     description: "Integrate our context processor MCP on the fly across different environments and modes.",
     isMcp: true
