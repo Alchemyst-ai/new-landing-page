@@ -6,20 +6,14 @@ import { cubicBezier, motion } from "framer-motion";
 import {
   AlertTriangleIcon,
   BrainCircuitIcon,
-  DatabaseIcon,
-  GitForkIcon,
+  HandCoinsIcon,
   HeadsetIcon,
   InfoIcon,
-  MessageSquareIcon,
-  SearchIcon,
-  SquareTerminal,
-  UserSearch,
-  XCircleIcon,
   LineChartIcon,
-  TargetIcon,
+  MessageSquareIcon,
   RefreshCcwIcon,
-  WalletIcon,
-  HandCoinsIcon,
+  TargetIcon,
+  WalletIcon
 } from "lucide-react";
 
 const containerVariants = {
@@ -175,7 +169,7 @@ const Card2 = () => {
       id: 1,
       type: "context",
       timestamp: "2025-07-14 10:02:15",
-      message: "Detected prior note: &quot;Mild reaction to penicillin&quot;",
+      message: "Detected prior note: \"Mild reaction to penicillin\"",
       icon: (
         <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
           <InfoIcon className="h-5 w-5 text-white" />
