@@ -1,5 +1,5 @@
 import BlogCardWithComments from "@/components/blog-card-with-comments";
-import { getBlogPosts } from "@/lib/blog";
+import type { CardPost } from "@/components/blog-card";
 import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
 
@@ -9,8 +9,20 @@ export const metadata = constructMetadata({
 });
 
 export default async function Blog() {
-  const allPosts = await getBlogPosts();
-  const articles = allPosts.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const json = await res.json();
+  const items = (json?.data ?? []) as Array<any>;
+
+  const articles: CardPost[] = items
+    .map((item) => ({
+      title: item.title,
+      slug: item.slug,
+      summary: item.description || "",
+      publishedAt: item.publishedAt || new Date().toISOString(),
+      image: item.image || undefined,
+    }))
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
   return (
     <div className="min-h-screen bg-background">

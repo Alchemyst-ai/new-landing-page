@@ -1,5 +1,4 @@
 import { CTA } from "@/components/sections/cta";
-import { getPost, getBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -13,18 +12,20 @@ import AuthorBioCard from "@/components/author-bio-card";
 import TableOfContentsClient from "@/components/table-of-contents-client";
 import DisqusComments from "@/components/disqus-comments";
 import SimpleCommentCount from "@/components/simple-comment-count";
+import { formatDate } from "@/lib/utils";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const params = await props.params;
-  let post = await getPost(params.slug);
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
+  const json = await res.json();
+  const item = (json?.data?.[0]) || {};
+  const title = item.title || "Article";
+  const publishedTime = item.publishedAt || new Date().toISOString();
+  const description = item.description || "";
+  const image = `${siteConfig.url}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -34,7 +35,7 @@ export async function generateMetadata(props: {
       description,
       type: "article",
       publishedTime,
-      url: `${siteConfig.url}/blog/${post.slug}`,
+      url: `${siteConfig.url}/blog/${params.slug}`,
       images: [
         {
           url: image,
@@ -55,18 +56,24 @@ export default async function Page(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await props.params;
-  const post = await getPost(params.slug);
-  if (!post) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
+  const json = await res.json();
+  const item = (json?.data?.[0]) || null;
+  if (!item) {
     notFound();
   }
+  const updatedOn = item.updatedAt || item.publishedAt;
 
-  const allPosts = await getBlogPosts();
-  const recentPosts = allPosts
-    .filter(p => p.slug !== post.metadata.slug)
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  // Fetch recent articles from Strapi and exclude current one
+  const listRes = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const listJson = await listRes.json();
+  const recentPosts = (listJson?.data ?? [])
+    .filter((p: any) => p.slug !== item.slug)
+    .sort((a: any, b: any) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
     .slice(0, 5);
 
-  const fullUrl = `${siteConfig.url}/blog/${post.slug}`;
+  const fullUrl = `${siteConfig.url}/blog/${item.slug}`;
 
   return (
     <section id="blog" className="bg-background min-h-screen pb-24">
@@ -77,17 +84,15 @@ export default async function Page(props: {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.lastModified || post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${siteConfig.url}${post.metadata.image}`
-              : `${siteConfig.url}/blog/${post.slug}/opengraph-image`,
-            url: `${siteConfig.url}/blog/${post.slug}`,
+            headline: item.title,
+            datePublished: item.publishedAt,
+            dateModified: item.publishedAt,
+            description: item.description,
+            image: `${siteConfig.url}/og?title=${encodeURIComponent(item.title)}`,
+            url: `${siteConfig.url}/blog/${item.slug}`,
             author: {
               "@type": "Person",
-              name: post.metadata.author,
+              name: "",
             },
           }),
         }}
@@ -97,41 +102,47 @@ export default async function Page(props: {
         <div className="flex flex-col xl:flex-row xl:gap-6">
           <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
             <TableOfContentsClient
-              content={post.source}
-              title={post.metadata.title}
+              content={item.test}
+              title={item.title}
               url={fullUrl}
+              containerId="article-content"
             />
           </div>
 
           <div className="w-full xl:w-3/5 xl:flex-shrink-0 px-4 sm:px-6 lg:px-8">
             <BlogHeader
-              title={post.metadata.title}
-              category={post.metadata.category || "Trading"}
-              subcategory={post.metadata.subcategory || "Market Analysis"}
-              publishedAt={post.metadata.publishedAt}
+              title={item.title}
+              category={item?.category?.name || "Blog"}
+              subcategory={item?.category?.slug || "Article"}
+              publishedAt={item.publishedAt}
               author={{
-                name: post.metadata.author,
-                image: post.metadata.authorImage || "/logo.png"
+                name: item?.author?.name || "",
+                image: "/logo.png"
               }}
               reviewer={{
-                name: post.metadata.reviewer || "",
-                image: post.metadata.reviewerImage || "/logo.png"
+                name: item?.reviewer?.name || "",
+                image: "/logo.png"
               }}
-              featuredImage={post.metadata.image}
+              featuredImage={item.image || undefined}
+              readTime={item.readTime}
             />
 
-            {post.metadata.readTime && (
+            <div className="mb-4 text-sm text-muted-foreground">
+              Updated on {formatDate(updatedOn)}
+            </div>
+
+            {false && (
               <div className="mb-4 text-sm text-muted-foreground">
-                {post.metadata.readTime} min read
-                {post.metadata.lastModified && (
+                {0} min read
+                {false && (
                   <span className="ml-2">
-                    • Last updated: {new Date(post.metadata.lastModified).toLocaleDateString()}
+                    • Last updated: {new Date().toLocaleDateString()}
                   </span>
                 )}
               </div>
             )}
 
-            <SummarySection summary={post.metadata.summary} />
+            <SummarySection summary={item.description || ""} />
 
             <div className="xl:hidden mt-6 mb-8 mx-3">
               <details>
@@ -140,15 +151,16 @@ export default async function Page(props: {
                 </summary>
                 <div className="mt-3">
                   <TableOfContentsClient
-                    content={post.source}
-                    title={post.metadata.title}
+                    content={item.test}
+                    title={item.title}
                     url={fullUrl}
+                    containerId="article-content"
                   />
                 </div>
               </details>
             </div>
 
-            <AboutSection />
+            {/* <AboutSection /> */}
 
             <div className="xl:hidden mt-8 mb-8 px-4 sm:px-6">
               <div className="flex justify-center">
@@ -164,36 +176,20 @@ export default async function Page(props: {
             </div>
 
             <div className="py-12">
-              <article
+              <article id="article-content"
                 className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: post.source }}
+                dangerouslySetInnerHTML={{ __html: item.test || "" }}
               ></article>
             </div>
 
             <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <AuthorBioCard
-                name={post.metadata.author}
-                role={post.metadata.authorRole || "Author"}
-                image={post.metadata.authorImage}
-                bio={post.metadata.authorBio}
-              />
-              {(
-                !!post.metadata.reviewer ||
-                !!post.metadata.reviewerBio ||
-                !!post.metadata.reviewerImage
-              ) && (
-                  <AuthorBioCard
-                    name={post.metadata.reviewer || ""}
-                    role={post.metadata.reviewerRole || "Reviewer"}
-                    image={post.metadata.reviewerImage}
-                    bio={post.metadata.reviewerBio}
-                  />
-                )}
+              {/* Author card hidden for Strapi content without author fields */}
+              {/* Reviewer card hidden */}
             </div>
 
             <DisqusComments 
-              postSlug={post.slug} 
-              postTitle={post.metadata.title}
+              postSlug={item.slug} 
+              postTitle={item.title}
               postUrl={fullUrl}
             />
           </div>
@@ -219,7 +215,7 @@ export default async function Page(props: {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">Recently Published</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentPosts.map((post, idx) => (
+            {recentPosts.map((post: any, idx: number) => (
               <Link 
                 key={post.slug} 
                 href={`/blog/${post.slug}`}
@@ -235,14 +231,14 @@ export default async function Page(props: {
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{post.category || "Trading"}</span>
+                    <span>{post?.category?.name || "Blog"}</span>
                     <span>•</span>
                     <time>
-                      {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                      {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { 
                         month: 'short', 
                         day: 'numeric',
                         year: 'numeric'
-                      })}
+                      }) : ''}
                     </time>
                     <span>•</span>
                     <SimpleCommentCount postSlug={post.slug} postTitle={post.title} />
@@ -257,7 +253,7 @@ export default async function Page(props: {
                     {post.title}
                   </h3>
                   <p className="text-sm text-muted-foreground line-clamp-2">
-                    {post.summary}
+                    {post.description || ''}
                   </p>
                 </div>
               </Link>

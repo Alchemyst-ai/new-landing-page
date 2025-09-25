@@ -8,36 +8,44 @@ interface TOCItem {
 }
 
 interface TableOfContentsProps {
-  content: string;
+  content?: string;
   title: string;
   url: string;
+  containerId?: string;
 }
 
-export default function TableOfContents({ content, title, url }: TableOfContentsProps) {
+export default function TableOfContents({ content = "", title, url, containerId }: TableOfContentsProps) {
   const [tocItems, setTocItems] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    // Parse HTML content to extract headings
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
-    const headings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    let headings: NodeListOf<Element> | Element[] = [] as any;
+    if (containerId) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        headings = container.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      }
+    }
+    if (!containerId || (headings as any).length === 0) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, 'text/html');
+      headings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    }
     
     const items: TOCItem[] = Array.from(headings).map((heading, index) => {
       const text = heading.textContent || '';
       const level = parseInt(heading.tagName.charAt(1));
       const id = heading.id || `heading-${index}`;
       
-      // Add ID to heading if it doesn't have one
-      if (!heading.id) {
-        heading.id = id;
+      if (containerId && !heading.id) {
+        (heading as HTMLElement).id = id;
       }
       
       return { id, text, level };
     });
 
     setTocItems(items);
-  }, [content]);
+  }, [content, containerId]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
