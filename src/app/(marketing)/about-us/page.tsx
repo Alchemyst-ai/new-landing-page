@@ -1,8 +1,6 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { Header } from "@/components/sections/header"
 import { Footer } from "@/components/sections/footer"
+import { Header } from "@/components/sections/header"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "About Us | AlchemystAI",
@@ -54,17 +52,17 @@ export default function AboutPage() {
         {/* Coming Soon Section */}
         <div className="text-center py-16">
           <h2 className="text-2xl font-semibold text-foreground mb-4">Coming Soon</h2>
-          <p className="text-muted-foreground">We're working on some amazing content for you.</p>
+          <p className="text-muted-foreground">We&apos;re working on some amazing content for you.</p>
         </div>
 
         {/* Commented out content */}
-        {/* 
+        {/*
         <div className="mb-12 p-6 bg-secondary rounded-lg">
           <h2 className="text-lg font-semibold mb-4">TABLE OF CONTENTS</h2>
           <div className="grid grid-cols-2 gap-4">
             {tableOfContents.map((item, index) => (
-              <Link 
-                key={index} 
+              <Link
+                key={index}
                 href={item.link}
                 className="flex items-center hover:opacity-75 transition-opacity"
               >
@@ -78,13 +76,13 @@ export default function AboutPage() {
         <div id="who-we-are" className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Who We Are</h2>
           <p className="text-lg mb-6">
-            AlchemystAI was founded with the mission of revolutionizing software development through AI. 
-            Our team combines expertise in artificial intelligence, software engineering, and developer tools 
+            AlchemystAI was founded with the mission of revolutionizing software development through AI.
+            Our team combines expertise in artificial intelligence, software engineering, and developer tools
             to create the next generation of AI-powered development solutions.
           </p>
           <p className="text-lg">
-            Our platform serves developers and teams from all over the world and from all walks of life. Some are 
-            exploring AI-powered development for the first time, while others are experienced developers looking to 
+            Our platform serves developers and teams from all over the world and from all walks of life. Some are
+            exploring AI-powered development for the first time, while others are experienced developers looking to
             enhance their productivity. No matter who they are, we are here to help.
           </p>
         </div>
@@ -133,7 +131,7 @@ export default function AboutPage() {
           <p className="text-lg mb-4">
             Have questions or want to learn more about AlchemystAI?
           </p>
-          <Link 
+          <Link
             href="mailto:contact@alchemyst.ai"
             className="inline-block px-8 py-3 rounded-lg hover:opacity-75 transition-opacity"
           >
@@ -145,4 +143,4 @@ export default function AboutPage() {
       <Footer />
     </div>
   )
-} 
+}
