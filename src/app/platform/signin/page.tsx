@@ -93,7 +93,7 @@ export default function PlatformSignInPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://discord.gg/3HjypQNw"
+                  href="https://discord.gg/H2StAaSeJ8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/60 hover:text-white transition-colors"
