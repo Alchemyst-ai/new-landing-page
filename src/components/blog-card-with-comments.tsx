@@ -1,19 +1,20 @@
 "use client";
 
-import { Post } from "@/lib/blog";
+import type { CardPost } from "@/components/blog-card";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { CommentCount } from 'disqus-react';
 import { siteConfig } from '@/lib/config';
+import { useEffect, useState } from 'react';
 
 export default function BlogCardWithComments({
   data,
   priority,
   featured,
 }: {
-  data: Post;
+  data: CardPost;
   priority?: boolean;
   featured?: boolean;
 }) {
@@ -24,6 +25,11 @@ export default function BlogCardWithComments({
     identifier: data.slug,
     title: data.title,
   };
+  const summary = (data as any).summary ?? (data as any).description ?? "";
+  const [canRenderComments, setCanRenderComments] = useState(false);
+  useEffect(() => {
+    setCanRenderComments(true);
+  }, []);
 
   return (
     <Link
@@ -66,12 +72,14 @@ export default function BlogCardWithComments({
               </>
             )}
           </div>
-          <CommentCount
-            shortname={disqusShortname}
-            config={disqusConfig}
-          >
-            <span className="text-sm text-muted-foreground">Comments</span>
-          </CommentCount>
+          {canRenderComments && (
+            <CommentCount
+              shortname={disqusShortname}
+              config={disqusConfig}
+            >
+              <span className="text-sm text-muted-foreground">Comments</span>
+            </CommentCount>
+          )}
         </div>
         <h3 className={cn(
           "font-bold mb-4 text-foreground",
@@ -79,7 +87,7 @@ export default function BlogCardWithComments({
         )}>
           {data.title}
         </h3>
-        <p className="text-muted-foreground line-clamp-3">{data.summary}</p>
+        <p className="text-muted-foreground line-clamp-3">{summary}</p>
         
         {featured && (
           <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">

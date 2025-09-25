@@ -101,3 +101,11 @@ export function formatDate(date: string) {
     return `${fullDate} (${yearsAgo}y ago)`;
   }
 }
+
+export function estimateReadTimeFromHtml(html: string, wordsPerMinute: number = 200): number {
+  if (!html) return 1;
+  const text = html.replace(/<[^>]*>/g, " ").replace(/&[^;]+;/g, " ").trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const minutes = Math.ceil(words / Math.max(100, wordsPerMinute));
+  return Math.max(1, minutes);
+}

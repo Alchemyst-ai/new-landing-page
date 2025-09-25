@@ -4,7 +4,8 @@ const nextConfig = {
     remotePatterns: [
       { hostname: "localhost" },
       { hostname: "randomuser.me" },
-      { hostname: "images.unsplash.com" }
+      { hostname: "images.unsplash.com" },
+      { hostname: process.env.STRAPI_API_URL}
     ],
   },
   transpilePackages: ["geist"],

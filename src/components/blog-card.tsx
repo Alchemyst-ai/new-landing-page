@@ -4,15 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+export type CardPost = Pick<
+  Post,
+  "title" | "slug" | "summary" | "publishedAt" | "image" | "readTime"
+> & {
+  description?: string;
+};
+
 export default function BlogCard({
   data,
   priority,
   featured,
 }: {
-  data: Post;
+  data: CardPost;
   priority?: boolean;
   featured?: boolean;
 }) {
+  const summary = (data as any).summary ?? (data as any).description ?? "";
+
   return (
     <Link
       href={`/blog/${data.slug}`}
@@ -59,7 +68,7 @@ export default function BlogCard({
         )}>
           {data.title}
         </h3>
-        <p className="text-muted-foreground line-clamp-3">{data.summary}</p>
+        <p className="text-muted-foreground line-clamp-3">{summary}</p>
         
         {featured && (
           <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">
