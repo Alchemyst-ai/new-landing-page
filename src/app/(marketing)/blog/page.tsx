@@ -1,5 +1,5 @@
-import BlogCardWithComments from "@/components/blog-card-with-comments";
 import type { CardPost } from "@/components/blog-card";
+import BlogCardWithComments from "@/components/blog-card-with-comments";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
@@ -31,7 +31,7 @@ export default async function Blog() {
             The Alchemyst AI Blog
           </h1>
           <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
-          Stay ahead of the curve using context and agentic use cases
+            Stay ahead of the curve using context and agentic use cases
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default async function Blog() {
           ) : (
             <div className="text-center py-16">
               <h2 className="text-2xl font-semibold text-foreground mb-4">Coming Soon</h2>
-              <p className="text-muted-foreground">We're working on some amazing content for you.</p>
+              <p className="text-muted-foreground">We&apos;re working on some amazing content for you.</p>
             </div>
           )}
         </div>
