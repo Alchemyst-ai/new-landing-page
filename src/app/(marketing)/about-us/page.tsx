@@ -51,7 +51,14 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-24">
         <h1 className="text-4xl font-bold mb-8 text-center">About Us</h1>
 
-        {/* Table of Contents */}
+        {/* Coming Soon Section */}
+        <div className="text-center py-16">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">Coming Soon</h2>
+          <p className="text-muted-foreground">We're working on some amazing content for you.</p>
+        </div>
+
+        {/* Commented out content */}
+        {/* 
         <div className="mb-12 p-6 bg-secondary rounded-lg">
           <h2 className="text-lg font-semibold mb-4">TABLE OF CONTENTS</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -68,7 +75,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Who We Are Section */}
         <div id="who-we-are" className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Who We Are</h2>
           <p className="text-lg mb-6">
@@ -83,7 +89,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Editorial Team Section */}
         <div id="editorial-team" className="mb-16">
           <h2 className="text-2xl font-bold mb-8">Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -105,7 +110,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Awards Section */}
         <div id="awards" className="text-center mb-16">
           <h2 className="text-2xl font-bold mb-8">Our Awards & Recognition</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -124,7 +128,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Contact Section */}
         <div id="contact-us" className="text-center">
           <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
           <p className="text-lg mb-4">
@@ -137,6 +140,7 @@ export default function AboutPage() {
             Get in Touch
           </Link>
         </div>
+        */}
       </div>
       <Footer />
     </div>
