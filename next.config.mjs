@@ -3,9 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: "localhost" },
-      { hostname: "randomuser.me" },
       { hostname: "images.unsplash.com" },
-      { hostname: process.env.STRAPI_API_URL}
+      { hostname: "blog-cms-4500e5720eebb1f17f453cb9.getalchemystai.com"}
     ],
   },
   transpilePackages: ["geist"],
