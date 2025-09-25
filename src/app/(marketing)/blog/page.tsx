@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
 });
 
 export default async function Blog() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
   const json = await res.json();
   const items = (json?.data ?? []) as Array<any>;
