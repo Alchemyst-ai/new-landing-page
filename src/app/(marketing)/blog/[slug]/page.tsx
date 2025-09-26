@@ -162,7 +162,7 @@ export default async function Page(props: {
 
             {/* <AboutSection /> */}
 
-            <div className="xl:hidden mt-8 mb-8 px-4 sm:px-6">
+            {/* <div className="xl:hidden mt-8 mb-8 px-4 sm:px-6">
               <div className="flex justify-center">
                 <Image
                   src="/ad.png"
@@ -173,7 +173,7 @@ export default async function Page(props: {
                   style={{ maxHeight: '50vh' }}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className="py-12">
               <article id="article-content"
@@ -194,7 +194,7 @@ export default async function Page(props: {
             />
           </div>
 
-          <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2 mr-2">
+          {/* <div className="hidden xl:flex xl:flex-col xl:w-1/5 xl:flex-shrink-0 pl-4 pr-2 mr-2">
             <div className="sticky top-24 space-y-8">
               <div className="rounded-xl overflow-hidden border">
                 <Image
@@ -207,7 +207,7 @@ export default async function Page(props: {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
