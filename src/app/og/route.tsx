@@ -1,7 +1,7 @@
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
 import { ImageResponse } from "next/og";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
@@ -77,9 +77,9 @@ export async function GET(req: NextRequest) {
           </div>
         </div>
 
-        {/* 
+        {/*
           Note: We can't use next/image in OG Image generation as it's not supported.
-          Keeping the img tag as it's used in ImageResponse which doesn't support Next/Image 
+          Keeping the img tag as it's used in ImageResponse which doesn't support Next/Image
         */}
         <img
           src={`${siteConfig.url}/cube.png`}

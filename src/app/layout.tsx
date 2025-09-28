@@ -1,13 +1,13 @@
+import StickyAdFooter from "@/components/sticky-ad-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/config";
 import { cn, constructMetadata } from "@/lib/utils";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import "./globals.css";
-import StickyAdFooter from "@/components/sticky-ad-footer";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
