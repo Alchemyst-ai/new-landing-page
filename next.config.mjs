@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: "localhost" },
       { hostname: "images.unsplash.com" },
-      { hostname: "blog-cms-4500e5720eebb1f17f453cb9.getalchemystai.com"}
+      { hostname: "charming-crown-5c60ef85ae.strapiapp.com"}
     ],
   },
   transpilePackages: ["geist"],
