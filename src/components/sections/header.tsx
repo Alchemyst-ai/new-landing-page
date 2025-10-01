@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { useTheme } from "next-themes";
 
 
 // Temporary type definition
@@ -144,7 +144,7 @@ export function Header() {
         <div className="flex items-center">
           <Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
             <Image
-              src={theme === 'dark' ? '/logo.png' : '/logoDark.png'}
+              src={theme === 'light' ? '/logoDark.png' : '/logo.png'}
               alt="Alchemyst AI"
               width={200}
               height={200}
@@ -156,7 +156,7 @@ export function Header() {
         {/* Desktop Navigation - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-6">
           {/* Use Cases Dropdown */}
-          <div 
+          <div
             ref={useCasesRef}
             className="relative"
             onMouseEnter={() => setShowUseCasesDropdown(true)}
@@ -201,8 +201,8 @@ export function Header() {
             </AnimatePresence>
           </div>
 
-          <Link 
-            href="/research" 
+          <Link
+            href="/research"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
@@ -211,8 +211,8 @@ export function Header() {
             </span>
           </Link>
 
-          <Link 
-            href="/security" 
+          <Link
+            href="/security"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
@@ -221,8 +221,8 @@ export function Header() {
             </span>
           </Link>
 
-          <Link 
-            href="/pricing" 
+          <Link
+            href="/pricing"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
@@ -231,8 +231,8 @@ export function Header() {
             </span>
           </Link>
 
-          <Link 
-            href="/about-us" 
+          <Link
+            href="/about-us"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
@@ -241,8 +241,8 @@ export function Header() {
             </span>
           </Link>
 
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1">
@@ -331,7 +331,7 @@ export function Header() {
                 >
                   Security
                 </Link>
-                
+
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"
@@ -340,7 +340,7 @@ export function Header() {
                 >
                   Pricing
                 </Link>
-                
+
                 {/* GitHub Button in Mobile */}
                 <div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
                   <GitHubButtonWithStars />
