@@ -14,10 +14,10 @@ const ease = [0.16, 1, 0.3, 1];
 
 function HeroPill() {
   return (
-    <div className="flex gap-4 justify-end items-baseline relative">
+    <div className="flex flex-col gap-1 justify-start items-baseline">
     <motion.a
       href="/#"
-      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8"
+      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8 mb-3"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
@@ -35,7 +35,7 @@ function HeroPill() {
       <img
         src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
         alt="Alchemyst AI - Context-aware AI Agents"
-        style={{ width: '15rem', height: "4rem", position:'absolute', top: '35%', transform: 'translateY(-50%)' }}
+        style={{ width: '15rem', height: "4rem" }}
       />
     </a>
     </div>
