@@ -14,9 +14,10 @@ const ease = [0.16, 1, 0.3, 1];
 
 function HeroPill() {
   return (
+    <div className="flex gap-4 justify-end items-baseline relative">
     <motion.a
       href="/#"
-      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2"
+      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
@@ -26,6 +27,18 @@ function HeroPill() {
 
       </p>
     </motion.a>
+    <a
+      href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
+        alt="Alchemyst AI - Context-aware AI Agents"
+        style={{ width: '15rem', height: "4rem", position:'absolute', top: '35%', transform: 'translateY(-50%)' }}
+      />
+    </a>
+    </div>
   );
 }
 
@@ -150,11 +163,17 @@ export function Hero() {
   return (
     <Section id="hero" className="mt-18 sm:mt-21 md:mt-22 w-full">
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
+        {/* <div className="flex flex-col justify-start items-start lg:col-span-1">
+          <HeroPill />
+          <HeroTitles />
+          <HeroCTA />
+        </div> */}
         <div className="flex flex-col justify-start items-start lg:col-span-1">
           <HeroPill />
           <HeroTitles />
           <HeroCTA />
         </div>
+
         {!isMobile && (
           <div className="relative lg:h-full lg:col-span-1">
             <Suspense>
