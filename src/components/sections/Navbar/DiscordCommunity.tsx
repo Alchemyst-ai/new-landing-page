@@ -50,7 +50,7 @@ export const DiscordCommunityButton = () => {
 
       {memberData && (
         <span className="text-sm text-black ml-1">
-          {memberData.approximate_member_count.toLocaleString()} members{" "}
+          {memberData.approximate_member_count.toLocaleString()} {" "}
           {/* {memberData.approximate_presence_count.toLocaleString()} online */}
         </span>
       )}

@@ -38,7 +38,7 @@ const GitHubButtonWithStars = () => {
         <FaGithub className="size-5" />
         {stars !== null && (
           <span>
-            ★ {stars.toLocaleString()}
+            {stars.toLocaleString()} ★ 
           </span>
         )}
       </RainbowButton>
