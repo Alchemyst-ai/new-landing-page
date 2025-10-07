@@ -102,7 +102,7 @@ export const ACTION_COST_LABELS: Record<keyof typeof ACTION_COSTS_IN_TOKENS, { n
   "context.upload": { name: "Context Upload", description: "Upload organization context", billingBasis: "1MB" },
   "genai.chat.generate": { name: "AI Chat Response Generations", description: "Cost of using our Chat APIs", billingBasis: "1M tokens" },
   "genai.proxy.openai.chat.completions": { name: "LLM Proxy Response Generations", description: "Cost of using our LLM Proxy APIs", billingBasis: "1M tokens" },
-  "genai.chat.web_search": { name: "AI Web Search Usage", description: "Cost of using web search in our chat APIs (in addition to response generations)", billingBasis: "1M tokens" },
+  "genai.chat.web_search": { name: "AI Web Search Usage", description: "Cost of using web search in our chat APIs (in addition to response generations)", billingBasis: "1K results" },
   // 'genai.email.generate': { name: "", description: "", billingBasis: "" },
   // 'genai.social.generate': { name: "", description: "", billingBasis: "" },
   // 'genai.workflow.step.generate': { name: "", description: "", billingBasis: "" },
@@ -137,7 +137,7 @@ export default function PricingCalculator() {
   const resetUsage = () => setUsage({});
 
   return (
-    <div className="max-w-5xl mx-auto py-10 space-y-8">
+    <div className="max-w-5xl py-10">
       <Card className="border border-gray-700">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold">Pricing Calculator</CardTitle>
@@ -170,7 +170,7 @@ export default function PricingCalculator() {
                 <tr className="bg-gray-800/50 border-b border-gray-700 text-left">
                   <th className="p-2 font-medium">Action</th>
                   <th className="p-2 font-medium">Description</th>
-                  <th className="p-2 font-medium">Billing Basis</th>
+                  <th className="p-2 font-medium">Billing Unit</th>
                   <th className="p-2 font-medium">Cost / Unit (USD)</th>
                   <th className="p-2 font-medium">Usage</th>
                   <th className="p-2 font-medium">Cost (USD)</th>

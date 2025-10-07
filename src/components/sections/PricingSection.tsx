@@ -109,7 +109,7 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="flex justify-start items-center gap-2">
+        <div className="flex justify-center items-center gap-4">
         <PricingCalculator />
 
           {pricingPlans.map((plan, index) => (
