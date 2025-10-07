@@ -48,7 +48,7 @@ export default function RootLayout({
             {children}
           </div>
           <ThemeToggle />
-          <StickyAdFooter />
+          {/* <StickyAdFooter /> */}
         </ThemeProvider>
         <GoogleAnalytics gaId="G-WHNWY5LTDN" />
       </body>

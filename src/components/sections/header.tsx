@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
+import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
 
 
 // Temporary type definition
@@ -255,6 +256,23 @@ export function Header() {
 
         {/* Desktop GitHub Button - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-3">
+                  {/* <a
+                    href="https://discord.gg/H2StAaSeJ8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 px-3 py-1 rounded-full bg-white hover:bg-[#5865F2]/20 text-[#5865F2] transition-all text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path d="M20.317 4.369A19.791 19.791 0 0 0 15.883 3c-.207.379-.45.884-.616 1.283a18.27 18.27 0 0 0-5.334 0A12.35 12.35 0 0 0 9.317 3a19.736 19.736 0 0 0-4.432 1.369C2.574 9.081 1.871 13.65 2.097 18.183a19.912 19.912 0 0 0 5.875 2.892c.473-.652.898-1.345 1.268-2.07a12.51 12.51 0 0 1-1.987-.94c.166-.123.33-.251.486-.384 3.787 1.761 7.885 1.761 11.63 0 .157.133.32.261.486.384a12.53 12.53 0 0 1-1.987.94c.37.725.795 1.418 1.268 2.07a19.89 19.89 0 0 0 5.875-2.892c.262-5.154-.857-9.688-2.661-13.814ZM9.861 15.52c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Zm4.278 0c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Z" />
+                    </svg>
+                    <span>Join Community</span>
+                  </a> */}
+          <DiscordCommunityButton />
           <GitHubButtonWithStars />
           <ThemeToggle />
         </div>
@@ -343,6 +361,22 @@ export function Header() {
 
                 {/* GitHub Button in Mobile */}
                 <div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
+                  <a
+                    href="https://discord.gg/H2StAaSeJ8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 px-3 py-1 rounded-full bg-[#5865F2]/10 hover:bg-[#5865F2]/20 text-[#5865F2] transition-all text-sm font-medium"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path d="M20.317 4.369A19.791 19.791 0 0 0 15.883 3c-.207.379-.45.884-.616 1.283a18.27 18.27 0 0 0-5.334 0A12.35 12.35 0 0 0 9.317 3a19.736 19.736 0 0 0-4.432 1.369C2.574 9.081 1.871 13.65 2.097 18.183a19.912 19.912 0 0 0 5.875 2.892c.473-.652.898-1.345 1.268-2.07a12.51 12.51 0 0 1-1.987-.94c.166-.123.33-.251.486-.384 3.787 1.761 7.885 1.761 11.63 0 .157.133.32.261.486.384a12.53 12.53 0 0 1-1.987.94c.37.725.795 1.418 1.268 2.07a19.89 19.89 0 0 0 5.875-2.892c.262-5.154-.857-9.688-2.661-13.814ZM9.861 15.52c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Zm4.278 0c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Z" />
+                    </svg>
+                    <span>Join Community</span>
+                  </a>
                   <GitHubButtonWithStars />
                   <ThemeToggle />
                 </div>
