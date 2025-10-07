@@ -121,7 +121,7 @@ const PricingSection = () => {
               features={plan.features}
               ctaText={plan.ctaText}
               ctaLink={plan.ctaLink}
-              popular={plan.popular}
+              // popular={plan.popular}
               customColor={plan.title === "Pro" ? "#ED9F36" : undefined}
             />
           ))}

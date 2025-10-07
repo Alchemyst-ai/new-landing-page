@@ -115,7 +115,7 @@ export const ACTION_COST_LABELS: Record<keyof typeof ACTION_COSTS_IN_TOKENS, { n
 
 
 export default function PricingCalculator() {
-  const [tier, setTier] = useState<keyof typeof TIER_LABELS>("tier1");
+  const [tier, setTier] = useState<keyof typeof TIER_LABELS>("b2c");
   const [usage, setUsage] = useState<Record<string, number>>({});
 
   // Compute total
