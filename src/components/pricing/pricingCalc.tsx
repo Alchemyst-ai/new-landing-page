@@ -91,7 +91,7 @@ export const ACTION_COSTS_IN_TOKENS = {
 };
 
 const TIER_LABELS: Record<keyof typeof ACTION_COSTS_IN_TOKENS['context.upload'], string> = {
-  b2c: "free",
+  b2c: "Free (you start here, free upto $9 usage)",
   tier1: "Starter (unlocks on $19 monthly spend)",
   tier2: "Accelerate (unlocks on $199 monthly spend)",
   tier3: "Supercharge (unlocks on $799 monthly spend)",
