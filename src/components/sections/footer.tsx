@@ -1,11 +1,13 @@
 import { Icons } from "@/components/icons";
 import { BorderText } from "@/components/ui/border-number";
 import { siteConfig } from "@/lib/config";
+import { Rss } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
   return (
     <footer className="flex flex-col gap-y-5 rounded-lg p-5 container max-w-[var(--container-max-width-very-small-mobile)] sm:max-w-[var(--container-max-width-mobile)] lg:max-w-[var(--container-max-width)]  md:max-w-[var(--container-max-width-tablet)] mx-auto">
-      <div className="flex items-center justify-between flex-col gap-2 flex-col-reverse sm:flex-row">
+      <div className="flex items-center justify-between flex-col gap-2 sm:flex-row">
         <div className="flex flex-col text-sm font-medium tracking-tight text-muted-foreground">
           <p>© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
           <p>All rights reserved.</p>
@@ -22,6 +24,14 @@ export function Footer() {
               {link.icon}
             </a>
           ))}
+        <Link
+          href="/rss"
+          target="_blank"
+          aria-label="RSS Feed"
+          className="text-muted-foreground hover:text-orange-500 transition-colors"
+        >
+          <Rss className="mb-2" height={21}/>
+        </Link>
         </div>
       </div>
       <div className="flex flex-col justify-between gap-y-5 md:flex-row md:items-center">
