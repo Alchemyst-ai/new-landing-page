@@ -192,6 +192,7 @@ export default function PricingCalculator() {
                       <td className="p-2 w-48">
                         <Input
                           type="number"
+                          step='0.01'
                           value={count || ""}
                           onChange={(e) => handleChange(action, e.target.value)}
                           placeholder="0"
