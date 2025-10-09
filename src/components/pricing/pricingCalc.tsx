@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useMemo, useState } from "react";
 
 // const TIERS = ["starter", "accelerate", "supercharge", "free"] as const;
 // type SubscriptionTier = (typeof TIERS)[number];
@@ -103,14 +103,6 @@ export const ACTION_COST_LABELS: Record<keyof typeof ACTION_COSTS_IN_TOKENS, { n
   "genai.chat.generate": { name: "AI Chat Response Generations", description: "Cost of using our Chat APIs", billingBasis: "1M tokens" },
   "genai.proxy.openai.chat.completions": { name: "LLM Proxy Response Generations", description: "Cost of using our LLM Proxy APIs", billingBasis: "1M tokens" },
   "genai.chat.web_search": { name: "AI Web Search Usage", description: "Cost of using web search in our chat APIs (in addition to response generations)", billingBasis: "1K results" },
-  // 'genai.email.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.social.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.workflow.step.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.get': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.augment.by_url': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.augment.by_web_search': { name: "", description: "", billingBasis: "" },
-  // 'genai.email.send': { name: "", description: "", billingBasis: "" },
-  // 'campaigns.create': { name: "", description: "", billingBasis: "" },
 }
 
 
@@ -172,8 +164,8 @@ export default function PricingCalculator() {
                   <th className="p-2 font-medium">Description</th>
                   <th className="p-2 font-medium">Billing Unit</th>
                   <th className="p-2 font-medium">Cost / Unit (USD)</th>
-                  <th className="p-2 font-medium">Usage</th>
-                  <th className="p-2 font-medium">Cost (USD)</th>
+                  <th className="p-2 font-medium text-center">Usage</th>
+                  <th className="p-2 font-medium text-center">Cost (USD)</th>
                 </tr>
               </thead>
               <tbody>
@@ -186,10 +178,10 @@ export default function PricingCalculator() {
                   return (
                     <tr key={action} className="border-b border-gray-800 hover:bg-gray-800/30">
                       <td className="p-2 font-medium">{label.name || action}</td>
-                      <td className="p-2 text-gray-400">{label.description}</td>
-                      <td className="p-2 text-gray-400">{label.billingBasis}</td>
-                      <td className="p-2">{perUnit.toFixed(3)}</td>
-                      <td className="p-2 w-48">
+                      <td className="p-2 text-gray-400 min-w-48">{label.description}</td>
+                      <td className="p-2 min-w-24 text-gray-400">{label.billingBasis}</td>
+                      <td className="p-2 min-w-24 text-center">{perUnit.toFixed(3)}</td>
+                      <td className="p-2 min-w-36 text-center">
                         <Input
                           type="number"
                           step='0.01'
@@ -199,7 +191,7 @@ export default function PricingCalculator() {
                           className="w-full h-8"
                         />
                       </td>
-                      <td className="p-2 w-48">{cost.toFixed(3)}</td>
+                      <td className="p-2 w-36 text-center">{cost.toFixed(3)}</td>
                     </tr>
                   );
                 })}
@@ -210,9 +202,9 @@ export default function PricingCalculator() {
           <div className="flex justify-end mt-6 text-right">
             <div>
               <p className="text-lg font-medium text-gray-300">
-                Estimated Total:{" "}
-                <span className="text-xl font-semibold text-white">
-                  {totalCost.toFixed(3)} USD
+                Estimated Total:{" USD "}
+                <span className="text-xl font-semibold text-white text-right">
+                  {totalCost.toFixed(3)}
                 </span>
               </p>
               <p className="text-xs text-gray-500">Based on simulated usage and current tier rates.</p>
