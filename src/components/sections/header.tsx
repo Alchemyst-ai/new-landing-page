@@ -164,7 +164,7 @@ export function Header() {
             onMouseLeave={() => setShowUseCasesDropdown(false)}
           >
             <button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
-              <span className="relative ">
+              <span className="relative pb-1">
                 Use Cases
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
               </span>
