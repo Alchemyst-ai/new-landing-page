@@ -160,12 +160,12 @@ export default function PricingCalculator() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-gray-800/50 border-b border-gray-700 text-left">
-                  <th className="p-2 font-medium">Action</th>
-                  <th className="p-2 font-medium">Description</th>
-                  <th className="p-2 font-medium">Billing Unit</th>
-                  <th className="p-2 font-medium">Cost / Unit (USD)</th>
-                  <th className="p-2 font-medium text-center">Usage</th>
-                  <th className="p-2 font-medium text-center">Cost (USD)</th>
+                  <th className="p-2 font-medium text-right">Action</th>
+                  <th className="p-2 font-medium text-right">Description</th>
+                  <th className="p-2 font-medium text-right">Billing Unit</th>
+                  <th className="p-2 font-medium text-right">Cost / Unit (USD)</th>
+                  <th className="p-2 font-medium text-right">Usage</th>
+                  <th className="p-2 font-medium text-right">Cost (USD)</th>
                 </tr>
               </thead>
               <tbody>
@@ -177,21 +177,21 @@ export default function PricingCalculator() {
 
                   return (
                     <tr key={action} className="border-b border-gray-800 hover:bg-gray-800/30">
-                      <td className="p-2 font-medium">{label.name || action}</td>
-                      <td className="p-2 text-gray-400 min-w-48">{label.description}</td>
-                      <td className="p-2 min-w-24 text-gray-400">{label.billingBasis}</td>
-                      <td className="p-2 min-w-24 text-center">{perUnit.toFixed(3)}</td>
-                      <td className="p-2 min-w-36 text-center">
+                      <td className="text-right p-2 font-medium">{label.name || action}</td>
+                      <td className="text-right p-2 text-gray-400">{label.description}</td>
+                      <td className="text-right p-2 text-gray-400">{label.billingBasis}</td>
+                      <td className="text-right p-2">{perUnit.toFixed(3)}</td>
+                      <td className="text-right p-2 w-48">
                         <Input
                           type="number"
                           step='0.01'
                           value={count || ""}
                           onChange={(e) => handleChange(action, e.target.value)}
                           placeholder="0"
-                          className="w-full h-8"
+                          className="w-full h-8 text-right"
                         />
                       </td>
-                      <td className="p-2 w-36 text-center">{cost.toFixed(3)}</td>
+                      <td className="p-2 w-48 text-right">{cost.toFixed(3)}</td>
                     </tr>
                   );
                 })}
