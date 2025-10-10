@@ -5,11 +5,11 @@ import { Footer } from "@/components/sections/footer";
 export default function PricingPage() {
   return (
     <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden">
-      <Header />
+      {/* <Header /> */}
       <main className="flex-grow">
         <PricingSection />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 } 

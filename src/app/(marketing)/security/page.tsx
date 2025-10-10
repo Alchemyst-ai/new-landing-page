@@ -5,9 +5,9 @@ import { SecuritySection } from "@/components/sections/security";
 export default function SecurityPage() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <SecuritySection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 } 

@@ -43,6 +43,20 @@ export function Footer() {
         text={siteConfig.footer.brandText}
         className="text-[clamp(3rem,15vw,10rem)] overflow-hidden font-mono tracking-tighter font-medium"
       />
+      <div className="flex flex-col sm:flex-row justify-center sm:justify-end gap-2 sm:gap-5 text-sm text-muted-foreground">
+        <Link
+          href="/terms-of-use"
+          className="hover:text-foreground underline underline-offset-4 transition-colors"
+        >
+          Terms of Use
+        </Link>
+        <Link
+          href="/privacy-policy"
+          className="hover:text-foreground underline underline-offset-4 transition-colors"
+        >
+          Privacy Policy
+        </Link>
+      </div>
     </footer>
   );
 }
