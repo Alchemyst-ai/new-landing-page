@@ -7,7 +7,7 @@ import { Footer } from "@/components/sections/footer";
 const ResearchComponent = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      {/* <Header /> */}
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -148,7 +148,7 @@ const ResearchComponent = () => {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

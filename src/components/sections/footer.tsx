@@ -43,6 +43,14 @@ export function Footer() {
         text={siteConfig.footer.brandText}
         className="text-[clamp(3rem,15vw,10rem)] overflow-hidden font-mono tracking-tighter font-medium"
       />
+      <div className="flex justify-center sm:justify-end">
+        <Link
+          href="/privacy-policy"
+          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4"
+        >
+          Privacy Policy
+        </Link>
+      </div>
     </footer>
   );
 }

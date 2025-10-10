@@ -8,7 +8,7 @@ import { UseCaseFeature } from "@/components/ui/use-case-feature";
 const EdTechPage = () => {
   return (
     <div className="min-h-screen bg-[#0E0E0C] text-white">
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-4">
@@ -369,7 +369,7 @@ const EdTechPage = () => {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

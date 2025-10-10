@@ -16,7 +16,7 @@ import { CalBooking } from "@/components/sections/cal-booking";
 export default function Home() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <Hero />
       <Logos />
       <Examples />
@@ -29,7 +29,7 @@ export default function Home() {
       <Community />
       {/* <Blog /> */}
       <CTA />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

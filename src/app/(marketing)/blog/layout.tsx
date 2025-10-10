@@ -9,10 +9,10 @@ interface MarketingLayoutProps {
 export default async function Layout({ children }: MarketingLayoutProps) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <ScrollProgressBar />
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
