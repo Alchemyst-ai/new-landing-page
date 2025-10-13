@@ -27,6 +27,7 @@ function HeroPill() {
 
       </p>
     </motion.a>
+    <div className="flex flex-row gap-4">
     <a
       href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
       target="_blank"
@@ -38,6 +39,8 @@ function HeroPill() {
         style={{ width: '15rem', height: "4rem" }}
       />
     </a>
+    <a href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents" target="_blank" rel="noreferrer"> <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg" alt="Alchemyst AI - Context-aware AI Agents" style={{width: '15rem', height: "4rem"}} /> </a>
+    </div>
     </div>
   );
 }
