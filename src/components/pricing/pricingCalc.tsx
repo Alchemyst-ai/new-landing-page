@@ -209,9 +209,9 @@ export default function PricingCalculator() {
 
           <div className="flex justify-end mt-6 text-right">
             <div>
-              <p className="text-lg font-medium text-gray-300">
+              <p className="text-lg font-medium">
                 Estimated Total:{" "}
-                <span className="text-xl font-semibold text-white">
+                <span className="text-xl font-semibold">
                   {totalCost.toFixed(3)} USD
                 </span>
               </p>
