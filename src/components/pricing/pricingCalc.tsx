@@ -137,7 +137,7 @@ export default function PricingCalculator() {
         <CardContent>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <span className="w-48 text-sm text-gray-400">Subscription Tier:</span>
+              <span className="w-48 text-sm dark:text-gray-400">Subscription Tier:</span>
               <Select value={tier} onValueChange={(v) => setTier(v as keyof typeof TIER_LABELS)}>
                 <SelectTrigger className="min-w-96 w-full">
                   <SelectValue placeholder="Select tier" />
@@ -178,8 +178,8 @@ export default function PricingCalculator() {
                   return (
                     <tr key={action} className="border-b border-gray-800 hover:bg-gray-800/30">
                       <td className="text-right p-2 font-medium">{label.name || action}</td>
-                      <td className="text-right p-2 text-gray-400">{label.description}</td>
-                      <td className="text-right p-2 text-gray-400">{label.billingBasis}</td>
+                      <td className="text-right p-2 dark:text-gray-400">{label.description}</td>
+                      <td className="text-right p-2 dark:text-gray-400">{label.billingBasis}</td>
                       <td className="text-right p-2">{perUnit.toFixed(3)}</td>
                       <td className="text-right p-2 w-48">
                         <Input
@@ -201,10 +201,10 @@ export default function PricingCalculator() {
 
           <div className="flex justify-end mt-6 text-right">
             <div>
-              <p className="text-lg font-medium text-gray-300">
-                Estimated Total:{" USD "}
-                <span className="text-xl font-semibold text-white text-right">
-                  {totalCost.toFixed(3)}
+              <p className="text-lg font-medium">
+                Estimated Total:{" "}
+                <span className="text-xl font-semibold">
+                  {totalCost.toFixed(3)} USD
                 </span>
               </p>
               <p className="text-xs text-gray-500">Based on simulated usage and current tier rates.</p>
