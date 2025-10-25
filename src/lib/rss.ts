@@ -12,7 +12,7 @@ async function getAllBlogPosts() {
         const headers: Record<string, string> = {};
         if (token) headers["Authorization"] = `Bearer ${token}`;
 
-        const res = await fetch(url, { headers, next: { revalidate: 3600 } });
+        const res = await fetch(url, { headers, next: { revalidate: 600 } });
         if (!res.ok) {
             console.error(`Failed to fetch articles: ${res.status}`);
             return [];
@@ -25,8 +25,7 @@ async function getAllBlogPosts() {
             : Array.isArray(json)
                 ? json
                 : [];
-
-        // console.log("THE ARTICLES", articles);
+        console.log("THE ARTICLES", articles);
 
         return articles.map((article: any) => {
             const cover = article.cover ?? {};
@@ -65,7 +64,9 @@ export async function generateRSSFeed() {
 
     const posts = await getAllBlogPosts();
 
-    if (!posts.length) {
+    console.log("THE POSTS", posts)
+
+    if (!posts || posts.length === 0) {
         console.warn("No articles found for RSS feed.");
 
         feed.item({
@@ -74,9 +75,7 @@ export async function generateRSSFeed() {
             url: siteUrl,
             date: new Date(),
         });
-    }
-
-    if (posts.length >= 1)
+    } else {
         posts.forEach((post: any) => {
             feed.item({
                 title: post.title,
@@ -85,6 +84,7 @@ export async function generateRSSFeed() {
                 date: post.date,
             });
         });
+    }
 
     return feed.xml({ indent: true });
 }

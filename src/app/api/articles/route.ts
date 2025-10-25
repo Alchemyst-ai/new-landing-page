@@ -27,6 +27,9 @@ async function getArticles() {
 export async function GET() {
   try {
     const articles = await getArticles();
+
+    console.log("THE ARTICLES", JSON.stringify(articles, null, 2))
+
     const items = Array.isArray(articles?.data) ? articles.data : [];
     const data = items.map((item: any) => {
       const attrs = item?.attributes ?? item ?? {};
