@@ -71,7 +71,7 @@ export function Logos() {
                     width={150 * Math.abs(currentSet[idx].scale)}
                     height={80 * Math.abs(currentSet[idx].scale)}
                     src={currentSet[idx].src}
-                    className="object-cover opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:brightness-0 dark:hover:invert"
+                    className="object-cover invert opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:brightness-0 dark:hover:invert"
                     alt={currentSet[idx].alt}
                   />
                 </motion.div>

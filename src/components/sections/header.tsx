@@ -144,6 +144,7 @@ export function Header() {
         {/* Alchemyst Logo */}
         <div className="flex items-center">
           <Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
+          {mounted && (
             <Image
               src={theme === 'light' ? '/logoDark.png' : '/logo.png'}
               alt="Alchemyst AI"
@@ -151,6 +152,7 @@ export function Header() {
               height={200}
               className="h-6 sm:h-8 w-auto object-contain"
             />
+          )}
           </Link>
         </div>
 
