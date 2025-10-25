@@ -66,7 +66,7 @@ export async function generateRSSFeed() {
 
     console.log("THE POSTS", posts)
 
-    if (!posts.length) {
+    if (!posts || posts.length === 0) {
         console.warn("No articles found for RSS feed.");
 
         feed.item({
@@ -75,9 +75,7 @@ export async function generateRSSFeed() {
             url: siteUrl,
             date: new Date(),
         });
-    }
-
-    if (posts.length >= 1)
+    } else {
         posts.forEach((post: any) => {
             feed.item({
                 title: post.title,
@@ -86,6 +84,7 @@ export async function generateRSSFeed() {
                 date: post.date,
             });
         });
+    }
 
     return feed.xml({ indent: true });
 }
