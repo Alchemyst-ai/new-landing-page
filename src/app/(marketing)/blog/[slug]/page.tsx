@@ -1,18 +1,15 @@
-import { CTA } from "@/components/sections/cta";
-import { siteConfig } from "@/lib/config";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import BlogHeader from "@/components/blog-header";
+import DisqusComments from "@/components/disqus-comments";
+import { CTA } from "@/components/sections/cta";
+import SimpleCommentCount from "@/components/simple-comment-count";
+import SummarySection from "@/components/summary-section";
+import TableOfContentsClient from "@/components/table-of-contents-client";
+import { siteConfig } from "@/lib/config";
+import { formatDate } from "@/lib/utils";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import SummarySection from "@/components/summary-section";
-import AboutSection from "@/components/about-section";
-import AuthorBioCard from "@/components/author-bio-card";
-import TableOfContentsClient from "@/components/table-of-contents-client";
-import DisqusComments from "@/components/disqus-comments";
-import SimpleCommentCount from "@/components/simple-comment-count";
-import { formatDate } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -187,8 +184,8 @@ export default async function Page(props: {
               {/* Reviewer card hidden */}
             </div>
 
-            <DisqusComments 
-              postSlug={item.slug} 
+            <DisqusComments
+              postSlug={item.slug}
               postTitle={item.title}
               postUrl={fullUrl}
             />
@@ -215,49 +212,52 @@ export default async function Page(props: {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8 text-center">Recently Published</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentPosts.map((post: any, idx: number) => (
-              <Link 
-                key={post.slug} 
-                href={`/blog/${post.slug}`}
-                className="group block bg-card rounded-xl border p-4 hover:border-primary transition-colors"
-              >
-                <div className="aspect-[16/9] relative mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={post.image || "/demo.png"}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{post?.category?.name || "Blog"}</span>
-                    <span>•</span>
-                    <time>
-                      {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric',
-                        year: 'numeric'
-                      }) : ''}
-                    </time>
-                    <span>•</span>
-                    <SimpleCommentCount postSlug={post.slug} postTitle={post.title} />
-                    {post.readTime && (
-                      <>
-                        <span>•</span>
-                        <span>{post.readTime} min read</span>
-                      </>
-                    )}
+            {recentPosts.map((post: any, idx: number) => {
+              console.log("Post image = ", post.image)
+              return (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group block bg-card rounded-xl border p-4 hover:border-primary transition-colors"
+                >
+                  <div className="aspect-[16/9] relative mb-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={post.image || "/demo.png"}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {post.description || ''}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>{post?.category?.name || "Blog"}</span>
+                      <span>•</span>
+                      <time>
+                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        }) : ''}
+                      </time>
+                      <span>•</span>
+                      <SimpleCommentCount postSlug={post.slug} postTitle={post.title} />
+                      {post.readTime && (
+                        <>
+                          <span>•</span>
+                          <span>{post.readTime} min read</span>
+                        </>
+                      )}
+                    </div>
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {post.description || ''}
+                    </p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>
