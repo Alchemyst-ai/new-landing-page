@@ -18,6 +18,7 @@ export default function BlogCardWithComments({
   priority?: boolean;
   featured?: boolean;
 }) {
+
   const disqusShortname = 'alchemyst';
   const fullUrl = `${siteConfig.url}/blog/${data.slug}`;
   const disqusConfig = {
@@ -55,6 +56,14 @@ export default function BlogCardWithComments({
             alt={data.title}
             priority={priority}
           />
+          // <img
+          //   className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
+          //   src={data.image}
+          //   width={1200}
+          //   height={630}
+          //   alt={data.title}
+          //   // priority={priority}
+          // />
         ) : (
           <div className="w-full h-full bg-muted" />
         )}
@@ -68,7 +77,7 @@ export default function BlogCardWithComments({
             {data.readTime && (
               <>
                 <span>•</span>
-                <span>{data.readTime} min read</span>
+                {/* <span>{data.readTime} min read</span> */}
               </>
             )}
           </div>

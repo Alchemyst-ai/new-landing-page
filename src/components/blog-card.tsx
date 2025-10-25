@@ -21,7 +21,7 @@ export default function BlogCard({
   featured?: boolean;
 }) {
 
-  console.log("THE BLOG DATA", data)
+  // console.log("THE BLOG DATA", data)
   
   const summary = (data as any).summary ?? (data as any).description ?? "";
 
@@ -41,21 +41,21 @@ export default function BlogCard({
         featured ? "lg:h-[400px]" : "h-[200px]"
       )}>
         {data.image ? (
-          // <Image
-          //   className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
-          //   src={data.image}
-          //   width={1200}
-          //   height={630}
-          //   alt={data.title}
-          //   priority={priority}
-          // />
-          <img
+          <Image
             className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
             src={data.image}
             width={1200}
             height={630}
             alt={data.title}
+            priority={priority}
           />
+          // <img
+          //   className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
+          //   src={data.image}
+          //   width={1200}
+          //   height={630}
+          //   alt={data.title}
+          // />
         ) : (
           <div className="w-full h-full bg-muted" />
         )}

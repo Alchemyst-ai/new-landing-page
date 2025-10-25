@@ -38,15 +38,15 @@ export async function GET(
     const { slug } = await ctx.params;
     const result = await getArticleBySlug(slug);
 
-    console.log("Single Article", result)
+    // console.log("Single Article", result)
 
     const items = Array.isArray(result?.data) ? result.data : [];
     const data = items.map((item: any) => {
       const attrs = item?.attributes ?? item ?? {};
       const cover = attrs.cover ?? {};
       const coverUrl = cover?.formats?.thumbnail?.url || cover?.url || null;
-      const absBase = (process.env.STRAPI_API_URL || "").replace(/\/+$/, "");
-      const image = coverUrl ? `${absBase}${coverUrl}` : null;
+      // const absBase = (process.env.STRAPI_API_URL || "").replace(/\/+$/, "");
+      const image = coverUrl ? `${coverUrl}` : null;
       const author = attrs.author ?? null;
       const reviewer = attrs.reviewer ?? null;
       const category = attrs.category ?? null;

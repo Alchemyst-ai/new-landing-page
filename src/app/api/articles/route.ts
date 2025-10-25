@@ -28,14 +28,14 @@ export async function GET() {
   try {
     const articles = await getArticles();
 
-    console.log("THE ARTICLES", JSON.stringify(articles, null, 2))
+    // console.log("THE ARTICLES", JSON.stringify(articles, null, 2))
 
     const items = Array.isArray(articles?.data) ? articles.data : [];
     const data = items.map((item: any) => {
       const attrs = item?.attributes ?? item ?? {};
       const cover = attrs.cover ?? {};
       const coverUrl = cover?.formats?.thumbnail?.url || cover?.url || null;
-      const absoluteCoverUrl = coverUrl ? `${(process.env.STRAPI_API_URL || "").replace(/\/+$/, "")}${coverUrl}` : null;
+      const absoluteCoverUrl = coverUrl ? `${coverUrl}` : null;
       const author = attrs.author ?? null;
       const reviewer = attrs.reviewer ?? null;
       const category = attrs.category ?? null;
