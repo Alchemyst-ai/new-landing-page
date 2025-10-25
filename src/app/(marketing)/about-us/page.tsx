@@ -154,7 +154,7 @@ export default function AboutPage() {
             {Images.map((img, i) => (
               <div
                 key={i}
-                className="relative rounded-2xl overflow-hidden shadow-2xl p-[2px] bg-gradient-to-br from-indigo-500/40 via-cyan-400/30 to-transparent transition-transform duration-500"
+                className="relative rounded-2xl overflow-hidden shadow-2xl p-[2px]  to-transparent transition-transform duration-500"
               >
                 <div className="rounded-2xl overflow-hidden bg-background">
                   <Image
