@@ -43,7 +43,7 @@ export default function BlogHeader({
           {/* <Link href="/" className="hover:text-foreground transition-colors">
             Bravos
           </Link> */}
-          <ChevronRight className="w-4 h-4 mx-2" />
+          {/* <ChevronRight className="w-4 h-4 mx-2" /> */}
           <Link href={`/category/${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
             {category}
           </Link>

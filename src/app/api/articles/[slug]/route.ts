@@ -37,6 +37,9 @@ export async function GET(
   try {
     const { slug } = await ctx.params;
     const result = await getArticleBySlug(slug);
+
+    console.log("Single Article", result)
+
     const items = Array.isArray(result?.data) ? result.data : [];
     const data = items.map((item: any) => {
       const attrs = item?.attributes ?? item ?? {};
