@@ -44,7 +44,8 @@ export async function GET(
     const data = items.map((item: any) => {
       const attrs = item?.attributes ?? item ?? {};
       const cover = attrs.cover ?? {};
-      const coverUrl = cover?.formats?.thumbnail?.url || cover?.url || null;
+      // const coverUrl = cover?.formats?.thumbnail?.url || cover?.url || null;
+      const coverUrl = cover?.url || null;
       // const absBase = (process.env.STRAPI_API_URL || "").replace(/\/+$/, "");
       const image = coverUrl ? `${coverUrl}` : null;
       const author = attrs.author ?? null;
