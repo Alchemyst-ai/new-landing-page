@@ -124,12 +124,12 @@ export default async function Page(props: {
               readTime={item.readTime}
             />
 
-            <div className="mb-4 text-sm text-muted-foreground">
+            <div className="mb-4 text-sm text-muted-foreground px-4 sm:px-6 lg:px-8">
               Updated on {formatDate(updatedOn)}
             </div>
 
             {false && (
-              <div className="mb-4 text-sm text-muted-foreground">
+              <div className="mb-4 text-sm text-muted-foreground ">
                 {0} min read
                 {false && (
                   <span className="ml-2">
@@ -172,9 +172,9 @@ export default async function Page(props: {
               </div>
             </div> */}
 
-            <div className="py-12">
+            <div className="py-12 px-4 sm:px-6 lg:px-8">
               <article id="article-content"
-                className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none"
+                className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-5xl"
                 dangerouslySetInnerHTML={{ __html: item.test || "" }}
               ></article>
             </div>

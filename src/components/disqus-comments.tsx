@@ -33,7 +33,7 @@ export default function DisqusComments({
   };
 
   return (
-    <section className="w-full mt-8 sm:mt-10 md:mt-12" ref={ref}>
+    <section className="w-full mt-8 sm:mt-10 md:mt-12 px-4 sm:px-6 lg:px-8" ref={ref}>
       {inView ? (
         <div className="comments bg-card rounded-xl border p-4 sm:p-6 shadow-sm">
           <div className="mb-4">
