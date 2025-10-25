@@ -12,7 +12,7 @@ async function getAllBlogPosts() {
         const headers: Record<string, string> = {};
         if (token) headers["Authorization"] = `Bearer ${token}`;
 
-        const res = await fetch(url, { headers, next: { revalidate: 3600 } });
+        const res = await fetch(url, { headers, next: { revalidate: 600 } });
         if (!res.ok) {
             console.error(`Failed to fetch articles: ${res.status}`);
             return [];

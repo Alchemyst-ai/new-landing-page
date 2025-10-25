@@ -40,9 +40,9 @@ export default function BlogHeader({
 
         {/* Breadcrumb */}
         <nav className="flex items-center text-sm text-muted-foreground mb-8">
-          <Link href="/" className="hover:text-foreground transition-colors">
+          {/* <Link href="/" className="hover:text-foreground transition-colors">
             Bravos
-          </Link>
+          </Link> */}
           <ChevronRight className="w-4 h-4 mx-2" />
           <Link href={`/category/${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
             {category}
