@@ -20,7 +20,7 @@ export default function AboutPage() {
             className="absolute inset-0 max-w-3xl mx-auto blur-3xl opacity-50 rounded-full"
             style={{
               background:
-                "radial-gradient(circle at center, rgba(99,102,241,0.4), rgba(14,165,233,0.2), transparent 100%)",
+                "radial-gradient(circle at center, rgba(99,102,241,0.4), rgba(14,165,233,0.2), transparent 70%)",
             }}
           ></div>
 
@@ -37,11 +37,12 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* --- About Content Section --- */}
         <div className="mx-auto max-w-3xl prose prose-lg dark:prose-invert leading-relaxed">
           <h2>Your AI agent needs tractable context.</h2>
           <p>
-            AI isn't the future anymore — it's already changing our present. But here's the kicker — only
-            <strong> 26% </strong> are actually usable.
+            AI isn&apos;t the future anymore — it&apos;s already changing our present. But here&apos;s the kicker —
+            only <strong>26%</strong> are actually usable.
           </p>
 
           <p>Any functional agent will have three parts to it:</p>
@@ -53,7 +54,7 @@ export default function AboutPage() {
 
           <p>
             The first two are already being solved: Models are crushing SoTA records every day, while workflows are
-            more or less direct ports of real-world repetitive processes, specifically tailored to businesses. That's
+            more or less direct ports of real-world repetitive processes, specifically tailored to businesses. That&apos;s
             the UX that MCPs strive to solve for.
           </p>
 
@@ -62,8 +63,8 @@ export default function AboutPage() {
           <h3>Context engineering is the next frontier for AI adoption.</h3>
 
           <p>
-            As LLM context windows 10× over every year (a trend that's holding pretty well so far), data explodes at
-            100× more. So here's the uncomfortable truth:
+            As LLM context windows 10× over every year (a trend that&apos;s holding pretty well so far), data explodes
+            at 100× more. So here&apos;s the uncomfortable truth:
           </p>
 
           <blockquote>
@@ -72,21 +73,21 @@ export default function AboutPage() {
 
           <p>
             Thus, the question for any AI-enabled business is not <strong>IF</strong> they would need a new context
-            layer and context engineering in general, but <strong>WHEN</strong>. Turns out, that's pretty soon. Beyond
-            ~10 sessions per user, businesses need to treat memory and user-specific context as mandatory requirements
-            for their users. And that's the average number of chat sessions that a customer has with an AI chatbot in
-            a month.
+            layer and context engineering in general, but <strong>WHEN</strong>. Turns out, that&apos;s pretty soon.
+            Beyond ~10 sessions per user, businesses need to treat memory and user-specific context as mandatory
+            requirements for their users. And that&apos;s the average number of chat sessions that a customer has with
+            an AI chatbot in a month.
           </p>
 
-          <h2>“95% of generative AI efforts will fail by 2026–27.” — MIT</h2>
+          <h2>&ldquo;95% of generative AI efforts will fail by 2026–27.&rdquo; — MIT</h2>
 
           <p>And the reason is lack of proper contextualization.</p>
 
           <p>
-            So, you don't just need context — you need <strong>tractable</strong> context that you can verify.
+            So, you don&apos;t just need context — you need <strong>tractable</strong> context that you can verify.
           </p>
 
-          <p>That's the sole purpose of us building <strong>Alchemyst AI</strong>.</p>
+          <p>That&apos;s the sole purpose of us building <strong>Alchemyst AI</strong>.</p>
 
           <p>
             The world will be moving towards <strong>Agent Era 2.0</strong> — where context matters more than prompts.
@@ -99,7 +100,7 @@ export default function AboutPage() {
           </p>
 
           <blockquote>
-            “Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront.”
+            &ldquo;Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront.&rdquo;
           </blockquote>
 
           <p className="mt-10 italic text-right">
