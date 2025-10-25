@@ -20,6 +20,9 @@ export default function BlogCard({
   priority?: boolean;
   featured?: boolean;
 }) {
+
+  console.log("THE BLOG DATA", data)
+  
   const summary = (data as any).summary ?? (data as any).description ?? "";
 
   return (
