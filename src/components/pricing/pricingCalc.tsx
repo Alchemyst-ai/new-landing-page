@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useMemo, useState } from "react";
 
 // const TIERS = ["starter", "accelerate", "supercharge", "free"] as const;
 // type SubscriptionTier = (typeof TIERS)[number];
@@ -103,14 +103,6 @@ export const ACTION_COST_LABELS: Record<keyof typeof ACTION_COSTS_IN_TOKENS, { n
   "genai.chat.generate": { name: "AI Chat Response Generations", description: "Cost of using our Chat APIs", billingBasis: "1M tokens" },
   "genai.proxy.openai.chat.completions": { name: "LLM Proxy Response Generations", description: "Cost of using our LLM Proxy APIs", billingBasis: "1M tokens" },
   "genai.chat.web_search": { name: "AI Web Search Usage", description: "Cost of using web search in our chat APIs (in addition to response generations)", billingBasis: "1K results" },
-  // 'genai.email.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.social.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.workflow.step.generate': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.get': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.augment.by_url': { name: "", description: "", billingBasis: "" },
-  // 'genai.leads.augment.by_web_search': { name: "", description: "", billingBasis: "" },
-  // 'genai.email.send': { name: "", description: "", billingBasis: "" },
-  // 'campaigns.create': { name: "", description: "", billingBasis: "" },
 }
 
 
