@@ -25,8 +25,7 @@ async function getAllBlogPosts() {
             : Array.isArray(json)
                 ? json
                 : [];
-
-        // console.log("THE ARTICLES", articles);
+        console.log("THE ARTICLES", articles);
 
         return articles.map((article: any) => {
             const cover = article.cover ?? {};
@@ -64,6 +63,8 @@ export async function generateRSSFeed() {
     });
 
     const posts = await getAllBlogPosts();
+
+    console.log("THE POSTS", posts)
 
     if (!posts.length) {
         console.warn("No articles found for RSS feed.");
