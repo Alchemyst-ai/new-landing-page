@@ -7,6 +7,7 @@ async function getAllBlogPosts() {
         const token = process.env.STRAPI_API_TOKEN || "";
 
         const url = `${baseUrl}/api/articles?populate=*`;
+        // console.log("THE URL", url);
 
         const headers: Record<string, string> = {};
         if (token) headers["Authorization"] = `Bearer ${token}`;
@@ -18,21 +19,32 @@ async function getAllBlogPosts() {
         }
 
         const json = await res.json();
-        const articles = Array.isArray(json?.data) ? json.data : [];
 
-        return articles.map((item: any) => {
-            const attrs = item?.attributes ?? {};
-            const cover = attrs.cover ?? {};
-            const coverUrl = cover?.url || cover?.formats?.medium?.url || null;
-            const absoluteCoverUrl = coverUrl ? `${baseUrl}${coverUrl}` : null;
+        const articles = Array.isArray(json?.data)
+            ? json.data.map((item: any) => item.attributes ?? item)
+            : Array.isArray(json)
+                ? json
+                : [];
+
+        // console.log("THE ARTICLES", articles);
+
+        return articles.map((article: any) => {
+            const cover = article.cover ?? {};
+            const coverUrl =
+                cover.url || cover?.formats?.medium?.url || null;
+            const absoluteCoverUrl = coverUrl
+                ? coverUrl.startsWith("http")
+                    ? coverUrl
+                    : `${baseUrl}${coverUrl}`
+                : null;
 
             return {
-                title: attrs.title,
-                slug: attrs.slug,
-                excerpt: attrs.description,
-                date: attrs.publishedAt || attrs.createdAt,
+                title: article.title ?? "",
+                slug: article.slug ?? "",
+                excerpt: article.description ?? article.about ?? "",
+                date: article.publishedAt ?? article.createdAt ?? new Date(),
                 image: absoluteCoverUrl,
-                content: attrs.test || "",
+                content: article.test ?? "",
             };
         });
     } catch (error: any) {
