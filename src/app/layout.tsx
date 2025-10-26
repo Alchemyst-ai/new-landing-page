@@ -10,6 +10,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Footer } from "@/components/sections/footer";
 import { Header } from "@/components/sections/header";
+import TripettoPopup from "@/components/TripettoPopup";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -49,6 +50,7 @@ export default function RootLayout({
           <div className="pb-10 sm:pb-12">
             <Header />
             {children}
+            <TripettoPopup />
             <Footer />
           </div>
           <ThemeToggle />
