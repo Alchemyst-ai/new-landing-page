@@ -122,7 +122,7 @@ export default function PricingCalculator() {
   const handleChange = (action: string, value: string) => {
     setUsage((prev) => ({
       ...prev,
-      [action]: parseFloat(value) || 0,
+      [action]: Math.max(parseFloat(value) || 0, 0),
     }));
   };
 
@@ -185,6 +185,7 @@ export default function PricingCalculator() {
                         <Input
                           type="number"
                           step='0.01'
+                          min={0}
                           value={count || ""}
                           onChange={(e) => handleChange(action, e.target.value)}
                           placeholder="0"

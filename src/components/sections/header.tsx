@@ -7,8 +7,8 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
+import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 
 
 // Temporary type definition
@@ -256,7 +256,7 @@ export function Header() {
 
         {/* Desktop GitHub Button - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-3">
-                  {/* <a
+          {/* <a
                     href="https://discord.gg/H2StAaSeJ8"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -274,7 +274,7 @@ export function Header() {
                   </a> */}
           <DiscordCommunityButton />
           <GitHubButtonWithStars />
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
 
         {/* Mobile Menu Toggle - Only visible on mobile */}
