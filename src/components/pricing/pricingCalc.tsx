@@ -122,7 +122,7 @@ export default function PricingCalculator() {
   const handleChange = (action: string, value: string) => {
     setUsage((prev) => ({
       ...prev,
-      [action]: parseFloat(value) || 0,
+      [action]: Math.min(parseFloat(value) || 0, 0),
     }));
   };
 
