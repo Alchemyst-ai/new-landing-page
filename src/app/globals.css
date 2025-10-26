@@ -344,3 +344,19 @@
   background-color: #0f172a !important; /* slate-900 */
   color: #f8fafc !important; /* slate-50 */
 }
+
+@supports (-webkit-touch-callout: none) {
+  #tripetto-1xl83gd {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* Optional — ensure parent container also has no Safari border */
+  .safari-tripetto-fix {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
