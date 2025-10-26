@@ -53,7 +53,7 @@ export function InstallExtensionIsland() {
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.25 }}
             >
-              <span>Install Alchemyst On your browser</span>
+              <span>Install Alchemyst on your browser</span>
             </motion.div>
           )}
         </AnimatePresence>
