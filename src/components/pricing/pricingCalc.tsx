@@ -185,6 +185,7 @@ export default function PricingCalculator() {
                         <Input
                           type="number"
                           step='0.01'
+                          min={0}
                           value={count || ""}
                           onChange={(e) => handleChange(action, e.target.value)}
                           placeholder="0"
