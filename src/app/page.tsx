@@ -12,6 +12,7 @@ import { Statistics } from "@/components/sections/statistics";
 // import { Testimonials } from "@/components/sections/testimonials";
 import { UseCases } from "@/components/sections/use-cases";
 import { CalBooking } from "@/components/sections/cal-booking";
+import { InstallExtensionIsland } from "@/components/InstallExtensionIsland";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <Community />
       {/* <Blog /> */}
       <CTA />
+      <InstallExtensionIsland />
       {/* <Footer /> */}
     </main>
   );

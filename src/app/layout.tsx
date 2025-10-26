@@ -53,7 +53,7 @@ export default function RootLayout({
             <TripettoPopup />
             <Footer />
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           {/* <StickyAdFooter /> */}
         </ThemeProvider>
         <GoogleAnalytics gaId="G-WHNWY5LTDN" />
