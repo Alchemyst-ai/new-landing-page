@@ -14,6 +14,7 @@ import { UseCases } from "@/components/sections/use-cases";
 import { CalBooking } from "@/components/sections/cal-booking";
 import { InstallExtensionIsland } from "@/components/InstallExtensionIsland";
 import FeedspaceWOL from "@/components/FeedSpaceWOL";
+import TweetAboutUs from "@/components/TweetAboutUs";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       <CTA />
       <InstallExtensionIsland />
       <FeedspaceWOL pageId="69dec1c0-c92d-404c-b575-fd904e93550c"/>
+      <TweetAboutUs />
       {/* <Footer /> */}
     </main>
   );
