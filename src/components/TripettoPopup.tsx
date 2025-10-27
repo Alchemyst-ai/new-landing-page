@@ -258,7 +258,7 @@ export default function TripettoPopup() {
       <div className="relative bg-black border border-gray-500 rounded-2xl shadow-lg p-8 h-[32rem] sm:h-[35rem] overflow-hidden w-full max-w-lg safari-tripetto-fix">
         <button
           onClick={() => setShowForm(false)}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 cursor-pointer"
         >
           ✕
         </button>

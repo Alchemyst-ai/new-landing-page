@@ -13,6 +13,7 @@ import { Statistics } from "@/components/sections/statistics";
 import { UseCases } from "@/components/sections/use-cases";
 import { CalBooking } from "@/components/sections/cal-booking";
 import { InstallExtensionIsland } from "@/components/InstallExtensionIsland";
+import FeedspaceWOL from "@/components/FeedSpaceWOL";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       {/* <Blog /> */}
       <CTA />
       <InstallExtensionIsland />
+      <FeedspaceWOL pageId="69dec1c0-c92d-404c-b575-fd904e93550c"/>
       {/* <Footer /> */}
     </main>
   );
