@@ -362,7 +362,7 @@ export function Header() {
                 {/* GitHub Button in Mobile */}
                 <div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
                   <a
-                    href="https://discord.gg/H2StAaSeJ8"
+                    href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 px-3 py-1 rounded-full bg-[#5865F2]/10 hover:bg-[#5865F2]/20 text-[#5865F2] transition-all text-sm font-medium"
