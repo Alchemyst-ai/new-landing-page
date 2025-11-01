@@ -1,21 +1,15 @@
 import { Icons } from "@/components/icons";
 import {
-  BrainIcon,
-  CodeIcon,
-  GlobeIcon,
-  PlugIcon,
-  UsersIcon,
-  ZapIcon,
   DatabaseIcon,
-  MessageSquareIcon,
   GitForkIcon,
+  MessageSquareIcon
 } from "lucide-react";
 
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
   name: "Alchemyst AI",
-  description: "Create AI Agents with just a few lines of code.",
+  description: "The ONLY AI context engine that you can verify",
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
@@ -24,19 +18,21 @@ export const siteConfig = {
     "Tool Integration",
     "AI Memory",
     "Workflow Automation",
+    "AI Context",
+    "Context Engineering"
   ],
   links: {
-    email: "support@aiagentsdk.com",
-    twitter: "https://twitter.com/aiagentsdk",
-    discord: "https://discord.gg/aiagentsdk",
-    github: "https://github.com/aiagentsdk",
-    instagram: "https://instagram.com/aiagentsdk",
+    email: "anuran@getalchemystai.com",
+    twitter: "https://twitter.com/getalchemyst",
+    discord: "https://dub.sh/context-community",
+    github: "https://github.com/alchemyst-ai",
+    instagram: "https://www.instagram.com/alchemyst.ai",
   },
   hero: {
     title: "Alchemyst AI",
     description:
-      "Revolutionize Your Workflow with Intelligent Multi-Agent AI Systems. Create powerful, adaptive AI agents across multiple programming languages with unprecedented ease and flexibility.",
-    cta: "Build Your First AI Agent",
+      "Don't let your agents suffer with isolated (or worse, no) context. Carry your context everywhere.",
+    cta: "Sign up",
     ctaDescription: "Supported in Python, JavaScript, Java, and more",
   },
   features: [
