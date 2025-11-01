@@ -9,7 +9,7 @@ export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
   name: "Alchemyst AI",
-  description: "The ONLY AI context engine that you can verify",
+  description: "The ONLY AI context engine that you can verify.",
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
@@ -123,7 +123,7 @@ export const siteConfig = {
   testimonials: [
     {
       id: 1,
-      text: "The Alchemyst AI has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
+      text: "Alchemyst AI has revolutionized how we build intelligent systems. It's incredibly intuitive and powerful.",
       name: "Alice Johnson",
       company: "OpenMind Labs",
       image:
