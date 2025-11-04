@@ -25,15 +25,15 @@ export function constructMetadata({
   return {
     title: {
       template: "%s | AI Agent Development Platform",
-      default: "Alchemyst AI | Create Powerful AI Agents",
+      default: "Alchemyst AI | The ONLY AI context engine that you can verify.",
     },
     description: description || "Revolutionize workflow automation with AI agents. Build complex, intelligent systems with just a few lines of code.",
     keywords: [
       "AI agents",
-      "multi-agent systems", 
-      "workflow automation", 
-      "AI development", 
-      "tool integration", 
+      "multi-agent systems",
+      "workflow automation",
+      "AI development",
+      "tool integration",
       "AI memory",
       "agent SDK"
     ],
@@ -47,7 +47,7 @@ export function constructMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: "Alchemyst AI - Powerful AI Agent Development Platform",
+          alt: "Alchemyst AI - The ONLY AI context engine that you can verify.",
         },
       ],
       type: "website",
@@ -55,7 +55,7 @@ export function constructMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Alchemyst AI: Create Powerful AI Agents",
+      title: "Alchemyst AI: The ONLY AI context engine that you can verify.",
       description: "Build complex, intelligent systems with just a few lines of code.",
       images: [image],
     },
