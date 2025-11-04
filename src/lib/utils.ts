@@ -1,7 +1,7 @@
+import { siteConfig } from "@/lib/config";
 import { type ClassValue, clsx } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
-import { siteConfig } from "@/lib/config";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -43,7 +43,7 @@ export function constructMetadata({
       'Tool Integration',
       'Verifiable Context',
       'Workflow Automation'
-    ],,
+    ],
     openGraph: {
       title,
       description: description || "Revolutionize workflow automation with AI agents",
