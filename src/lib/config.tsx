@@ -13,13 +13,20 @@ export const siteConfig = {
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
-    "Alchemyst AI",
-    "Multi-Agent Systems",
-    "Tool Integration",
-    "AI Memory",
-    "Workflow Automation",
-    "AI Context",
-    "Context Engineering"
+    'AI Context',
+    'AI Memory',
+    'AI agents',
+    'AI context',
+    'AI memory',
+    'Alchemyst AI',
+    'Context Engine',
+    'Context Engineering',
+    'Information Retrieval',
+    'LLM Free Context',
+    'Multi-Agent Systems',
+    'Tool Integration',
+    'Verifiable Context',
+    'Workflow Automation'
   ],
   links: {
     email: "anuran@getalchemystai.com",

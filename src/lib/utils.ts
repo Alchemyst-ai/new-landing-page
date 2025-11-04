@@ -1,7 +1,7 @@
-import { siteConfig } from "@/lib/config";
 import { type ClassValue, clsx } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
+import { siteConfig } from "@/lib/config";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -29,14 +29,21 @@ export function constructMetadata({
     },
     description: description || "Revolutionize workflow automation with AI agents. Build complex, intelligent systems with just a few lines of code.",
     keywords: [
-      "AI agents",
-      "multi-agent systems",
-      "workflow automation",
-      "AI development",
-      "tool integration",
-      "AI memory",
-      "agent SDK"
-    ],
+      'AI Context',
+      'AI Memory',
+      'AI agents',
+      'AI context',
+      'AI memory',
+      'Alchemyst AI',
+      'Context Engine',
+      'Context Engineering',
+      'Information Retrieval',
+      'LLM Free Context',
+      'Multi-Agent Systems',
+      'Tool Integration',
+      'Verifiable Context',
+      'Workflow Automation'
+    ],,
     openGraph: {
       title,
       description: description || "Revolutionize workflow automation with AI agents",
