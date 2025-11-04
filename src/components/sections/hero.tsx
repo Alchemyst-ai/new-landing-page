@@ -1,6 +1,5 @@
 "use client";
 
-import { AuroraText } from "@/components/aurora-text";
 import { Icons } from "@/components/icons";
 import { Section } from "@/components/section";
 import { buttonVariants } from "@/components/ui/button";
@@ -15,32 +14,32 @@ const ease = [0.16, 1, 0.3, 1];
 function HeroPill() {
   return (
     <div className="flex flex-col gap-1 justify-start items-baseline">
-    <motion.a
-      href="/#"
-      className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8 mb-3"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease }}
-    >
-      <p className="text-xs font-medium text-white/90 sm:text-sm">
-        ✨ #1 in Gen AI category F6S
+      <motion.a
+        href="/#"
+        className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8 mb-3"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease }}
+      >
+        <p className="text-xs font-medium text-white/90 sm:text-sm">
+          ✨ #1 in Gen AI category F6S
 
-      </p>
-    </motion.a>
-    <div className="flex flex-row gap-4">
-    <a
-      href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <img
-        src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
-        alt="Alchemyst AI - Context-aware AI Agents"
-        style={{ width: '15rem', height: "4rem" }}
-      />
-    </a>
-    <a href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents" target="_blank" rel="noreferrer"> <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg" alt="Alchemyst AI - Context-aware AI Agents" style={{width: '15rem', height: "4rem"}} /> </a>
-    </div>
+        </p>
+      </motion.a>
+      <div className="flex flex-row gap-4">
+        <a
+          href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
+            alt="Alchemyst AI - Context-aware AI Agents"
+            style={{ width: '15rem', height: "4rem" }}
+          />
+        </a>
+        <a href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents" target="_blank" rel="noreferrer"> <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg" alt="Alchemyst AI - Context-aware AI Agents" style={{ width: '15rem', height: "4rem" }} /> </a>
+      </div>
     </div>
   );
 }
@@ -68,9 +67,9 @@ function HeroTitles() {
             ease,
           }}
         >
-          Your Data, Your AI,
+          The ONLY Context Engine you can
           <br />
-          Our Memory
+          Verify
         </motion.span>
       </motion.h1>
 
