@@ -164,13 +164,13 @@
 
 "use client";
 
-import type React from "react";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 type LeadFormData = {
   email: string;
@@ -276,7 +276,7 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
   };
 
   return (
-    <Card className="border-2">
+    <Card className="border-0">
       <CardHeader>
         <CardTitle>Contact information</CardTitle>
         <CardDescription>Share a few details and we’ll get back to you</CardDescription>
