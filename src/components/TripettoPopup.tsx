@@ -164,13 +164,13 @@
 
 "use client";
 
-import type React from "react";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 type LeadFormData = {
   email: string;
@@ -300,7 +300,7 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
   };
 
   return (
-    <Card className="border-2">
+    <Card className="border-0">
       <CardHeader>
         <CardTitle>Contact information</CardTitle>
         <CardDescription>Share a few details and we’ll get back to you</CardDescription>
@@ -419,7 +419,7 @@ export default function TripettoPopup() {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="relative bg-black border border-gray-500 rounded-2xl shadow-lg p-6 w-full max-w-lg">
+      <div className="relative bg-black rounded-2xl shadow-lg p-6 w-full max-w-lg">
         <button onClick={() => setOpen(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer">✕</button>
         {submitted ? (
           <div className="flex flex-col items-center justify-center h-48 text-center gap-2">
