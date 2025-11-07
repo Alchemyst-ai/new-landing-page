@@ -379,7 +379,7 @@ export default function TripettoPopup() {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-      <div className="relative bg-black border border-gray-500 rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-black rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <button onClick={() => setOpen(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer z-10">✕</button>
         {submitted ? (
           <div className="flex flex-col items-center justify-center h-48 text-center gap-2">
