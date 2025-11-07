@@ -36,13 +36,16 @@ const leadSchema = z.object({
   csv_csvfirstname: z.string(),
   csv_csvcompanyname: z.string(),
   csv_currenttitle: z.string(),
-
   csv_linkedinhandle: z.string(),
-
-}).and(z.record(z.string(), z.string())).transform((data) => {
-  const { campaign, linkedin_profile_url, email, ...rest } = data;
+}).and(z.record(z.string(), z.any())).transform((data) => {
+  const { campaign, linkedin_profile_url, email, ...rest } = data as Record<string, unknown> & { campaign: number; linkedin_profile_url?: string; email: string };
   const customFields = Object.entries(rest).reduce((acc, [key, value]) => {
-    acc[`csv_${key}`] = value;
+    const stringValue = typeof value === 'string' ? value : JSON.stringify(value ?? '');
+    if ((key as string).startsWith('csv_')) {
+      acc[key as string] = stringValue;
+    } else {
+      acc[`csv_${key}`] = stringValue;
+    }
     return acc;
   }, {} as Record<string, string>);
 
@@ -70,6 +73,10 @@ const POST = async (req: NextRequest, ctx: { params: Promise<Record<string, any>
     }
 
     const campaignAddResponse = await fetch(`https://meetalfred.com/api/integrations/webhook/add_lead_to_campaign?webhook_key=${process.env.MEET_ALFRED_API_KEY ?? ''}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ ...exampleRequestBody, ...campaignAddBody })
     });
 
