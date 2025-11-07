@@ -189,10 +189,30 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
     csv_lastname: "",
   });
 
+  const extractLinkedInUsername = (input: string) => {
+    const trimmed = input.trim();
+    if (!trimmed) return "";
+    try {
+      const url = new URL(trimmed);
+      const parts = url.pathname.split("/").filter(Boolean);
+      if (parts.length === 0) return "";
+      if (parts[0].toLowerCase() === "in" && parts[1]) return parts[1];
+      return parts[parts.length - 1];
+    } catch {
+      return trimmed.replace(/^\/+|\/+$/g, "");
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "csv_linkedinhandle") {
+      const username = extractLinkedInUsername(value);
+      setFormData((prev) => ({ ...prev, csv_linkedinhandle: username }));
+      return;
+    }
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
@@ -206,7 +226,11 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
         csv_csvcompanyname: "",
         csv_currenttitle: "",
         csv_linkedinhandle: formData.csv_linkedinhandle.trim(),
-        linkedin_profile_url: formData.csv_linkedinhandle.trim(),
+        linkedin_profile_url: formData.csv_linkedinhandle.trim().startsWith("http")
+          ? formData.csv_linkedinhandle.trim()
+          : (formData.csv_linkedinhandle.trim()
+              ? `https://www.linkedin.com/in/${formData.csv_linkedinhandle.trim()}`
+              : ""),
         lastname: (formData.csv_lastname || "").trim(),
         name: `${formData.csv_csvfirstname} ${formData.csv_lastname}`.trim(),
         firstname: formData.csv_csvfirstname.trim(),
@@ -223,7 +247,7 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
         linkedinactionalreadyinvited: "false",
         linkedinactionalreadyconnected: "true",
       };
-
+      console.log(payload);
       const response = await fetch("/api/lead-automation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -253,8 +277,8 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
   return (
     <Card className="border-0">
       <CardHeader>
-        <CardTitle>Contact information</CardTitle>
-        <CardDescription>Share a few details and we’ll get back to you</CardDescription>
+        <CardTitle>Stay in the loop</CardTitle>
+        <CardDescription>Share your details and we’ll follow up with relevant updates.</CardDescription>
       </CardHeader>
       <CardContent>
         {banner && (
@@ -262,7 +286,6 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Your details</h3>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="csv_csvfirstname">
@@ -285,7 +308,7 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
               <Label htmlFor="csv_linkedinhandle">
                 LinkedIn profile URL <span className="text-destructive">*</span>
               </Label>
-              <Input id="csv_linkedinhandle" name="csv_linkedinhandle" type="url" value={formData.csv_linkedinhandle} onChange={handleChange} required placeholder="https://www.linkedin.com/in/username" />
+              <Input id="csv_linkedinhandle" name="csv_linkedinhandle" type="text" inputMode="url" value={formData.csv_linkedinhandle} onChange={handleChange} required placeholder="linkedin username or URL (e.g. john-doe or https://www.linkedin.com/in/john-doe)" />
             </div>
           </div>
 
@@ -319,6 +342,13 @@ export default function TripettoPopup() {
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
       <div className="relative bg-black rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <button
+          aria-label="Close"
+          onClick={() => setOpen(false)}
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer"
+        >
+          ✕
+        </button>
         {submitted ? (
           <div className="flex flex-col items-center justify-center h-48 text-center gap-2">
             <div className="text-white text-lg font-medium">Thank you!</div>
