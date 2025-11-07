@@ -175,13 +175,8 @@ import { useEffect, useState } from "react";
 type LeadFormData = {
   email: string;
   csv_csvfirstname: string;
-  csv_csvcompanyname: string;
-  csv_currenttitle: string;
   csv_linkedinhandle: string;
   csv_lastname: string;
-  csv_phone: string;
-  csv_location: string;
-  csv_industry: string;
 };
 
 export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
@@ -190,13 +185,8 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
   const [formData, setFormData] = useState<LeadFormData>({
     email: "",
     csv_csvfirstname: "",
-    csv_csvcompanyname: "",
-    csv_currenttitle: "",
     csv_linkedinhandle: "",
     csv_lastname: "",
-    csv_phone: "",
-    csv_location: "",
-    csv_industry: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,29 +200,19 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // Match route.ts: send only required csv_-prefixed fields;
-      // send optional fields UNPREFIXED so transform prefixes them
       const payload = {
-        // Required by schema
         email: formData.email.trim(),
         csv_csvfirstname: formData.csv_csvfirstname.trim(),
-        csv_csvcompanyname: formData.csv_csvcompanyname.trim(),
-        csv_currenttitle: formData.csv_currenttitle.trim(),
+        csv_csvcompanyname: "",
+        csv_currenttitle: "",
         csv_linkedinhandle: formData.csv_linkedinhandle.trim(),
-        // Optional top-level in schema
         linkedin_profile_url: formData.csv_linkedinhandle.trim(),
-
-        // Optional extras UNPREFIXED (route will prefix to csv_*)
         lastname: (formData.csv_lastname || "").trim(),
-        phone: (formData.csv_phone || "").trim(),
-        location: (formData.csv_location || "").trim(),
-        industry: (formData.csv_industry || "").trim(),
         name: `${formData.csv_csvfirstname} ${formData.csv_lastname}`.trim(),
         firstname: formData.csv_csvfirstname.trim(),
-        currentemployer: formData.csv_csvcompanyname.trim(),
+        currentemployer: "",
         companysize: "",
 
-        // Override boolean defaults as strings (UNPREFIXED)
         linkedinactionprofileviewed: "false",
         linkedinactionconnectrequested: "false",
         linkedinactionconnected: "false",
@@ -255,13 +235,8 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
         setFormData({
           email: "",
           csv_csvfirstname: "",
-          csv_csvcompanyname: "",
-          csv_currenttitle: "",
           csv_linkedinhandle: "",
           csv_lastname: "",
-          csv_phone: "",
-          csv_location: "",
-          csv_industry: "",
         });
         if (onSubmitted) onSubmitted();
       } else {
@@ -314,42 +289,6 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
             </div>
           </div>
 
-          <div className="space-y-4 pt-4 border-t">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Work details</h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="csv_currenttitle">
-                  Job Title <span className="text-destructive">*</span>
-                </Label>
-                <Input id="csv_currenttitle" name="csv_currenttitle" value={formData.csv_currenttitle} onChange={handleChange} required placeholder="Software Engineer" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="csv_csvcompanyname">
-                  Company Name <span className="text-destructive">*</span>
-                </Label>
-                <Input id="csv_csvcompanyname" name="csv_csvcompanyname" value={formData.csv_csvcompanyname} onChange={handleChange} required placeholder="Acme Corp" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="csv_industry">Industry</Label>
-              <Input id="csv_industry" name="csv_industry" value={formData.csv_industry} onChange={handleChange} placeholder="e.g. Technology" />
-            </div>
-          </div>
-
-          <div className="space-y-4 pt-4 border-t">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Additional info</h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="csv_phone">Phone Number</Label>
-                <Input id="csv_phone" name="csv_phone" type="tel" value={formData.csv_phone} onChange={handleChange} placeholder="+1 (555) 123-4567" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="csv_location">Location</Label>
-                <Input id="csv_location" name="csv_location" value={formData.csv_location} onChange={handleChange} placeholder="San Francisco, CA" />
-              </div>
-            </div>
-          </div>
-
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? (
               <>
@@ -380,7 +319,6 @@ export default function TripettoPopup() {
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
       <div className="relative bg-black rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <button onClick={() => setOpen(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer z-10">✕</button>
         {submitted ? (
           <div className="flex flex-col items-center justify-center h-48 text-center gap-2">
             <div className="text-white text-lg font-medium">Thank you!</div>
