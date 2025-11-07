@@ -186,7 +186,6 @@ type LeadFormData = {
 
 export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [step, setStep] = useState(1);
   const [banner, setBanner] = useState<{ message: string; variant: 'success' | 'error' } | null>(null);
   const [formData, setFormData] = useState<LeadFormData>({
     email: "",
@@ -207,30 +206,8 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
     }));
   };
 
-  const canGoNext = () => {
-    if (step === 1) {
-      return (
-        formData.csv_csvfirstname.trim() !== "" &&
-        formData.email.trim() !== "" &&
-        formData.csv_linkedinhandle.trim() !== ""
-      );
-    }
-    if (step === 2) {
-      return (
-        formData.csv_currenttitle.trim() !== "" &&
-        formData.csv_csvcompanyname.trim() !== ""
-      );
-    }
-    return true;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (step < 3) {
-      setStep((s) => s + 1);
-      return;
-    }
-
     setIsSubmitting(true);
     try {
       // Match route.ts: send only required csv_-prefixed fields;
@@ -286,7 +263,6 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
           csv_location: "",
           csv_industry: "",
         });
-        setStep(1);
         if (onSubmitted) onSubmitted();
       } else {
         const error = await response.json().catch(() => ({}));
@@ -310,96 +286,80 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
           <div className={`mb-4 text-sm ${banner.variant === 'success' ? 'text-emerald-400' : 'text-red-400'}`}>{banner.message}</div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {step === 1 && (
-            <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Your details</h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="csv_csvfirstname">
-                    First Name <span className="text-destructive">*</span>
-                  </Label>
-                  <Input id="csv_csvfirstname" name="csv_csvfirstname" value={formData.csv_csvfirstname} onChange={handleChange} required placeholder="John" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="csv_lastname">Last Name</Label>
-                  <Input id="csv_lastname" name="csv_lastname" value={formData.csv_lastname} onChange={handleChange} placeholder="Doe" />
-                </div>
-              </div>
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Your details</h3>
+            <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="email">
-                  Email Address <span className="text-destructive">*</span>
+                <Label htmlFor="csv_csvfirstname">
+                  First Name <span className="text-destructive">*</span>
                 </Label>
-                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="john.doe@company.com" />
+                <Input id="csv_csvfirstname" name="csv_csvfirstname" value={formData.csv_csvfirstname} onChange={handleChange} required placeholder="John" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="csv_linkedinhandle">
-                  LinkedIn profile URL <span className="text-destructive">*</span>
-                </Label>
-                <Input id="csv_linkedinhandle" name="csv_linkedinhandle" type="url" value={formData.csv_linkedinhandle} onChange={handleChange} required placeholder="https://www.linkedin.com/in/username" />
+                <Label htmlFor="csv_lastname">Last Name</Label>
+                <Input id="csv_lastname" name="csv_lastname" value={formData.csv_lastname} onChange={handleChange} placeholder="Doe" />
               </div>
             </div>
-          )}
-
-          {step === 2 && (
-            <div className="space-y-4 pt-4 border-t">
-              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Work details</h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="csv_currenttitle">
-                    Job Title <span className="text-destructive">*</span>
-                  </Label>
-                  <Input id="csv_currenttitle" name="csv_currenttitle" value={formData.csv_currenttitle} onChange={handleChange} required placeholder="Software Engineer" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="csv_csvcompanyname">
-                    Company Name <span className="text-destructive">*</span>
-                  </Label>
-                  <Input id="csv_csvcompanyname" name="csv_csvcompanyname" value={formData.csv_csvcompanyname} onChange={handleChange} required placeholder="Acme Corp" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="csv_industry">Industry</Label>
-                <Input id="csv_industry" name="csv_industry" value={formData.csv_industry} onChange={handleChange} placeholder="e.g. Technology" />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">
+                Email Address <span className="text-destructive">*</span>
+              </Label>
+              <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="john.doe@company.com" />
             </div>
-          )}
-
-          {step === 3 && (
-            <div className="space-y-4 pt-4 border-t">
-              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Additional info</h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="csv_phone">Phone Number</Label>
-                  <Input id="csv_phone" name="csv_phone" type="tel" value={formData.csv_phone} onChange={handleChange} placeholder="+1 (555) 123-4567" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="csv_location">Location</Label>
-                  <Input id="csv_location" name="csv_location" value={formData.csv_location} onChange={handleChange} placeholder="San Francisco, CA" />
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between">
-            <div className="text-xs text-gray-400">Step {step} of 3</div>
-            <div className="flex gap-2">
-              <Button type="button" variant="secondary" onClick={() => setStep((s) => Math.max(1, s - 1))} disabled={step === 1 || isSubmitting}>
-                Back
-              </Button>
-              <Button type="submit" disabled={isSubmitting || !canGoNext()}>
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting...
-                  </>
-                ) : step < 3 ? (
-                  "Next"
-                ) : (
-                  "Submit"
-                )}
-              </Button>
+            <div className="space-y-2">
+              <Label htmlFor="csv_linkedinhandle">
+                LinkedIn profile URL <span className="text-destructive">*</span>
+              </Label>
+              <Input id="csv_linkedinhandle" name="csv_linkedinhandle" type="url" value={formData.csv_linkedinhandle} onChange={handleChange} required placeholder="https://www.linkedin.com/in/username" />
             </div>
           </div>
+
+          <div className="space-y-4 pt-4 border-t">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Work details</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="csv_currenttitle">
+                  Job Title <span className="text-destructive">*</span>
+                </Label>
+                <Input id="csv_currenttitle" name="csv_currenttitle" value={formData.csv_currenttitle} onChange={handleChange} required placeholder="Software Engineer" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="csv_csvcompanyname">
+                  Company Name <span className="text-destructive">*</span>
+                </Label>
+                <Input id="csv_csvcompanyname" name="csv_csvcompanyname" value={formData.csv_csvcompanyname} onChange={handleChange} required placeholder="Acme Corp" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="csv_industry">Industry</Label>
+              <Input id="csv_industry" name="csv_industry" value={formData.csv_industry} onChange={handleChange} placeholder="e.g. Technology" />
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-4 border-t">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Additional info</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="csv_phone">Phone Number</Label>
+                <Input id="csv_phone" name="csv_phone" type="tel" value={formData.csv_phone} onChange={handleChange} placeholder="+1 (555) 123-4567" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="csv_location">Location</Label>
+                <Input id="csv_location" name="csv_location" value={formData.csv_location} onChange={handleChange} placeholder="San Francisco, CA" />
+              </div>
+            </div>
+          </div>
+
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </form>
       </CardContent>
     </Card>
@@ -418,9 +378,9 @@ export default function TripettoPopup() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="relative bg-black border border-gray-500 rounded-2xl shadow-lg p-6 w-full max-w-lg">
-        <button onClick={() => setOpen(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer">✕</button>
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+      <div className="relative bg-black border border-gray-500 rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <button onClick={() => setOpen(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-200 cursor-pointer z-10">✕</button>
         {submitted ? (
           <div className="flex flex-col items-center justify-center h-48 text-center gap-2">
             <div className="text-white text-lg font-medium">Thank you!</div>
