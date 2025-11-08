@@ -67,9 +67,7 @@ function HeroTitles() {
             ease,
           }}
         >
-          The ONLY Context Engine you can
-          <br />
-          Verify
+          The ONLY Context Engine you can Verify
         </motion.span>
       </motion.h1>
 
