@@ -129,17 +129,17 @@ export default function PricingCalculator() {
   const resetUsage = () => setUsage({});
 
   return (
-    <div className="max-w-5xl py-10">
+    <div className="w-full py-6">
       <Card className="border border-gray-700">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold">Pricing Calculator</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <span className="w-48 text-sm dark:text-gray-400">Subscription Tier:</span>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 w-full">
+              <span className="sm:w-48 text-sm dark:text-gray-400">Subscription Tier:</span>
               <Select value={tier} onValueChange={(v) => setTier(v as keyof typeof TIER_LABELS)}>
-                <SelectTrigger className="min-w-96 w-full">
+                <SelectTrigger className="w-full sm:min-w-64">
                   <SelectValue placeholder="Select tier" />
                 </SelectTrigger>
                 <SelectContent>
@@ -157,15 +157,15 @@ export default function PricingCalculator() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
+            <table className="w-full text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="bg-gray-800/50 border-b border-gray-700 text-left">
-                  <th className="p-2 font-medium text-right">Action</th>
-                  <th className="p-2 font-medium text-right">Description</th>
-                  <th className="p-2 font-medium text-right">Billing Unit</th>
-                  <th className="p-2 font-medium text-right">Cost / Unit (USD)</th>
-                  <th className="p-2 font-medium text-right">Usage</th>
-                  <th className="p-2 font-medium text-right">Cost (USD)</th>
+                  <th className="p-2 font-medium">Action</th>
+                  <th className="p-2 font-medium">Description</th>
+                  <th className="p-2 font-medium">Billing Unit</th>
+                  <th className="p-2 font-medium">Cost / Unit (USD)</th>
+                  <th className="p-2 font-medium">Usage</th>
+                  <th className="p-2 font-medium">Cost (USD)</th>
                 </tr>
               </thead>
               <tbody>
@@ -177,11 +177,11 @@ export default function PricingCalculator() {
 
                   return (
                     <tr key={action} className="border-b border-gray-800 hover:bg-gray-800/30">
-                      <td className="text-right p-2 font-medium">{label.name || action}</td>
-                      <td className="text-right p-2 dark:text-gray-400">{label.description}</td>
-                      <td className="text-right p-2 dark:text-gray-400">{label.billingBasis}</td>
-                      <td className="text-right p-2">{perUnit.toFixed(3)}</td>
-                      <td className="text-right p-2 w-48">
+                      <td className="p-2 font-medium">{label.name || action}</td>
+                      <td className="p-2 dark:text-gray-400">{label.description}</td>
+                      <td className="p-2 dark:text-gray-400">{label.billingBasis}</td>
+                      <td className="p-2">{perUnit.toFixed(3)}</td>
+                      <td className="p-2 w-32 sm:w-48">
                         <Input
                           type="number"
                           step='0.01'
@@ -192,7 +192,7 @@ export default function PricingCalculator() {
                           className="w-full h-8 text-right"
                         />
                       </td>
-                      <td className="p-2 w-48 text-right">{cost.toFixed(3)}</td>
+                      <td className="p-2 w-24 sm:w-48 text-right">{cost.toFixed(3)}</td>
                     </tr>
                   );
                 })}
