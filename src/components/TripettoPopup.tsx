@@ -229,8 +229,8 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
         linkedin_profile_url: formData.csv_linkedinhandle.trim().startsWith("http")
           ? formData.csv_linkedinhandle.trim()
           : (formData.csv_linkedinhandle.trim()
-              ? `https://www.linkedin.com/in/${formData.csv_linkedinhandle.trim()}`
-              : ""),
+            ? `https://www.linkedin.com/in/${formData.csv_linkedinhandle.trim()}`
+            : ""),
         lastname: (formData.csv_lastname || "").trim(),
         name: `${formData.csv_csvfirstname} ${formData.csv_lastname}`.trim(),
         firstname: formData.csv_csvfirstname.trim(),
@@ -330,7 +330,7 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
 
 export default function TripettoPopup() {
   const [open, setOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false) || !!(localStorage.getItem("formFilled"));
 
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 1500);
@@ -357,6 +357,7 @@ export default function TripettoPopup() {
         ) : (
           <LeadForm onSubmitted={() => {
             setSubmitted(true);
+            localStorage.setItem("formFilled", "1");
             setTimeout(() => setOpen(false), 2000);
           }} />
         )}
