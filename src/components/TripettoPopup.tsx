@@ -331,11 +331,17 @@ export function LeadForm({ onSubmitted }: { onSubmitted?: () => void }) {
 export default function TripettoPopup() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [formFilled, setFormFilled] = useState(!!localStorage.getItem("formFilled") || false);
+  const [formFilled, setFormFilled] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 1500);
-    return () => clearTimeout(t);
+    if (!!window) {
+      setFormFilled(!!localStorage.getItem("formFilled"));
+    }
+
+    if (!formFilled) {
+      const t = setTimeout(() => setOpen(true), 1500);
+      return () => clearTimeout(t);
+    }
   }, []);
 
   if (formFilled) return null;
