@@ -31,8 +31,9 @@ export function Features() {
                 {description}
               </p>
               <Link
-                href="#"
+                href="https://docs.getalchemystai.com/api-reference"
                 className="text-sm text-primary hover:underline underline-offset-4 transition-colors hover:text-secondary-foreground"
+                target="_blank"
               >
                 Learn more &gt;
               </Link>
