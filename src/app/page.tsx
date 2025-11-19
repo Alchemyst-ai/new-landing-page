@@ -8,7 +8,7 @@ import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { Logos } from "@/components/sections/logos";
 // import { Pricing } from "@/components/sections/pricing";
-// import { Statistics } from "@/components/sections/statistics";
+import { Statistics } from "@/components/sections/statistics";
 // import { Testimonials } from "@/components/sections/testimonials";
 import { UseCases } from "@/components/sections/use-cases";
 import { CalBooking } from "@/components/sections/cal-booking";
@@ -25,7 +25,7 @@ export default function Home() {
       <Examples />
       <UseCases />
       <Features />
-      {/* <Statistics /> */}
+      <Statistics />
       {/* <Testimonials /> */}
       <CalBooking />
       {/* <Pricing /> */}
