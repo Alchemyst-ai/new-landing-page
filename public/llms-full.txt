@@ -324,9 +324,29 @@ Ready to build your next AI agent?
 [Get Started](https://getalchemystai.com/platform/signin)
 ## FAQ
 
-Alchemyst AI now features a dedicated FAQ that explains how to wire the platform into your stack, why context layers matter, and how to give LLM agents reliable long-term memory. Learn how APIs, SDKs, MCPs, and the browser extension work together, plus why a dedicated context engine improves accuracy and reduces hallucinations.
+### What is Alchemyst AI?
 
-[Read the FAQ](https://getalchemystai.com/#faq)
+Alchemyst AI is a context engine that provides AI applications with persistent memory, business data, and operational context so agents remain accurate, reliable, and production-ready. It is a standalone context layer that can be integrated into your stack through our APIs, SDKs and MCPs.
+
+### How can I use Alchemyst AI?
+
+You can wire Alchemyst AI into your stack through our APIs, SDKs, MCPs, and browser extension—whatever fits your workflow best. Check more details in our [documentation](https://docs.getalchemystai.com).
+
+### What is an AI memory layer and why is it important?
+
+An AI memory layer lets agents remember previous interactions, user preferences, tasks, and business data. It improves accuracy, reduces hallucinations, and allows AI systems to operate with human-like context. Alchemyst AI provides a built-in memory layer designed for production-grade agents.
+
+### How does a context engine improve AI agent performance?
+
+A context engine organizes and stores long-term and short-term information so AI agents can make better decisions. Alchemyst AI's context engine adds persistent memory, intent detection, and data-aware reasoning to enhance agent reliability.
+
+### Can AI agents have long-term memory across conversations?
+
+Yes. With systems like Alchemyst AI, agents keep persistent memory across sessions, users, and workflows. This enables personalization and consistent task execution over time.
+
+### How do context-aware AI agents compare to regular chatbots?
+
+Context-aware agents remember past interactions, reference enterprise data, and perform end-to-end tasks. Regular chatbots usually respond only to the latest prompt.
 
 ## Testimonials
 

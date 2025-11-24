@@ -13,3 +13,4 @@
 - [AI for Healthcare](https://getalchemystai.com/use-cases/healthcare): Enhance healthcare with AI that remembers patient history.
 - [Understanding Context in LLMs](https://getalchemystai.com/blog/context-embeddings-in-llms): Explore how context embeddings enhance understanding in LLMs.
 - [Alchemyst Chrome Extension](https://getalchemystai.com/blog/introducing-alchemyst-chrome-extension): Discover the Alchemyst Chrome Extension for enhanced AI memory.
+- [Alchemyst AI FAQ](https://getalchemystai.com/#faq): Learn about context engines, memory layers, and how to integrate Alchemyst AI into your stack.
