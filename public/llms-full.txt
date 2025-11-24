@@ -322,6 +322,11 @@ E
 Ready to build your next AI agent?
 
 [Get Started](https://getalchemystai.com/platform/signin)
+## FAQ
+
+Alchemyst AI now features a dedicated FAQ that explains how to wire the platform into your stack, why context layers matter, and how to give LLM agents reliable long-term memory. Learn how APIs, SDKs, MCPs, and the browser extension work together, plus why a dedicated context engine improves accuracy and reduces hallucinations.
+
+[Read the FAQ](https://getalchemystai.com/#faq)
 
 ## Testimonials
 
