@@ -253,6 +253,18 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
+
+          <Link
+            href="https://docs.getalchemystai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1">
+              Docs
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
         </div>
 
 
@@ -350,6 +362,17 @@ export function Header() {
                   onClick={toggleMenu}
                 >
                   Security
+                </Link>
+
+                {/* Docs Link */}
+                <Link
+                  href="https://docs.getalchemystai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
+                  onClick={toggleMenu}
+                >
+                  Docs
                 </Link>
 
                 {/* Pricing Link */}
