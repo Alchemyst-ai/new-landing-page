@@ -283,7 +283,7 @@ export function Header() {
           >
             <span className="relative pb-1">
               Careers
-              <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded-full mx-2 align-text-top">
+              <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full mx-2 align-text-top">
                 Hiring!
               </span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
