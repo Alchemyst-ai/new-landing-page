@@ -186,11 +186,10 @@ export async function CareersContent() {
           <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="pt-12 pb-12">
               <h3 className="text-2xl font-bold text-foreground mb-3">
-                Don't see your role?
+                Don&apos;t see your role?
               </h3>
               <p className="text-muted-foreground mb-6">
-                We're always interested in hearing from talented people. Reach
-                out to us!
+                People breaking the mould are always welcome - reach out to us!
               </p>
               <Link
                 href="mailto:founders@getalchemystai.com"
