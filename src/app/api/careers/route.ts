@@ -51,7 +51,7 @@ export async function GET(request: Request) {
     const formsResponse = await fetch("https://api.tally.so/forms", {
       method: "GET",
       headers: {
-        Authorization: `Bearer tly-eISK8ykinPjBJjjOnWXgmC97oqBjJbMQ`,
+        Authorization: `Bearer ${tallyApiKey}`,
         "Content-Type": "application/json",
       },
       cache: "no-store",
