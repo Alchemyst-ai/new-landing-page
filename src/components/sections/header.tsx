@@ -141,7 +141,7 @@ export function Header() {
   return (
     <div
       id="site-header"
-      class="sticky top-0 z-50 w-full border-b
+      className="sticky top-0 z-50 w-full border-b
              backdrop-blur-md
              shadow-lg"
     >
