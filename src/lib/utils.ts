@@ -24,7 +24,7 @@ export function constructMetadata({
 }): Metadata {
   return {
     title: {
-      template: "%s | AI Agent Development Platform",
+      template: "%s | Alchemyst AI - the ONLY AI context LAYER you can verify.",
       default: "Alchemyst AI | The ONLY AI context engine that you can verify.",
     },
     description: description || "Revolutionize workflow automation with AI agents. Build complex, intelligent systems with just a few lines of code.",

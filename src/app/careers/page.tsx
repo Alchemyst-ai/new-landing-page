@@ -1,9 +1,9 @@
 import { CareersContent } from "./careers-content";
 
 export const metadata = {
-  title: "Careers | Alchemyst AI",
+  title: "Careers",
   description:
-    "Join our team at Alchemyst AI and help build the next generation of AI context engines.",
+    "Be a part of the team that is building the context layer for the trillion-agent world.",
 };
 
 export default function CareersPage() {
