@@ -7,11 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  BrainCircuit,
-  Globe,
-  Rocket
-} from "lucide-react";
+import { BrainCircuit, Globe, Rocket } from "lucide-react";
 import Link from "next/link";
 
 interface JobPosition {
@@ -118,7 +114,7 @@ export async function CareersContent() {
         {/* Jobs Section */}
         <div>
           <h2 className="text-3xl font-bold text-foreground mb-8">
-            Open Positions
+            Open Positions {`(${jobs.length})`}
           </h2>
 
           {jobs.length === 0 && (
@@ -132,7 +128,7 @@ export async function CareersContent() {
           )}
 
           {jobs.length > 0 && (
-            <div className="space-y-4 overflow-scroll max-h-[600px] pr-2">
+            <div className="space-y-4 pr-2">
               {jobs.map((job) => (
                 <Card
                   key={job.id}
