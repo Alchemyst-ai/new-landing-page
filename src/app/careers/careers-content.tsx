@@ -22,7 +22,7 @@ async function fetchJobs(): Promise<JobPosition[]> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
     const response = await fetch(`${baseUrl}/api/careers`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     });
     if (!response.ok) {
       console.error("Failed to fetch careers data");
