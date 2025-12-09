@@ -70,7 +70,7 @@ export async function GET(request: Request) {
 
     if (!formsResponse.ok) {
       const errorText = await formsResponse.text();
-      console.error("[v0] Tally API error:", formsResponse.status, errorText);
+      console.error("Tally API error:", formsResponse.status, errorText);
       throw new Error(
         `Tally API responded with status ${formsResponse.status}`,
       );
@@ -95,14 +95,10 @@ export async function GET(request: Request) {
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
 
-    console.log(
-      "[v0] Successfully fetched",
-      jobs.length,
-      "job forms from Tally",
-    );
+    console.log("Successfully fetched", jobs.length, "job forms from Tally");
     return Response.json({ jobs });
   } catch (error) {
-    console.error("[v0] Error fetching careers from Tally:", error);
+    console.error("Error fetching careers from Tally:", error);
     return Response.json({
       jobs: [
         {
