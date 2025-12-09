@@ -20,7 +20,7 @@ interface JobPosition {
   id: string;
   name: string;
   title: string;
-  description?: string;
+  tags?: string[];
   createdAt: string;
 }
 
@@ -81,12 +81,13 @@ export async function GET(request: Request) {
     };
 
     // Transform forms to job positions - display all forms as career opportunities
-    const jobs: JobPosition[] = (formsData.items || []).filter(entry => entry.status === "PUBLISHED")
+    const jobs: JobPosition[] = (formsData.items || [])
+      .filter((entry) => entry.status === "PUBLISHED" && !entry.isClosed)
       .map((form: TallyForm) => ({
         id: form.id,
-        name: form.name,
-        title: form.name,
-        description: form.description,
+        name: form.name.split(" | ")[0],
+        title: form.name.split(" | ")[0],
+        tags: form.name.split(" | ").slice(1) ?? [],
         createdAt: form.createdAt,
       }))
       .sort(
