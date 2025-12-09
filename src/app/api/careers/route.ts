@@ -5,6 +5,15 @@ interface TallyForm {
   name: string;
   description?: string;
   createdAt: string;
+  updatedAt: string;
+  isNameModifiedByUser: boolean;
+  workspaceId: string;
+  organizationId: string;
+  status: "PUBLISHED" | "DRAFT";
+  hasDraftBlocks: boolean;
+  numberOfSubmissions: number;
+  index: number;
+  isClosed: boolean;
 }
 
 interface JobPosition {
@@ -26,22 +35,22 @@ export async function GET(request: Request) {
       // Return demo jobs instead of erroring
       return Response.json({
         jobs: [
-          {
-            id: "demo-1",
-            name: "demo",
-            title: "Senior AI Engineer",
-            description:
-              "Help us build the context engine. Experience with Python, LLMs, and distributed systems required.",
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: "demo-2",
-            name: "demo",
-            title: "Full Stack Developer",
-            description:
-              "Build and scale our platform. JavaScript, React, Node.js expertise needed.",
-            createdAt: new Date().toISOString(),
-          },
+          // {
+          //   id: "demo-1",
+          //   name: "demo",
+          //   title: "Senior AI Engineer",
+          //   description:
+          //     "Help us build the context engine. Experience with Python, LLMs, and distributed systems required.",
+          //   createdAt: new Date().toISOString(),
+          // },
+          // {
+          //   id: "demo-2",
+          //   name: "demo",
+          //   title: "Full Stack Developer",
+          //   description:
+          //     "Build and scale our platform. JavaScript, React, Node.js expertise needed.",
+          //   createdAt: new Date().toISOString(),
+          // },
         ],
         message: "Demo data - set TALLY_API_KEY to fetch real job listings",
       });
@@ -72,7 +81,7 @@ export async function GET(request: Request) {
     };
 
     // Transform forms to job positions - display all forms as career opportunities
-    const jobs: JobPosition[] = (formsData.items || [])
+    const jobs: JobPosition[] = (formsData.items || []).filter(entry => entry.status === "PUBLISHED")
       .map((form: TallyForm) => ({
         id: form.id,
         name: form.name,
