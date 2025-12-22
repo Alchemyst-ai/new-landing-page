@@ -1,12 +1,11 @@
 "use client";
 
 import type { CardPost } from "@/components/blog-card";
-import { formatDate } from "@/lib/utils";
+import { siteConfig } from '@/lib/config';
+import { cn, formatDate } from "@/lib/utils";
+import { CommentCount } from "disqus-react";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { CommentCount } from 'disqus-react';
-import { siteConfig } from '@/lib/config';
 import { useEffect, useState } from 'react';
 
 export default function BlogCardWithComments({
@@ -77,17 +76,18 @@ export default function BlogCardWithComments({
             {data.readTime && (
               <>
                 <span>•</span>
-                {/* <span>{data.readTime} min read</span> */}
+                <span>{data.readTime} min read</span>
               </>
             )}
           </div>
-          {canRenderComments && (
+          {canRenderComments && priority && (
             <CommentCount
               shortname={disqusShortname}
               config={disqusConfig}
             >
               <span className="text-sm text-muted-foreground">Comments</span>
             </CommentCount>
+
           )}
         </div>
         <h3 className={cn(
@@ -97,7 +97,7 @@ export default function BlogCardWithComments({
           {data.title}
         </h3>
         <p className="text-muted-foreground line-clamp-3">{summary}</p>
-        
+
         {featured && (
           <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">
             Read More
@@ -109,4 +109,4 @@ export default function BlogCardWithComments({
       </div>
     </Link>
   );
-} 
+}

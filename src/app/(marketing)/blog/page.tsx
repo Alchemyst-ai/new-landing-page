@@ -4,7 +4,14 @@ import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
   title: "Blog - The Alchemyst AI Blog",
-  description: `Stay ahead of the curve using context and agentic use cases`,
+  description: `Journaling how we make Alchemyst AI the best and most trusted context layer in the world.`,
+  image: '/banner.jpeg',
+  twitter: {
+    card: 'summary_large_image',
+    title: "Blog - The Alchemyst AI Blog",
+    description: `Journaling how we make Alchemyst AI the best and most trusted context layer in the world.`,
+    images: ['/banner.jpeg'],
+  },
 });
 
 export default async function Blog() {
@@ -20,9 +27,11 @@ export default async function Blog() {
       summary: item.description || "",
       publishedAt: item.publishedAt || new Date().toISOString(),
       image: item.image || undefined,
+      readTime: item.readTime
     }))
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
+    // console.log("Blog data = ", articles)
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -46,7 +55,7 @@ export default async function Blog() {
               {articles.length > 1 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {articles.slice(1).map((data, idx) => (
-                    <BlogCardWithComments key={data.slug} data={data} priority={idx <= 1} />
+                    <BlogCardWithComments key={data.slug} data={data} />
                   ))}
                 </div>
               )}

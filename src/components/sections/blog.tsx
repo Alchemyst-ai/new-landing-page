@@ -1,6 +1,6 @@
+import type { CardPost } from "@/components/blog-card";
 import BlogCard from "@/components/blog-card";
 import { Section } from "@/components/section";
-import type { CardPost } from "@/components/blog-card";
 
 export async function Blog() {
   const res = await fetch("/api/articles");
@@ -13,6 +13,8 @@ export async function Blog() {
     summary: item.description || "",
     publishedAt: item.publishedAt || new Date().toISOString(),
     image: undefined,
+    readTime: item.readTime,
+    description: item.description
   }));
 
   return (
