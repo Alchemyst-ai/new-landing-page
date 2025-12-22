@@ -24,18 +24,25 @@ export function constructMetadata({
 }): Metadata {
   return {
     title: {
-      template: "%s | AI Agent Development Platform",
-      default: "Alchemyst AI | Create Powerful AI Agents",
+      template: "%s | Alchemyst AI - the ONLY AI context LAYER you can verify.",
+      default: "Alchemyst AI | The ONLY AI context engine that you can verify.",
     },
     description: description || "Revolutionize workflow automation with AI agents. Build complex, intelligent systems with just a few lines of code.",
     keywords: [
-      "AI agents",
-      "multi-agent systems", 
-      "workflow automation", 
-      "AI development", 
-      "tool integration", 
-      "AI memory",
-      "agent SDK"
+      'AI Context',
+      'AI Memory',
+      'AI agents',
+      'AI context',
+      'AI memory',
+      'Alchemyst AI',
+      'Context Engine',
+      'Context Engineering',
+      'Information Retrieval',
+      'LLM Free Context',
+      'Multi-Agent Systems',
+      'Tool Integration',
+      'Verifiable Context',
+      'Workflow Automation'
     ],
     openGraph: {
       title,
@@ -47,7 +54,7 @@ export function constructMetadata({
           url: image,
           width: 1200,
           height: 630,
-          alt: "Alchemyst AI - Powerful AI Agent Development Platform",
+          alt: "Alchemyst AI - The ONLY AI context engine that you can verify.",
         },
       ],
       type: "website",
@@ -55,7 +62,7 @@ export function constructMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Alchemyst AI: Create Powerful AI Agents",
+      title: "Alchemyst AI: The ONLY AI context engine that you can verify.",
       description: "Build complex, intelligent systems with just a few lines of code.",
       images: [image],
     },

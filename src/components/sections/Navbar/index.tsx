@@ -159,7 +159,9 @@ const Navbar: React.FC = () => {
             </span>
           </Link>
           <Link 
-            href="#" 
+            href="https://docs.getalchemystai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -217,6 +219,16 @@ const Navbar: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   className="w-full space-y-4"
                 >
+                  <Link
+                    href="https://docs.getalchemystai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"
+                    onClick={toggleMenu}
+                  >
+                    Docs
+                  </Link>
+
                   <Link
                     href="/pricing"
                     className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"

@@ -147,7 +147,7 @@ export default function PricingCalculator() {
   const resetUsage = () => setUsage({});
 
   return (
-    <div className="max-w-5xl py-10">
+    <div className="w-full py-6">
       <Card className="border border-gray-700">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold">

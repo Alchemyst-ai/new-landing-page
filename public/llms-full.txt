@@ -1,0 +1,1705 @@
+# https://getalchemystai.com llms-full.txt
+
+## Context-Aware AI Agents
+[✨ #1 in Gen AI category F6S](https://getalchemystai.com/#)
+
+[![Alchemyst AI - Context-aware AI Agents](https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark)](https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents)[![Alchemyst AI - Context-aware AI Agents](https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg)](https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents)
+
+# The ONLY Context Engine you can Verify
+
+Context, intent, and everything in between.
+
+Launch production-ready AI agents 20x faster.
+
+[Sign up](https://getalchemystai.com/platform/signin)
+
+Supported in Python, JavaScript, Java, and more
+
+![AFT](https://getalchemystai.com/_next/image?url=%2Ftrusted%2FAFT.png&w=256&q=75)
+
+![Chain Risk](https://getalchemystai.com/_next/image?url=%2Ftrusted%2Fchainrisk.png&w=384&q=75)
+
+![Hyundai](https://getalchemystai.com/_next/image?url=%2Ftrusted%2Fhyundai.png&w=384&q=75)
+
+![Kotak](https://getalchemystai.com/_next/image?url=%2Ftrusted%2Fkotak.png&w=384&q=75)
+
+![Kubernetes](https://getalchemystai.com/_next/image?url=%2Ftrusted%2Fkuberns.png&w=256&q=75)
+
+![Toyota](https://getalchemystai.com/_next/image?url=%2Ftrusted%2Ftoyota.png&w=384&q=75)
+
+### Context API
+
+Manage context data with user and organization-level access control.
+
+### Context Proxy API
+
+OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.
+
+### Model Context Protocol
+
+Integrate our context processor MCP on the fly across different environments and modes.
+
+```
+import AlchemystAI from '@alchemystai/sdk';
+
+    const client = new AlchemystAI({
+      apiKey: process.env.ALCHEMYST_AI_API_KEY, // Make sure this is set in your env
+    });
+
+    async function main() {
+      const result = await client.v1.context.add({
+        documents: [\
+          {\
+            content: "User preferences for AI interactions",\
+          },\
+        ],
+        source: "platform/maya/smart-settings.upload",
+        context_type: "resource",
+        scope: "internal",
+        metadata: {
+          fileName: "Name of file",
+          fileType: "Type of file",
+          modalities: "['text','image']", // you can stringify or use array
+          fileSize: "Size of file",
+        },
+      });
+
+      console.log(result);
+    }
+
+    main().catch(console.error);
+
+```
+
+## Use Cases
+
+Customer
+
+I was charged twice. Please fix this.
+
+Agent
+
+Network error. The second pending payment will auto-refund in 5-7 days. I'll notify you once it's cleared.
+
+Customer
+
+Thank you.
+
+## Customer Support
+
+Add human touch to your chatbots with memory so it retains context. Speed up resolution times upto 64%.
+
+\[2025-07-14 10:02:15\] \| CONTEXT
+
+Detected prior note: "Mild reaction to penicillin"
+
+\[2025-07-15 10:02:18\] \| MEMORY\_UPDATE
+
+Allergen logged: penicillin. Added to permanent avoidance list.
+
+\[2025-07-15 10:03:00\] \| REQUEST
+
+Patient asked to refill sinus infection meds.
+
+\[2025-07-20 10:03:08\] \| DECISION
+
+Antibiotics refill initiated. Avoiding penicillin-class drugs.
+
+## Healthcare
+
+Smarter care, lesser costs. AI your patients can trust. Powered by Memory.
+
+## Finance
+
+Transactions that think ahead. Memory backed ledger.
+
+## Features
+
+## Context API
+
+Manage context data with user and organization-level access control.
+
+[Learn more >](https://docs.getalchemystai.com/api-reference)
+
+## Chat API
+
+Streaming chat functionality with AI-generated responses, thinking steps using memory, and metadata.
+
+[Learn more >](https://docs.getalchemystai.com/api-reference)
+
+## Context Proxy API
+
+OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.
+
+[Learn more >](https://docs.getalchemystai.com/api-reference)
+
+## Statistics
+
+Developers
+
+Queries
+
+Documents
+
+Tokens
+
+## Put Your Retrieval on Autopilot
+
+Book a 30-minute consultation to discuss how we can help transform your development workflow
+
+Overlay my calendar
+
+$Switch to monthly view
+
+$Switch to weekly view
+
+$Switch to column view
+
+- [![Uttaran Nayak](https://cal.com/api/avatar/e5c9cf65-907d-4cda-88fe-c372d8e4872a.png)](https://cal.com/uttaran-nayak-alchemyst?redirect=false)
+
+Uttaran Nayak
+
+# 30 Min Meeting
+
+30m
+
+![Google Meet icon](https://cal.com/app-store/googlevideo/logo.webp)
+
+Google Meet
+
+Select...
+
+**November** 2025
+
+Sun
+
+Mon
+
+Tue
+
+Wed
+
+Thu
+
+Fri
+
+Sat
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23Today
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+Dec
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+8:00am
+
+8:30am
+
+9:00am
+
+9:30am
+
+10:00am
+
+10:30am
+
+11:00am
+
+11:30am
+
+12:00pm
+
+12:30pm
+
+1:00pm
+
+1:30pm
+
+2:00pm
+
+2:30pm
+
+3:00pm
+
+3:30pm
+
+4:00pm
+
+4:30pm
+
+5:00pm
+
+[![Cal.com Logo](https://app.cal.com/api/logo)](https://go.cal.com/booking)
+
+30 Min Meeting \| Uttaran Nayak \| Cal.com
+
+## Community
+
+We're grateful for the amazing open-source community that helps make our project better every day.
+
+A
+
+B
+
+C
+
+D
+
+E
+
+[Join Discord Community](https://discord.gg/H2StAaSeJ8)
+
+460 members · 21 online
+
+Ready to build your next AI agent?
+
+[Get Started](https://getalchemystai.com/platform/signin)
+## FAQ
+
+### What is Alchemyst AI?
+
+Alchemyst AI is a context engine that provides AI applications with persistent memory, business data, and operational context so agents remain accurate, reliable, and production-ready. It is a standalone context layer that can be integrated into your stack through our APIs, SDKs and MCPs.
+
+### How can I use Alchemyst AI?
+
+You can wire Alchemyst AI into your stack through our APIs, SDKs, MCPs, and browser extension—whatever fits your workflow best. Check more details in our [documentation](https://docs.getalchemystai.com).
+
+### What is an AI memory layer and why is it important?
+
+An AI memory layer lets agents remember previous interactions, user preferences, tasks, and business data. It improves accuracy, reduces hallucinations, and allows AI systems to operate with human-like context. Alchemyst AI provides a built-in memory layer designed for production-grade agents.
+
+### How does a context engine improve AI agent performance?
+
+A context engine organizes and stores long-term and short-term information so AI agents can make better decisions. Alchemyst AI's context engine adds persistent memory, intent detection, and data-aware reasoning to enhance agent reliability.
+
+### Can AI agents have long-term memory across conversations?
+
+Yes. With systems like Alchemyst AI, agents keep persistent memory across sessions, users, and workflows. This enables personalization and consistent task execution over time.
+
+### How do context-aware AI agents compare to regular chatbots?
+
+Context-aware agents remember past interactions, reference enterprise data, and perform end-to-end tasks. Regular chatbots usually respond only to the latest prompt.
+
+## Testimonials
+
+A sneak peek from the community — what they think about [Alchemyst](https://platform.getalchemystai.com/)
+
+![Trung](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fuploads%2FTQIhTx%2Fx-reviews%2Fx-review-author-profile-abzF-1761561437.jpg&w=256&q=75)
+
+Trung
+
+@trungngb
+
+[![X logo](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fassets%2Fimg%2Fsocial-icons%2Fv2%2Ftwitter.png&w=256&q=75)](https://x.com/trungngb/status/1982464318710202606)
+
+[@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") makes RAG and GraphRAG easier than ever!
+
+
+_Read Less_
+
+[@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") makes RAG and GraphRAG easier than ever!_Read More_
+
+October 26, 2025
+
+0
+
+2
+
+6
+
+357
+
+0
+
+![Krish Jaiswal](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fuploads%2FTQIhTx%2Fx-reviews%2Fx-review-author-profile-KUVg-1761562556.jpg&w=256&q=75)
+
+Krish Jaiswal
+
+@venky1701
+
+[![X logo](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fassets%2Fimg%2Fsocial-icons%2Fv2%2Ftwitter.png&w=256&q=75)](https://x.com/venky1701/status/1976866673639776542)
+
+1\. [@mem0ai](https://twitter.com/mem0ai "mem0") \- it failed to find any intent to my question.
+
+2\. [@supermemoryai](https://twitter.com/supermemoryai "supermemory") \- relevance needs a lot of work there. they've improved a ton of things [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") emyst - it can hold just so much in context and still outperform all. It shows up the traces of context retrieved✨
+
+
+_Read Less_
+
+1\. [@mem0ai](https://twitter.com/mem0ai "mem0") \- it failed to find any intent to my question.
+
+2\. [@supermemoryai](https://twitter.com/supermemoryai "supermemory") \- relevance needs a lot of work there. they've improved a ton of things [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") emyst - it can hold just so much in context and still outperform all. It shows up the traces of context retrieved✨_Read More_
+
+October 11, 2025
+
+1
+
+6
+
+23
+
+1.5K
+
+2
+
+![Sidhartha](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fuploads%2FTQIhTx%2Fx-reviews%2Fx-review-author-profile-usQI-1761562445.jpg&w=256&q=75)
+
+Sidhartha
+
+@SidharthaGarg
+
+[![X logo](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fassets%2Fimg%2Fsocial-icons%2Fv2%2Ftwitter.png&w=256&q=75)](https://x.com/sidharthagarg/status/1982690191577112610)
+
+"Memory is all you need", and Alchemyst AI is solving for just that. The ability to carry my context across AI models is supe [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") talchemyst
+
+
+_Read Less_
+
+"Memory is all you need", and Alchemyst AI is solving for just that. The ability to carry my context across AI models is supe [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") talchemyst_Read More_
+
+October 27, 2025
+
+0
+
+3
+
+3
+
+106
+
+0
+
+![mohit](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fuploads%2FTQIhTx%2Fx-reviews%2Fx-review-author-profile-QjqH-1761733967.jpg&w=256&q=75)
+
+mohit
+
+@mohitwt\_
+
+[![X logo](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fassets%2Fimg%2Fsocial-icons%2Fv2%2Ftwitter.png&w=256&q=75)](https://x.com/mohitwt_/status/1983414845719605731)
+
+tried [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") and its p good in context and retrieval, It remembers what I say in chat plus whatever I upload, had to try cuz im working on stuff related to this.
+
+it just picks up the conversation using all that context, good shit.
+
+
+_Read Less_
+
+tried [@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI") and its p good in context and retrieval, It remembers what I say in chat plus whatever I upload, had to try cuz im working on stuff related to this.
+
+it just picks up the conversation using all that context, good shit._Read More_
+
+October 29, 2025
+
+0
+
+0
+
+11
+
+366
+
+0
+
+![Sharav Arora ](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fuploads%2FTQIhTx%2Fx-reviews%2Fx-review-author-profile-Y2Ix-1761735913.jpg&w=256&q=75)
+
+Sharav Arora 
+
+@AroraSharav
+
+[![X logo](https://media.feedspace.io/api/transform?url=https%3A%2F%2Fstatic.feedspace.io%2Fassets%2Fimg%2Fsocial-icons%2Fv2%2Ftwitter.png&w=256&q=75)](https://x.com/arorasharav/status/1983489979545493832)
+
+and its p good in context and retrieval, It remembers what I say in chat plus whatever I upload, had to try cuz im working on stuff related to this. it just picks up the conversation using all that context, good
+
+[@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI")
+
+Kudos to [@KhushiMhasange](https://twitter.com/KhushiMhasange "Khushiii") [@AnuranRoy](https://twitter.com/AnuranRoy "anuran 🛠️ Alchemyst AI(e/acc)")
+
+_Read Less_
+
+and its p good in context and retrieval, It remembers what I say in chat plus whatever I upload, had to try cuz im working on stuff related to this. it just picks up the conversation using all that context, good
+
+[@getalchemyst](https://twitter.com/getalchemyst "Alchemyst AI")
+
+Kudos to [@KhushiMhasange](https://twitter.com/KhushiMhasange "Khushiii") [@AnuranRoy](https://twitter.com/AnuranRoy "anuran 🛠️ Alchemyst AI(e/acc)")_Read More_
+
+October 29, 2025
+
+0
+
+0
+
+0
+
+5
+
+0
+
+[Capture reviews with **Feedspace**](https://www.feedspace.io/?utm_source=powered-by-feedspace&utm_medium=wall-of-love&utm_campaign=rBCy6Qaneu "Capture reviews with Feedspace")
+
+## We’d love to hear from you!
+
+Share your feedback with us — tell us what you think about [Alchemyst](https://platform.getalchemystai.com/) Leave a review, suggest a feature, or tweet us your thoughts.
+
+We read every message, keep it coming!
+
+[Tweet @getalchemyst](https://x.com/getalchemyst)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Alchemyst AI Sitemap
+https://getalchemystai.com2025-11-23T05:43:57.340Zdaily1https://getalchemystai.com/blog2025-11-23T05:43:57.340Zdaily0.9https://getalchemystai.com/about-us2025-11-23T05:43:57.340Zmonthly0.7https://getalchemystai.com/pricing2025-11-23T05:43:57.340Zmonthly0.8https://getalchemystai.com/research2025-11-23T05:43:57.340Zweekly0.6https://getalchemystai.com/security2025-11-23T05:43:57.340Zmonthly0.6https://getalchemystai.com/use-cases/customer-support2025-11-23T05:43:57.340Zmonthly0.5https://getalchemystai.com/use-cases/edtech2025-11-23T05:43:57.340Zmonthly0.5https://getalchemystai.com/use-cases/finance2025-11-23T05:43:57.340Zmonthly0.5https://getalchemystai.com/use-cases/healthcare2025-11-23T05:43:57.340Zmonthly0.5https://getalchemystai.com/blog/context-embeddings-in-llms2025-10-25T18:14:33.126Zweekly0.8https://getalchemystai.com/blog/introducing-alchemyst-chrome-extension2025-11-03T11:47:12.268Zweekly0.8
+
+## Enterprise-Ready Security
+Security
+
+# Enterprise-Ready Compliance, AI-Ready Speed
+
+Alchemyst is built with privacy and compliance at its core—HIPAA, GDPR, ISO 27001, and SOC 2 Type II certified—ensuring data trust and integrity across every AI workflow.
+
+[Request A Demo](https://getalchemystai.com/platform/signin)
+
+![Security Animation](https://getalchemystai.com/security/security.gif)
+
+## We Value Trust
+
+### Enterprise-Grade Compliance
+
+Alchemyst is built to meet the highest standards in data protection and enterprise trust. We are fully compliant with HIPAA and GDPR, and certified under ISO 27001 and SOC 2 Type II—ensuring that your data is handled with integrity, transparency, and the utmost care.
+
+### Built-In Transparency
+
+Our platform is designed for auditability from day one. From real-time access logs to detailed compliance reports, Alchemyst provides complete visibility into how your data is processed—giving you the confidence to scale securely and stay ahead of regulatory needs.
+
+### Secure by Architecture
+
+Security isn't an add-on—it's in our DNA. Alchemyst enforces best-in-class practices like zero-trust access, encryption at rest and in transit, and continuous monitoring to protect your workflows and sensitive data, every step of the way.
+
+## Compliant With Industry Standards
+
+![Industry Standards Compliance](https://getalchemystai.com/_next/image?url=%2Fsecurity%2Fsecurity.png&w=3840&q=75)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Alchemyst AI Blog
+# The Alchemyst AI Blog
+
+Stay ahead of the curve using context and agentic use cases
+
+[![Introducing the Alchemyst Chrome Extension](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FGemini_Generated_Image_24sgp824sgp824sg_e5114ada18.png&w=3840&q=75)\\
+\\
+November 3, 2025 (2w ago)\\
+\\
+0 Comments\\
+\\
+**Introducing the Alchemyst Chrome Extension** \\
+\\
+Now you can carry AI context across all AI tools, or share it with others?\\
+\\
+Read More](https://getalchemystai.com/blog/introducing-alchemyst-chrome-extension)
+
+[![Context Is Everything: The Science of Embeddings in LLMs](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FChat_GPT_Image_Oct_25_2025_05_14_32_PM_d113c1800d.png&w=3840&q=75)\\
+\\
+October 25, 2025 (4w ago)\\
+\\
+0 Comments\\
+\\
+**Context Is Everything: The Science of Embeddings in LLMs** \\
+\\
+How context embeddings give LLMs true understanding of language.](https://getalchemystai.com/blog/context-embeddings-in-llms)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## About Alchemyst AI
+# About Us
+
+![1](https://getalchemystai.com/_next/image?url=%2Futtran.jpeg&w=1080&q=75)
+
+![2](https://getalchemystai.com/_next/image?url=%2Fanuran.jpeg&w=1080&q=75)
+
+![3](https://getalchemystai.com/_next/image?url=%2Fprithwi.jpeg&w=1080&q=75)
+
+![4](https://getalchemystai.com/_next/image?url=%2Fdebayan1.webp&w=1080&q=75)
+
+## Your AI agent needs tractable context.
+
+AI isn't the future anymore — it's already changing our present. But here's the kicker — only **26%** are actually usable.
+
+Any functional agent will have three parts to it:
+
+- The models
+- The workflows
+- The context
+
+The first two are already being solved: Models are crushing SoTA records every day, while workflows are more or less direct ports of real-world repetitive processes, specifically tailored to businesses. That's the UX that MCPs strive to solve for.
+
+The real problem lies in the **context**.
+
+### Context engineering is the next frontier for AI adoption.
+
+As LLM context windows 10× over every year (a trend that's holding pretty well so far), data explodes at 100× more. So here's the uncomfortable truth:
+
+> Data is always going to exceed LLM context window sizes, no matter what.
+
+Thus, the question for any AI-enabled business is not **IF** they would need a new context layer and context engineering in general, but **WHEN**. Turns out, that's pretty soon. Beyond ~10 sessions per user, businesses need to treat memory and user-specific context as mandatory requirements for their users. And that's the average number of chat sessions that a customer has with an AI chatbot in a month.
+
+## “95% of generative AI efforts will fail by 2026–27.” — MIT
+
+And the reason is lack of proper contextualization.
+
+So, you don't just need context — you need **tractable** context that you can verify.
+
+That's the sole purpose of us building **Alchemyst AI**.
+
+The world will be moving towards **Agent Era 2.0** — where context matters more than prompts. Prompts can be auto-optimized, thanks to accurate context storage and retrieval.
+
+This is the vision we bet our entire company on, a year ago. With this coming true, we want to say one thing:
+
+> “Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront.”
+
+~ Signing off,
+
+Anuran and Uttaran
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Simple Pricing Plans
+## Simple, Transparent Pricing
+
+Choose the plan that works best for your needs. All plans include core features with different usage limits.
+
+### Pricing Calculator
+
+Subscription Tier:Free (you start here, free upto $9 usage)
+
+Reset
+
+| Action | Description | Billing Unit | Cost / Unit (USD) | Usage | Cost (USD) |
+| --- | --- | --- | --- | --- | --- |
+| AI Chat Response Generations | Cost of using our Chat APIs | 1M tokens | 20.000 |  | 0.000 |
+| LLM Proxy Response Generations | Cost of using our LLM Proxy APIs | 1M tokens | 20.000 |  | 0.000 |
+| AI Web Search Usage | Cost of using web search in our chat APIs (in addition to response generations) | 1K results | 45.000 |  | 0.000 |
+| Context Upload | Upload organization context | 1MB | 0.200 |  | 0.000 |
+| Context Search | Search through organizational contexts | 1MB | 0.007 |  | 0.000 |
+
+Estimated Total:0.000 USD
+
+Based on simulated usage and current tier rates.
+
+### Enterprise
+
+Custom
+
+For 5+ person enterprises with custom needs
+
+Custom free network bandwidth/month
+
+Custom free AI Grid bandwidth/month
+
+Custom free context storage
+
+Custom platform tokens for first month
+
+Around 10000+ documents for storage (~1MB each)
+
+All other Alchemyst features
+
+Custom DeepResearch uses/day
+
+Contextual Research
+
+[Talk to the Team](https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true&layout=mobile)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## AI Agent Optimization
+# AI Agents talk.    Alchemyst helps them listen
+
+A scalable memory-first system that dynamically extracts and retrieves key conversational facts—delivering 20% higher accuracy over SOTA on the PopQA benchmark with 95% reduction in development time.
+
+![Alchemyst Agent](https://getalchemystai.com/research/sota.png)
+
+Executive Summary
+
+## Benchmarking Alchemyst
+
+Modern AI agents often suffer from high operational costs, limited task completion, and long development cycles—making it difficult to scale AI systems efficiently. Simply fine-tuning LLMs or increasing infrastructure fails to address these bottlenecks at the root.
+
+**Alchemyst** tackles these challenges head-on with a context-first memory layer and optimized AI infrastructure that drastically reduces cost, boosts performance, and shortens time-to-launch.
+
+Across real-world deployments, Alchemyst has demonstrated:
+
+- **~40% lower interaction cost** by sending only relevant context to the LLM
+- **~40% reduction in token usage**, making AI more affordable to operate
+- **95% decrease in dev time** — from 6 months to under 2 weeks
+- **2.2× revenue increase** from agents built on the platform
+- **33.7% improvement in task completion**, achieving 99.7% success rate
+
+By turning short-term agents into persistent, context-aware systems, Alchemyst empowers teams to go from idea to production-ready AI in days—not months.
+
+[Read the paper](https://docsend.com/view/iem35yrj5pkbsm46) View Code
+
+Approach
+
+## Under The Hood
+
+A two-phase memory pipeline that extracts, consolidates, and retrieves only the most salient conversational facts—enabling scalable, long-term reasoning.
+
+![Under the Hood Architecture](https://getalchemystai.com/research/underHood01.svg)
+
+Alchemyst delivers a four-stage processing pipeline—Asym0, OKG Orchestration, ThinkRAG, and Context Marketing—connecting Data Sources to Agents/MCPs with comprehensive observability across all stages.
+
+![Alchemyst Architecture Pipeline](https://getalchemystai.com/research/underHood02.svg)
+
+The architecture supports two deployment options: Managed Services leveraging MongoDB and QDrant for rapid deployment by development teams and small companies, and On-Premises Enterprise solutions with multi-source integration for organizations requiring data sovereignty and enhanced security.
+
+This design enables scalable data orchestration while providing deployment flexibility to meet diverse organizational requirements and compliance needs.
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Memory-Powered AI Support
+Usecases / Customer Support
+
+# Transform Support  With Memory-Powered AI
+
+Enhance customer experience with AI agents that remember context, learn from interactions, and deliver personalized support at scale.
+
+[Build Smarter Support](https://getalchemystai.com/platform/signin)
+
+![EdTech AI Learning Interface](https://getalchemystai.com/use-cases/customer-support.gif)
+
+Challenges
+
+## Problems Faced
+
+Current support systems struggle with coordination, prioritization, and context retention.
+
+### Escalation Ping-Pong
+
+Issues bounce between departments without resolution ownership.
+
+### Priority Paralysis
+
+Critical issues buried in queue without proper urgency detection.
+
+### Case History Blackouts
+
+Previous interactions invisible, forcing customers to restart explanations.
+
+Features
+
+## Smart Support Features
+
+Transform customer support with memory-powered AI that delivers personalized, context-aware experiences.
+
+![Customer history retention interface showing past conversations](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fcustomer-care%2Fcustomer01.png&w=3840&q=75)
+
+### Retain Customer History
+
+Agents remember past conversations and customer context without having to ask them.
+
+![Personalized solution interface showing contextual responses](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fcustomer-care%2Fcustomer02.png&w=3840&q=75)
+
+### Tailored Solutions
+
+Each reply of the agent feels personalized for the customer.
+
+![Pattern recognition dashboard showing interaction trends](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fcustomer-care%2Fcustomer03.png&w=3840&q=75)
+
+### Pattern Recognition
+
+Helps agents detect patterns in customer interactions to help prepare them for the unexpected.
+
+![Human-like interaction interface showing personalized engagement](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fcustomer-care%2Fcustomer04.png&w=3840&q=75)
+
+### Feels Human
+
+Past conversation context helps Agents remember things about the customer, making the customer feel more connected to the Agent.
+
+## Efficient Support at Scale
+
+Handle more support tickets with less resources while maintaining quality.
+
+Automated context management reduces agent cognitive load.
+
+Smart token usage cuts operational costs by up to 40%.
+
+Handle complex, multi-turn conversations effortlessly.
+
+[Get Started](https://getalchemystai.com/platform/signin)
+
+### Standard Agent
+
+Token Used (Avg)3M tokens
+
+High token usage, short context window
+
+### Alchemyst-enhanced Agent
+
+Token Used (Avg)1.8M tokens
+
+Shorter prompt optimized with Alchemyst
+
+Memory Connected
+
+JavaScript
+
+Python
+
+import MemoryClient
+
+from
+
+'@alchemyst/memory';
+
+const
+
+client =
+
+new
+
+MemoryClient('your-api-key');
+
+JavaScript
+
+Python
+
+import
+
+os
+
+from
+
+alchemyst.memory
+
+import
+
+MemoryClient
+
+client = MemoryClient('your-api-key')
+
+## Two liner integration
+
+Alchemyst connects seamlessly with your current setup. Just one copy-paste command away.
+
+Huge repertoire of compatible tools.
+
+SOC-2 and HIPAA compliant with secure storage.
+
+Observability on runtime.
+
+[Integrate Alchemyst](https://getalchemystai.com/platform/signin)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Personalized EdTech Solutions
+Usecases / Education
+
+# Make Learning  Truly Personalized
+
+With memory, AI tutors can track progress, understand learning patterns, and personalize over time.
+
+[Build Adaptive Tutors](https://getalchemystai.com/platform/signin)
+
+![EdTech AI Learning Interface](https://getalchemystai.com/use-cases/edtech.gif)
+
+Challenges
+
+## Problems Faced in EdTech
+
+Current AI education tools struggle with context retention and personalization, leading to suboptimal learning experiences.
+
+### Lack of Context of Previous Sessions
+
+New sessions lack preferences and context awareness of user preferences and history.
+
+### Too Generalised Teaching
+
+The inability of retaining previous context makes the guidance generic and fruitless.
+
+### No User-Centric Content
+
+Doesn't keep up with dynamic user pace or goals.
+
+Features
+
+## Intelligent Education Features
+
+Transform education with memory-powered AI that adapts and personalizes learning for each student.
+
+![Personalized learning dashboard showing student progress and content recommendations](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fedtech%2Fedtech01.png&w=3840&q=75)
+
+### Personalized Learning at Scale
+
+Retains student goals, past performance, and pace → suggests content that actually fits.
+
+![Real-time student data synchronization interface](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fedtech%2Fedtech02.png&w=3840&q=75)
+
+### Real-time Learner Context Sync
+
+Keeps up with grading, attendance, quiz scores → reduces manual syncing & admin overhead.
+
+![Adaptive tutoring interface showing personalized learning paths](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fedtech%2Fedtech03.png&w=3840&q=75)
+
+### Adaptive Tutoring Agents
+
+Alchemyst agents adjust tone, difficulty, and pace — tuned to each learner's trajectory.
+
+![Security and compliance dashboard for educational data](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fedtech%2Fedtech04.png&w=3840&q=75)
+
+### Secure, Governed Memory
+
+Role-based access + context-aware AI → safe classrooms and compliant edtech systems.
+
+## Cost optimized. Out of the box.
+
+Run agents with more power with lesser cost.
+
+Does the heavy lifting of memory offloading by itself.
+
+Optimizes token expenditure with efficient prompts.
+
+Highly capable of handling longer tasks.
+
+[Get Started](https://getalchemystai.com/platform/signin)
+
+### Standard Agent
+
+Token Used (Avg)3M tokens
+
+High token usage, short context window
+
+### Alchemyst-enhanced Agent
+
+Token Used (Avg)1.8M tokens
+
+Shorter prompt optimized with Alchemyst
+
+Memory Connected
+
+TypeScriptPython
+
+```
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({ apiKey: process.env.ALCHEMYST_AI_API_KEY });
+
+await client.v1.context.add({
+  documents: [{ content: "The content of the document" }],
+  context_type: "resource",
+  source: "web-upload",
+  scope: "internal",
+  metadata: {
+    fileName: "notes.txt",
+    fileType: "text/plain",
+    lastModified: new Date().toISOString(),
+    fileSize: 1024,
+    groupName: ["project-alpha"]
+  }
+});
+```
+
+Copy
+
+## Two liner integration
+
+Alchemyst connects seamlessly with your current setup. Just one copy-paste command away.
+
+Huge repertoire of compatible tools.
+
+SOC-2 and HIPAA compliant with secure storage.
+
+Observability on runtime.
+
+[Integrate Alchemyst](https://getalchemystai.com/platform/signin)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## AI for Finance
+Usecases / Finance
+
+# Supercharge Your  Financial Operations
+
+Enhance fraud detection, streamline payments, and accelerate KYC processes with memory-powered AI that learns from every transaction.
+
+[Build Smarter Finance Apps](https://getalchemystai.com/platform/signin)
+
+![Finance AI Interface](https://getalchemystai.com/use-cases/fintech.gif)
+
+Challenges
+
+## Problems Faced
+
+Legacy financial systems struggle with efficiency, speed, and context retention.
+
+### Repetitive Fraud Checks
+
+Legacy systems reprocess the same entities/devices each time → redundant and expensive.
+
+### Rigid Payments Logic
+
+No memory of past issuer quirks or merchant behavior → higher declines, lost revenue.
+
+### Fragmented Case Data
+
+KYC, device, and transaction info live in silos → agents can't act fast or see full context.
+
+Features
+
+## Intelligent Financial Features
+
+Transform financial operations with memory-powered AI that learns and adapts from every transaction.
+
+![Fraud prevention system showing device and entity memory](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Ffintech%2Ffintech01.png&w=3840&q=75)
+
+### Persistent Memory for Fraud Prevention
+
+Remembers devices and prior entities → avoids duplicate checks → slashes token and infra costs.
+
+![Adaptive checkout system with learning capabilities](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Ffintech%2Ffintech02.png&w=3840&q=75)
+
+### Checkout that Learns Over Time
+
+Alchemyst retains issuer quirks and merchant-specific logic → faster, more accurate auths.
+
+![Smart credit routing system showing optimized checks](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Ffintech%2Ffintech03.png&w=3840&q=75)
+
+### Smart Credit & BNPL Routing
+
+No more sending full loan ledgers → eligibility checks become 70% cheaper and smarter.
+
+![Unified financial case management interface](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Ffintech%2Ffintech04.png&w=3840&q=75)
+
+### Unified View of Financial Cases
+
+KYC, payments, and user fingerprints stitched into one memory → faster resolution, fewer reruns.
+
+## Cost optimized. Out of the box.
+
+Run agents with more power with lesser cost.
+
+Does the heavy lifting of memory offloading by itself.
+
+Optimizes token expenditure with efficient prompts.
+
+Highly capable of handling longer tasks.
+
+[Get Started](https://getalchemystai.com/platform/signin)
+
+### Standard Agent
+
+Token Used (Avg)3M tokens
+
+High token usage, short context window
+
+### Alchemyst-enhanced Agent
+
+Token Used (Avg)1.8M tokens
+
+Shorter prompt optimized with Alchemyst
+
+Memory Connected
+
+JavaScript
+
+Python
+
+import MemoryClient
+
+from
+
+'@alchemyst/memory';
+
+const
+
+client =
+
+new
+
+MemoryClient('your-api-key');
+
+JavaScript
+
+Python
+
+import
+
+os
+
+from
+
+alchemyst.memory
+
+import
+
+MemoryClient
+
+client = MemoryClient('your-api-key')
+
+## Two liner integration
+
+Alchemyst connects seamlessly with your current setup. Just one copy-paste command away.
+
+Huge repertoire of compatible tools.
+
+SOC-2 and HIPAA compliant with secure storage.
+
+Observability on runtime.
+
+[Integrate Alchemyst](https://getalchemystai.com/platform/signin)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## AI for Healthcare
+Usecases / Healthcare
+
+# Transform Healthcare  with Intelligent Memory
+
+Enhance patient care with memory-powered AI that understands context, history, and individual needs.
+
+[Build Healthcare Solutions](https://getalchemystai.com/platform/signin)
+
+![EdTech AI Learning Interface](https://getalchemystai.com/use-cases/healthcare.gif)
+
+Challenges
+
+## Problems Faced in Healthcare
+
+Current AI healthcare solutions struggle with context retention and personalization, leading to suboptimal patient care experiences.
+
+### Very Generic Suggestions
+
+Agents can't retain context of previous conversations, leading to unreliable treatment plans suggested.
+
+### No Connection for Patients
+
+Patients have to give their details multiple times for each query.
+
+### No Progress Retention
+
+Sessions are not stored making past conversations lost.
+
+Features
+
+## Intelligent Healthcare Features
+
+Transform patient care with memory-powered AI that understands each patient's unique journey.
+
+![Patient context awareness interface showing comprehensive history](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fhealthcare%2Fhealthcare01.png&w=3840&q=75)
+
+### Full Context Awareness of Patient
+
+Retains the history, medications and preferences across all sessions.
+
+![Personalized medical suggestions interface](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fhealthcare%2Fhealthcare02.png&w=3840&q=75)
+
+### Patient-tailored Suggestions. At Scale.
+
+Suggests solutions custom-suited for the patient.
+
+![Patient interaction history and preferences tracking](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fhealthcare%2Fhealthcare03.png&w=3840&q=75)
+
+### Remembers Your Quirks
+
+Tracks past conversations to be more consistent with each patient's queries.
+
+![Treatment planning and scheduling interface](https://getalchemystai.com/_next/image?url=%2Fuse-cases%2Fhealthcare%2Fhealthcare04.png&w=3840&q=75)
+
+### Plans Ahead Treatments For You
+
+Remembers what's next in line for your treatment.
+
+## Cost optimized. Out of the box.
+
+Run agents with more power with lesser cost.
+
+Does the heavy lifting of memory offloading by itself.
+
+Optimizes token expenditure with efficient prompts.
+
+Highly capable of handling longer tasks.
+
+[Get Started](https://getalchemystai.com/platform/signin)
+
+### Standard Agent
+
+Token Used (Avg)3M tokens
+
+High token usage, short context window
+
+### Alchemyst-enhanced Agent
+
+Token Used (Avg)1.8M tokens
+
+Shorter prompt optimized with Alchemyst
+
+Memory Connected
+
+JavaScript
+
+Python
+
+import MemoryClient
+
+from
+
+'@alchemyst/memory';
+
+const
+
+client =
+
+new
+
+MemoryClient('your-api-key');
+
+JavaScript
+
+Python
+
+import
+
+os
+
+from
+
+alchemyst.memory
+
+import
+
+MemoryClient
+
+client = MemoryClient('your-api-key')
+
+## Two liner integration
+
+Alchemyst connects seamlessly with your current setup. Just one copy-paste command away.
+
+Huge repertoire of compatible tools.
+
+SOC-2 and HIPAA compliant with secure storage.
+
+Observability on runtime.
+
+[Integrate Alchemyst](https://getalchemystai.com/platform/signin)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Understanding Context in LLMs
+### Table of Contents
+
+#### Share this article
+
+[Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)[Share on Twitter](https://twitter.com/intent/tweet?text=Context%20Is%20Everything%3A%20The%20Science%20of%20Embeddings%20in%20LLMs&url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)[Share on WhatsApp](https://wa.me/?text=Context%20Is%20Everything%3A%20The%20Science%20of%20Embeddings%20in%20LLMs%20-%20https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)
+
+# Context Is Everything: The Science of Embeddings in LLMs
+
+![Context Is Everything: The Science of Embeddings in LLMs](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FChat_GPT_Image_Oct_25_2025_05_14_32_PM_d113c1800d.png&w=1920&q=75)
+
+![Rishit Murarka](https://getalchemystai.com/_next/image?url=%2Flogo.png&w=48&q=75)Written by Rishit Murarka
+
+![](https://getalchemystai.com/_next/image?url=%2Flogo.png&w=48&q=75)Reviewed by
+
+3 min read
+
+Published at October 25, 2025 (4w ago)
+
+Updated on October 25, 2025 (4w ago)
+
+## Summary
+
+How context embeddings give LLMs true understanding of language.
+
+Table of Contents
+
+### Table of Contents
+
+#### Share this article
+
+[Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)[Share on Twitter](https://twitter.com/intent/tweet?text=Context%20Is%20Everything%3A%20The%20Science%20of%20Embeddings%20in%20LLMs&url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)[Share on WhatsApp](https://wa.me/?text=Context%20Is%20Everything%3A%20The%20Science%20of%20Embeddings%20in%20LLMs%20-%20https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fcontext-embeddings-in-llms)
+
+When you chat with an AI like ChatGPT, have you ever wondered:
+
+" _H_ _ow does it know what I’m talking about? "_
+
+The answer lies in **context embeddings,** which are the mathematical heartbeat of every Large Language Model (LLM).
+
+Embeddings turn your words, sentences, and even emotions into **vectors, multidimensional representations of meaning**. These vectors help the model understand _relationships_, _intent_, and _context_, enabling it to respond intelligently instead of randomly.
+
+### **Language as Geometry**
+
+Large Language Models (LLMs) like GPT, Claude, and Gemini don’t understand words; they understand **relationships** between them.
+
+Using embeddings, every token (a small chunk of text) is transformed into a **vector**, a mathematical point in a high-dimensional space.
+
+Two words with similar meanings (like _king_ and _queen_) end up close together in that space, while unrelated words (like _banana_ and _philosophy_) are far apart.
+
+This is how the model learns that:
+
+`king - man + woman ≈ queen`
+
+Language becomes math.
+
+Meaning becomes geometry.
+
+![How-Embeddings-Work.jpg](https://charming-crown-5c60ef85ae.media.strapiapp.com/How_Embeddings_Work_0e879ed1bf.jpg)
+
+**Explanation:** This diagram demonstrates how any kind of media (text, audio, video, image) can be converted to simply a set of real numbers, which we call a high-dimensional vector.
+
+**The Model Doesn't "Know" - It "Infers" from Context**
+
+Imagine asking ChatGPT:
+
+> Who is the President?
+
+If this question stands alone, the model has to rely on its **pre-trained knowledge** and patterns it learned during training to infer an answer.
+
+But if you say:
+
+> We were talking about France. Who is the President?
+
+Now, the context changes the entire meaning of your question.
+
+The model embeds both sentences, finds relational meaning, and realises that _you mean the President of France_.
+
+### Context Defines Relevance and Focus
+
+In a human conversation, you automatically know what the topic is because of shared context.
+
+LLMs mimic this by using **attention mechanisms,** which are mathematical functions that decide which parts of the context to “focus” on more strongly.
+
+For example, if the model is answering:
+
+> What color was the car that Joe drove to the conference?
+
+It doesn’t scan every token equally. It pays more attention to tokens like _“Joe,” “car,”_ and _“conference.”_
+
+The embedding of the entire passage helps it _weigh_ these words properly to generate an accurate answer.
+
+That’s what makes the model’s response coherent: **attention powered by contextual embeddings.**
+
+Let's consider the sentence "Multiple river banks in nature" and look at the diagram of the embedding of the word bank with respective to other words/tokens:
+
+![1n_t-kLuJpHy9WrnSA46kPw.webp](https://charming-crown-5c60ef85ae.media.strapiapp.com/1n_t_k_Lu_Jp_Hy9_Wrn_SA_46k_Pw_bd69be0b76.webp)
+
+**Explanation:** This diagram depicts how the word "bank" in the sentence depends and changes its context based on the other words present.
+
+#### Conclusion
+
+Embeddings are the invisible bridge between **language and logic**. They allow machines to translate the fluidity of human expression into mathematical understanding. But what truly makes an LLM intelligent isn’t just its ability to store information, but it’s its ability to **contextualise** it.
+
+This is what we are solving for at [**Alchemyst AI**](https://getalchemystai.com/platform/signin). If you need context connected across data sources for your AI agents to be truly versatile, we've got you covered! We mimic the neural cortex of the brain that is responsible for understanding the world in humans - but grounded deterministically so that you don't miss a beat if (or when) your agent falters.
+
+If you're an enterprise and are curious about how we can help, feel free to [**book a demo**](https://cal.com/anuran/chat-with-anuran)!
+
+### Comments
+
+## Recently Published
+
+[![Introducing the Alchemyst Chrome Extension](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FGemini_Generated_Image_24sgp824sgp824sg_e5114ada18.png&w=3840&q=75)\\
+\\
+Non-technical•Nov 3, 2025•0 Comments•6 min read\\
+\\
+**Introducing the Alchemyst Chrome Extension** \\
+\\
+Now you can carry AI context across all AI tools, or share it with others?](https://getalchemystai.com/blog/introducing-alchemyst-chrome-extension)
+
+Ready to build your next AI agent?
+
+[Get Started](https://getalchemystai.com/platform/signin)
+
+✕
+
+### Stay in the loop
+
+Share your details and we’ll follow up with relevant updates.
+
+First Name \*
+
+Last Name
+
+Email Address \*
+
+LinkedIn profile URL \*
+
+Submit
+
+## Alchemyst Chrome Extension
+### Table of Contents
+
+#### Share this article
+
+[Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)[Share on Twitter](https://twitter.com/intent/tweet?text=Introducing%20the%20Alchemyst%20Chrome%20Extension&url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)[Share on WhatsApp](https://wa.me/?text=Introducing%20the%20Alchemyst%20Chrome%20Extension%20-%20https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)
+
+# Introducing the Alchemyst Chrome Extension
+
+![Introducing the Alchemyst Chrome Extension](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FGemini_Generated_Image_24sgp824sgp824sg_e5114ada18.png&w=1920&q=75)
+
+![Khushi Mhasange](https://getalchemystai.com/_next/image?url=%2Flogo.png&w=48&q=75)Written by Khushi Mhasange
+
+![Anuran Roy](https://getalchemystai.com/_next/image?url=%2Flogo.png&w=48&q=75)Reviewed by Anuran Roy
+
+6 min read
+
+Published at November 3, 2025 (2w ago)
+
+Updated on November 3, 2025 (2w ago)
+
+## Summary
+
+Now you can carry AI context across all AI tools, or share it with others?
+
+Table of Contents
+
+### Table of Contents
+
+#### Share this article
+
+[Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)[Share on Twitter](https://twitter.com/intent/tweet?text=Introducing%20the%20Alchemyst%20Chrome%20Extension&url=https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)[Share on WhatsApp](https://wa.me/?text=Introducing%20the%20Alchemyst%20Chrome%20Extension%20-%20https%3A%2F%2Fgetalchemystai.com%2Fblog%2Fintroducing-alchemyst-chrome-extension)
+
+# **Alchemyst AI - Chrome Extension for AI Models.**
+
+## The Challenge of Stateless LLMs: Why AI Needs Memory
+
+When you chat with AI systems like ChatGPT or Claude, you might notice something frustrating: they often forget what you just talked about. This isn't because they're being difficult - it's because Large Language Models are inherently stateless. Every time you send a new message, they essentially start from scratch.
+
+This statelessness creates real problems for users. Without access to past interactions, these AI systems provide generic answers rather than personalized ones. They might contradict themselves from one message to the next or ask you to repeat information you've already provided.
+
+Many users resort to awkward workarounds, like constantly copy-pasting previous parts of their conversation to maintain context. This makes AI conversations inefficient and sometimes downright frustrating - especially for complex tasks that require sustained attention.
+
+Persistent Memory AI capabilities aren't just a nice-to-have feature, they're essential for making AI interactions worthwhile. Without memory, AI can't maintain short-term continuity in a conversation, hold onto important domain knowledge, or remember your preferences from one session to the next. It's like talking to someone with severe short-term memory loss: potentially helpful, but requiring constant repetition.
+
+![meme.png](https://charming-crown-5c60ef85ae.media.strapiapp.com/meme_f97dabb02f.png)
+
+[**​**](https://docs.getalchemystai.com/tutorials/chrome-extension#step-by-step-setup-%3A)
+
+[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#step-by-step-setup-%3A)
+
+## Introducing Alchemyst AI's Chrome Extension
+
+This is where Alchemyst AI's Chrome Extension comes in. Instead of treating "AI memory" as an abstract concept, Alchemyst AI provides a practical, drop-in solution that works with the web-based LLMs you already use.
+
+The system offers smart capture and classification features that let you save important information with minimal effort. With a simple shortcut, you can save snippets or entire conversation as either long-lived "Memory" (for facts and preferences you want the AI to always remember) or task-scoped "Context" ( for information relevant to your current project in the form of docs etc on \[platform\](https://platform.getalchemystai.com)).
+
+What makes Alchemyst AI particularly clever is its intelligent context management. Rather than overwhelming the AI with every piece of saved information, it carefully filters, trims, and formats only the most relevant content to stay within token limits while maximizing useful context.
+
+Perhaps most importantly, Alchemyst AI works across different AI platforms.
+
+### Setup Alchemyst AI Chrome Extension
+
+Getting started with Alchemyst AI's Memory AI technology is surprisingly straightforward. To add the Alchemyst AI Chrome Extension to your browser, simply visit the [**Chrome Web Store**](https://docs.getalchemystai.com/integrations/extensions/chrome) and click "Add to Chrome." The installation takes just seconds, adding a powerful memory layer to your AI interactions with minimal effort. For a detailed setup visit [**Docs**](https://docs.getalchemystai.com/integrations/extensions/chrome)
+
+[**​**](https://docs.getalchemystai.com/tutorials/chrome-extension#how-it-works-%3A)
+
+[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#how-it-works-%3A)
+
+### Save conversation as context
+
+To take it a step further you can use save context button to save the current chat and use it as context across models.
+
+### How it works
+
+Consider this scenario, you are stuck solving an error you go to gpt explain your code, error, solutions you have tried and ask what are you missing out on. Gpt gives you some steps to try you try those, still doesn’t work.
+
+Frustrated you switch to claude, now the actual problem starts, re-explain your code, error, solutions you have tried and on top of that, the chat with chatgpt, not very efficient.
+
+So here we come to your rescue, just use the save context button, and switch effortlessly, it’s that EASY.
+
+![chrome-alchemyst.png](https://charming-crown-5c60ef85ae.media.strapiapp.com/chrome_alchemyst_43a58eb164.png)
+
+[​](https://docs.getalchemystai.com/tutorials/chrome-extension#add-memory-%3A)
+
+[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#add-memory-%3A)
+
+### Add Memory
+
+To use memory you need to add memory, to do that just drag and drop any document you would like to store as memory, can be a pdf, text file, json file, doc file. Upload here : [https://platform.getalchemystai.com/context](https://platform.getalchemystai.com/context)
+
+[​](https://docs.getalchemystai.com/tutorials/chrome-extension#use-cases-%3A)
+
+[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#use-cases-%3A)
+
+### Use Cases
+
+As you are all set to use the extension let’s now look and some of the cool stuff you can do with it.
+
+[​](https://docs.getalchemystai.com/tutorials/chrome-extension#for-everyone-%3A)
+
+[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#for-everyone-%3A)
+
+## For general use :
+
+### 1\. Say Goodbye to AI Amnesia (IYKYK)
+
+The Problem: Your AI ghosts you every time you open a new tab.
+
+The Fix: Tired of explaining your whole life story (preferences, fitness goals, or coffee order) to a chatbot? With Alchemyst AI's memory, your model keeps the receipts. It remembers your whole vibe, so every chat feels like talking to a friend who actually knows you.
+
+### 2\. Your Certified Study Buddy
+
+The Problem: Trying to learn Python but the AI starts every lesson at "What is a variable?"
+
+The Fix: Whether you're learning a new language or cramming for exams, the AI remembers your learning journey. It recalls your weak areas, builds on past questions, and serves up the next-level content you need. No more starting from scratch, it's continuous learning, period.
+
+### 3\. Personal Journal & Mindset Check
+
+The Problem: Your Notes app is a chaotic mess of random thoughts.
+
+The Fix: Use the AI's memory like a secure digital diary. Drop your daily reflections and let the model handle the analysis. It can summarize your whole week, give you a vibe check on your writing tone, and deliver deep insights on how your mindset has evolved. It’s the ultimate self-reflection cheat code.
+
+### 4\. Recommendations That Hit Different
+
+The Problem: Netflix suggests the same five movies you hated last week.
+
+The Fix: Generic suggestions? We don't know her. Every recommendation - from recipes and books to podcasts, gets smarter with context. The AI remembers what you actually liked, disliked, and skipped, delivering personalized results that are always on point.
+
+## For developers :
+
+### 1\. Your AI Coding Partner, Finally Un-Stuck
+
+The Problem: Having to paste your package.json and API references into your ai model every. single. time.
+
+The Fix: Devs, rejoice! Once the AI remembers your stack, framework, and project setup, it stops asking basic questions. It can reference project files and previous API usage (\[reference to files, APIs\]) to help you write code faster and with far fewer corrections. It’s like working with a teammate who’s always caught up.
+
+### 2\. Smarter Debugging Sessions
+
+The Problem: Debugging starts with the classic "Let's review the error log again."
+
+The Fix: The AI recalls your prior error logs, the fixes you tried (and failed at), and the one weird workaround that finally worked. You can pick up precisely where you left off, turning endless loops into solutions that work. No more "start from zero" debugging.
+
+### 3\. Consistent Docs That Don't Require Handholding
+
+The Problem: Your README.md sounds different from your commit messages.
+
+The Fix: Write one good reference doc and let the AI remember your team’s style and project tone (\[reference to writing style and project tone\]). It’s a game-changer for generating consistent documentation, commit messages, and changelogs without constantly needing a style guide.
+
+### 4\. Shared Team Memory
+
+The Problem: New hires spend a week just getting context.
+
+The Fix: Teams can share a single memory setup for a project, meaning every developer gets the same context inside the AI model. This is peak efficiency for consistent onboarding, shared project knowledge, and communication across the entire team. No context switching needed.
+
+We know you guys are creative and will come up with more interesting ideas and use cases customized for your needs, do tell us how your are gonna use the extension.
+
+### Comments
+
+## Recently Published
+
+[![Context Is Everything: The Science of Embeddings in LLMs](https://getalchemystai.com/_next/image?url=https%3A%2F%2Fcharming-crown-5c60ef85ae.media.strapiapp.com%2FChat_GPT_Image_Oct_25_2025_05_14_32_PM_d113c1800d.png&w=3840&q=75)\\
+\\
+Technical•Oct 25, 2025•0 Comments•3 min read\\
+\\
+**Context Is Everything: The Science of Embeddings in LLMs** \\
+\\
+How context embeddings give LLMs true understanding of language.](https://getalchemystai.com/blog/context-embeddings-in-llms)
+
+Ready to build your next AI agent?
+
+[Get Started](https://getalchemystai.com/platform/signin)
