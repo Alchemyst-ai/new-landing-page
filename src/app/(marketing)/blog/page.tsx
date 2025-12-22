@@ -40,7 +40,7 @@ export default async function Blog() {
             The Alchemyst AI Blog
           </h1>
           <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
-            Stay ahead of the curve using context and agentic use cases
+            Journaling how we make Alchemyst AI the best and most trusted context layer in the world.
           </p>
         </div>
       </div>
