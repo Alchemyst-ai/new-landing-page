@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Eye, Link as LinkIcon, ExternalLink } from "lucide-react";
+import { ExternalLink, Eye, Link as LinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,14 +14,14 @@ export default function VoiceSignInPage() {
       <div className="w-full lg:w-2/5 flex items-center justify-center min-h-screen p-8">
         <div className="max-w-[600px] w-full">
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
-            Transform your business with 
+            Transform your business with
             <span className="text-blue-400"> AI Voice Agents</span>
           </h1>
-          
+
           <p className="text-lg text-white/70 mb-6 leading-relaxed">
             Create intelligent voice campaigns, automate customer interactions, and scale your business with our powerful AI voice agents. Experience seamless conversations that convert prospects into customers.
           </p>
-          
+
           <div className="flex flex-col gap-3 text-white/60">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-blue-400 rounded-full" />
@@ -51,10 +51,10 @@ export default function VoiceSignInPage() {
 
           <div className="flex flex-col gap-6 items-center">
             <Link href="/" className="flex items-center">
-              <Image 
-                src="/signlogo.png" 
-                alt="Alchemyst AI Logo" 
-                width={150} 
+              <Image
+                src="/signlogo.png"
+                alt="Alchemyst AI Logo"
+                width={150}
                 height={115}
                 className="w-[150px] h-[115px] object-contain"
               />
@@ -112,7 +112,7 @@ export default function VoiceSignInPage() {
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Connect to Voice Dashboard
               </Button>
-              
+
               <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 w-full">
                 <div className="flex items-center justify-center gap-2">
                   <ExternalLink className="h-3 w-3 text-blue-400" />
@@ -135,13 +135,12 @@ export default function VoiceSignInPage() {
                   </h3>
                   <p className="text-xs text-white/60">
                     Head over to{" "}
-                    <a 
-                      href="https://platform.getalchemystai.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                    <a
+                      href="/platform/signin?utm_source=voice_platform&utm_campaign=voice_signin_page&utm_medium=website&utm_content=head_over_to"
+                      target="_blank"
                       className="text-blue-400 hover:text-blue-300 underline"
                     >
-                      https://platform.getalchemystai.com
+                      our Context Platform
                     </a>
                     , sign up on the platform, and get your API key from the Settings page!
                   </p>
@@ -159,4 +158,4 @@ export default function VoiceSignInPage() {
       </div>
     </div>
   );
-} 
+}

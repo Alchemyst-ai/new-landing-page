@@ -313,7 +313,7 @@ export function Header() {
             <DiscordCommunityButton />
             {typeof window !== "undefined" && window.location.pathname.includes("/blog/") ? (
             <Link
-              href="https://platform.getalchemystai.com/auth?utm_source=blog&utm_medium=article&utm_campaign=topbar_cta&utm_content=topbar_signup_cta"
+              href="/platform/signin?utm_source=blog&utm_medium=article&utm_campaign=topbar_cta&utm_content=topbar_signup_cta"
             >
               <Button variant="ghost"
               className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors"
