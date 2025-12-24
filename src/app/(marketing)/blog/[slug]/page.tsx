@@ -49,7 +49,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata | undefined> {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
   const json: {data: ArticleData[]} = await res.json();
   const item = (json?.data?.[0]) || {};
   const title = item.title || "Article";
@@ -88,7 +88,7 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
   const json = await res.json();
   const item = (json?.data?.[0]) || null;
   if (!item) {
@@ -97,7 +97,7 @@ export default async function Page(props: {
   const updatedOn = item.updatedAt || item.publishedAt;
 
   // Fetch recent articles from Strapi and exclude current one
-  const listRes = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const listRes = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const listJson = await listRes.json();
   const recentPosts = (listJson?.data ?? [])
     .filter((p: any) => p.slug !== item.slug)

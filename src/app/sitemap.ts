@@ -82,7 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch blog posts from your API
   let blogPosts: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+    const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
     if (res.ok) {
       const json = await res.json();
       const articles = json?.data || [];

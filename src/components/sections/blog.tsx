@@ -3,7 +3,7 @@ import BlogCard from "@/components/blog-card";
 import { Section } from "@/components/section";
 
 export async function Blog() {
-  const res = await fetch("/api/articles");
+  const res = await fetch("/api/articles", { next: { revalidate: 1800 } });
   const json = await res.json();
   const items = json.data as Array<any>;
 

@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { estimateReadTimeFromHtml } from "@/lib/utils";
+import { NextResponse } from "next/server";
 
 function normalizeBaseUrl(raw: string) {
   return raw.replace(/\/+$/, "");
@@ -18,7 +18,7 @@ async function getArticleBySlug(slug: string) {
   const headers: Record<string, string> = {};
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
-  const res = await fetch(url, { headers });
+  const res = await fetch(url, { headers, next: { revalidate: 1800 } });
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     const err = new Error(`Failed to fetch article (${res.status}): ${text}`) as Error & {
