@@ -15,6 +15,7 @@ import { useMemo, useState } from "react";
 const BYTES_PER_MB = 1000 * 1000;
 const CHARS_PER_TOKEN = 3;
 const TOKENS_PER_MB = BYTES_PER_MB / CHARS_PER_TOKEN;
+const M_TOKENS_PER_MB = TOKENS_PER_MB / 1000 * 1000;
 
 type Tier = "b2c" | "tier1" | "tier2" | "tier3";
 type ContextUnit = "token" | "mb";
@@ -53,16 +54,16 @@ export const ACTION_COSTS_IN_TOKENS = {
   },
 
   "context.upload": {
-    tier1: (1 / 10) / TOKENS_PER_MB,
-    tier2: (8 / 100) / TOKENS_PER_MB,
-    tier3: (3 / 100) / TOKENS_PER_MB,
-    b2c: (2 / 10) / TOKENS_PER_MB,
+    tier1: (1 / 10) * M_TOKENS_PER_MB,
+    tier2: (8 / 100) * M_TOKENS_PER_MB,
+    tier3: (3 / 100) * M_TOKENS_PER_MB,
+    b2c: (2 / 10) * M_TOKENS_PER_MB,
   },
   "context.search": {
-    tier1: (5 / 1000) / TOKENS_PER_MB,
-    tier2: (45 / 10000) / TOKENS_PER_MB,
-    tier3: (3 / 1000) / TOKENS_PER_MB,
-    b2c: (7 / 1000) / TOKENS_PER_MB,
+    tier1: (5 / 1000) * M_TOKENS_PER_MB,
+    tier2: (45 / 10000) * M_TOKENS_PER_MB,
+    tier3: (3 / 1000) * M_TOKENS_PER_MB,
+    b2c: (7 / 1000) * M_TOKENS_PER_MB,
   },
 };
 
