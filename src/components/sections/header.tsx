@@ -2,7 +2,7 @@
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu, Stars, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -154,8 +154,19 @@ export function Header() {
           </Link>
         </div>
 
+
         {/* Desktop Navigation - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-6">
+
+        <Link
+            href="/playground"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1 flex gap-2 align-center">
+              Try Alchemyst <Stars className="w-4 h-4 mt-1 group-hover:text-yellow-400"/>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+        </Link>
           {/* Use Cases Dropdown */}
           <div
             ref={useCasesRef}

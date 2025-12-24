@@ -1,0 +1,506 @@
+"use client"
+
+import {fetchWithRewrites} from "../../utils/fetchWithRewrites"
+import { useChat } from "@ai-sdk/react"
+import { DefaultChatTransport, UIMessage } from "ai"
+import { Key, Loader2 } from "lucide-react"
+import { useEffect, useState } from "react"
+import { toast } from "sonner"
+import { Button } from "../../components/ui/button"
+import { ChatSidebar } from "../../components/playground/ChatHistory"
+import { ChatInput } from "../../components/playground/ChatInput"
+import { ChatMessages } from "../../components/playground/ChatMessages"
+import { ChatTopBar } from "../../components/playground/ChatTopBar"
+import { ContextBar } from "../../components/playground/ContextBar"
+
+
+export interface ChatSession {
+  id: string;
+  title: string;
+  createdAt: Date;
+  updatedAt: Date;
+  messageCount: number;
+}
+
+interface DataNotification {
+  message: string;
+  level: 'info' | 'success' | 'error';
+}
+
+export default function ChatPlayground() {
+
+  const [isContextBarOpen, setIsContextBarOpen] = useState(false)
+  const [magicKey, setMagicKey] = useState<string[]>([])
+  const [uploadedFiles, setUploadedFiles] = useState<string[]>([])
+  const [uploadedImages, setUploadedImages] = useState<{ name: string; url: string }[]>([])
+
+  const [groupNames, setGroupNames] = useState<string[]>(["default"])
+  const [selectedGroup, setSelectedGroup] = useState("default")
+  const [aiModel, setAiModel] = useState("gemini-2.5-flash-lite")
+
+  const [sessions, setSessions] = useState<ChatSession[]>([])
+  const [currentSessionId, setCurrentSessionId] = useState('new');
+  const [userData, setUserData] = useState<{ fullName?: string } | null>(null);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [loadingChat, setLoadingChat] = useState(false);
+
+  const { messages, sendMessage, status, stop, setMessages } = useChat<UIMessage>({
+    transport: new DefaultChatTransport({
+      api: `/api/v1/chat/landing/playground`, body: () => ({
+        chatId: sessionStorage.getItem('currentChatId'),
+        userApiKey: localStorage.getItem('userApiKey')
+      }),
+      fetch: fetchWithRewrites,
+    }),
+    onData: (part) => {
+      if (part.type === 'data-notification') {
+        const dataPart = part.data as DataNotification;
+
+        switch (dataPart.level) {
+          case 'success':
+            toast.success(dataPart.message);
+            break;
+          case 'error':
+            toast.error(dataPart.message);
+            break;
+          default:
+            toast.info(dataPart.message);
+            break;
+        }
+      }
+    },
+    onError: (err) => {
+      const errorData = JSON.parse(err.message);
+      console.error("Chat Error:", errorData.error);
+      toast.error(errorData.error || "Something went wrong, make sure your api key is valid.")
+    }
+  });
+
+  const resetMessages = () => {
+    setMessages([]);
+  };
+
+
+  useEffect(() => {
+    const loadChatHistories = async () => {
+      try {
+        const res = await fetchWithRewrites(`/api/v1/chat/history/fetch`)
+        if (!res.ok) throw new Error("Failed to load chat histories")
+
+        const data = await res.json();
+
+        const formattedSessions: ChatSession[] = data.chatHistory.map((chat: any) => ({
+          id: chat._id,
+          title: chat.title || "Untitled Chat",
+          createdAt: new Date(chat.createdAt),
+          updatedAt: new Date(chat.updatedAt),
+          messageCount: chat.messages ? chat.messages.length : 0,
+        }));
+
+        setSessions(formattedSessions);
+
+        if (formattedSessions.length > 0 && !currentSessionId) {
+          setCurrentSessionId(formattedSessions[0].id)
+        }
+      } catch (error) {
+        console.error("Error loading chat histories:", error)
+      }
+    }
+
+    // loadChatHistories()
+
+    // if (sessionStorage.getItem("currentChatId") && sessionStorage.getItem("currentChatId") !== "new") {
+    //   const chatId = sessionStorage.getItem("currentChatId") || "new";
+    //   handleSelectSession(chatId);
+    // }
+  }, [])
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const res = await fetchWithRewrites("/api/v1/groups/view")
+        if (!res.ok) {
+          throw new Error("Failed to fetch group names")
+        }
+        const data = await res.json()
+        if (data.groups && Array.isArray(data.groups)) {
+          setGroupNames(data.groups)
+          if (!data.groups.includes("default")) {
+            setGroupNames(["default", ...data.groups])
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching group names:", err)
+        setGroupNames(["default"])
+      }
+    }
+
+    // fetchGroups()
+  }, [])
+
+  const handleSendMessage = async (content: string) => {
+    const contextData: Record<string, any> = {}
+
+    if (magicKey) {
+      contextData.magicKey = magicKey
+    }
+
+    if (uploadedFiles.length > 0) {
+      contextData.uploadedFiles = uploadedFiles
+    }
+
+    if (uploadedImages.length > 0) {
+      contextData.uploadedImages = uploadedImages
+    }
+
+    if (selectedGroup) {
+      contextData.groupName = selectedGroup
+    }
+
+    if (aiModel) {
+      contextData.model = aiModel
+    }
+
+    // if (currentSessionId === "new" || sessionStorage.getItem("currentChatId") === "new") {
+    //   await createNewchat();
+    // }
+
+    const resolvedAttachments = await Promise.all(
+      uploadedImages.map(async (img) => {
+        const base64Data = await convertBlobToBase64(img.url);
+
+        return {
+          name: img.name,
+          url: base64Data,
+          contentType: "image/*",
+          type: "file" as const,
+          mediaType: "image/*",
+        };
+      })
+    );
+
+    sendMessage({
+      text: content,
+      metadata: contextData,
+      files: resolvedAttachments,
+    });
+
+    setUploadedImages([]);
+    setMagicKey([]);
+  }
+
+  const convertBlobToBase64 = async (blobUrl: string): Promise<string> => {
+    const response = await fetch(blobUrl);
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
+
+  const handleFilesUpload = (files: FileList) => {
+    const fileNames = Array.from(files).map((file) => file.name)
+    setUploadedFiles((prev) => [...prev, ...fileNames])
+  }
+
+  const handleImagesUpload = (images: { name: string; url: string }[]) => {
+    setUploadedImages((prev) => [...prev, ...images])
+  }
+
+  const handleRemoveFile = (index: number) => {
+    setUploadedFiles((prev) => prev.filter((_, i) => i !== index))
+  }
+
+  const handleRemoveImage = (index: number) => {
+    setUploadedImages((prev) => prev.filter((_, i) => i !== index))
+  }
+
+  const handleNewChat = () => {
+    const newSession: ChatSession = {
+      id: crypto.randomUUID(),
+      title: "New Chat",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      messageCount: messages.length,
+    }
+    setSessions((prev) => [newSession, ...prev])
+    setCurrentSessionId("new")
+    sessionStorage.setItem('currentChatId', "new");
+
+    resetMessages()
+    setMagicKey([])
+    setUploadedFiles([])
+    setUploadedImages([])
+    setIsContextBarOpen(false)
+  }
+
+  const getTimeBasedGreeting = (): string => {
+    const hour = new Date().getHours();
+
+    if (hour >= 5 && hour < 12) {
+      return 'Good morning';
+    } else if (hour >= 12 && hour < 17) {
+      return 'Good afternoon';
+    } else if (hour >= 17 && hour < 22) {
+      return 'Good evening';
+    } else {
+      return 'Hey Night Owl';
+    }
+  };
+
+  const handleSelectSession = async (sessionId: string) => {
+    if (sessionId === "new") {
+      return;
+    }
+    setLoadingChat(true);
+    setCurrentSessionId(sessionId);
+    sessionStorage.setItem("currentChatId", sessionId);
+    try {
+      const res = await fetchWithRewrites(`/api/v1/chat/${sessionId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      if (!res.ok) throw new Error("Failed to load chat histories")
+
+      const data = await res.json();
+      const history = data.chatSession.messages || [];
+
+      setMessages(history);
+
+      console.log("Chat state synchronized for session:", sessionId);
+      setLoadingChat(false);
+
+    } catch (error) {
+      setLoadingChat(false);
+      console.error("Error loading chat histories:", error)
+    }
+
+  }
+
+  const handleDeleteSession = async (sessionId: string) => {
+
+    const confirmed = window.confirm("Are you sure you want to delete this conversation? This action cannot be undone.");
+
+    if (!confirmed) {
+      return;
+    }
+    try {
+      const res = await fetchWithRewrites(`/api/v1/chat/${sessionId}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) throw new Error("Failed to delete chat");
+
+      setSessions((prev) => prev.filter((s) => s.id !== sessionId));
+
+      if (currentSessionId === sessionId) {
+        setCurrentSessionId('new');
+        setMessages([]);
+      }
+
+      console.log("Chat purged successfully.");
+
+    } catch (error) {
+      console.error("Error deleting chat:", error);
+      alert("Could not delete chat. Please try again.");
+    }
+  }
+
+  const handleToggleHistory = () => {
+    setIsHistoryOpen(!isHistoryOpen);
+  };
+
+  async function createNewchat() {
+    console.log("Create New Chat");
+    const saveChatResponse = await fetchWithRewrites(`/api/v1/chat/new/create`, {
+      method: 'GET',
+    });
+    if (!saveChatResponse.ok) {
+      console.error("Failed to save chat history:", await saveChatResponse.text());
+      return;
+    }
+    const responseData = await saveChatResponse.json();
+    const newChatId = responseData.chatId;
+    if (newChatId) {
+      sessionStorage.setItem('currentChatId', newChatId);
+      setCurrentSessionId(newChatId);
+      console.log(`Successfully saved new chat ID: ${newChatId}`);
+    } else {
+      console.error("No chat ID found.");
+    }
+  }
+
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetchWithRewrites('/api/auth/status', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch user data:', error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+
+  const [apiKey, setApiKey] = useState('');
+
+  const [isSaved, setIsSaved] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const savedKey = localStorage.getItem('user-api-key');
+    if (savedKey) setApiKey(savedKey);
+  }, [isModalOpen]);
+
+  const handleSave = () => {
+    localStorage.setItem('userApiKey', apiKey.trim());
+    setIsSaved(true);
+    toast.success('API Key updated');
+    setTimeout(() => {
+      setIsSaved(false);
+      setIsModalOpen(false);
+    }, 1000);
+  };
+
+  const LockedInputOverlay = ({ onUnlock }: { onUnlock: () => void }) => (
+    <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 backdrop-blur-[2px] rounded-xl border border-dashed border-primary/30 transition-all">
+      <Button
+        variant="outline"
+        onClick={onUnlock}
+        className="gap-2 shadow-lg hover:bg-primary hover:text-primary-foreground"
+      >
+        <Key size={16} />
+        Enter API Key to Start Chatting
+      </Button>
+    </div>
+  );
+
+  const isChatEmpty = messages.length === 0
+
+  return (
+    <div className="flex max-w-auto h-screen bg-background">
+      <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
+        <div className="flex-shrink-0 mt-2 items-center gap-3">
+          <ChatTopBar onOpenHistory={handleToggleHistory}
+            apiKeyProps={{
+              apiKey,
+              setApiKey,
+              open: isModalOpen,
+              setOpen: setIsModalOpen,
+              onSave: handleSave
+            }}
+          />
+        </div>
+
+        <div className="flex flex-1 flex-col overflow-hidden">
+          {loadingChat && (
+            <div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
+              <div className="flex flex-col items-center gap-2">
+                <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                <p className="text-sm font-medium animate-pulse">Loading conversation...</p>
+              </div>
+            </div>
+          )}
+          {!localStorage.getItem("userApiKey") && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
+          {!isChatEmpty ? (
+            <>
+              {!loadingChat && (<ChatMessages messages={messages} isStreaming={status === "streaming"} />)}
+
+              <div className="bg-background">
+                <ContextBar
+                  isOpen={isContextBarOpen}
+                  magicKey={magicKey}
+                  setMagicKey={setMagicKey}
+                  onFilesUpload={handleFilesUpload}
+                  uploadedFiles={uploadedFiles}
+                  onImagesUpload={handleImagesUpload}
+                  uploadedImages={uploadedImages}
+                  onRemoveFile={handleRemoveFile}
+                  onRemoveImage={handleRemoveImage}
+                />
+
+                <ChatInput
+                  onSendMessage={handleSendMessage}
+                  isContextBarOpen={isContextBarOpen}
+                  onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
+                  isStreaming={status === "streaming"}
+                  onStop={stop}
+                  selectedGroup={selectedGroup}
+                  onGroupChange={setSelectedGroup}
+                  groupNames={groupNames}
+                  aiModel={aiModel}
+                  onModelChange={setAiModel}
+                />
+              </div>
+            </>
+          ) : (
+            <div className={`flex flex-1 items-center justify-center p-8`}>
+              <div className="w-full max-w-2xl space-y-6">
+                <div className="text-center space-y-2">
+                  {!loadingChat && (<div className="text-center mb-8">
+                    <h1 className="text-4xl font-medium mb-2">
+                      {getTimeBasedGreeting()}{userData?.fullName ? `, ${userData.fullName}` : ''}!
+                    </h1>
+                    <p className="text-muted-foreground">Ask me anything or use the context bar for advanced features</p>
+                  </div>)}
+                </div>
+
+                <div className="space-y-4">
+                  <ContextBar
+                    isOpen={isContextBarOpen}
+                    magicKey={magicKey}
+                    setMagicKey={setMagicKey}
+                    onFilesUpload={handleFilesUpload}
+                    uploadedFiles={uploadedFiles}
+                    onImagesUpload={handleImagesUpload}
+                    uploadedImages={uploadedImages}
+                    onRemoveFile={handleRemoveFile}
+                    onRemoveImage={handleRemoveImage}
+                  />
+
+                  <ChatInput
+                    onSendMessage={handleSendMessage}
+                    isContextBarOpen={isContextBarOpen}
+                    onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
+                    isStreaming={status === "streaming"}
+                    onStop={stop}
+                    isFloating={true}
+                    selectedGroup={selectedGroup}
+                    onGroupChange={setSelectedGroup}
+                    groupNames={groupNames}
+                    aiModel={aiModel}
+                    onModelChange={setAiModel}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <ChatSidebar
+        isOpen={isHistoryOpen}
+        sessions={sessions}
+        currentSessionId={currentSessionId}
+        onNewChat={handleNewChat}
+        onSelectSession={handleSelectSession}
+        onDeleteSession={handleDeleteSession}
+        onToggle={handleToggleHistory}
+      />
+    </div>
+  )
+}

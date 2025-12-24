@@ -47,7 +47,7 @@ function HeroPill() {
 
 function HeroTitles() {
   return (
-    <div className="flex w-full max-w-5xl flex-col overflow-hidden mt-4">
+    <div className="flex w-full max-w-full flex-col overflow-hidden mt-4">
       <motion.h1
         className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-5xl tracking-tighter"
         initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
@@ -76,7 +76,7 @@ function HeroTitles() {
 
       <div className="flex flex-col gap-1 mt-2">
         <motion.p
-          className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+          className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -88,7 +88,7 @@ function HeroTitles() {
           Context, intent, and everything in between.
         </motion.p>
         <motion.p
-          className="text-left max-w-5xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+          className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -108,7 +108,7 @@ function HeroCTA() {
   return (
     <div className="relative mt-6">
       <motion.div
-        className="flex w-full max-w-5xl flex-col items-start justify-start  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+        className="flex w-full max-w-full flex-col items-start justify-start  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
@@ -165,7 +165,7 @@ export function Hero() {
 
   return (
     <Section id="hero" className="mt-18 sm:mt-21 md:mt-22 w-full">
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
+      <div className="relative max-w-full grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
         {/* <div className="flex flex-col justify-start items-start lg:col-span-1">
           <HeroPill />
           <HeroTitles />
