@@ -244,9 +244,7 @@ export default function PricingCalculator() {
                     </td>
 
                     <td className="p-2 text-right">
-                      {perUnit.toFixed(
-                        CONTEXT_ACTIONS.includes(action as any) ? 8 : 3
-                      )}
+                      {perUnit.toFixed(3)}
                     </td>
 
                     <td className="p-2 text-right w-40">
