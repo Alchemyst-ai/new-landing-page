@@ -54,16 +54,16 @@ export const ACTION_COSTS_IN_TOKENS = {
   },
 
   "context.upload": {
-    tier1: (1 / 10) / M_TOKENS_PER_MB,
-    tier2: (8 / 100) / M_TOKENS_PER_MB,
-    tier3: (3 / 100) / M_TOKENS_PER_MB,
-    b2c: (2 / 10) / M_TOKENS_PER_MB,
+    tier1: (1 / 10)  * CHARS_PER_TOKEN,
+    tier2: (8 / 100)  * CHARS_PER_TOKEN,
+    tier3: (3 / 100)  * CHARS_PER_TOKEN,
+    b2c: (2 / 10)  * CHARS_PER_TOKEN,
   },
   "context.search": {
-    tier1: (5 / 1000) / M_TOKENS_PER_MB,
-    tier2: (45 / 10000) / M_TOKENS_PER_MB,
-    tier3: (3 / 1000) / M_TOKENS_PER_MB,
-    b2c: (7 / 1000) / M_TOKENS_PER_MB,
+    tier1: (5 / 1000)  * CHARS_PER_TOKEN,
+    tier2: (45 / 10000)  * CHARS_PER_TOKEN,
+    tier3: (3 / 1000)  * CHARS_PER_TOKEN,
+    b2c: (7 / 1000)  * CHARS_PER_TOKEN,
   },
 };
 
