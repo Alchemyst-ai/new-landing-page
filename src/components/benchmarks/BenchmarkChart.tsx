@@ -7,6 +7,7 @@ import {
   Cell,
   ComposedChart,
   LabelList,
+  Line,
   ResponsiveContainer,
   Scatter,
   Tooltip,
@@ -14,31 +15,6 @@ import {
   YAxis
 } from "recharts";
 
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: any[];
-}
-
-const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload;
-    if (!data.name) return null;
-
-    return (
-      <div className="bg-background/95 border border-primary/50 p-3 rounded-none shadow-[4px_4px_0px_0px_rgba(255,128,0,0.2)] backdrop-blur-md">
-        <p className="font-black text-primary uppercase tracking-tighter text-sm">{data.name}</p>
-        <div className="h-px bg-primary/20 my-2" />
-        <p className="text-[10px] text-muted-foreground uppercase font-bold">
-          Cost: <span className="text-foreground font-mono ml-2">${data.price.toFixed(3)}</span>
-        </p>
-        <p className="text-[10px] text-muted-foreground uppercase font-bold">
-          Perf: <span className="text-foreground font-mono ml-2">{data.performance.toFixed(3)}</span>
-        </p>
-      </div>
-    );
-  }
-  return null;
-};
 
 export function BenchmarkChart() {
   const paretoFrontier = useMemo(() => {
@@ -52,16 +28,27 @@ export function BenchmarkChart() {
         bestPerf = p.performance;
       }
     }
-    // Add a point at the end to close the area to the bottom-right if needed,
-    // or just ensure the last point is at the max price but same performance.
     return frontier;
   }, []);
 
   const minPrice = Math.min(...benchmarkData.map(d => d.price));
   const maxPrice = Math.max(...benchmarkData.map(d => d.price));
 
+  // Get Alchemyst and Hindsight data for the connection line
+  const alchemyst = benchmarkData.find(d => d.highlight);
+  const hindsight = benchmarkData.find(d => d.name === "Hindsight GPT OSS 120B");
+  const alchemystToHindsight = useMemo(() => {
+    if (alchemyst && hindsight) {
+      return [
+        { price: alchemyst.price, performance: alchemyst.performance },
+        { price: hindsight.price, performance: hindsight.performance }
+      ];
+    }
+    return [];
+  }, [alchemyst, hindsight]);
+
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden relative group">
+    <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden relative">
       <CardHeader className="py-4 border-b border-border/50 mb-4 bg-muted/10">
         <CardTitle className="text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2 text-foreground">
           <div className="w-1 h-3 bg-primary" />
@@ -69,8 +56,8 @@ export function BenchmarkChart() {
         </CardTitle>
       </CardHeader>
       <CardContent className="pb-6">
-        <div className="h-[300px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-[400px] w-full min-h-[400px]">
+          <ResponsiveContainer width="100%" height="100%" minHeight={400}>
             <ComposedChart
               margin={{ top: 20, right: 30, bottom: 20, left: 10 }}
             >
@@ -79,32 +66,86 @@ export function BenchmarkChart() {
                   <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.1}/>
                   <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
                 </linearGradient>
+                <linearGradient id="alchemystHindsightGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#f59025" stopOpacity={0.3}/>
+                  <stop offset="100%" stopColor="#f59025" stopOpacity={0}/>
+                </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--border))" opacity={0.15} vertical={false} />
+              
+              <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" opacity={0.2} vertical={true} horizontal={true} />
+              
               <XAxis
                 type="number"
                 dataKey="price"
                 name="Price"
                 scale="log"
                 domain={[minPrice * 0.5, maxPrice * 1.5]}
-                tickFormatter={(value) => `$${value}`}
-                stroke="hsl(var(--muted-foreground))"
+                tickFormatter={(value) => `$${value.toFixed(2)}`}
+                stroke="#94a3b8"
+                tick={{ fill: "#94a3b8" }}
                 fontSize={10}
                 tickLine={false}
-                axisLine={false}
+                axisLine={{ stroke: "#94a3b8", strokeWidth: 1 }}
               />
+              
               <YAxis
                 type="number"
                 dataKey="performance"
                 name="Performance"
                 domain={[0, 1.1]}
-                stroke="hsl(var(--muted-foreground))"
+                stroke="#94a3b8"
+                tick={{ fill: "#94a3b8" }}
                 fontSize={10}
                 tickLine={false}
-                axisLine={false}
+                axisLine={{ stroke: "#94a3b8", strokeWidth: 1 }}
                 tickFormatter={(val) => `${(val * 100).toFixed(0)}%`}
               />
-              <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '4 4' }} />
+              
+              <Tooltip
+                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '2 2', r: 15 }}
+                content={({ active, payload }) => {
+                  console.log('Tooltip triggered - active:', active);
+                  console.log('Tooltip payload:', payload);
+                  console.log('Payload length:', payload?.length);
+                  
+                  if (active && payload && payload.length) {
+                    console.log('Payload[0]:', payload[0]);
+                    console.log('Payload[0].payload:', payload[0]?.payload);
+                    
+                    const d = payload[0].payload;
+                    console.log('Extracted data:', d);
+                    console.log('Data name:', d?.name);
+                    console.log('Data price:', d?.price);
+                    console.log('Data performance:', d?.performance);
+                    
+                    if (!d || !d.name) {
+                      console.log('No valid data found, returning null');
+                      return null;
+                    }
+                    
+                    console.log('Rendering tooltip for:', d.name);
+                    return (
+                      <div className="bg-background/95 border border-primary/50 p-3 rounded-none shadow-[4px_4px_0px_0px_rgba(255,128,0,0.2)] backdrop-blur-md z-50">
+                        <p className="font-black text-primary uppercase tracking-tighter text-sm">{d.name}</p>
+                        <div className="h-px bg-primary/20 my-2" />
+                        <p className="text-[10px] text-muted-foreground uppercase font-bold">
+                          Cost: <span className="text-foreground font-mono ml-2">${(d.price || 0).toFixed(3)}</span>
+                        </p>
+                        <p className="text-[10px] text-muted-foreground uppercase font-bold">
+                          Perf: <span className="text-foreground font-mono ml-2">{(d.performance || 0).toFixed(3)}</span>
+                        </p>
+                        {d.latency && (
+                          <p className="text-[10px] text-muted-foreground uppercase font-bold">
+                            Latency: <span className="text-foreground font-mono ml-2">{d.latency}ms</span>
+                          </p>
+                        )}
+                      </div>
+                    );
+                  }
+                  console.log('Tooltip not active or no payload');
+                  return null;
+                }}
+              />
 
               <Area
                 data={paretoFrontier}
@@ -114,36 +155,77 @@ export function BenchmarkChart() {
                 strokeWidth={3}
                 fill="url(#frontierGradient)"
                 name="Pareto Frontier"
-                animationDuration={1500}
+                isAnimationActive={false}
                 connectNulls
+                style={{ pointerEvents: 'none' }}
               />
 
-              <Scatter name="Models" data={benchmarkData}>
+              {/* Alchemyst to Hindsight connection line with gradient */}
+              {alchemystToHindsight.length === 2 && (
+                <>
+                  <Area
+                    data={[
+                      ...alchemystToHindsight,
+                      { price: alchemystToHindsight[1].price, performance: 0 },
+                      { price: alchemystToHindsight[0].price, performance: 0 }
+                    ]}
+                    type="linear"
+                    dataKey="performance"
+                    stroke="none"
+                    fill="url(#alchemystHindsightGradient)"
+                    isAnimationActive={false}
+                    style={{ pointerEvents: 'none' }}
+                  />
+                  <Line
+                    data={alchemystToHindsight}
+                    type="linear"
+                    dataKey="performance"
+                    stroke="#f59025"
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                    style={{ pointerEvents: 'none' }}
+                  />
+                </>
+              )}
+
+              <Scatter 
+                name="Models" 
+                data={benchmarkData}
+                fill="#8884d8"
+                shape="circle"
+                isAnimationActive={false}
+              >
                 {benchmarkData.map((entry, index) => (
                   <Cell
-                    key={`cell-${index}`}
-                    fill={entry.highlight ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={2}
+                    key={`cell-${entry.name}-${index}`}
+                    fill={entry.highlight ? "#f59025" : "#94a3b8"}
+                    stroke="#ffffff"
+                    strokeWidth={2.5}
+                    r={9}
                   />
                 ))}
                 <LabelList
                   dataKey="name"
                   position="top"
-                  offset={12}
+                  offset={15}
                   content={(props: any) => {
-                    const { x, y, value } = props;
+                    const { x, y, value, payload } = props;
+                    if (!x || !y) return null;
+                    const isHighlight = payload?.highlight;
+                    const textColor = isHighlight ? "#f59025" : "#94a3b8";
                     return (
                       <text
                         x={x}
-                        y={y - 10}
-                        fill="#FFFFFF"
+                        y={y - 12}
+                        fill={textColor}
                         textAnchor="middle"
                         style={{
                           fontSize: 10,
                           fontWeight: 900,
                           textTransform: 'uppercase',
-                          letterSpacing: '0.05em'
+                          letterSpacing: '0.05em',
+                          pointerEvents: 'none'
                         }}
                       >
                         {value}

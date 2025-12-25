@@ -75,7 +75,7 @@ export default function Home() {
            <div className="flex items-end justify-between border-b border-primary/20 pb-2">
               <h2 className="text-xl font-heading font-black tracking-tight uppercase">Efficiency Frontier</h2>
            </div>
-           <div className="overflow-hidden pb-1">
+           <div className="pb-1">
             <BenchmarkChart />
            </div>
         </section>
