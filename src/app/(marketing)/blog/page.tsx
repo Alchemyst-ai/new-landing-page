@@ -46,7 +46,7 @@ export const metadata = constructMetadata({
 
 export default async function Blog({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const json: ApiResponse = await res.json();
   const items = (json?.data ?? []);
 
