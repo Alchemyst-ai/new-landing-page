@@ -5,12 +5,20 @@ function normalizeBaseUrl(raw: string) {
   return raw.replace(/\/+$/, "");
 }
 
-async function getArticleBySlug(slug: string) {
+async function getArticleBySlug(rawSlug: string) {
   const rawBaseUrl =
     process.env.STRAPI_API_URL ||
     "";
   const baseUrl = normalizeBaseUrl(rawBaseUrl);
   const token = process.env.STRAPI_API_TOKEN || "";
+  let slug = rawSlug;
+
+  const redirects: Record<string, string> = {
+    "the-road-to-agi-broken-promises-hallucinations-memory-rag-context": "the-road-to-agi-hallucinations-memory-rag-and-context"
+  }
+
+  slug = redirects[rawSlug] ?? rawSlug
+
   const url = `${baseUrl}/api/articles?filters[slug][$eq]=${encodeURIComponent(
     slug
   )}&populate=*`;
