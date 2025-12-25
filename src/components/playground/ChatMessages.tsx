@@ -19,15 +19,28 @@ export function ChatMessages({
   messages: UIMessage[]
   isStreaming?: boolean
 }) {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  // const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   // messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  //   console.log("Actual messages data recieved from backend : ",messages);
+  // }, [messages])
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages])
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.scrollTo({
+      top: container.scrollHeight + 20,
+      behavior: 'auto' 
+    });
+    }
+  }, [messages, isStreaming]);
 
   return (
-    <div className="flex-1 overflow-y-auto scrollbar-hide p-6">
-      <div className="mx-auto max-w-4xl space-y-6">
+    <div  ref={scrollContainerRef} className="flex-1 overflow-y-auto scrollbar-hide p-6">
+      <div className="mx-auto max-w-4xl max-h-[80vh] space-y-6">
         {messages.map((message, index) => {
           const isLastAssistantMessage = message.role === "assistant" && index === messages.length - 1;
 
@@ -41,11 +54,11 @@ export function ChatMessages({
             if (part.type === "text") {
               return (
                 <p key={partIndex} className="text-sm leading-relaxed whitespace-pre-wrap">
-                  {isCurrentlyStreaming && (
+                  {isCurrentlyStreaming ? (
                     <StreamingText text={textContent} />
-                  )// : (
-                  //   // <MarkdownRender children={textContent} />
-                  // )
+                  ) : (
+                    <StreamingText text={textContent} />
+                  )
                   }
                 </p>
               );
@@ -58,7 +71,7 @@ export function ChatMessages({
             //     {dataPart.level === 'info' && <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />}
             //     {dataPart.level === 'success' && <span className="w-1.5 h-1.5 rounded-full bg-green-500" />}
             //     {dataPart.level === 'error' && <span className="w-1.5 h-1.5 rounded-full bg-destructive" />}
-                
+
             //     <span className="font-medium">
             //       {dataPart.message}
             //     </span>
@@ -152,7 +165,7 @@ export function ChatMessages({
           )
         })}
 
-        <div ref={messagesEndRef} />
+        {/* <div ref={scrollContainerRef} /> */}
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 "use client"
 
-import {fetchWithRewrites} from "../../utils/fetchWithRewrites"
+import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport, UIMessage } from "ai"
 import { Key, Loader2 } from "lucide-react"
@@ -44,6 +44,12 @@ export default function ChatPlayground() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const { messages, sendMessage, status, stop, setMessages } = useChat<UIMessage>({
     transport: new DefaultChatTransport({
       api: `/api/v1/chat/landing/playground`, body: () => ({
@@ -80,64 +86,6 @@ export default function ChatPlayground() {
     setMessages([]);
   };
 
-
-  useEffect(() => {
-    const loadChatHistories = async () => {
-      try {
-        const res = await fetchWithRewrites(`/api/v1/chat/history/fetch`)
-        if (!res.ok) throw new Error("Failed to load chat histories")
-
-        const data = await res.json();
-
-        const formattedSessions: ChatSession[] = data.chatHistory.map((chat: any) => ({
-          id: chat._id,
-          title: chat.title || "Untitled Chat",
-          createdAt: new Date(chat.createdAt),
-          updatedAt: new Date(chat.updatedAt),
-          messageCount: chat.messages ? chat.messages.length : 0,
-        }));
-
-        setSessions(formattedSessions);
-
-        if (formattedSessions.length > 0 && !currentSessionId) {
-          setCurrentSessionId(formattedSessions[0].id)
-        }
-      } catch (error) {
-        console.error("Error loading chat histories:", error)
-      }
-    }
-
-    // loadChatHistories()
-
-    // if (sessionStorage.getItem("currentChatId") && sessionStorage.getItem("currentChatId") !== "new") {
-    //   const chatId = sessionStorage.getItem("currentChatId") || "new";
-    //   handleSelectSession(chatId);
-    // }
-  }, [])
-
-  useEffect(() => {
-    const fetchGroups = async () => {
-      try {
-        const res = await fetchWithRewrites("/api/v1/groups/view")
-        if (!res.ok) {
-          throw new Error("Failed to fetch group names")
-        }
-        const data = await res.json()
-        if (data.groups && Array.isArray(data.groups)) {
-          setGroupNames(data.groups)
-          if (!data.groups.includes("default")) {
-            setGroupNames(["default", ...data.groups])
-          }
-        }
-      } catch (err) {
-        console.error("Error fetching group names:", err)
-        setGroupNames(["default"])
-      }
-    }
-
-    // fetchGroups()
-  }, [])
-
   const handleSendMessage = async (content: string) => {
     const contextData: Record<string, any> = {}
 
@@ -160,10 +108,6 @@ export default function ChatPlayground() {
     if (aiModel) {
       contextData.model = aiModel
     }
-
-    // if (currentSessionId === "new" || sessionStorage.getItem("currentChatId") === "new") {
-    //   await createNewchat();
-    // }
 
     const resolvedAttachments = await Promise.all(
       uploadedImages.map(async (img) => {
@@ -314,47 +258,6 @@ export default function ChatPlayground() {
     setIsHistoryOpen(!isHistoryOpen);
   };
 
-  async function createNewchat() {
-    console.log("Create New Chat");
-    const saveChatResponse = await fetchWithRewrites(`/api/v1/chat/new/create`, {
-      method: 'GET',
-    });
-    if (!saveChatResponse.ok) {
-      console.error("Failed to save chat history:", await saveChatResponse.text());
-      return;
-    }
-    const responseData = await saveChatResponse.json();
-    const newChatId = responseData.chatId;
-    if (newChatId) {
-      sessionStorage.setItem('currentChatId', newChatId);
-      setCurrentSessionId(newChatId);
-      console.log(`Successfully saved new chat ID: ${newChatId}`);
-    } else {
-      console.error("No chat ID found.");
-    }
-  }
-
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const response = await fetchWithRewrites('/api/auth/status', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data.data);
-        }
-      } catch (error) {
-        console.error('Failed to fetch user data:', error);
-      }
-    }
-
-    fetchUserData();
-  }, []);
 
   const [apiKey, setApiKey] = useState('');
 
@@ -376,6 +279,15 @@ export default function ChatPlayground() {
     }, 1000);
   };
 
+  if (!isMounted) return (<div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
+    <div className="flex flex-col items-center gap-2">
+      <Loader2 className="h-10 w-10 animate-spin text-primary" />
+      <p className="text-sm font-medium animate-pulse">Loading playground...</p>
+    </div>
+  </div>);
+
+  const hasApiKey = !!localStorage.getItem("userApiKey");
+
   const LockedInputOverlay = ({ onUnlock }: { onUnlock: () => void }) => (
     <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 backdrop-blur-[2px] rounded-xl border border-dashed border-primary/30 transition-all">
       <Button
@@ -392,7 +304,7 @@ export default function ChatPlayground() {
   const isChatEmpty = messages.length === 0
 
   return (
-    <div className="flex max-w-auto h-screen bg-background">
+    <div className="flex max-w-auto h-[90vh] bg-background">
       <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
         <div className="flex-shrink-0 mt-2 items-center gap-3">
           <ChatTopBar onOpenHistory={handleToggleHistory}
@@ -415,12 +327,13 @@ export default function ChatPlayground() {
               </div>
             </div>
           )}
-          {!localStorage.getItem("userApiKey") && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
+          {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
           {!isChatEmpty ? (
             <>
+            <div className="flex-1 overflow-y-auto">
               {!loadingChat && (<ChatMessages messages={messages} isStreaming={status === "streaming"} />)}
-
-              <div className="bg-background">
+            </div>
+              <div className="flex-shrink-0 bg-background">
                 <ContextBar
                   isOpen={isContextBarOpen}
                   magicKey={magicKey}

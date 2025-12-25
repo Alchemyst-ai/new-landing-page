@@ -89,9 +89,9 @@ export function ContextBar({
   if (!isOpen) return null
 
   return (
-    <div className="border-b border-border/50 bg-card/30 backdrop-blur-md">
+    <div className="bg-card/30 backdrop-blur-md">
       <div className="mx-auto max-w-3xl p-4">
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="flex flex-row justify-center gap-2">
           {/* Image Upload Section */}
           <div className="space-y-2">
             <Label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
@@ -104,7 +104,7 @@ export function ContextBar({
               onDragOver={(e) => handleDrag(e, "image")}
               onDrop={handleImageDrop}
               className={cn(
-                "relative flex h-20 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed transition-all",
+                "relative flex h-20 w-46 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed transition-all",
                 dragActive === "image"
                   ? "border-primary bg-primary/5 scale-[1.02]"
                   : "border-border/50 bg-muted/30 hover:border-primary/40 hover:bg-muted/50",
@@ -141,17 +141,17 @@ export function ContextBar({
             )}
           </div>
 
-          {/* File Upload Section */}
+          {/* File Upload Section
           <div className="space-y-2">
             <Label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
               <FileText className="h-3.5 w-3.5" />
               Documents
 
             </Label>
-            {/* <ContextPage isUploadOnGetStarted={true} isUploadOnContext={true} /> */}
+            {/* <ContextPage isUploadOnGetStarted={true} isUploadOnContext={true} /> 
 
 
-          </div>
+          </div> */}
 
           {/* Magic Key Section */}
           <div className="space-y-2">
