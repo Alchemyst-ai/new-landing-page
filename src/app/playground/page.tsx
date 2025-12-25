@@ -36,7 +36,7 @@ export default function ChatPlayground() {
 
   const [groupNames, setGroupNames] = useState<string[]>(["default"])
   const [selectedGroup, setSelectedGroup] = useState("default")
-  const [aiModel, setAiModel] = useState("gemini-2.5-flash-lite")
+  const [aiModel, setAiModel] = useState("gemini-2.5-flash")
 
   const [sessions, setSessions] = useState<ChatSession[]>([])
   const [currentSessionId, setCurrentSessionId] = useState('new');
