@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Chrome } from "lucide-react";
+import { useEffect, useState } from "react";
 
 function isChromiumBrowser(): boolean {
   if (typeof navigator === "undefined") return false;
@@ -53,7 +53,7 @@ export function InstallExtensionIsland() {
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.25 }}
             >
-              <span>Install Alchemyst on your browser</span>
+              <span>Install browser extension</span>
             </motion.div>
           )}
         </AnimatePresence>

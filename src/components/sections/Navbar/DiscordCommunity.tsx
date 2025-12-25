@@ -35,7 +35,7 @@ export const DiscordCommunityButton = () => {
 
   return (
     <Link
-      href="https://discord.gg/H2StAaSeJ8"
+      href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center space-x-2 px-3 py-1 rounded-full dark:text-white text-white transition-all text-sm font-medium"

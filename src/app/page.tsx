@@ -2,6 +2,7 @@
 import { Community } from "@/components/sections/community";
 import { CTA } from "@/components/sections/cta";
 import { Examples } from "@/components/sections/examples";
+import { FAQSection } from "@/components/sections/faq";
 import { Features } from "@/components/sections/features";
 import { Footer } from "@/components/sections/footer";
 import { Header } from "@/components/sections/header";
@@ -30,6 +31,7 @@ export default function Home() {
       <CalBooking />
       {/* <Pricing /> */}
       <Community />
+      <FAQSection />
       {/* <Blog /> */}
       <CTA />
       <InstallExtensionIsland />

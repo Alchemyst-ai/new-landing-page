@@ -1,11 +1,22 @@
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   // Static pages
   const staticPages = [
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.99,
+    },
+    {
+      url: `${baseUrl}/llms-full.txt`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.99,
+    },
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -71,11 +82,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch blog posts from your API
   let blogPosts: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+    const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
     if (res.ok) {
       const json = await res.json();
       const articles = json?.data || [];
-      
+
       blogPosts = articles.map((article: any) => ({
         url: `${baseUrl}/blog/${article.slug}`,
         lastModified: new Date(article.updatedAt || article.publishedAt || new Date()),

@@ -11,13 +11,46 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+interface Author {
+  name: string;
+  email: string;
+}
+
+interface Reviewer {
+  name: string;
+  email: string;
+}
+
+interface Category {
+  name: string;
+  slug: string;
+}
+
+interface ArticleData {
+  id: number;
+  documentId: string;
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  createdAt: string;
+  updatedAt: string;
+  test: string;
+  about: string;
+  image: string;
+  author: Author;
+  reviewer: Reviewer;
+  category: Category;
+  readTime: number;
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
-  const json = await res.json();
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
+  const json: {data: ArticleData[]} = await res.json();
   const item = (json?.data?.[0]) || {};
   const title = item.title || "Article";
   const publishedTime = item.publishedAt || new Date().toISOString();
@@ -27,6 +60,7 @@ export async function generateMetadata(props: {
   return {
     title,
     description,
+    category: item.category.name,
     openGraph: {
       title,
       description,
@@ -54,7 +88,7 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
   const json = await res.json();
   const item = (json?.data?.[0]) || null;
   if (!item) {
@@ -63,7 +97,7 @@ export default async function Page(props: {
   const updatedOn = item.updatedAt || item.publishedAt;
 
   // Fetch recent articles from Strapi and exclude current one
-  const listRes = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const listRes = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const listJson = await listRes.json();
   const recentPosts = (listJson?.data ?? [])
     .filter((p: any) => p.slug !== item.slug)

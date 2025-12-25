@@ -7,9 +7,9 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "../ui/button";
 import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
-
 
 // Temporary type definition
 interface MenuObject {
@@ -38,7 +38,10 @@ export function Header() {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setActiveMenu(null);
       }
-      if (useCasesRef.current && !useCasesRef.current.contains(event.target as Node)) {
+      if (
+        useCasesRef.current &&
+        !useCasesRef.current.contains(event.target as Node)
+      ) {
         setShowUseCasesDropdown(false);
       }
     };
@@ -62,7 +65,7 @@ export function Header() {
     setOpenSubmenus((prev) =>
       prev.includes(title)
         ? prev.filter((item) => item !== title)
-        : [...prev, title]
+        : [...prev, title],
     );
   };
 
@@ -70,7 +73,7 @@ export function Header() {
     { title: "Finance", href: "/use-cases/finance" },
     { title: "Customer Support", href: "/use-cases/customer-support" },
     { title: "EdTech", href: "/use-cases/edtech" },
-    { title: "Healthcare", href: "/use-cases/healthcare" }
+    { title: "Healthcare", href: "/use-cases/healthcare" },
   ];
 
   const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
@@ -81,12 +84,13 @@ export function Header() {
         <div className="flex items-center justify-between w-full">
           <Link
             href={subItem.link ? `/agents${subItem.link}` : "#"}
-            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${subItem.style
-              ? Object.entries(subItem.style)
-                .map(([k, v]) => `${k}:${v}`)
-                .join(";")
-              : ""
-              }`}
+            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
+              subItem.style
+                ? Object.entries(subItem.style)
+                    .map(([k, v]) => `${k}:${v}`)
+                    .join(";")
+                : ""
+            }`}
             onClick={toggleMenu}
           >
             {subItem.icon && (
@@ -126,7 +130,7 @@ export function Header() {
               className="space-y-2"
             >
               {subItem.children.map((childItem) =>
-                renderMobileMenuItem(childItem, depth + 1)
+                renderMobileMenuItem(childItem, depth + 1),
               )}
             </motion.div>
           )}
@@ -136,7 +140,12 @@ export function Header() {
   };
 
   return (
-    <div id="site-header" className="sticky top-0 z-50 w-full bg-background border-b">
+    <div
+      id="site-header"
+      className="sticky top-0 z-50 w-full border-b
+             backdrop-blur-md
+             shadow-lg"
+    >
       <nav
         ref={navRef}
         className="flex justify-between items-center w-full px-4 sm:px-6 py-3 sm:py-4"
@@ -144,13 +153,15 @@ export function Header() {
         {/* Alchemyst Logo */}
         <div className="flex items-center">
           <Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
-            <Image
-              src={theme === 'light' ? '/logoDark.png' : '/logo.png'}
-              alt="Alchemyst AI"
-              width={200}
-              height={200}
-              className="h-6 sm:h-8 w-auto object-contain"
-            />
+            {mounted && (
+              <Image
+                src={theme === "light" ? "/logoDark.png" : "/logo.png"}
+                alt="Alchemyst AI"
+                width={200}
+                height={200}
+                className="h-6 sm:h-8 w-auto object-contain"
+              />
+            )}
           </Link>
         </div>
 
@@ -179,9 +190,14 @@ export function Header() {
                 Use Cases
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
               </span>
-              <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200" style={{
-                transform: showUseCasesDropdown ? 'rotate(180deg)' : 'rotate(0deg)'
-              }} />
+              <ChevronDown
+                className="ml-1 w-4 h-4 transition-transform duration-200"
+                style={{
+                  transform: showUseCasesDropdown
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)",
+                }}
+              />
             </button>
 
             <AnimatePresence>
@@ -262,8 +278,30 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
+          <Link
+            href="https://docs.getalchemystai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1">
+              Docs
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link
+            href="/careers"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1">
+              Careers
+              <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full mx-2 align-text-top">
+                Hiring!
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
         </div>
-
 
         {/* Desktop GitHub Button - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-3">
@@ -283,15 +321,29 @@ export function Header() {
                     </svg>
                     <span>Join Community</span>
                   </a> */}
-          <DiscordCommunityButton />
-          <GitHubButtonWithStars />
+            <DiscordCommunityButton />
+            <Link
+              href="/platform/signin?utm_source=blog&utm_medium=article&utm_campaign=topbar_cta&utm_content=topbar_signup_cta"
+            >
+              <Button variant="ghost"
+              className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors"
+              >Sign Up</Button>
+            </Link>
+            {/* <GitHubButtonWithStars /> */}
           {/* <ThemeToggle /> */}
         </div>
 
         {/* Mobile Menu Toggle - Only visible on mobile */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="dark:text-white text-black p-1">
-            {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+          <button
+            onClick={toggleMenu}
+            className="dark:text-white text-black p-1"
+          >
+            {isOpen ? (
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+            )}
           </button>
         </div>
 
@@ -361,6 +413,17 @@ export function Header() {
                   Security
                 </Link>
 
+                {/* Docs Link */}
+                <Link
+                  href="https://docs.getalchemystai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
+                  onClick={toggleMenu}
+                >
+                  Docs
+                </Link>
+
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"
@@ -373,7 +436,7 @@ export function Header() {
                 {/* GitHub Button in Mobile */}
                 <div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
                   <a
-                    href="https://discord.gg/H2StAaSeJ8"
+                    href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 px-3 py-1 rounded-full bg-[#5865F2]/10 hover:bg-[#5865F2]/20 text-[#5865F2] transition-all text-sm font-medium"

@@ -119,7 +119,7 @@ import Image from "next/image"
 export const metadata: Metadata = {
   title: "About Us | AlchemystAI",
   description:
-    "Learn more about the vision behind AlchemystAI — building the tractable context layer for the Agentic Web.",
+    "Learn more about the vision behind Alchemyst AI — building the tractable context layer for the Agentic Web.",
 }
 
 const Images = [
@@ -143,10 +143,10 @@ export default function AboutPage() {
           {/* Subtle glowing background */}
           <div
             className="absolute inset-0 max-w-5xl mx-auto blur-3xl opacity-70 rounded-full"
-            // style={{
-            //   background:
-            //     "radial-gradient(circle at center, rgba(99,102,241,0.45), rgba(14,165,233,0.3), transparent 70%)",
-            // }}
+          // style={{
+          //   background:
+          //     "radial-gradient(circle at center, rgba(99,102,241,0.45), rgba(14,165,233,0.3), transparent 70%)",
+          // }}
           ></div>
 
           {/* Grid of images */}

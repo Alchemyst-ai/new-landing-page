@@ -109,22 +109,26 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="flex justify-center items-center gap-4">
-        <PricingCalculator />
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3 lg:gap-8">
+          <div className="w-full lg:col-span-2">
+            <PricingCalculator />
+          </div>
 
-          {pricingPlans.map((plan, index) => (
-            <PricingCard
-              key={index}
-              title={plan.title}
-              price={plan.price}
-              description={plan.description}
-              features={plan.features}
-              ctaText={plan.ctaText}
-              ctaLink={plan.ctaLink}
-              // popular={plan.popular}
-              customColor={plan.title === "Pro" ? "#ED9F36" : undefined}
-            />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 w-full lg:col-span-1">
+            {pricingPlans.map((plan, index) => (
+              <PricingCard
+                key={index}
+                title={plan.title}
+                price={plan.price}
+                description={plan.description}
+                features={plan.features}
+                ctaText={plan.ctaText}
+                ctaLink={plan.ctaLink}
+                // popular={plan.popular}
+                customColor={plan.title === "Pro" ? "#ED9F36" : undefined}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

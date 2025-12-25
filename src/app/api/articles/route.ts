@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { estimateReadTimeFromHtml } from "@/lib/utils";
+import { NextResponse } from "next/server";
 
 async function getArticles() {
   const rawBaseUrl =
@@ -58,6 +58,7 @@ export async function GET() {
     });
     return NextResponse.json({ data });
   } catch (error) {
+    console.log("Error: ", error)
     const err = error as any;
     const message = err?.message || "Unknown error";
     const debug = err?.__debug || null;

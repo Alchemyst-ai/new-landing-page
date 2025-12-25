@@ -1,7 +1,7 @@
+import { formatDate } from '@/lib/utils';
+import { ChevronRight, Clock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Clock } from 'lucide-react';
-import { formatDate } from '@/lib/utils';
 
 interface BlogHeaderProps {
   title: string;
@@ -44,7 +44,7 @@ export default function BlogHeader({
             Bravos
           </Link> */}
           {/* <ChevronRight className="w-4 h-4 mx-2" /> */}
-          <Link href={`/category/${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
+          <Link href={`/blog?category=${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
             {category}
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
@@ -92,19 +92,19 @@ export default function BlogHeader({
               <span>Reviewed by <span className="text-foreground font-medium">{reviewer.name}</span></span>
             </div>
           )}
-          
+
           {/* Read time */}
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
             <span>{readTime} min read</span>
           </div>
-          
+
           {/* Update date */}
           <div>
-            Updated on {formatDate(publishedAt)}
+            Published at {formatDate(publishedAt)}
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}
