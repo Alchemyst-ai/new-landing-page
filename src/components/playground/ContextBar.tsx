@@ -55,11 +55,11 @@ export function ContextBar({
 
   return (
     <div className="bg-card/30 backdrop-blur-md">
-      <div className="mx-auto max-w-3xl p-4">
+      <div className="mx-auto max-w-3xl p-4 py-0">
           {/* Magic Key Section */}
-          <div className="flex justify-end">
-            <div className='space-y-2'>
-            <Label htmlFor="magic-key" className="flex items-center w-full gap-2 text-xs font-medium text-muted-foreground">
+          <div className="flex justify-center">
+            <div className='space-y-2 '>
+            <Label htmlFor="magic-key" className="flex items-center max-w-2xl w-80 gap-2 text-xs font-medium text-muted-foreground">
               <Key className="h-3.5 w-3.5" />
               Context Keys
             </Label>
