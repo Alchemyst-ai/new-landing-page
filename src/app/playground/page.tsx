@@ -265,7 +265,7 @@ export default function ChatPlayground() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const savedKey = localStorage.getItem('user-api-key');
+    const savedKey = localStorage.getItem('userApiKey');
     if (savedKey) setApiKey(savedKey);
   }, [isModalOpen]);
 

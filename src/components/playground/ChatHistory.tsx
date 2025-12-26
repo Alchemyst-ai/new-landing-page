@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { MessageSquarePlus, Trash2, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { ChatSession } from "./ChatPlayground"
+import type { ChatSession } from "../../app/playground/page"
 
 interface ChatSidebarProps {
   isOpen: boolean
