@@ -28,6 +28,10 @@ export function Header() {
   const [showUseCasesDropdown, setShowUseCasesDropdown] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const useCasesRef = useRef<HTMLDivElement>(null);
+
+  const closeTimer = useRef<NodeJS.Timeout | null>(null);
+
+  
   const { theme } = useTheme();
   useEffect(() => {
     setMounted(true);
@@ -182,8 +186,17 @@ export function Header() {
           <div
             ref={useCasesRef}
             className="relative"
-            onMouseEnter={() => setShowUseCasesDropdown(true)}
-            onMouseLeave={() => setShowUseCasesDropdown(false)}
+      onMouseEnter={() => {
+        if (closeTimer.current) {
+          clearTimeout(closeTimer.current);
+          closeTimer.current = null;
+        }
+      }}
+      onMouseLeave={() => {
+        closeTimer.current = setTimeout(() => {
+          setActiveMenu(null);
+        }, 120);
+      }}
           >
             <button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
               <span className="relative ">
@@ -322,13 +335,84 @@ export function Header() {
                     <span>Join Community</span>
                   </a> */}
             <DiscordCommunityButton />
-            <Link
+            {/* <Link
               href="/platform/signin?utm_source=blog&utm_medium=article&utm_campaign=topbar_cta&utm_content=topbar_signup_cta"
             >
               <Button variant="ghost"
               className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors"
               >Sign Up</Button>
-            </Link>
+            </Link> */}
+
+            {/* Get Started Dropdown */}
+            <div
+              className="relative"
+                  onMouseEnter={() => {
+                    if (closeTimer.current) {
+                      clearTimeout(closeTimer.current);
+                      closeTimer.current = null;
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    closeTimer.current = setTimeout(() => {
+                      setActiveMenu(null);
+                    }, 120);
+                  }}
+            >
+              <Button
+                onClick={() =>
+                  setActiveMenu(activeMenu === "get-started" ? null : "get-started")
+                }
+                className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2"
+              >
+                Try for Free
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${
+                    activeMenu === "get-started" ? "rotate-180" : ""
+                  }`}
+                />
+              </Button>
+
+            <AnimatePresence>
+              {activeMenu === "get-started" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 mt-2 w-56 rounded-xl border border-border bg-card shadow-xl z-50"
+                >
+                  <div className="p-2 space-y-1">
+                    <Link
+                      href="/playground"
+                      className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
+                    >
+                      Try Playground
+                    </Link>
+
+                    <Link
+                      href="/platform/signin"
+                      className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
+                    >
+                      Go To Platform
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        window.dispatchEvent(new Event("open-founder-cal"));
+                        setActiveMenu(null);
+                      }}
+                      className="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-orange-600 hover:bg-orange-500/10"
+                    >
+                      Talk to Founder
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+
+            </div>
+
             {/* <GitHubButtonWithStars /> */}
           {/* <ThemeToggle /> */}
         </div>
