@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/config";
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
