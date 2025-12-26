@@ -120,6 +120,10 @@ export const siteConfig = {
         icon: <Icons.linkedin className="h-5 w-5" />,
         url: "https://www.linkedin.com/company/alchemystai/posts/",
       },
+      {
+        icon: <Icons.discord className="h-5 w-5" />,
+        url: "https://dub.sh/context-community",
+      },
     ],
     links: [
 

@@ -1,61 +1,221 @@
 import { Icons } from "@/components/icons";
-import { BorderText } from "@/components/ui/border-number";
 import { siteConfig } from "@/lib/config";
-import { Rss } from "lucide-react";
+import { Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
-  return (
-    <footer className="flex flex-col gap-y-5 rounded-lg p-5 container max-w-[var(--container-max-width-very-small-mobile)] sm:max-w-[var(--container-max-width-mobile)] lg:max-w-[var(--container-max-width)]  md:max-w-[var(--container-max-width-tablet)] mx-auto">
-      <div className="flex items-center justify-between flex-col gap-2 sm:flex-row">
-        <div className="flex flex-col text-sm font-medium tracking-tight text-muted-foreground">
-          <p>© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
-          <p>All rights reserved.</p>
-        </div>
+  const footerLinks = {
+    product: [
+      { name: "Features", href: "#features", external: false },
+      { name: "Use Cases", href: "/use-cases", external: false },
+      { name: "Pricing", href: "/pricing", external: false },
+      { name: "Security", href: "/security", external: false },
+      { name: "Research", href: "/research", external: false },
+      { name: "Benchmarks", href: "/benchmarks", external: false },
+    ],
+    resources: [
+      { name: "Documentation", href: "https://docs.getalchemystai.com", external: true },
+      { name: "Blog", href: "/blog", external: false },
+      { name: "Community", href: siteConfig.links.discord, external: true },
+      { name: "Careers", href: "/careers", external: false },
+      { name: "About Us", href: "/about-us", external: false },
+    ],
+    company: [
+      { name: "About", href: "/about-us", external: false },
+      { name: "Careers", href: "/careers", external: false },
+      { name: "Blog", href: "/blog", external: false },
+    ],
+    legal: [
+      { name: "Terms of Use", href: "/terms-of-use", external: false },
+      { name: "Privacy Policy", href: "/privacy-policy", external: false },
+    ],
+  };
 
-        <div className="flex gap-x-4">
-          {siteConfig.footer.socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              className="flex h-5 w-5 gap-5 items-center justify-center text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
-            >
-              {link.icon}
-            </a>
-          ))}
-        <Link
-          href="/rss"
-          target="_blank"
-          aria-label="RSS Feed"
-          className="text-muted-foreground hover:text-orange-500 transition-colors"
-        >
-          <Rss className="mb-2" height={21}/>
-        </Link>
+  return (
+    <footer className="border-t w-full">
+      <div className="w-full flex justify-center">
+        <div className="w-[80%]">
+          {/* Main Footer Content */}
+          <div className="border-t w-full">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 p-8 md:p-12 lg:px-16 xl:px-24 w-full">
+            {/* Brand Section - Left Side */}
+            <div className="flex-shrink-0 space-y-4 lg:min-w-[300px]">
+              <div className="w-full">
+                <div className="w-full mb-6">
+                  <Image
+                    src="/signlogo.png"
+                    alt="Alchemyst AI"
+                    width={147}
+                    height={59}
+                    className="h-auto w-auto max-w-[137px] lg:max-w-[157px] object-contain"
+                    priority
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground max-w-sm mt-6">
+                  The ONLY AI context engine that you can verify. Carry your context everywhere.
+                </p>
+              </div>
+              
+              {/* Contact Info */}
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <a 
+                    href={`mailto:${siteConfig.links.email}`}
+                    className="hover:text-foreground transition-colors"
+                  >
+                    {siteConfig.links.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4 pt-2">
+                {siteConfig.footer.socialLinks.map((link, index) => {
+                  const getAriaLabel = (url: string) => {
+                    if (url.includes('twitter') || url.includes('x.com')) return 'Twitter';
+                    if (url.includes('github')) return 'GitHub';
+                    if (url.includes('linkedin')) return 'LinkedIn';
+                    if (url.includes('discord') || url.includes('dub.sh')) return 'Discord';
+                    return 'Social Media';
+                  };
+                  
+                  return (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-all duration-200 ease-linear hover:text-foreground hover:scale-110"
+                      aria-label={`Visit our ${getAriaLabel(link.url)}`}
+                    >
+                      {link.icon}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Navigation Links - Right Side - All headings in one row */}
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+              {/* Product Links */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold tracking-tight uppercase">Product</h4>
+                <ul className="space-y-3">
+                  {footerLinks.product.map((link, index) => (
+                    <li key={index}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Resources Links */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold tracking-tight uppercase">Resources</h4>
+                <ul className="space-y-3">
+                  {footerLinks.resources.map((link, index) => (
+                    <li key={index}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Company Links */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold tracking-tight uppercase">Company</h4>
+                <ul className="space-y-3">
+                  {footerLinks.company.map((link, index) => (
+                    <li key={index}>
+                      {link.href.startsWith('mailto:') ? (
+                        <a
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Legal Links */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold tracking-tight uppercase">Legal</h4>
+                <ul className="space-y-3">
+                  {footerLinks.legal.map((link, index) => (
+                    <li key={index}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t w-full">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 p-6 md:p-8 lg:px-16 xl:px-24 text-sm text-muted-foreground w-full">
+              <div className="text-center sm:text-left">
+                <p className="font-medium">© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
+                <p>All rights reserved.</p>
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <span>Built with</span>
+                <span className="text-orange-500">❤️</span>
+                <span>for developers</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col justify-between gap-y-5 md:flex-row md:items-center">
-        <ul className="flex flex-col gap-x-5 gap-y-2 text-muted-foreground md:flex-row md:items-center">
-          
-        </ul>
-      </div>
-      <BorderText
-        text={siteConfig.footer.brandText}
-        className="text-[clamp(3rem,15vw,10rem)] overflow-hidden font-mono tracking-tighter font-medium"
-      />
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-end gap-2 sm:gap-5 text-sm text-muted-foreground">
-        <Link
-          href="/terms-of-use"
-          className="hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Terms of Use
-        </Link>
-        <Link
-          href="/privacy-policy"
-          className="hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Privacy Policy
-        </Link>
       </div>
     </footer>
   );

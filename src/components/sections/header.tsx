@@ -239,7 +239,7 @@ export function Header() {
             </span>
           </Link>
 
-          <Link
+          {/* <Link
             href="/security"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
@@ -247,7 +247,7 @@ export function Header() {
               Security
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
-          </Link>
+          </Link> */}
 
           <Link
             href="/pricing"
@@ -289,7 +289,7 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link
+          {/* <Link
             href="/careers"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
@@ -300,7 +300,7 @@ export function Header() {
               </span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Desktop GitHub Button - Hidden on Mobile */}
