@@ -33,7 +33,7 @@ export default function Home() {
       <Community />
       <FAQSection />
       {/* <Blog /> */}
-      <CTA />
+      {/* <CTA /> */}
       <InstallExtensionIsland />
       <FeedspaceWOL pageId="69dec1c0-c92d-404c-b575-fd904e93550c"/>
       <TweetAboutUs />
