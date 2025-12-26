@@ -33,7 +33,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t w-full">
+    <footer className=" w-full">
       <div className="w-full flex justify-center">
         <div className="w-[80%]">
           {/* Main Footer Content */}
@@ -202,7 +202,7 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t w-full">
+          <div className=" w-full">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 p-6 md:p-8 lg:px-16 xl:px-24 text-sm text-muted-foreground w-full">
               <div className="text-center sm:text-left">
                 <p className="font-medium">© 2025 XAlchemyst Technologies Pvt. Ltd.</p>
