@@ -11,6 +11,7 @@ import "./globals.css";
 import { Footer } from "@/components/sections/footer";
 import { Header } from "@/components/sections/header";
 import TripettoPopup from "@/components/TripettoPopup";
+import ConditionalFooter from "@/components/conditional-footer";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -51,7 +52,8 @@ export default function RootLayout({
             <Header />
             {children}
             <TripettoPopup />
-            <Footer />
+            <ConditionalFooter />
+            {/* <Footer /> */}
           </div>
           {/* <ThemeToggle /> */}
           {/* <StickyAdFooter /> */}

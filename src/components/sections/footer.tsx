@@ -211,7 +211,7 @@ export function Footer() {
               <div className="flex items-center gap-2 text-xs">
                 <span>Built with</span>
                 <span className="text-orange-500">❤️</span>
-                <span>for developers</span>
+                <span>by Team Alchemyst AI</span>
               </div>
             </div>
           </div>
