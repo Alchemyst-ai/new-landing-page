@@ -1,24 +1,43 @@
+"use client";
+
 import { Section } from "@/components/section";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 export function CalBooking() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Section>
-      <div className="container mx-auto mt-10 mb-2">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400">
-            Put Your Retrieval on Autopilot
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Book a 30-minute consultation to discuss how we can help transform your development workflow
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <iframe
-            src="https://cal.com/uttaran-nayak-alchemyst/30min?theme=light&hideEventTypeDetails=false&hideLandingPageDetails=false"
-            style={{ width: "100%", height: "700px", border: "none" }}
-            allowFullScreen
-            className="max-w-4xl shadow-2xl bg-gray-700"
-          />
+    <Section id="schedule-meeting">
+      <div className="border-x border-t">
+        <div className="flex justify-center items-center py-12 bg-background">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button 
+                className="bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors px-6 py-6 text-lg"
+                size="lg"
+              >
+                Talk to Founder
+              </Button>
+            </DialogTrigger>
+            <DialogContent 
+              className="max-w-4xl w-full h-[90vh] p-0 bg-gray-900 border-gray-800 overflow-hidden data-[state=closed]:!slide-out-to-0 data-[state=open]:!slide-in-from-0 [&>button]:hidden"
+            >
+              <div className="w-full h-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://cal.com/uttaran-nayak-alchemyst/30min?theme=dark&hideEventTypeDetails=false&hideLandingPageDetails=false"
+                  style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                  allowFullScreen
+                  scrolling="no"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </Section>
