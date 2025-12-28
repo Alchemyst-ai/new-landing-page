@@ -29,6 +29,7 @@
 		"@tripetto/runner-classic": "^7.0.1",
 		"@tripetto/studio": "^4.0.1",
 		"@types/rss": "^0.0.32",
+		"@xmldom/xmldom": "^0.8.11",
 		"ai": "^6.0.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",

@@ -1,4 +1,3 @@
-import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
 import { Mail } from "lucide-react";
 import Image from "next/image";
@@ -8,25 +7,28 @@ export function Footer() {
   const footerLinks = {
     product: [
       { name: "Features", href: "#features", external: false },
-      { name: "Use Cases", href: "/use-cases", external: false },
       { name: "Pricing", href: "/pricing", external: false },
       { name: "Security", href: "/security", external: false },
       { name: "Research", href: "/research", external: false },
       { name: "Benchmarks", href: "/benchmarks", external: false },
     ],
+    useCases: [
+      { name: "Finance", href: "/use-cases/finance", external: false},
+      { name: "Customer Support", href: "/use-cases/customer-support", external: false},
+      { name: "EdTech", href: "/use-cases/edtech", external: false},
+      { name: "Healthcare", href: "/use-cases/healthcare", external: false},
+    ],
+
     resources: [
-      { name: "Documentation", href: "https://docs.getalchemystai.com", external: true },
+      { name: "Documentation", href: "https://getalchemystai.com/docs", external: true },
       { name: "Blog", href: "/blog", external: false },
       { name: "Community", href: siteConfig.links.discord, external: true },
       { name: "Careers", href: "/careers", external: false },
-      { name: "About Us", href: "/about-us", external: false },
     ],
     company: [
-      { name: "About", href: "/about-us", external: false },
+      { name: "About Us", href: "/about-us", external: false },
       { name: "Careers", href: "/careers", external: false },
       { name: "Blog", href: "/blog", external: false },
-    ],
-    legal: [
       { name: "Terms of Use", href: "/terms-of-use", external: false },
       { name: "Privacy Policy", href: "/privacy-policy", external: false },
     ],
@@ -56,12 +58,12 @@ export function Footer() {
                   The ONLY AI context engine that you can verify. Carry your context everywhere.
                 </p>
               </div>
-              
+
               {/* Contact Info */}
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <a 
+                  <a
                     href={`mailto:${siteConfig.links.email}`}
                     className="hover:text-foreground transition-colors"
                   >
@@ -80,7 +82,7 @@ export function Footer() {
                     if (url.includes('discord') || url.includes('dub.sh')) return 'Discord';
                     return 'Social Media';
                   };
-                  
+
                   return (
                     <a
                       key={index}
@@ -104,6 +106,34 @@ export function Footer() {
                 <h4 className="text-sm font-semibold tracking-tight uppercase">Product</h4>
                 <ul className="space-y-3">
                   {footerLinks.product.map((link, index) => (
+                    <li key={index}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Use Cases */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold tracking-tight uppercase">Use Cases</h4>
+                <ul className="space-y-3">
+                  {footerLinks.useCases.map((link, index) => (
                     <li key={index}>
                       {link.external ? (
                         <a
@@ -176,23 +206,6 @@ export function Footer() {
                           {link.name}
                         </Link>
                       )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Legal Links */}
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold tracking-tight uppercase">Legal</h4>
-                <ul className="space-y-3">
-                  {footerLinks.legal.map((link, index) => (
-                    <li key={index}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
-                      >
-                        {link.name}
-                      </Link>
                     </li>
                   ))}
                 </ul>
