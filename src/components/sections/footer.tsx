@@ -1,7 +1,7 @@
-import { siteConfig } from "@/lib/config";
-import { Mail } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Mailm "lucidelucide-react
+import Imageom "nexnext/image
+import Linkfrom "next/llink
+import { siteConfig }teConfi@/libfconfig"@/lib/config";
 
 export function Footer() {
   const footerLinks = {
