@@ -39,8 +39,7 @@ export function ChatInput({
 
   const geminiModels = [
   "gemini-2.5-flash",
-  "gemini-2.0-flash",
-  "gemini-2.5-flash-lite"
+  "gemini-2.0-flash"
   ];
 
   useEffect(() => {
@@ -77,7 +76,7 @@ export function ChatInput({
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask anything related to your context"
-              className="min-h-[76px] max-h-[200px] resize-none border-0 bg-transparent p-2 text-sm scrollbar-hide focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="min-h-[76px] max-h-[200px] resize-none border-0 bg-zinc-900/60 p-2 text-sm scrollbar-hide focus-visible:ring-0 focus-visible:ring-offset-0"
               rows={2}
               disabled={isStreaming}
             />
@@ -86,7 +85,7 @@ export function ChatInput({
           <div className="flex items-center gap-1 shrink-0">
             <div className="flex flex-col gap-1">
             <Select value={selectedGroup} onValueChange={onGroupChange}>
-              <SelectTrigger className="h-9 min-w-[100px]  max-w-[100px] truncate border-0 bg-transparent text-xs font-medium hover:bg-muted">
+              <SelectTrigger className="h-9 min-w-[100px]  max-w-[100px] truncate border-0 bg-zinc-900 text-xs font-medium hover:bg-muted">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -99,7 +98,7 @@ export function ChatInput({
             </Select>
 
             <Select value={aiModel} onValueChange={onModelChange}>
-              <SelectTrigger className="h-9 min-w-[100px] max-w-[100px] truncate border-0 bg-transparent text-xs font-medium hover:bg-muted">
+              <SelectTrigger className="h-9 min-w-[100px] max-w-[100px] truncate border-0 bg-zinc-900 text-xs font-medium hover:bg-muted">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

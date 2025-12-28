@@ -47,7 +47,7 @@ export function ApiKeyModal({ apiKey, setApiKey, open, setOpen, onSave }: ApiKey
             API Configuration
           </DialogTitle>
           <DialogDescription>
-            Enter your API key below. It is stored locally in your browser.
+            Enter your Gemini API key below. It is stored locally in your browser.
           </DialogDescription>
         </DialogHeader>
 
