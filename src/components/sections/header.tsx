@@ -186,17 +186,19 @@ export function Header() {
           <div
             ref={useCasesRef}
             className="relative"
-      onMouseEnter={() => {
-        if (closeTimer.current) {
-          clearTimeout(closeTimer.current);
-          closeTimer.current = null;
-        }
-      }}
-      onMouseLeave={() => {
-        closeTimer.current = setTimeout(() => {
-          setActiveMenu(null);
-        }, 120);
-      }}
+            onMouseEnter={() => setShowUseCasesDropdown(true)}
+            onMouseLeave={() => setShowUseCasesDropdown(false)}
+      // onMouseEnter={() => {
+      //   if (closeTimer.current) {
+      //     clearTimeout(closeTimer.current);
+      //     closeTimer.current = null;
+      //   }
+      // }}
+      // onMouseLeave={() => {
+      //   closeTimer.current = setTimeout(() => {
+      //     setActiveMenu(null);
+      //   }, 120);
+      // }}
           >
             <button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
               <span className="relative ">
@@ -317,7 +319,7 @@ export function Header() {
                 onClick={() =>
                   setActiveMenu(activeMenu === "get-started" ? null : "get-started")
                 }
-                className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2"
+                className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2 cursor-pointer"
               >
                 Try for Free
                 <ChevronDown

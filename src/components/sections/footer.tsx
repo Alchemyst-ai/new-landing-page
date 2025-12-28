@@ -8,7 +8,7 @@ export function Footer() {
   const footerLinks = {
     product: [
       { name: "Features", href: "#features", external: false },
-      { name: "Use Cases", href: "/use-cases", external: false },
+      // { name: "Use Cases", href: "/use-cases", external: false },
       { name: "Pricing", href: "/pricing", external: false },
       { name: "Security", href: "/security", external: false },
       { name: "Research", href: "/research", external: false },
