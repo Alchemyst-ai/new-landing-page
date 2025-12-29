@@ -133,7 +133,7 @@ export default async function Page(props: {
         <div className="flex flex-col xl:flex-row xl:gap-6">
           <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
             <TableOfContentsClient
-              content={item.test}
+              content={item.test ?? "Failed to load content"}
               title={item.title}
               url={fullUrl}
               containerId="article-content"
@@ -183,7 +183,7 @@ export default async function Page(props: {
                 </summary>
                 <div className="mt-3">
                   <TableOfContentsClient
-                    content={item.test}
+                    content={item.test ?? "Failed to load Table of Contents"}
                     title={item.title}
                     url={fullUrl}
                     containerId="article-content"
@@ -210,7 +210,7 @@ export default async function Page(props: {
             <div className="py-12 px-4 sm:px-6 lg:px-8">
               <article id="article-content"
                 className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-5xl"
-                dangerouslySetInnerHTML={{ __html: item.test || "" }}
+                dangerouslySetInnerHTML={{ __html: item.test ?? "" }}
               ></article>
             </div>
 
