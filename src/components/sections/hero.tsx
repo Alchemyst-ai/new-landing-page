@@ -105,7 +105,7 @@ function HeroCTA() {
   return (
     <div className="relative mt-6">
       <motion.div
-        className="flex w-full max-w-5xl flex-col items-start justify-start  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+        className="flex w-full max-w-5xl flex-col items-start justify-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
@@ -114,7 +114,7 @@ function HeroCTA() {
           href="/platform/signin"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto bg-[#EAEAEA] text-black hover:text-white  dark:hover:text-black flex gap-2 rounded-lg "
+            "w-full sm:w-auto bg-[#EAEAEA] text-black flex gap-2 rounded-lg"
           )}
         >
           <Icons.logo className="h-6 w-6" />
