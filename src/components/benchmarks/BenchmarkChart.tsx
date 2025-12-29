@@ -22,13 +22,14 @@ export function BenchmarkChart() {
     const frontier: BenchmarkPoint[] = [];
     let bestPerf = -Infinity;
 
-    for (const p of sorted) {
-      if (p.performance > bestPerf) {
-        frontier.push(p);
-        bestPerf = p.performance;
-      }
-    }
-    return frontier;
+    // for (const p of sorted) {
+    //   if (p.performance > bestPerf) {
+    //     frontier.push(p);
+    //     bestPerf = p.performance;
+    //   }
+    // }
+
+    return sorted;
   }, []);
 
   const minPrice = Math.min(...benchmarkData.map(d => d.price));
@@ -102,7 +103,7 @@ export function BenchmarkChart() {
               />
               
               <Tooltip
-                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '2 2', r: 15 }}
+                cursor={{ stroke: 'gray', strokeWidth: 1, strokeDasharray: '2 2', r: 15 }}
                 content={({ active, payload }) => {
                   console.log('Tooltip triggered - active:', active);
                   console.log('Tooltip payload:', payload);
