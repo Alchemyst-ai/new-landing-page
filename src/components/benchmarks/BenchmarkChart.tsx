@@ -48,6 +48,22 @@ export function BenchmarkChart() {
     return [];
   }, [alchemyst, hindsight]);
 
+const connectionPairs = useMemo(() => {
+  const sorted = [...benchmarkData].sort((a, b) => a.price - b.price);
+
+  const pairs: { price: number; performance: number }[][] = [];
+
+  for (let i = 0; i < sorted.length - 1; i++) {
+    pairs.push([
+      { price: sorted[i].price, performance: sorted[i].performance },
+      { price: sorted[i + 1].price, performance: sorted[i + 1].performance }
+    ]);
+  }
+
+  return pairs;
+}, []);
+
+
   return (
     <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden relative">
       <CardHeader className="py-4 border-b border-border/50 mb-4 bg-muted/10">
