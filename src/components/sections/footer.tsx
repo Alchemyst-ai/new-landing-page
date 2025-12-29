@@ -6,7 +6,7 @@ import Link from "next/link";
 export function Footer() {
   const footerLinks = {
     product: [
-      { name: "Features", href: "#features", external: false },
+      // { name: "Features", href: "#features", external: false },
       { name: "Pricing", href: "/pricing", external: false },
       { name: "Security", href: "/security", external: false },
       { name: "Research", href: "/research", external: false },
@@ -20,7 +20,7 @@ export function Footer() {
     ],
 
     resources: [
-      { name: "Documentation", href: "https://getalchemystai.com/docs", external: true },
+      { name: "Documentation", href: "/docs", external: true },
       { name: "Blog", href: "/blog", external: false },
       { name: "Community", href: siteConfig.links.discord, external: true },
       { name: "Careers", href: "/careers", external: false },
@@ -28,7 +28,6 @@ export function Footer() {
     company: [
       { name: "About Us", href: "/about-us", external: false },
       { name: "Careers", href: "/careers", external: false },
-      { name: "Blog", href: "/blog", external: false },
       { name: "Terms of Use", href: "/terms-of-use", external: false },
       { name: "Privacy Policy", href: "/privacy-policy", external: false },
     ],

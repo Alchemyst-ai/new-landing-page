@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import GitHubButtonWithStars from "./GithubButtonWithStars";
 
 const Navbar: React.FC = () => {
@@ -131,8 +131,8 @@ const Navbar: React.FC = () => {
 
         {/* Centered Navigation Sections */}
         <div className="flex items-center space-x-6">
-          <Link 
-            href="/case-study" 
+          <Link
+            href="/case-study"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -140,8 +140,8 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
-            href="/security&compliance" 
+          <Link
+            href="/security&compliance"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -149,8 +149,8 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -158,7 +158,7 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
+          <Link
             href="https://docs.getalchemystai.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -169,8 +169,8 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
-            href="/pricing" 
+          <Link
+            href="/pricing"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -178,8 +178,8 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
-          <Link 
-            href="/research" 
+          <Link
+            href="/research"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
           >
             <span className="relative pb-1">
@@ -236,15 +236,15 @@ const Navbar: React.FC = () => {
                   >
                     Pricing
                   </Link>
-                  
+
                   <Link
-                    href="mailto:getalchemystai@gmail.com?cc=uttaran@getalchemystai.com,anuran@getalchemystai.com"
+                    href="mailto:founders@getalchemystai.com"
                     className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"
                     onClick={toggleMenu}
                   >
                     Get in Touch
                   </Link>
-                  
+
                   <Link
                     href="/platform/signin"
                     className="block py-3 px-4 text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200 text-lg font-medium text-center"
@@ -252,7 +252,7 @@ const Navbar: React.FC = () => {
                   >
                     Sign In
                   </Link>
-                  
+
                   <GitHubButtonWithStars />
                 </motion.div>
               </motion.div>

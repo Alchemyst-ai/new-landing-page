@@ -31,7 +31,7 @@ export function Header() {
 
   const closeTimer = useRef<NodeJS.Timeout | null>(null);
 
-  
+
   const { theme } = useTheme();
   useEffect(() => {
     setMounted(true);
@@ -336,24 +336,27 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-56 rounded-xl border border-border bg-card shadow-xl z-50"
+                  className="absolute right-0 mt-2 w-80 rounded-xl border border-border bg-card shadow-xl z-50"
                 >
                   <div className="p-2 space-y-1">
                     <Link
                       href="/playground"
                       className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
                     >
-                      Try Playground
+                      <div className="text-lg">Try Playground</div>
+                      <div>Chat with context. No signup required.</div>
                     </Link>
 
                     <Link
                       href="/platform/signin"
                       className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
                     >
-                      Go To Platform
+                      <div className="text-lg">Go To Platform</div>
+                      <div>Use official email for free 5M tokens!</div>
                     </Link>
 
-                    <button
+                    {/* <Button
+                      variant="ghost"
                       onClick={() => {
                         window.dispatchEvent(new Event("open-founder-cal"));
                         setActiveMenu(null);
@@ -361,7 +364,7 @@ export function Header() {
                       className="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-orange-600 hover:bg-orange-500/10"
                     >
                       Talk to Founder
-                    </button>
+                    </Button> */}
                   </div>
                 </motion.div>
               )}

@@ -99,15 +99,6 @@ export default function Home() {
               </CollapsibleContent>
            </Collapsible>
         </section>
-
-        <footer className="py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em]">
-            <div>©2025 ALCHEMYST AI CORP</div>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-primary">Status</a>
-              <a href="#" className="hover:text-primary">Legal</a>
-              <a href="#" className="hover:text-primary">Twitter</a>
-            </div>
-        </footer>
       </main>
     </div>
   );

@@ -1,9 +1,7 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
 // import Footer from "@/components/components-new/Footer";
-import { ChevronLeft } from "lucide-react";
+import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
   return (
@@ -551,7 +549,7 @@ const PrivacyPolicy: React.FC = () => {
             </p>
             <p>
               If you have questions or comments about your privacy rights, you
-              may email us at anuran@getalchemystai.com.
+              may email us at founders@getalchemystai.com.
             </p>
           </div>
         </section>

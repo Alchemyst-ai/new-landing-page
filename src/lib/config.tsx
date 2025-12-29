@@ -30,7 +30,7 @@ export const siteConfig = {
     'Workflow Automation'
   ],
   links: {
-    email: "anuran@getalchemystai.com",
+    email: "founders@getalchemystai.com",
     twitter: "https://twitter.com/getalchemyst",
     discord: "https://dub.sh/context-community",
     github: "https://github.com/alchemyst-ai",
