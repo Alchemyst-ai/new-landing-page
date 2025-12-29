@@ -22,7 +22,7 @@ export default function Home() {
         <section className="text-center space-y-4 max-w-5xl mx-auto pt-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 animate-in fade-in slide-in-from-top-4 duration-500 uppercase tracking-widest">
             <Zap className="w-3 h-3" />
-            <span>Breakthrough 2025</span>
+            <span>Tested in December 2025</span>
           </div>
 
           <div className="space-y-2">
