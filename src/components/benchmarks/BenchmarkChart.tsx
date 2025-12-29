@@ -22,13 +22,14 @@ export function BenchmarkChart() {
     const frontier: BenchmarkPoint[] = [];
     let bestPerf = -Infinity;
 
-    for (const p of sorted) {
-      if (p.performance > bestPerf) {
-        frontier.push(p);
-        bestPerf = p.performance;
-      }
-    }
-    return frontier;
+    // for (const p of sorted) {
+    //   if (p.performance > bestPerf) {
+    //     frontier.push(p);
+    //     bestPerf = p.performance;
+    //   }
+    // }
+
+    return sorted;
   }, []);
 
   const minPrice = Math.min(...benchmarkData.map(d => d.price));
@@ -46,6 +47,22 @@ export function BenchmarkChart() {
     }
     return [];
   }, [alchemyst, hindsight]);
+
+const connectionPairs = useMemo(() => {
+  const sorted = [...benchmarkData].sort((a, b) => a.price - b.price);
+
+  const pairs: { price: number; performance: number }[][] = [];
+
+  for (let i = 0; i < sorted.length - 1; i++) {
+    pairs.push([
+      { price: sorted[i].price, performance: sorted[i].performance },
+      { price: sorted[i + 1].price, performance: sorted[i + 1].performance }
+    ]);
+  }
+
+  return pairs;
+}, []);
+
 
   return (
     <Card className="bg-card/50 backdrop-blur-sm border-border/50 overflow-hidden relative">
@@ -102,7 +119,7 @@ export function BenchmarkChart() {
               />
               
               <Tooltip
-                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '2 2', r: 15 }}
+                cursor={{ stroke: 'gray', strokeWidth: 1, strokeDasharray: '2 2', r: 15 }}
                 content={({ active, payload }) => {
                   console.log('Tooltip triggered - active:', active);
                   console.log('Tooltip payload:', payload);
