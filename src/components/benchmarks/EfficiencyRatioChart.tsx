@@ -65,7 +65,7 @@ export function EfficiencyRatioChart() {
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={entry.highlight ? "url(#orangeGradient)" : "hsl(var(--muted))"}
+                    fill={entry.highlight ? "url(#orangeGradient)" : "gray"}
                   />
                 ))}
                 <LabelList
