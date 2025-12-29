@@ -16,17 +16,12 @@ interface Author {
   email: string;
 }
 
-interface Reviewer {
-  name: string;
-  email: string;
-}
-
 interface Category {
   name: string;
   slug: string;
 }
 
-interface ArticleData {
+interface Article {
   id: number;
   documentId: string;
   slug: string;
@@ -35,13 +30,17 @@ interface ArticleData {
   publishedAt: string;
   createdAt: string;
   updatedAt: string;
-  test: string;
+  test?: string;
   about: string;
   image: string;
   author: Author;
-  reviewer: Reviewer;
+  reviewer: Author | null;
   category: Category;
   readTime: number;
+}
+
+interface ApiResponse {
+  data: Article[];
 }
 
 export async function generateMetadata(props: {
@@ -50,17 +49,18 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
-  const json: {data: ArticleData[]} = await res.json();
+  const json: ApiResponse = await res.json();
   const item = (json?.data?.[0]) || {};
   const title = item.title || "Article";
   const publishedTime = item.publishedAt || new Date().toISOString();
   const description = item.description || "";
   const image = `${siteConfig.url}/og?title=${encodeURIComponent(title)}`;
 
+
   return {
     title,
     description,
-    category: item.category.name,
+    category: item.category?.name ?? "Unknown",
     openGraph: {
       title,
       description,
@@ -88,8 +88,8 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
-  const json = await res.json();
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`);
+  const json: ApiResponse = await res.json();
   const item = (json?.data?.[0]) || null;
   if (!item) {
     notFound();
@@ -146,6 +146,7 @@ export default async function Page(props: {
               category={item?.category?.name || "Blog"}
               subcategory={item?.category?.slug || "Article"}
               publishedAt={item.publishedAt}
+              description={item.description}
               author={{
                 name: item?.author?.name || "",
                 image: "/logo.png"
@@ -173,7 +174,7 @@ export default async function Page(props: {
               </div>
             )}
 
-            <SummarySection summary={item.description || ""} />
+            <SummarySection summary={item.about || ""} />
 
             <div className="xl:hidden mt-6 mb-8 mx-3">
               <details>

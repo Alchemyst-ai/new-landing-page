@@ -8,6 +8,7 @@ interface BlogHeaderProps {
   category?: string;
   subcategory?: string;
   publishedAt: string;
+  description: string;
   author: {
     name: string;
     image: string;
@@ -27,6 +28,7 @@ export default function BlogHeader({
   publishedAt,
   author,
   reviewer,
+  description: about,
   featuredImage,
   readTime = 5
 }: BlogHeaderProps) {
@@ -37,6 +39,7 @@ export default function BlogHeader({
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
           {title}
         </h1>
+        <h2 className="text-xl dark:text-gray-400 md:text-xl mb-3">{about}</h2>
 
         {/* Breadcrumb */}
         <nav className="flex items-center text-sm text-muted-foreground mb-8">
