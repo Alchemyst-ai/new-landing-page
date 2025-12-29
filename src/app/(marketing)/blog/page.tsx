@@ -21,6 +21,8 @@ interface Article {
   publishedAt: string;
   createdAt: string;
   updatedAt: string;
+  test?: string;
+  about: string;
   image: string;
   author: Author;
   reviewer: Author | null;
@@ -68,7 +70,8 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
     .map((item) => ({
       title: item.title,
       slug: item.slug,
-      summary: item.description || "",
+      summary: item.about || "",
+      description: item.description,
       publishedAt: item.publishedAt || new Date().toISOString(),
       image: item.image || undefined,
       readTime: item.readTime,
