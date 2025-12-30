@@ -21,6 +21,8 @@ interface Article {
   publishedAt: string;
   createdAt: string;
   updatedAt: string;
+  test?: string;
+  about: string;
   image: string;
   author: Author;
   reviewer: Author | null;
@@ -44,12 +46,22 @@ export const metadata = constructMetadata({
   },
 });
 
-export default async function Blog({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+async function fetchDocuments(): Promise<Article[]> {
+  try {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
+
+    const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const json: ApiResponse = await res.json();
   const items = (json?.data ?? []);
 
+  return items ?? [];
+  } catch (error) {
+    console.log("Error = ", error);
+    return [];
+  }
+}
+export default async function Blog({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+    const items = await fetchDocuments();
     const category = (await searchParams).category as string | undefined;
 
   const filteredItems = category ? items.filter((item) => item.category?.slug === category) : items;
@@ -58,7 +70,8 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
     .map((item) => ({
       title: item.title,
       slug: item.slug,
-      summary: item.description || "",
+      summary: item.about || "",
+      description: item.description,
       publishedAt: item.publishedAt || new Date().toISOString(),
       image: item.image || undefined,
       readTime: item.readTime,

@@ -30,7 +30,7 @@ export const siteConfig = {
     'Workflow Automation'
   ],
   links: {
-    email: "anuran@getalchemystai.com",
+    email: "founders@getalchemystai.com",
     twitter: "https://twitter.com/getalchemyst",
     discord: "https://dub.sh/context-community",
     github: "https://github.com/alchemyst-ai",
@@ -50,12 +50,12 @@ export const siteConfig = {
       icon: <DatabaseIcon className="h-6 w-6" />,
     },
     {
-      name: "Chat API",
+      name: "IntelliChat",
       description: "Streaming chat functionality with AI-generated responses, thinking steps using memory, and metadata.",
       icon: <MessageSquareIcon className="h-6 w-6" />,
     },
     {
-      name: "Context Proxy API",
+      name: "Context Router",
       description: "OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.",
       icon: <GitForkIcon className="h-6 w-6" />,
     },
@@ -119,6 +119,10 @@ export const siteConfig = {
       {
         icon: <Icons.linkedin className="h-5 w-5" />,
         url: "https://www.linkedin.com/company/alchemystai/posts/",
+      },
+      {
+        icon: <Icons.discord className="h-5 w-5" />,
+        url: "https://dub.sh/context-community",
       },
     ],
     links: [
