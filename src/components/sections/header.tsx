@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "../ui/button";
 import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 
@@ -309,8 +310,15 @@ export function Header() {
                     </svg>
                     <span>Join Community</span>
                   </a> */}
-          <DiscordCommunityButton />
-          <GitHubButtonWithStars />
+            <DiscordCommunityButton />
+            <Link
+              href="/platform/signin?utm_source=blog&utm_medium=article&utm_campaign=topbar_cta&utm_content=topbar_signup_cta"
+            >
+              <Button variant="ghost"
+              className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors"
+              >Sign Up</Button>
+            </Link>
+            {/* <GitHubButtonWithStars /> */}
           {/* <ThemeToggle /> */}
         </div>
 

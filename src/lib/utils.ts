@@ -16,12 +16,7 @@ export function constructMetadata({
   description = siteConfig.description,
   image = absoluteUrl("/og"),
   ...props
-}: {
-  title?: string;
-  description?: string;
-  image?: string;
-  [key: string]: Metadata[keyof Metadata];
-}): Metadata {
+}: Partial<Metadata> & { image?: string, title: string }): Metadata {
   return {
     title: {
       template: "%s | Alchemyst AI - the ONLY AI context LAYER you can verify.",

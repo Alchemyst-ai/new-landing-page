@@ -1,8 +1,7 @@
 import { Post } from "@/lib/blog";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export type CardPost = Pick<
   Post,
@@ -22,7 +21,7 @@ export default function BlogCard({
 }) {
 
   // console.log("THE BLOG DATA", data)
-  
+
   const summary = (data as any).summary ?? (data as any).description ?? "";
 
   return (
@@ -79,7 +78,7 @@ export default function BlogCard({
           {data.title}
         </h3>
         <p className="text-muted-foreground line-clamp-3">{summary}</p>
-        
+
         {featured && (
           <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">
             Read More

@@ -5,20 +5,16 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
-import {
-  BrainCircuit,
-  Globe,
-  Rocket
-} from "lucide-react";
+import { BrainCircuit, Globe, Rocket } from "lucide-react";
 import Link from "next/link";
 
 interface JobPosition {
   id: string;
   name: string;
   title: string;
-  description?: string;
+  tags: string[];
   createdAt: string;
 }
 
@@ -26,7 +22,7 @@ async function fetchJobs(): Promise<JobPosition[]> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
     const response = await fetch(`${baseUrl}/api/careers`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     });
     if (!response.ok) {
       console.error("Failed to fetch careers data");
@@ -118,7 +114,7 @@ export async function CareersContent() {
         {/* Jobs Section */}
         <div>
           <h2 className="text-3xl font-bold text-foreground mb-8">
-            Open Positions
+            Open Positions {`(${jobs.length})`}
           </h2>
 
           {jobs.length === 0 && (
@@ -132,8 +128,8 @@ export async function CareersContent() {
           )}
 
           {jobs.length > 0 && (
-            <div className="space-y-4 overflow-scroll max-h-[600px] pr-2">
-              {jobs.map((job) => (
+            <div className="space-y-4 pr-2">
+              {jobs.map((job, jobIdx) => (
                 <Card
                   key={job.id}
                   className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-200 hover:shadow-lg hover:shadow-primary/10"
@@ -144,9 +140,16 @@ export async function CareersContent() {
                         <CardTitle className="text-xl text-foreground">
                           {job.title}
                         </CardTitle>
-                        <CardDescription className="text-muted-foreground mt-2">
-                          {job.description ||
-                            "Learn more about this opportunity"}
+                        <CardDescription className="my-2">
+                          {(job.tags ?? []).map((tag, idx) => (
+                            <Badge
+                            variant="outline"
+                              className="text-xs px-2 rounded-full mr-2 align-text-top"
+                              key={`job-${jobIdx + 1}-tag-${idx + 1}`}
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
                         </CardDescription>
                       </div>
                       <Badge

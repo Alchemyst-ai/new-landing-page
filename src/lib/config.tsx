@@ -11,6 +11,7 @@ export const siteConfig = {
   name: "Alchemyst AI",
   description: "The ONLY AI context engine that you can verify.",
   cta: "Get Started",
+  image: '/banner.jpeg',
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
     'AI Context',

@@ -1,10 +1,11 @@
+import { DOMParser } from '@xmldom/xmldom';
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   // Static pages
-  const staticPages = [
+  let staticPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/llms.txt`,
       lastModified: new Date(),
@@ -79,10 +80,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  const docsSitemap = await fetch('https://getalchemystai.com/docs/sitemap.xml');
+
+  // Parse the docs sitemap XML and extract URLs
+  let docsUrls: MetadataRoute.Sitemap = [];
+  if (docsSitemap.ok) {
+    const xmlText = await docsSitemap.text();
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+    const urlElements = Array.from(xmlDoc.getElementsByTagName("url"));
+    docsUrls = urlElements.map((urlElem: Element) => {
+      const loc = urlElem.getElementsByTagName("loc")[0]?.textContent || "";
+      const lastmod = urlElem.getElementsByTagName("lastmod")[0]?.textContent;
+      return {
+        url: loc,
+        lastModified: lastmod ? new Date(lastmod) : new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      };
+    });
+
+    staticPages = [...staticPages, ...docsUrls];
+  }
+
   // Fetch blog posts from your API
   let blogPosts: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+    const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
     if (res.ok) {
       const json = await res.json();
       const articles = json?.data || [];

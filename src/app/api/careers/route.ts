@@ -5,13 +5,22 @@ interface TallyForm {
   name: string;
   description?: string;
   createdAt: string;
+  updatedAt: string;
+  isNameModifiedByUser: boolean;
+  workspaceId: string;
+  organizationId: string;
+  status: "PUBLISHED" | "DRAFT";
+  hasDraftBlocks: boolean;
+  numberOfSubmissions: number;
+  index: number;
+  isClosed: boolean;
 }
 
 interface JobPosition {
   id: string;
   name: string;
   title: string;
-  description?: string;
+  tags?: string[];
   createdAt: string;
 }
 
@@ -26,22 +35,22 @@ export async function GET(request: Request) {
       // Return demo jobs instead of erroring
       return Response.json({
         jobs: [
-          {
-            id: "demo-1",
-            name: "demo",
-            title: "Senior AI Engineer",
-            description:
-              "Help us build the context engine. Experience with Python, LLMs, and distributed systems required.",
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: "demo-2",
-            name: "demo",
-            title: "Full Stack Developer",
-            description:
-              "Build and scale our platform. JavaScript, React, Node.js expertise needed.",
-            createdAt: new Date().toISOString(),
-          },
+          // {
+          //   id: "demo-1",
+          //   name: "demo",
+          //   title: "Senior AI Engineer",
+          //   description:
+          //     "Help us build the context engine. Experience with Python, LLMs, and distributed systems required.",
+          //   createdAt: new Date().toISOString(),
+          // },
+          // {
+          //   id: "demo-2",
+          //   name: "demo",
+          //   title: "Full Stack Developer",
+          //   description:
+          //     "Build and scale our platform. JavaScript, React, Node.js expertise needed.",
+          //   createdAt: new Date().toISOString(),
+          // },
         ],
         message: "Demo data - set TALLY_API_KEY to fetch real job listings",
       });
@@ -61,7 +70,7 @@ export async function GET(request: Request) {
 
     if (!formsResponse.ok) {
       const errorText = await formsResponse.text();
-      console.error("[v0] Tally API error:", formsResponse.status, errorText);
+      console.error("Tally API error:", formsResponse.status, errorText);
       throw new Error(
         `Tally API responded with status ${formsResponse.status}`,
       );
@@ -73,11 +82,12 @@ export async function GET(request: Request) {
 
     // Transform forms to job positions - display all forms as career opportunities
     const jobs: JobPosition[] = (formsData.items || [])
+      .filter((entry) => entry.status === "PUBLISHED" && !entry.isClosed)
       .map((form: TallyForm) => ({
         id: form.id,
-        name: form.name,
-        title: form.name,
-        description: form.description,
+        name: form.name.split(" | ")[0],
+        title: form.name.split(" | ")[0],
+        tags: form.name.split(" | ").slice(1) ?? [],
         createdAt: form.createdAt,
       }))
       .sort(
@@ -85,14 +95,10 @@ export async function GET(request: Request) {
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
 
-    console.log(
-      "[v0] Successfully fetched",
-      jobs.length,
-      "job forms from Tally",
-    );
+    console.log("Successfully fetched", jobs.length, "job forms from Tally");
     return Response.json({ jobs });
   } catch (error) {
-    console.error("[v0] Error fetching careers from Tally:", error);
+    console.error("Error fetching careers from Tally:", error);
     return Response.json({
       jobs: [
         {

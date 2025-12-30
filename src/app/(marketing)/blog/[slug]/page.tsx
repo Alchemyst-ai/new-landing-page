@@ -11,22 +11,56 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+interface Author {
+  name: string;
+  email: string;
+}
+
+interface Category {
+  name: string;
+  slug: string;
+}
+
+interface Article {
+  id: number;
+  documentId: string;
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  createdAt: string;
+  updatedAt: string;
+  test?: string;
+  about: string;
+  image: string;
+  author: Author;
+  reviewer: Author | null;
+  category: Category;
+  readTime: number;
+}
+
+interface ApiResponse {
+  data: Article[];
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
-  const json = await res.json();
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { next: { revalidate: 1800 } });
+  const json: ApiResponse = await res.json();
   const item = (json?.data?.[0]) || {};
   const title = item.title || "Article";
   const publishedTime = item.publishedAt || new Date().toISOString();
   const description = item.description || "";
   const image = `${siteConfig.url}/og?title=${encodeURIComponent(title)}`;
 
+
   return {
     title,
     description,
+    category: item.category?.name ?? "Unknown",
     openGraph: {
       title,
       description,
@@ -54,8 +88,8 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`, { cache: "no-store" });
-  const json = await res.json();
+  const res = await fetch(`${baseUrl}/api/articles/${params.slug}`);
+  const json: ApiResponse = await res.json();
   const item = (json?.data?.[0]) || null;
   if (!item) {
     notFound();
@@ -63,7 +97,7 @@ export default async function Page(props: {
   const updatedOn = item.updatedAt || item.publishedAt;
 
   // Fetch recent articles from Strapi and exclude current one
-  const listRes = await fetch(`${baseUrl}/api/articles`, { cache: "no-store" });
+  const listRes = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const listJson = await listRes.json();
   const recentPosts = (listJson?.data ?? [])
     .filter((p: any) => p.slug !== item.slug)
@@ -99,7 +133,7 @@ export default async function Page(props: {
         <div className="flex flex-col xl:flex-row xl:gap-6">
           <div className="hidden xl:block xl:w-1/5 xl:flex-shrink-0 -mt-10 pl-4 pr-2">
             <TableOfContentsClient
-              content={item.test}
+              content={item.test ?? "Failed to load content"}
               title={item.title}
               url={fullUrl}
               containerId="article-content"
@@ -112,6 +146,7 @@ export default async function Page(props: {
               category={item?.category?.name || "Blog"}
               subcategory={item?.category?.slug || "Article"}
               publishedAt={item.publishedAt}
+              description={item.description}
               author={{
                 name: item?.author?.name || "",
                 image: "/logo.png"
@@ -139,7 +174,7 @@ export default async function Page(props: {
               </div>
             )}
 
-            <SummarySection summary={item.description || ""} />
+            <SummarySection summary={item.about || ""} />
 
             <div className="xl:hidden mt-6 mb-8 mx-3">
               <details>
@@ -148,7 +183,7 @@ export default async function Page(props: {
                 </summary>
                 <div className="mt-3">
                   <TableOfContentsClient
-                    content={item.test}
+                    content={item.test ?? "Failed to load Table of Contents"}
                     title={item.title}
                     url={fullUrl}
                     containerId="article-content"
@@ -175,7 +210,7 @@ export default async function Page(props: {
             <div className="py-12 px-4 sm:px-6 lg:px-8">
               <article id="article-content"
                 className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-5xl"
-                dangerouslySetInnerHTML={{ __html: item.test || "" }}
+                dangerouslySetInnerHTML={{ __html: item.test ?? "" }}
               ></article>
             </div>
 

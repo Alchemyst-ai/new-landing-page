@@ -10,7 +10,7 @@ interface SocialShareProps {
 export default function SocialShare({ title, url }: SocialShareProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopyLink = async () => {
+  const handleCopyLink = async (url: string) => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
@@ -20,10 +20,18 @@ export default function SocialShare({ title, url }: SocialShareProps) {
     }
   };
 
+  // https://platform.getalchemystai.com/auth?utm_source=blog&utm_campaign=road_to_agi_blog&utm_medium=article&utm_content=conclusion_cta
+
+  const utm_links = {
+    linkedin: `${url}?utm_source=linkedin&utm_campaign=${encodeURIComponent(title)}&utm_medium=social&utm_content=share_link`,
+    twitter: `${url}?utm_source=twitter&utm_campaign=${encodeURIComponent(title)}&utm_medium=social&utm_content=share_link`,
+    whatsapp: `${url}?utm_source=whatsapp&utm_campaign=${encodeURIComponent(title)}&utm_medium=social&utm_content=share_link`,
+    copy: `${url}?utm_source=copy_link&utm_campaign=${encodeURIComponent(title)}&utm_medium=copy_link&utm_content=share_link`,
+  }
   const shareLinks = {
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title} - ${url}`)}`
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(utm_links['linkedin'])}`,
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(utm_links['twitter'])}`,
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title} - ${utm_links['whatsapp']}`)}`
   };
 
   return (
@@ -36,9 +44,9 @@ export default function SocialShare({ title, url }: SocialShareProps) {
       </h4>
       <div className="flex items-center gap-3">
         {/* LinkedIn */}
-        <a 
-          href={shareLinks.linkedin} 
-          target="_blank" 
+        <a
+          href={shareLinks.linkedin}
+          target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#0077B5] hover:bg-[#005885] text-white transition-colors"
           aria-label="Share on LinkedIn"
@@ -49,9 +57,9 @@ export default function SocialShare({ title, url }: SocialShareProps) {
         </a>
 
         {/* Twitter */}
-        <a 
-          href={shareLinks.twitter} 
-          target="_blank" 
+        <a
+          href={shareLinks.twitter}
+          target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1DA1F2] hover:bg-[#0d8bd9] text-white transition-colors"
           aria-label="Share on Twitter"
@@ -62,9 +70,9 @@ export default function SocialShare({ title, url }: SocialShareProps) {
         </a>
 
         {/* WhatsApp */}
-        <a 
-          href={shareLinks.whatsapp} 
-          target="_blank" 
+        <a
+          href={shareLinks.whatsapp}
+          target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white transition-colors"
           aria-label="Share on WhatsApp"
@@ -75,8 +83,8 @@ export default function SocialShare({ title, url }: SocialShareProps) {
         </a>
 
         {/* Copy Link */}
-        <button 
-          onClick={handleCopyLink}
+        <button
+          onClick={() => handleCopyLink(utm_links['copy'])}
           className="flex items-center justify-center w-9 h-9 rounded-lg bg-muted hover:bg-muted/80 text-foreground transition-colors"
           aria-label="Copy link"
         >
@@ -96,4 +104,4 @@ export default function SocialShare({ title, url }: SocialShareProps) {
       )}
     </div>
   );
-} 
+}
