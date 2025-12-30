@@ -284,6 +284,15 @@ export function Header() {
             </span>
           </Link>
           <Link
+            href="/marketplace"
+            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+          >
+            <span className="relative pb-1 text">
+              Community
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </span>
+          </Link>
+          <Link
             href="https://docs.getalchemystai.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -294,6 +303,7 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
+
         </div>
 
         {/* Desktop GitHub Button - Hidden on Mobile */}

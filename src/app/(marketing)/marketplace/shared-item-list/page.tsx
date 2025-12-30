@@ -13,10 +13,9 @@ import {
   Quote,
   RefreshCcw,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Types } from "mongoose";
 // import type { SharedItem } from "@/lib/supabase";
 
 export type SharedItem = {
@@ -24,7 +23,7 @@ export type SharedItem = {
   title: string;
   description: string | null;
   content_type: 'document' | 'website' | 'slides' | 'video' | 'image' | 'audio' | 'data';
-  thumbnail_url: string | null;
+  cover_image_url: string | null;
   preview_url: string | null;
   magic_key: string;
   author_name: string;
@@ -38,24 +37,38 @@ export type SharedItem = {
   updated_at: string;
 };
 
-const CATEGORIES = [
-  { id: "recommend", label: "Recommend", icon: <RefreshCcw className="h-4 w-4" /> },
-  { id: "featured", label: "Featured", icon: <Sparkles className="h-4 w-4" /> },
-  { id: "life", label: "Life" },
-  { id: "research", label: "Research" },
-  { id: "edu", label: "Edu" },
-  { id: "data", label: "Data Analysis" },
-  { id: "productivity", label: "Productivity" },
-  { id: "creator", label: "Content Creator" },
-  { id: "programming", label: "Programming" },
+export interface sharedItem {
+  id: string;
+  documents: string[];
+  magic_key: string;
+  user_id: Types.ObjectId; // Reference to the User model
+  about?: string;          // Optional because 'required: true' is missing
+  name: string;
+  cover_image_url?: string;
+  uses: number;
+  upvotes: number;
+  downvotes: number;
+  nodes_count: number;
+  data_size: number;
+  is_featured: boolean;
+  categories: string[];
+  createdAt: Date;         // Added by timestamps: true
+  updatedAt: Date;         // Added by timestamps: true
+}
+
+const PILLS = [
+  "Recommend", "Featured", "Research", "Data", "Marketing", "Business", "Tech", "Design", "Finance"
 ];
 
-export function SharedItemList() {
-  const [items, setItems] = React.useState<SharedItem[]>([]);
+interface SharedItemListProps {
+  asFooter?: boolean;
+}
+
+export function SharedItemList({ asFooter = false }: SharedItemListProps) {
+  const [items, setItems] = React.useState<sharedItem[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [loadingMore, setLoadingMore] = React.useState(false);
-  const [activeCategory, setActiveCategory] = React.useState("featured");
-  const [search, setSearch] = React.useState("");
+  const [activeTab, setActiveTab] = React.useState("Featured");
   const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
   const [hasMore, setHasMore] = React.useState(true);
   const [offset, setOffset] = React.useState(0);
@@ -64,7 +77,7 @@ export function SharedItemList() {
 
   const { ref, inView } = useInView({
     threshold: 0,
-    skip: !hasMore || loadingMore,
+    skip: loading || !hasMore || loadingMore,
   });
 
   const fetchItems = React.useCallback(async (currentOffset: number, isInitial: boolean = false) => {
@@ -77,13 +90,10 @@ export function SharedItemList() {
         offset: currentOffset.toString(),
       });
       
-      // Map category to type or search if needed
-      if (activeCategory !== "recommend" && activeCategory !== "featured") {
-        params.set("search", activeCategory);
-      }
-      if (search) params.set("search", search);
+      if (activeTab === "Featured") params.set("featured", "true");
+      else if (activeTab !== "Recommend") params.set("type", activeTab.toLowerCase());
 
-      const res = await fetch(`/api/items?${params}`);
+      const res = await fetch(`/api/tools?${params}`);
       const data = await res.json();
       
       if (Array.isArray(data)) {
@@ -100,20 +110,21 @@ export function SharedItemList() {
       setLoading(false);
       setLoadingMore(false);
     }
-  }, [activeCategory, search]);
+  }, [activeTab, ITEMS_PER_PAGE]);
 
   React.useEffect(() => {
     setOffset(0);
     fetchItems(0, true);
-  }, [activeCategory, search, fetchItems]);
+    console.log("Items recived from tools : ",items);
+  }, [activeTab, fetchItems]);
 
   React.useEffect(() => {
-    if (inView && hasMore && !loadingMore && items.length > 0) {
+    if (inView && hasMore && !loadingMore) {
       const nextOffset = offset + ITEMS_PER_PAGE;
       setOffset(nextOffset);
       fetchItems(nextOffset);
     }
-  }, [inView, hasMore, loadingMore, offset, fetchItems, items.length]);
+  }, [inView, hasMore, loadingMore, offset, fetchItems, ITEMS_PER_PAGE]);
 
   const copyMagicKey = (key: string) => {
     navigator.clipboard.writeText(key);
@@ -123,50 +134,42 @@ export function SharedItemList() {
 
   return (
     <div className="space-y-12">
-      {/* Category Filter Bar */}
-      <div className="flex flex-col items-center gap-8">
-        <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-foreground/[0.03] rounded-full border border-border overflow-x-auto max-w-full no-scrollbar">
-          {CATEGORIES.map((cat) => (
+      <div className="text-center space-y-8">
+        {/* <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+          Use cases from Alchemyst users
+        </h2> */}
+        
+        <div className="flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
+          {PILLS.map((pill) => (
             <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              key={pill}
+              onClick={() => setActiveTab(pill)}
               className={cn(
-                "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap",
-                activeCategory === cat.id
-                  ? "bg-foreground text-background shadow-lg"
-                  : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+                "px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
+                activeTab === pill
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-background text-foreground/60 border-border hover:border-foreground/20 hover:text-foreground"
               )}
             >
-              {cat.icon}
-              {cat.label}
+              {pill}
             </button>
           ))}
         </div>
 
-        <div className="relative w-full max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/30" />
-          <Input
-            placeholder="Search all tasks and websites..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full h-11 pl-11 pr-4 rounded-full bg-foreground/[0.02] border-border text-sm placeholder:text-foreground/30 focus:ring-primary/20"
-          />
-        </div>
-        
-        <p className="text-xs text-foreground/40 text-center max-w-2xl leading-relaxed">
-          All tasks and websites shown in the community are voluntarily shared by users. 
+        <p className="text-xs text-foreground/30 max-w-3xl mx-auto leading-relaxed">
+          All tasks and intelligence in the community are voluntarily shared by users. 
           The platform does not display any content without user consent.
         </p>
       </div>
 
       {loading && items.length === 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="aspect-[4/5] rounded-2xl bg-foreground/5 animate-pulse" />
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="break-inside-avoid h-80 rounded-3xl bg-foreground/5 animate-pulse" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           <AnimatePresence mode="popLayout">
             {items.map((item, idx) => (
               <motion.div
@@ -175,59 +178,79 @@ export function SharedItemList() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                transition={{ duration: 0.4, delay: (idx % 12) * 0.05 }}
+                className="break-inside-avoid mb-6"
               >
-                <Card className="group flex flex-col h-full overflow-hidden rounded-2xl border-none bg-foreground/[0.02] hover:bg-foreground/[0.04] transition-all duration-300">
-                  {/* Top Content Area */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-background">
-                    {item.thumbnail_url ? (
-                      <Image
-                        src={item.thumbnail_url}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 p-6 flex flex-col gap-3">
-                        <Quote className="h-6 w-6 text-foreground/10" />
-                        <p className="text-sm text-foreground/70 leading-relaxed line-clamp-5">
-                          {item.description}
-                        </p>
-                      </div>
+                <div className="group flex flex-col space-y-3">
+                  <div 
+                    className={cn(
+                      "relative rounded-[2rem] overflow-hidden transition-all duration-500 ",
+                      item.cover_image_url 
+                        ? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5" 
+                        : "aspect-[4/3] bg-foreground/[0.03] flex flex-col p-8"
                     )}
-                    
-                    {/* Hover Overlay for Magic Key */}
-                    <div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                  >
+                    {item.cover_image_url ? (
+                      <div className="relative w-full">
+                        <Image
+                          src={item.cover_image_url}
+                          alt={item?.about || ""}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <Quote className="h-8 w-8 text-foreground/10 mb-4" />
+                        <p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed">
+                          {item?.about}
+                        </p>
+                      </>
+                    )}
+
+                    {/* Magic Key Overlay */}
+                    <div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
+                      <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                        <Key className="h-6 w-6 text-primary" />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-xs font-bold uppercase tracking-widest text-foreground/40">Magic Key</p>
+                        <p className="text-lg font-mono font-bold text-foreground">{item.magic_key}</p>
+                      </div>
+                      <div>{item.about}</div>
                       <Button
                         size="sm"
-                        variant="secondary"
-                        onClick={() => copyMagicKey(item.magic_key)}
-                        className="rounded-full bg-background border-border shadow-sm text-xs h-9 px-4"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          copyMagicKey(item.magic_key);
+                        }}
+                        className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 cursor-pointer"
                       >
                         {copiedKey === item.magic_key ? (
-                          <><Check className="h-3 w-3 mr-2 text-emerald-500" /> Copied!</>
+                          <><Check className="h-4 w-4 mr-2" /> Copied</>
                         ) : (
-                          <><Key className="h-3 w-3 mr-2" /> {item.magic_key}</>
+                          "Copy Key"
                         )}
                       </Button>
                     </div>
                   </div>
 
-                  {/* Bottom Meta Area */}
-                  <div className="p-4 flex flex-col gap-1.5">
-                    <h3 className="text-[15px] font-medium text-foreground line-clamp-1">
-                      {item.title}
+                  <div className="px-2 space-y-1">
+                    <h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors">
+                      {item.magic_key}
                     </h3>
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs text-foreground/40">
-                        {item.author_name.split(" ").map(n => n[0]).join(". ")}.
-                      </p>
+                    <div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
+                      <span>{item.name?.split(" ").map(n => n[0]).join(". ") + "."}</span>
                       {item.is_featured && (
-                        <Sparkles className="h-3 w-3 text-primary/40" />
+                        <>
+                          <span className="w-1 h-1 rounded-full bg-foreground/20" />
+                          <Sparkles className="h-3 w-3 text-primary" />
+                        </>
                       )}
                     </div>
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -237,22 +260,13 @@ export function SharedItemList() {
       {hasMore && (
         <div ref={ref} className="flex justify-center py-12">
           {loadingMore && (
-            <Loader2 className="h-6 w-6 animate-spin text-foreground/20" />
+            <div className="flex items-center gap-2 text-foreground/50">
+              <Loader2 className="h-5 w-5 animate-spin" />
+              <span className="text-sm font-medium">Loading intelligence...</span>
+            </div>
           )}
         </div>
       )}
-      
-      <div className="flex justify-center pt-20 border-t border-border">
-        <a 
-          href="https://getalchemystai.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all opacity-30 hover:opacity-100"
-        >
-          <span className="text-[10px] font-semibold tracking-widest uppercase text-foreground/60">Powered by</span>
-          <span className="font-bold text-base text-foreground">Alchemyst AI</span>
-        </a>
-      </div>
     </div>
   );
 }

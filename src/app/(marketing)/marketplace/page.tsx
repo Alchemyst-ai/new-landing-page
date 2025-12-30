@@ -2,33 +2,17 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import {
-  Key,
-  Plus,
-  Sparkles,
-  ArrowRight,
-  Moon,
-  Sun,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger, 
+  DialogDescription 
 } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Plus, Key, Terminal, Code2 } from "lucide-react";
 import { SharedItemList } from "../marketplace/shared-item-list/page";
 
 
@@ -81,50 +65,83 @@ export default function Community() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-300">
-      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <a href="https://getalchemystai.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-xl tracking-tight">Alchemyst AI</span>
-            </a>
-            <div className="h-4 w-[1px] bg-border mx-2" />
-            <span className="text-foreground/50 font-medium">Community</span>
-          </div>
-
-          <div className="flex items-center gap-3">
+      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <Dialog>
+          <DialogTrigger asChild>
             <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full"
-            >
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            <Button
-              variant="ghost"
               size="sm"
-              onClick={() => setShowAccessDialog(true)}
-              className="hidden sm:flex text-foreground/70 hover:text-foreground rounded-full px-4"
+              variant="outline"
+              className="rounded-full px-4 shadow-sm border-primary/20 hover:bg-primary/5"
             >
               <Key className="h-4 w-4 mr-2" />
-              Use Magic Key
+              Use magic key
             </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>How to use your Magic Key</DialogTitle>
+              <DialogDescription>Follow these steps to integrate context.</DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">1</div>
+                <p className="text-sm">Copy your unique Magic Key from the templates.</p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">2</div>
+                <p className="text-sm">Go to <a href="/playground" className="border-b border-primary">playground </a>, click + to add magic keys.</p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">3</div>
+                <p className="text-sm">Now your playground is ready !!</p>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog>
+          <DialogTrigger asChild>
             <Button
               size="sm"
-              onClick={() => setShowShareDialog(true)}
               className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 shadow-lg shadow-primary/20"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Share
+              Create Template
             </Button>
-          </div>
-        </div>
-      </header>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Create New Template</DialogTitle>
+              <DialogDescription>Quick start your Alchemyst AI setup.</DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4 text-sm text-muted-foreground">
+              <div className="space-y-4 py-4">
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">1</div>
+                <p className="text-sm"><a href="https://platform.getalchemystai.com/context" target="_blank" rel="noopener noreferrer" className="border-b border-primary">
+                  Go to Platform
+                 </a>, add files to context processor.</p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">2</div>
+                <p className="text-sm">Select the documents or nodes to be shared.</p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">3</div>
+                <p className="text-sm">Click Operate, select the files.</p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">3</div>
+                <p className="text-sm">Generate magic key and share !!</p>
+              </div>
+            </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+      </div>
+    </header>
 
       <main className="relative pt-20">
         <section className="px-6 pb-20">
@@ -135,7 +152,7 @@ export default function Community() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl md:text-6xl font-semibold tracking-tight"
               >
-                Use cases from Alchemyst users
+                Templates by the community
               </motion.h1>
             </div>
             
@@ -143,122 +160,6 @@ export default function Community() {
           </div>
         </section>
       </main>
-
-      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
-        <DialogContent className="bg-card border-border text-foreground max-w-md rounded-3xl">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold">Share Something New</DialogTitle>
-            <DialogDescription className="text-foreground/50">
-              Create a Magic Key to share your document with the community.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 pt-4">
-            <div className="space-y-2">
-              <Label className="text-foreground/70">Title</Label>
-              <Input
-                value={newItem.title}
-                onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-                placeholder="My awesome document"
-                className="bg-foreground/5 border-border text-foreground rounded-xl"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-foreground/70">Description</Label>
-              <Textarea
-                value={newItem.description}
-                onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-                placeholder="What is this about?"
-                className="bg-foreground/5 border-border text-foreground rounded-xl resize-none"
-                rows={3}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label className="text-foreground/70">Type</Label>
-                <Select
-                  value={newItem.content_type}
-                  onValueChange={(v) => setNewItem({ ...newItem, content_type: v })}
-                >
-                  <SelectTrigger className="bg-foreground/5 border-border text-foreground rounded-xl">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
-                    {FILTER_OPTIONS.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label className="text-foreground/70">Your Name</Label>
-                <Input
-                  value={newItem.author_name}
-                  onChange={(e) => setNewItem({ ...newItem, author_name: e.target.value })}
-                  placeholder="John Doe"
-                  className="bg-foreground/5 border-border text-foreground rounded-xl"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-foreground/70">Tags (comma-separated)</Label>
-              <Input
-                value={newItem.tags}
-                onChange={(e) => setNewItem({ ...newItem, tags: e.target.value })}
-                placeholder="design, marketing, ai"
-                className="bg-foreground/5 border-border text-foreground rounded-xl"
-              />
-            </div>
-
-            <Button
-              onClick={handleShare}
-              disabled={!newItem.title || !newItem.author_name}
-              className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl mt-2"
-            >
-              Generate Magic Key
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={showAccessDialog} onOpenChange={setShowAccessDialog}>
-        <DialogContent className="bg-card border-border text-foreground max-w-md rounded-3xl">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold">Access with Magic Key</DialogTitle>
-            <DialogDescription className="text-foreground/50">
-              Enter a Magic Key to instantly access shared content.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 pt-4">
-            <div className="space-y-2">
-              <Label className="text-foreground/70">Magic Key</Label>
-              <Input
-                value={accessKey}
-                onChange={(e) => setAccessKey(e.target.value)}
-                placeholder="mk-abc123-xyz789"
-                className="bg-foreground/5 border-border text-foreground rounded-xl font-mono"
-              />
-            </div>
-
-            <Button
-              onClick={() => setShowAccessDialog(false)}
-              disabled={!accessKey}
-              className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl"
-            >
-              <Key className="h-4 w-4 mr-2" />
-              Access Content
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }
