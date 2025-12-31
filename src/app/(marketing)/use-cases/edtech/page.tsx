@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import { Header } from "@/components/sections/header";
@@ -153,7 +152,7 @@ const EdTechPage = () => {
             />
             <UseCaseFeature
               title="Adaptive Tutoring Agents"
-              description="Alchemyst agents adjust tone, difficulty, and pace — tuned to each learner's trajectory."
+              description="Alchemyst agents adjust tone, difficulty, and pace  -  tuned to each learner's trajectory."
               imagePath="/use-cases/edtech/edtech03.png"
               imageAlt="Adaptive tutoring interface showing personalized learning paths"
             />
@@ -268,4 +267,4 @@ const EdTechPage = () => {
   );
 };
 
-export default EdTechPage; 
+export default EdTechPage;

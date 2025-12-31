@@ -10,7 +10,7 @@ export default function TweetAboutUs() {
       </h2>
 
       <p className="mt-4 text-lg text-gray-400 max-w-2xl">
-        Share your feedback with us — tell us what you think about{" "}
+        Share your feedback with us  -  tell us what you think about{" "}
         {/* <span className="font-bold text-gray-400">Alchemyst</span>. */}
             <Link
             href="https://platform.getalchemystai.com"
