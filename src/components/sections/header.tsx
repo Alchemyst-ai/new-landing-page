@@ -285,7 +285,7 @@ export function Header() {
             </span>
           </Link>
           <Link
-            href="/marketplace"
+            href="/template"
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1 text">

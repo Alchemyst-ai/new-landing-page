@@ -1,11 +1,9 @@
 import { ObjectId } from 'mongodb';
 import mongoose from "mongoose";
-import ContextSpace from "../models/ContextSpace";
+import ContextSpace from "../models/ContextSpace"
 
 const MONGODB_URI = process.env.MONGODB_URI!;
 
-// 👇 replace with a real user _id from your DB
-const USER_ID = new mongoose.Types.ObjectId("64f000000000000000000001");
 
 function generateMagicKey() {
   return `mk-${Date.now().toString(36)}-${Math.random()

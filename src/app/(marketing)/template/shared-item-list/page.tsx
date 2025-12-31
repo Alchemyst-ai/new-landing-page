@@ -92,6 +92,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 
       const res = await fetch(`/api/tools?${params}`);
       const data = await res.json();
+      console.log("templates fetched : ", data);
 
       if (Array.isArray(data)) {
         if (isInitial) {
@@ -267,6 +268,18 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
             ))}
           </AnimatePresence>
         </div>
+        </div>
+      )}
+
+      {asFooter && (
+        <div className="flex justify-center mt-8">
+          <Button
+        size="lg"
+        className="rounded-full px-8"
+        onClick={() => window.location.href = "/template"}
+          >
+        View More Templates
+          </Button>
         </div>
       )}
 

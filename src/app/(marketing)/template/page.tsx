@@ -13,7 +13,7 @@ import {
   DialogDescription 
 } from "@/components/ui/dialog";
 import { Plus, Key, Terminal, Code2, Info } from "lucide-react";
-import { SharedItemList } from "../marketplace/shared-item-list/page";
+import { SharedItemList } from "./shared-item-list/page";
 
 
 const FILTER_OPTIONS = [
@@ -39,29 +39,6 @@ export default function Community() {
     tags: "",
   });
 
-  const handleShare = async () => {
-    const res = await fetch("/api/items", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...newItem,
-        tags: newItem.tags.split(",").map((t) => t.trim()).filter(Boolean),
-        thumbnail_url: `https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80`,
-      }),
-    });
-
-    if (res.ok) {
-      setShowShareDialog(false);
-      setNewItem({
-        title: "",
-        description: "",
-        content_type: "document",
-        author_name: "",
-        tags: "",
-      });
-      window.location.reload();
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-300">
