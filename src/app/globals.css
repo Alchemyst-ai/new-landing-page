@@ -58,45 +58,31 @@
     --bg-size-grid-5: 20% 100%;
     --bg-size-grid-6: calc(100% / 6) 100%;
 
-    --bg-image-grid-1: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
-    --bg-image-grid-2: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
-    --bg-image-grid-3: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
-    --bg-image-grid-4: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
-    --bg-image-grid-5: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
-    --bg-image-grid-6: linear-gradient(
-        to right,
-        hsl(var(--border)) 1px,
-        transparent 1px
-    );
+    --bg-image-grid-1: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
+    --bg-image-grid-2: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
+    --bg-image-grid-3: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
+    --bg-image-grid-4: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
+    --bg-image-grid-5: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
+    --bg-image-grid-6: linear-gradient(to right,
+            hsl(var(--border)) 1px,
+            transparent 1px);
 
     --animate-marquee: marquee var(--duration) linear infinite;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-    --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite
-        linear;
+    --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
-    --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-        infinite;
+    --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
     --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
     --animate-aurora: aurora 8s ease-in-out infinite alternate;
 
@@ -147,6 +133,7 @@
     }
 
     @keyframes ripple {
+
         0%,
         100% {
             transform: translate(-50%, -50%) scale(1);
@@ -159,13 +146,11 @@
 
     @keyframes orbit {
         0% {
-            transform: rotate(0deg) translateY(calc(var(--radius) * 1px))
-                rotate(0deg);
+            transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
         }
 
         100% {
-            transform: rotate(360deg) translateY(calc(var(--radius) * 1px))
-                rotate(-360deg);
+            transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
         }
     }
 
@@ -175,18 +160,22 @@
             background-position: 0% 50%;
             transform: rotate(-5deg) scale(0.9);
         }
+
         25% {
             background-position: 50% 100%;
             transform: rotate(5deg) scale(1.1);
         }
+
         50% {
             background-position: 100% 50%;
             transform: rotate(-3deg) scale(0.95);
         }
+
         75% {
             background-position: 50% 0%;
             transform: rotate(3deg) scale(1.05);
         }
+
         100% {
             background-position: 0% 50%;
             transform: rotate(-5deg) scale(0.9);
@@ -199,24 +188,24 @@
     --radius: 0.625rem;
     /* Light theme - grayscale */
     --background: oklch(0.98 0 0);
-    --foreground: oklch(0.12 0 0);
+    --foreground: #151515;
     --card: oklch(0.98 0 0);
-    --card-foreground: oklch(0.12 0 0);
+    --card-foreground: #151515;
     --popover: oklch(0.98 0 0);
-    --popover-foreground: oklch(0.12 0 0);
-    --primary: oklch(0.12 0 0);
+    --popover-foreground: #151515;
+    --primary: #151515;
     --primary-foreground: oklch(0.98 0 0);
     --secondary: oklch(0.94 0 0);
-    --secondary-foreground: oklch(0.12 0 0);
+    --secondary-foreground: #151515;
     --muted: oklch(0.92 0 0);
     --muted-foreground: oklch(0.4 0 0);
     --accent: oklch(0.92 0 0);
-    --accent-foreground: oklch(0.12 0 0);
+    --accent-foreground: #151515;
     --destructive: oklch(0.55 0.25 25);
     --destructive-foreground: oklch(0.98 0 0);
     --border: oklch(0.86 0 0);
     --input: oklch(0.86 0 0);
-    --ring: oklch(0.12 0 0);
+    --ring: #151515;
     --radius: 0.5rem;
     /* Neutral charts */
     --chart-1: oklch(0.75 0 0);
@@ -232,29 +221,29 @@
 
     --sidebar: oklch(0.97 0 0);
     --sidebar-foreground: oklch(0.15 0 0);
-    --sidebar-primary: oklch(0.12 0 0);
+    --sidebar-primary: #151515;
     --sidebar-primary-foreground: oklch(0.98 0 0);
     --sidebar-accent: oklch(0.92 0 0);
-    --sidebar-accent-foreground: oklch(0.12 0 0);
+    --sidebar-accent-foreground: #151515;
     --sidebar-border: oklch(0.86 0 0);
     --sidebar-ring: oklch(0.25 0 0);
 }
 
 .dark {
     /* Dark theme - grayscale */
-    --background: oklch(0.1 0 0);
+    --background: #151515;
     --foreground: oklch(0.98 0 0);
-    --card: oklch(0.13 0 0);
+    --card: #151515;
     --card-foreground: oklch(0.98 0 0);
-    --popover: oklch(0.13 0 0);
+    --popover: #151515;
     --popover-foreground: oklch(0.98 0 0);
     --primary: oklch(0.98 0 0);
-    --primary-foreground: oklch(0.1 0 0);
+    --primary-foreground: #151515;
     --secondary: oklch(0.18 0 0);
     --secondary-foreground: oklch(0.98 0 0);
-    --muted: oklch(0.2 0 0);
+    --muted: #151515;
     --muted-foreground: oklch(0.75 0 0);
-    --accent: oklch(0.2 0 0);
+    --accent: #151515;
     --accent-foreground: oklch(0.98 0 0);
     --destructive: oklch(0.45 0.25 25);
     --destructive-foreground: oklch(0.98 0 0);
@@ -265,7 +254,7 @@
     --chart-2: oklch(0.65 0 0);
     --chart-3: oklch(0.5 0 0);
     --chart-4: oklch(0.35 0 0);
-    --chart-5: oklch(0.2 0 0);
+    --chart-5: #151515;
     --sidebar: oklch(0.18 0 0);
     --sidebar-foreground: oklch(0.98 0 0);
     --sidebar-primary: oklch(0.35 0 0);
@@ -336,15 +325,19 @@
 /* Fix for OKLCH color incompatibility with Disqus - https://github.com/disqus/disqus-react/issues/153 */
 :root,
 .comments {
-    background-color: #ffffff !important; /* white */
-    color: #1e293b !important; /* slate-800 */
+    background-color: #ffffff !important;
+    /* white */
+    color: #1e293b !important;
+    /* slate-800 */
 }
 
 /* Dark mode comments - using hex values */
 .dark :root,
 .dark .comments {
-    background-color: #0f172a !important; /* slate-900 */
-    color: #f8fafc !important; /* slate-50 */
+    background-color: #0f172a !important;
+    /* slate-900 */
+    color: #f8fafc !important;
+    /* slate-50 */
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -365,12 +358,10 @@
 
 @layer components {
     .careers-gradient {
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(255, 140, 0, 0.15) 20%,
-            rgba(255, 120, 0, 0.08) 50%,
-            transparent 100%
-        );
+        background: linear-gradient(to bottom,
+                transparent,
+                rgba(255, 140, 0, 0.15) 20%,
+                rgba(255, 120, 0, 0.08) 50%,
+                transparent 100%);
     }
 }

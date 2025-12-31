@@ -115,7 +115,7 @@ function HeroCTA() {
           href="/playground"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto bg-[#EAEAEA] text-black hover:text-white  dark:hover:text-black flex gap-2 rounded-lg "
+            "w-full sm:w-auto text-black hover:text-white  dark:hover:text-black flex gap-2 rounded-lg "
           )}
         >
           <Icons.logo className="h-6 w-6" />

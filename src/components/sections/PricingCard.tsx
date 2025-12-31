@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -32,10 +31,10 @@ const PricingCard = ({
   return (
     <div className="bg-card rounded-xl p-8 flex flex-col h-full relative border border-border" style={{ cursor: 'auto' }}>
       {popular && (
-        <div 
-          style={{ 
-            backgroundColor: customColor || '#ED9F36' 
-          }} 
+        <div
+          style={{
+            backgroundColor: customColor || '#ED9F36'
+          }}
           className="absolute top-3 right-3 text-black px-3 py-1 rounded-md text-xs font-medium"
         >
           POPULAR
@@ -51,12 +50,12 @@ const PricingCard = ({
         )}
       </div>
       <p className="text-muted-foreground mb-8">{description}</p>
-      
+
       <div className="flex flex-col gap-4 mb-8 flex-grow">
         {features.map((feature, index) => (
           <div key={index} className="flex items-center gap-3">
-            <div style={{ 
-              color: popular ? (customColor || '#ED9F36') : 'var(--foreground)' 
+            <div style={{
+              color: popular ? (customColor || '#ED9F36') : 'var(--foreground)'
             }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
@@ -67,14 +66,14 @@ const PricingCard = ({
           </div>
         ))}
       </div>
-      
+
       {ctaLink ? (
         <Link href={ctaLink} target="_blank" rel="noopener noreferrer" className="w-full">
-          <Button 
-            style={{ 
+          <Button
+            style={{
               borderColor: popular ? customColor || '#ED9F36' : undefined,
               backgroundColor: popular ? customColor || '#ED9F36' : undefined,
-              color: popular ? '#000000' : undefined,
+              color: popular ? '#151515' : undefined,
             }}
             className={popular ? "w-full border-2 hover:opacity-90" : "w-full"}
             variant={popular ? "default" : "outline"}
@@ -83,11 +82,11 @@ const PricingCard = ({
           </Button>
         </Link>
       ) : (
-        <Button 
-          style={{ 
+        <Button
+          style={{
             borderColor: popular ? customColor || '#ED9F36' : undefined,
             backgroundColor: popular ? customColor || '#ED9F36' : undefined,
-            color: popular ? '#000000' : undefined,
+            color: popular ? '#151515' : undefined,
           }}
           className={popular ? "w-full border-2 hover:opacity-90" : "w-full"}
           variant={popular ? "default" : "outline"}
@@ -99,4 +98,4 @@ const PricingCard = ({
   );
 };
 
-export default PricingCard; 
+export default PricingCard;

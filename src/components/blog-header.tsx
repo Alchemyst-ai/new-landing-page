@@ -1,12 +1,12 @@
 import { formatDate } from '@/lib/utils';
-import { ChevronRight, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface BlogHeaderProps {
   title: string;
   category?: string;
-  subcategory?: string;
+  slug?: string;
   publishedAt: string;
   description: string;
   author: {
@@ -24,7 +24,7 @@ interface BlogHeaderProps {
 export default function BlogHeader({
   title,
   category = "Trading",
-  subcategory = "Market Analysis",
+  slug = "Market Analysis",
   publishedAt,
   author,
   reviewer,
@@ -47,11 +47,13 @@ export default function BlogHeader({
             Bravos
           </Link> */}
           {/* <ChevronRight className="w-4 h-4 mx-2" /> */}
-          <Link href={`/blog?category=${category.toLowerCase()}`} className="hover:text-foreground transition-colors">
-            {category}
+          <Link href={`/blog?category=${slug.toLowerCase()}`} className="hover:text-foreground transition-colors">
+            <span className="inline-block bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs font-semibold mr-2">
+              {category}
+            </span>
           </Link>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-foreground">{subcategory}</span>
+          {/* <ChevronRight className="w-4 h-4 mx-2" />
+          <span className="text-foreground">{slug}</span> */}
         </nav>
 
         {/* Featured Image */}

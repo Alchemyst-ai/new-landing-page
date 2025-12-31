@@ -396,7 +396,7 @@ export function Header() {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                className="lg:hidden fixed top-[70px] inset-x-4 bg-white/80 dark:bg-black/90 backdrop-blur-md border border-gray-200/20 dark:border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-100px)]"
+                className="lg:hidden fixed top-[70px] inset-x-4 bg-white/80 dark:bg-[#151515]/90 backdrop-blur-md border border-gray-200/20 dark:border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-100px)]"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
