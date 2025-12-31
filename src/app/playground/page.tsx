@@ -1,11 +1,11 @@
 "use client"
 
-import { SharedItemList } from "@/app/(marketing)/marketplace/shared-item-list/page"
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport, UIMessage } from "ai"
 import { Key, Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
+import { SharedItemList } from "../(marketing)/marketplace/shared-item-list/page"
 import { ChatSidebar } from "../../components/playground/ChatHistory"
 import { ChatInput } from "../../components/playground/ChatInput"
 import { ChatMessages } from "../../components/playground/ChatMessages"
@@ -305,9 +305,8 @@ export default function ChatPlayground() {
   const isChatEmpty = messages.length === 0
 
   return (
-    <>
-    <div className={`flex max-w-auto bg-background ${isChatEmpty ? "h-[75vh]" : "h-[90vh]"}`}>
-      <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
+    <div className={`flex max-w-auto bg-background`}>
+      <div className={`flex flex-1 flex-col min-h-screen ${isHistoryOpen ? 'flex-1' : ''}`}>
         <div className="flex-shrink-0 mt-2 items-center gap-3">
           <ChatTopBar onOpenHistory={handleToggleHistory}
             apiKeyProps={{
@@ -320,7 +319,7 @@ export default function ChatPlayground() {
           />
         </div>
 
-        <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col overflow-scroll min-h-[90vh]">
           {loadingChat && (
             <div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
               <div className="flex flex-col items-center gap-2">
@@ -363,9 +362,9 @@ export default function ChatPlayground() {
               </div>
             </>
           ) : (
-            <div className={`flex flex-1 items-center justify-center p-8`}>
-              <div className="w-full max-w-2xl space-y-6">
-                <div className="text-center space-y-2">
+            <div className={`flex flex-1 flex-col items-center justify-center p-8 min-h-screen overflow-y-auto gap-y-6`}>
+              <div className="w-full max-w-2xl space-y-6 my-auto">
+                <div className="text-center space-y-2 my-auto">
                   {!loadingChat && (<div className="text-center mb-8">
                     <h1 className="text-4xl font-medium mb-2">
                       {getTimeBasedGreeting()}{userData?.fullName ? `, ${userData.fullName}` : ''}!
@@ -373,7 +372,6 @@ export default function ChatPlayground() {
                     <p className="text-muted-foreground">Ask me anything or use the context bar for advanced features</p>
                   </div>)}
                 </div>
-
                 <div className="space-y-4">
                   <ContextBar
                     isOpen={isContextBarOpen}
@@ -386,7 +384,6 @@ export default function ChatPlayground() {
                     onRemoveFile={handleRemoveFile}
                     onRemoveImage={handleRemoveImage}
                   />
-
                   <ChatInput
                     onSendMessage={handleSendMessage}
                     isContextBarOpen={isContextBarOpen}
@@ -402,6 +399,9 @@ export default function ChatPlayground() {
                   />
                 </div>
               </div>
+              {isChatEmpty && (
+                <div><SharedItemList asFooter/></div>
+              )}
             </div>
           )}
         </div>
@@ -417,9 +417,5 @@ export default function ChatPlayground() {
         onToggle={handleToggleHistory}
       />
     </div>
-    {isChatEmpty && (
-    <div><SharedItemList asFooter={true}/></div>
-    )}
-    </>
   )
 }

@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { MessageSquarePlus, Trash2, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ChevronRight, MessageSquare, MessageSquarePlus, Trash2 } from "lucide-react"
 import type { ChatSession } from "../../app/playground/page"
 
 interface ChatSidebarProps {
@@ -29,7 +29,7 @@ export function ChatSidebar({
     <>
       <aside
         className={cn(
-          "right-0 top-0 h-full border-l border-border bg-card transition-all duration-300 flex flex-col z-40",
+          "right-0 top-0 h-screen border-l border-border bg-card transition-all duration-300 flex flex-col z-40",
           isOpen ? "w-72" : "hidden",
         )}
       >
