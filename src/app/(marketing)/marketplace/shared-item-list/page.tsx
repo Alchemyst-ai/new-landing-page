@@ -64,7 +64,7 @@ interface SharedItemListProps {
   asFooter?: boolean;
 }
 
-export function SharedItemList({ asFooter = false }: SharedItemListProps) {
+export function SharedItemList({ asFooter }: SharedItemListProps) {
   const [items, setItems] = React.useState<sharedItem[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [loadingMore, setLoadingMore] = React.useState(false);

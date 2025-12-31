@@ -12,6 +12,7 @@ import { ChatInput } from "../../components/playground/ChatInput"
 import { ChatMessages } from "../../components/playground/ChatMessages"
 import { ChatTopBar } from "../../components/playground/ChatTopBar"
 import { ContextBar } from "../../components/playground/ContextBar"
+import { SharedItemList } from "@/app/(marketing)/marketplace/shared-item-list/page";
 
 
 export interface ChatSession {
@@ -304,6 +305,7 @@ export default function ChatPlayground() {
   const isChatEmpty = messages.length === 0
 
   return (
+    <>
     <div className="flex max-w-auto h-[90vh] bg-background">
       <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
         <div className="flex-shrink-0 mt-2 items-center gap-3">
@@ -415,5 +417,7 @@ export default function ChatPlayground() {
         onToggle={handleToggleHistory}
       />
     </div>
+    <div><SharedItemList asFooter={true}/></div>
+    </>
   )
 }
