@@ -65,6 +65,9 @@ importers:
       '@tripetto/studio':
         specifier: ^4.0.1
         version: 4.0.1
+      '@types/recharts':
+        specifier: ^1.8.29
+        version: 1.8.29
       '@types/rss':
         specifier: ^0.0.32
         version: 0.0.32
@@ -1600,6 +1603,9 @@ packages:
 
   '@types/react@18.3.23':
     resolution: {integrity: sha512-/LDXMQh55EzZQ0uVAZmKKhfENivEvWz6E+EYzh+/MCjMhNsotd+ZHhBGIjFDTi6+fz0OhQQQLbTgdQIxxCsC0w==}
+
+  '@types/recharts@1.8.29':
+    resolution: {integrity: sha512-ulKklaVsnFIIhTQsQw226TnOibrddW1qUQNFVhoQEyY1Z7FRQrNecFCGt7msRuJseudzE9czVawZb17dK/aPXw==}
 
   '@types/rss@0.0.32':
     resolution: {integrity: sha512-2oKNqKyUY4RSdvl5eZR1n2Q9yvw3XTe3mQHsFPn9alaNBxfPnbXBtGP8R0SV8pK1PrVnLul0zx7izbm5/gF5Qw==}
@@ -5178,6 +5184,11 @@ snapshots:
     dependencies:
       '@types/prop-types': 15.7.15
       csstype: 3.1.3
+
+  '@types/recharts@1.8.29':
+    dependencies:
+      '@types/d3-shape': 1.3.12
+      '@types/react': 18.3.23
 
   '@types/rss@0.0.32': {}
 

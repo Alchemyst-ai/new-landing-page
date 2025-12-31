@@ -28,6 +28,7 @@
 		"@tripetto/runner": "^8.2.0",
 		"@tripetto/runner-classic": "^7.0.1",
 		"@tripetto/studio": "^4.0.1",
+		"@types/recharts": "^1.8.29",
 		"@types/rss": "^0.0.32",
 		"@xmldom/xmldom": "^0.8.11",
 		"ai": "^6.0.3",
