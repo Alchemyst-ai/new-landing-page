@@ -1,8 +1,8 @@
 "use client";
 
-import { RainbowButton } from "@/components/magicui/rainbow-button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface DiscordInviteData {
   approximate_member_count: number;
@@ -38,12 +38,12 @@ export const DiscordCommunityButton = () => {
       href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center space-x-2 px-3 py-1 rounded-full dark:text-white text-white transition-all text-sm font-medium"
+      className="flex items-center space-x-2 px-3 py-1 rounded-full transition-all text-sm font-medium"
     >
-      <RainbowButton 
-        variant="default" 
-        size="default" 
-        className="flex items-center px-3 py-2 text-sm font-medium text-white dark:text-black rounded-full"
+      <Button
+        variant="secondary"
+        // size="lg"
+        className="flex items-center px-3 py-2 font-medium rounded-full gap-2 cursor-pointer"
       >
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="Discord--Streamline-Simple-Icons" height="26" width="26">
         <desc>
@@ -61,7 +61,7 @@ export const DiscordCommunityButton = () => {
           {/* {memberData.approximate_presence_count.toLocaleString()} online */}
         </span>
       )}
-      </RainbowButton>
+      </Button>
     </Link>
   );
 };

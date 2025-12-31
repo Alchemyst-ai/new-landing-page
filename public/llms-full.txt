@@ -119,19 +119,19 @@ Transactions that think ahead. Memory backed ledger.
 
 Manage context data with user and organization-level access control.
 
-[Learn more >](https://docs.getalchemystai.com/api-reference)
+[Learn more >](https://getalchemystai.com/docs/api-reference)
 
 ## Chat API
 
 Streaming chat functionality with AI-generated responses, thinking steps using memory, and metadata.
 
-[Learn more >](https://docs.getalchemystai.com/api-reference)
+[Learn more >](https://getalchemystai.com/docs/api-reference)
 
 ## Context Proxy API
 
 OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.
 
-[Learn more >](https://docs.getalchemystai.com/api-reference)
+[Learn more >](https://getalchemystai.com/docs/api-reference)
 
 ## Statistics
 
@@ -330,7 +330,7 @@ Alchemyst AI is a context engine that provides AI applications with persistent m
 
 ### How can I use Alchemyst AI?
 
-You can wire Alchemyst AI into your stack through our APIs, SDKs, MCPs, and browser extension - whatever fits your workflow best. Check more details in our [documentation](https://docs.getalchemystai.com).
+You can wire Alchemyst AI into your stack through our APIs, SDKs, MCPs, and browser extension - whatever fits your workflow best. Check more details in our [documentation](https://getalchemystai.com/docs).
 
 ### What is an AI memory layer and why is it important?
 
@@ -504,7 +504,7 @@ October 29, 2025
 
 [Capture reviews with **Feedspace**](https://www.feedspace.io/?utm_source=powered-by-feedspace&utm_medium=wall-of-love&utm_campaign=rBCy6Qaneu "Capture reviews with Feedspace")
 
-## We’d love to hear from you!
+## We'd love to hear from you!
 
 Share your feedback with us  -  tell us what you think about [Alchemyst](https://platform.getalchemystai.com/) Leave a review, suggest a feature, or tweet us your thoughts.
 
@@ -1578,9 +1578,9 @@ Persistent Memory AI capabilities aren't just a nice-to-have feature, they're es
 
 ![meme.png](https://charming-crown-5c60ef85ae.media.strapiapp.com/meme_f97dabb02f.png)
 
-[**​**](https://docs.getalchemystai.com/tutorials/chrome-extension#step-by-step-setup-%3A)
+[**​**](https://getalchemystai.com/docs/tutorials/chrome-extension#step-by-step-setup-%3A)
 
-[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#step-by-step-setup-%3A)
+[Navigate to header](https://getalchemystai.com/docs/tutorials/chrome-extension#step-by-step-setup-%3A)
 
 ## Introducing Alchemyst AI's Chrome Extension
 
@@ -1594,11 +1594,11 @@ Perhaps most importantly, Alchemyst AI works across different AI platforms.
 
 ### Setup Alchemyst AI Chrome Extension
 
-Getting started with Alchemyst AI's Memory AI technology is surprisingly straightforward. To add the Alchemyst AI Chrome Extension to your browser, simply visit the [**Chrome Web Store**](https://docs.getalchemystai.com/integrations/extensions/chrome) and click "Add to Chrome." The installation takes just seconds, adding a powerful memory layer to your AI interactions with minimal effort. For a detailed setup visit [**Docs**](https://docs.getalchemystai.com/integrations/extensions/chrome)
+Getting started with Alchemyst AI's Memory AI technology is surprisingly straightforward. To add the Alchemyst AI Chrome Extension to your browser, simply visit the [**Chrome Web Store**](https://getalchemystai.com/docs/integrations/extensions/chrome) and click "Add to Chrome." The installation takes just seconds, adding a powerful memory layer to your AI interactions with minimal effort. For a detailed setup visit [**Docs**](https://getalchemystai.com/docs/integrations/extensions/chrome)
 
-[**​**](https://docs.getalchemystai.com/tutorials/chrome-extension#how-it-works-%3A)
+[**​**](https://getalchemystai.com/docs/tutorials/chrome-extension#how-it-works-%3A)
 
-[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#how-it-works-%3A)
+[Navigate to header](https://getalchemystai.com/docs/tutorials/chrome-extension#how-it-works-%3A)
 
 ### Save conversation as context
 
@@ -1614,25 +1614,25 @@ So here we come to your rescue, just use the save context button, and switch eff
 
 ![chrome-alchemyst.png](https://charming-crown-5c60ef85ae.media.strapiapp.com/chrome_alchemyst_43a58eb164.png)
 
-[​](https://docs.getalchemystai.com/tutorials/chrome-extension#add-memory-%3A)
+[​](https://getalchemystai.com/docs/tutorials/chrome-extension#add-memory-%3A)
 
-[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#add-memory-%3A)
+[Navigate to header](https://getalchemystai.com/docs/tutorials/chrome-extension#add-memory-%3A)
 
 ### Add Memory
 
 To use memory you need to add memory, to do that just drag and drop any document you would like to store as memory, can be a pdf, text file, json file, doc file. Upload here : [https://platform.getalchemystai.com/context](https://platform.getalchemystai.com/context)
 
-[​](https://docs.getalchemystai.com/tutorials/chrome-extension#use-cases-%3A)
+[​](https://getalchemystai.com/docs/tutorials/chrome-extension#use-cases-%3A)
 
-[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#use-cases-%3A)
+[Navigate to header](https://getalchemystai.com/docs/tutorials/chrome-extension#use-cases-%3A)
 
 ### Use Cases
 
 As you are all set to use the extension let’s now look and some of the cool stuff you can do with it.
 
-[​](https://docs.getalchemystai.com/tutorials/chrome-extension#for-everyone-%3A)
+[​](https://getalchemystai.com/docs/tutorials/chrome-extension#for-everyone-%3A)
 
-[Navigate to header](https://docs.getalchemystai.com/tutorials/chrome-extension#for-everyone-%3A)
+[Navigate to header](https://getalchemystai.com/docs/tutorials/chrome-extension#for-everyone-%3A)
 
 ## For general use :
 

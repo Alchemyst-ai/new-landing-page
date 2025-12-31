@@ -114,8 +114,8 @@ function HeroCTA() {
           // href="/platform/signin"
           href="/playground"
           className={cn(
-            buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-black hover:text-white  dark:hover:text-black flex gap-2 rounded-lg "
+            buttonVariants({ variant: "orange" }),
+            "w-full sm:w-auto flex gap-2 rounded-lg "
           )}
         >
           <Icons.logo className="h-6 w-6" />

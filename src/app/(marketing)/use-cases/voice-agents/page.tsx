@@ -165,10 +165,10 @@ const TESTIMONIALS = [
 },
 ];
 
-export function ShowTestimonials({open, close, asDialog = false }: { open?: boolean, close?: () => void, asDialog?: boolean }) {
+export function ShowTestimonials({open, close, asDialog = false, ...props }: { open?: boolean, close?: () => void, asDialog?: boolean } & React.HTMLAttributes<HTMLDivElement>) {
 if (asDialog) {
   return (
-    <Dialog open={open} onOpenChange={close}>
+    <Dialog open={open} onOpenChange={close} {...props}>
       <DialogContent className="max-w-lg bg-[#151515]/95 border-white/10 text-white">
         <DialogHeader>
           <DialogTitle className="text-2xl">What Our Customers Say</DialogTitle>
@@ -184,7 +184,7 @@ if (asDialog) {
                   <div className="flex flex-col items-center text-center gap-4 px-2 py-6">
                     {t.avatar.startsWith("http") ? (
                       <Avatar className="text-4xl">
-                        <Image src={t.avatar} className="w-12 h-12 rounded-full object-cover" alt={`testimonial-by-${t.name}`}/>
+                        <Image src={t.avatar} className="w-12 h-12 rounded-full object-cover" alt={`testimonial-by-${t.name}`} width={50} height={50} />
                       </Avatar>
                     ) : (
                       <Avatar className="text-4xl">{t.avatar}</Avatar>
@@ -213,7 +213,7 @@ if (asDialog) {
 }
 
 return (
-  <section className="py-20 px-6 bg-transparent">
+  <section className={`py-20 px-6 bg-transparent ${props.className}`}>
     <div className="w-full max-w-[60vw] mx-auto rounded-2xl bg-[#151515]/90 p-8 text-center">
       <h2 className="text-4xl font-bold mb-2">What Our Customers Say</h2>
       <p className="text-white/60 mb-6">
@@ -250,14 +250,10 @@ return (
 export default function VoiceAgentsPage() {
   const [showTestimonials, setShowTestimonials] = useState(false);
   return (
-    <main className="min-h-screen w-full bg-[#151515] relative">
-  {/* Orange Radial Glow Background */}
-  <div
-    className="absolute inset-0 z-0"
-    style={{
+    <main className="min-h-screen w-full bg-[#151515] relative" style={{
       backgroundImage: `radial-gradient(circle 500px at 50% 100px, rgba(249,115,22,0.4), transparent)`,
-    }}
-  />
+    }}>
+  {/* Orange Radial Glow Background */}
       {/* ================= HERO ================= */}
       <section className="relative pt-36 pb-32 px-6">
         <div className="absolute inset-0 blur-3xl" />
@@ -280,7 +276,7 @@ export default function VoiceAgentsPage() {
 {/* Voice Wave Animation
         <SineWave /> */}
           <div className="mt-10 flex justify-center gap-4">
-            <Button className="rounded-lg px-6 py-3 font-medium hover:bg-white/90">
+            <Button className="px-6 py-3 font-medium cursor-pointer" variant="orange">
               Book Live Demo
             </Button>
             <Button variant="outline" className="rounded-lg border border-white/15 px-6 py-3 cursor-pointer" onClick={() => setShowTestimonials(true)}>
@@ -316,7 +312,7 @@ export default function VoiceAgentsPage() {
                 <DialogTrigger asChild>
                   <Button
                   variant="outline"
-                  className="mt-4 w-full border-white/20 text-white hover:bg-white/10"
+                  className="mt-4 w-full cursor-pointer"
                   >
                   Show Demo
                   </Button>
@@ -426,7 +422,8 @@ export default function VoiceAgentsPage() {
           className="mt-8 rounded-lg px-8 py-4 font-medium cursor-pointer"
         >
         Book Live Demo
-        </Button></Link>
+        </Button>
+        </Link>
         </div>
       </section>
 

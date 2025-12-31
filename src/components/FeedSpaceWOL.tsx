@@ -15,7 +15,7 @@ export default function FeedspaceWOL({
   return (
     <section className="flex flex-col items-center justify-center py-16">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">
+        <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground">
           Testimonials
         </h2>
         <p className="text-gray-400 mt-2 text-base md:text-lg">

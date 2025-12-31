@@ -1,4 +1,4 @@
-import { model, models, Schema } from "mongoose";
+import { InferSchemaType, Model, model, models, Schema } from "mongoose";
 
 const ContextSpaceSchema = new Schema(
   {
@@ -72,4 +72,7 @@ const ContextSpaceSchema = new Schema(
   }
 );
 
-export default models.ContextSpace || model("ContextSpace", ContextSpaceSchema);
+export type ContextSpaceType = InferSchemaType<typeof ContextSpaceSchema>;
+const ContextSpaceModel: Model<ContextSpaceType> = models.ContextSpace || model("ContextSpace", ContextSpaceSchema);
+
+export default ContextSpaceModel;

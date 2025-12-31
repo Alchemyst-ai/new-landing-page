@@ -11,362 +11,360 @@ import { Button } from "../ui/button";
 import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 
-
 // Temporary type definition
 interface MenuObject {
-  title: string;
-  link?: string;
-  icon?: string;
-  style?: Record<string, string>;
-  children?: MenuObject[];
+	title: string;
+	link?: string;
+	icon?: string;
+	style?: Record<string, string>;
+	children?: MenuObject[];
 }
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [mounted, setMounted] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
-  const [showUseCasesDropdown, setShowUseCasesDropdown] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
-  const useCasesRef = useRef<HTMLDivElement>(null);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [mounted, setMounted] = useState(false);
+	const [activeMenu, setActiveMenu] = useState<string | null>(null);
+	const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
+	const [showUseCasesDropdown, setShowUseCasesDropdown] = useState(false);
+	const navRef = useRef<HTMLDivElement>(null);
+	const useCasesRef = useRef<HTMLDivElement>(null);
 
-  const closeTimer = useRef<NodeJS.Timeout | null>(null);
+	const closeTimer = useRef<NodeJS.Timeout | null>(null);
 
+	const { theme } = useTheme();
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
-  const { theme } = useTheme();
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (navRef.current && !navRef.current.contains(event.target as Node)) {
+				setActiveMenu(null);
+			}
+			if (
+				useCasesRef.current &&
+				!useCasesRef.current.contains(event.target as Node)
+			) {
+				setShowUseCasesDropdown(false);
+			}
+		};
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setActiveMenu(null);
-      }
-      if (
-        useCasesRef.current &&
-        !useCasesRef.current.contains(event.target as Node)
-      ) {
-        setShowUseCasesDropdown(false);
-      }
-    };
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+		setOpenSubmenus([]);
+	};
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    setOpenSubmenus([]);
-  };
+	const handleMouseEnter = (title: string) => {
+		setActiveMenu(title);
+	};
 
-  const handleMouseEnter = (title: string) => {
-    setActiveMenu(title);
-  };
+	const toggleSubmenu = (title: string) => {
+		setOpenSubmenus((prev) =>
+			prev.includes(title)
+				? prev.filter((item) => item !== title)
+				: [...prev, title],
+		);
+	};
 
-  const toggleSubmenu = (title: string) => {
-    setOpenSubmenus((prev) =>
-      prev.includes(title)
-        ? prev.filter((item) => item !== title)
-        : [...prev, title],
-    );
-  };
+	const useCasesItems = [
+		{ title: "Finance", href: "/use-cases/finance" },
+		{ title: "Customer Support", href: "/use-cases/customer-support" },
+		{ title: "EdTech", href: "/use-cases/edtech" },
+		{ title: "Healthcare", href: "/use-cases/healthcare" },
+	];
 
-  const useCasesItems = [
-    { title: "Finance", href: "/use-cases/finance" },
-    { title: "Customer Support", href: "/use-cases/customer-support" },
-    { title: "EdTech", href: "/use-cases/edtech" },
-    { title: "Healthcare", href: "/use-cases/healthcare" },
-  ];
+	const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
+		const isSubmenuOpen = openSubmenus.includes(subItem.title);
 
-  const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
-    const isSubmenuOpen = openSubmenus.includes(subItem.title);
+		return (
+			<div key={subItem.title} className={`w-full ${depth > 0 ? "ml-4" : ""}`}>
+				<div className="flex items-center justify-between w-full">
+					<Link
+						href={subItem.link ? `/agents${subItem.link}` : "#"}
+						className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
+							subItem.style
+								? Object.entries(subItem.style)
+										.map(([k, v]) => `${k}:${v}`)
+										.join(";")
+								: ""
+						}`}
+						onClick={toggleMenu}
+					>
+						{subItem.icon && (
+							<Image
+								src={subItem.icon || "/placeholder.svg"}
+								alt={subItem.title}
+								width={24}
+								height={24}
+								className="mr-3"
+							/>
+						)}
+						<span>{subItem.title}</span>
+					</Link>
+					{subItem.children && (
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								toggleSubmenu(subItem.title);
+							}}
+							className="p-2"
+						>
+							{isSubmenuOpen ? (
+								<ChevronUp className="w-4 h-4 text-white" />
+							) : (
+								<ChevronDown className="w-4 h-4 text-white" />
+							)}
+						</button>
+					)}
+				</div>
+				<AnimatePresence>
+					{isSubmenuOpen && subItem.children && (
+						<motion.div
+							initial={{ opacity: 0, height: 0 }}
+							animate={{ opacity: 1, height: "auto" }}
+							exit={{ opacity: 0, height: 0 }}
+							transition={{ duration: 0.2 }}
+							className="space-y-2"
+						>
+							{subItem.children.map((childItem) =>
+								renderMobileMenuItem(childItem, depth + 1),
+							)}
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</div>
+		);
+	};
 
-    return (
-      <div key={subItem.title} className={`w-full ${depth > 0 ? "ml-4" : ""}`}>
-        <div className="flex items-center justify-between w-full">
-          <Link
-            href={subItem.link ? `/agents${subItem.link}` : "#"}
-            className={`flex items-center py-2 text-white hover:text-orange-00 transition-colors duration-200 ${
-              subItem.style
-                ? Object.entries(subItem.style)
-                    .map(([k, v]) => `${k}:${v}`)
-                    .join(";")
-                : ""
-            }`}
-            onClick={toggleMenu}
-          >
-            {subItem.icon && (
-              <Image
-                src={subItem.icon || "/placeholder.svg"}
-                alt={subItem.title}
-                width={24}
-                height={24}
-                className="mr-3"
-              />
-            )}
-            <span>{subItem.title}</span>
-          </Link>
-          {subItem.children && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                toggleSubmenu(subItem.title);
-              }}
-              className="p-2"
-            >
-              {isSubmenuOpen ? (
-                <ChevronUp className="w-4 h-4 text-white" />
-              ) : (
-                <ChevronDown className="w-4 h-4 text-white" />
-              )}
-            </button>
-          )}
-        </div>
-        <AnimatePresence>
-          {isSubmenuOpen && subItem.children && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="space-y-2"
-            >
-              {subItem.children.map((childItem) =>
-                renderMobileMenuItem(childItem, depth + 1),
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  };
-
-  return (
-    <div
-      id="site-header"
-      className="sticky top-0 z-50 w-full border-b
+	return (
+		<div
+			id="site-header"
+			className="sticky top-0 z-50 w-full border-b
              backdrop-blur-md
              shadow-lg"
-    >
-      <nav
-        ref={navRef}
-        className="flex justify-between items-center w-full px-4 sm:px-6 py-3 sm:py-4"
-      >
-        {/* Alchemyst Logo */}
-        <div className="flex items-center">
-          <Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
-            {mounted && (
-              <Image
-                src={theme === "light" ? "/logoDark.png" : "/logo.png"}
-                alt="Alchemyst AI"
-                width={200}
-                height={200}
-                className="h-6 sm:h-8 w-auto object-contain"
-              />
-            )}
-          </Link>
-        </div>
+		>
+			<nav
+				ref={navRef}
+				className="flex justify-between items-center w-full px-4 sm:px-6 py-3 sm:py-4"
+			>
+				{/* Alchemyst Logo */}
+				<div className="flex items-center">
+					<Link href="/" className="mr-2 sm:mr-4 -mt-1 sm:-mt-2 -ml-1 sm:-ml-2">
+						{mounted && (
+							<Image
+								src={theme === "light" ? "/logoDark.png" : "/logo.png"}
+								alt="Alchemyst AI"
+								width={200}
+								height={200}
+								className="h-6 sm:h-8 w-auto object-contain"
+							/>
+						)}
+					</Link>
+				</div>
 
+				{/* Desktop Navigation - Hidden on Mobile */}
+				<div className="hidden lg:flex items-center space-x-6">
+					<Link
+						href="/playground"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1 flex gap-2 align-center">
+							Try Alchemyst{" "}
+							<Stars className="w-4 h-4 mt-1 group-hover:text-yellow-400" />
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
+					{/* Use Cases Dropdown */}
+					<div
+						ref={useCasesRef}
+						className="relative"
+						onMouseEnter={() => setShowUseCasesDropdown(true)}
+						onMouseLeave={() => setShowUseCasesDropdown(false)}
+						// onMouseEnter={() => {
+						//   if (closeTimer.current) {
+						//     clearTimeout(closeTimer.current);
+						//     closeTimer.current = null;
+						//   }
+						// }}
+						// onMouseLeave={() => {
+						//   closeTimer.current = setTimeout(() => {
+						//     setActiveMenu(null);
+						//   }, 120);
+						// }}
+					>
+						<button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
+							<span className="relative ">
+								Use Cases
+								<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+							</span>
+							<ChevronDown
+								className="ml-1 w-4 h-4 transition-transform duration-200"
+								style={{
+									transform: showUseCasesDropdown
+										? "rotate(180deg)"
+										: "rotate(0deg)",
+								}}
+							/>
+						</button>
 
-        {/* Desktop Navigation - Hidden on Mobile */}
-        <div className="hidden lg:flex items-center space-x-6">
+						<AnimatePresence>
+							{showUseCasesDropdown && (
+								<motion.div
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: 10 }}
+									transition={{ duration: 0.2 }}
+									className="absolute top-full left-0 mt-2 w-80 bg-card/90 backdrop-blur-md border border-border rounded-xl shadow-xl overflow-hidden"
+								>
+									<div className="p-4 space-y-3">
+										{useCasesItems.map((item) => (
+											<Link
+												key={item.title}
+												href={item.href}
+												className="flex items-center space-x-4 p-3 rounded-lg hover:bg-muted/60 transition-colors duration-200 group"
+											>
+												<div className="flex-1">
+													<h3 className="text-foreground font-medium group-hover:text-foreground transition-colors duration-200">
+														{item.title}
+													</h3>
+												</div>
+											</Link>
+										))}
+									</div>
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</div>
 
-        <Link
-            href="/playground"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1 flex gap-2 align-center">
-              Try Alchemyst <Stars className="w-4 h-4 mt-1 group-hover:text-yellow-400"/>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-        </Link>
-          {/* Use Cases Dropdown */}
-          <div
-            ref={useCasesRef}
-            className="relative"
-            onMouseEnter={() => setShowUseCasesDropdown(true)}
-            onMouseLeave={() => setShowUseCasesDropdown(false)}
-      // onMouseEnter={() => {
-      //   if (closeTimer.current) {
-      //     clearTimeout(closeTimer.current);
-      //     closeTimer.current = null;
-      //   }
-      // }}
-      // onMouseLeave={() => {
-      //   closeTimer.current = setTimeout(() => {
-      //     setActiveMenu(null);
-      //   }, 120);
-      // }}
-          >
-            <button className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group flex items-center">
-              <span className="relative ">
-                Use Cases
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-              </span>
-              <ChevronDown
-                className="ml-1 w-4 h-4 transition-transform duration-200"
-                style={{
-                  transform: showUseCasesDropdown
-                    ? "rotate(180deg)"
-                    : "rotate(0deg)",
-                }}
-              />
-            </button>
+					<Link
+						href="/research"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							Research
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
 
-            <AnimatePresence>
-              {showUseCasesDropdown && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 w-80 bg-card/90 backdrop-blur-md border border-border rounded-xl shadow-xl overflow-hidden"
-                >
-                  <div className="p-4 space-y-3">
-                    {useCasesItems.map((item) => (
-                      <Link
-                        key={item.title}
-                        href={item.href}
-                        className="flex items-center space-x-4 p-3 rounded-lg hover:bg-muted/60 transition-colors duration-200 group"
-                      >
-                        <div className="flex-1">
-                          <h3 className="text-foreground font-medium group-hover:text-foreground transition-colors duration-200">
-                            {item.title}
-                          </h3>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+					<Link
+						href="/pricing"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							Pricing
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
 
-          <Link
-            href="/research"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              Research
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+					<Link
+						href="/about-us"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							About Us
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
 
-          <Link
-            href="/pricing"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+					<Link
+						href="/blog"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							Blog
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
+					<Link
+						href="/spaces"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1 text">
+							Spaces
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
+					<Link
+						href="https://getalchemystai.com/docs/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							Docs
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
+				</div>
 
-          <Link
-            href="/about-us"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              About Us
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+				{/* Desktop GitHub Button - Hidden on Mobile */}
+				<div className="hidden lg:flex items-center space-x-3">
+					<DiscordCommunityButton />
 
-          <Link
-            href="/blog"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              Blog
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link
-            href="/template"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1 text">
-            Templates
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
-          <Link
-            href="https://docs.getalchemystai.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-          >
-            <span className="relative pb-1">
-              Docs
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </span>
-          </Link>
+					{/* Get Started Dropdown */}
+					<div
+						className="relative"
+						onMouseEnter={() => {
+							if (closeTimer.current) {
+								clearTimeout(closeTimer.current);
+								closeTimer.current = null;
+							}
+						}}
+						onMouseLeave={() => {
+							closeTimer.current = setTimeout(() => {
+								setActiveMenu(null);
+							}, 120);
+						}}
+					>
+						<Button
+							onClick={() =>
+								setActiveMenu(
+									activeMenu === "get-started" ? null : "get-started",
+								)
+							}
+							className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2 cursor-pointer"
+						>
+							Try for Free
+							<ChevronDown
+								className={`w-4 h-4 transition-transform ${
+									activeMenu === "get-started" ? "rotate-180" : ""
+								}`}
+							/>
+						</Button>
 
-        </div>
+						<AnimatePresence>
+							{activeMenu === "get-started" && (
+								<motion.div
+									initial={{ opacity: 0, y: 8 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: 8 }}
+									transition={{ duration: 0.15 }}
+									className="absolute right-0 mt-2 w-80 rounded-xl border border-border bg-card shadow-xl z-50"
+								>
+									<div className="p-2 space-y-1">
+										<Link
+											href="/playground"
+											className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
+										>
+											<div className="text-lg">Try Playground</div>
+											<div>Chat with context. No signup required.</div>
+										</Link>
 
-        {/* Desktop GitHub Button - Hidden on Mobile */}
-        <div className="hidden lg:flex items-center space-x-3">
-            <DiscordCommunityButton />
+										<Link
+											href="/platform/signin"
+											className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
+										>
+											<div className="text-lg">Go To Platform</div>
+											<div>Use official email for free 5M tokens!</div>
+										</Link>
 
-            {/* Get Started Dropdown */}
-            <div
-              className="relative"
-                  onMouseEnter={() => {
-                    if (closeTimer.current) {
-                      clearTimeout(closeTimer.current);
-                      closeTimer.current = null;
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    closeTimer.current = setTimeout(() => {
-                      setActiveMenu(null);
-                    }, 120);
-                  }}
-            >
-              <Button
-                onClick={() =>
-                  setActiveMenu(activeMenu === "get-started" ? null : "get-started")
-                }
-                className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2 cursor-pointer"
-              >
-                Try for Free
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
-                    activeMenu === "get-started" ? "rotate-180" : ""
-                  }`}
-                />
-              </Button>
-
-            <AnimatePresence>
-              {activeMenu === "get-started" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-80 rounded-xl border border-border bg-card shadow-xl z-50"
-                >
-                  <div className="p-2 space-y-1">
-                    <Link
-                      href="/playground"
-                      className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
-                    >
-                      <div className="text-lg">Try Playground</div>
-                      <div>Chat with context. No signup required.</div>
-                    </Link>
-
-                    <Link
-                      href="/platform/signin"
-                      className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
-                    >
-                      <div className="text-lg">Go To Platform</div>
-                      <div>Use official email for free 5M tokens!</div>
-                    </Link>
-
-                    {/* <Button
+										{/* <Button
                       variant="ghost"
                       onClick={() => {
                         window.dispatchEvent(new Event("open-founder-cal"));
@@ -376,144 +374,144 @@ export function Header() {
                     >
                       Talk to Founder
                     </Button> */}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+									</div>
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</div>
 
+					{/* <GitHubButtonWithStars /> */}
+					{/* <ThemeToggle /> */}
+				</div>
 
-            </div>
+				{/* Mobile Menu Toggle - Only visible on mobile */}
+				<div className="lg:hidden">
+					<button
+						onClick={toggleMenu}
+						className="dark:text-white text-black p-1"
+					>
+						{isOpen ? (
+							<X className="w-5 h-5 sm:w-6 sm:h-6" />
+						) : (
+							<Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+						)}
+					</button>
+				</div>
 
-            {/* <GitHubButtonWithStars /> */}
-          {/* <ThemeToggle /> */}
-        </div>
+				{/* Mobile Menu */}
+				{mounted && (
+					<AnimatePresence>
+						{isOpen && (
+							<motion.div
+								className="lg:hidden fixed top-[70px] inset-x-4 bg-white/80 dark:bg-[#151515]/90 backdrop-blur-md border border-gray-200/20 dark:border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-100px)]"
+								initial={{ opacity: 0, y: -20 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -20 }}
+								transition={{ duration: 0.3 }}
+							>
+								{/* Use Cases in Mobile */}
+								<div className="w-full">
+									<button
+										onClick={() => toggleSubmenu("Use Cases")}
+										className="flex items-center justify-between w-full py-3 text-foreground transition-colors duration-200 text-lg"
+									>
+										Use Cases
+										{openSubmenus.includes("Use Cases") ? (
+											<ChevronUp className="w-4 h-4" />
+										) : (
+											<ChevronDown className="w-4 h-4" />
+										)}
+									</button>
+									<AnimatePresence>
+										{openSubmenus.includes("Use Cases") && (
+											<motion.div
+												initial={{ opacity: 0, height: 0 }}
+												animate={{ opacity: 1, height: "auto" }}
+												exit={{ opacity: 0, height: 0 }}
+												transition={{ duration: 0.2 }}
+												className="space-y-2 ml-4"
+											>
+												{useCasesItems.map((item) => (
+													<Link
+														key={item.title}
+														href={item.href}
+														className="block py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+														onClick={toggleMenu}
+													>
+														{item.title}
+													</Link>
+												))}
+											</motion.div>
+										)}
+									</AnimatePresence>
+								</div>
 
-        {/* Mobile Menu Toggle - Only visible on mobile */}
-        <div className="lg:hidden">
-          <button
-            onClick={toggleMenu}
-            className="dark:text-white text-black p-1"
-          >
-            {isOpen ? (
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
-            ) : (
-              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-            )}
-          </button>
-        </div>
+								{/* Research Link */}
+								<Link
+									href="/research"
+									className="block py-3 text-foreground transition-colors duration-200 text-lg"
+									onClick={toggleMenu}
+								>
+									Research
+								</Link>
 
-        {/* Mobile Menu */}
-        {mounted && (
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                className="lg:hidden fixed top-[70px] inset-x-4 bg-white/80 dark:bg-[#151515]/90 backdrop-blur-md border border-gray-200/20 dark:border-white/10 rounded-xl shadow-lg flex flex-col items-start p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-100px)]"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Use Cases in Mobile */}
-                <div className="w-full">
-                  <button
-                    onClick={() => toggleSubmenu("Use Cases")}
-                    className="flex items-center justify-between w-full py-3 text-foreground transition-colors duration-200 text-lg"
-                  >
-                    Use Cases
-                    {openSubmenus.includes("Use Cases") ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )}
-                  </button>
-                  <AnimatePresence>
-                    {openSubmenus.includes("Use Cases") && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="space-y-2 ml-4"
-                      >
-                        {useCasesItems.map((item) => (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            className="block py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
-                            onClick={toggleMenu}
-                          >
-                            {item.title}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+								{/* Security Link */}
+								<Link
+									href="/security"
+									className="block py-3 text-foreground transition-colors duration-200 text-lg"
+									onClick={toggleMenu}
+								>
+									Security
+								</Link>
 
-                {/* Research Link */}
-                <Link
-                  href="/research"
-                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
-                  onClick={toggleMenu}
-                >
-                  Research
-                </Link>
+								{/* Docs Link */}
+								<Link
+									href="https://getalchemystai.com/docs/"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="block py-3 text-foreground transition-colors duration-200 text-lg"
+									onClick={toggleMenu}
+								>
+									Docs
+								</Link>
 
-                {/* Security Link */}
-                <Link
-                  href="/security"
-                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
-                  onClick={toggleMenu}
-                >
-                  Security
-                </Link>
+								{/* Pricing Link */}
+								<Link
+									href="/pricing"
+									className="block py-3 text-foreground transition-colors duration-200 text-lg"
+									onClick={toggleMenu}
+								>
+									Pricing
+								</Link>
 
-                {/* Docs Link */}
-                <Link
-                  href="https://docs.getalchemystai.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
-                  onClick={toggleMenu}
-                >
-                  Docs
-                </Link>
-
-                {/* Pricing Link */}
-                <Link
-                  href="/pricing"
-                  className="block py-3 text-foreground transition-colors duration-200 text-lg"
-                  onClick={toggleMenu}
-                >
-                  Pricing
-                </Link>
-
-                {/* GitHub Button in Mobile */}
-                <div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
-                  <a
-                    href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-3 py-1 rounded-full bg-[#5865F2]/10 hover:bg-[#5865F2]/20 text-[#5865F2] transition-all text-sm font-medium"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-4 h-4"
-                    >
-                      <path d="M20.317 4.369A19.791 19.791 0 0 0 15.883 3c-.207.379-.45.884-.616 1.283a18.27 18.27 0 0 0-5.334 0A12.35 12.35 0 0 0 9.317 3a19.736 19.736 0 0 0-4.432 1.369C2.574 9.081 1.871 13.65 2.097 18.183a19.912 19.912 0 0 0 5.875 2.892c.473-.652.898-1.345 1.268-2.07a12.51 12.51 0 0 1-1.987-.94c.166-.123.33-.251.486-.384 3.787 1.761 7.885 1.761 11.63 0 .157.133.32.261.486.384a12.53 12.53 0 0 1-1.987.94c.37.725.795 1.418 1.268 2.07a19.89 19.89 0 0 0 5.875-2.892c.262-5.154-.857-9.688-2.661-13.814ZM9.861 15.52c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Zm4.278 0c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Z" />
-                    </svg>
-                    <span>Join Community</span>
-                  </a>
-                  <GitHubButtonWithStars />
-                  <ThemeToggle />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        )}
-      </nav>
-    </div>
-  );
+								{/* GitHub Button in Mobile */}
+								<div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
+									<Link
+										href="https://platform.getalchemystai.com/join-discord?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="flex items-center space-x-2 px-3 py-1 rounded-full transition-all text-sm font-medium"
+									>
+										<Button variant="orange">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="w-4 h-4"
+											>
+												<path d="M20.317 4.369A19.791 19.791 0 0 0 15.883 3c-.207.379-.45.884-.616 1.283a18.27 18.27 0 0 0-5.334 0A12.35 12.35 0 0 0 9.317 3a19.736 19.736 0 0 0-4.432 1.369C2.574 9.081 1.871 13.65 2.097 18.183a19.912 19.912 0 0 0 5.875 2.892c.473-.652.898-1.345 1.268-2.07a12.51 12.51 0 0 1-1.987-.94c.166-.123.33-.251.486-.384 3.787 1.761 7.885 1.761 11.63 0 .157.133.32.261.486.384a12.53 12.53 0 0 1-1.987.94c.37.725.795 1.418 1.268 2.07a19.89 19.89 0 0 0 5.875-2.892c.262-5.154-.857-9.688-2.661-13.814ZM9.861 15.52c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Zm4.278 0c-1.129 0-2.057-1.03-2.057-2.295s.9-2.296 2.057-2.296c1.144 0 2.071 1.03 2.057 2.296 0 1.265-.9 2.295-2.057 2.295Z" />
+											</svg>
+											<span>Join Community</span>
+										</Button>
+									</Link>
+									<GitHubButtonWithStars />
+									<ThemeToggle />
+								</div>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				)}
+			</nav>
+		</div>
+	);
 }

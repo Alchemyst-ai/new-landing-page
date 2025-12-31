@@ -8,21 +8,32 @@ export async function GET(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
 
-  const type = searchParams.get("type");
-  const featured = searchParams.get("featured");
+  const type = searchParams.get("type") ?? "all";
   const search = searchParams.get("search");
 
   const limit = parseInt(searchParams.get("limit") || "20");
   const offset = parseInt(searchParams.get("offset") || "0");
 
-  const filter: any = {};
+  const filter: Record<string, any> = {};
 
-  if (type && type !== "all") {
-    filter.content_type = type;
-  }
-
-  if (featured === "true") {
-    filter.is_featured = true;
+  switch (type) {
+    case "featured": {
+      // No additional filter for "featured" in this code
+      break;
+    }
+    case "recommended": {
+      const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      filter.createdAt = { $gte: sevenDaysAgo };
+      break;
+    }
+    case "all": {
+      // No additional filter for "all"
+      break;
+    }
+    default: {
+      filter.categories = { $elemMatch: { $regex: `^${type}$`, $options: "i" } };
+      break;
+    }
   }
 
   if (search) {
@@ -39,7 +50,7 @@ export async function GET(request: NextRequest) {
     //   .limit(limit)
     //   .lean();
     const data = await ContextSpace
-      .find({})
+      .find(filter)
       .sort({ createdAt: -1 })
       .skip(offset)
       .limit(limit);

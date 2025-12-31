@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function TweetAboutUs() {
   return (
     <section className="flex flex-col items-center justify-center py-20 text-center px-6">
-      <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">
-        We’d love to hear from you!
+      <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground">
+        We'd love to hear from you!
       </h2>
 
       <p className="mt-4 text-lg text-gray-400 max-w-2xl">

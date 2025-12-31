@@ -1,19 +1,19 @@
 "use client";
 
-import * as React from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger, 
-  DialogDescription 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
 } from "@/components/ui/dialog";
-import { Plus, Key, Terminal, Code2, Info } from "lucide-react";
-import { SharedItemList } from "./shared-item-list/page";
+import { motion } from "framer-motion";
+import { Info, Key } from "lucide-react";
+import { useTheme } from "next-themes";
+import * as React from "react";
+import { SharedItemList } from "../../../components/shared-item-list/SharedItemList";
 
 
 const FILTER_OPTIONS = [
@@ -42,14 +42,14 @@ export default function Community() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-300">
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl">
+      <header className="sticky z-10 top-20 bg-background/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Dialog>
           <DialogTrigger asChild>
             <Button
               size="sm"
               variant="outline"
-              className="rounded-full px-4 shadow-sm border-primary/20 hover:bg-primary/5"
+              className="rounded-full px-4 shadow-sm border-primary/20 hover:bg-primary/5 cursor-pointer"
             >
               <Key className="h-4 w-4 mr-2" />
               How to Use magic key
@@ -81,15 +81,16 @@ export default function Community() {
           <DialogTrigger asChild>
             <Button
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 shadow-lg shadow-primary/20"
+              variant="default"
+              className="rounded-full px-4 shadow-lg shadow-primary/20 cursor-pointer"
             >
               <Info className="h-4 w-4 mr-2" />
-              Create Template
+              Create Context Space
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Create New Template</DialogTitle>
+              <DialogTitle>How to: Create New Context Space</DialogTitle>
               <DialogDescription>Quick start your Alchemyst AI setup.</DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4 text-sm text-muted-foreground">
@@ -98,7 +99,7 @@ export default function Community() {
                 <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">1</div>
                 <p className="text-sm"><a href="https://platform.getalchemystai.com/context" target="_blank" rel="noopener noreferrer" className="border-b border-primary">
                   Go to Platform
-                 </a>, add files to context processor.</p>
+                 </a>, add files to context.</p>
               </div>
               <div className="flex gap-3 items-start">
                 <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">2</div>
@@ -124,15 +125,22 @@ export default function Community() {
         <section className="px-6 pb-20">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center space-y-4 mb-16">
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-6xl font-semibold tracking-tight"
+                className="text-2xl md:text-6xl font-semibold tracking-tight"
               >
-                Templates by the community
+                Context <span className="text-accent-foreground">Spaces</span>
               </motion.h1>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-lg text-muted-foreground md:text-2xl font-light tracking-tight"
+              >
+                Context for your next idea to implement, powered by the worldwide community.
+              </motion.div>
             </div>
-            
+
             <SharedItemList asFooter={false} />
           </div>
         </section>
