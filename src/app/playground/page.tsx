@@ -5,7 +5,7 @@ import { DefaultChatTransport, UIMessage } from "ai"
 import { Key, Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
-import { SharedItemList } from "../(marketing)/marketplace/shared-item-list/page"
+import { SharedItemList } from "../(marketing)/template/shared-item-list/page"
 import { ChatSidebar } from "../../components/playground/ChatHistory"
 import { ChatInput } from "../../components/playground/ChatInput"
 import { ChatMessages } from "../../components/playground/ChatMessages"
@@ -305,64 +305,65 @@ export default function ChatPlayground() {
   const isChatEmpty = messages.length === 0
 
   return (
-    <div className={`flex max-w-auto bg-background`}>
-      <div className={`flex flex-1 flex-col min-h-screen ${isHistoryOpen ? 'flex-1' : ''}`}>
-        <div className="flex-shrink-0 mt-2 items-center gap-3">
-          <ChatTopBar onOpenHistory={handleToggleHistory}
-            apiKeyProps={{
-              apiKey,
-              setApiKey,
-              open: isModalOpen,
-              setOpen: setIsModalOpen,
-              onSave: handleSave
-            }}
-          />
-        </div>
+  <div className="flex h-screen max-w-auto bg-background overflow-hidden">
+    <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
+      <div className="flex-shrink-0 mt-2 items-center gap-3">
+        <ChatTopBar onOpenHistory={handleToggleHistory}
+          apiKeyProps={{
+            apiKey,
+            setApiKey,
+            open: isModalOpen,
+            setOpen: setIsModalOpen,
+            onSave: handleSave
+          }}
+        />
+      </div>
 
-        <div className="flex flex-1 flex-col overflow-scroll min-h-[90vh]">
-          {loadingChat && (
-            <div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
-              <div className="flex flex-col items-center gap-2">
-                <Loader2 className="h-10 w-10 animate-spin text-primary" />
-                <p className="text-sm font-medium animate-pulse">Loading conversation...</p>
-              </div>
+      <div className="flex flex-1 flex-col overflow-hidden">
+        {loadingChat && (
+          <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
+            <div className="flex flex-col items-center gap-2">
+              <Loader2 className="h-10 w-10 animate-spin text-primary" />
+              <p className="text-sm font-medium animate-pulse">Loading conversation...</p>
             </div>
-          )}
-          {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
-          {!isChatEmpty ? (
-            <>
+          </div>
+        )}
+        {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
+        {!isChatEmpty ? (
+          <>
             <div className="flex-1 overflow-y-auto">
               {!loadingChat && (<ChatMessages messages={messages} isStreaming={status === "streaming"} />)}
             </div>
-              <div className="flex-shrink-0 bg-background">
-                <ContextBar
-                  isOpen={isContextBarOpen}
-                  magicKey={magicKey}
-                  setMagicKey={setMagicKey}
-                  onFilesUpload={handleFilesUpload}
-                  uploadedFiles={uploadedFiles}
-                  onImagesUpload={handleImagesUpload}
-                  uploadedImages={uploadedImages}
-                  onRemoveFile={handleRemoveFile}
-                  onRemoveImage={handleRemoveImage}
-                />
+            <div className="flex-shrink-0 bg-background">
+              <ContextBar
+                isOpen={isContextBarOpen}
+                magicKey={magicKey}
+                setMagicKey={setMagicKey}
+                onFilesUpload={handleFilesUpload}
+                uploadedFiles={uploadedFiles}
+                onImagesUpload={handleImagesUpload}
+                uploadedImages={uploadedImages}
+                onRemoveFile={handleRemoveFile}
+                onRemoveImage={handleRemoveImage}
+              />
 
-                <ChatInput
-                  onSendMessage={handleSendMessage}
-                  isContextBarOpen={isContextBarOpen}
-                  onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
-                  isStreaming={status === "streaming"}
-                  onStop={stop}
-                  selectedGroup={selectedGroup}
-                  onGroupChange={setSelectedGroup}
-                  groupNames={groupNames}
-                  aiModel={aiModel}
-                  onModelChange={setAiModel}
-                />
-              </div>
-            </>
-          ) : (
-            <div className={`flex flex-1 flex-col items-center justify-center p-8 min-h-screen overflow-y-auto gap-y-6`}>
+              <ChatInput
+                onSendMessage={handleSendMessage}
+                isContextBarOpen={isContextBarOpen}
+                onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
+                isStreaming={status === "streaming"}
+                onStop={stop}
+                selectedGroup={selectedGroup}
+                onGroupChange={setSelectedGroup}
+                groupNames={groupNames}
+                aiModel={aiModel}
+                onModelChange={setAiModel}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-1 flex-col overflow-y-auto">
+            <div className="flex flex-col items-center justify-center p-8 flex-1">
               <div className="w-full max-w-2xl space-y-6 my-auto">
                 <div className="text-center space-y-2 my-auto">
                   {!loadingChat && (<div className="text-center mb-8">
@@ -399,23 +400,24 @@ export default function ChatPlayground() {
                   />
                 </div>
               </div>
-              {isChatEmpty && (
-                <div><SharedItemList asFooter/></div>
-              )}
             </div>
-          )}
-        </div>
+            <div className="flex-shrink-0 pb-4">
+              <SharedItemList asFooter/>
+            </div>
+          </div>
+        )}
       </div>
-
-      <ChatSidebar
-        isOpen={isHistoryOpen}
-        sessions={sessions}
-        currentSessionId={currentSessionId}
-        onNewChat={handleNewChat}
-        onSelectSession={handleSelectSession}
-        onDeleteSession={handleDeleteSession}
-        onToggle={handleToggleHistory}
-      />
     </div>
-  )
+
+    <ChatSidebar
+      isOpen={isHistoryOpen}
+      sessions={sessions}
+      currentSessionId={currentSessionId}
+      onNewChat={handleNewChat}
+      onSelectSession={handleSelectSession}
+      onDeleteSession={handleDeleteSession}
+      onToggle={handleToggleHistory}
+    />
+  </div>
+)
 }
