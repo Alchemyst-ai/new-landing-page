@@ -80,12 +80,33 @@ export default function BlogCard({
         <p className="text-muted-foreground line-clamp-3">{summary}</p>
 
         {featured && (
-          <div className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground">
+          <button
+            type="button"
+            className="mt-6 inline-flex items-center text-foreground hover:text-muted-foreground focus:outline-none"
+            onClick={(e) => {
+              e.preventDefault();
+              if (typeof window !== "undefined") {
+          const dialog = document.createElement("dialog");
+          dialog.style.padding = "2rem";
+          dialog.innerHTML = `
+            <div style="font-size:1.2rem;">Loading Blog...</div>
+            <form method="dialog">
+              <button style="margin-top:1.5rem;padding:0.5rem 1rem;border-radius:0.5rem;background:#eee;">Close</button>
+            </form>
+          `;
+          document.body.appendChild(dialog);
+          dialog.showModal();
+          dialog.addEventListener("close", () => {
+            dialog.remove();
+          });
+              }
+            }}
+          >
             Read More
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </div>
+          </button>
         )}
       </div>
     </Link>

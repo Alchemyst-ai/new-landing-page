@@ -1,4 +1,4 @@
-import { Footer } from "@/components/sections/footer";
+import ConditionalFooter from "@/components/conditional-footer";
 import { Header } from "@/components/sections/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import TripettoPopup from "@/components/TripettoPopup";
@@ -9,7 +9,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import ConditionalFooter from "@/components/conditional-footer";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -19,7 +18,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: dark)", color: "#151515" },
   ],
 };
 

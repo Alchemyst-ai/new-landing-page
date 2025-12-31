@@ -144,7 +144,7 @@ export default async function Page(props: {
             <BlogHeader
               title={item.title}
               category={item?.category?.name || "Blog"}
-              subcategory={item?.category?.slug || "Article"}
+              slug={item?.category?.slug || "Article"}
               publishedAt={item.publishedAt}
               description={item.description}
               author={{

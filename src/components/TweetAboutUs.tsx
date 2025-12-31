@@ -32,7 +32,7 @@ export default function TweetAboutUs() {
         href="https://x.com/getalchemyst"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center space-x-2 border-[1px] border-gray-500 text-white font-medium py-2.5 px-5 rounded-full shadow hover:bg-indigo-700 transition-colors"
+        className="mt-6 inline-flex items-center space-x-2 border-[1px] border-gray-500 text-white font-medium py-2.5 px-5 rounded-full shadow hover:border-[#d98622] hover:text-[#d98622] transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

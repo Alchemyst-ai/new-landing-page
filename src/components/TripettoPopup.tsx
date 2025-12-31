@@ -187,8 +187,8 @@ export default function TripettoPopup() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-      <div className="relative bg-black rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-[#151515]/40 flex items-center justify-center z-50 p-4">
+      <div className="relative bg-[#151515] rounded-2xl shadow-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <button
           aria-label="Close"
           onClick={() => {
