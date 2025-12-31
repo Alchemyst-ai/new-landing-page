@@ -12,7 +12,7 @@ import {
   DialogTrigger, 
   DialogDescription 
 } from "@/components/ui/dialog";
-import { Plus, Key, Terminal, Code2 } from "lucide-react";
+import { Plus, Key, Terminal, Code2, Info } from "lucide-react";
 import { SharedItemList } from "../marketplace/shared-item-list/page";
 
 
@@ -75,7 +75,7 @@ export default function Community() {
               className="rounded-full px-4 shadow-sm border-primary/20 hover:bg-primary/5"
             >
               <Key className="h-4 w-4 mr-2" />
-              Use magic key
+              How to Use magic key
             </Button>
           </DialogTrigger>
           <DialogContent>
@@ -106,7 +106,7 @@ export default function Community() {
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 shadow-lg shadow-primary/20"
             >
-              <Plus className="h-4 w-4 mr-2" />
+              <Info className="h-4 w-4 mr-2" />
               Create Template
             </Button>
           </DialogTrigger>
@@ -132,7 +132,7 @@ export default function Community() {
                 <p className="text-sm">Click Operate, select the files.</p>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">3</div>
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">4</div>
                 <p className="text-sm">Generate magic key and share !!</p>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function Community() {
               </motion.h1>
             </div>
             
-            <SharedItemList />
+            <SharedItemList asFooter={false} />
           </div>
         </section>
       </main>

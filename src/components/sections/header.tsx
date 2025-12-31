@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { DiscordCommunityButton } from "./Navbar/DiscordCommunity";
 import GitHubButtonWithStars from "./Navbar/GithubButtonWithStars";
 
+
 // Temporary type definition
 interface MenuObject {
   title: string;
@@ -288,7 +289,7 @@ export function Header() {
             className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
           >
             <span className="relative pb-1 text">
-              Community
+            Templates
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </span>
           </Link>
