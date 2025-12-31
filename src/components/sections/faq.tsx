@@ -12,13 +12,13 @@ const faqs: { question: string; answer: ReactNode }[] = [
         question: "What is Alchemyst AI?",
         answer:
           "Alchemyst AI is a context engine that provides AI applications with persistent memory, business data, and operational context so agents remain accurate, reliable, and production-ready. It is a standalone context layer that can be integrated into your stack through our APIs, SDKs and MCPs.",
-      },      
+      },
   {
     question: "How can I use Alchemyst AI?",
     answer: (
       <span>
         You can wire Alchemyst AI into your stack through our APIs, SDKs, MCPs, and
-        browser extension—whatever fits your workflow best. Check more details
+        browser extension - whatever fits your workflow best. Check more details
         in our{" "}
         <a
           href="https://docs.getalchemystai.com"
@@ -44,7 +44,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
     question: "Can AI agents have long-term memory across conversations?",
     answer: "Yes. With systems like Alchemyst AI, agents keep persistent memory across sessions, users, and workflows. This enables personalization and consistent task execution over time.",
   },
-  
+
   {
     question: "How do context-aware AI agents compare to regular chatbots?",
     answer: "Context-aware agents remember past interactions, reference enterprise data, and perform end-to-end tasks. Regular chatbots usually respond only to the latest prompt.",

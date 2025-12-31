@@ -71,7 +71,7 @@ export async function generateRSSFeed() {
 
         feed.item({
             title: "No posts available",
-            description: "Our blog is being updated — check back soon!",
+            description: "Our blog is being updated  -  check back soon!",
             url: siteUrl,
             date: new Date(),
         });

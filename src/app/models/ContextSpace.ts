@@ -57,7 +57,7 @@ const ContextSpaceSchema = new Schema(
     },
 
     data_size: {
-      type: Number, // bytes, KB, MB — your call, just be consistent
+      type: Number, // bytes, KB, MB  -  your call, just be consistent
       default: 0,
     },
 

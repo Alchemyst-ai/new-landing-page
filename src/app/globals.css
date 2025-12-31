@@ -239,12 +239,12 @@
     --popover-foreground: oklch(0.98 0 0);
     --primary: oklch(0.98 0 0);
     --primary-foreground: #151515;
-    --secondary: oklch(0.18 0 0);
+    --secondary: #252525;
     --secondary-foreground: oklch(0.98 0 0);
-    --muted: #151515;
+    --muted: #353535;
     --muted-foreground: oklch(0.75 0 0);
-    --accent: #151515;
-    --accent-foreground: oklch(0.98 0 0);
+    --accent: #353535;
+    --accent-foreground: #f59025;
     --destructive: oklch(0.45 0.25 25);
     --destructive-foreground: oklch(0.98 0 0);
     --border: oklch(0.27 0 0);
@@ -348,7 +348,7 @@
         background: transparent !important;
     }
 
-    /* Optional — ensure parent container also has no Safari border */
+    /* Optional  -  ensure parent container also has no Safari border */
     .safari-tripetto-fix {
         border: none !important;
         outline: none !important;

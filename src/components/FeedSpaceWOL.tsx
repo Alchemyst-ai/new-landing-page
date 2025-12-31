@@ -19,7 +19,7 @@ export default function FeedspaceWOL({
           Testimonials
         </h2>
         <p className="text-gray-400 mt-2 text-base md:text-lg">
-          A sneak peek from the community — what they think about{" "}
+          A sneak peek from the community  -  what they think about{" "}
             <Link
             href="/platform/signin?utm_source=website&utm_campaign=feedspace_wol&utm_medium=website&utm_content=sneak_peek"
             target="_blank"

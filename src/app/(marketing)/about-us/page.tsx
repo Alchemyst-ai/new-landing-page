@@ -4,7 +4,7 @@
 // export const metadata: Metadata = {
 //   title: "About Us | AlchemystAI",
 //   description:
-//     "Learn more about the vision behind AlchemystAI — building the tractable context layer for the Agentic Web.",
+//     "Learn more about the vision behind AlchemystAI  -  building the tractable context layer for the Agentic Web.",
 // }
 
 // export default function AboutPage() {
@@ -41,7 +41,7 @@
 //         <div className="mx-auto max-w-3xl prose prose-lg dark:prose-invert leading-relaxed">
 //           <h2>Your AI agent needs tractable context.</h2>
 //           <p>
-//             AI isn&apos;t the future anymore — it&apos;s already changing our present. But here&apos;s the kicker —
+//             AI isn&apos;t the future anymore  -  it&apos;s already changing our present. But here&apos;s the kicker  -
 //             only <strong>26%</strong> are actually usable.
 //           </p>
 
@@ -79,18 +79,18 @@
 //             an AI chatbot in a month.
 //           </p>
 
-//           <h2>&ldquo;95% of generative AI efforts will fail by 2026–27.&rdquo; — MIT</h2>
+//           <h2>&ldquo;95% of generative AI efforts will fail by 2026–27.&rdquo;  -  MIT</h2>
 
 //           <p>And the reason is lack of proper contextualization.</p>
 
 //           <p>
-//             So, you don&apos;t just need context — you need <strong>tractable</strong> context that you can verify.
+//             So, you don&apos;t just need context  -  you need <strong>tractable</strong> context that you can verify.
 //           </p>
 
 //           <p>That&apos;s the sole purpose of us building <strong>Alchemyst AI</strong>.</p>
 
 //           <p>
-//             The world will be moving towards <strong>Agent Era 2.0</strong> — where context matters more than prompts.
+//             The world will be moving towards <strong>Agent Era 2.0</strong>  -  where context matters more than prompts.
 //             Prompts can be auto-optimized, thanks to accurate context storage and retrieval.
 //           </p>
 
@@ -100,7 +100,7 @@
 //           </p>
 
 //           <blockquote>
-//             &ldquo;Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront.&rdquo;
+//             &ldquo;Everyone will upgrade  -  and the ones using Alchemyst AI will be at the forefront.&rdquo;
 //           </blockquote>
 
 //           <p className="mt-10 italic text-right">
@@ -119,7 +119,7 @@ import Image from "next/image"
 export const metadata: Metadata = {
   title: "About Us | AlchemystAI",
   description:
-    "Learn more about the vision behind Alchemyst AI — building the tractable context layer for the Agentic Web.",
+    "Learn more about the vision behind Alchemyst AI  -  building the tractable context layer for the Agentic Web.",
 }
 
 const Images = [
@@ -175,7 +175,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl prose prose-lg dark:prose-invert leading-relaxed">
           <h2>Your AI agent needs tractable context.</h2>
           <p>
-            AI isn&apos;t the future anymore — it&apos;s already changing our present. But here&apos;s the kicker —
+            AI isn&apos;t the future anymore  -  it&apos;s already changing our present. But here&apos;s the kicker  -
             only <strong>26%</strong> are actually usable.
           </p>
 
@@ -213,18 +213,18 @@ export default function AboutPage() {
             an AI chatbot in a month.
           </p>
 
-          <h2>&ldquo;95% of generative AI efforts will fail by 2026–27.&rdquo; — MIT</h2>
+          <h2>&ldquo;95% of generative AI efforts will fail by 2026–27.&rdquo;  -  MIT</h2>
 
           <p>And the reason is lack of proper contextualization.</p>
 
           <p>
-            So, you don&apos;t just need context — you need <strong>tractable</strong> context that you can verify.
+            So, you don&apos;t just need context  -  you need <strong>tractable</strong> context that you can verify.
           </p>
 
           <p>That&apos;s the sole purpose of us building <strong>Alchemyst AI</strong>.</p>
 
           <p>
-            The world will be moving towards <strong>Agent Era 2.0</strong> — where context matters more than prompts.
+            The world will be moving towards <strong>Agent Era 2.0</strong>  -  where context matters more than prompts.
             Prompts can be auto-optimized, thanks to accurate context storage and retrieval.
           </p>
 
@@ -234,7 +234,7 @@ export default function AboutPage() {
           </p>
 
           <blockquote>
-            &ldquo;Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront.&rdquo;
+            &ldquo;Everyone will upgrade  -  and the ones using Alchemyst AI will be at the forefront.&rdquo;
           </blockquote>
 
           <p className="mt-10 italic text-right">

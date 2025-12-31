@@ -522,7 +522,7 @@ const PrivacyPolicy: React.FC = () => {
               we send, or by contacting us using the details provided in the
               section <u>&#39;HOW CAN YOU CONTACT US ABOUT THIS NOTICE?&#39;</u>
               below. You will then be removed from the marketing lists. However,
-              we may still communicate with you — for example, to send you
+              we may still communicate with you  -  for example, to send you
               service-related messages that are necessary for the administration
               and use of your account, to respond to service requests, or for
               other non-marketing purposes.
