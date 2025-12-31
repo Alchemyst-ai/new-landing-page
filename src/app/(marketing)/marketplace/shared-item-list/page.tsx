@@ -1,21 +1,18 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import {
-  Search,
-  Key,
-  Check,
-  Sparkles,
-  Loader2,
-  Quote,
-  RefreshCcw,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Types } from "mongoose";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Check,
+  Key,
+  Loader2,
+  Quote,
+  Sparkles
+} from "lucide-react";
+import Image from "next/image";
+import * as React from "react";
+import { useInView } from "react-intersection-observer";
 // import type { SharedItem } from "@/lib/supabase";
 
 export type SharedItem = {
@@ -41,7 +38,7 @@ export interface sharedItem {
   id: string;
   documents: string[];
   magic_key: string;
-  user_id: Types.ObjectId; // Reference to the User model
+  user_id: string; // Reference to the User model
   about?: string;          // Optional because 'required: true' is missing
   name: string;
   cover_image_url?: string;
@@ -73,7 +70,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
   const [hasMore, setHasMore] = React.useState(true);
   const [offset, setOffset] = React.useState(0);
 
-  const ITEMS_PER_PAGE = 12;
+  const ITEMS_PER_PAGE = asFooter ? 6 : 12;
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -89,13 +86,13 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
         limit: ITEMS_PER_PAGE.toString(),
         offset: currentOffset.toString(),
       });
-      
+
       if (activeTab === "Featured") params.set("featured", "true");
       else if (activeTab !== "Recommend") params.set("type", activeTab.toLowerCase());
 
       const res = await fetch(`/api/tools?${params}`);
       const data = await res.json();
-      
+
       if (Array.isArray(data)) {
         if (isInitial) {
           setItems(data);
@@ -119,7 +116,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
   }, [activeTab, fetchItems]);
 
   React.useEffect(() => {
-    if (inView && hasMore && !loadingMore) {
+    if (!asFooter && inView && hasMore && !loadingMore) {
       const nextOffset = offset + ITEMS_PER_PAGE;
       setOffset(nextOffset);
       fetchItems(nextOffset);
@@ -130,6 +127,19 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
     navigator.clipboard.writeText(key);
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 2000);
+  };
+
+  const formatAbout = (about?: string, limit = 100) => {
+
+    if (!about) {
+      return ""
+    };
+
+    if (about.length > limit) {
+      return about.slice(0,limit) + "...";
+    }
+
+    return about;
   };
 
   return (
@@ -158,7 +168,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
         </div>
 
         <p className="text-xs text-foreground/30 max-w-3xl mx-auto leading-relaxed">
-          All tasks and intelligence in the community are voluntarily shared by users. 
+          All tasks and intelligence in the community are voluntarily shared by users.
           The platform does not display any content without user consent.
         </p>
       </div>
@@ -184,11 +194,11 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
                 className="break-inside-avoid mb-6"
               >
                 <div className="group flex flex-col space-y-3">
-                  <div 
+                  <div
                     className={cn(
                       "relative rounded-[2rem] overflow-hidden transition-all duration-500 ",
-                      item.cover_image_url 
-                        ? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5" 
+                      item.cover_image_url
+                        ? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5"
                         : "aspect-[4/3] bg-foreground/[0.03] flex flex-col p-8"
                     )}
                   >
@@ -220,7 +230,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
                         <p className="text-xs font-bold uppercase tracking-widest text-foreground/40">Magic Key</p>
                         <p className="text-md font-mono font-bold text-foreground">{item.magic_key}</p>
                       </div>
-                      <div>{item.about}</div>
+                      <div className="text-sm">{formatAbout(item.about, 85)}</div>
                       <Button
                         size="sm"
                         onClick={(e) => {
@@ -265,7 +275,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
           {loadingMore && (
             <div className="flex items-center gap-2 text-foreground/50">
               <Loader2 className="h-5 w-5 animate-spin" />
-              <span className="text-sm font-medium">Loading intelligence...</span>
+              <span className="text-sm font-medium">Loading context spaces...</span>
             </div>
           )}
         </div>

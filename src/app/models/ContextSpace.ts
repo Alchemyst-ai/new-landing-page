@@ -1,6 +1,6 @@
-import mongoose, { Schema, models, model } from "mongoose";
+import { model, models, Schema } from "mongoose";
 
-const ToolSchema = new Schema(
+const ContextSpaceSchema = new Schema(
   {
     documents: {
       type: [String],
@@ -72,4 +72,4 @@ const ToolSchema = new Schema(
   }
 );
 
-export default models.Tool || model("Tool", ToolSchema);
+export default models.ContextSpace || model("ContextSpace", ContextSpaceSchema);

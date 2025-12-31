@@ -1,18 +1,18 @@
 "use client"
 
-import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
+import { SharedItemList } from "@/app/(marketing)/marketplace/shared-item-list/page"
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport, UIMessage } from "ai"
 import { Key, Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
-import { Button } from "../../components/ui/button"
 import { ChatSidebar } from "../../components/playground/ChatHistory"
 import { ChatInput } from "../../components/playground/ChatInput"
 import { ChatMessages } from "../../components/playground/ChatMessages"
 import { ChatTopBar } from "../../components/playground/ChatTopBar"
 import { ContextBar } from "../../components/playground/ContextBar"
-import { SharedItemList } from "@/app/(marketing)/marketplace/shared-item-list/page";
+import { Button } from "../../components/ui/button"
+import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
 
 
 export interface ChatSession {
@@ -297,7 +297,7 @@ export default function ChatPlayground() {
         className="gap-2 shadow-lg hover:bg-primary hover:text-primary-foreground"
       >
         <Key size={16} />
-        Enter API Key to Start Chatting
+        Enter Gemini API Key to Start Chatting
       </Button>
     </div>
   );
@@ -321,7 +321,7 @@ export default function ChatPlayground() {
         </div>
 
         <div className="flex flex-1 flex-col overflow-hidden">
-          {loadingChat && ( 
+          {loadingChat && (
             <div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
               <div className="flex flex-col items-center gap-2">
                 <Loader2 className="h-10 w-10 animate-spin text-primary" />

@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Key, Eye, EyeOff, Check, Save, Settings2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -11,14 +10,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Info, ExternalLink, HelpCircle } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Check, ExternalLink, Eye, EyeOff, HelpCircle, Key, Save, Settings2 } from 'lucide-react';
+import { useState } from 'react';
 
 interface ApiKeyModalProps {
   apiKey: string;
@@ -55,7 +48,7 @@ export function ApiKeyModal({ apiKey, setApiKey, open, setOpen, onSave }: ApiKey
             </div>
             <Dialog>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full cursor-pointer">
                 <HelpCircle className="h-4 w-4 text-muted-foreground" />
                 <span className="sr-only">API Key Instructions</span>
               </Button>

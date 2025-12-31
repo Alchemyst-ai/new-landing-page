@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { dbConnect } from "@/lib/dbconnect";
-import Tool from "@/app/models/Tool";
+import ContextSpace from "@/app/models/ContextSpace";
 import SharedItem from "@/app/models/SharedItem";
+import { dbConnect } from "@/lib/dbconnect";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -38,7 +38,11 @@ export async function GET(request: NextRequest) {
     //   .skip(offset)
     //   .limit(limit)
     //   .lean();
-    const data = await Tool.find({});
+    const data = await ContextSpace
+      .find({})
+      .sort({ createdAt: -1 })
+      .skip(offset)
+      .limit(limit);
 
     return NextResponse.json(data);
   } catch (err: any) {
