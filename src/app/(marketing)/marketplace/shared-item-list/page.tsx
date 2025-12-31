@@ -134,11 +134,12 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 
   return (
     <div className="space-y-12">
-      <div className="text-center space-y-8">
-        {/* <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-          Use cases from Alchemyst users
-        </h2> */}
-        
+      <div className="text-center space-y-4">
+        { asFooter &&(
+        <h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
+          Use a Template
+        </h2>)
+        }
         <div className="flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
           {PILLS.map((pill) => (
             <button
@@ -169,11 +170,12 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
           ))}
         </div>
       ) : (
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="mx-auto max-w-6xl">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 ">
           <AnimatePresence mode="popLayout">
             {items.map((item, idx) => (
               <motion.div
-                key={item.id}
+                key={item.magic_key}
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -216,7 +218,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
                       </div>
                       <div className="space-y-1">
                         <p className="text-xs font-bold uppercase tracking-widest text-foreground/40">Magic Key</p>
-                        <p className="text-lg font-mono font-bold text-foreground">{item.magic_key}</p>
+                        <p className="text-md font-mono font-bold text-foreground">{item.magic_key}</p>
                       </div>
                       <div>{item.about}</div>
                       <Button
@@ -254,6 +256,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
               </motion.div>
             ))}
           </AnimatePresence>
+        </div>
         </div>
       )}
 

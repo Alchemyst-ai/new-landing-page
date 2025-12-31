@@ -306,7 +306,7 @@ export default function ChatPlayground() {
 
   return (
     <>
-    <div className="flex max-w-auto h-[90vh] bg-background">
+    <div className={`flex max-w-auto bg-background ${isChatEmpty ? "h-[75vh]" : "h-[90vh]"}`}>
       <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
         <div className="flex-shrink-0 mt-2 items-center gap-3">
           <ChatTopBar onOpenHistory={handleToggleHistory}
@@ -321,7 +321,7 @@ export default function ChatPlayground() {
         </div>
 
         <div className="flex flex-1 flex-col overflow-hidden">
-          {loadingChat && (
+          {loadingChat && ( 
             <div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
               <div className="flex flex-col items-center gap-2">
                 <Loader2 className="h-10 w-10 animate-spin text-primary" />
@@ -417,7 +417,9 @@ export default function ChatPlayground() {
         onToggle={handleToggleHistory}
       />
     </div>
+    {isChatEmpty && (
     <div><SharedItemList asFooter={true}/></div>
+    )}
     </>
   )
 }

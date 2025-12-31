@@ -132,7 +132,7 @@ export default function Community() {
                 <p className="text-sm">Click Operate, select the files.</p>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">3</div>
+                <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">4</div>
                 <p className="text-sm">Generate magic key and share !!</p>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function Community() {
               </motion.h1>
             </div>
             
-            <SharedItemList />
+            <SharedItemList asFooter={false} />
           </div>
         </section>
       </main>
