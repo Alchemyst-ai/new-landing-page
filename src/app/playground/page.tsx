@@ -11,8 +11,9 @@ import { ChatInput } from "../../components/playground/ChatInput"
 import { ChatMessages } from "../../components/playground/ChatMessages"
 import { ChatTopBar } from "../../components/playground/ChatTopBar"
 import { ContextBar } from "../../components/playground/ContextBar"
-import { Button } from "../../components/ui/button"
 import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
+import { ApiKeyModal } from "@/components/playground/ApiKeySettings"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -22,6 +23,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input"
+
+function LockedInputOverlay({
+  apiKey,
+  setApiKey,
+  onSave,
+  isModalOpen,
+  setIsModalOpen
+}: any) {
+  return (
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md">
+      <ApiKeyModal
+        apiKey={apiKey}
+        setApiKey={setApiKey}
+        open={isModalOpen}
+        setOpen={setIsModalOpen}
+        onSave={onSave}
+        showTrigger={false}
+      />
+    </div>
+  );
+}
 
 
 export interface ChatSession {
@@ -53,8 +75,26 @@ export default function ChatPlayground() {
   const [userData, setUserData] = useState<{ fullName?: string } | null>(null);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
-
   const [isMounted, setIsMounted] = useState(false);
+
+  const [apiKey, setApiKey] = useState('');
+
+  const [isSaved, setIsSaved] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const hasApiKey = !!localStorage.getItem("userApiKey");
+
+  useEffect(() => {
+    const savedKey = localStorage.getItem('userApiKey');
+
+    if (savedKey) {
+      setApiKey(savedKey);
+    }
+
+    if (!savedKey) {
+      setIsModalOpen(true);
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -268,18 +308,6 @@ export default function ChatPlayground() {
     setIsHistoryOpen(!isHistoryOpen);
   };
 
-
-  const [apiKey, setApiKey] = useState('');
-
-  const [isSaved, setIsSaved] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const savedKey = localStorage.getItem('userApiKey');
-    if (savedKey) setApiKey(savedKey);
-  }, [isModalOpen]);
-
   const handleSave = () => {
     localStorage.setItem('userApiKey', apiKey.trim());
     setIsSaved(true);
@@ -297,97 +325,9 @@ export default function ChatPlayground() {
     </div>
   </div>);
 
-  const hasApiKey = !!localStorage.getItem("userApiKey");
 
-  const LockedInputOverlay = ({ onUnlock }: { onUnlock: () => void }) => (
-    <div className="absolute h-full inset-0 z-10 flex flex-col items-center justify-center bg-background/80 transition-all p-6">
-      <div className="flex min-h-[80vh] w-full items-center justify-center p-4">
-  <div className="w-full max-w-md backdrop-blur-md rounded-2xl border border border-primary p-8 flex flex-col items-center bg-card/50 shadow-xl">
-    
-    <div className="flex items-center justify-between w-full mb-8">
-      <h2 className="text-xl font-bold tracking-tight">Gemini API Key</h2>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full transition-colors hover:bg-primary/10">
-            <HelpCircle className="h-5 w-5 text-muted-foreground" />
-            <span className="sr-only">API Key Instructions</span>
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[400px]">
-          <DialogTitle className="text-sm font-bold uppercase tracking-wider text-primary">
-            How to acquire your key
-          </DialogTitle>
-          <DialogDescription className="text-xs">
-            Follow these steps to get your Gemini Generative AI key.
-          </DialogDescription>
-          <div className="space-y-4 my-4">
-            {[
-              "Go to Google AI Studio.",
-              "Click on 'Get API key' in the sidebar.",
-              "Create a new key in a project.",
-              "Copy and paste it into the configuration."
-            ].map((step, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
-                  {index + 1}
-                </div>
-                <p className="text-xs leading-relaxed">{step}</p>
-              </div>
-            ))}
-          </div>
-          <div className="pt-2">
-            <a
-              href="https://aistudio.google.com/app/apikey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-colors hover:opacity-90"
-            >
-              Visit Google AI Studio
-              <ExternalLink size={14} />
-            </a>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-    <div className="w-full space-y-6">
-      <div className="relative">
-        <Input
-          type={isVisible ? "text" : "password"}
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-          placeholder="Enter your API key..."
-          className="h-12 pr-12 rounded-xl border-primary/20 focus-visible:ring-primary shadow-sm"
-        />
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute right-1 top-1 h-10 w-10 hover:bg-transparent text-muted-foreground"
-          onClick={() => setIsVisible(!isVisible)}
-          tabIndex={-1}
-        >
-          {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
-        </Button>
-      </div>
 
-      {/* Action Section */}
-      <div className="flex flex-col gap-4">
-        <Button 
-          onClick={handleSave} 
-          className="w-full h-12 rounded-xl font-semibold shadow-lg shadow-primary/10 transition-all active:scale-[0.98]" 
-          disabled={!apiKey}
-        >
-          {isSaved ? <Check className="mr-2 h-5 w-5" /> : <Save className="mr-2 h-5 w-5" />}
-          {isSaved ? "Configuration Saved" : "Save Changes"}
-        </Button>
-        <p className="text-[11px] text-center text-muted-foreground leading-relaxed">
-          Your key is stored locally and used for <br /> secure Alchemyst AI outgoing requests.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  );
+
 
   const isChatEmpty = messages.length === 0
 
@@ -395,13 +335,11 @@ export default function ChatPlayground() {
     <div className="flex h-screen max-w-auto bg-background overflow-hidden">
       <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
         <div className="flex-shrink-0 mt-2 items-center gap-3">
-          <ChatTopBar onOpenHistory={handleToggleHistory}
+          <ChatTopBar
+            onOpenHistory={handleToggleHistory}
             apiKeyProps={{
-              apiKey,
-              setApiKey,
-              open: isModalOpen,
-              setOpen: setIsModalOpen,
-              onSave: handleSave
+              apiKey, setApiKey, onSave: handleSave,
+              open: isModalOpen, setOpen: setIsModalOpen
             }}
           />
         </div>
@@ -415,7 +353,7 @@ export default function ChatPlayground() {
               </div>
             </div>
           )}
-          {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
+          {!hasApiKey && (<LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />)}
           {!isChatEmpty ? (
             <>
               <div className="flex-1 overflow-y-auto">
