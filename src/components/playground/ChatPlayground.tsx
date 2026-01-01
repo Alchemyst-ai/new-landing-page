@@ -350,8 +350,8 @@ export default function ChatPlayground() {
 						}}
 					/>
 				</div> */}
-
-				<div className="flex flex-1 flex-col overflow-hidden">
+				<div className="flex-col h-auto z-0"></div>
+				<div className="flex flex-1 flex-col overflow-x-hidden">
 					{loadingChat && (
 						<div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
 							<div className="flex flex-col items-center gap-2">
@@ -415,6 +415,8 @@ export default function ChatPlayground() {
 						</>
 					) : (
 						<div className="flex flex-1 flex-col overflow-y-auto">
+							<div className="my-auto lg:min-h-[30vh] flex flex-1 flex-col h-auto"></div>
+
 							<div className="flex flex-col items-center justify-center p-8 flex-1">
 								<div className="w-full max-w-2xl space-y-6 my-auto">
 									<div className="text-center space-y-2 my-auto">
@@ -469,7 +471,7 @@ export default function ChatPlayground() {
 									</div>
 								</div>
 							</div>
-							<div className="flex-shrink-0 pb-4">
+							<div className="flex-shrink-0 pb-4 my-12">
 								<SharedItemList asFooter />
 							</div>
 						</div>

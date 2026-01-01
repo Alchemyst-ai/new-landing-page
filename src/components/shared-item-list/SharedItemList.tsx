@@ -169,20 +169,14 @@ function SpaceCard({
 						<div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
 							<Key className="h-6 w-6 text-primary" />
 						</div>
-						<Link
-							href={`https://platform.getalchemystai.com/context/share/${item.magic_key}`}
-							target="_blank"
-							// ref="noopener noreferrer"
-						>
-							<div className="space-y-1">
-								<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
-									Magic Key
-								</p>
-								<p className="text-md font-mono font-bold text-foreground">
-									{item.magic_key}
-								</p>
-							</div>
-						</Link>
+						<div className="space-y-1">
+							<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
+								Magic Key
+							</p>
+							<p className="text-md font-mono font-bold text-foreground">
+								{item.magic_key}
+							</p>
+						</div>
 						<div className="text-sm">{formatAbout(item.about, 85)}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
@@ -218,9 +212,15 @@ function SpaceCard({
 				</div>
 
 				<div className="px-2 space-y-1">
-					<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors">
-						{item.name}
-					</h3>
+					<Link
+						href={`https://platform.getalchemystai.com/context/share/${item.magic_key}`}
+						target="_blank"
+						// ref="noopener noreferrer"
+					>
+						<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors hover:text-accent-foreground">
+							{item.name}
+						</h3>
+					</Link>
 					<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
 						<span>
 							{item.name
@@ -369,11 +369,17 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 
 	return (
 		<div className="space-y-12">
-			<div className="text-center space-y-4">
+			<div className="text-center space-y-4 ">
 				{asFooter && (
-					<h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
-						Use a Template
-					</h2>
+					<div className="w-full lg:min-w-[70vw] text-center space-y-3 my-6">
+						<h2 className="text-xl md:text-3xl font-semibold tracking-tight text-foreground">
+							Community Contexts
+						</h2>
+						<h3 className="text-muted-foreground">
+							Select any number of context spaces from here, and start chatting
+							with data in them
+						</h3>
+					</div>
 				)}
 				<div className="flex flex-wrap justify-center gap-2 max-w-6xl mx-auto">
 					{PILLS.map((pill) => (
