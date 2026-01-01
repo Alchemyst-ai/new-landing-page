@@ -326,13 +326,14 @@ export default function VoiceAgentsPage() {
 					</span>
 
 					<h1 className="text-5xl md:text-6xl font-bold">
-						<span className="bg-gradient-to-r from-[#f59025] via-[#f59025]/50 to-[#fefefe]/80 bg-clip-text text-transparent">
-							Human-Like Voice AI
-						</span>{" "}
-						for everyone.
+						<span className="bg-gradient-to-r from-[#f59025] via-[#fefefe]/20 to-[#fefefe]/80 bg-clip-text text-transparent">
+							Context-aware. Human-like.
+						</span>
+						<br />
+						Voice AI for everyone.
 					</h1>
 
-					<p className="mt-6 text-lg text-white/70 max-w-4xl mx-auto">
+					<p className="mt-6 text-lg text-muted-foreground max-w-4xl mx-auto">
 						Deploy AI voice agents that talk naturally, understand intent &amp;
 						take action - 24x7, at scale.
 					</p>
@@ -345,7 +346,17 @@ export default function VoiceAgentsPage() {
 						>
 							Book Live Demo
 						</Button>
-						<Link href="#testimonials">
+						<Link
+							href="#testimonials"
+							onClick={(e) => {
+								e.preventDefault();
+								const el = document.getElementById("testimonials");
+								if (el) {
+									el.scrollIntoView({ behavior: "smooth" });
+								}
+							}}
+							className="cursor-pointer"
+						>
 							<Button
 								variant="outline"
 								className="rounded-lg border border-white/15 px-6 py-3 cursor-pointer"
@@ -366,9 +377,7 @@ export default function VoiceAgentsPage() {
 			{/* ================= USE CASES ================= */}
 			<section className="py-28 px-6">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-4xl font-bold text-center">
-						Voice Agent Use Cases
-					</h2>
+					<h2 className="text-4xl font-bold text-center">Use Cases</h2>
 
 					<p className="mt-4 text-center text-white/70 max-w-2xl mx-auto">
 						Replace manual calling teams with AI agents that scale instantly and
@@ -490,9 +499,7 @@ export default function VoiceAgentsPage() {
 			{/* ================= CTA ================= */}
 			<section className="py-28 px-6">
 				<div className="max-w-5xl mx-auto rounded-3xl border border-white/10 bg-gradient-to-br from-[#151515]/30 via-[#f49025]/20 p-12 text-center">
-					<h2 className="text-4xl font-bold">
-						Get Your Voice Agent in hours, not months
-					</h2>
+					<h2 className="text-4xl font-bold">Set up in hours, not months</h2>
 
 					<p className="mt-4 text-white/70 max-w-2xl mx-auto">
 						Integrate with your existing systems and tools effortlessly.
