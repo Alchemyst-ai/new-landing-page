@@ -59,6 +59,53 @@ export function ApiKeyModal({ apiKey, setApiKey, open, setOpen, onSave, showTrig
             <div className="flex items-center gap-2">
               <Key className="w-5 h-5 text-primary" />
               API Configuration
+              <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full cursor-pointer">
+                <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                <span className="sr-only">API Key Instructions</span>
+              </Button>
+            </DialogTrigger>
+
+              <DialogContent className="sm:max-w-[350px] gap-6">
+                <DialogHeader>
+                  <DialogTitle className="text-sm font-bold uppercase tracking-wider text-primary">
+                    How to acquire your key
+                  </DialogTitle>
+                  <DialogDescription className="text-xs">
+                    Follow these steps to get your Gemini Generative AI key.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="space-y-4">
+                  {[
+                    "Go to Google AI Studio.",
+                    "Click on 'Get API key' in the sidebar.",
+                    "Create a new key in a project.",
+                    "Copy and paste it into the configuration."
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                        {index + 1}
+                      </div>
+                      <p className="text-xs leading-relaxed">{step}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="https://aistudio.google.com/app/apikey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2 rounded-md bg-secondary px-4 py-2 text-xs font-medium transition-colors hover:bg-secondary/80"
+                  >
+                    Visit Google AI Studio
+                    <ExternalLink size={14} />
+                  </a>
+                </div>
+              </DialogContent>
+            </Dialog>
             </div>
             {/* ... Nested Help Dialog Code stays the same ... */}
           </DialogTitle>

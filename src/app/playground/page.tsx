@@ -13,16 +13,7 @@ import { ChatTopBar } from "../../components/playground/ChatTopBar"
 import { ContextBar } from "../../components/playground/ContextBar"
 import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
 import { ApiKeyModal } from "@/components/playground/ApiKeySettings"
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input"
+
 
 function LockedInputOverlay({
   apiKey,

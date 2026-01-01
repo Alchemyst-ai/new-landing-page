@@ -84,19 +84,7 @@ export function ChatInput({
 
           <div className="flex items-center gap-1 shrink-0">
             <div className="flex flex-col gap-1">
-            <Select value={selectedGroup} onValueChange={onGroupChange}>
-              <SelectTrigger className="h-9 min-w-[100px]  max-w-[100px] truncate border-0 bg-zinc-900 text-xs font-medium hover:bg-muted">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {groupNames.map((group) => (
-                  <SelectItem key={group} value={group}>
-                    {group}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
+      
             <Select value={aiModel} onValueChange={onModelChange}>
               <SelectTrigger className="h-9 min-w-[100px] max-w-[100px] truncate border-0 bg-zinc-900 text-xs font-medium hover:bg-muted">
                 <SelectValue />
