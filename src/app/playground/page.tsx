@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport, UIMessage } from "ai"
-import { Key, Loader2 } from "lucide-react"
+import { Check, ExternalLink, Eye, EyeOff, HelpCircle, Key, Loader2, Save } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import { ChatSidebar } from "../../components/playground/ChatHistory"
@@ -13,6 +13,15 @@ import { ContextBar } from "../../components/playground/ContextBar"
 import { SharedItemList } from "../../components/shared-item-list/SharedItemList"
 import { Button } from "../../components/ui/button"
 import { fetchWithRewrites } from "../../utils/fetchWithRewrites"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input"
 
 
 export interface ChatSession {
@@ -264,6 +273,7 @@ export default function ChatPlayground() {
 
   const [isSaved, setIsSaved] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const savedKey = localStorage.getItem('userApiKey');
@@ -290,134 +300,211 @@ export default function ChatPlayground() {
   const hasApiKey = !!localStorage.getItem("userApiKey");
 
   const LockedInputOverlay = ({ onUnlock }: { onUnlock: () => void }) => (
-    <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 backdrop-blur-[2px] rounded-xl border border-dashed border-primary/30 transition-all">
-      <Button
-        variant="outline"
-        onClick={onUnlock}
-        className="gap-2 shadow-lg hover:bg-primary hover:text-primary-foreground"
-      >
-        <Key size={16} />
-        Enter Gemini API Key to Start Chatting
-      </Button>
+    <div className="absolute h-full inset-0 z-10 flex flex-col items-center justify-center bg-background/80 transition-all p-6">
+      <div className="flex min-h-[80vh] w-full items-center justify-center p-4">
+  <div className="w-full max-w-md backdrop-blur-md rounded-2xl border border border-primary p-8 flex flex-col items-center bg-card/50 shadow-xl">
+    
+    <div className="flex items-center justify-between w-full mb-8">
+      <h2 className="text-xl font-bold tracking-tight">Gemini API Key</h2>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full transition-colors hover:bg-primary/10">
+            <HelpCircle className="h-5 w-5 text-muted-foreground" />
+            <span className="sr-only">API Key Instructions</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogTitle className="text-sm font-bold uppercase tracking-wider text-primary">
+            How to acquire your key
+          </DialogTitle>
+          <DialogDescription className="text-xs">
+            Follow these steps to get your Gemini Generative AI key.
+          </DialogDescription>
+          <div className="space-y-4 my-4">
+            {[
+              "Go to Google AI Studio.",
+              "Click on 'Get API key' in the sidebar.",
+              "Create a new key in a project.",
+              "Copy and paste it into the configuration."
+            ].map((step, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                  {index + 1}
+                </div>
+                <p className="text-xs leading-relaxed">{step}</p>
+              </div>
+            ))}
+          </div>
+          <div className="pt-2">
+            <a
+              href="https://aistudio.google.com/app/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-colors hover:opacity-90"
+            >
+              Visit Google AI Studio
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+    <div className="w-full space-y-6">
+      <div className="relative">
+        <Input
+          type={isVisible ? "text" : "password"}
+          value={apiKey}
+          onChange={(e) => setApiKey(e.target.value)}
+          placeholder="Enter your API key..."
+          className="h-12 pr-12 rounded-xl border-primary/20 focus-visible:ring-primary shadow-sm"
+        />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-1 top-1 h-10 w-10 hover:bg-transparent text-muted-foreground"
+          onClick={() => setIsVisible(!isVisible)}
+          tabIndex={-1}
+        >
+          {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
+        </Button>
+      </div>
+
+      {/* Action Section */}
+      <div className="flex flex-col gap-4">
+        <Button 
+          onClick={handleSave} 
+          className="w-full h-12 rounded-xl font-semibold shadow-lg shadow-primary/10 transition-all active:scale-[0.98]" 
+          disabled={!apiKey}
+        >
+          {isSaved ? <Check className="mr-2 h-5 w-5" /> : <Save className="mr-2 h-5 w-5" />}
+          {isSaved ? "Configuration Saved" : "Save Changes"}
+        </Button>
+        <p className="text-[11px] text-center text-muted-foreground leading-relaxed">
+          Your key is stored locally and used for <br /> secure Alchemyst AI outgoing requests.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 
   const isChatEmpty = messages.length === 0
 
   return (
-  <div className="flex h-screen max-w-auto bg-background overflow-hidden">
-    <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
-      <div className="flex-shrink-0 mt-2 items-center gap-3">
-        <ChatTopBar onOpenHistory={handleToggleHistory}
-          apiKeyProps={{
-            apiKey,
-            setApiKey,
-            open: isModalOpen,
-            setOpen: setIsModalOpen,
-            onSave: handleSave
-          }}
-        />
-      </div>
+    <div className="flex h-screen max-w-auto bg-background overflow-hidden">
+      <div className={`flex flex-1 flex-col ${isHistoryOpen ? 'flex-1' : ''}`}>
+        <div className="flex-shrink-0 mt-2 items-center gap-3">
+          <ChatTopBar onOpenHistory={handleToggleHistory}
+            apiKeyProps={{
+              apiKey,
+              setApiKey,
+              open: isModalOpen,
+              setOpen: setIsModalOpen,
+              onSave: handleSave
+            }}
+          />
+        </div>
 
-      <div className="flex flex-1 flex-col overflow-hidden">
-        {loadingChat && (
-          <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
-            <div className="flex flex-col items-center gap-2">
-              <Loader2 className="h-10 w-10 animate-spin text-primary" />
-              <p className="text-sm font-medium animate-pulse">Loading conversation...</p>
-            </div>
-          </div>
-        )}
-        {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
-        {!isChatEmpty ? (
-          <>
-            <div className="flex-1 overflow-y-auto">
-              {!loadingChat && (<ChatMessages messages={messages} isStreaming={status === "streaming"} />)}
-            </div>
-            <div className="flex-shrink-0 bg-background">
-              <ContextBar
-                isOpen={isContextBarOpen}
-                magicKey={magicKey}
-                setMagicKey={setMagicKey}
-                onFilesUpload={handleFilesUpload}
-                uploadedFiles={uploadedFiles}
-                onImagesUpload={handleImagesUpload}
-                uploadedImages={uploadedImages}
-                onRemoveFile={handleRemoveFile}
-                onRemoveImage={handleRemoveImage}
-              />
-
-              <ChatInput
-                onSendMessage={handleSendMessage}
-                isContextBarOpen={isContextBarOpen}
-                onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
-                isStreaming={status === "streaming"}
-                onStop={stop}
-                selectedGroup={selectedGroup}
-                onGroupChange={setSelectedGroup}
-                groupNames={groupNames}
-                aiModel={aiModel}
-                onModelChange={setAiModel}
-              />
-            </div>
-          </>
-        ) : (
-          <div className="flex flex-1 flex-col overflow-y-auto">
-            <div className="flex flex-col items-center justify-center p-8 flex-1">
-              <div className="w-full max-w-2xl space-y-6 my-auto">
-                <div className="text-center space-y-2 my-auto">
-                  {!loadingChat && (<div className="text-center mb-8">
-                    <h1 className="text-4xl font-medium mb-2">
-                      {getTimeBasedGreeting()}{userData?.fullName ? `, ${userData.fullName}` : ''}!
-                    </h1>
-                    <p className="text-muted-foreground">Ask me anything or use the context bar for advanced features</p>
-                  </div>)}
-                </div>
-                <div className="space-y-4">
-                  <ContextBar
-                    isOpen={isContextBarOpen}
-                    magicKey={magicKey}
-                    setMagicKey={setMagicKey}
-                    onFilesUpload={handleFilesUpload}
-                    uploadedFiles={uploadedFiles}
-                    onImagesUpload={handleImagesUpload}
-                    uploadedImages={uploadedImages}
-                    onRemoveFile={handleRemoveFile}
-                    onRemoveImage={handleRemoveImage}
-                  />
-                  <ChatInput
-                    onSendMessage={handleSendMessage}
-                    isContextBarOpen={isContextBarOpen}
-                    onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
-                    isStreaming={status === "streaming"}
-                    onStop={stop}
-                    isFloating={true}
-                    selectedGroup={selectedGroup}
-                    onGroupChange={setSelectedGroup}
-                    groupNames={groupNames}
-                    aiModel={aiModel}
-                    onModelChange={setAiModel}
-                  />
-                </div>
+        <div className="flex flex-1 flex-col overflow-hidden">
+          {loadingChat && (
+            <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
+              <div className="flex flex-col items-center gap-2">
+                <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                <p className="text-sm font-medium animate-pulse">Loading conversation...</p>
               </div>
             </div>
-            <div className="flex-shrink-0 pb-4">
-              <SharedItemList asFooter/>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+          )}
+          {!hasApiKey && <LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />}
+          {!isChatEmpty ? (
+            <>
+              <div className="flex-1 overflow-y-auto">
+                {!loadingChat && (<ChatMessages messages={messages} isStreaming={status === "streaming"} />)}
+              </div>
+              <div className="flex-shrink-0 bg-background">
+                <ContextBar
+                  isOpen={isContextBarOpen}
+                  magicKey={magicKey}
+                  setMagicKey={setMagicKey}
+                  onFilesUpload={handleFilesUpload}
+                  uploadedFiles={uploadedFiles}
+                  onImagesUpload={handleImagesUpload}
+                  uploadedImages={uploadedImages}
+                  onRemoveFile={handleRemoveFile}
+                  onRemoveImage={handleRemoveImage}
+                />
 
-    <ChatSidebar
-      isOpen={isHistoryOpen}
-      sessions={sessions}
-      currentSessionId={currentSessionId}
-      onNewChat={handleNewChat}
-      onSelectSession={handleSelectSession}
-      onDeleteSession={handleDeleteSession}
-      onToggle={handleToggleHistory}
-    />
-  </div>
-)
+                <ChatInput
+                  onSendMessage={handleSendMessage}
+                  isContextBarOpen={isContextBarOpen}
+                  onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
+                  isStreaming={status === "streaming"}
+                  onStop={stop}
+                  selectedGroup={selectedGroup}
+                  onGroupChange={setSelectedGroup}
+                  groupNames={groupNames}
+                  aiModel={aiModel}
+                  onModelChange={setAiModel}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-1 flex-col overflow-y-auto">
+              <div className="flex flex-col items-center justify-center p-8 flex-1">
+                <div className="w-full max-w-2xl space-y-6 my-auto">
+                  <div className="text-center space-y-2 my-auto">
+                    {!loadingChat && (<div className="text-center mb-8">
+                      <h1 className="text-4xl font-medium mb-2">
+                        {getTimeBasedGreeting()}{userData?.fullName ? `, ${userData.fullName}` : ''}!
+                      </h1>
+                      <p className="text-muted-foreground">Ask me anything or use the context bar for advanced features</p>
+                    </div>)}
+                  </div>
+                  <div className="space-y-4">
+                    <ContextBar
+                      isOpen={isContextBarOpen}
+                      magicKey={magicKey}
+                      setMagicKey={setMagicKey}
+                      onFilesUpload={handleFilesUpload}
+                      uploadedFiles={uploadedFiles}
+                      onImagesUpload={handleImagesUpload}
+                      uploadedImages={uploadedImages}
+                      onRemoveFile={handleRemoveFile}
+                      onRemoveImage={handleRemoveImage}
+                    />
+                    <ChatInput
+                      onSendMessage={handleSendMessage}
+                      isContextBarOpen={isContextBarOpen}
+                      onToggleContextBar={() => setIsContextBarOpen(!isContextBarOpen)}
+                      isStreaming={status === "streaming"}
+                      onStop={stop}
+                      isFloating={true}
+                      selectedGroup={selectedGroup}
+                      onGroupChange={setSelectedGroup}
+                      groupNames={groupNames}
+                      aiModel={aiModel}
+                      onModelChange={setAiModel}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 pb-4">
+                <SharedItemList asFooter />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <ChatSidebar
+        isOpen={isHistoryOpen}
+        sessions={sessions}
+        currentSessionId={currentSessionId}
+        onNewChat={handleNewChat}
+        onSelectSession={handleSelectSession}
+        onDeleteSession={handleDeleteSession}
+        onToggle={handleToggleHistory}
+      />
+    </div>
+  )
 }
