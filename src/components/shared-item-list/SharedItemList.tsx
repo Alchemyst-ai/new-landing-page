@@ -88,6 +88,150 @@ function slugify(text: string): string {
 		.replace(/^-+|-+$/g, ""); // Remove leading/trailing dashes
 }
 
+const checkIfKeyIsPresent = (key: string) => {
+	const contextSpaceKeys: string[] = JSON.parse(
+		sessionStorage.getItem("contextSpaceKeys") ?? "[]",
+	);
+
+	return contextSpaceKeys.includes(key);
+};
+
+const formatAbout = (about?: string, limit = 100) => {
+	if (!about) {
+		return "";
+	}
+
+	if (about.length > limit) {
+		return about.slice(0, limit) + "...";
+	}
+
+	return about;
+};
+
+function SpaceCard({
+	item,
+	idx,
+	copyMagicKey,
+	copiedKey,
+	toggleKeySelection,
+	isKeySelected,
+}: {
+	item: Record<string, any>;
+	idx: number;
+	copiedKey: string | null;
+	copyMagicKey: (key: string) => void;
+	toggleKeySelection: (key: string) => void;
+	isKeySelected: boolean;
+}) {
+	return (
+		<motion.div
+			key={item.magic_key}
+			layout
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, scale: 0.95 }}
+			transition={{ duration: 0.4, delay: (idx % 12) * 0.05 }}
+			className="break-inside-avoid mb-6"
+		>
+			<div className="group flex flex-col space-y-3">
+				<div
+					className={cn(
+						"relative rounded-[2rem] overflow-hidden transition-all duration-500 ",
+						item.cover_image_url
+							? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5"
+							: "aspect-[4/3] bg-foreground/[0.03] flex flex-col p-8",
+					)}
+				>
+					{item.cover_image_url ? (
+						<div className="relative w-full">
+							<Image
+								src={item.cover_image_url}
+								alt={item?.about || ""}
+								width={800}
+								height={600}
+								className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+						</div>
+					) : (
+						<>
+							<Quote className="h-8 w-8 text-foreground/10 mb-4" />
+							<p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed">
+								{item?.about}
+							</p>
+						</>
+					)}
+
+					{/* Magic Key Overlay */}
+					<div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
+						<div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+							<Key className="h-6 w-6 text-primary" />
+						</div>
+						<div className="space-y-1">
+							<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
+								Magic Key
+							</p>
+							<p className="text-md font-mono font-bold text-foreground">
+								{item.magic_key}
+							</p>
+						</div>
+						<div className="text-sm">{formatAbout(item.about, 85)}</div>
+						<div className="flex flex-row text-sm gap-2">
+							<Button
+								variant="orange"
+								size="sm"
+								onClick={(e) => {
+									e.stopPropagation();
+									toggleKeySelection(item.magic_key);
+								}}
+								className="rounded-full cursor-pointer"
+							>
+								{isKeySelected ? "Remove Space" : "Use space"}
+							</Button>
+							<Button
+								size="sm"
+								onClick={(e) => {
+									e.stopPropagation();
+									copyMagicKey(item.magic_key);
+								}}
+								variant="link"
+								className="rounded-full cursor-pointer"
+							>
+								{copiedKey === item.magic_key ? (
+									<>
+										<Check className="h-4 w-4 mr-2" /> Copied
+									</>
+								) : (
+									"Copy Key"
+								)}
+							</Button>
+						</div>
+					</div>
+				</div>
+
+				<div className="px-2 space-y-1">
+					<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors">
+						{item.magic_key}
+					</h3>
+					<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
+						<span>
+							{item.name
+								?.split(" ")
+								.map((n) => n[0])
+								.join(". ") + "."}
+						</span>
+						{item.is_featured && (
+							<>
+								<span className="w-1 h-1 rounded-full bg-foreground/20" />
+								<Sparkles className="h-3 w-3 text-primary" />
+							</>
+						)}
+					</div>
+				</div>
+			</div>
+		</motion.div>
+	);
+}
+
 export function SharedItemList({ asFooter }: SharedItemListProps) {
 	const [items, setItems] = React.useState<sharedItem[]>([]);
 	const [loading, setLoading] = React.useState(true);
@@ -96,8 +240,17 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 	const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
 	const [hasMore, setHasMore] = React.useState(true);
 	const [offset, setOffset] = React.useState(0);
+	const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
 
 	const ITEMS_PER_PAGE = asFooter ? 6 : 12;
+
+	// Initialize selectedKeys from sessionStorage on mount
+	React.useEffect(() => {
+		const stored = sessionStorage.getItem("contextSpaceKeys");
+		if (stored) {
+			setSelectedKeys(JSON.parse(stored));
+		}
+	}, []);
 
 	const { ref, inView } = useInView({
 		threshold: 0,
@@ -139,6 +292,28 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 		[activeTab, ITEMS_PER_PAGE],
 	);
 
+	const toggleKeySelection = React.useCallback((key: string) => {
+		setSelectedKeys((prev) => {
+			const newKeys = prev.includes(key)
+				? prev.filter((k) => k !== key)
+				: [...prev, key];
+			sessionStorage.setItem("contextSpaceKeys", JSON.stringify(newKeys));
+			return newKeys;
+		});
+	}, []);
+
+	const checkIfKeyIsPresent = React.useCallback(
+		(key: string) => {
+			return selectedKeys.includes(key);
+		},
+		[selectedKeys],
+	);
+
+	const copyMagicKey = (key: string) => {
+		navigator.clipboard.writeText(key);
+		setCopiedKey(key);
+		setTimeout(() => setCopiedKey(null), 2000);
+	};
 	React.useEffect(() => {
 		setOffset(0);
 		fetchItems(0, true);
@@ -152,24 +327,6 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 			fetchItems(nextOffset);
 		}
 	}, [inView, hasMore, loadingMore, offset, fetchItems, ITEMS_PER_PAGE]);
-
-	const copyMagicKey = (key: string) => {
-		navigator.clipboard.writeText(key);
-		setCopiedKey(key);
-		setTimeout(() => setCopiedKey(null), 2000);
-	};
-
-	const formatAbout = (about?: string, limit = 100) => {
-		if (!about) {
-			return "";
-		}
-
-		if (about.length > limit) {
-			return about.slice(0, limit) + "...";
-		}
-
-		return about;
-	};
 
 	return (
 		<div className="space-y-12">
@@ -216,99 +373,15 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 						<div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 ">
 							<AnimatePresence mode="popLayout">
 								{items.map((item, idx) => (
-									<motion.div
-										key={item.magic_key}
-										layout
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, scale: 0.95 }}
-										transition={{ duration: 0.4, delay: (idx % 12) * 0.05 }}
-										className="break-inside-avoid mb-6"
-									>
-										<div className="group flex flex-col space-y-3">
-											<div
-												className={cn(
-													"relative rounded-[2rem] overflow-hidden transition-all duration-500 ",
-													item.cover_image_url
-														? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5"
-														: "aspect-[4/3] bg-foreground/[0.03] flex flex-col p-8",
-												)}
-											>
-												{item.cover_image_url ? (
-													<div className="relative w-full">
-														<Image
-															src={item.cover_image_url}
-															alt={item?.about || ""}
-															width={800}
-															height={600}
-															className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-														/>
-													</div>
-												) : (
-													<>
-														<Quote className="h-8 w-8 text-foreground/10 mb-4" />
-														<p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed">
-															{item?.about}
-														</p>
-													</>
-												)}
-
-												{/* Magic Key Overlay */}
-												<div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
-													<div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-														<Key className="h-6 w-6 text-primary" />
-													</div>
-													<div className="space-y-1">
-														<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
-															Magic Key
-														</p>
-														<p className="text-md font-mono font-bold text-foreground">
-															{item.magic_key}
-														</p>
-													</div>
-													<div className="text-sm">
-														{formatAbout(item.about, 85)}
-													</div>
-													<Button
-														size="sm"
-														onClick={(e) => {
-															e.stopPropagation();
-															copyMagicKey(item.magic_key);
-														}}
-														className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 cursor-pointer"
-													>
-														{copiedKey === item.magic_key ? (
-															<>
-																<Check className="h-4 w-4 mr-2" /> Copied
-															</>
-														) : (
-															"Copy Key"
-														)}
-													</Button>
-												</div>
-											</div>
-
-											<div className="px-2 space-y-1">
-												<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors">
-													{item.magic_key}
-												</h3>
-												<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
-													<span>
-														{item.name
-															?.split(" ")
-															.map((n) => n[0])
-															.join(". ") + "."}
-													</span>
-													{item.is_featured && (
-														<>
-															<span className="w-1 h-1 rounded-full bg-foreground/20" />
-															<Sparkles className="h-3 w-3 text-primary" />
-														</>
-													)}
-												</div>
-											</div>
-										</div>
-									</motion.div>
+									<SpaceCard
+										item={item}
+										idx={idx}
+										key={`space-card-${idx + 1}`}
+										copyMagicKey={copyMagicKey}
+										copiedKey={copiedKey}
+										toggleKeySelection={toggleKeySelection}
+										isKeySelected={checkIfKeyIsPresent(item.magic_key)}
+									/>
 								))}
 							</AnimatePresence>
 						</div>

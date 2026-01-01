@@ -14,6 +14,7 @@ interface ApiKeyModalProps {
   open: boolean;
   setOpen: (open: boolean) => void;
   onSave: () => void;
+  
 }
 
 interface ChatTopBarProps {
