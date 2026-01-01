@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useContextKeyStore } from "@/hooks/context";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -14,36 +15,38 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import { useCallback } from "react";
 import { useInView } from "react-intersection-observer";
 // import type { SharedItem } from "@/lib/supabase";
 
-export type SharedItem = {
-	id: string;
-	title: string;
-	description: string | null;
-	content_type:
-		| "document"
-		| "website"
-		| "slides"
-		| "video"
-		| "image"
-		| "audio"
-		| "data";
-	cover_image_url: string | null;
-	preview_url: string | null;
-	magic_key: string;
-	author_name: string;
-	author_avatar: string | null;
-	views_count: number;
-	likes_count: number;
-	tags: string[] | null;
-	metadata: Record<string, unknown>;
-	is_featured: boolean;
-	created_at: string;
-	updated_at: string;
-};
+// export type SharedItem = {
+// 	id: string;
+// 	title: string;
+// 	description: string | null;
+// 	content_type:
+// 		| "document"
+// 		| "website"
+// 		| "slides"
+// 		| "video"
+// 		| "image"
+// 		| "audio"
+// 		| "data";
+// 	cover_image_url: string | null;
+// 	preview_url: string | null;
+// 	magic_key: string;
+// 	author_name: string;
+// 	author_avatar: string | null;
+// 	views_count: number;
+// 	likes_count: number;
+// 	tags: string[] | null;
+// 	metadata: Record<string, unknown>;
+// 	is_featured: boolean;
+// 	created_at: string;
+// 	updated_at: string;
+// 	about: string;
+// };
 
-export interface sharedItem {
+export interface SharedItem {
 	id: string;
 	documents: string[];
 	magic_key: string;
@@ -116,7 +119,7 @@ function SpaceCard({
 	toggleKeySelection,
 	isKeySelected,
 }: {
-	item: Record<string, any>;
+	item: SharedItem;
 	idx: number;
 	copiedKey: string | null;
 	copyMagicKey: (key: string) => void;
@@ -166,14 +169,20 @@ function SpaceCard({
 						<div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
 							<Key className="h-6 w-6 text-primary" />
 						</div>
-						<div className="space-y-1">
-							<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
-								Magic Key
-							</p>
-							<p className="text-md font-mono font-bold text-foreground">
-								{item.magic_key}
-							</p>
-						</div>
+						<Link
+							href={`https://platform.getalchemystai.com/context/share/${item.magic_key}`}
+							target="_blank"
+							// ref="noopener noreferrer"
+						>
+							<div className="space-y-1">
+								<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
+									Magic Key
+								</p>
+								<p className="text-md font-mono font-bold text-foreground">
+									{item.magic_key}
+								</p>
+							</div>
+						</Link>
 						<div className="text-sm">{formatAbout(item.about, 85)}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
@@ -185,7 +194,7 @@ function SpaceCard({
 								}}
 								className="rounded-full cursor-pointer"
 							>
-								{isKeySelected ? "Remove Space" : "Use space"}
+								{isKeySelected ? "Remove from chat" : "Use in chat"}
 							</Button>
 							<Button
 								size="sm"
@@ -210,7 +219,7 @@ function SpaceCard({
 
 				<div className="px-2 space-y-1">
 					<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors">
-						{item.magic_key}
+						{item.name}
 					</h3>
 					<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
 						<span>
@@ -233,23 +242,41 @@ function SpaceCard({
 }
 
 export function SharedItemList({ asFooter }: SharedItemListProps) {
-	const [items, setItems] = React.useState<sharedItem[]>([]);
+	const [items, setItems] = React.useState<SharedItem[]>([]);
 	const [loading, setLoading] = React.useState(true);
 	const [loadingMore, setLoadingMore] = React.useState(false);
 	const [activeTab, setActiveTab] = React.useState("Featured");
 	const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
 	const [hasMore, setHasMore] = React.useState(true);
 	const [offset, setOffset] = React.useState(0);
-	const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
+	// const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
+	const selectedKeys = useContextKeyStore((store) => store.selectedKeys);
+	const setStoreState = useContextKeyStore((store) => store.setState);
+
+	const setSelectedKeys = useCallback(
+		(keys: string[]) => {
+			setStoreState({ selectedKeys: keys });
+		},
+		[setStoreState],
+	);
 
 	const ITEMS_PER_PAGE = asFooter ? 6 : 12;
 
 	// Initialize selectedKeys from sessionStorage on mount
 	React.useEffect(() => {
-		const stored = sessionStorage.getItem("contextSpaceKeys");
-		if (stored) {
-			setSelectedKeys(JSON.parse(stored));
+		console.log("Getting stored keys..");
+		let stored: string[] = [];
+		try {
+			const raw = sessionStorage.getItem("contextSpaceKeys");
+			if (raw) {
+				stored = JSON.parse(raw);
+			}
+		} catch (e) {
+			console.warn("Failed to parse contextSpaceKeys from sessionStorage:", e);
+			stored = [];
 		}
+		console.log(`Found ${stored.length} selected keys. Setting them up.`);
+		setSelectedKeys(stored);
 	}, []);
 
 	const { ref, inView } = useInView({
@@ -292,18 +319,30 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 		[activeTab, ITEMS_PER_PAGE],
 	);
 
-	const toggleKeySelection = React.useCallback((key: string) => {
-		setSelectedKeys((prev) => {
-			const newKeys = prev.includes(key)
-				? prev.filter((k) => k !== key)
-				: [...prev, key];
+	const toggleKeySelection = React.useCallback(
+		(key: string) => {
+			console.log("Selected keys here = ", selectedKeys);
+			if (selectedKeys.includes(key)) {
+				console.log("Removing selected key...");
+			} else {
+				console.log("Adding new Key to selected keys...");
+			}
+			const newKeys = selectedKeys.includes(key)
+				? selectedKeys.filter((k) => k !== key)
+				: [...selectedKeys, key];
+
+			console.log("Setting new keys = ", newKeys);
+			setSelectedKeys(newKeys);
 			sessionStorage.setItem("contextSpaceKeys", JSON.stringify(newKeys));
 			return newKeys;
-		});
-	}, []);
+		},
+		[selectedKeys, setSelectedKeys],
+	);
 
 	const checkIfKeyIsPresent = React.useCallback(
 		(key: string) => {
+			// console.log("Received key = ", key);
+			// console.warn("Selected Keys = ", selectedKeys);
 			return selectedKeys.includes(key);
 		},
 		[selectedKeys],

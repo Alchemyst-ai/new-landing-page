@@ -1,100 +1,116 @@
-"use client"
+"use client";
 
-import React, { useState, KeyboardEvent } from 'react';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ImageIcon, FileText, Key, X } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { X } from "lucide-react";
+import { KeyboardEvent, useState } from "react";
 // import ContextPage from "../Context/ContextUpload"
-import { Badge } from '../ui/badge';
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 
 interface ContextBarProps {
-  isOpen: boolean
-  magicKey: string[]
-  setMagicKey: (value: string[]) => void
-  onFilesUpload: (files: FileList) => void
-  uploadedFiles: string[]
-  onImagesUpload: (images: { name: string; url: string }[]) => void
-  uploadedImages: { name: string; url: string }[]
-  onRemoveFile: (index: number) => void
-  onRemoveImage: (index: number) => void
+	isOpen: boolean;
+	magicKey: string[];
+	toggleMagicKey: (value: string) => void;
+	onFilesUpload: (files: FileList) => void;
+	uploadedFiles: string[];
+	onImagesUpload: (images: { name: string; url: string }[]) => void;
+	uploadedImages: { name: string; url: string }[];
+	onRemoveFile: (index: number) => void;
+	onRemoveImage: (index: number) => void;
 }
 
 export function ContextBar({
-  isOpen,
-  magicKey,
-  setMagicKey,
-  onImagesUpload,
-  uploadedImages,
-  onRemoveImage,
+	isOpen,
+	magicKey,
+	toggleMagicKey,
+	onImagesUpload,
+	uploadedImages,
+	onRemoveImage,
 }: ContextBarProps) {
-  const [dragActive, setDragActive] = useState<"file" | "image" | null>(null)
-  const [inputValue, setInputValue] = useState("");
+	const [dragActive, setDragActive] = useState<"file" | "image" | null>(null);
+	const [inputValue, setInputValue] = useState("");
 
-  const handleKeyDown = (e:KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' || e.key === ',') {
-      e.preventDefault();
-      const trimmedValue = inputValue.trim().replace(/,$/, "");
-      
-      if (trimmedValue && !magicKey.includes(trimmedValue)) {
-        setMagicKey(Array.from(new Set([...magicKey, trimmedValue])))
-        setInputValue("");
-      }
-    } 
-    else if (e.key === 'Backspace' && !inputValue && magicKey.length > 0) {
-      setMagicKey(magicKey.slice(0, -1));
-    }
-  };
+	console.log("Magic keys = ", magicKey);
 
-  const removeKey = (keyToRemove: string) => {
-    setMagicKey(magicKey.filter((key) => key !== keyToRemove));
-  };
+	const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === "Enter" || e.key === ",") {
+			e.preventDefault();
+			const trimmedValue = inputValue.trim().replace(/,$/, "");
 
-  if (!isOpen) return null
+			if (trimmedValue && !magicKey.includes(trimmedValue)) {
+				toggleMagicKey(trimmedValue);
+				setInputValue("");
+			}
+		} else if (e.key === "Backspace" && !inputValue && magicKey.length > 0) {
+			toggleMagicKey(magicKey[magicKey.length - 1]);
+		}
+	};
 
-  return (
-    <div className="bg-card/30 backdrop-blur-md">
-      <div className="mx-auto max-w-3xl p-4 py-0">
-          {/* Magic Key Section */}
-          <div className="flex justify-center">
-            <div className='space-y-2 '>
-            <Label htmlFor="magic-key" className="flex items-center max-w-2xl w-80 gap-2 text-xs font-medium text-muted-foreground">
-              <Key className="h-3.5 w-3.5" />
-              Context Keys
-            </Label>
+	const removeKey = (keyToRemove: string) => {
+		toggleMagicKey(keyToRemove);
+	};
 
-            <div className="flex  relative min-h-[80px] flex-col gap-2 rounded-md border-dashed border-2 border-input border-border/50 bg-muted/30 hover:border-primary/40 hover:bg-muted/50 p-2">
-             <Badge className='absolute right-1 bottom-1 text-xs rounded-full' variant="outline">{magicKey.length}</Badge>
-              <div className="flex flex-wrap gap-1.5">
-                {magicKey.map((key) => (
-                  <Badge key={key} variant="secondary" className="flex items-center gap-1 py-0.5 pl-2 pr-1 text-[10px]">
-                    {key.length > 30 ? key.slice(0, 21) + "..." + key.slice(key.length - 4) : key}
-                    <button
-                      onClick={() => removeKey(key)}
-                      className="rounded-full p-[0.5] outline-none hover:bg-card cursor-pointer"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </Badge>
-                ))}
+	if (!isOpen) return null;
 
-                <input
-                  id="magic-key"
-                  type="text"
-                  placeholder={magicKey.length === 0 ? "Enter keys..." : ""}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  className="flex-1 bg-transparent spx-1 text-xs outline-none placeholder:text-muted-foreground/40 min-w-[80px]"
-                />
-              </div>
-            </div>
+	return (
+		<div className="backdrop-blur-md w-full">
+			<div className="mx-auto max-w-3xl px-1 py-0">
+				{/* Magic Key Section */}
+				<div className="flex justify-center">
+					<div className="space-y-2 w-full">
+						{/* <Label
+							htmlFor="magic-key"
+							className="flex items-center max-w-2xl w-80 gap-2 text-xs font-medium text-muted-foreground"
+						>
+							<Key className="h-3.5 w-3.5" />
+							Context Keys
+						</Label> */}
 
-            </div>
-          </div>
+						<div className="flex relative min-h-xs flex-col gap-2 rounded-md border-1 border-input border-border/50 bg-muted/30 hover:border-primary/40 p-2">
+							<Badge
+								className="absolute right-1 bottom-1 md:text-[10px] text-[5px] rounded-full"
+								variant="outline"
+							>
+								{magicKey.length}
+							</Badge>
+							<div className="flex flex-wrap gap-1.5">
+								{magicKey.map((key, idx) => (
+									<Badge
+										key={key}
+										variant="secondary"
+										className="flex items-center gap-1 py-0.5 pl-2 pr-1 md:text-[10px] text-[5px]"
+									>
+										{key.length > 30
+											? key.slice(0, 21) + "..." + key.slice(key.length - 4)
+											: key}
+										<Button
+											size="xs"
+											variant="ghost"
+											onClick={() => removeKey(key)}
+											className="rounded-full px-[0.5] outline-none hover:bg-card cursor-pointer"
+										>
+											<X className="h-2 w-4" />
+										</Button>
+									</Badge>
+								))}
 
-      </div>
-    </div>
-  )
+								<input
+									id={`magic-key-element`}
+									type="text"
+									placeholder={
+										magicKey.length === 0
+											? "Enter context keys from spaces"
+											: ""
+									}
+									value={inputValue}
+									onChange={(e) => setInputValue(e.target.value)}
+									onKeyDown={handleKeyDown}
+									className="flex-1 bg-transparent spx-1 md:text-[10px] text-[5px] outline-none placeholder:text-muted-foreground/40 min-w-[80px] w-full"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

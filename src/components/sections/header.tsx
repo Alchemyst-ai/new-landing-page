@@ -1,6 +1,5 @@
 "use client";
 
-import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ChevronUp, Menu, Stars, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -20,6 +19,19 @@ interface MenuObject {
 	children?: MenuObject[];
 }
 
+const TOPBAR_ITEMS = [
+	{ href: "/research", label: "Research" },
+	{ href: "/pricing", label: "Pricing" },
+	{ href: "/about-us", label: "About Us" },
+	{ href: "/blog", label: "Blog" },
+	{ href: "/spaces", label: "Spaces" },
+	{
+		href: "https://getalchemystai.com/docs/",
+		label: "Docs",
+		target: "_blank",
+		rel: "noopener noreferrer",
+	},
+];
 export function Header() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [mounted, setMounted] = useState(false);
@@ -77,6 +89,7 @@ export function Header() {
 		{ title: "Customer Support", href: "/use-cases/customer-support" },
 		{ title: "EdTech", href: "/use-cases/edtech" },
 		{ title: "Healthcare", href: "/use-cases/healthcare" },
+		{ title: "Voice AI", href: "/use-cases/voice-agents" },
 	];
 
 	const renderMobileMenuItem = (subItem: MenuObject, depth: number = 0) => {
@@ -176,7 +189,7 @@ export function Header() {
 					>
 						<span className="relative pb-1 flex gap-2 align-center">
 							Try Alchemyst{" "}
-							<Stars className="w-4 h-4 mt-1 group-hover:text-yellow-400" />
+							<Stars className="w-4 h-4 mt-1 group-hover:text-accent-foreground" />
 							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
 						</span>
 					</Link>
@@ -242,65 +255,20 @@ export function Header() {
 						</AnimatePresence>
 					</div>
 
-					<Link
-						href="/research"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1">
-							Research
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
-
-					<Link
-						href="/pricing"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1">
-							Pricing
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
-
-					<Link
-						href="/about-us"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1">
-							About Us
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
-
-					<Link
-						href="/blog"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1">
-							Blog
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
-					<Link
-						href="/spaces"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1 text">
-							Spaces
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
-					<Link
-						href="https://getalchemystai.com/docs/"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
-					>
-						<span className="relative pb-1">
-							Docs
-							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-						</span>
-					</Link>
+					{TOPBAR_ITEMS.map((item) => (
+						<Link
+							key={item.href}
+							href={item.href}
+							className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+							{...(item.target ? { target: item.target } : {})}
+							{...(item.rel ? { rel: item.rel } : {})}
+						>
+							<span className="relative pb-1">
+								{item.label}
+								<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</Link>
+					))}
 				</div>
 
 				{/* Desktop GitHub Button - Hidden on Mobile */}
@@ -447,42 +415,18 @@ export function Header() {
 								</div>
 
 								{/* Research Link */}
-								<Link
-									href="/research"
-									className="block py-3 text-foreground transition-colors duration-200 text-lg"
-									onClick={toggleMenu}
-								>
-									Research
-								</Link>
-
-								{/* Security Link */}
-								<Link
-									href="/security"
-									className="block py-3 text-foreground transition-colors duration-200 text-lg"
-									onClick={toggleMenu}
-								>
-									Security
-								</Link>
-
-								{/* Docs Link */}
-								<Link
-									href="https://getalchemystai.com/docs/"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="block py-3 text-foreground transition-colors duration-200 text-lg"
-									onClick={toggleMenu}
-								>
-									Docs
-								</Link>
-
-								{/* Pricing Link */}
-								<Link
-									href="/pricing"
-									className="block py-3 text-foreground transition-colors duration-200 text-lg"
-									onClick={toggleMenu}
-								>
-									Pricing
-								</Link>
+								{TOPBAR_ITEMS.map((item) => (
+									<Link
+										key={item.href}
+										href={item.href}
+										className="block py-3 text-foreground transition-colors duration-200 text-lg"
+										onClick={toggleMenu}
+										{...(item.target ? { target: item.target } : {})}
+										{...(item.rel ? { rel: item.rel } : {})}
+									>
+										{item.label}
+									</Link>
+								))}
 
 								{/* GitHub Button in Mobile */}
 								<div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
@@ -505,7 +449,7 @@ export function Header() {
 										</Button>
 									</Link>
 									<GitHubButtonWithStars />
-									<ThemeToggle />
+									{/* <ThemeToggle /> */}
 								</div>
 							</motion.div>
 						)}
