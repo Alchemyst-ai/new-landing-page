@@ -12,189 +12,199 @@ import { lazy, Suspense, useEffect, useState } from "react";
 const ease = [0.16, 1, 0.3, 1];
 
 function HeroPill() {
-  return (
-    <div className="flex flex-col gap-1 justify-start items-baseline">
-      <motion.a
-        href="/#"
-        className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8 mb-3"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease }}
-      >
-        <p className="text-xs font-medium text-white/90 sm:text-sm">
-          ✨ #1 in Gen AI category F6S
-
-        </p>
-      </motion.a>
-      <div className="flex flex-row gap-4">
-        <a
-          href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
-            alt="Alchemyst AI - Context-aware AI Agents"
-            style={{ width: '15rem', height: "4rem" }}
-          />
-        </a>
-        <a href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents" target="_blank" rel="noreferrer"> <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg" alt="Alchemyst AI - Context-aware AI Agents" style={{ width: '15rem', height: "4rem" }} /> </a>
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex flex-col gap-1 justify-start items-baseline">
+			<motion.a
+				href="/#"
+				className="flex w-auto items-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm px-2 py-1 ring-1 ring-white/20 whitespace-pre mt-2 h-8 mb-3"
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, ease }}
+			>
+				<p className="text-xs font-medium text-white/90 sm:text-sm">
+					✨ #1 in Gen AI category F6S
+				</p>
+			</motion.a>
+			<div className="flex flex-row gap-4">
+				<a
+					href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<img
+						src="https://peerlist.io/api/v1/projects/embed/PRJHR8D68DOAOOPPM1ELAPRJNNRPB6?showUpvote=true&theme=dark"
+						alt="Alchemyst AI - Context-aware AI Agents"
+						style={{ width: "15rem", height: "4rem" }}
+					/>
+				</a>
+				<a
+					href="https://peerlist.io/anuranroy02224/project/alchemyst-ai--contextaware-ai-agents"
+					target="_blank"
+					rel="noreferrer"
+				>
+					{" "}
+					<img
+						src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-one-dark.svg"
+						alt="Alchemyst AI - Context-aware AI Agents"
+						style={{ width: "15rem", height: "4rem" }}
+					/>{" "}
+				</a>
+			</div>
+		</div>
+	);
 }
 
 function HeroTitles() {
-  return (
-    <div className="flex w-full max-w-full flex-col overflow-hidden mt-4">
-      <motion.h1
-        className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-5xl tracking-tighter"
-        initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
-        animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-        transition={{
-          duration: 1,
-          ease,
-          staggerChildren: 0.2,
-        }}
-      >
-        <motion.span
-          className="block bg-gradient-to-b from-foreground to-muted-foreground dark:from-white dark:to-gray-400 drop-shadow-lg text-transparent bg-clip-text font-bold"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.7,
-            ease,
-          }}
-        >
-          The ONLY Context Engine you can Verify
-        </motion.span>
-      </motion.h1>
+	return (
+		<div className="flex w-full max-w-full flex-col overflow-hidden mt-4">
+			<motion.h1
+				className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-5xl tracking-tighter"
+				initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
+				animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+				transition={{
+					duration: 1,
+					ease,
+					staggerChildren: 0.2,
+				}}
+			>
+				<motion.span
+					className="block bg-gradient-to-b from-foreground to-muted-foreground dark:from-white dark:to-gray-400 drop-shadow-lg text-transparent bg-clip-text font-bold"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						duration: 0.8,
+						delay: 0.7,
+						ease,
+					}}
+				>
+					The ONLY Context Engine you can Verify
+				</motion.span>
+			</motion.h1>
 
-      <div className="flex flex-col gap-1 mt-2">
-        <motion.p
-          className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.6,
-            duration: 0.8,
-            ease,
-          }}
-        >
-          Context, intent, and everything in between.
-        </motion.p>
-        <motion.p
-          className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.6,
-            duration: 0.8,
-            ease,
-          }}
-        >
-          Launch production-ready AI agents 20x faster.
-        </motion.p>
-      </div>
-    </div>
-  );
+			<div className="flex flex-col gap-1 mt-2">
+				<motion.p
+					className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						delay: 0.6,
+						duration: 0.8,
+						ease,
+					}}
+				>
+					Context, intent, and everything in between.
+				</motion.p>
+				<motion.p
+					className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						delay: 0.6,
+						duration: 0.8,
+						ease,
+					}}
+				>
+					Launch production-ready AI agents 20x faster.
+				</motion.p>
+			</div>
+		</div>
+	);
 }
 
 function HeroCTA() {
-  return (
-    <div className="relative mt-6">
-      <motion.div
-        className="flex w-full max-w-full flex-col items-start justify-start  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.8, ease }}
-      >
-        <Link
-          // href="/platform/signin"
-          href="/playground"
-          className={cn(
-            buttonVariants({ variant: "orange" }),
-            "w-full sm:w-auto flex gap-2 rounded-lg "
-          )}
-        >
-          <Icons.logo className="h-6 w-6" />
-          {/* {siteConfig.hero.cta} */}
-          Try Alchemyst
-        </Link>
-      </motion.div>
-      <motion.p
-        className="mt-3 text-sm text-muted-foreground text-left"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.8 }}
-      >
-        {siteConfig.hero.ctaDescription}
-      </motion.p>
-    </div>
-  );
+	return (
+		<div className="relative mt-6">
+			<motion.div
+				className="flex w-full max-w-full flex-col items-start justify-start  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.8, duration: 0.8, ease }}
+			>
+				<Link
+					// href="/platform/signin"
+					href="/playground"
+					className={cn(
+						buttonVariants({ variant: "orange" }),
+						"w-full sm:w-auto flex gap-2 rounded-lg ",
+					)}
+				>
+					<Icons.logo className="h-6 w-6" />
+					{/* {siteConfig.hero.cta} */}
+					Try in Playground
+				</Link>
+			</motion.div>
+			<motion.p
+				className="mt-3 text-sm text-muted-foreground text-left"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 1.0, duration: 0.8 }}
+			>
+				{siteConfig.hero.ctaDescription}
+			</motion.p>
+		</div>
+	);
 }
 const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 export function Hero() {
-  const [showSpline, setShowSpline] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+	const [showSpline, setShowSpline] = useState(false);
+	const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // Assuming 1024px is the breakpoint for lg
-    };
+	useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth < 1024); // Assuming 1024px is the breakpoint for lg
+		};
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+		return () => window.removeEventListener("resize", checkMobile);
+	}, []);
 
-  useEffect(() => {
-    // Don't show on mobile
-    if (!isMobile) {
-      const timer = setTimeout(() => {
-        setShowSpline(true);
-      }, 1000);
+	useEffect(() => {
+		// Don't show on mobile
+		if (!isMobile) {
+			const timer = setTimeout(() => {
+				setShowSpline(true);
+			}, 1000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile]);
+			return () => clearTimeout(timer);
+		}
+	}, [isMobile]);
 
-  return (
-    <Section id="hero" className="mt-18 sm:mt-21 md:mt-22 w-full">
-      <div className="relative max-w-full grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
-        {/* <div className="flex flex-col justify-start items-start lg:col-span-1">
+	return (
+		<Section id="hero" className="mt-18 sm:mt-21 md:mt-22 w-full">
+			<div className="relative max-w-full grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
+				{/* <div className="flex flex-col justify-start items-start lg:col-span-1">
           <HeroPill />
           <HeroTitles />
           <HeroCTA />
         </div> */}
-        <div className="flex flex-col justify-start items-start lg:col-span-1">
-          <HeroPill />
-          <HeroTitles />
-          <HeroCTA />
-        </div>
+				<div className="flex flex-col justify-start items-start lg:col-span-1">
+					<HeroPill />
+					<HeroTitles />
+					<HeroCTA />
+				</div>
 
-        {!isMobile && (
-          <div className="relative lg:h-full lg:col-span-1">
-            <Suspense>
-              {showSpline && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                  <LazySpline
-                    scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"
-                    className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center"
-                  />
-                </motion.div>
-              )}
-            </Suspense>
-          </div>
-        )}
-      </div>
-    </Section>
-  );
+				{!isMobile && (
+					<div className="relative lg:h-full lg:col-span-1">
+						<Suspense>
+							{showSpline && (
+								<motion.div
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.5, delay: 0.5 }}
+								>
+									<LazySpline
+										scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"
+										className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center"
+									/>
+								</motion.div>
+							)}
+						</Suspense>
+					</div>
+				)}
+			</div>
+		</Section>
+	);
 }

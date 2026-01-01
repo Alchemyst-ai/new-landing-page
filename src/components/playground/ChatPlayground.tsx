@@ -10,6 +10,7 @@ import { fetchWithRewrites } from "@/utils/fetchWithRewrites";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -338,6 +339,17 @@ export default function ChatPlayground() {
 	return (
 		<div className="flex h-screen max-w-auto bg-background overflow-hidden">
 			<div className={`flex flex-1 flex-col ${isHistoryOpen ? "flex-1" : ""}`}>
+				<div className="text-muted-foreground h-[5vh] mb-3 flex align-center w-screen text-center justify-center text-md py-3 bg-secondary tracking-wide ">
+					<Link
+						href="/platform/signin?utm_source=landing_page_playground&utm_campaign=playground_top_banner&utm_medium=website&utm_content=signup_with_business_email"
+						target="_blank"
+						className="underline hover:text-primary"
+					>
+						Signup
+					</Link>
+					&nbsp;with business email and get 5 million tokens free!
+				</div>
+
 				{/* <div className="flex-shrink-0 mt-2 items-center gap-3">
 					<ChatTopBar
 						onOpenHistory={handleToggleHistory}
@@ -415,7 +427,8 @@ export default function ChatPlayground() {
 						</>
 					) : (
 						<div className="flex flex-1 flex-col overflow-y-auto">
-							<div className="my-auto lg:min-h-[30vh] flex flex-1 flex-col h-auto"></div>
+							{/** 25vh because of the 5vh from the banner. */}
+							<div className="my-auto lg:min-h-[25vh] flex flex-1 flex-col h-auto"></div>
 
 							<div className="flex flex-col items-center justify-center p-8 flex-1">
 								<div className="w-full max-w-2xl space-y-6 my-auto">
