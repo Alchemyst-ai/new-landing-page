@@ -174,7 +174,11 @@ function SpaceCard({
 								Magic Key
 							</p>
 							<p className="text-md font-mono font-bold text-foreground">
-								{item.magic_key}
+								{item.magic_key.length > 30
+									? item.magic_key.slice(0, 21) +
+										"..." +
+										item.magic_key.slice(item.magic_key.length - 4)
+									: item.magic_key}
 							</p>
 						</div>
 						<div className="text-sm">{formatAbout(item.about, 85)}</div>

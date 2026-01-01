@@ -317,7 +317,7 @@ export function Header() {
 								>
 									<div className="p-2 space-y-1">
 										<Link
-											href="/playground"
+											href="/playground?utm_source=header&utm_medium=website&utm_campaign=try_free_button&utm_content=try_playground"
 											className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
 										>
 											<div className="text-lg">Try Playground</div>
@@ -325,7 +325,7 @@ export function Header() {
 										</Link>
 
 										<Link
-											href="/platform/signin"
+											href="/platform/signin?utm_source=header&utm_medium=website&utm_campaign=try_free_button&utm_content=signup"
 											className="block px-4 py-2 rounded-lg text-sm hover:bg-muted"
 										>
 											<div className="text-lg">Go To Platform</div>
