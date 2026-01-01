@@ -377,7 +377,7 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 						</h2>
 						<h3 className="text-muted-foreground">
 							Select any number of context spaces from here, and start chatting
-							with data in them
+							with data in them.
 						</h3>
 					</div>
 				)}
