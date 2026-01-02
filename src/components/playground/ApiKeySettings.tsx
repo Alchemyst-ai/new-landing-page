@@ -26,24 +26,6 @@ export const ApiKeySchema = z.object({
     }),
 });
 
-const validateApiKey = async (key: string): Promise<boolean> => {
-  try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models?key=${key}`
-    );
-    
-    if (response.status === 200) {
-      return true;
-    }
-    
-    const errorData = await response.json();
-    console.error("Validation failed:", errorData.error.message);
-    return false;
-  } catch (error) {
-    return false;
-  }
-};
-
 interface ApiKeyModalProps {
   // apiKey: string;
   // setApiKey: (key: string) => void;
@@ -76,12 +58,14 @@ export function ApiKeyModal({ showTrigger = true }: ApiKeyModalProps) {
       setIsSaving(false);
       return;
     }
-    const isValid = await validateApiKey(apiKey);
+    const isValid =  ApiKeySchema.safeParse(apiKey);;
 
     if (isValid) {
+      setIsSaving(true);
       localStorage.setItem("userApiKey", apiKey.trim());
-      toast.success("API Key updated");
+      toast.message("API Key updated");
       setTimeout(() => {
+        setIsSaving(false);
         setOpen(false);
       }, 1000);
     } else {

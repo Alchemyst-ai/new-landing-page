@@ -7,6 +7,7 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "sonner";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
           enableSystem={false}
         >
           {/* Wrapper adds bottom padding to prevent content being hidden under sticky footer */}
+          <Toaster richColors theme="dark" position="bottom-right" />
           <div className="pb-10 sm:pb-12">
             <Header />
             {children}
