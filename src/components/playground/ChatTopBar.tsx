@@ -55,7 +55,7 @@ export function ChatTopBar({
         </DropdownMenu>
       </div>
       <div className="flex flex-row space-x-2">
-        <ApiKeyModal  {...apiKeyProps}/>
+        <ApiKeyModal  />
         <Button variant="ghost" size="icon" onClick={onOpenHistory}>
           <Menu className="h-5 w-5" />
           <span className="sr-only">Open chat history</span>

@@ -15,20 +15,12 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 function LockedInputOverlay({
-	apiKey,
-	setApiKey,
-	onSave,
-	isModalOpen,
-	setIsModalOpen,
+	onSave
 }: any) {
 	return (
 		<div className="absolute inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md">
 			<ApiKeyModal
-				apiKey={apiKey}
-				setApiKey={setApiKey}
-				open={isModalOpen}
-				setOpen={setIsModalOpen}
-				onSave={onSave}
+				// onSave={onSave}
 				showTrigger={false}
 			/>
 		</div>
@@ -50,17 +42,6 @@ interface DataNotification {
 
 export default function ChatPlayground() {
 	const [isContextBarOpen, setIsContextBarOpen] = useState(false);
-	// const [magicKey, setMagicKey] = useState<string[]>([]);
-	const magicKey = useContextKeyStore((store) => store.selectedKeys);
-	const setStoreState = useContextKeyStore((store) => store.setState);
-
-	const setMagicKey = useCallback(
-		(keys: string[]) => {
-			setStoreState({ selectedKeys: keys });
-		},
-		[setStoreState],
-	);
-
 	const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
 	const [uploadedImages, setUploadedImages] = useState<
 		{ name: string; url: string }[]
@@ -77,11 +58,24 @@ export default function ChatPlayground() {
 	const [loadingChat, setLoadingChat] = useState(false);
 	const [isMounted, setIsMounted] = useState(false);
 
-	const [apiKey, setApiKey] = useState("");
+	const {
+		selectedKeys: magicKey,
+		apiKey,
+		isModalOpen,
+		setState
+	} = useContextKeyStore();
 
-	const [isSaved, setIsSaved] = useState(false);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [isVisible, setIsVisible] = useState(false);
+	const setStoreState = useContextKeyStore((store) => store.setState);
+
+	const setMagicKey = useCallback(
+		(keys: string[]) => {
+			setStoreState({ selectedKeys: keys });
+		},
+		[setStoreState],
+	);
+	const setApiKey = (apiKey: string) => {
+		setStoreState({ apiKey: apiKey })
+	}
 	const [hasApiKey, setHasApiKey] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -89,10 +83,11 @@ export default function ChatPlayground() {
 
 		if (savedKey) {
 			setApiKey(savedKey);
+			setHasApiKey(!!localStorage.getItem("userApiKey"));
 		}
 
 		if (!savedKey) {
-			setIsModalOpen(true);
+			setStoreState({isModalOpen:true});
 		}
 	}, [isModalOpen]);
 
@@ -133,7 +128,7 @@ export default function ChatPlayground() {
 				console.error("Chat Error:", errorData.error);
 				toast.error(
 					errorData.error ||
-						"Something went wrong, make sure your api key is valid.",
+					"Something went wrong, make sure your api key is valid.",
 				);
 			},
 		});
@@ -314,11 +309,11 @@ export default function ChatPlayground() {
 
 	const handleSave = () => {
 		localStorage.setItem("userApiKey", apiKey.trim());
-		setIsSaved(true);
+		// setIsSaved(true);
 		toast.success("API Key updated");
 		setTimeout(() => {
-			setIsSaved(false);
-			setIsModalOpen(false);
+			// setIsSaved(false);
+			setStoreState({isModalOpen:false});
 		}, 1000);
 	};
 
@@ -353,13 +348,6 @@ export default function ChatPlayground() {
 				{/* <div className="flex-shrink-0 mt-2 items-center gap-3">
 					<ChatTopBar
 						onOpenHistory={handleToggleHistory}
-						apiKeyProps={{
-							apiKey,
-							setApiKey,
-							onSave: handleSave,
-							open: isModalOpen,
-							setOpen: setIsModalOpen,
-						}}
 					/>
 				</div> */}
 				<div className="flex-col h-auto z-0"></div>
@@ -375,7 +363,7 @@ export default function ChatPlayground() {
 						</div>
 					)}
 					{!hasApiKey && (
-						<LockedInputOverlay onUnlock={() => setIsModalOpen(true)} />
+						<LockedInputOverlay onUnlock={() => setStoreState({isModalOpen:true})} />
 					)}
 					{!isChatEmpty ? (
 						<>
@@ -399,6 +387,7 @@ export default function ChatPlayground() {
 									onRemoveFile={handleRemoveFile}
 									onRemoveImage={handleRemoveImage}
 								/> */}
+
 
 								<ChatInput
 									onSendMessage={handleSendMessage}
@@ -428,8 +417,9 @@ export default function ChatPlayground() {
 					) : (
 						<div className="flex flex-1 flex-col overflow-y-auto">
 							{/** 25vh because of the 5vh from the banner. */}
-							<div className="my-auto lg:min-h-[25vh] flex flex-1 flex-col h-auto"></div>
+							<div className="relative my-auto lg:min-h-[10vh] flex flex-1 flex-col h-auto">
 
+							</div>
 							<div className="flex flex-col items-center justify-center p-8 flex-1">
 								<div className="w-full max-w-2xl space-y-6 my-auto">
 									<div className="text-center space-y-2 my-auto">

@@ -14,6 +14,17 @@ import { SendHorizontal, Square } from "lucide-react";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ContextBar } from "./ContextBar";
+import { ApiKeyModal } from "./ApiKeySettings";
+
+interface ApiKeyModalProps {
+	apiKey: string;
+	setApiKey: (key: string) => void;
+	open: boolean;
+	setOpen: (open: boolean) => void;
+	onSave: () => void;
+	showTrigger?: boolean;
+
+}
 
 interface ChatInputProps {
 	onSendMessage: (message: string) => void;
@@ -159,6 +170,7 @@ export function ChatInput({
 					</div>
 
 					<div className="flex items-center gap-1 shrink-0">
+						<ApiKeyModal showTrigger={true} />
 						<div className="flex flex-col gap-1">
 							<Select value={aiModel} onValueChange={onModelChange}>
 								<SelectTrigger className="h-9 w-[12.5vw] truncate border-0 bg-zinc-900 text-xs font-medium hover:bg-muted">
@@ -172,7 +184,9 @@ export function ChatInput({
 									))}
 								</SelectContent>
 							</Select>
+
 						</div>
+
 						<ContextBar
 							isOpen={isContextBarOpen}
 							magicKey={magicKey}

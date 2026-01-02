@@ -294,9 +294,9 @@ export function Header() {
 							onClick={() =>
 								setActiveMenu(
 									activeMenu === "get-started" ? null : "get-started",
-								)
+								) 
 							}
-							className="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2 cursor-pointer"
+							className="px-4 py-2 rounded-full bg-accent-foreground text-white font-semibold hover:bg-[#f98202ff] transition-colors flex items-center gap-2 cursor-pointer"
 						>
 							Try for Free
 							<ChevronDown
