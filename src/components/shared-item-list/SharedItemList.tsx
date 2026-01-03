@@ -132,7 +132,7 @@ function SpaceCard({
 			<div className="group flex flex-col space-y-3">
 				<div
 					className={cn(
-						"relative rounded-[2rem] overflow-hidden transition-all duration-500 ",
+						"relative rounded-[2rem] overflow-hidden transition-all duration-500",
 						item.cover_image_url
 							? "aspect-auto border border-border/50 bg-card group-hover:shadow-2xl group-hover:shadow-primary/5"
 							: "aspect-[4/3] bg-foreground/[0.03] flex flex-col p-8",
@@ -174,7 +174,9 @@ function SpaceCard({
 									: item.magic_key}
 							</p>
 						</div> */}
-						<div className="text-sm">{formatAbout(item.about, 85)}</div>
+						<div className="text-sm text-ellipsis max-w-full min-w-lg">
+							{item.about}
+						</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
 								variant="orange"
