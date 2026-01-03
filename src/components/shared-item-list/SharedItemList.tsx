@@ -4,14 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useContextKeyStore } from "@/hooks/context";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-	ArrowUpRight,
-	Check,
-	Key,
-	Loader2,
-	Quote,
-	Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Check, Loader2, Quote, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
@@ -166,7 +159,7 @@ function SpaceCard({
 
 					{/* Magic Key Overlay */}
 					<div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
-						<div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+						{/* <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
 							<Key className="h-6 w-6 text-primary" />
 						</div>
 						<div className="space-y-1">
@@ -180,7 +173,7 @@ function SpaceCard({
 										item.magic_key.slice(item.magic_key.length - 4)
 									: item.magic_key}
 							</p>
-						</div>
+						</div> */}
 						<div className="text-sm">{formatAbout(item.about, 85)}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button

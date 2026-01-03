@@ -159,23 +159,25 @@ export function SineWave() {
 
 const TESTIMONIALS = [
 	{
-		name: "Sanket S.",
-		company: "Luxor Cars, Maharashtra",
+		name: "Anirudh K.",
+		company: "Marketing Lead, Lanson Toyota, Tamil Nadu",
 		text: "Alchemyst's voice agent has transformed our outbound sales. We book more meetings with less effort and our customers love the experience.",
 		avatar:
-			"https://lh3.googleusercontent.com/-WWr0aO3USTI/AAAAAAAAAAI/AAAAAAAAAAA/ALKGfknm3V5w3vaMbIUHbwl_l8IiBpxjnw/s128-c/photo.jpg",
+			"https://media.licdn.com/dms/image/v2/D4D12AQHsycn9LvOMug/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1734697013313?e=2147483647&v=beta&t=_gYatFHsWXHWzfEKwmSXDUA97X64wwv7ERUrk3fhTnM",
 	},
 	{
-		name: "Priya M.",
-		company: "Home Finance Ltd.",
+		name: "Binod R.",
+		company: "CTO, Home Finance Ltd.",
 		text: "The AI reminders are so natural, most customers don't realize it's not a human. Our collections team is now 2x more productive.",
-		avatar: "👩‍💼",
+		avatar:
+			"https://media.licdn.com/dms/image/v2/D4D03AQG9nl3m8cFDsg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1701426386914?e=1769040000&v=beta&t=gFnt2gPK3bQ1agSi-GJOWXPxdQ63bfcQvrU8INp97Fo",
 	},
 	{
-		name: "Amit K.",
-		company: "TechSupportPro",
+		name: "Siddharth B.",
+		company: "Proprietor, Bhansali Finance.",
 		text: "We handle 80% of support calls automatically. The sentiment detection and multilingual support are game changers.",
-		avatar: "🧑‍💻",
+		avatar:
+			"https://media.licdn.com/dms/image/v2/C5603AQECDNNtgNksGw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588072821975?e=1769040000&v=beta&t=n5mycLZfrOznibMvZHuRMenMRHATxdUwM1rECFtqJbU",
 	},
 	{
 		name: "Sonal T.",
@@ -190,10 +192,11 @@ const TESTIMONIALS = [
 		avatar: "🗣️",
 	},
 	{
-		name: "Neha P.",
-		company: "EduConnect",
+		name: "Anirudh I.",
+		company: "Program Manager, Vedam School Of Technology",
 		text: "We use Alchemyst for student reminders and support. The multilingual capability is a huge plus for us.",
-		avatar: "🎓",
+		avatar:
+			"https://media.licdn.com/dms/image/v2/D5603AQH70fH7dY6-SA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729156748428?e=1769040000&v=beta&t=1xzTgpBaLbpQXlsIoubL9tA4QX1EQi2e_5W6JmbrIpA",
 	},
 ];
 
