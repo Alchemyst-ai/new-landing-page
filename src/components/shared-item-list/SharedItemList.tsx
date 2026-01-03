@@ -174,9 +174,7 @@ function SpaceCard({
 									: item.magic_key}
 							</p>
 						</div> */}
-						<div className="text-sm text-ellipsis max-w-full min-w-sm">
-							{item.about}
-						</div>
+						<div className="text-sm text-ellipsis w-sm">{item.about}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
 								variant="orange"
