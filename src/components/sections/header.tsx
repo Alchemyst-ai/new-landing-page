@@ -332,16 +332,16 @@ export function Header() {
 											<div>Use official email for free 5M tokens!</div>
 										</Link>
 
-										{/* <Button
+										<Button
                       variant="ghost"
                       onClick={() => {
                         window.dispatchEvent(new Event("open-founder-cal"));
                         setActiveMenu(null);
                       }}
-                      className="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-orange-600 hover:bg-orange-500/10"
+                      className="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-500/10"
                     >
                       Talk to Founder
-                    </Button> */}
+                    </Button>
 									</div>
 								</motion.div>
 							)}

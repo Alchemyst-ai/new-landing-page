@@ -10,6 +10,7 @@ import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { CalBooking } from "@/components/sections/cal-booking";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -50,6 +51,7 @@ export default function RootLayout({
           <div className="pb-10 sm:pb-12">
             <Header />
             {children}
+            <CalBooking />
             <TripettoPopup />
             <ConditionalFooter />
             {/* <Footer /> */}

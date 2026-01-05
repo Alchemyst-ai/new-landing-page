@@ -10,7 +10,7 @@ import { Logos } from "@/components/sections/logos";
 import { Statistics } from "@/components/sections/statistics";
 // import { Testimonials } from "@/components/sections/testimonials";
 import { UseCases } from "@/components/sections/use-cases";
-import { CalBooking } from "@/components/sections/cal-booking";
+// import { CalBooking } from "@/components/sections/cal-booking";
 import { InstallExtensionIsland } from "@/components/InstallExtensionIsland";
 import FeedspaceWOL from "@/components/FeedSpaceWOL";
 import TweetAboutUs from "@/components/TweetAboutUs";
@@ -26,7 +26,7 @@ export default function Home() {
       <Features />
       <Statistics />
       {/* <Testimonials /> */}
-      <CalBooking />
+      {/* <CalBooking /> */}
       {/* <Pricing /> */}
       <Community />
       <FAQSection />
