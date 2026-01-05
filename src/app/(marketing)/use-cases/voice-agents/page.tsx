@@ -383,6 +383,9 @@ export default function ContextEngineFastModePage() {
 						</Link>
 						<Button
 							variant="outline"
+                      onClick={() => {
+                        window.dispatchEvent(new Event("open-founder-cal-voice"));
+                      }}
 							className="px-8 py-3 text-base font-semibold cursor-pointer"
 						>
 							Schedule Demo Call

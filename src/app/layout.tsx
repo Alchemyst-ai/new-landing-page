@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CalBooking } from "@/components/sections/cal-booking";
+import { CalBookingVoice } from "@/components/sections/cal-booking-voice";
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -52,6 +53,7 @@ export default function RootLayout({
             <Header />
             {children}
             <CalBooking />
+            <CalBookingVoice />
             <TripettoPopup />
             <ConditionalFooter />
             {/* <Footer /> */}
