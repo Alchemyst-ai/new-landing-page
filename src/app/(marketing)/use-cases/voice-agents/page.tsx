@@ -169,7 +169,7 @@ export default function ContextEngineFastModePage() {
 
 					<div className="flex flex-col sm:flex-row justify-center gap-4">
 						<Link
-							href="https://getalchemystai.com/platform/signin?utm_source=landing_page&utm_medium=website&utm_campaign=hero_voice_agent_use_case&utm_content=get_started_free"
+							href="/platform/signin?utm_source=landing_page&utm_medium=website&utm_campaign=hero_voice_agent_use_case&utm_content=get_started_free"
 							target="_blank"
 						>
 							<Button className="px-8 py-3 text-base font-semibold cursor-pointer bg-orange-500 hover:bg-orange-600">
@@ -374,7 +374,7 @@ export default function ContextEngineFastModePage() {
 
 					<div className="flex flex-col sm:flex-row justify-center gap-4">
 						<Link
-							href="https://getalchemystai.com/platform/signin?utm_source=landing_page&utm_medium=website&utm_campaign=footer_hero_voice_agent_use_case&utm_content=get_started_free"
+							href="/platform/signin?utm_source=landing_page&utm_medium=website&utm_campaign=footer_hero_voice_agent_use_case&utm_content=get_started_free"
 							target="_blank"
 						>
 							<Button className="px-8 py-3 text-base font-semibold cursor-pointer">
