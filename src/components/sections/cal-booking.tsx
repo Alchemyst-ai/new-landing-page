@@ -73,7 +73,7 @@ export function CalBooking() {
         >
           <div className="w-full h-full overflow-hidden rounded-lg">
             <iframe
-              src="https://cal.com/uttaran-nayak-alchemyst/30min?theme=dark&hideEventTypeDetails=false&hideLandingPageDetails=false"
+              src="https://cal.com/anuran/chat-with-anuran?overlayCalendar=true&theme=dark&hideEventTypeDetails=false&hideLandingPageDetails=false"
               style={{
                 width: "100%",
                 height: "100%",
