@@ -362,12 +362,10 @@ const EdTechPage = () => {
 			</div>
 
 			{/* Plug and Play Integration */}
-			<div className="w-full bg-card py-16 px-4">
+			{/* <div className="w-full bg-card py-16 px-4">
 				<div className="max-w-6xl mx-auto">
 					<div className="grid md:grid-cols-2 gap-12 items-center">
-						{/* Left Side - Code Examples */}
 						<div className="space-y-6">
-							{/* JavaScript Code Block */}
 							<div className="bg-card rounded-lg p-6 border border-border">
 								<div className="flex items-center mb-4">
 									<div className="bg-muted-foreground text-background px-3 py-1 rounded text-sm font-medium mr-3">
@@ -405,7 +403,6 @@ const EdTechPage = () => {
 								</div>
 							</div>
 
-							{/* Python Code Block */}
 							<div className="bg-card rounded-lg p-6 border border-border">
 								<div className="flex items-center mb-4">
 									<div className="bg-muted-foreground text-background px-3 py-1 rounded text-sm font-medium mr-3">
@@ -441,7 +438,6 @@ const EdTechPage = () => {
 							</div>
 						</div>
 
-						{/* Right Side Content */}
 						<div className="space-y-6">
 							<h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
 								Two liner integration
@@ -451,7 +447,6 @@ const EdTechPage = () => {
 								copy-paste command away.
 							</p>
 
-							{/* Checklist */}
 							<div className="space-y-4">
 								<div className="flex items-start space-x-3">
 									<div className="w-6 h-6 rounded-full border-2 border-border flex items-center justify-center mt-1 flex-shrink-0">
@@ -479,7 +474,6 @@ const EdTechPage = () => {
 								</div>
 							</div>
 
-							{/* CTA Button */}
 							<div className="pt-6">
 								<Link
 									href="/platform/signin"
@@ -491,7 +485,7 @@ const EdTechPage = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 
 			{/* <Footer /> */}
 		</main>
