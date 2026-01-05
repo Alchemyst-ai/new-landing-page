@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
+import { useState } from "react";
 
 import DynamicCode from "./dynamic-code";
 
 export default function PlugAndPlayIntegration() {
-  const [copied, setCopied] = useState<string | null>(null);
+	const [copied, setCopied] = useState<string | null>(null);
 
-  const handleCopy = (language: string, code: string) => {
-    navigator.clipboard.writeText(code);
-    setCopied(language);
-    setTimeout(() => setCopied(null), 2000);
-  };
+	const handleCopy = (language: string, code: string) => {
+		navigator.clipboard.writeText(code);
+		setCopied(language);
+		setTimeout(() => setCopied(null), 2000);
+	};
 
-  const tsCode = `import AlchemystAI from '@alchemystai/sdk';
+	const tsCode = `import AlchemystAI from '@alchemystai/sdk';
 
 const client = new AlchemystAI({
   apiKey: process.env.ALCHEMYST_AI_API_KEY,
@@ -36,7 +36,7 @@ await client.v1.context.add({
   },
 });`;
 
-  const pyCode = `import os
+	const pyCode = `import os
 from alchemyst_ai import AlchemystAI
 
 client = AlchemystAI(
@@ -57,33 +57,33 @@ response = client.v1.context.add(
     },
 )`;
 
-  return (
-    <div className="w-full bg-card py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* LEFT: CODE */}
-          <div className="space-y-6">
-            <div className="bg-card rounded-lg p-6 border border-border">
-              <Tabs defaultValue="typescript">
-                <TabsList className="flex mb-4 w-fit bg-muted/30 rounded-lg p-1">
-                  <TabsTrigger
-                    value="typescript"
-                    className="data-[state=active]:bg-foreground data-[state=active]:text-background rounded-md px-3 py-1 text-sm font-medium"
-                  >
-                    TypeScript
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="python"
-                    className="data-[state=active]:bg-foreground data-[state=active]:text-background rounded-md px-3 py-1 text-sm font-medium"
-                  >
-                    Python
-                  </TabsTrigger>
-                </TabsList>
+	return (
+		<div className="w-full bg-card py-16 px-4">
+			<div className="max-w-6xl mx-auto">
+				<div className="grid md:grid-cols-2 gap-12 items-center">
+					{/* LEFT: CODE */}
+					<div className="space-y-6">
+						<div className="bg-card rounded-lg p-6 border border-border">
+							<Tabs defaultValue="typescript">
+								<TabsList className="flex mb-4 w-fit bg-muted/30 rounded-lg p-1">
+									<TabsTrigger
+										value="typescript"
+										className="data-[state=active]:bg-foreground data-[state=active]:text-background rounded-md px-3 py-1 text-sm font-medium"
+									>
+										TypeScript
+									</TabsTrigger>
+									<TabsTrigger
+										value="python"
+										className="data-[state=active]:bg-foreground data-[state=active]:text-background rounded-md px-3 py-1 text-sm font-medium"
+									>
+										Python
+									</TabsTrigger>
+								</TabsList>
 
-                {/* TypeScript */}
-                <TabsContent value="typescript">
-                  <div className="relative">
-                    {/* <SyntaxHighlighter
+								{/* TypeScript */}
+								<TabsContent value="typescript">
+									<div className="relative">
+										{/* <SyntaxHighlighter
                       language="typescript"
                       style={oneDark}
                       customStyle={{
@@ -95,23 +95,23 @@ response = client.v1.context.add(
                     >
                       {tsCode}
                     </SyntaxHighlighter> */}
-                    <DynamicCode language="typescript">{tsCode}</DynamicCode>
+										<DynamicCode language="typescript">{tsCode}</DynamicCode>
 
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="absolute top-2 right-2 text-xs"
-                      onClick={() => handleCopy("typescript", tsCode)}
-                    >
-                      {copied === "typescript" ? "Copied!" : "Copy"}
-                    </Button>
-                  </div>
-                </TabsContent>
+										<Button
+											size="sm"
+											variant="outline"
+											className="absolute top-2 right-2 text-xs"
+											onClick={() => handleCopy("typescript", tsCode)}
+										>
+											{copied === "typescript" ? "Copied!" : "Copy"}
+										</Button>
+									</div>
+								</TabsContent>
 
-                {/* Python */}
-                <TabsContent value="python">
-                  <div className="relative">
-                    {/* <SyntaxHighlighter
+								{/* Python */}
+								<TabsContent value="python">
+									<div className="relative">
+										{/* <SyntaxHighlighter
                       language="python"
                       style={oneDark}
                       customStyle={{
@@ -123,61 +123,61 @@ response = client.v1.context.add(
                     >
                       {pyCode}
                     </SyntaxHighlighter> */}
-                    <DynamicCode language="python">{pyCode}</DynamicCode>
+										<DynamicCode language="python">{pyCode}</DynamicCode>
 
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="absolute top-2 right-2 text-xs"
-                      onClick={() => handleCopy("python", pyCode)}
-                    >
-                      {copied === "python" ? "Copied!" : "Copy"}
-                    </Button>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </div>
-          </div>
+										<Button
+											size="sm"
+											variant="outline"
+											className="absolute top-2 right-2 text-xs"
+											onClick={() => handleCopy("python", pyCode)}
+										>
+											{copied === "python" ? "Copied!" : "Copy"}
+										</Button>
+									</div>
+								</TabsContent>
+							</Tabs>
+						</div>
+					</div>
 
-          {/* RIGHT: CONTENT */}
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Two liner integration
-            </h2>
+					{/* RIGHT: CONTENT */}
+					<div className="space-y-6">
+						<h2 className="text-3xl md:text-4xl font-bold text-foreground">
+							Two liner integration
+						</h2>
 
-            <p className="text-lg text-muted-foreground">
-              Alchemyst connects seamlessly with your current setup. Just one
-              copy-paste command away.
-            </p>
+						<p className="text-lg text-muted-foreground">
+							Alchemyst connects seamlessly with your current setup. Just one
+							copy-paste command away.
+						</p>
 
-            <div className="space-y-4">
-              <FeatureItem text="Huge repertoire of compatible tools." />
-              <FeatureItem text="SOC-2 and HIPAA compliant with secure storage." />
-              <FeatureItem text="Observability on runtime." />
-            </div>
+						<div className="space-y-4">
+							<FeatureItem text="Huge repertoire of compatible tools." />
+							<FeatureItem text="SOC-2 and HIPAA compliant with secure storage." />
+							<FeatureItem text="Observability on runtime." />
+						</div>
 
-            <div className="pt-6">
-              <Link
-                href="/platform/signin"
-                className="inline-block bg-foreground text-background px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90"
-              >
-                Integrate Alchemyst
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+						<div className="pt-6">
+							<Link
+								href="/platform/signin?utm_source=usecases_edtech&utm_medium=website&utm_campaign=lower_body_cta&utm_content=integrate_alchemyst"
+								className="inline-block bg-foreground text-background px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90"
+							>
+								Integrate Alchemyst
+							</Link>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 function FeatureItem({ text }: { text: string }) {
-  return (
-    <div className="flex items-start space-x-3">
-      <div className="w-6 h-6 rounded-full border-2 border-border flex items-center justify-center mt-1">
-        <div className="w-2 h-2 bg-muted-foreground rounded-full" />
-      </div>
-      <span className="text-muted-foreground">{text}</span>
-    </div>
-  );
+	return (
+		<div className="flex items-start space-x-3">
+			<div className="w-6 h-6 rounded-full border-2 border-border flex items-center justify-center mt-1">
+				<div className="w-2 h-2 bg-muted-foreground rounded-full" />
+			</div>
+			<span className="text-muted-foreground">{text}</span>
+		</div>
+	);
 }

@@ -44,8 +44,9 @@ const EdTechPage = () => {
 					{/* CTA Button */}
 					<div className="text-center mb-16">
 						<Link
-							href="/platform/signin"
+							href="/platform/signin?utm_source=usecases_customer_support&utm_medium=website&utm_campaign=hero_cta&utm_content=build_smarter_support"
 							className="inline-block bg-foreground text-background px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:opacity-90"
+							target="_blank"
 						>
 							Build Smarter Support
 						</Link>
@@ -267,7 +268,7 @@ const EdTechPage = () => {
 							{/* CTA Button */}
 							<div className="pt-6">
 								<Link
-									href="/platform/signin"
+									href="/platform/signin?utm_source=usecases_customer_support&utm_medium=website&utm_campaign=body_cta&utm_content=get_started"
 									className="inline-block bg-foreground text-background px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:opacity-90"
 								>
 									Get Started
@@ -476,7 +477,7 @@ const EdTechPage = () => {
 
 							<div className="pt-6">
 								<Link
-									href="/platform/signin"
+									href="/platform/signin?utm_source=usecases_customer_support&utm_medium=website&utm_campaign=lower_body_cta&utm_content=integrate_alchemyst"
 									className="inline-block bg-foreground text-background px-8 py-4 rounded-lg font-medium text-lg transition-colors hover:opacity-90"
 								>
 									Integrate Alchemyst

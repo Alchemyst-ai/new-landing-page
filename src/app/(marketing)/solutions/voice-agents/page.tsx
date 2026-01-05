@@ -159,41 +159,41 @@ export function SineWave() {
 
 const TESTIMONIALS = [
 	{
-		name: "Anirudh K.",
-		company: "Marketing Lead, Lanson Toyota, Tamil Nadu",
+		name: "Marketing Lead",
+		company: "Toyota dealership in Tamil Nadu",
 		text: "Alchemyst's voice agent has transformed our outbound sales. We book more meetings with less effort and our customers love the experience.",
 		avatar:
 			"https://media.licdn.com/dms/image/v2/D4D12AQHsycn9LvOMug/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1734697013313?e=2147483647&v=beta&t=_gYatFHsWXHWzfEKwmSXDUA97X64wwv7ERUrk3fhTnM",
 	},
 	{
-		name: "Binod R.",
-		company: "CTO, Home Finance Ltd.",
+		name: "CTO",
+		company: "Pan-india Finance Company",
 		text: "The AI reminders are so natural, most customers don't realize it's not a human. Our collections team is now 2x more productive.",
 		avatar:
 			"https://media.licdn.com/dms/image/v2/D4D03AQG9nl3m8cFDsg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1701426386914?e=1769040000&v=beta&t=gFnt2gPK3bQ1agSi-GJOWXPxdQ63bfcQvrU8INp97Fo",
 	},
 	{
-		name: "Siddharth B.",
-		company: "Proprietor, Bhansali Finance.",
+		name: "Proprietor",
+		company: "Honda dealership in Maharashtra.",
 		text: "We handle 80% of support calls automatically. The sentiment detection and multilingual support are game changers.",
 		avatar:
 			"https://media.licdn.com/dms/image/v2/C5603AQECDNNtgNksGw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588072821975?e=1769040000&v=beta&t=n5mycLZfrOznibMvZHuRMenMRHATxdUwM1rECFtqJbU",
 	},
+	// {
+	// 	name: "Sonal T.",
+	// 	company: "Cosmetics Ltd.",
+	// 	text: "Our inbound call handling is now seamless. Customers get instant answers and our team can focus on complex queries.",
+	// 	avatar: "💁‍♀️",
+	// },
+	// {
+	// 	name: "Deepak R.",
+	// 	company: "SurveyGenius",
+	// 	text: "Collecting feedback is so much easier with Alchemyst. The AI voice feels friendly and gets us more responses than IVR.",
+	// 	avatar: "🗣️",
+	// },
 	{
-		name: "Sonal T.",
-		company: "Cosmetics Ltd.",
-		text: "Our inbound call handling is now seamless. Customers get instant answers and our team can focus on complex queries.",
-		avatar: "💁‍♀️",
-	},
-	{
-		name: "Deepak R.",
-		company: "SurveyGenius",
-		text: "Collecting feedback is so much easier with Alchemyst. The AI voice feels friendly and gets us more responses than IVR.",
-		avatar: "🗣️",
-	},
-	{
-		name: "Anirudh I.",
-		company: "Program Manager, Vedam School Of Technology",
+		name: "Program Manager",
+		company: "Academic Institution in Pune",
 		text: "We use Alchemyst for student reminders and support. The multilingual capability is a huge plus for us.",
 		avatar:
 			"https://media.licdn.com/dms/image/v2/D5603AQH70fH7dY6-SA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729156748428?e=1769040000&v=beta&t=1xzTgpBaLbpQXlsIoubL9tA4QX1EQi2e_5W6JmbrIpA",
