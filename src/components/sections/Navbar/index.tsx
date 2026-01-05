@@ -193,7 +193,7 @@ const Navbar: React.FC = () => {
 				{/* Sign In button and GitHub stars */}
 				<div className="flex items-center space-x-3">
 					<Link
-						href="/platform/signin"
+						href="/platform/signin?utm_source=navbar&utm_medium=website&utm_campaign=navbar_sign_in&utm_content=sign_in"
 						className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200"
 					>
 						Sign In
@@ -247,7 +247,7 @@ const Navbar: React.FC = () => {
 									</Link>
 
 									<Link
-										href="/platform/signin"
+										href="/platform/signin?utm_source=navbar&utm_medium=website&utm_campaign=cta_signin&utm_content=sign_in"
 										className="block py-3 px-4 text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200 text-lg font-medium text-center"
 										onClick={toggleMenu}
 									>
