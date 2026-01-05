@@ -77,7 +77,7 @@ function HeroTitles() {
 						ease,
 					}}
 				>
-					The ONLY Context Engine you can Verify
+					Auditable context layer for your AI agents.
 				</motion.span>
 			</motion.h1>
 
@@ -92,7 +92,7 @@ function HeroTitles() {
 						ease,
 					}}
 				>
-					Context, intent, and everything in between.
+					Memory, data, intent, and everything in between.
 				</motion.p>
 				<motion.p
 					className="text-left max-w-full leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance"
