@@ -338,7 +338,7 @@ export function Header() {
                         window.dispatchEvent(new Event("open-founder-cal"));
                         setActiveMenu(null);
                       }}
-                      className="block w-full text-left px-4 py-2 rounded-lg text-md font-medium"
+                      className="block w-full text-left px-4 py-2 rounded-lg text-md font-medium hover:text-inherit"
                     >
                       <div className="text-md">Talk to Founders</div>
 					{/* <div>Chat with context. No signup required.</div> */}
