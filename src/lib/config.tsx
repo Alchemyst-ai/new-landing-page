@@ -31,10 +31,10 @@ export const siteConfig = {
   ],
   links: {
     email: "founders@getalchemystai.com",
-    twitter: "https://twitter.com/getalchemyst",
-    discord: "https://dub.sh/context-community",
-    github: "https://github.com/alchemyst-ai",
-    instagram: "https://www.instagram.com/alchemyst.ai",
+    twitter: "https://twitter.com/getalchemyst?utm_source=landing_page&utm_medium=redirect&utm_campaign=twitter",
+    discord: "https://dub.sh/context-community?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join",
+    github: "https://github.com/alchemyst-ai?utm_source=landing_page&utm_medium=redirect&utm_campaign=github",
+    instagram: "https://www.instagram.com/alchemyst.ai?utm_source=landing_page&utm_medium=redirect&utm_campaign=instagram",
   },
   hero: {
     title: "Alchemyst AI",
@@ -110,19 +110,19 @@ export const siteConfig = {
     socialLinks: [
       {
         icon: <Icons.github className="h-5 w-5" />,
-        url: "https://github.com/Alchemyst-ai/awesome-saas",
+        url: "https://github.com/Alchemyst-ai/awesome-saas?utm_source=landing_page&utm_medium=redirect&utm_campaign=github",
       },
       {
         icon: <Icons.twitter className="h-5 w-5" />,
-        url: "https://x.com/getalchemyst",
+        url: "https://x.com/getalchemyst?utm_source=landing_page&utm_medium=redirect&utm_campaign=twitter",
       },
       {
         icon: <Icons.linkedin className="h-5 w-5" />,
-        url: "https://www.linkedin.com/company/alchemystai/posts/",
+        url: "https://www.linkedin.com/company/alchemystai/posts?utm_source=landing_page&utm_medium=redirect&utm_campaign=linkedin",
       },
       {
         icon: <Icons.discord className="h-5 w-5" />,
-        url: "https://dub.sh/context-community",
+        url: "https://dub.sh/context-community?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord",
       },
     ],
     links: [

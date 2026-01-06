@@ -21,7 +21,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
 				and browser extension - whatever fits your workflow best. Check more
 				details in our{" "}
 				<a
-					href="https://getalchemystai.com/docs"
+					href="https://getalchemystai.com/docs?utm_source=landing_page&utm_medium=redirect&utm_campaign=documentation"
 					className="text-primary underline underline-offset-4"
 					target="_blank"
 					rel="noopener noreferrer"

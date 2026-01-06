@@ -97,7 +97,7 @@ export default function Community() {
               <div className="space-y-4 py-4">
               <div className="flex gap-3 items-start">
                 <div className="bg-primary/10 p-1 px-3 rounded-full text-primary">1</div>
-                <p className="text-sm"><a href="https://platform.getalchemystai.com/context" target="_blank" rel="noopener noreferrer" className="border-b border-primary">
+                <p className="text-sm"><a href="https://platform.getalchemystai.com/context?utm_source=landing_page&utm_medium=redirect&utm_campaign=platform" target="_blank" rel="noopener noreferrer" className="border-b border-primary">
                   Go to Platform
                  </a>, add files to context.</p>
               </div>

@@ -151,7 +151,7 @@ export function Community() {
             </Link> */}
 
             {/* Discord Community */}
-            <Link href="https://discord.gg/H2StAaSeJ8" target="_blank">
+            <Link href="https://discord.gg/H2StAaSeJ8?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join" target="_blank">
               <Button
                 variant="outline"
                 className="
