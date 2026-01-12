@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { Info, Key } from "lucide-react";
-import { useTheme } from "next-themes";
-import * as React from "react";
 import { SharedItemList } from "../../../components/shared-item-list/SharedItemList";
 
 
@@ -27,18 +25,6 @@ const FILTER_OPTIONS = [
 ];
 
 export default function Community() {
-  const { theme, setTheme } = useTheme();
-  const [showShareDialog, setShowShareDialog] = React.useState(false);
-  const [showAccessDialog, setShowAccessDialog] = React.useState(false);
-  const [accessKey, setAccessKey] = React.useState("");
-  const [newItem, setNewItem] = React.useState({
-    title: "",
-    description: "",
-    content_type: "document",
-    author_name: "",
-    tags: "",
-  });
-
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-300">

@@ -31,7 +31,7 @@ export function Features() {
 								{description}
 							</p>
 							<Link
-								href="https://getalchemystai.com/docs/api-reference"
+								href="https://getalchemystai.com/docs/api-reference?utm_source=landing_page&utm_medium=redirect&utm_campaign=documentation"
 								className="text-sm text-primary hover:underline underline-offset-4 transition-colors hover:text-secondary-foreground"
 								target="_blank"
 							>

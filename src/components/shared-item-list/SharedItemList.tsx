@@ -44,6 +44,7 @@ export interface SharedItem {
 	documents: string[];
 	magic_key: string;
 	user_id: string; // Reference to the User model
+	fullName?: string; 
 	about?: string; // Optional because 'required: true' is missing
 	name: string;
 	cover_image_url?: string;
@@ -84,25 +85,6 @@ function slugify(text: string): string {
 		.replace(/^-+|-+$/g, ""); // Remove leading/trailing dashes
 }
 
-const checkIfKeyIsPresent = (key: string) => {
-	const contextSpaceKeys: string[] = JSON.parse(
-		sessionStorage.getItem("contextSpaceKeys") ?? "[]",
-	);
-
-	return contextSpaceKeys.includes(key);
-};
-
-const formatAbout = (about?: string, limit = 100) => {
-	if (!about) {
-		return "";
-	}
-
-	if (about.length > limit) {
-		return about.slice(0, limit) + "...";
-	}
-
-	return about;
-};
 
 function SpaceCard({
 	item,
@@ -159,21 +141,6 @@ function SpaceCard({
 
 					{/* Magic Key Overlay */}
 					<div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
-						{/* <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-							<Key className="h-6 w-6 text-primary" />
-						</div>
-						<div className="space-y-1">
-							<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
-								Magic Key
-							</p>
-							<p className="text-md font-mono font-bold text-foreground">
-								{item.magic_key.length > 30
-									? item.magic_key.slice(0, 21) +
-										"..." +
-										item.magic_key.slice(item.magic_key.length - 4)
-									: item.magic_key}
-							</p>
-						</div> */}
 						<div className="text-sm text-ellipsis w-xs">{item.about}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
@@ -220,10 +187,7 @@ function SpaceCard({
 					</Link>
 					<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
 						<span>
-							{item.name
-								?.split(" ")
-								.map((n) => n[0])
-								.join(". ") + "."}
+							{item.fullName ? `by ${item.fullName}` : "Unknown Author"}
 						</span>
 						{item.is_featured && (
 							<>

@@ -13,7 +13,7 @@ export default function TweetAboutUs() {
 				Share your feedback with us - tell us what you think about{" "}
 				{/* <span className="font-bold text-gray-400">Alchemyst</span>. */}
 				<Link
-					href="https://platform.getalchemystai.com"
+					href="https://platform.getalchemystai.com?utm_source=landing_page&utm_medium=redirect&utm_campaign=testimonial"
 					target="_blank"
 					className="inline-flex items-center space-x-1 underline"
 				>
@@ -29,7 +29,7 @@ export default function TweetAboutUs() {
 			</p>
 
 			<Link
-				href="https://x.com/getalchemyst"
+				href="https://x.com/getalchemyst?utm_source=landing_page&utm_medium=redirect&utm_campaign=twitter"
 				target="_blank"
 				rel="noopener noreferrer"
 				className="mt-6 inline-flex items-center space-x-2 border-[1px] border-gray-500 text-white font-medium py-2.5 px-5 rounded-full shadow hover:border-[#d98622] hover:text-[#d98622] transition-colors"
