@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
 
     const users = await User.find({ _id: { $in: userIds } }).select('_id fullName');
 
-    console.log(users);
+    // console.log(users);
 
     const userMap = users.reduce((acc, user) => {
       const userObj = user.toObject({ virtuals: true }); // Include virtuals
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
       return acc;
     }, {});
 
-    console.log(userMap);
+    // console.log(userMap);
 
     const enrichedData = data.map(item => ({
       ...item.toObject(),
