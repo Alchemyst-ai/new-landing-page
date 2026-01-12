@@ -193,6 +193,15 @@ export function Header() {
 							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
 						</span>
 					</Link>
+					<Link
+						href="/voice"
+						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
+					>
+						<span className="relative pb-1">
+							Voice
+							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+						</span>
+					</Link>
 					{/* Use Cases Dropdown */}
 					<div
 						ref={useCasesRef}
@@ -413,21 +422,30 @@ export function Header() {
 											</motion.div>
 										)}
 									</AnimatePresence>
-								</div>
+							</div>
 
-								{/* Research Link */}
-								{TOPBAR_ITEMS.map((item) => (
-									<Link
-										key={item.href}
-										href={item.href}
-										className="block py-3 text-foreground transition-colors duration-200 text-lg"
-										onClick={toggleMenu}
-										{...(item.target ? { target: item.target } : {})}
-										{...(item.rel ? { rel: item.rel } : {})}
-									>
-										{item.label}
-									</Link>
-								))}
+							{/* Voice Link */}
+							<Link
+								href="/voice"
+								className="block py-3 text-foreground transition-colors duration-200 text-lg"
+								onClick={toggleMenu}
+							>
+								Voice
+							</Link>
+
+							{/* Research Link */}
+							{TOPBAR_ITEMS.map((item) => (
+								<Link
+									key={item.href}
+									href={item.href}
+									className="block py-3 text-foreground transition-colors duration-200 text-lg"
+									onClick={toggleMenu}
+									{...(item.target ? { target: item.target } : {})}
+									{...(item.rel ? { rel: item.rel } : {})}
+								>
+									{item.label}
+								</Link>
+							))}
 
 								{/* GitHub Button in Mobile */}
 								<div className="w-full pt-2 border-t border-white/10 flex items-center space-x-3">
