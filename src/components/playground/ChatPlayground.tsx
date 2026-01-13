@@ -9,18 +9,17 @@ import { useContextKeyStore } from "@/hooks/context";
 import { fetchWithRewrites } from "@/utils/fetchWithRewrites";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
-import { Loader2 } from "lucide-react";
+import { Loader2} from "lucide-react";
 import Link from "next/link";
+
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 function LockedInputOverlay({
-	onSave
 }: any) {
 	return (
 		<div className="absolute inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md">
 			<ApiKeyModal
-				// onSave={onSave}
 				showTrigger={false}
 			/>
 		</div>
@@ -87,7 +86,7 @@ export default function ChatPlayground() {
 		}
 
 		if (!savedKey) {
-			setStoreState({isModalOpen:true});
+			setStoreState({ isModalOpen: true });
 		}
 	}, [isModalOpen]);
 
@@ -307,16 +306,6 @@ export default function ChatPlayground() {
 		setIsHistoryOpen(!isHistoryOpen);
 	};
 
-	const handleSave = () => {
-		localStorage.setItem("userApiKey", apiKey.trim());
-		// setIsSaved(true);
-		toast.success("API Key updated");
-		setTimeout(() => {
-			// setIsSaved(false);
-			setStoreState({isModalOpen:false});
-		}, 1000);
-	};
-
 	if (!isMounted)
 		return (
 			<div className="h-screen m-10 inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
@@ -334,7 +323,7 @@ export default function ChatPlayground() {
 	return (
 		<div className="flex h-screen max-w-auto bg-background overflow-hidden">
 			<div className={`flex flex-1 flex-col ${isHistoryOpen ? "flex-1" : ""}`}>
-				<div className="text-muted-foreground h-[5vh] mb-3 flex align-center w-screen text-center justify-center text-md py-3 bg-secondary tracking-wide ">
+				<div className="text-muted-foreground h-[5vh] mb-3 flex align-center text-center justify-center text-md py-3 bg-secondary tracking-wide ">
 					<Link
 						href="/platform/signin?utm_source=landing_page_playground&utm_campaign=playground_top_banner&utm_medium=website&utm_content=signup_with_business_email"
 						target="_blank"
@@ -351,7 +340,7 @@ export default function ChatPlayground() {
 					/>
 				</div> */}
 				<div className="flex-col h-auto z-0"></div>
-				<div className="flex flex-1 flex-col overflow-x-hidden">
+				<div className="relative flex flex-1 flex-col overflow-x-hidden">
 					{loadingChat && (
 						<div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm transition-all">
 							<div className="flex flex-col items-center gap-2">
@@ -363,7 +352,7 @@ export default function ChatPlayground() {
 						</div>
 					)}
 					{!hasApiKey && (
-						<LockedInputOverlay onUnlock={() => setStoreState({isModalOpen:true})} />
+						<LockedInputOverlay onUnlock={() => setStoreState({ isModalOpen: true })}/>
 					)}
 					{!isChatEmpty ? (
 						<>
