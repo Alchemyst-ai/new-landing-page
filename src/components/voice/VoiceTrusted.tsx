@@ -2,41 +2,32 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import VoiceGridDivider from "./VoiceGridDivider";
 
-const logos1 = [
-    { name: "NVIDIA", text: "NVIDIA", hasIcon: true },
-    { name: "SAMSUNG", text: "SAMSUNG", hasIcon: false },
-    { name: "servicenow", text: "servicenow", hasIcon: false },
-    { name: "Decagon", text: "Decagon", hasIcon: true },
-    { name: "wonderful", text: "wonderful", hasIcon: false },
-    { name: "NVIDIA", text: "NVIDIA", hasIcon: true },
-    { name: "SAMSUNG", text: "SAMSUNG", hasIcon: false },
-    { name: "Decagon", text: "Decagon", hasIcon: true },
+type TrustedLogo = { name: string; src: string; scale?: number };
+
+const logos1: TrustedLogo[] = [
+    { name: "Citron", src: "/voice/citron.png", scale: 1.75 },
+    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.55 },
+    { name: "Honda", src: "/voice/honda.png", scale: 1.0 },
+    { name: "Hyundai", src: "/voice/hyundai.png", scale: 2.05 },
+    { name: "Katyani", src: "/voice/katyani.png", scale: 2.35 },
+    { name: "Sunstone", src: "/voice/sunstone.png", scale: 1.35 },
+    { name: "Toyota", src: "/voice/toyota.png", scale: 1.35 },
+    { name: "UN", src: "/voice/un.png", scale: 2.35 },
 ];
 
-const logos2 = [
-    { name: "Decagon", text: "Decagon", hasIcon: true },
-    { name: "wonderful", text: "wonderful", hasIcon: false },
-    { name: "servicenow", text: "servicenow", hasIcon: false },
-    { name: "NVIDIA", text: "NVIDIA", hasIcon: true },
-    { name: "SAMSUNG", text: "SAMSUNG", hasIcon: false },
-    { name: "servicenow", text: "servicenow", hasIcon: false },
-    { name: "Decagon", text: "Decagon", hasIcon: true },
-    { name: "wonderful", text: "wonderful", hasIcon: false },
+const logos2: TrustedLogo[] = [
+    { name: "Univarity", src: "/voice/univarity.png", scale: 2.35 },
+    { name: "Veranda", src: "/voice/veranda.png", scale: 1.85 },
+    { name: "Wonder", src: "/voice/wonder.png", scale: 3.35 },
+    { name: "Yantra", src: "/voice/yantra.png", scale: 3.65 },
+    { name: "Citron", src: "/voice/citron.png", scale: 1.75 },
+    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.55 },
+    { name: "Honda", src: "/voice/honda.png", scale: 1.0 },
+    { name: "UN", src: "/voice/un.png", scale: 2.35 },
 ];
-
-const NvidiaIcon = () => (
-    <svg className="w-10 h-10 mr-3" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8.948 8.798v-1.43c.146-.018.296-.028.448-.028 2.15 0 3.95 1.592 4.25 3.663h1.466c-.308-2.892-2.744-5.143-5.716-5.143-.208 0-.412.014-.448.023V4.4l-3.783 2.2 3.783 2.198zm0 1.543v1.203c.146.018.296.028.448.028 1.302 0 2.418-.78 2.912-1.898H9.396v.667H8.948zm0 2.598v1.43c.146.018.296.028.448.028 2.972 0 5.408-2.25 5.716-5.143h-1.466c-.3 2.07-2.1 3.662-4.25 3.662-.152 0-.302-.01-.448-.028v.051zm-1.548-6.89L3.617 8.25l3.783 2.2V8.05h1.548V5.85c-.036-.009-.24-.023-.448-.023-2.972 0-5.408 2.25-5.716 5.143H4.25c.3-2.07 2.1-3.663 4.25-3.663.152 0 .302.01.448.028v-.286H7.4z" />
-    </svg>
-);
-
-const DecagonIcon = () => (
-    <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.18l6.9 3.82L12 11.82 5.1 8 12 4.18zM5 9.82l6 3.33v6.03l-6-3.33V9.82zm8 9.36v-6.03l6-3.33v6.03l-6 3.33z" />
-    </svg>
-);
 
 const VoiceTrusted = () => {
     const [currentSet, setCurrentSet] = useState(logos1);
@@ -81,12 +72,15 @@ const VoiceTrusted = () => {
                                         }}
                                         className="w-full h-full flex items-center justify-center"
                                     >
-                                        <div className="flex items-center text-gray-400 text-xl font-medium tracking-wide hover:text-gray-300 transition-colors cursor-default">
-                                            {currentSet[idx].name === "NVIDIA" && <NvidiaIcon />}
-                                            {currentSet[idx].name === "Decagon" && <DecagonIcon />}
-                                            <span className={currentSet[idx].name === "wonderful" ? "font-normal" : ""}>
-                                                {currentSet[idx].text}
-                                            </span>
+                                        <div className="flex items-center justify-center w-full h-full">
+                                            <Image
+                                                src={currentSet[idx].src}
+                                                alt={currentSet[idx].name}
+                                                width={260}
+                                                height={120}
+                                                className="max-h-24 w-auto opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-transform origin-center"
+                                                style={{ transform: `scale(${currentSet[idx].scale ?? 1.35})` }}
+                                            />
                                         </div>
                                     </motion.div>
                                 </AnimatePresence>
