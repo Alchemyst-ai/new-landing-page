@@ -23,12 +23,14 @@ const ConcentricPlayer = ({
   activeLanguage, 
   onLanguageChange,
   isPlaying,
-  progress // 0 to 1 representing audio progress
+  progress, // 0 to 1 representing audio progress
+  onPlayPause
 }: { 
   activeLanguage: string;
   onLanguageChange: (id: string) => void;
   isPlaying: boolean;
   progress: number;
+  onPlayPause: () => void;
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const waveformRefs = useRef<(SVGPathElement | null)[]>([]);
@@ -500,10 +502,14 @@ const ConcentricPlayer = ({
                 textAnchor={textAnchor}
                 dominantBaseline="middle"
                 fill={isActive ? "#F5F3FF" : "rgba(200, 200, 210, 0.7)"}
-                fontSize="13"
+                fontSize="18"
                 fontFamily="system-ui, -apple-system, sans-serif"
                 fontWeight={isActive ? "500" : "400"}
-                className="pointer-events-none select-none"
+                className="cursor-pointer select-none"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onLanguageChange(blip.id);
+                }}
               >
                 {blip.label}
               </text>
@@ -523,6 +529,7 @@ const ConcentricPlayer = ({
               ? '0 0 40px rgba(249, 115, 22, 0.7), 0 0 80px rgba(251, 146, 60, 0.4)'
               : '0 0 25px rgba(249, 115, 22, 0.5), 0 0 50px rgba(251, 146, 60, 0.25)',
           }}
+          onClick={onPlayPause}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           animate={isPlaying ? {
@@ -701,13 +708,13 @@ const RealCustomerCalls = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            onClick={handlePlayPause}
           >
             <ConcentricPlayer 
               activeLanguage={activeLanguage}
               onLanguageChange={setActiveLanguage}
               isPlaying={isPlaying}
               progress={progress}
+              onPlayPause={handlePlayPause}
             />
           </motion.div>
         </div>
