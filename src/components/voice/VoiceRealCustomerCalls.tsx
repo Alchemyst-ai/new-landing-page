@@ -1,11 +1,8 @@
 "use client";
-
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
-
-// Note: gsap is used in arrowhead but we need to check if it's installed in AlchemystLandingNew
-// If not, we'll need to add it or replace with alternative animations
+import gsap from "gsap";
 
 const tabs = [
   { id: "loan", label: "Loan Sales" },
@@ -25,7 +22,7 @@ const ConcentricPlayer = ({
   activeLanguage, 
   onLanguageChange,
   isPlaying,
-  progress 
+  progress // 0 to 1 representing audio progress
 }: { 
   activeLanguage: string;
   onLanguageChange: (id: string) => void;
@@ -59,6 +56,7 @@ const ConcentricPlayer = ({
 
   const activeBlip = blipPositions.find(b => b.id === activeLanguage);
 
+  // Calculate progress pointer position - starts from active language position
   const progressAngle = activeAngle + (progress * 360);
   const progressPosition = useMemo(() => {
     const angleRad = (progressAngle * Math.PI) / 180;
@@ -68,6 +66,7 @@ const ConcentricPlayer = ({
     };
   }, [progressAngle, activeRadius, center]);
 
+  // Generate progress arc path (from start to current progress)
   const generateProgressArc = useCallback(() => {
     if (progress <= 0) return "";
     
@@ -86,6 +85,7 @@ const ConcentricPlayer = ({
     return `M ${x1} ${y1} A ${activeRadius} ${activeRadius} 0 ${largeArc} 1 ${x2} ${y2}`;
   }, [progress, activeAngle, activeRadius, center]);
 
+  // Generate gradient ring segments - now follows progress pointer when playing
   const gradientRingSegments = useMemo(() => {
     const segments = [];
     const numSegments = 36;
@@ -122,14 +122,122 @@ const ConcentricPlayer = ({
     return segments;
   }, [activeRingIndex, activeAngle, progressAngle, isPlaying, ringRadii, center]);
 
+  // Generate smooth hexagonal flower shape - 6 soft lobes
+  const generateWaveformPath = useCallback((baseRadius: number, audioData: number[]) => {
+    let path = "";
+    const points = 60; // Smooth curve
+    for (let i = 0; i <= points; i++) {
+      const angle = (i / points) * Math.PI * 2;
+      // Create 6 smooth lobes using sine wave
+      const lobeIndex = Math.floor((i / points) * 6) % 6;
+      const audioValue = audioData[lobeIndex] || 0;
+      const hexShape = Math.sin(angle * 3) * audioValue; // 6 lobes (sin * 3 = 6 peaks)
+      const r = baseRadius + hexShape;
+      const x = center + r * Math.cos(angle - Math.PI / 2);
+      const y = center + r * Math.sin(angle - Math.PI / 2);
+      path += i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`;
+    }
+    return path + " Z";
+  }, [center]);
+
+  // Audio data for 6 lobes
+  const audioDataRef = useRef<number[]>(Array(6).fill(8));
+  const targetDataRef = useRef<number[]>(Array(6).fill(8));
+
+  // Static calm hexagonal shape for idle state
+  const idleWaveShape = useMemo(() => {
+    return Array(6).fill(10); // Simple uniform hexagonal flower
+  }, []);
+
+  useEffect(() => {
+    let time = 0;
+    let updateCounter = 0;
+    
+    const updateWaveforms = () => {
+      time += 0.016;
+      updateCounter++;
+      
+      if (isPlaying) {
+        // Update target values for smooth flowing animation
+        if (updateCounter % 6 === 0) {
+          targetDataRef.current = targetDataRef.current.map((_, i) => {
+            // Gentle flowing waves - each lobe pulses independently
+            const wave1 = Math.sin(time * 0.6 + i * 1.2) * 6;
+            const wave2 = Math.sin(time * 0.4 + i * 0.8) * 4;
+            return 10 + wave1 + wave2;
+          });
+        }
+        
+        // Smoothly interpolate for water-like movement
+        audioDataRef.current = audioDataRef.current.map((current, i) => {
+          const target = targetDataRef.current[i];
+          return current + (target - current) * 0.06;
+        });
+      } else {
+        // When paused - smoothly settle to calm hexagonal shape
+        audioDataRef.current = audioDataRef.current.map((current, i) => {
+          const target = idleWaveShape[i];
+          return current + (target - current) * 0.04;
+        });
+      }
+      
+      const ref = waveformRefs.current[0];
+      if (ref) {
+        const newPath = generateWaveformPath(55, audioDataRef.current);
+        gsap.set(ref, { attr: { d: newPath } });
+      }
+    };
+
+    gsap.ticker.add(updateWaveforms);
+    return () => gsap.ticker.remove(updateWaveforms);
+  }, [generateWaveformPath, isPlaying, idleWaveShape]);
+
+  useEffect(() => {
+    if (connectionRef.current && activeBlip) {
+      gsap.fromTo(connectionRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.4, ease: "power2.out" }
+      );
+
+      const blipEl = blipRefs.current.get(activeLanguage);
+      const glowEl = glowRefs.current.get(activeLanguage);
+      
+      if (blipEl) {
+        gsap.to(blipEl, {
+          attr: { r: 9 },
+          duration: 1,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+      if (glowEl) {
+        gsap.to(glowEl, { opacity: 0.7, attr: { r: 20 }, duration: 0.3 });
+      }
+
+      blipPositions.forEach((blip) => {
+        if (blip.id !== activeLanguage) {
+          const el = blipRefs.current.get(blip.id);
+          const gEl = glowRefs.current.get(blip.id);
+          if (el) {
+            gsap.killTweensOf(el);
+            gsap.set(el, { attr: { r: 5 } });
+          }
+          if (gEl) gsap.to(gEl, { opacity: 0, duration: 0.2 });
+        }
+      });
+    }
+  }, [activeLanguage, activeBlip, blipPositions]);
+
+  // Calculate gradient direction based on pointer position
   const gradientAngle = useMemo(() => {
     const currentAngle = isPlaying ? progressAngle : activeAngle;
-    return currentAngle + 90;
+    return currentAngle + 90; // Offset for CSS gradient direction
   }, [isPlaying, progressAngle, activeAngle]);
 
   return (
     <div className="relative w-full max-w-3xl mx-auto" style={{ aspectRatio: '1/1' }}>
-      {/* Central radial glow */}
+      {/* Central radial glow - contained within circular area */}
       <div 
         className="absolute inset-0 pointer-events-none transition-all duration-100"
         style={{
@@ -146,6 +254,7 @@ const ConcentricPlayer = ({
           clipPath: 'circle(42% at 50% 50%)',
         }}
       />
+      {/* Layered radial glow for depth - also clipped */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -190,6 +299,7 @@ const ConcentricPlayer = ({
             </feMerge>
           </filter>
           
+          {/* Progress arc gradient */}
           <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(251, 146, 60, 0.3)" />
             <stop offset="100%" stopColor="rgba(255, 255, 255, 0.8)" />
@@ -239,7 +349,7 @@ const ConcentricPlayer = ({
           })}
         </g>
 
-        {/* Progress arc */}
+        {/* Progress arc - shows played portion */}
         {isPlaying && progress > 0 && (
           <path
             d={generateProgressArc()}
@@ -251,9 +361,10 @@ const ConcentricPlayer = ({
           />
         )}
 
-        {/* Progress pointer */}
+        {/* Progress pointer - only visible when playing */}
         {isPlaying && (
           <g>
+            {/* Outer glow halo */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
@@ -261,6 +372,7 @@ const ConcentricPlayer = ({
               fill="rgba(255, 255, 255, 0.15)"
               filter="url(#pointerGlow)"
             />
+            {/* Middle glow */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
@@ -268,6 +380,7 @@ const ConcentricPlayer = ({
               fill="rgba(255, 255, 255, 0.3)"
               filter="url(#pointerGlow)"
             />
+            {/* Main pointer */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
@@ -275,6 +388,7 @@ const ConcentricPlayer = ({
               fill="white"
               filter="url(#brightGlow)"
             />
+            {/* Bright core */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
@@ -284,7 +398,7 @@ const ConcentricPlayer = ({
           </g>
         )}
 
-        {/* Connection line */}
+        {/* Connection line - follows progress pointer when playing, brighter when moving */}
         <line
           ref={connectionRef}
           x1={center}
@@ -297,6 +411,7 @@ const ConcentricPlayer = ({
           opacity={1}
         />
         
+        {/* Extra glow line when playing */}
         {isPlaying && (
           <line
             x1={center}
@@ -310,7 +425,17 @@ const ConcentricPlayer = ({
           />
         )}
 
-        {/* Dark inner ring */}
+        {/* Single organic waveform - audio visualizer style */}
+        <path
+          ref={(el) => { waveformRefs.current[0] = el; }}
+          d=""
+          fill="rgba(120, 53, 15, 0.2)"
+          stroke="rgba(251, 146, 60, 0.8)"
+          strokeWidth={2.5}
+          filter="url(#brightGlow)"
+        />
+        
+        {/* Dark inner ring - semi-transparent to show orange behind */}
         <circle
           cx={center}
           cy={center}
@@ -386,8 +511,9 @@ const ConcentricPlayer = ({
         })}
       </svg>
 
-      {/* Center play button */}
+      {/* Center play button - layered structure */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+        {/* Orange circle button */}
         <motion.div
           className="relative w-12 h-12 rounded-full flex items-center justify-center cursor-pointer"
           style={{
@@ -424,42 +550,63 @@ const ConcentricPlayer = ({
   );
 };
 
-const VoiceRealCustomerCalls = () => {
+const RealCustomerCalls = () => {
   const [activeTab, setActiveTab] = useState("loan");
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const progressRef = useRef<gsap.core.Tween | null>(null);
 
+  // GSAP animation for progress when playing
   useEffect(() => {
-    let animationFrameId: number;
-    let startTime: number | null = null;
-    const duration = 15000; // 15 seconds
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const newProgress = (elapsed % duration) / duration;
-      
-      setProgress(newProgress);
-      
-      if (isPlaying) {
-        animationFrameId = requestAnimationFrame(animate);
-      }
-    };
-
     if (isPlaying) {
-      animationFrameId = requestAnimationFrame(animate);
+      // Animate progress from current position to 1 (full circle)
+      const obj = { value: progress };
+      progressRef.current = gsap.to(obj, {
+        value: 1,
+        duration: 15 * (1 - progress), // 15 seconds for full circle, adjusted for current progress
+        ease: "none",
+        onUpdate: () => {
+          setProgress(obj.value);
+        },
+        onComplete: () => {
+          // Stop at the starting position (where it began)
+          setProgress(0);
+          setIsPlaying(false);
+        }
+      });
+    } else {
+      // Pause the animation
+      if (progressRef.current) {
+        progressRef.current.pause();
+      }
     }
 
     return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+      if (progressRef.current) {
+        progressRef.current.kill();
       }
     };
   }, [isPlaying]);
 
+  // Reset progress when language changes
   useEffect(() => {
     setProgress(0);
+    if (progressRef.current) {
+      progressRef.current.kill();
+    }
+    if (isPlaying) {
+      const obj = { value: 0 };
+      progressRef.current = gsap.to(obj, {
+        value: 1,
+        duration: 15,
+        ease: "none",
+        repeat: -1,
+        onUpdate: () => {
+          setProgress(obj.value);
+        },
+      });
+    }
   }, [activeLanguage]);
 
   const handlePlayPause = () => {
@@ -484,7 +631,7 @@ const VoiceRealCustomerCalls = () => {
       </motion.div>
 
       <div className="relative z-10 mx-auto px-4 max-w-7xl">
-        {/* Segment tabs */}
+        {/* Segment tabs - above orbits */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -526,7 +673,7 @@ const VoiceRealCustomerCalls = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Metric badge */}
+          {/* Metric badge - positioned on outer orbit */}
           <div className="absolute left-1/2 -translate-x-1/2 top-[8%] z-30">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -578,14 +725,17 @@ const VoiceRealCustomerCalls = () => {
 
       {/* Parallel horizontal lines with vertical lines in between */}
       <div className="relative h-40 overflow-visible mt-12">
+        {/* Top horizontal line */}
         <div
           className="absolute top-4 left-0 right-0 h-px z-10"
           style={{ background: 'rgba(255,255,255,0.12)' }}
         />
+        {/* Bottom horizontal line */}
         <div
           className="absolute bottom-4 left-0 right-0 h-px z-10"
           style={{ background: 'rgba(255,255,255,0.12)' }}
         />
+        {/* Vertical lines between horizontal parallels */}
         <div className="absolute inset-0 pointer-events-none">
           {Array.from({ length: 200 }).map((_, i) => (
             <div
@@ -607,5 +757,4 @@ const VoiceRealCustomerCalls = () => {
   );
 };
 
-export default VoiceRealCustomerCalls;
-
+export default RealCustomerCalls;
