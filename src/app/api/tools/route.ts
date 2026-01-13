@@ -3,6 +3,8 @@ import SharedItem from "@/app/models/SharedItem";
 import { dbConnect } from "@/lib/dbconnect";
 import { NextRequest, NextResponse } from "next/server";
 import { User } from "@/app/models/User";
+import slugify from "slugify";
+
 
 
 export async function GET(request: NextRequest) {
@@ -20,7 +22,6 @@ export async function GET(request: NextRequest) {
 
   switch (type) {
     case "featured": {
-      // No additional filter for "featured" in this code
       break;
     }
     case "recommended": {
@@ -29,11 +30,39 @@ export async function GET(request: NextRequest) {
       break;
     }
     case "all": {
-      // No additional filter for "all"
       break;
     }
     default: {
-      filter.categories = { $elemMatch: { $regex: `^${type}$`, $options: "i" } };
+      // filter.categories = { $elemMatch: { $regex: `^${type}$`, $options: "i" } };
+      const slugifiedType = slugify(type, { lower: true, strict: true });
+      filter.$expr = {
+        $gt: [
+          {
+            $size: {
+              $filter: {
+                input: "$categories",
+                as: "cat",
+                cond: {
+                  $regexMatch: {
+                    input: {
+                      $toLower: {
+                        $replaceAll: {
+                          input: { $trim: { input: "$$cat" } },
+                          find: " ",
+                          replacement: "-"
+                        }
+                      }
+                    },
+                    regex: `^${slugifiedType}$`,
+                    options: "i"
+                  }
+                }
+              }
+            }
+          },
+          0
+        ]
+      };
       break;
     }
   }
@@ -59,7 +88,7 @@ export async function GET(request: NextRequest) {
     // console.log(users);
 
     const userMap = users.reduce((acc, user) => {
-      const userObj = user.toObject({ virtuals: true }); // Include virtuals
+      const userObj = user.toObject({ virtuals: true });
       acc[user._id.toString()] = userObj.fullName;
       return acc;
     }, {});

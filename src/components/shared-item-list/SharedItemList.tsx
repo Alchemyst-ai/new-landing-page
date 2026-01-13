@@ -284,7 +284,10 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 
 	const allCategories = React.useMemo(() => {
 		const cats = new Set<string>();
-		items.forEach(item => item.categories?.forEach(c => cats.add(c)));
+		items.forEach(item => item.categories?.forEach(c => {
+			const trimmed = c.trim();
+            if (trimmed) cats.add(trimmed);
+		}));
 		return ["All", ...Array.from(cats)];
 	}, [items]);
 
@@ -292,8 +295,11 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 		? allCategories
 		: allCategories.slice(0, 10);
 
-
-
+	const formatCategory = (category: string): string => {
+    const trimmed = category.trim();
+    if (!trimmed) return '';
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+    };
 
 	const toggleKeySelection = React.useCallback(
 		(key: string) => {
@@ -365,12 +371,12 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 						<div className="flex flex-nowrap justify-start gap-2 px-4">
 							{visibleCategories.map((pill) => (
 								<Button
-									key={pill}
+									key={pill.replace(/\s+/g, '-').toLowerCase()}
 									variant={activeTab === pill ? "default" : "outline"}
 									onClick={() => setActiveTab(pill)}
 									className="whitespace-nowrap px-6 py-2 rounded-full text-sm font-medium transition-all"
 								>
-									{pill}
+									{formatCategory(pill)}
 								</Button>
 							))}
 							{allCategories.length > 10 && (
