@@ -13,8 +13,8 @@ export function VoiceWaveform() {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = containerRef.current.clientWidth;
+    const height = containerRef.current.clientHeight;
 
     // Camera - Low FOV for cinematic feel
     const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 1000);
@@ -33,13 +33,13 @@ export function VoiceWaveform() {
 
     // Waveform Configuration
     const BAR_COUNT = 300;
-    const BAR_WIDTH = 0.06;
-    const BAR_DEPTH = 0.2;
-    const SPACING = 0.1;
+    const BAR_WIDTH = 0.04;
+    const BAR_DEPTH = 0.15;
+    const SPACING = 0.06;
     const WAVEFORM_WIDTH = BAR_COUNT * SPACING;
 
-    // Geometry & Materials
-    const geometry = new THREE.BoxGeometry(BAR_WIDTH, 1, BAR_DEPTH);
+    // Geometry & Materials - Using CapsuleGeometry for rounded, sophisticated look
+    const geometry = new THREE.CapsuleGeometry(BAR_WIDTH / 2, 1, 4, 8);
     
     // Left Material (Vibrant Orange / Gold)
     const orangeMaterial = new THREE.MeshPhysicalMaterial({
@@ -84,25 +84,25 @@ export function VoiceWaveform() {
     scene.add(ghostMesh2);
 
     // Glitter Particles
-    const sparklesCount = 2000;
+    const sparklesCount = 3500;
     const sparklesGeometry = new THREE.BufferGeometry();
     const sparklesPos = new Float32Array(sparklesCount * 3);
     const sparklesVel = new Float32Array(sparklesCount);
     
     for (let i = 0; i < sparklesCount; i++) {
-      sparklesPos[i * 3] = (Math.random() - 0.5) * 30;
-      sparklesPos[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      sparklesPos[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      sparklesPos[i * 3] = (Math.random() - 0.5) * 35;
+      sparklesPos[i * 3 + 1] = (Math.random() - 0.5) * 25;
+      sparklesPos[i * 3 + 2] = (Math.random() - 0.5) * 15;
       sparklesVel[i] = Math.random();
     }
     
     sparklesGeometry.setAttribute('position', new THREE.BufferAttribute(sparklesPos, 3));
     
     const sparklesMaterial = new THREE.PointsMaterial({
-      color: 0xffba08, // Golden/Orange Glitter
-      size: 0.04,
+      color: 0xffba08,
+      size: 0.06,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.7,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true
     });
@@ -142,7 +142,7 @@ export function VoiceWaveform() {
       time += 0.01;
       
       // Camera gentle drift
-      camera.position.x = Math.sin(time * 0.2) * 0.4;
+      camera.position.x = 0 + Math.sin(time * 0.2) * 0.4;
       camera.position.y = Math.cos(time * 0.15) * 0.2;
       camera.lookAt(0, 0, 0);
 
@@ -154,34 +154,45 @@ export function VoiceWaveform() {
         // Twinkle effect by modulating color/opacity? PointsMaterial doesn't support per-point opacity easily without shaders
         // But we can modulate global material slightly
       }
-      sparklesMaterial.opacity = 0.4 + Math.sin(time * 2) * 0.2;
+      sparklesMaterial.opacity = 0.5 + Math.sin(time * 2.5) * 0.3;
       sparklesGeometry.attributes.position.needsUpdate = true;
 
-      for (let i = 0; i < BAR_COUNT; i++) {
-        const x = i * SPACING - WAVEFORM_WIDTH / 2;
-        const envelope = Math.pow(Math.sin((i / BAR_COUNT) * Math.PI), 0.6);
-        
-        // 1. Primary Waveform Calculations
-        const slowWave = Math.sin(time * 1.2 + i * 0.05);
-        const fastWave = Math.sin(time * 3.5 + i * 0.2) * 0.4;
-        const microWave = Math.sin(time * 8.0 - i * 0.1) * 0.15;
-        const amplitude = (slowWave + fastWave + microWave + 1.2) * envelope;
-        const scaleY = Math.max(0.05, amplitude * 3.5);
-        
-        dummy.position.set(x, 0, 0);
-        dummy.scale.set(1, scaleY, 1);
-        dummy.updateMatrix();
+        for (let i = 0; i < BAR_COUNT; i++) {
+          const x = i * SPACING - WAVEFORM_WIDTH / 2;
+          
+          // Smoother, more natural envelope (Gaussian-like curve)
+          const normalizedIdx = i / BAR_COUNT;
+          const envelope = Math.exp(-Math.pow(normalizedIdx - 0.5, 2) / 0.08);
+          
+          // 1. Primary Waveform Calculations - Summing waves for organic motion
+          const slowWave = Math.sin(time * 0.8 + i * 0.03);
+          const midWave = Math.sin(time * 1.5 + i * 0.07) * 0.5;
+          const fastWave = Math.sin(time * 3.0 + i * 0.12) * 0.2;
+          const detailWave = Math.sin(time * 5.0 - i * 0.2) * 0.1;
+          
+          const amplitude = (slowWave + midWave + fastWave + detailWave + 1.8) * envelope;
+          const scaleY = Math.max(0.1, amplitude * 3.8);
+          
+          dummy.position.set(x, 0, 0);
+          dummy.scale.set(1, scaleY, 1);
+          dummy.updateMatrix();
 
-        if (i < HALF_COUNT) {
-          leftMesh.setMatrixAt(i, dummy.matrix);
-          const color = new THREE.Color().lerpColors(colors.orange, colors.accent, Math.min(1, amplitude / 2.5));
-          leftMesh.setColorAt(i, color);
-        } else {
-          rightMesh.setMatrixAt(i - HALF_COUNT, dummy.matrix);
-          // Zinc/Silver tones for the right side
-          const color = new THREE.Color().copy(colors.gray).multiplyScalar(0.8 + Math.sin(time + i * 0.1) * 0.2);
-          rightMesh.setColorAt(i - HALF_COUNT, color);
-        }
+          // Smooth color transition based on position instead of hard cut
+          const colorProgress = THREE.MathUtils.smoothstep(i / BAR_COUNT, 0.35, 0.65);
+
+          if (i < HALF_COUNT) {
+            leftMesh.setMatrixAt(i, dummy.matrix);
+            // Dynamic orange-to-gold color
+            const color = new THREE.Color().lerpColors(colors.orange, colors.accent, Math.min(1, amplitude / 3.0));
+            // Apply slight fade-out toward the middle transition
+            const opacity = 1.0 - Math.pow(colorProgress, 4);
+            leftMesh.setColorAt(i, color);
+          } else {
+            rightMesh.setMatrixAt(i - HALF_COUNT, dummy.matrix);
+            const color = new THREE.Color().copy(colors.gray).multiplyScalar(0.7 + Math.sin(time + i * 0.08) * 0.3);
+            rightMesh.setColorAt(i - HALF_COUNT, color);
+          }
+
 
         // 2. Ghost Waveform 1 (Slower, Larger, Deeper)
         const ghost1Time = time * 0.6;
@@ -220,8 +231,9 @@ export function VoiceWaveform() {
     };
 
     const handleResize = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      if (!containerRef.current) return;
+      const w = containerRef.current.clientWidth;
+      const h = containerRef.current.clientHeight;
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
@@ -250,4 +262,3 @@ export function VoiceWaveform() {
     />
   );
 }
-

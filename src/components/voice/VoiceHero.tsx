@@ -18,7 +18,7 @@ const VoiceHero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-4"
         >
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             Intelligent Voice. <br />
             <span className="text-[#ffa500] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Reimagined.</span>
           </h1>
@@ -26,7 +26,7 @@ const VoiceHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-white text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+            className="text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
           >
             Experience the future of audio interfaces with our advanced waveform visualization technology.
           </motion.p>
