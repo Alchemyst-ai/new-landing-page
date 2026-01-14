@@ -6,26 +6,38 @@ import gsap from "gsap";
 import VoiceGridDivider from "./VoiceGridDivider";
 
 const tabs = [
-  { id: "loan", label: "Loan Sales" },
-  { id: "collections", label: "Collections" },
-  { id: "renewals", label: "Renewals" },
-  { id: "insurance", label: "Insurance Sales" },
+  { id: "loan", label: "Automobile" },
+  { id: "collections", label: "BFSI" },
+  { id: "renewals", label: "Edtech" },
+  { id: "insurance", label: "General" },
 ];
 
-const languageBlips = [
-  { id: "english", label: "English", ring: 1, angle: -55 },
-  { id: "hindi", label: "Hindi", ring: 2, angle: 165 },
-  { id: "tamil", label: "Tamil", ring: 3, angle: -30 },
-  { id: "spanish", label: "Spanish", ring: 4, angle: 120 },
-];
+// Audio configuration mapping tabs to folders and languages
+const audioConfig = {
+  loan: { folder: "AUTO", languages: ["english", "kannada", "marathi"] },
+  collections: { folder: "BFSI", languages: ["english", "hindi", "kannada"] },
+  renewals: { folder: "EDTECH", languages: ["english", "hindi", "kannada"] },
+  insurance: { folder: "GENERAL", languages: ["english", "hindi", "tamil"] }
+};
+
+// Language display names
+const languageLabels: Record<string, string> = {
+  english: "English",
+  hindi: "Hindi",
+  tamil: "Tamil",
+  kannada: "Kannada",
+  marathi: "Marathi"
+};
 
 const ConcentricPlayer = ({ 
+  activeTab,
   activeLanguage, 
   onLanguageChange,
   isPlaying,
   progress, // 0 to 1 representing audio progress
   onPlayPause
 }: { 
+  activeTab: string;
   activeLanguage: string;
   onLanguageChange: (id: string) => void;
   isPlaying: boolean;
@@ -41,6 +53,20 @@ const ConcentricPlayer = ({
   const size = 700;
   const center = size / 2;
   const ringRadii = [120, 175, 230, 285];
+
+  // Generate language blips dynamically based on active tab
+  const languageBlips = useMemo(() => {
+    const config = audioConfig[activeTab as keyof typeof audioConfig];
+    const languages = config.languages;
+    const angles = [-55, 165, -30]; // Visually balanced angles across 3 orbits
+    
+    return languages.map((lang, index) => ({
+      id: lang,
+      label: languageLabels[lang],
+      ring: index + 1, // rings 1, 2, 3
+      angle: angles[index]
+    }));
+  }, [activeTab]);
 
   const activeBlipData = languageBlips.find(b => b.id === activeLanguage);
   const activeRingIndex = activeBlipData ? activeBlipData.ring - 1 : 0;
@@ -563,66 +589,86 @@ const RealCustomerCalls = () => {
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(15); // Default to 15 seconds
   const progressRef = useRef<gsap.core.Tween | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // GSAP animation for progress when playing
+  // Audio element with event listeners
   useEffect(() => {
-    if (isPlaying) {
-      // Animate progress from current position to 1 (full circle)
-      const obj = { value: progress };
-      progressRef.current = gsap.to(obj, {
-        value: 1,
-        duration: 15 * (1 - progress), // 15 seconds for full circle, adjusted for current progress
-        ease: "none",
-        onUpdate: () => {
-          setProgress(obj.value);
-        },
-        onComplete: () => {
-          // Stop at the starting position (where it began)
-          setProgress(0);
-          setIsPlaying(false);
-        }
-      });
-    } else {
-      // Pause the animation
-      if (progressRef.current) {
-        progressRef.current.pause();
-      }
-    }
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    return () => {
-      if (progressRef.current) {
-        progressRef.current.kill();
+    const handleLoadedMetadata = () => {
+      setAudioDuration(audio.duration);
+    };
+
+    const handleTimeUpdate = () => {
+      if (audio.duration > 0) {
+        setProgress(audio.currentTime / audio.duration);
       }
     };
-  }, [isPlaying]);
 
-  // Reset progress when language changes
+    const handleEnded = () => {
+      setProgress(0);
+      setIsPlaying(false);
+      audio.currentTime = 0;
+    };
+
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [activeTab, activeLanguage]);
+
+  // When tab changes, reset to first language of that tab
   useEffect(() => {
+    const config = audioConfig[activeTab as keyof typeof audioConfig];
+    const firstLanguage = config.languages[0];
+    setActiveLanguage(firstLanguage);
+  }, [activeTab]);
+
+  // Reset audio when language or tab changes
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // Pause and reset audio
+    audio.pause();
+    audio.currentTime = 0;
     setProgress(0);
-    if (progressRef.current) {
-      progressRef.current.kill();
-    }
-    if (isPlaying) {
-      const obj = { value: 0 };
-      progressRef.current = gsap.to(obj, {
-        value: 1,
-        duration: 15,
-        ease: "none",
-        repeat: -1,
-        onUpdate: () => {
-          setProgress(obj.value);
-        },
-      });
-    }
-  }, [activeLanguage]);
+    setIsPlaying(false);
+    
+    // Load new audio source
+    const config = audioConfig[activeTab as keyof typeof audioConfig];
+    audio.src = `/voice-demo/${config.folder}/${activeLanguage}.mp3`;
+    audio.load();
+  }, [activeLanguage, activeTab]);
 
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play().catch((error) => {
+        console.error('Audio play failed:', error);
+      });
+      setIsPlaying(true);
+    }
   };
 
   return (
     <section id="calls" className="relative py-8 overflow-hidden" style={{ background: '#0d0d0f' }}>
+      {/* Hidden audio element */}
+      <audio ref={audioRef} preload="metadata" />
+      
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -710,6 +756,7 @@ const RealCustomerCalls = () => {
             transition={{ duration: 0.6 }}
           >
             <ConcentricPlayer 
+              activeTab={activeTab}
               activeLanguage={activeLanguage}
               onLanguageChange={setActiveLanguage}
               isPlaying={isPlaying}
