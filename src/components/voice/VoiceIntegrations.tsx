@@ -35,6 +35,8 @@ export function VoiceIntegrations() {
   const div5Ref = useRef<HTMLDivElement>(null)
   const div6Ref = useRef<HTMLDivElement>(null)
   const div7Ref = useRef<HTMLDivElement>(null)
+  const div8Ref = useRef<HTMLDivElement>(null)
+  const div9Ref = useRef<HTMLDivElement>(null)
 
   return (
     <section className="relative py-24" style={{ background: '#0d0d0f' }}>
@@ -60,42 +62,50 @@ export function VoiceIntegrations() {
           className="relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10"
           ref={containerRef}
         >
-          <div className="flex size-full max-h-[350px] max-w-4xl flex-col items-stretch justify-between gap-16">
-        <div className="flex flex-row items-center justify-between">
-          <Circle ref={div1Ref}>
-            <Icons.googleDrive />
-          </Circle>
-          <Circle ref={div5Ref}>
-            <Icons.googleDocs />
-          </Circle>
-        </div>
-        <div className="flex flex-row items-center justify-between">
-          <Circle ref={div2Ref}>
-            <Icons.notion />
-          </Circle>
-          <Circle ref={div4Ref} className="size-24">
-            <Icons.openai />
-          </Circle>
-          <Circle ref={div6Ref}>
-            <Icons.zapier />
-          </Circle>
-        </div>
-        <div className="flex flex-row items-center justify-between">
-          <Circle ref={div3Ref}>
-            <Icons.whatsapp />
-          </Circle>
-          <Circle ref={div7Ref}>
-            <Icons.messenger />
-          </Circle>
-        </div>
-      </div>
+          <div className="flex size-full max-h-[420px] max-w-4xl flex-col items-stretch justify-between gap-10">
+            <div className="flex flex-row items-center justify-between">
+              <Circle ref={div1Ref}>
+                <Icons.zendesk />
+              </Circle>
+              <Circle ref={div5Ref}>
+                <Icons.salesforce />
+              </Circle>
+            </div>
+            <div className="flex flex-row items-center justify-between">
+              <Circle ref={div2Ref}>
+                <Icons.exotel />
+              </Circle>
+              <Circle ref={div6Ref}>
+                <Icons.ozonetel />
+              </Circle>
+            </div>
+            <div className="flex flex-row items-center justify-between">
+              <Circle ref={div3Ref}>
+                <Icons.leadsquared />
+              </Circle>
+              <Circle ref={div4Ref} className="size-32 -translate-y-8 p-6 pt-1">
+                 <Icons.alchemyst />
+              </Circle>
+              <Circle ref={div7Ref}>
+                <Icons.clevertap />
+              </Circle>
+            </div>
+            <div className="flex flex-row items-center justify-between">
+              <Circle ref={div8Ref}>
+                <Icons.ameyo />
+              </Circle>
+              <Circle ref={div9Ref}>
+                <Icons.tata />
+              </Circle>
+            </div>
+          </div>
 
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div4Ref}
-        curvature={-100}
-        endYOffset={-10}
+        curvature={-140}
+        endYOffset={-40}
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
       />
@@ -103,7 +113,8 @@ export function VoiceIntegrations() {
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={div4Ref}
-        curvature={30}
+        curvature={-40}
+        endYOffset={-10}
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
       />
@@ -111,7 +122,7 @@ export function VoiceIntegrations() {
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div4Ref}
-        curvature={100}
+        curvature={40}
         endYOffset={10}
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
@@ -120,8 +131,8 @@ export function VoiceIntegrations() {
         containerRef={containerRef}
         fromRef={div5Ref}
         toRef={div4Ref}
-        curvature={-100}
-        endYOffset={-10}
+        curvature={-140}
+        endYOffset={-40}
         reverse
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
@@ -130,7 +141,8 @@ export function VoiceIntegrations() {
         containerRef={containerRef}
         fromRef={div6Ref}
         toRef={div4Ref}
-        curvature={-30}
+        curvature={-40}
+        endYOffset={-10}
         reverse
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
@@ -139,8 +151,27 @@ export function VoiceIntegrations() {
         containerRef={containerRef}
         fromRef={div7Ref}
         toRef={div4Ref}
-        curvature={100}
+        curvature={40}
         endYOffset={10}
+        reverse
+        gradientStartColor="#fb923c"
+        gradientStopColor="#f97316"
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div8Ref}
+        toRef={div4Ref}
+        curvature={140}
+        endYOffset={40}
+        gradientStartColor="#fb923c"
+        gradientStopColor="#f97316"
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div9Ref}
+        toRef={div4Ref}
+        curvature={140}
+        endYOffset={40}
         reverse
         gradientStartColor="#fb923c"
         gradientStopColor="#f97316"
@@ -154,6 +185,79 @@ export function VoiceIntegrations() {
 }
 
 const Icons = {
+  // Voice integrations logos (from /public/voice/integrations)
+  alchemyst: () => (
+    <img
+      src="/voice/integrations/alchemyst.png"
+      alt="Alchemyst"
+      className="h-full w-full origin-center scale-110 object-contain"
+      loading="lazy"
+    />
+  ),
+  ameyo: () => (
+    <img
+      src="/voice/integrations/ameyo.svg"
+      alt="Ameyo"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  clevertap: () => (
+    <img
+      src="/voice/integrations/clevertap.svg"
+      alt="CleverTap"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  exotel: () => (
+    <img
+      src="/voice/integrations/exotel.svg"
+      alt="Exotel"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  leadsquared: () => (
+    <img
+      src="/voice/integrations/leadsquared.svg"
+      alt="LeadSquared"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  ozonetel: () => (
+    <img
+      src="/voice/integrations/ozonetel.svg"
+      alt="Ozonetel"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  salesforce: () => (
+    <img
+      src="/voice/integrations/salesforce.svg"
+      alt="Salesforce"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  tata: () => (
+    <img
+      src="/voice/integrations/tata.svg"
+      alt="Tata"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
+  zendesk: () => (
+    <img
+      src="/voice/integrations/zendesk.svg"
+      alt="Zendesk"
+      className="h-10 w-12 object-contain"
+      loading="lazy"
+    />
+  ),
   notion: () => (
     <svg
       width="100"

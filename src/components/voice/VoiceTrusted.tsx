@@ -8,25 +8,25 @@ import VoiceGridDivider from "./VoiceGridDivider";
 type TrustedLogo = { name: string; src: string; scale?: number };
 
 const logos1: TrustedLogo[] = [
-    { name: "Citron", src: "/voice/citron.png", scale: 1.75 },
-    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.55 },
-    { name: "Honda", src: "/voice/honda.png", scale: 1.0 },
-    { name: "Hyundai", src: "/voice/hyundai.png", scale: 2.05 },
-    { name: "Katyani", src: "/voice/katyani.png", scale: 2.35 },
-    { name: "Sunstone", src: "/voice/sunstone.png", scale: 1.35 },
-    { name: "Toyota", src: "/voice/toyota.png", scale: 1.35 },
-    { name: "UN", src: "/voice/un.png", scale: 2.35 },
+    { name: "Citron", src: "/voice/citron.png", scale: 1.25 },
+    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.25 },
+    { name: "Honda", src: "/voice/honda.png", scale: 1.25 },
+    { name: "Hyundai", src: "/voice/hyundai.png", scale: 1.25 },
+    { name: "Katyani", src: "/voice/katyani.png", scale: 1.25 },
+    { name: "Sunstone", src: "/voice/sunstone.png", scale: 1.05 },
+    { name: "Toyota", src: "/voice/toyota.png", scale: 1.25 },
+    { name: "UN", src: "/voice/un.png", scale: 1.55 },
 ];
 
 const logos2: TrustedLogo[] = [
-    { name: "Univarity", src: "/voice/univarity.png", scale: 2.35 },
-    { name: "Veranda", src: "/voice/veranda.png", scale: 1.85 },
-    { name: "Wonder", src: "/voice/wonder.png", scale: 3.35 },
-    { name: "Yantra", src: "/voice/yantra.png", scale: 3.65 },
-    { name: "Citron", src: "/voice/citron.png", scale: 1.75 },
-    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.55 },
-    { name: "Honda", src: "/voice/honda.png", scale: 1.0 },
-    { name: "UN", src: "/voice/un.png", scale: 2.35 },
+    { name: "Univarity", src: "/voice/univarity.png", scale: 1.25 },
+    { name: "Veranda", src: "/voice/veranda.png", scale: 1.25 },
+    { name: "Wonder", src: "/voice/wonder.png", scale: 2.0 },
+    { name: "Yantra", src: "/voice/yantra.png", scale: 2.0 },
+    { name: "Citron", src: "/voice/citron.png", scale: 1.25 },
+    { name: "Flipkart", src: "/voice/flipkart.png", scale: 1.25 },
+    { name: "Honda", src: "/voice/honda.png", scale: 1.25 },
+    { name: "UN", src: "/voice/un.png", scale: 1.25 },
 ];
 
 const VoiceTrusted = () => {

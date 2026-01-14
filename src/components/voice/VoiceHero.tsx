@@ -18,7 +18,7 @@ const VoiceHero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-4"
         >
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             Intelligent Voice. <br />
             <span className="text-[#ffa500] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Reimagined.</span>
           </h1>
@@ -26,7 +26,7 @@ const VoiceHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+            className="text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
           >
             Experience the future of audio interfaces with our advanced waveform visualization technology.
           </motion.p>
@@ -38,11 +38,11 @@ const VoiceHero = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-wrap items-center justify-center gap-4 pointer-events-auto"
         >
-          <button className="px-10 py-4 rounded-full bg-[#ffa500] text-black font-black hover:bg-[#ffb732] transition-all active:scale-95 shadow-[0_0_40px_rgba(255,165,0,0.4)] hover:shadow-[0_0_60px_rgba(255,165,0,0.6)]">
-            Get Started
+          <button className="px-10 py-4 rounded-full bg-[#ffa500] text-black font-semibold hover:bg-[#ffb732] transition-all active:scale-95 shadow-[0_0_40px_rgba(255,165,0,0.4)] hover:shadow-[0_0_60px_rgba(255,165,0,0.6)]">
+            Start Pilot
           </button>
-          <button className="px-10 py-4 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 transition-all active:scale-95 backdrop-blur-sm">
-            View Documentation
+          <button className="px-10 py-4 rounded-full border-2 border-white/30 text-white font-medium hover:bg-white/10 transition-all active:scale-95 backdrop-blur-sm">
+            Read Customer Calls
           </button>
         </motion.div>
         </div>
