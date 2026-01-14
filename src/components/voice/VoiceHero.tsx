@@ -133,12 +133,12 @@ const VoiceHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-16">
+    <section className="relative overflow-hidden pt-16" style={{ height: '70vh', minHeight: '600px' }}>
       {/* Three.js Waveform Background */}
       <VoiceWaveform />
 
       {/* Hero Content */}
-      <div className="relative z-10 mx-auto flex flex-col items-center justify-center px-4 pt-24 pb-32 lg:pt-32 lg:pb-36 max-w-7xl">
+      <div className="relative z-10 mx-auto flex flex-col items-center justify-center px-4 pt-16 pb-20 lg:pt-20 lg:pb-24 max-w-7xl h-full">
         <div className="flex flex-col items-center text-center space-y-8 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

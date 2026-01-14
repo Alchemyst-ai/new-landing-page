@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -13,6 +14,8 @@ const testimonials = [
     footer: "They were the only voice AI company I fully trusted to execute my vision.",
     author: "VP at Toyota",
     company: "Toyota",
+    logo: "/voice/testimonials/toyota.png",
+    logoScale: 1.0,
   },
   {
     quote: "Arrowhead is by far the #1 bot we have worked with - they competed against many other voice AI companies during our POC and we were",
@@ -20,6 +23,8 @@ const testimonials = [
     footer: "Looking forward to this long-standing relationship with them.",
     author: "VP at Unacademy",
     company: "Unacademy",
+    logo: "/voice/testimonials/un.png",
+    logoScale: 1.25,
   },
 ];
 
@@ -105,11 +110,25 @@ const VoiceTestimonials = () => {
                   </div>
                 </div>
 
-                {/* Author */}
-                <div>
-                  <p className="text-2xl font-bold text-orange-400">
-                    {testimonial.author}
-                  </p>
+                {/* Author and Logo */}
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-orange-400">
+                      {testimonial.author}
+                    </p>
+                  </div>
+                  {testimonial.logo && (
+                    <div className="flex-shrink-0 mt-12">
+                      <Image
+                        src={testimonial.logo}
+                        alt={testimonial.company}
+                        width={90}
+                        height={45}
+                        className="opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                        style={{ height: '45px', width: 'auto', transform: `scale(${testimonial.logoScale ?? 1.0})` }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
