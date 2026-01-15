@@ -14,7 +14,7 @@ async function getArticleBySlug(rawSlug: string) {
   let slug = rawSlug;
 
   const redirects: Record<string, string> = {
-    "the-road-to-agi-broken-promises-hallucinations-memory-rag-context": "the-road-to-agi-hallucinations-memory-rag-and-context"
+    "the-road-to-agi-broken-promises-hallucinations-memory-rag-context": "the-road-to-agi-broken-promises-hallucinations-memory-rag-context"
   }
 
   slug = redirects[rawSlug] ?? rawSlug
