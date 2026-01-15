@@ -1,46 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  GitBranch, 
-  Zap, 
-  Clock, 
-  UserCheck, 
-  Languages, 
-  MessageSquare 
+import {
+  Timer,
+  Target,
+  SmilePlus,
+  TrendingDown,
+  UserMinus,
+  TrendingUp,
 } from "lucide-react";
 import VoiceGridDivider from "./VoiceGridDivider";
 
-const features = [
+export const features = [
   {
-    icon: GitBranch,
-    title: "Unlimited calls",
-    description: "Auto-scales up and down to handle calling volume",
+    icon: Timer,
+    title: "Instant AI Call Pickup",
+    description: "AI voice agent answers calls in under 1 second, reducing wait time by 94%",
+    metric: "94% faster response",
   },
   {
-    icon: Zap,
-    title: "Live actions on call",
-    description: "Send payment links, pull data real-time and transfer to human",
+    icon: Target,
+    title: "High Qualification Accuracy",
+    description: "Accurately qualifies leads using real-time intent and context",
+    metric: "91% accuracy",
   },
   {
-    icon: Clock,
-    title: "15 min+ calls",
-    description: "Conversations as long as humans' with no hallucination",
+    icon: SmilePlus,
+    title: "CSAT Improvement",
+    description: "Delivers natural, human-like conversations that improve customer satisfaction",
+    metric: "+70% CSAT",
   },
   {
-    icon: UserCheck,
-    title: "Call in <1 min of drop-off",
-    description: "Leads called real-time upon entering funnel for max. connection",
+    icon: TrendingDown,
+    title: "Reduced Lead Drop-Offs",
+    description: "Engages leads instantly to prevent funnel abandonment",
+    metric: "45% fewer drop-offs",
   },
   {
-    icon: Languages,
-    title: "Language switching",
-    description: "Switches languages on-call based on user's preference",
+    icon: UserMinus,
+    title: "Lower SDR Workload",
+    description: "Automates repetitive calling and qualification tasks",
+    metric: "65% fewer SDR hours",
   },
   {
-    icon: MessageSquare,
-    title: "Interruption handling",
-    description: "Handles customer interruptions just like a human",
+    icon: TrendingUp,
+    title: "Revenue Growth",
+    description: "Drives renewals, subscriptions, and cross-sells through intelligent follow-ups",
+    metric: "6–12% revenue boost",
   },
 ];
 
