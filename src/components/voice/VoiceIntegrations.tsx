@@ -15,7 +15,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex size-16 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-10 sm:size-12 md:size-14 lg:size-16 items-center justify-center rounded-full border-2 bg-white p-1.5 sm:p-2 md:p-2.5 lg:p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className
       )}
     >
@@ -39,30 +39,30 @@ export function VoiceIntegrations() {
   const div9Ref = useRef<HTMLDivElement>(null)
 
   return (
-    <section className="relative py-24" style={{ background: '#0d0d0f' }}>
-      <div className="relative z-10 mx-auto px-4 max-w-7xl">
+    <section className="relative py-12 md:py-16 lg:py-24" style={{ background: '#0d0d0f' }}>
+      <div className="relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-10 md:mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-semibold text-foreground mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 leading-tight px-2">
             Seamless integrations,
           </h2>
-          <p className="text-4xl sm:text-5xl font-semibold text-orange-400">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-orange-400 px-2">
             zero disruption
           </p>
         </motion.div>
 
         {/* Integration Diagram */}
         <div
-          className="relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10"
+          className="relative flex h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10"
           ref={containerRef}
         >
-          <div className="flex size-full max-h-[420px] max-w-4xl flex-col items-stretch justify-between gap-10">
+          <div className="flex size-full max-h-[300px] sm:max-h-[350px] md:max-h-[400px] lg:max-h-[420px] max-w-4xl flex-col items-stretch justify-between gap-6 sm:gap-8 md:gap-10">
             <div className="flex flex-row items-center justify-between">
               <Circle ref={div1Ref}>
                 <Icons.zendesk />
@@ -83,7 +83,7 @@ export function VoiceIntegrations() {
               <Circle ref={div3Ref}>
                 <Icons.leadsquared />
               </Circle>
-              <Circle ref={div4Ref} className="size-32 -translate-y-8 p-6 pt-1">
+              <Circle ref={div4Ref} className="size-20 sm:size-24 md:size-28 lg:size-32 -translate-y-5 sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-8 p-3 sm:p-4 md:p-5 lg:p-6 pt-1">
                  <Icons.alchemyst />
               </Circle>
               <Circle ref={div7Ref}>
@@ -179,7 +179,7 @@ export function VoiceIntegrations() {
         </div>
       </div>
 
-      <VoiceGridDivider className="mt-12" />
+      <VoiceGridDivider className="mt-8 sm:mt-10 md:mt-12" />
     </section>
   )
 }
