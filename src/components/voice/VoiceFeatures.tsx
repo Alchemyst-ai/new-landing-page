@@ -46,26 +46,26 @@ const features = [
 
 const VoiceFeatures = () => {
   return (
-    <section id="features" className="relative py-24 overflow-hidden" style={{ background: '#0d0d0f' }}>
-      <div className="relative z-10 mx-auto px-4 max-w-7xl">
+    <section id="features" className="relative py-12 md:py-16 lg:py-24 overflow-hidden" style={{ background: '#0d0d0f' }}>
+      <div className="relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12 lg:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-semibold text-foreground mb-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-2 leading-tight px-2">
             AI Voice Bot that doesn&apos;t just sound human
           </h2>
-          <p className="text-gradient-italic text-2xl sm:text-3xl font-semibold">
+          <p className="text-gradient-italic text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold px-2">
             it works like one, and outperforms.
           </p>
         </motion.div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -75,20 +75,20 @@ const VoiceFeatures = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="feature-card-gradient rounded-2xl p-8 border border-border/50 h-full hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+              <div className="feature-card-gradient rounded-xl md:rounded-2xl p-6 sm:p-7 md:p-8 border border-border/50 h-full hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                 {/* Icon */}
-                <div className="mb-6 flex justify-center">
+                <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center">
                   <div className="relative">
-                    <feature.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
+                    <feature.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary" strokeWidth={1.5} />
                     <div className="absolute inset-0 blur-xl bg-primary/20 rounded-full" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground text-center mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-foreground text-center mb-2 sm:mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-primary text-center leading-relaxed">
+                <p className="text-xs sm:text-sm text-primary text-center leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -97,7 +97,7 @@ const VoiceFeatures = () => {
         </div>
       </div>
 
-      <VoiceGridDivider className="mt-12" />
+      <VoiceGridDivider className="mt-8 sm:mt-10 md:mt-12" />
     </section>
   );
 };

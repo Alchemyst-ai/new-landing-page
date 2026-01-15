@@ -675,9 +675,9 @@ const RealCustomerCalls = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16 px-4"
+        className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
       >
-        <h2 className="text-4xl sm:text-5xl font-semibold mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-4 leading-tight">
           <span className="text-orange-400">Hear real customer calls</span>
           <br />
           <span className="text-foreground">Across industries. Across languages.</span>
@@ -691,10 +691,10 @@ const RealCustomerCalls = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center -mb-2"
+          className="flex justify-center mb-2 md:-mb-2"
         >
           <div 
-            className="inline-flex rounded-full p-1.5 gap-1"
+            className="inline-flex flex-wrap justify-center rounded-full p-1 md:p-1.5 gap-1 max-w-full"
             style={{
               background: 'rgba(18, 18, 24, 0.95)',
               border: '1px solid rgba(255,255,255,0.08)',
@@ -705,7 +705,7 @@ const RealCustomerCalls = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-4 sm:px-6 py-2 text-sm sm:text-base font-medium rounded-full transition-colors duration-200 ${
+                className={`relative px-3 sm:px-4 md:px-6 py-1.5 md:py-2 text-xs sm:text-sm md:text-base font-medium rounded-full transition-colors duration-200 whitespace-nowrap ${
                   activeTab === tab.id ? "text-white" : "text-gray-500 hover:text-gray-400"
                 }`}
               >
@@ -728,14 +728,14 @@ const RealCustomerCalls = () => {
 
         <div className="relative">
           {/* Metric badge - positioned on outer orbit */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[8%] z-30">
+          <div className="absolute left-1/2 -translate-x-1/2 top-[8%] md:top-[8%] z-30 px-2">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div 
-                className="px-6 py-3 rounded-full text-base sm:text-lg font-semibold text-orange-200/90"
+                className="px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-orange-200/90 whitespace-nowrap"
                 style={{
                   background: 'linear-gradient(90deg, rgba(154, 52, 18, 0.6) 0%, rgba(249, 115, 22, 0.4) 100%)',
                   border: '1px solid rgba(249, 115, 22, 0.5)',
