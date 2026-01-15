@@ -2,6 +2,10 @@ import ContextSpace from "@/app/models/ContextSpace";
 import SharedItem from "@/app/models/SharedItem";
 import { dbConnect } from "@/lib/dbconnect";
 import { NextRequest, NextResponse } from "next/server";
+import { User } from "@/app/models/User";
+import slugify from "slugify";
+
+
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -18,7 +22,6 @@ export async function GET(request: NextRequest) {
 
   switch (type) {
     case "featured": {
-      // No additional filter for "featured" in this code
       break;
     }
     case "recommended": {
@@ -27,11 +30,39 @@ export async function GET(request: NextRequest) {
       break;
     }
     case "all": {
-      // No additional filter for "all"
       break;
     }
     default: {
-      filter.categories = { $elemMatch: { $regex: `^${type}$`, $options: "i" } };
+      // filter.categories = { $elemMatch: { $regex: `^${type}$`, $options: "i" } };
+      const slugifiedType = slugify(type, { lower: true, strict: true });
+      filter.$expr = {
+        $gt: [
+          {
+            $size: {
+              $filter: {
+                input: "$categories",
+                as: "cat",
+                cond: {
+                  $regexMatch: {
+                    input: {
+                      $toLower: {
+                        $replaceAll: {
+                          input: { $trim: { input: "$$cat" } },
+                          find: " ",
+                          replacement: "-"
+                        }
+                      }
+                    },
+                    regex: `^${slugifiedType}$`,
+                    options: "i"
+                  }
+                }
+              }
+            }
+          },
+          0
+        ]
+      };
       break;
     }
   }
@@ -44,18 +75,33 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // const data = await Tool.find(filter)
-    //   .sort({ createdAt: -1 })
-    //   .skip(offset)
-    //   .limit(limit)
-    //   .lean();
     const data = await ContextSpace
       .find(filter)
       .sort({ createdAt: -1 })
       .skip(offset)
-      .limit(limit);
+      .limit(limit)
 
-    return NextResponse.json(data);
+    const userIds = [...new Set(data.map(item => item.user_id))];
+
+    const users = await User.find({ _id: { $in: userIds } }).select('_id fullName');
+
+    // console.log(users);
+
+    const userMap = users.reduce((acc, user) => {
+      const userObj = user.toObject({ virtuals: true });
+      acc[user._id.toString()] = userObj.fullName;
+      return acc;
+    }, {});
+
+    // console.log(userMap);
+
+    const enrichedData = data.map(item => ({
+      ...item.toObject(),
+      fullName: userMap[item.user_id.toString()] || null
+    }));
+
+    return NextResponse.json(enrichedData);
+
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message },

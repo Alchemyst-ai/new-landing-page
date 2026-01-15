@@ -44,6 +44,7 @@ export interface SharedItem {
 	documents: string[];
 	magic_key: string;
 	user_id: string; // Reference to the User model
+	fullName?: string;
 	about?: string; // Optional because 'required: true' is missing
 	name: string;
 	cover_image_url?: string;
@@ -84,25 +85,6 @@ function slugify(text: string): string {
 		.replace(/^-+|-+$/g, ""); // Remove leading/trailing dashes
 }
 
-const checkIfKeyIsPresent = (key: string) => {
-	const contextSpaceKeys: string[] = JSON.parse(
-		sessionStorage.getItem("contextSpaceKeys") ?? "[]",
-	);
-
-	return contextSpaceKeys.includes(key);
-};
-
-const formatAbout = (about?: string, limit = 100) => {
-	if (!about) {
-		return "";
-	}
-
-	if (about.length > limit) {
-		return about.slice(0, limit) + "...";
-	}
-
-	return about;
-};
 
 function SpaceCard({
 	item,
@@ -159,21 +141,6 @@ function SpaceCard({
 
 					{/* Magic Key Overlay */}
 					<div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center space-y-4">
-						{/* <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-							<Key className="h-6 w-6 text-primary" />
-						</div>
-						<div className="space-y-1">
-							<p className="text-xs font-bold uppercase tracking-widest text-foreground/40">
-								Magic Key
-							</p>
-							<p className="text-md font-mono font-bold text-foreground">
-								{item.magic_key.length > 30
-									? item.magic_key.slice(0, 21) +
-										"..." +
-										item.magic_key.slice(item.magic_key.length - 4)
-									: item.magic_key}
-							</p>
-						</div> */}
 						<div className="text-sm text-ellipsis w-xs">{item.about}</div>
 						<div className="flex flex-row text-sm gap-2">
 							<Button
@@ -212,7 +179,7 @@ function SpaceCard({
 					<Link
 						href={`https://platform.getalchemystai.com/context/share/${item.magic_key}`}
 						target="_blank"
-						// ref="noopener noreferrer"
+					// ref="noopener noreferrer"
 					>
 						<h3 className="font-semibold text-foreground/90 group-hover:text-primary transition-colors hover:text-accent-foreground">
 							{item.name}
@@ -220,10 +187,7 @@ function SpaceCard({
 					</Link>
 					<div className="flex items-center gap-2 text-sm text-foreground/40 font-medium">
 						<span>
-							{item.name
-								?.split(" ")
-								.map((n) => n[0])
-								.join(". ") + "."}
+							{item.fullName ? `by ${item.fullName}` : "Unknown Author"}
 						</span>
 						{item.is_featured && (
 							<>
@@ -316,6 +280,27 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 		[activeTab, ITEMS_PER_PAGE],
 	);
 
+	const [showAllCategories, setShowAllCategories] = React.useState(false);
+
+	const allCategories = React.useMemo(() => {
+		const cats = new Set<string>();
+		items.forEach(item => item.categories?.forEach(c => {
+			const trimmed = c.trim();
+            if (trimmed) cats.add(trimmed);
+		}));
+		return ["All", ...Array.from(cats)];
+	}, [items]);
+
+	const visibleCategories = showAllCategories
+		? allCategories
+		: allCategories.slice(0, 10);
+
+	const formatCategory = (category: string): string => {
+    const trimmed = category.trim();
+    if (!trimmed) return '';
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+    };
+
 	const toggleKeySelection = React.useCallback(
 		(key: string) => {
 			console.log("Selected keys here = ", selectedKeys);
@@ -344,6 +329,8 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 		},
 		[selectedKeys],
 	);
+
+
 
 	const copyMagicKey = (key: string) => {
 		navigator.clipboard.writeText(key);
@@ -379,18 +366,30 @@ export function SharedItemList({ asFooter }: SharedItemListProps) {
 					</div>
 				)}
 				<div className="flex flex-wrap justify-center gap-2 max-w-6xl mx-auto">
-					{PILLS.map((pill) => (
-						<Button
-							variant={activeTab === pill ? "default" : "outline"}
-							key={pill}
-							onClick={() => setActiveTab(pill)}
-							className={
-								"px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 border cursor-pointer"
-							}
-						>
-							{pill}
-						</Button>
-					))}
+					{/* Horizontal Scroll Container */}
+					<div className="w-full overflow-x-auto pb-2 no-scrollbar">
+						<div className="flex flex-nowrap justify-start gap-2 px-4">
+							{visibleCategories.map((pill) => (
+								<Button
+									key={pill.replace(/\s+/g, '-').toLowerCase()}
+									variant={activeTab === pill ? "default" : "outline"}
+									onClick={() => setActiveTab(pill)}
+									className="whitespace-nowrap px-6 py-2 rounded-full text-sm font-medium transition-all"
+								>
+									{formatCategory(pill)}
+								</Button>
+							))}
+							{allCategories.length > 10 && (
+								<Button
+									variant="ghost"
+									onClick={() => setShowAllCategories(!showAllCategories)}
+									className="whitespace-nowrap rounded-full text-sm font-bold text-primary"
+								>
+									{showAllCategories ? "Show Less" : `+${allCategories.length - 10} More`}
+								</Button>
+							)}
+						</div>
+					</div>
 				</div>
 			</div>
 

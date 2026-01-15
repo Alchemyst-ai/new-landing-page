@@ -26,7 +26,7 @@ const TOPBAR_ITEMS = [
 	{ href: "/blog", label: "Blog" },
 	{ href: "/spaces", label: "Spaces" },
 	{
-		href: "https://getalchemystai.com/docs/",
+		href: "https://getalchemystai.com/docs?utm_source=landing_page&utm_medium=redirect&utm_campaign=documentation",
 		label: "Docs",
 		target: "_blank",
 		rel: "noopener noreferrer",

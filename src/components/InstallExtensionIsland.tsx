@@ -34,7 +34,7 @@ export function InstallExtensionIsland() {
         onHoverEnd={() => setExpanded(false)}
         onClick={() =>
           window.open(
-            "https://chromewebstore.google.com/detail/alchemyst-ai/aihninjmajjplfkgioojlgfdmagcmgkk",
+            "https://chromewebstore.google.com/detail/alchemyst-ai/aihninjmajjplfkgioojlgfdmagcmgkk?utm_source=landing_page&utm_medium=redirect&utm_campaign=chrome_extension",
             "_blank"
           )
         }

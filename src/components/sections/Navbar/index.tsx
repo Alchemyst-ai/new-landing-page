@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
 						</span>
 					</Link>
 					<Link
-						href="https://getalchemystai.com/docs/"
+						href="https://getalchemystai.com/docs?utm_source=landing_page&utm_medium=redirect&utm_campaign=documentation"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
@@ -221,7 +221,7 @@ const Navbar: React.FC = () => {
 									className="w-full space-y-4"
 								>
 									<Link
-										href="https://getalchemystai.com/docs/"
+										href="https://getalchemystai.com/docs?utm_source=landing_page&utm_medium=redirect&utm_campaign=documentation"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="block py-3 text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg"

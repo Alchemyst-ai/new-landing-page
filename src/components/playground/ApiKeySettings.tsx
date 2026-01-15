@@ -8,11 +8,13 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useContextKeyStore } from "@/hooks/context"
+import { useRouter } from "next/navigation";
 import { toast } from "sonner"
 import { z } from "zod";
 
@@ -31,7 +33,7 @@ interface ApiKeyModalProps {
   // setApiKey: (key: string) => void;
   // open: boolean;
   // setOpen: (open: boolean) => void;
-  // onSave: () => void;
+  // onCancel: () => void;
   showTrigger?: boolean;
 }
 
@@ -41,12 +43,17 @@ export function ApiKeyModal({ showTrigger = true }: ApiKeyModalProps) {
   const apiKey = useContextKeyStore((state) => state.apiKey);
   const open = useContextKeyStore((state) => state.isModalOpen);
   const setState = useContextKeyStore((state) => state.setState);
+  const router = useRouter();
 
   const setApiKey = (val: string) => {
     setState({ apiKey: val });
   };
 
   const setOpen = (val: boolean) => {
+     if (!val && !localStorage.getItem("userApiKey")) {
+        router.push('/');
+        return;
+      }
     setState({ isModalOpen: val });
   };
 
@@ -74,9 +81,8 @@ export function ApiKeyModal({ showTrigger = true }: ApiKeyModalProps) {
     }
   };
 
-
-
   return (
+    <div>
     <Dialog open={open} onOpenChange={setOpen}>
       {showTrigger && (
         <DialogTrigger asChild>
@@ -102,7 +108,7 @@ export function ApiKeyModal({ showTrigger = true }: ApiKeyModalProps) {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full cursor-pointer">
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                    <HelpCircle className="h-4 w-4 text-muted-foreground outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
                     <span className="sr-only">API Key Instructions</span>
                   </Button>
                 </DialogTrigger>
@@ -174,12 +180,15 @@ export function ApiKeyModal({ showTrigger = true }: ApiKeyModalProps) {
         </div>
 
         <div className="flex flex-col gap-3">
+          <DialogFooter>
           <Button onClick={handleSave} className="w-full" disabled={!apiKey}>
             {isSaving ? <Check className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
             {isSaving ? "Saved Successfully" : "Save Changes"}
           </Button>
+        </DialogFooter>
         </div>
       </DialogContent>
     </Dialog>
+    </div>
   );
 }

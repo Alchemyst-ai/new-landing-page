@@ -70,7 +70,7 @@ export default function PlatformSignInPage() {
 							<div className="mt-auto pt-6 w-full flex flex-col items-center gap-3">
 								<div className="flex gap-4 justify-center items-center">
 									<a
-										href="https://github.com/Alchemyst-ai/awesome-saas"
+										href="https://github.com/Alchemyst-ai/awesome-saas?utm_source=landing_page&utm_medium=redirect&utm_campaign=sign_up"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-white/60 hover:text-white transition-colors"
@@ -92,7 +92,7 @@ export default function PlatformSignInPage() {
 										</svg>
 									</a>
 									<a
-										href="https://x.com/getalchemyst"
+										href="https://x.com/getalchemyst?utm_source=landing_page&utm_medium=redirect&utm_campaign=twitter"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-white/60 hover:text-white transition-colors"
@@ -111,7 +111,7 @@ export default function PlatformSignInPage() {
 										</svg>
 									</a>
 									<a
-										href="https://discord.gg/H2StAaSeJ8"
+										href="https://discord.gg/H2StAaSeJ8?utm_source=landing_page&utm_medium=redirect&utm_campaign=discord_join"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-white/60 hover:text-white transition-colors"
@@ -129,7 +129,7 @@ export default function PlatformSignInPage() {
 										</svg>
 									</a>
 									<a
-										href="https://in.linkedin.com/company/alchemystai"
+										href="https://in.linkedin.com/company/alchemystai?utm_source=landing_page&utm_medium=redirect&utm_campaign=linkedin"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-white/60 hover:text-white transition-colors"
