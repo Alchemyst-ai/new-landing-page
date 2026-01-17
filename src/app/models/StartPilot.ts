@@ -16,7 +16,6 @@ const StartPilotSchema = new Schema(
   },
   {
     timestamps: true,
-    // User asked to keep collection name as "Start Pilot"
     collection: "Start Pilot",
   }
 );
