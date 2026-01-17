@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import VoiceHero from "@/components/voice/VoiceHero";
-import VoiceTrusted from "@/components/voice/VoiceTrusted";
+// import VoiceTrusted from "@/components/voice/VoiceTrusted";
 import VoiceRealCustomerCalls from "@/components/voice/VoiceRealCustomerCalls";
 import VoiceFeatures from "@/components/voice/VoiceFeatures";
 import VoiceStatistics from "@/components/voice/VoiceStatistics";
 import { VoiceIntegrations } from "@/components/voice/VoiceIntegrations";
 import VoiceTestimonials from "@/components/voice/VoiceTestimonials";
+import VoiceGridDivider from "@/components/voice/VoiceGridDivider";
 
+
+// Content Will be Changed Later on this page
 export const metadata: Metadata = {
   title: "Voice AI - Built for India | Alchemyst AI",
   description: "Powering India's businesses with AI Voice Agents from customer service to recruitment. Handle thousands of calls with natural, multilingual intelligence.",
@@ -35,7 +38,8 @@ export default function VoicePage() {
       {/* Main content container - full width on mobile, constrained on desktop */}
       <div className="mx-0 md:mx-24 lg:mx-32 xl:mx-48 2xl:mx-64">
         <VoiceHero />
-        <VoiceTrusted />
+        {/* <VoiceTrusted /> */}
+        <VoiceGridDivider />
         <VoiceRealCustomerCalls />
         <VoiceFeatures />
         <VoiceStatistics />

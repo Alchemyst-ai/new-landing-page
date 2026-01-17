@@ -147,8 +147,8 @@ const VoiceHero = () => {
           className="space-y-4"
         >
           <h1 className="text-5xl md:text-7xl font-light tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-            Intelligent Voice. <br />
-            <span className="text-[#ffa500] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Reimagined.</span>
+            AI Voice Layer that<br />
+            <span className="text-[#ffa500] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Customers Trust.</span>
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ const VoiceHero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
           >
-            Experience the future of audio interfaces with our advanced waveform visualization technology.
+            Every word visualized. Every interaction mapped. Know exactly how your voice AI performs before your customers tell you.
           </motion.p>
         </motion.div>
         
@@ -172,9 +172,14 @@ const VoiceHero = () => {
           >
             Start Pilot
           </button>
-          <button className="cursor-pointer px-10 py-4 rounded-full border-2 border-white/30 text-white font-medium hover:bg-white/10 transition-all active:scale-95 backdrop-blur-sm">
+          <a
+            href="https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer px-10 py-4 rounded-full border-2 border-white/30 text-white font-medium hover:bg-white/10 transition-all active:scale-95 backdrop-blur-sm"
+          >
             Book a Demo
-          </button>
+          </a>
         </motion.div>
         </div>
       </div>

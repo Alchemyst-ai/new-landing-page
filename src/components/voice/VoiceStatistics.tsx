@@ -5,19 +5,19 @@ import VoiceGridDivider from "./VoiceGridDivider";
 
 const stats = [
   {
-    title: "+40%",
+    title: "+17%",
+    subtitle: "Revenue boost",
+  },
+  {
+    title: "+39%",
     subtitle: "Conversion rates",
   },
   {
-    title: "+50%",
-    subtitle: "Connection rates",
+    title: "+63%",
+    subtitle: "Time Saved",
   },
   {
-    title: "+20%",
-    subtitle: "Insurance renewal rates",
-  },
-  {
-    title: "+35%",
+    title: "+33%",
     subtitle: "Customer satisfaction",
   },
 ];
@@ -34,11 +34,11 @@ const VoiceStatistics = () => {
         className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
       >
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 md:mb-4 leading-tight">
-          Real businesses.
+        Real-world Conversations
           <br />
-          Real conversations.
+          Proven Outcomes
           <br />
-          <span className="text-orange-400">Real results</span>
+          <span className="text-orange-400">Measure World Impacts</span>
         </h2>
       </motion.div>
 

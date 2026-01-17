@@ -63,10 +63,10 @@ const VoiceFeatures = () => {
           className="text-center mb-8 md:mb-12 lg:mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-2 leading-tight px-2">
-            AI Voice Bot that doesn&apos;t just sound human
+          Voice Agent that reads between the lines. 
           </h2>
           <p className="text-gradient-italic text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold px-2">
-            it works like one, and outperforms.
+          Manages escalations. Remembers context.
           </p>
         </motion.div>
 

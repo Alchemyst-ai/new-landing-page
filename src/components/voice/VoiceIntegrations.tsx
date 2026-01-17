@@ -50,10 +50,10 @@ export function VoiceIntegrations() {
           className="text-center mb-10 md:mb-16 lg:mb-20"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 leading-tight px-2">
-            Seamless integrations,
+            Frictionless Integrations,
           </h2>
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-orange-400 px-2">
-            zero disruption
+            across your entire stack
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function VoiceIntegrations() {
               <Circle ref={div3Ref}>
                 <Icons.leadsquared />
               </Circle>
-              <Circle ref={div4Ref} className="size-20 sm:size-24 md:size-28 lg:size-32 -translate-y-5 sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-8 p-3 sm:p-4 md:p-5 lg:p-6 pt-1">
+              <Circle ref={div4Ref} className="size-20 sm:size-24 md:size-28 lg:size-32 -translate-y-5 sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-6 p-3 sm:p-4 md:p-5 lg:p-6">
                  <Icons.alchemyst />
               </Circle>
               <Circle ref={div7Ref}>
@@ -190,7 +190,7 @@ const Icons = {
     <img
       src="/voice/integrations/alchemyst.png"
       alt="Alchemyst"
-      className="h-full w-full origin-center scale-110 object-contain"
+      className="h-full w-full origin-center scale-110 object-contain -translate-y-2"
       loading="lazy"
     />
   ),

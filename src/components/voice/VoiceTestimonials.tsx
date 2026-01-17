@@ -5,26 +5,30 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    quote: "Arrowhead completely surpassed anything we could have expected.",
-    details: "We achieved up to",
-    highlight1: "45% higher conversion rates",
-    midText: "and were able to reach as much as",
-    highlight2: "15x the volume",
-    endText: "of customers than previously.",
-    footer: "They were the only voice AI company I fully trusted to execute my vision.",
-    author: "VP at Toyota",
-    company: "Toyota",
+    quote: "Their voice agents are truly impressive, delivering natural, accurate, and seamless interactions that significantly enhanced our customer engagement.",
+    details: "What stood out the most was their ability to help us develop the",
+    highlight1: "voice agent in Tamil,",
+    midText: undefined,
+    highlight2: undefined,
+    endText: "tailored perfectly to our local customer base.",
+    footer: "The team is highly responsive, proactive, and extremely supportive. We strongly recommend Alchemyst AI for powerful, multilingual voice AI solutions.",
+    author: "Anirudh, Lanson Toyota",
+    company: "Lanson Toyota",
     logo: "/voice/testimonials/toyota.png",
     logoScale: 1.0,
   },
   {
-    quote: "Arrowhead is by far the #1 bot we have worked with - they competed against many other voice AI companies during our POC and we were",
-    highlight1: "highly impressed by the quality and output of the bot.",
-    footer: "Looking forward to this long-standing relationship with them.",
+    quote: "Alchemyst AI is by far the best voice AI solution we have worked with. They competed against many leading providers during our evaluation process.",
+    details: "We were highly impressed by the",
+    highlight1: "exceptional quality and natural output",
+    endText: "of their voice agents, which outperformed all competitors.",
+    footer: "Their technical expertise and commitment to excellence made them our clear choice. We look forward to this long-standing partnership.",
     author: "VP at Unacademy",
     company: "Unacademy",
     logo: "/voice/testimonials/un.png",
     logoScale: 1.25,
+    midText: undefined,
+    highlight2: undefined,
   },
 ];
 
@@ -42,10 +46,10 @@ const VoiceTestimonials = () => {
           className="text-center mb-8 md:mb-12 lg:mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 md:mb-4">
-            Loved by
+            Testimonials
           </h2>
           <p className="text-orange-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
-            teams like yours
+            from Enterprise Teams
           </p>
         </motion.div>
 

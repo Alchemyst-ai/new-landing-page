@@ -678,7 +678,7 @@ const RealCustomerCalls = () => {
         className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
       >
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-4 leading-tight">
-          <span className="text-orange-400">Hear real customer calls</span>
+          <span className="text-orange-400">Hear the difference yourself</span>
           <br />
           <span className="text-foreground">Across industries. Across languages.</span>
         </h2>
@@ -743,7 +743,7 @@ const RealCustomerCalls = () => {
                   backdropFilter: 'blur(8px)',
                 }}
               >
-                80%+ increase in conversion vs. humans
+                87%+ increase in conversion vs. humans.
               </div>
             </motion.div>
           </div>
