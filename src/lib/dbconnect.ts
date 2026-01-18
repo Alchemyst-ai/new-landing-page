@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI!;
 
 export async function dbConnect() {
+  if (!MONGODB_URI) {
+    throw new Error("Missing MongoDB connection string. Set MONGODB_URI or MONGO_URI.");
+  }
   if (mongoose.connection.readyState >= 1) {
     console.log("Using existing MongoDB connection");
     return;
