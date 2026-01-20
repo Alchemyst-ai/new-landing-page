@@ -20,9 +20,9 @@ interface MenuObject {
 }
 
 const TOPBAR_ITEMS = [
+	{ href: "/voice", label: "Voice" },
 	{ href: "/research", label: "Research" },
 	{ href: "/pricing", label: "Pricing" },
-	{ href: "/about-us", label: "About Us" },
 	{ href: "/blog", label: "Blog" },
 	{ href: "/spaces", label: "Spaces" },
 	{
