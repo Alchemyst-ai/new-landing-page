@@ -193,7 +193,7 @@ export function Header() {
 							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
 						</span>
 					</Link>
-					<Link
+					{/* <Link
 						href="/voice"
 						className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-base group"
 					>
@@ -201,7 +201,7 @@ export function Header() {
 							Voice
 							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
 						</span>
-					</Link>
+					</Link> */}
 					{/* Use Cases Dropdown */}
 					<div
 						ref={useCasesRef}
@@ -303,7 +303,7 @@ export function Header() {
 							onClick={() =>
 								setActiveMenu(
 									activeMenu === "get-started" ? null : "get-started",
-								) 
+								)
 							}
 							className="px-4 py-2 rounded-full bg-accent-foreground text-white font-semibold hover:bg-[#f98202ff] transition-colors flex items-center gap-2 cursor-pointer"
 						>
