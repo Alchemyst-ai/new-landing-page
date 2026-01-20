@@ -1,5 +1,5 @@
 import { dbConnect } from "@/lib/dbconnect";
-import StartPilot from "@/app/models/StartPilot";
+import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -25,6 +25,53 @@ const bodySchema = z.object({
   path: ["phoneNumber"],
 });
 
+const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+
+async function appendToGoogleSheet(data: {
+  email: string;
+  callingAgents: number;
+  acceptedTerms: boolean;
+  phoneCountryCode: string;
+  phoneNumber: string;
+  phoneE164: string;
+  source: string;
+  userAgent: string;
+}) {
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    },
+    scopes: SCOPES,
+  });
+
+  const sheets = google.sheets({ version: "v4", auth });
+
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const range = "Sheet1!A:H";
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range,
+    valueInputOption: "USER_ENTERED",
+    requestBody: {
+      values: [
+        [
+          data.email,
+          data.callingAgents,
+          data.acceptedTerms,
+          data.phoneCountryCode,
+          data.phoneNumber,
+          data.phoneE164,
+          data.source,
+          data.userAgent,
+          new Date().toISOString(),
+        ],
+      ],
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   await dbConnect();
 
@@ -39,22 +86,36 @@ export async function POST(request: NextRequest) {
     }
 
     const data = parsed.data;
-    const doc = await StartPilot.create({
+    const userAgent = request.headers.get("user-agent") ?? "";
+
+    // const doc = await StartPilot.create({
+    //   email: data.email,
+    //   callingAgents: data.callingAgents,
+    //   acceptedTerms: data.acceptedTerms,
+
+    //   phoneCountryCode: data.phoneCountryCode,
+    //   phoneNumber: data.phoneNumber,
+    //   phoneE164: data.phoneE164,
+
+    //   source: data.source,
+    //   meta: {
+    //     userAgent,
+    //   },
+    // });
+
+    // Write to Google Sheets
+    await appendToGoogleSheet({
       email: data.email,
       callingAgents: data.callingAgents,
       acceptedTerms: data.acceptedTerms,
-
       phoneCountryCode: data.phoneCountryCode,
       phoneNumber: data.phoneNumber,
       phoneE164: data.phoneE164,
-
       source: data.source,
-      meta: {
-        userAgent: request.headers.get("user-agent") ?? "",
-      },
+      userAgent,
     });
 
-    return NextResponse.json({ id: doc._id }, { status: 201 });
+    return NextResponse.json({ email: data.email }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json(
       { error: err?.message ?? "Internal server error" },
