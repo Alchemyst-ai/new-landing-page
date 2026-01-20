@@ -424,14 +424,14 @@ export function Header() {
 									</AnimatePresence>
 							</div>
 
-							{/* Voice Link */}
+							{/* Voice Link
 							<Link
 								href="/voice"
 								className="block py-3 text-foreground transition-colors duration-200 text-lg"
 								onClick={toggleMenu}
 							>
 								Voice
-							</Link>
+							</Link> */}
 
 							{/* Research Link */}
 							{TOPBAR_ITEMS.map((item) => (
