@@ -25,7 +25,7 @@ const testimonials = [
     footer: "Their technical expertise and commitment to excellence made them our clear choice. We look forward to this long-standing partnership.",
     author: "Arka Dutta, Co-founder and CPO",
     company: "ChainRisk",
-    logo: "/voice/testimonials/un.png",
+    logo: "/voice/testimonials/chainrisk.png",
     logoScale: 1.25,
     midText: undefined,
     highlight2: undefined,
