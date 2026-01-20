@@ -1,5 +1,5 @@
-import { dbConnect } from "@/lib/dbconnect";
-import { google } from "googleapis";
+// import { dbConnect } from "@/lib/dbconnect";
+import { appendLeadToSheet } from "@/lib/google-sheets";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -25,55 +25,9 @@ const bodySchema = z.object({
   path: ["phoneNumber"],
 });
 
-const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-
-async function appendToGoogleSheet(data: {
-  email: string;
-  callingAgents: number;
-  acceptedTerms: boolean;
-  phoneCountryCode: string;
-  phoneNumber: string;
-  phoneE164: string;
-  source: string;
-  userAgent: string;
-}) {
-  const auth = new google.auth.GoogleAuth({
-    credentials: {
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    },
-    scopes: SCOPES,
-  });
-
-  const sheets = google.sheets({ version: "v4", auth });
-
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-  const range = "Sheet1!A:H";
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range,
-    valueInputOption: "USER_ENTERED",
-    requestBody: {
-      values: [
-        [
-          data.email,
-          data.callingAgents,
-          data.acceptedTerms,
-          data.phoneCountryCode,
-          data.phoneNumber,
-          data.phoneE164,
-          data.source,
-          data.userAgent,
-          new Date().toISOString(),
-        ],
-      ],
-    },
-  });
-}
 
 export async function POST(request: NextRequest) {
-  await dbConnect();
+  // await dbConnect();
 
   try {
     const json = await request.json();
@@ -104,7 +58,7 @@ export async function POST(request: NextRequest) {
     // });
 
     // Write to Google Sheets
-    await appendToGoogleSheet({
+    await appendLeadToSheet({
       email: data.email,
       callingAgents: data.callingAgents,
       acceptedTerms: data.acceptedTerms,
@@ -123,5 +77,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-
