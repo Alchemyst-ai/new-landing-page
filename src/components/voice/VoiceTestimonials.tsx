@@ -12,7 +12,7 @@ const testimonials = [
     highlight2: undefined,
     endText: "tailored perfectly to our local customer base.",
     footer: "The team is highly responsive, proactive, and extremely supportive. We strongly recommend Alchemyst AI for powerful, multilingual voice AI solutions.",
-    author: "Anirudh, Lanson Toyota",
+    author: "Anirudh K.",
     company: "Lanson Toyota",
     logo: "/voice/testimonials/toyota.png",
     logoScale: 1.0,
@@ -23,8 +23,8 @@ const testimonials = [
     highlight1: "exceptional quality and natural output",
     endText: "of their voice agents, which outperformed all competitors.",
     footer: "Their technical expertise and commitment to excellence made them our clear choice. We look forward to this long-standing partnership.",
-    author: "VP at Unacademy",
-    company: "Unacademy",
+    author: "Arka Dutta, Co-founder and CPO",
+    company: "ChainRisk",
     logo: "/voice/testimonials/un.png",
     logoScale: 1.25,
     midText: undefined,
@@ -129,11 +129,11 @@ const VoiceTestimonials = () => {
                         width={90}
                         height={45}
                         className="opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                        style={{ 
-                          height: 'auto', 
+                        style={{
+                          height: 'auto',
                           width: 'clamp(50px, 15vw, 90px)',
                           maxHeight: '45px',
-                          transform: `scale(${testimonial.logoScale ?? 1.0})` 
+                          transform: `scale(${testimonial.logoScale ?? 1.0})`
                         }}
                       />
                     </div>
