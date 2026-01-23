@@ -41,30 +41,36 @@ export const ACTION_COSTS_IN_TOKENS = {
   },
 
   "context.upload.mb": {
-    tier1: 1 / 10,
-    tier2: 8 / 100,
-    tier3: 3 / 100,
-    b2c: 2 / 10,
+    tier1:  (1 * 10)/2, 
+    tier2:  (8 * 5)/ 20, 
+    tier3: (3 * 3) / 20, 
+    b2c: (2)/2, 
   },
   "context.search.mb": {
-    tier1: 5 / 1000,
-    tier2: 45 / 10000,
-    tier3: 3 / 1000,
-    b2c: 7 / 1000,
+    tier1:  (1 * 10)/4, 
+    tier2:  (8 * 5)/ 40, 
+    tier3: (3 * 3) / 40, 
+    b2c: (2)/4, 
   },
 
   "context.upload": {
-    tier1: (1 / 10)  * CHARS_PER_TOKEN,
-    tier2: (8 / 100)  * CHARS_PER_TOKEN,
-    tier3: (3 / 100)  * CHARS_PER_TOKEN,
-    b2c: (2 / 10)  * CHARS_PER_TOKEN,
+    tier1: ((1 * 10)/2 )  * CHARS_PER_TOKEN,
+    tier2: ((8 * 5)/ 20)  * CHARS_PER_TOKEN,
+    tier3: ((3 * 3)/ 20)  * CHARS_PER_TOKEN,
+    b2c: ((2 )/2 )  * CHARS_PER_TOKEN,
   },
   "context.search": {
-    tier1: (5 / 1000)  * CHARS_PER_TOKEN,
-    tier2: (45 / 10000)  * CHARS_PER_TOKEN,
-    tier3: (3 / 1000)  * CHARS_PER_TOKEN,
-    b2c: (7 / 1000)  * CHARS_PER_TOKEN,
+     tier1: ((1 * 10)/4 )  * CHARS_PER_TOKEN,
+    tier2: ((8 * 5)/ 40)  * CHARS_PER_TOKEN,
+    tier3: ((3 * 3)/ 40)  * CHARS_PER_TOKEN,
+    b2c: ((2 )/4 )  * CHARS_PER_TOKEN,
   },
+  // "context.search": {
+  //   tier1: ((5 * 100) / 1000)  * CHARS_PER_TOKEN,
+  //   tier2: ((45 * 50 )/ 10000)  * CHARS_PER_TOKEN,
+  //   tier3: ((3 * 30) / 1000)  * CHARS_PER_TOKEN,
+  //   b2c: ((7 * 10)/ 1000)  * CHARS_PER_TOKEN,
+  // },
 };
 
 export const ACTION_COST_LABELS = {
