@@ -75,9 +75,9 @@ const useCasesTimeline = [
 
 export function UseCases() {
   return (
-    <Section id="use-cases" title="Use Cases" className=" border-b lg:border-b-0 lg:border-r lg:border-l bg-transparent">
+    <Section id="use-cases" title="Use Cases" className="border-r border-l bg-transparent">
       <div className="w-full flex justify-center items-center">
-        <RadialOrbitalTimeline timelineData={useCasesTimeline} />
+      <RadialOrbitalTimeline timelineData={useCasesTimeline} />
       </div>
     </Section>
   );

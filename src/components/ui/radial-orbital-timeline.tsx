@@ -22,6 +22,11 @@ interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
 }
 
+// Define a set of orbits
+const ORBIT_RADII = [120, 180, 240];
+const ORBIT_ROTATION_OFFSETS = [0, 120, 240]; // Stagger starting angles for visual balance
+const GLOBAL_ROTATION_SPEED = 0.1; // Single speed for the whole system
+
 export default function RadialOrbitalTimeline({
   timelineData,
 }: RadialOrbitalTimelineProps) {
@@ -30,41 +35,49 @@ export default function RadialOrbitalTimeline({
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-rotation loop
+  // Group nodes by their assigned orbit
+  const nodesByOrbit = ORBIT_RADII.map(() => [] as { item: TimelineItem; originalIndex: number }[]);
+  timelineData.forEach((item, index) => {
+    const orbitIndex = index % ORBIT_RADII.length;
+    nodesByOrbit[orbitIndex].push({ item, originalIndex: index });
+  });
+
+  // Auto-rotation loop for the entire system
   useEffect(() => {
     let rotationTimer: NodeJS.Timeout;
-
     if (autoRotate) {
       rotationTimer = setInterval(() => {
-        setRotationAngle((prev) => {
-          const newAngle = (prev + 0.2) % 360; // Slower, smoother rotation
-          return Number(newAngle.toFixed(3));
-        });
+        setRotationAngle((prevAngle) => (prevAngle + GLOBAL_ROTATION_SPEED) % 360);
       }, 30);
     }
-
     return () => {
       if (rotationTimer) clearInterval(rotationTimer);
     };
   }, [autoRotate]);
 
-  const calculateNodePosition = (index: number, total: number) => {
-    const angle = ((index / total) * 360 + rotationAngle) % 360;
-    // slightly reduced radius to fit better
-    const radius = 180;
+  const calculateNodePosition = (
+    orbitIndex: number,
+    nodeIndexInOrbit: number,
+    nodesInOrbit: number
+  ) => {
+    const radius = ORBIT_RADII[orbitIndex];
+    const angleStep = 360 / nodesInOrbit;
+    const baseAngle = nodeIndexInOrbit * angleStep;
+    const orbitOffset = ORBIT_ROTATION_OFFSETS[orbitIndex % ORBIT_ROTATION_OFFSETS.length];
+    
+    const angle = (baseAngle + orbitOffset + rotationAngle) % 360;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian);
     const y = radius * Math.sin(radian);
 
-    const zIndex = Math.round(100 + 50 * Math.cos(radian));
-    // smoother opacity curve
+    const zIndex = Math.round(100 + radius / 5 + 20 * Math.sin(radian));
     const opacity = Math.max(
       0.5,
       Math.min(1, 0.5 + 0.5 * ((1 + Math.sin(radian)) / 2))
     );
 
-    return { x, y, angle, zIndex, opacity };
+    return { x, y, angle, zIndex, opacity, radius };
   };
 
   const getStatusStyles = (status: TimelineItem["status"]): string => {
@@ -72,8 +85,8 @@ export default function RadialOrbitalTimeline({
       case "completed":
         // Using specific orange shade #f59025
         return "bg-[#f59025]/20 text-[#f59025] border-[#f59025]/50";
-      case "in-progress":
-        return "bg-blue-500/20 text-blue-200 border-blue-500/50";
+      // case "in-progress":
+      //   return "bg-yellow-500/20 text-yellow-200 border-yellow-500/50";
       default:
         return "bg-gray-500/20 text-gray-300 border-gray-500/50";
     }
@@ -81,7 +94,11 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full h-[500px] flex flex-col items-center justify-center relative overflow-visible"
+      className="w-full h-[600px] flex flex-col items-center justify-center relative overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(circle at center, #101010 0%, #15151500 70%)",
+      }}
       ref={containerRef}
     >
       <div className="relative w-full max-w-2xl h-full flex items-center justify-center perspective-1000">
@@ -89,90 +106,116 @@ export default function RadialOrbitalTimeline({
         {/* Central Sun/Core */}
         <div className="absolute z-10 flex items-center justify-center">
           <div className="absolute w-24 h-24 rounded-full bg-[#f59025]/20 blur-xl animate-pulse"></div>
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f59025] to-[#d06010] shadow-[0_0_30px_rgba(245,144,37,0.6)] flex items-center justify-center z-20 relative">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f59025] to-[#a34603] shadow-[0_0_30px_rgba(245,144,37,0.6)] flex items-center justify-center z-20 relative">
              <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-20 duration-1000"></div>
           </div>
         </div>
-
         {/* Orbit Rings */}
-        <div className="absolute w-[360px] h-[360px] rounded-full border border-[#f59025]/10 shadow-[0_0_40px_rgba(245,144,37,0.1)_inset]"></div>
-        <div className="absolute w-[500px] h-[500px] rounded-full border border-white/5 opacity-50"></div>
+         {ORBIT_RADII.map((radius, i) => (
+          <div
+            key={`orbit-${i}`}
+            className="absolute rounded-full border border-[#f5a44e]/20"
+            style={{
+              width: `${radius * 2}px`,
+              height: `${radius * 2}px`,
+            }}
+          ></div>
+        ))}
+        <div className="absolute w-[560px] h-[560px] rounded-full border border-white/5 opacity-50"></div>
 
         {/* Orbiting Nodes */}
         <div className="absolute inset-0 flex items-center justify-center">
-            {timelineData.map((item, index) => {
-            const position = calculateNodePosition(index, timelineData.length);
-            const isActive = activeNodeId === item.id;
-            const Icon = item.icon;
+          {nodesByOrbit.map((orbitNodes, orbitIndex) =>
+            orbitNodes.map(({ item, originalIndex }, nodeIndexInOrbit) => {
+              const position = calculateNodePosition(
+                orbitIndex,
+                nodeIndexInOrbit,
+                orbitNodes.length
+              );
+              const isActive = activeNodeId === item.id;
+              const Icon = item.icon;
 
-            const nodeStyle = {
-              transform: `translate(${position.x}px, ${position.y}px)`,
-              zIndex: isActive ? 50 : 20,
-              opacity: isActive ? 1 : position.opacity,
-            };
+              const nodeStyle = {
+                transform: `translate(${position.x}px, ${position.y}px)`,
+                zIndex: isActive ? 50 : 30,
+                opacity: isActive ? 1 : 0.8,
+              };
+              // Determine card position based on node angle.
+              // Angles 90-270 are the left half, others are the right half.
+               const isLeftSide = position.angle > 90 && position.angle < 270;
+              const cardPositionClasses = isLeftSide
+                ?  "right-16 origin-right"  // Opens to the right of the node
+                :  "left-16 origin-left";      
 
-            return (
-              <div
-                key={item.id}
-                className="absolute flex items-center justify-center transition-all duration-300 ease-out"
-                style={nodeStyle}
-                onMouseEnter={() => {
-                  setActiveNodeId(item.id);
-                  setAutoRotate(false);
-                }}
-                onMouseLeave={() => {
-                  setActiveNodeId(null);
-                  setAutoRotate(true);
-                }}
-              >
-                {/* Connection Line to Center (Optional visual aid) */}
-                <div 
-                   className={cn(
-                       "absolute w-[180px] h-[1px] bg-gradient-to-r from-transparent to-[#f59025]/30 origin-right right-1/2 top-1/2 -z-10 transition-opacity duration-300",
-                       isActive ? "opacity-100" : "opacity-0"
-                   )}
-                   style={{ 
-                       transform: `rotate(${Math.atan2(position.y, position.x) * 180 / Math.PI}deg) translateX(-50%) width` 
-                   }} 
-                />
-
-                {/* Node Circle */}
+              return (
                 <div
-                  className={cn(
-                    "relative w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-sm",
-                    isActive 
-                      ? "bg-[#151515] border-[#f59025] scale-110 shadow-[0_0_20px_rgba(245,144,37,0.5)]" 
-                      : "bg-[#151515]/80 border-white/20 hover:border-[#f59025]/50"
-                  )}
+                  key={item.id}
+                  className="absolute flex items-center justify-center transition-all duration-300 ease-out"
+                  style={nodeStyle}
+                  onMouseEnter={() => {
+                    setActiveNodeId(item.id);
+                    setAutoRotate(false);
+                  }}
+                  onMouseLeave={() => {
+                    setActiveNodeId(null);
+                    setAutoRotate(true);
+                  }}
                 >
-                  <Icon size={18} className={cn("transition-colors", isActive ? "text-[#f59025]" : "text-white/70")} />
-                  
-                  {/* Label under node */}
-                  {!isActive && (
-                    <div className="absolute top-14 text-[10px] font-medium uppercase tracking-widest text-white/50 whitespace-nowrap pointer-events-none">
-                        {item.title}
-                    </div>
-                  )}
-                </div>
-
-                {/* Hover Card */}
-                <div
+                  {/* Connection Line to Center (Optional visual aid) */}
+                  <div
                     className={cn(
-                        "absolute top-16 left-1/2 -translate-x-1/2 w-72 transition-all duration-300 origin-top transform",
-                        isActive 
-                            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto z-100" 
-                            : "opacity-0 scale-95 -translate-y-4 pointer-events-none"
+                      "absolute h-[1px] bg-gradient-to-r from-transparent to-[#f59025]/30 origin-right right-1/2 top-1/2 -z-10 transition-opacity duration-300",
+                      isActive ? "opacity-100" : "opacity-0"
                     )}
-                >
+                    style={{
+                      width: `${position.radius}px`,
+                      transform: `rotate(${position.angle}deg) translateX(-50%)`,
+                    }}
+                  />
+
+                  {/* Node Circle */}
+                  <div
+                    className={cn(
+                      "relative w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-sm",
+                      isActive 
+                        ? "bg-[#151515] border-[#f59025] scale-110 shadow-[0_0_20px_rgba(245,144,37,0.5)]" 
+                        : "bg-[#151515]/80 border-white/50 hover:border-[#f59025]/50"
+                    )}
+                  >
+                    <Icon size={18} className={cn("transition-colors", isActive ? "text-[#f59025]" : "text-white/80")} />
+                    
+                    {/* Label under node */}
+                    {!isActive && (
+                      <div className="absolute w-20 text-center top-14 text-[10px] font-medium uppercase tracking-widest text-white/90 pointer-events-none cursor-pointer leading-tight">
+                        {item.title}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Hover Card */}
+                  <div
+                    className={cn(
+                      "absolute top-1/2 -translate-y-1/2 w-72 transition-all duration-300 transform",
+                      cardPositionClasses, // Apply dynamic position classes
+                      isActive
+                        ? "opacity-100 scale-100 translate-x-0 pointer-events-auto" 
+                        : "opacity-0 scale-95 pointer-events-none",
+                      // Adjust starting position for transition based on direction
+                      isLeftSide ? (isActive ? "translate-x-0" : "-translate-x-4") :  (isActive ? "translate-x-0" : "translate-x-4")
+                    )}
+                  >
                     {/* Updated Card colors: bg-[#1a1a1a] ensures it stands out against #151515 body */}
                     <Card className="bg-[#1a1a1a] backdrop-blur-xl border-[#f59025]/30 shadow-2xl">
-                        {/* Little arrow pointing up */}
-                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#f59025]/30 blur-[2px] rotate-45"></div>
+                        {/* Little arrow pointing towards the node */}
+                        <div className={cn(
+                            "absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-[#f59025]/30 blur-[2px] rotate-45",
+                             isLeftSide ? "left-0 -ml-2" : "right-0 -mr-2"
+                        )}></div>
                         
                         <CardHeader className="pb-2 pt-4">
                             <div className="flex justify-between items-start">
                                 <Badge variant="outline" className={cn("text-[10px] border-none px-2", getStatusStyles(item.status))}>
-                                    {item.status.toUpperCase()}
+                                    {item.category.toUpperCase()}
                                 </Badge>
                                 <span className="text-[10px] text-muted-foreground font-mono">{item.date}</span>
                             </div>
@@ -183,7 +226,7 @@ export default function RadialOrbitalTimeline({
                                 {item.content}
                             </p>
                             
-                            <div className="space-y-1.5 pt-2 border-t border-white/10">
+                            {/* <div className="space-y-1.5 pt-2 border-t border-white/10">
                                 <div className="flex justify-between text-[10px] uppercase tracking-wider text-muted-foreground">
                                     <span className="flex items-center gap-1"><Zap size={10} className="text-[#f59025]"/> Energy</span>
                                     <span>{item.energy}%</span>
@@ -194,14 +237,15 @@ export default function RadialOrbitalTimeline({
                                         style={{ width: `${item.energy}%`}}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </CardContent>
                     </Card>
-                </div>
+                  </div>
 
               </div>
-            );
-          })}
+            )
+          })
+        )}
         </div>
       </div>
     </div>

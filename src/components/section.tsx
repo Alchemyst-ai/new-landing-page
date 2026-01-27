@@ -37,7 +37,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
             <div
               className={cn(
                 alignmentClass,
-                "relative mx-auto border-x border-t overflow-hidden p-2 py-8 md:p-12"
+                "relative mx-auto border-x border-b border-t overflow-hidden p-2 py-8 md:p-12 z-40"
               )}
             >
               {title && (
