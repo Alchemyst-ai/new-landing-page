@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Stars } from "lucide-react";
 import Link from "next/link";
 import { lazy, Suspense, useEffect, useState } from "react";
 
@@ -130,7 +131,8 @@ function HeroCTA() {
 				>
 					<Icons.logo className="h-6 w-6" />
 					{/* {siteConfig.hero.cta} */}
-					Try in Playground
+					Try Alchemyst{" "}
+					<Stars className="w-4 h-4 mt-1 group-hover:text-accent-foreground" />
 				</Link>
 			</motion.div>
 			<motion.p
