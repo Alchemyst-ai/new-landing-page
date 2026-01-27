@@ -31,6 +31,7 @@ const TOPBAR_ITEMS = [
 		target: "_blank",
 		rel: "noopener noreferrer",
 	},
+	{ href: "/about-us", label: "About Us" },
 ];
 export function Header() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
