@@ -23,8 +23,9 @@ export default function Home() {
       <Logos />
       <Examples />
       <UseCases />
-      <Features />
       <Statistics />
+      <Features />
+      
       {/* <Testimonials /> */}
       {/* <CalBooking /> */}
       {/* <Pricing /> */}
