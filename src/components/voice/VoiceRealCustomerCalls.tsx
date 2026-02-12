@@ -363,7 +363,6 @@ const gradientAngle = useMemo(() => {
             />
           )
         ))}
-
         {/* Active ring with gradient segments */}
        <g>
           {gradientRingSegments.map((segment, i) => {

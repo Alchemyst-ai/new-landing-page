@@ -39,7 +39,7 @@ const VoiceTrusted = () => {
     }, []);
 
     return (
-        <Section className="relative pb-12" style={{ background: '#0d0d0f' }}>
+        <section className="relative pb-12" style={{ background: '#0d0d0f' }}>
             {/* Logo grid */}
             <div>
                 <div className="border-t border-gray-800">
@@ -129,7 +129,7 @@ const VoiceTrusted = () => {
             </div>
 
             <VoiceGridDivider />
-        </Section>
+        </section>
     );
 };
 
