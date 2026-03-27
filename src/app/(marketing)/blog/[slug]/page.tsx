@@ -257,7 +257,7 @@ export default async function Page(props: {
                 >
                   <div className="aspect-[16/9] relative mb-4 rounded-lg overflow-hidden">
                     <Image
-                      src={post.image || "/demo.png"}
+                      src={post.image || "/banner.jpeg"}
                       alt={post.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
