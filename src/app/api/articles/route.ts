@@ -7,7 +7,7 @@ async function getArticles() {
     "";
   const baseUrl = rawBaseUrl.replace(/\/+$/, "");
   const token = process.env.STRAPI_API_TOKEN || "";
-  const url = `${baseUrl}/api/articles?populate=*`;
+  const url = `${baseUrl}/api/articles?populate=*&pagination[pageSize]=100`;
 
   const headers: Record<string, string> = {};
   if (token) headers["Authorization"] = `Bearer ${token}`;
