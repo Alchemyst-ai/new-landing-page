@@ -54,7 +54,10 @@ export async function generateMetadata(props: {
   const title = item.title || "Article";
   const publishedTime = item.publishedAt || new Date().toISOString();
   const description = item.description || "";
-  const image = `${siteConfig.url}/og?title=${encodeURIComponent(title)}`;
+  const fallbackImage = `${siteConfig.url}/og?title=${encodeURIComponent(title)}`;
+  const image = item.image
+    ? (item.image.startsWith("http") ? item.image : `${siteConfig.url}${item.image}`)
+    : fallbackImage;
 
 
   return {
@@ -119,7 +122,9 @@ export default async function Page(props: {
             datePublished: item.publishedAt,
             dateModified: item.publishedAt,
             description: item.description,
-            image: `${siteConfig.url}/og?title=${encodeURIComponent(item.title)}`,
+            image: item.image
+              ? (item.image.startsWith("http") ? item.image : `${siteConfig.url}${item.image}`)
+              : `${siteConfig.url}/og?title=${encodeURIComponent(item.title)}`,
             url: `${siteConfig.url}/blog/${item.slug}`,
             author: {
               "@type": "Person",
