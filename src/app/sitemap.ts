@@ -103,21 +103,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticPages = [...staticPages, ...docsUrls];
   }
 
-  // Fetch blog posts from your API
+  // Fetch blog posts directly from Strapi (looping all pages)
   let blogPosts: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
-    if (res.ok) {
-      const json = await res.json();
-      const articles = json?.data || [];
+    const rawBase = process.env.STRAPI_API_URL || "";
+    const strapiBase = rawBase.replace(/\/+$/, "");
+    const token = process.env.STRAPI_API_TOKEN || "";
+    const strapiHeaders: Record<string, string> = {};
+    if (token) strapiHeaders["Authorization"] = `Bearer ${token}`;
 
-      blogPosts = articles.map((article: any) => ({
-        url: `${baseUrl}/blog/${article.slug}`,
-        lastModified: new Date(article.updatedAt || article.publishedAt || new Date()),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      }));
+    let strapiPage = 1;
+    const allSlugs: { slug: string; updatedAt: string; publishedAt: string }[] = [];
+
+    while (true) {
+      const qs = new URLSearchParams();
+      qs.set("fields[0]", "slug");
+      qs.set("fields[1]", "updatedAt");
+      qs.set("fields[2]", "publishedAt");
+      qs.set("pagination[page]", String(strapiPage));
+      qs.set("pagination[pageSize]", "100");
+      qs.set("sort", "publishedAt:desc");
+
+      const res = await fetch(`${strapiBase}/api/articles?${qs}`, { headers: strapiHeaders, next: { revalidate: 1800 } });
+      if (!res.ok) break;
+      const json = await res.json();
+      const items = Array.isArray(json?.data) ? json.data : [];
+      allSlugs.push(...items.map((a: any) => ({ slug: a.slug, updatedAt: a.updatedAt, publishedAt: a.publishedAt })));
+      const meta = json?.meta?.pagination;
+      if (!meta || strapiPage >= meta.pageCount) break;
+      strapiPage++;
     }
+
+    blogPosts = allSlugs.map((a) => ({
+      url: `${baseUrl}/blog/${a.slug}`,
+      lastModified: new Date(a.updatedAt || a.publishedAt || new Date()),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
   } catch (error) {
     console.error("Failed to fetch blog posts for sitemap:", error);
   }

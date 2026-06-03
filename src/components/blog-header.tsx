@@ -81,11 +81,11 @@ export default function BlogHeader({
               height={24}
               className="rounded-full"
             />
-            <span>Written by <span className="text-foreground font-medium">{author.name}</span></span>
+            <span>Written by <Link href={`/blog?author=${encodeURIComponent(author.name)}`} className="text-foreground font-medium hover:underline">{author.name}</Link></span>
           </div>
 
           {/* Reviewed by */}
-          {reviewer && (
+          {reviewer && reviewer.name && (
             <div className="flex items-center gap-2">
               <Image
                 src={reviewer.image}
@@ -94,7 +94,7 @@ export default function BlogHeader({
                 height={24}
                 className="rounded-full"
               />
-              <span>Reviewed by <span className="text-foreground font-medium">{reviewer.name}</span></span>
+              <span>Reviewed by <Link href={`/blog?author=${encodeURIComponent(reviewer.name)}`} className="text-foreground font-medium hover:underline">{reviewer.name}</Link></span>
             </div>
           )}
 

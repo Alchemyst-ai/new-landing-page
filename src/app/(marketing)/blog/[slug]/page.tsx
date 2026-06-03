@@ -5,7 +5,6 @@ import SimpleCommentCount from "@/components/simple-comment-count";
 import SummarySection from "@/components/summary-section";
 import TableOfContentsClient from "@/components/table-of-contents-client";
 import { siteConfig } from "@/lib/config";
-import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -97,8 +96,6 @@ export default async function Page(props: {
   if (!item) {
     notFound();
   }
-  const updatedOn = item.updatedAt || item.publishedAt;
-
   // Fetch recent articles from Strapi and exclude current one
   const listRes = await fetch(`${baseUrl}/api/articles`, { next: { revalidate: 1800 } });
   const listJson = await listRes.json();
@@ -164,20 +161,6 @@ export default async function Page(props: {
               readTime={item.readTime}
             />
 
-            <div className="mb-4 text-sm text-muted-foreground px-4 sm:px-6 lg:px-8">
-              Updated on {formatDate(updatedOn)}
-            </div>
-
-            {false && (
-              <div className="mb-4 text-sm text-muted-foreground ">
-                {0} min read
-                {false && (
-                  <span className="ml-2">
-                    • Last updated: {new Date().toLocaleDateString()}
-                  </span>
-                )}
-              </div>
-            )}
 
             <SummarySection summary={item.about || ""} />
 

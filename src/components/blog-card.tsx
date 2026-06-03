@@ -8,6 +8,9 @@ export type CardPost = Pick<
   "title" | "slug" | "summary" | "publishedAt" | "image" | "readTime"
 > & {
   description?: string;
+  category?: { name: string; slug: string };
+  author?: { name: string; email: string } | null;
+  reviewer?: { name: string; email: string } | null;
 };
 
 export default function BlogCard({
