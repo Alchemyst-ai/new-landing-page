@@ -7,7 +7,6 @@ import { CommentCount } from "disqus-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function BlogCardWithComments({
   data,
@@ -28,7 +27,6 @@ export default function BlogCardWithComments({
   };
   const summary = (data as any).summary ?? (data as any).description ?? "";
   const [canRenderComments, setCanRenderComments] = useState(false);
-  const router = useRouter();
   useEffect(() => {
     setCanRenderComments(true);
   }, []);
@@ -102,10 +100,7 @@ export default function BlogCardWithComments({
 
         {data.author?.name && (
           <div className="mt-3 flex flex-wrap gap-2">
-            <span
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/blog?author=${encodeURIComponent(data.author!.name)}`); }}
-              className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer"
-            >
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground">
               {data.author.name}
             </span>
           </div>
