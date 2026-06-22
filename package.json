@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3000",
+    "dev": "next dev",
     "build": "NODE_ENV=production next build",
-    "start": "next start --port 3000",
-    "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -30,11 +29,5 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "pnpm": {},
-  "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=9.0.0"
   }
 }

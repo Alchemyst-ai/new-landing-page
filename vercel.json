@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install -g pnpm@10.11.0 && pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm build",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next"
 }
