@@ -2,6 +2,7 @@ import ConditionalFooter from "@/components/conditional-footer";
 import { CalBooking } from "@/components/sections/cal-booking";
 import { CalBookingVoice } from "@/components/sections/cal-booking-voice";
 import { Header } from "@/components/sections/header";
+import { StructuredData } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
 import TripettoPopup from "@/components/TripettoPopup";
 import { siteConfig } from "@/lib/config";
@@ -38,6 +39,7 @@ export default function RootLayout({
 			className={`${GeistSans.variable} ${GeistMono.variable}`}
 		>
 			<GoogleTagManager gtmId="GTM-558WGZR4" />
+			<StructuredData />
 			<Script
 				id="apollo-tracker"
 				strategy="afterInteractive"
