@@ -8,7 +8,8 @@ import {
   type StrapiBlogPost,
 } from "@/lib/strapi";
 import type { Metadata } from "next";
-import { default as Image, default as Link } from "next/link";
+import Image from 'next/image';
+import Link from "next/link";
 
 export const revalidate = 300;
 

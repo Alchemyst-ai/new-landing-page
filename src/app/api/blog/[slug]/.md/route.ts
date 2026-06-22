@@ -2,10 +2,10 @@ import { blogPostFullText, fetchBlogPostBySlug } from "@/lib/strapi";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { slug: string } }
+  _req: NextRequest,
+  { params }: { params: any }
 ) {
-  const {slug} = await params;
+  const { slug } = params;
   // You can now use the slug variable.
     console.log("Slug = ", slug);
     const post = await fetchBlogPostBySlug(slug);
