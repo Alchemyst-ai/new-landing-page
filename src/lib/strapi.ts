@@ -1,3 +1,6 @@
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+import TurnDownService from "turndown";
+
 /**
  * Strapi CMS client for Alchemyst AI blog
  *
@@ -85,6 +88,8 @@ interface StrapiListResponse {
 const POPULATE =
   "populate[0]=author&populate[1]=reviewer&populate[2]=category&populate[3]=cover";
 
+export const turnDownService = new TurnDownService();
+
 function buildHeaders(): HeadersInit {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (STRAPI_API_TOKEN) headers["Authorization"] = `Bearer ${STRAPI_API_TOKEN}`;
@@ -116,9 +121,15 @@ export function blogPostDescription(post: StrapiBlogPost): string {
   return "Read on the Alchemyst AI blog.";
 }
 
-/** Full plain text (HTML stripped) for llms-full.txt */
+/** Full markdown text converted from the Strapi HTML body */
 export function blogPostFullText(post: StrapiBlogPost): string {
-  if (post.test) return stripHtml(post.test);
+  if (post.test) {
+    // return turnDownService.turndown(post.test);
+    // console.log(post.test.toString());
+    const markdown = NodeHtmlMarkdown.translate(post.test.replace("<br>", "<br><br>"));
+    console.log(markdown);
+    return markdown.replace("#\n", "# ");
+  }
   if (post.description) return post.description;
   return "";
 }

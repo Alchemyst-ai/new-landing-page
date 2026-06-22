@@ -9,15 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/turndown": "^5.0.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.21.0",
     "next": "^16.2.9",
     "next-llms-txt": "^1.0.2",
+    "node-html-markdown": "^2.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "turndown": "^7.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

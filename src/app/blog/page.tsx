@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import {
+  blogPostRawHtml,
+  estimateReadTime,
   fetchAllBlogPosts,
   formatDate,
-  estimateReadTime,
-  blogPostRawHtml,
   type StrapiBlogPost,
 } from "@/lib/strapi";
+import type { Metadata } from "next";
+import { default as Image, default as Link } from "next/link";
 
 export const revalidate = 300;
 

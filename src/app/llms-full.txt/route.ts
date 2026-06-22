@@ -12,15 +12,15 @@
  * Revalidates every 5 minutes via ISR.
  */
 
-import { NextResponse } from "next/server";
-import { SITE_TITLE, BASE_URL, FULL_STATIC_CONTENT } from "@/lib/staticContent";
+import { BASE_URL, FULL_STATIC_CONTENT, SITE_TITLE } from "@/lib/staticContent";
 import {
-  fetchAllBlogPosts,
-  blogPostUrl,
   blogPostDescription,
   blogPostFullText,
+  blogPostUrl,
+  fetchAllBlogPosts,
   formatDate,
 } from "@/lib/strapi";
+import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes
@@ -49,20 +49,20 @@ export async function GET() {
   lines.push("");
 
   // ── Section 2: Dynamic Strapi blog posts ────────────────────────────────
-  lines.push("## SECTION 2 — Blog Posts (Dynamic, from Strapi CMS)");
+  lines.push("# SECTION 2 — The Alchemyst Blog");
   lines.push("");
 
   if (posts.length === 0) {
     lines.push(
-      "> No blog posts available at this time. " +
-        "Check that STRAPI_API_URL and STRAPI_API_TOKEN are configured correctly."
+      "> No blog posts available at this time. "
+        // + "Check that STRAPI_API_URL and STRAPI_API_TOKEN are configured correctly."
     );
   } else {
-    lines.push(`${posts.length} posts retrieved from Strapi CMS.`);
-    lines.push("");
+    // lines.push(`${posts.length} posts retrieved from Strapi CMS.`);
+    // lines.push("");
 
     for (const post of posts) {
-      lines.push(`### ${post.title}`);
+      lines.push(`# ${post.title}`);
       lines.push("");
       lines.push(`- **URL:** ${blogPostUrl(post)}`);
       lines.push(`- **Slug:** ${post.slug ?? "—"}`);
@@ -88,7 +88,7 @@ export async function GET() {
         lines.push("");
       }
 
-      lines.push("---");
+      lines.push("===");
       lines.push("");
     }
   }

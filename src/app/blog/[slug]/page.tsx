@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import {
-  fetchBlogPostBySlug,
-  fetchAllBlogSlugs,
   blogPostRawHtml,
   estimateReadTime,
-  formatDate,
+  fetchAllBlogSlugs,
+  fetchBlogPostBySlug,
+  formatDate
 } from "@/lib/strapi";
+import type { Metadata } from "next";
+import Image from 'next/image';
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const revalidate = 300;
 
@@ -53,12 +53,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
+
   const post = await fetchBlogPostBySlug(slug);
   if (!post) notFound();
 
   const html = blogPostRawHtml(post);
   const readTime = html ? estimateReadTime(html) : 3;
   const coverUrl = post.cover?.formats?.large?.url ?? post.cover?.url;
+
+
 
   return (
     <>
