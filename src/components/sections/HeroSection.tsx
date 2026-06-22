@@ -128,6 +128,25 @@ export default function HeroSection() {
           <span style={{ color: "#CBD5E1", fontWeight: 600 }}>Alchemyst fixes that.</span>
         </p>
 
+        {/* Answer-first lead (AEO/GEO): direct, standalone definition for AI answer engines */}
+        <p
+          className="animate-fade-in-up delay-200"
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontWeight: 400,
+            fontSize: "clamp(0.95rem, 1.5vw, 1.0625rem)",
+            lineHeight: 1.7,
+            color: "#64748B",
+            maxWidth: "620px",
+            margin: "20px auto 0",
+          }}
+        >
+          Alchemyst AI is a context layer for AI agents that provides persistent memory and semantic
+          retrieval through a single API — keeping an agent&apos;s knowledge current so it never works
+          on stale knowledge. It delivers sub-50ms retrieval with a 99.9% uptime SLA and zero
+          infrastructure to manage.
+        </p>
+
         {/* CTAs */}
         <div
           className="animate-fade-in-up delay-300"

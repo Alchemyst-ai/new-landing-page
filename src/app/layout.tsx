@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const BASE_URL = "https://getalchemystai.com";
@@ -94,6 +95,7 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap"
           rel="stylesheet"
         />
+        <StructuredData />
       </head>
       <body>{children}</body>
     </html>
