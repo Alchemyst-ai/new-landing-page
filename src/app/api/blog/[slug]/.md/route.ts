@@ -3,22 +3,33 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: any }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = params;
-  // You can now use the slug variable.
-    console.log("Slug = ", slug);
-    const post = await fetchBlogPostBySlug(slug);
-    if (!post) {
-      return new NextResponse("Not found", { status: 404 });
-    }
+  const { slug } = await params;
+  const post = await fetchBlogPostBySlug(slug);
+  if (!post) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
-    const postContent = blogPostFullText(post);
+  const postContent = blogPostFullText(post);
+  const { author, about, title, cover,publishedAt} = post;
 
-    return new NextResponse(postContent, {
-      headers: {
-        "Content-type": "text/markdown"
-      },
-      status: 200
-    });
+  const metadata = `---
+title: ${title}
+description: ${about}
+author: ${author?.name}
+cover: ${cover?.url}
+published_at: ${publishedAt}
+---
+
+# ${title}
+
+`
+
+  return new NextResponse(metadata + postContent.trim(), {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+    },
+    status: 200,
+  });
 }

@@ -19,12 +19,21 @@ function hostnameFromUrl(value: string | undefined): string | null {
   }
 }
 
+function mediaHostnameFor(hostname: string | null): string | null {
+  if (!hostname || !hostname.endsWith(".strapiapp.com")) return null;
+  if (hostname.endsWith(".media.strapiapp.com")) return hostname;
+  return hostname.replace(".strapiapp.com", ".media.strapiapp.com");
+}
+
+const strapiHostname = hostnameFromUrl(strapiBaseUrl);
+
 const imageHostnames = Array.from(
   new Set(
     [
       "cms.getalchemystai.com",
       "getalchemystai.com",
-      hostnameFromUrl(strapiBaseUrl),
+      strapiHostname,
+      mediaHostnameFor(strapiHostname),
     ].filter((hostname): hostname is string => Boolean(hostname))
   )
 );
