@@ -1,6 +1,7 @@
 import CTASection from "@/components/sections/CTASection";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import TableOfContents from "@/components/TableOfContents";
 import {
   blogPostCoverUrl,
@@ -163,6 +164,16 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* ── Main column ── */}
           <article style={{ minWidth: 0 }}>
+            {/* Breadcrumb trail + BreadcrumbList schema */}
+            <Breadcrumbs
+              currentPath={`/blog/${post.slug}`}
+              items={[
+                { name: "Blog", path: "/blog" },
+                ...(category ? [{ name: category, path: categoryHref(post) }] : []),
+                { name: post.title },
+              ]}
+            />
+
             {/* Title */}
             <h1
               style={{

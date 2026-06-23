@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
 const SANS = "'Satoshi', sans-serif";
@@ -16,7 +17,15 @@ export default function Mem0VsZepVsLettaPage() {
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
-          
+
+          <Breadcrumbs
+            currentPath="/blog/mem0-vs-zep-vs-letta"
+            items={[
+              { name: "Blog", path: "/blog" },
+              { name: "Mem0 vs Zep vs Letta" },
+            ]}
+          />
+
           <h1
             style={{
               fontFamily: SANS,

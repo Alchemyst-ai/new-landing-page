@@ -63,7 +63,7 @@ export default function AlchemystFixesSection() {
       <div className="container">
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          <p className="eyebrow" style={{ marginBottom: "16px" }}>What Alchemyst Does</p>
+          <p className="eyebrow" style={{ marginBottom: "16px" }}>What does Alchemyst do?</p>
           <h2
             id="fixes-heading"
             style={{
@@ -267,7 +267,7 @@ export default function AlchemystFixesSection() {
                 marginBottom: "12px",
               }}
             >
-              You can&apos;t debug what you can&apos;t see — Context Tracing with OpenAI Euphony
+              How do you debug what an agent can&apos;t see? Context Tracing with OpenAI Euphony
             </h3>
             <p
               style={{
