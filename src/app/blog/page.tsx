@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import {
   blogPostRawHtml,
   estimateReadTime,
@@ -129,6 +130,11 @@ export default async function BlogPage() {
           }}
         >
           <div className="container" style={{ maxWidth: "720px" }}>
+            <Breadcrumbs
+              currentPath="/blog"
+              items={[{ name: "Blog" }]}
+              style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}
+            />
             <p
               style={{
                 fontFamily: "'Satoshi', sans-serif",

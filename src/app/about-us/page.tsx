@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
 const SANS = "'Satoshi', sans-serif";
@@ -16,7 +17,9 @@ export default function AboutPage() {
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
-          
+
+          <Breadcrumbs currentPath="/about-us" items={[{ name: "About Us" }]} />
+
           {/* AEO: Answer-first lead */}
           <h1
             style={{

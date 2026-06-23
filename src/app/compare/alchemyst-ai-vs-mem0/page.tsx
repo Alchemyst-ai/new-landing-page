@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
 const SANS = "'Satoshi', sans-serif";
@@ -16,7 +17,15 @@ export default function CompareMem0Page() {
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>
-          
+
+          <Breadcrumbs
+            currentPath="/compare/alchemyst-ai-vs-mem0"
+            items={[
+              { name: "Compare", path: "/blog" },
+              { name: "Alchemyst AI vs Mem0" },
+            ]}
+          />
+
           <h1
             style={{
               fontFamily: SANS,
@@ -112,7 +121,7 @@ export default function CompareMem0Page() {
             </p>
 
             <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              The Verdict
+              Which should you choose? The verdict
             </h2>
             <p style={{ marginBottom: "24px" }}>
               If you are building a personalized AI companion, Mem0's semantic memory approach is a strong fit. But if you are building business-critical automation where 95% of generative AI efforts fail due to context rot, <strong>Alchemyst AI provides the tractable, verifiable context layer</strong> required to keep your agents accurate in production.

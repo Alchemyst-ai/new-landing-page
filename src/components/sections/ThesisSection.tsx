@@ -46,7 +46,7 @@ export default function ThesisSection() {
       />
       <div className="container relative">
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          <p className="eyebrow" style={{ marginBottom: "16px" }}>The Context Thesis</p>
+          <p className="eyebrow" style={{ marginBottom: "16px" }}>Why build a context layer?</p>
           <h2
             id="thesis-heading"
             style={{

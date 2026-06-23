@@ -53,7 +53,7 @@ export default function SemanticDriftSection() {
         {/* Section header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
           <p className="eyebrow" style={{ color: "#EF4444", borderColor: "rgba(239,68,68,0.25)", marginBottom: "16px" }}>
-            The Silent Problem
+            Why does enterprise AI fail?
           </p>
           <h2
             id="drift-heading"

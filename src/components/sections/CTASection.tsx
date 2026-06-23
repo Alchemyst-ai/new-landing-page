@@ -36,7 +36,7 @@ export default function CTASection() {
         }}
       />
       <div className="container relative" style={{ textAlign: "center" }}>
-        <p className="eyebrow" style={{ marginBottom: "16px" }}>Start Building Today</p>
+        <p className="eyebrow" style={{ marginBottom: "16px" }}>How do you get started?</p>
         <h2
           id="cta-heading"
           style={{
