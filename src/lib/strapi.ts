@@ -41,6 +41,10 @@ export interface StrapiBlogPost {
   slug: string;
   /** Full HTML body — the primary content field */
   test?: string;
+  /** Flat cover image URL returned by the production API (preferred over `cover`). */
+  image?: string;
+  /** Estimated read time in minutes, when provided by the CMS. */
+  readTime?: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -70,10 +74,10 @@ export interface StrapiBlogPost {
     email: string;
   } | null;
   category?: {
-    id: number;
-    documentId: string;
+    id?: number;
+    documentId?: string;
     name: string;
-    slug: string;
+    slug?: string;
     description?: string | null;
   };
 }
@@ -89,6 +93,16 @@ const POPULATE =
   "populate[0]=author&populate[1]=reviewer&populate[2]=category&populate[3]=cover";
 
 export const turnDownService = new TurnDownService();
+
+/** Resolve the best available cover image URL (flat `image` first, then `cover`). */
+export function blogPostCoverUrl(post: StrapiBlogPost): string | undefined {
+  return (
+    post.image ||
+    post.cover?.formats?.large?.url ||
+    post.cover?.url ||
+    undefined
+  );
+}
 
 function buildHeaders(): HeadersInit {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
@@ -193,13 +207,34 @@ export async function fetchRecentBlogPosts(limit = 6): Promise<StrapiBlogPost[]>
   }
 }
 
-/** Fetch a single blog post by slug */
+/** Fetch a single blog post by slug.
+ *
+ * The dedicated `/api/articles/<slug>` endpoint returns the full HTML body
+ * (`test`) along with `image`/`readTime`, whereas the filtered-list endpoint
+ * omits the body. We therefore prefer the dedicated endpoint and fall back to
+ * the filtered list if it is unavailable.
+ */
 export async function fetchBlogPostBySlug(
   slug: string
 ): Promise<StrapiBlogPost | null> {
-  const url = `${STRAPI_BASE_URL}/api/articles?filters[slug][$eq]=${encodeURIComponent(slug)}&${POPULATE}&pagination[limit]=1`;
+  const bySlugUrl = `${STRAPI_BASE_URL}/api/articles/${encodeURIComponent(slug)}?${POPULATE}`;
   try {
-    const res = await fetch(url, {
+    const res = await fetch(bySlugUrl, {
+      headers: buildHeaders(),
+      next: { revalidate: 300 },
+    });
+    if (res.ok) {
+      const json = (await res.json()) as { data?: StrapiBlogPost | StrapiBlogPost[] };
+      const data = Array.isArray(json.data) ? json.data[0] : json.data;
+      if (data) return data;
+    }
+  } catch {
+    // fall through to the filtered-list fallback below
+  }
+
+  const listUrl = `${STRAPI_BASE_URL}/api/articles?filters[slug][$eq]=${encodeURIComponent(slug)}&${POPULATE}&pagination[limit]=1`;
+  try {
+    const res = await fetch(listUrl, {
       headers: buildHeaders(),
       next: { revalidate: 300 },
     });

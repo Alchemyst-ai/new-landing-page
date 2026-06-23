@@ -1,12 +1,16 @@
 "use client";
 
-// TableOfContents — mirrors the reference branch's TableOfContentsClient.
-// Parses headings (h2/h3) out of the rendered HTML body, injects matching IDs
-// onto the live DOM nodes inside `containerId`, and provides smooth-scroll
-// navigation with an active-heading highlight on scroll.
-import { useEffect, useMemo, useState } from "react";
+// TableOfContents — faithful port of the reference branch's TableOfContents
+// (+ TableOfContentsClient) adapted to the dark blog theme. It parses headings
+// (h1–h4) out of the rendered HTML body, injects matching IDs onto the live DOM
+// nodes inside `containerId`, provides smooth-scroll navigation with an
+// active-heading highlight (IntersectionObserver), and renders a
+// "Share this article" block beneath the list.
 
-interface Heading {
+import { useEffect, useMemo, useState } from "react";
+import SocialShare from "./SocialShare";
+
+interface TOCItem {
   id: string;
   text: string;
   level: number;
@@ -15,132 +19,165 @@ interface Heading {
 interface TableOfContentsProps {
   /** Raw HTML body of the article (same string rendered into the page). */
   content: string;
-  /** Article title (used for an aria-label / heading). */
-  title?: string;
-  /** Canonical URL of the article (kept for parity with the reference API). */
-  url?: string;
-  /** DOM id of the rendered article container whose headings we sync with. */
-  containerId: string;
-}
-
-function slugify(text: string, index: number): string {
-  const base = text
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-  return base ? `${base}` : `section-${index}`;
+  /** Article title — used for the share block. */
+  title: string;
+  /** Canonical URL of the article — used for the share links. */
+  url: string;
+  /** ID of the rendered article container to read headings from. */
+  containerId?: string;
+  /** When false, hide the Share-this-article block (e.g. mobile TOC). */
+  showShare?: boolean;
 }
 
 export default function TableOfContents({
   content,
   title,
-  containerId,
+  url,
+  containerId = "article-content",
+  showShare = true,
 }: TableOfContentsProps) {
+  const [tocItems, setTocItems] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
-  // Parse headings from the HTML string (runs once per content change).
-  const headings = useMemo<Heading[]>(() => {
+  // Parse the HTML once on the client to seed the list immediately.
+  const parsedItems = useMemo<TOCItem[]>(() => {
     if (typeof window === "undefined" || !content) return [];
     const doc = new DOMParser().parseFromString(content, "text/html");
-    const nodes = Array.from(doc.querySelectorAll("h2, h3"));
-    const seen = new Map<string, number>();
-    return nodes.map((node, i) => {
-      const text = (node.textContent || "").trim();
-      let id = slugify(text, i);
-      const count = seen.get(id) ?? 0;
-      seen.set(id, count + 1);
-      if (count > 0) id = `${id}-${count}`;
-      return { id, text, level: node.tagName === "H3" ? 3 : 2 };
-    });
+    const headings = doc.querySelectorAll("h1, h2, h3, h4");
+    return Array.from(headings).map((heading, index) => ({
+      id: heading.id || `heading-${index}`,
+      text: heading.textContent?.trim() || "",
+      level: parseInt(heading.tagName.charAt(1), 10),
+    }));
   }, [content]);
 
-  // Assign the same ids to the live rendered headings so anchors resolve.
+  // Reconcile against the live DOM nodes so IDs are injected for scrolling.
   useEffect(() => {
-    if (!headings.length) return;
     const container = document.getElementById(containerId);
-    if (!container) return;
-    const live = Array.from(container.querySelectorAll("h2, h3"));
-    headings.forEach((h, i) => {
-      if (live[i] && !live[i].id) live[i].id = h.id;
+    if (!container) {
+      setTocItems(parsedItems);
+      return;
+    }
+    const headings = container.querySelectorAll("h1, h2, h3, h4");
+    const items: TOCItem[] = Array.from(headings).map((heading, index) => {
+      const id = heading.id || `heading-${index}`;
+      if (!heading.id) (heading as HTMLElement).id = id;
+      return {
+        id,
+        text: heading.textContent?.trim() || "",
+        level: parseInt(heading.tagName.charAt(1), 10),
+      };
     });
-  }, [headings, containerId]);
+    setTocItems(items.length ? items : parsedItems);
+  }, [containerId, content, parsedItems]);
 
-  // Highlight the heading currently in view.
   useEffect(() => {
-    if (!headings.length) return;
+    if (tocItems.length === 0) return;
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActiveId(visible[0].target.id);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
       },
-      { rootMargin: "0px 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-100px 0px -66%" }
     );
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.querySelectorAll("h2, h3").forEach((el) => observer.observe(el));
+    tocItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
     return () => observer.disconnect();
-  }, [headings, containerId]);
+  }, [tocItems]);
 
-  const handleClick = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
+  const scrollToHeading = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveId(id);
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (!headings.length) return null;
+  if (tocItems.length === 0) return null;
 
   return (
-    <nav
-      aria-label={title ? `Table of contents for ${title}` : "Table of contents"}
-      style={{ fontFamily: "'Satoshi', sans-serif" }}
+    <div
+      style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "12px",
+        padding: "24px",
+      }}
     >
-      <p
+      {/* Heading with check-circle icon */}
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ height: "22px", width: "22px", marginRight: "10px", color: "#F49025" }}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          />
+        </svg>
+        <h3
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontSize: "1.0625rem",
+            fontWeight: 600,
+            color: "#FFFFFF",
+            margin: 0,
+          }}
+        >
+          Table of Contents
+        </h3>
+      </div>
+
+      {/* TOC list */}
+      <nav
         style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "11px",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "#F49025",
-          marginBottom: "16px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "6px",
+          paddingLeft: "8px",
+          borderLeft: "1px solid rgba(255,255,255,0.08)",
         }}
       >
-        On this page
-      </p>
-      <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-        {headings.map((h) => {
-          const isActive = activeId === h.id;
+        {tocItems.map(({ id, text, level }) => {
+          const isActive = activeId === id;
+          const indent = level >= 3 ? 18 : level === 2 ? 8 : 0;
           return (
-            <li key={h.id} style={{ marginBottom: "10px" }}>
-              <a
-                href={`#${h.id}`}
-                onClick={(e) => handleClick(e, h.id)}
-                style={{
-                  display: "block",
-                  fontSize: "0.875rem",
-                  lineHeight: 1.45,
-                  textDecoration: "none",
-                  paddingLeft: h.level === 3 ? "24px" : "12px",
-                  borderLeft: isActive
-                    ? "2px solid #F49025"
-                    : "2px solid rgba(15,23,42,0.08)",
-                  color: isActive ? "#0F172A" : "#64748B",
-                  fontWeight: isActive ? 600 : 400,
-                  transition: "color 0.15s ease",
-                }}
-              >
-                {h.text}
-              </a>
-            </li>
+            <button
+              key={id}
+              type="button"
+              onClick={() => scrollToHeading(id)}
+              className="blog-toc-item"
+              style={{
+                display: "block",
+                width: "100%",
+                textAlign: "left",
+                fontFamily: "'Satoshi', sans-serif",
+                fontSize: "0.8125rem",
+                lineHeight: 1.45,
+                fontWeight: level === 1 ? 600 : 400,
+                color: isActive ? "#F49025" : "#94A3B8",
+                background: isActive ? "rgba(244,144,37,0.10)" : "transparent",
+                border: "none",
+                borderRadius: "6px",
+                padding: "5px 10px",
+                marginLeft: `${indent}px`,
+                cursor: "pointer",
+                transition: "color 0.2s, background 0.2s",
+              }}
+            >
+              {text}
+            </button>
           );
         })}
-      </ul>
-    </nav>
+      </nav>
+
+      {/* Share this article */}
+      {showShare && <SocialShare title={title} url={url} />}
+    </div>
   );
 }
