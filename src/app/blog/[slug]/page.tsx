@@ -134,8 +134,8 @@ export default async function BlogPostPage({ params }: Props) {
 
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh" }}>
         <div
-          className="container blog-post-grid"
-          style={{ maxWidth: "1200px", paddingTop: "104px", paddingBottom: "64px" }}
+          className="container blog-post-grid blog-wide"
+          style={{ paddingTop: "104px", paddingBottom: "64px" }}
         >
           {/* ── Left: sticky Table of Contents ── */}
           <aside className="blog-toc-desktop">
@@ -431,7 +431,7 @@ export default async function BlogPostPage({ params }: Props) {
               padding: "72px 0",
             }}
           >
-            <div className="container" style={{ maxWidth: "1200px" }}>
+            <div className="container blog-wide">
               <h2
                 style={{
                   fontFamily: SANS,
