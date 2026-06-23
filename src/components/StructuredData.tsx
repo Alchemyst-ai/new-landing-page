@@ -99,7 +99,9 @@ export default function StructuredData() {
     <script
       type="application/ld+json"
       suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      // Per Next.js JSON-LD guidance, scrub `<` to its unicode escape to
+      // prevent XSS, since JSON.stringify does not sanitize HTML.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph).replace(/</g, "\\u003c") }}
     />
   );
 }

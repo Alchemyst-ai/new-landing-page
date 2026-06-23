@@ -112,6 +112,9 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
+          // Per Next.js JSON-LD guidance, scrub `<` to its unicode escape to
+          // prevent XSS via CMS-sourced strings, since JSON.stringify alone
+          // does not sanitize HTML.
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
@@ -121,14 +124,23 @@ export default async function BlogPostPage({ params }: Props) {
             description: description || post.about,
             image: coverUrl ?? `${SITE_URL}/og-image.png`,
             url: fullUrl,
+            mainEntityOfPage: { "@type": "WebPage", "@id": fullUrl },
             author: {
               "@type": "Person",
               name: post.author?.name ?? "Alchemyst AI",
             },
+            publisher: {
+              "@type": "Organization",
+              name: "Alchemyst AI",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/logo.png`,
+              },
+            },
             ...(post.reviewer?.name
-              ? { reviewedBy: { "@type": "Person", name: post.reviewer.name } }
+              ? { reviewer: { "@type": "Person", name: post.reviewer.name } }
               : {}),
-          }),
+          }).replace(/</g, "\\u003c"),
         }}
       />
 
