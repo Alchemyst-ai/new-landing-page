@@ -1,0 +1,120 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+const SANS = "'Satoshi', sans-serif";
+
+export const metadata: Metadata = {
+  title: "Alchemyst AI vs Zep: Best AI Memory Layer for Agents",
+  description:
+    "Compare Alchemyst AI and Zep. See feature differences, architecture comparisons, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.",
+};
+
+export default function CompareZepPage() {
+  return (
+    <>
+      <Navbar />
+      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+        <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>
+          
+          <h1
+            style={{
+              fontFamily: SANS,
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontWeight: 800,
+              lineHeight: 1.1,
+              color: "#FFFFFF",
+              marginBottom: "24px",
+              textAlign: "center"
+            }}
+          >
+            Alchemyst AI vs Zep
+          </h1>
+          
+          <div style={{ marginBottom: "48px", textAlign: "center" }}>
+            <p
+              style={{
+                fontFamily: SANS,
+                fontSize: "1.125rem",
+                lineHeight: 1.6,
+                color: "#CBD5E1",
+                maxWidth: "700px",
+                margin: "0 auto"
+              }}
+            >
+              Both Alchemyst AI and Zep offer memory infrastructure for AI applications, but they solve different problems. Unlike Zep, which focuses heavily on temporal chat history and conversation graphs, <strong>Alchemyst AI is a deterministic context layer</strong> designed to give multiple agents structured, auditable access to shared institutional knowledge.
+            </p>
+            <p
+              style={{
+                fontFamily: SANS,
+                fontSize: "0.875rem",
+                color: "#64748B",
+                marginTop: "16px",
+              }}
+            >
+              Last updated: June 2026
+            </p>
+          </div>
+
+          <div style={{ overflowX: "auto", marginBottom: "64px" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
+              <thead>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                  <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "33%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "33%" }}>Zep</th>
+                </tr>
+              </thead>
+              <tbody style={{ color: "#CBD5E1" }}>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "16px", fontWeight: 600 }}>Core Focus</td>
+                  <td style={{ padding: "16px" }}>Institutional Context Layer</td>
+                  <td style={{ padding: "16px" }}>Long-term Chat Memory</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "16px", fontWeight: 600 }}>Context Scoping</td>
+                  <td style={{ padding: "16px" }}>Deterministic at write time</td>
+                  <td style={{ padding: "16px" }}>Temporal graph extraction</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "16px", fontWeight: 600 }}>Auditability</td>
+                  <td style={{ padding: "16px" }}>100% Traceable</td>
+                  <td style={{ padding: "16px" }}>Graph-based inference</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "16px", fontWeight: 600 }}>Target Architecture</td>
+                  <td style={{ padding: "16px" }}>Multi-agent org deployments</td>
+                  <td style={{ padding: "16px" }}>Conversational AI assistants</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+              Who is Alchemyst AI best for?
+            </h2>
+            <p style={{ marginBottom: "24px" }}>
+              Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context.
+            </p>
+
+            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+              Who is Zep best for?
+            </h2>
+            <p style={{ marginBottom: "24px" }}>
+              Zep is best for <strong>conversational AI apps that need deep chat history</strong>. Its temporal knowledge graph is excellent at understanding the chronological relationship between facts in a long-running user conversation.
+            </p>
+
+            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+              The Verdict
+            </h2>
+            <p style={{ marginBottom: "24px" }}>
+              If your primary challenge is managing infinite scroll chat history for a conversational assistant, Zep is an excellent choice. But if you are building business-critical automation where agents need verifiable access to institutional knowledge without semantic drift, <strong>Alchemyst AI provides the deterministic context layer</strong> required for production.
+            </p>
+          </div>
+        </article>
+      </main>
+      <Footer />
+    </>
+  );
+}
