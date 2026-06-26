@@ -23,15 +23,49 @@ const pricingPlans = [
 
 const PricingSection = () => {
   return (
-    <section className="py-20 bg-background pt-32">
+    <section className="py-20 bg-background pt-32" aria-labelledby="pricing-heading">
       <div className="max-w-[85%] mx-auto px-4">
         <div className="flex flex-col items-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+          <h1 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-center mb-6">
             Simple, Transparent Pricing
-          </h2>
+          </h1>
           <p className="text-center text-muted-foreground max-w-3xl leading-relaxed">
             Choose the plan that works best for your needs. All plans include core features with different usage limits.
           </p>
+        </div>
+
+        {/* FAQ for answer engines - question-form headers */}
+        <div className="mb-16 max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+          
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">What is the Alchemyst AI pricing model?</h3>
+              <p className="text-muted-foreground">
+                Alchemyst AI uses usage-based pricing with transparent costs per token and per MB processed. 
+                The pricing calculator above shows exact costs based on your expected usage patterns across 
+                different tiers - from Free (up to $9 usage) to Starter, Accelerate, and Supercharge tiers.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">How much does enterprise context layer cost?</h3>
+              <p className="text-muted-foreground">
+                Enterprise pricing is custom-built based on your organization's needs. We work with you to 
+                determine the right configuration for your scale, with custom network bandwidth, AI Grid 
+                usage, context storage, and dedicated support.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Is there a free tier available?</h3>
+              <p className="text-muted-foreground">
+                Yes. The Free tier starts at $0 with 5 million tokens included when you sign up with your 
+                business email. This is ideal for testing Alchemyst AI's context layer before committing to 
+                a paid plan.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3 lg:gap-8">

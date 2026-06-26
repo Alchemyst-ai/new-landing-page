@@ -35,3 +35,4 @@ Thumbs.db
 *-audit
 skills-lock.json
 *.patch
+.vercel

@@ -16,7 +16,12 @@ export default function StructuredData() {
         name: "Alchemyst AI",
         legalName: "XAlchemyst Technologies Pvt. Ltd.",
         url: BASE_URL,
-        logo: `${BASE_URL}/og-image.png`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+        },
         email: "founders@getalchemystai.com",
         description:
           "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run day-to-day operations at scale by providing persistent, traceable context and semantic retrieval over an institutional knowledge graph, keeping institutional knowledge current, traceable, and consistent.",
