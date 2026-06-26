@@ -35,19 +35,9 @@ const NAV_LINKS = [
 // Competitor comparison pages surfaced under the "Compare" dropdown.
 const COMPARE_LINKS = [
   {
-    label: "vs Mem0 vs Zep vs Letta",
-    href: "/compare/mem0-vs-zep-vs-letta",
-    blurb: "Vector memory, temporal graphs, deterministic context",
-  },
-  {
     label: "vs Mem0",
     href: "/compare/alchemyst-ai-vs-mem0",
     blurb: "Context layer vs AI memory for agents",
-  },
-  {
-    label: "vs Zep",
-    href: "/compare/alchemyst-ai-vs-zep",
-    blurb: "Context layer vs Zep's memory store",
   },
   {
     label: "vs Palantir",
@@ -55,19 +45,25 @@ const COMPARE_LINKS = [
     blurb: "Dynamic context vs static ontology & FDEs",
   },
   {
-    label: "vs Databricks",
-    href: "/compare/alchemyst-ai-vs-databricks",
-    blurb: "Semantic meaning vs data governance",
-  },
-  {
     label: "vs Snowflake Cortex",
     href: "/compare/alchemyst-ai-vs-snowflake-cortex",
     blurb: "Cross-system consensus vs warehouse-bound views",
   },
   {
-    label: "vs Glean",
-    href: "/compare/alchemyst-ai-vs-glean",
-    blurb: "Deterministic agent context vs enterprise search",
+    label: "vs Claude Memory",
+    href: "/compare/claude-memory-vs-alchemyst",
+    blurb: "Implicit vs explicit context",
+  },
+  {
+    label: "vs LangChain Memory",
+    href: "/compare/langchain-memory-vs-alchemyst",
+    blurb: "Memory modules vs unified context layer",
+  },
+  {
+    label: "See All Comparisons →",
+    href: "/compare",
+    blurb: "View all competitor comparisons",
+    isSeeAll: true,
   },
 ];
 
@@ -107,7 +103,6 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-[100] border-b border-white/[0.06] bg-[rgba(10,15,30,0.92)] backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between">
-        {/* Brand — actual Alchemyst logo */}
         <Link
           href="/"
           className="flex items-center gap-2.5 no-underline"
@@ -126,7 +121,6 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop nav — shadcn NavigationMenu (Radix) */}
         <NavigationMenu
           viewport={false}
           className="nav-desktop-shadcn hidden md:flex"
@@ -140,7 +134,6 @@ export default function Navbar() {
               </NavigationMenuItem>
             ))}
 
-            {/* Compare dropdown */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-slate-300 hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white">
                 Compare
@@ -186,7 +179,6 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Desktop CTAs */}
         <div className="hidden items-center gap-3 md:flex">
           <Button
             asChild
@@ -201,7 +193,6 @@ export default function Navbar() {
           </Button>
         </div>
 
-        {/* Mobile menu — shadcn Sheet (Radix) */}
         <div className="md:hidden">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
