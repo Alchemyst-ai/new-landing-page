@@ -212,43 +212,43 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     items: [
       {
         title: "Memvid vs Alchemyst: Embedded Memory vs Context Layer",
-        url: `${BASE_URL}/blog/memvid-vs-alchemyst-agent-memory`,
+        url: `${BASE_URL}/compare/memvid-vs-alchemyst-agent-memory`,
         description:
           "Compare Memvid's single-file memory approach with Alchemyst AI's hosted context layer. Both eliminate infrastructure, but serve different use cases.",
       },
       {
         title: "SuperMemory vs Alchemyst: Browser Extension Memory",
-        url: `${BASE_URL}/blog/supermemory-vs-alchemyst`,
+        url: `${BASE_URL}/compare/supermemory-vs-alchemyst`,
         description:
           "SuperMemory captures browsing history via browser extension while Alchemyst provides structured, auditable institutional context.",
       },
       {
         title: "Letta vs Alchemyst: Agent Memory Architectures",
-        url: `${BASE_URL}/blog/letta-vs-alchemyst-llm-memory`,
+        url: `${BASE_URL}/compare/letta-vs-alchemyst-llm-memory`,
         description:
           "Letta provides agents with memory and reasoning capabilities while Alchemyst focuses on institutional context infrastructure.",
       },
       {
         title: "LangChain Memory vs Alchemyst: Memory Modules vs Context Layer",
-        url: `${BASE_URL}/blog/langchain-memory-vs-alchemyst`,
+        url: `${BASE_URL}/compare/langchain-memory-vs-alchemyst`,
         description:
           "LangChain offers memory modules and vector stores while Alchemyst provides a deterministic context layer primitive.",
       },
       {
         title: "Cognee vs Alchemyst: Knowledge Graph Builders",
-        url: `${BASE_URL}/blog/cognee-vs-alchemyst-knowledge-graph`,
+        url: `${BASE_URL}/compare/cognee-vs-alchemyst-knowledge-graph`,
         description:
           "Both build knowledge graphs, but Cognee focuses on data ingestion while Alchemyst specializes in context arithmetic and governance.",
       },
       {
         title: "OpenAI Memory vs Alchemyst: Built-in vs Sovereign Context",
-        url: `${BASE_URL}/blog/openai-memory-vs-deterministic-context`,
+        url: `${BASE_URL}/compare/openai-memory-vs-deterministic-context`,
         description:
           "OpenAI's Memory is model-bound while Alchemyst provides model-agnostic, sovereign context infrastructure for enterprises.",
       },
       {
         title: "Claude Memory vs Alchemyst: Implicit vs Explicit Context",
-        url: `${BASE_URL}/blog/claude-memory-vs-alchemyst`,
+        url: `${BASE_URL}/compare/claude-memory-vs-alchemyst`,
         description:
           "Claude's implicit memory vs Alchemyst's explicit, scoped, auditable context operations.",
       },
