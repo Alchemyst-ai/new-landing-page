@@ -9,17 +9,10 @@ const SANS = "'Sora', sans-serif";
 export const metadata: Metadata = {
   title: "Compare Alchemyst AI | Context Layer vs Memory, Ontology & Search",
   description:
-    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex and Glean — and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
+    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory — and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
 };
 
 const COMPARISONS = [
-  {
-    competitor: "Mem0 vs Zep vs Letta",
-    href: "/compare/mem0-vs-zep-vs-letta",
-    category: "AI Memory",
-    blurb:
-      "Vector-search memory, temporal graphs, and deterministic context layers compared. When to choose Mem0, Zep, Letta, or Alchemyst for your architecture.",
-  },
   {
     competitor: "Mem0",
     href: "/compare/alchemyst-ai-vs-mem0",
@@ -61,6 +54,55 @@ const COMPARISONS = [
     category: "Enterprise Search",
     blurb:
       "Deterministic, developer-embeddable context for your own agents versus a probabilistic enterprise search assistant for human employees. Infrastructure, not a search box.",
+  },
+  {
+    competitor: "Memvid",
+    href: "/compare/memvid-vs-alchemyst-agent-memory",
+    category: "AI Memory",
+    blurb:
+      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases — edge/offline vs enterprise.",
+  },
+  {
+    competitor: "SuperMemory",
+    href: "/compare/supermemory-vs-alchemyst",
+    category: "AI Memory",
+    blurb:
+      "Browser extension memory capture versus structured institutional context. Consumer-friendly vs enterprise-grade auditability.",
+  },
+  {
+    competitor: "Letta",
+    href: "/compare/letta-vs-alchemyst-llm-memory",
+    category: "AI Memory",
+    blurb:
+      "OS-level agent memory versus institutional context infrastructure. Focused on single-agent versus multi-agent architectures.",
+  },
+  {
+    competitor: "LangChain Memory",
+    href: "/compare/langchain-memory-vs-alchemyst",
+    category: "AI Memory",
+    blurb:
+      "Memory modules and vector stores versus unified context layer primitive. Framework components vs standalone infrastructure.",
+  },
+  {
+    competitor: "Cognee",
+    href: "/compare/cognee-vs-alchemyst-knowledge-graph",
+    category: "Knowledge Graph",
+    blurb:
+      "Both build knowledge graphs, but Cognee focuses on data ingestion while Alchemyst specializes in context arithmetic and governance.",
+  },
+  {
+    competitor: "OpenAI Memory",
+    href: "/compare/openai-memory-vs-deterministic-context",
+    category: "AI Memory",
+    blurb:
+      "Model-bound built-in memory versus model-agnostic sovereign context layer infrastructure for enterprises.",
+  },
+  {
+    competitor: "Claude Memory",
+    href: "/compare/claude-memory-vs-alchemyst",
+    category: "AI Memory",
+    blurb:
+      "Implicit conversation memory versus explicit, scoped, auditable context operations with semantic consensus.",
   },
 ];
 

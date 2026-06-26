@@ -4,6 +4,23 @@ import { fetchAllBlogPosts } from "@/lib/strapi";
 
 export const revalidate = 300;
 
+const COMPARE_ROUTES = [
+  "/compare/alchemyst-ai-vs-mem0",
+  "/compare/alchemyst-ai-vs-zep",
+  "/compare/alchemyst-ai-vs-palantir",
+  "/compare/alchemyst-ai-vs-databricks",
+  "/compare/alchemyst-ai-vs-snowflake-cortex",
+  "/compare/alchemyst-ai-vs-glean",
+  "/compare/mem0-vs-zep-vs-letta",
+  "/compare/memvid-vs-alchemyst-agent-memory",
+  "/compare/supermemory-vs-alchemyst",
+  "/compare/letta-vs-alchemyst-llm-memory",
+  "/compare/langchain-memory-vs-alchemyst",
+  "/compare/cognee-vs-alchemyst-knowledge-graph",
+  "/compare/openai-memory-vs-deterministic-context",
+  "/compare/claude-memory-vs-alchemyst",
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const posts = await fetchAllBlogPosts();
@@ -33,48 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-mem0`,
+    ...COMPARE_ROUTES.map((path) => ({
+      url: `${BASE_URL}${path}`,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-zep`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-palantir`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-databricks`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-snowflake-cortex`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/alchemyst-ai-vs-glean`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/compare/mem0-vs-zep-vs-letta`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    })),
   ];
 
   const blogComparisonRoutes: MetadataRoute.Sitemap = [
