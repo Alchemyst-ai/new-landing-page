@@ -21,7 +21,7 @@ export default function CompareZepPage() {
           <Breadcrumbs
             currentPath="/compare/alchemyst-ai-vs-zep"
             items={[
-              { name: "Compare", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: "Alchemyst AI vs Zep" },
             ]}
           />

@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ─── Alchemyst Labs Design System ───────────────────────────────────────────
  * Warm Editorial direction — colours taken from the Alchemyst logo
@@ -26,30 +28,37 @@
   --border-light: #E5E7EB;
 }
 
-/* ── shadcn/ui token mapping (Tailwind v4) ──────────────────────────────────
+/* ── shadcn/ui token mapping (Tailwind v3, HSL triplets) ────────────────────
  * Maps shadcn's semantic class names (bg-card, text-muted-foreground, border,
- * etc.) onto the Alchemyst palette so shadcn components render on-brand and
- * stay reusable across the site. */
-@theme inline {
-  --color-border: rgba(255, 255, 255, 0.10);
-  --color-input: rgba(255, 255, 255, 0.15);
-  --color-ring: #F49025;
-  --color-background: #0A0F1E;
-  --color-foreground: #FFFFFF;
-  --color-card: rgba(255, 255, 255, 0.025);
-  --color-card-foreground: #FFFFFF;
-  --color-popover: #0F172A;
-  --color-popover-foreground: #FFFFFF;
-  --color-primary: #F49025;
-  --color-primary-foreground: #0A0F1E;
-  --color-secondary: #0E9594;
-  --color-secondary-foreground: #FFFFFF;
-  --color-muted: rgba(255, 255, 255, 0.05);
-  --color-muted-foreground: #94A3B8;
-  --color-accent: rgba(14, 149, 148, 0.12);
-  --color-accent-foreground: #FFFFFF;
-  --color-destructive: #EF4444;
-  --color-destructive-foreground: #FFFFFF;
+ * etc.) onto the Alchemyst dark palette via hsl(var(--token)) so shadcn
+ * components render on-brand and stay reusable across the site. */
+:root {
+  --radius: 0.5rem;
+  --background: 222 47% 8%;          /* #0A0F1E */
+  --foreground: 0 0% 100%;           /* #FFFFFF */
+  --card: 222 47% 11%;               /* near #0F172A */
+  --card-foreground: 0 0% 100%;
+  --popover: 222 33% 12%;            /* dark surface */
+  --popover-foreground: 0 0% 100%;
+  --primary: 33 90% 55%;             /* #F49025 brand orange */
+  --primary-foreground: 222 47% 8%;
+  --secondary: 179 83% 32%;          /* #0E9594 brand teal */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 222 30% 16%;              /* subtle dark fill */
+  --muted-foreground: 215 20% 65%;  /* #94A3B8 */
+  --accent: 222 30% 18%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;          /* #EF4444 */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 100%;               /* applied at low opacity via border utilities */
+  --input: 0 0% 100%;
+  --ring: 33 90% 55%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border) / 0.10);
+  }
 }
 
 * {
@@ -160,6 +169,13 @@ body {
 }
 .nav-link:hover {
   color: #FFFFFF;
+}
+
+/* Hide the brand "Context Layer" tag on small screens (nav itself uses shadcn). */
+@media (max-width: 767px) {
+  .nav-brand-tag {
+    display: none;
+  }
 }
 
 .nav-docs-btn {

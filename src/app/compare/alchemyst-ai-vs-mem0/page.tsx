@@ -21,7 +21,7 @@ export default function CompareMem0Page() {
           <Breadcrumbs
             currentPath="/compare/alchemyst-ai-vs-mem0"
             items={[
-              { name: "Compare", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: "Alchemyst AI vs Mem0" },
             ]}
           />

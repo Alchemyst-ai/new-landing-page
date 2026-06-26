@@ -67,6 +67,8 @@ export default function Footer() {
                 { label: "Python SDK", href: "https://docs.getalchemystai.com/sdk/python" },
                 { label: "Node.js SDK", href: "https://docs.getalchemystai.com/sdk/node" },
                 { label: "Status", href: "https://status.getalchemystai.com" },
+                { label: "llms.txt", href: "/llms.txt" },
+                { label: "llms-full.txt", href: "/llms-full.txt" },
               ].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Sora', sans-serif", fontSize: "0.9rem", color: "#64748B", textDecoration: "none" }}>{l.label}</a>
