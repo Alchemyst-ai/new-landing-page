@@ -105,9 +105,9 @@ export default function CompareDatabricksPage() {
           </div>
 
           <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Data Governance vs. Semantic Consensus
-            </h2>
+<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+               What is the difference between data governance and semantic consensus?
+             </h2>
             <p style={{ marginBottom: "24px" }}>
               Databricks is unmatched when it comes to data governance. Unity Catalog provides rigorous access controls, ensuring you know exactly who accessed what data. However, data governance is not the same as <strong>Semantic Consensus</strong>.
             </p>
@@ -115,9 +115,9 @@ export default function CompareDatabricksPage() {
               If your CFO defines "revenue" as cash in the bank, and your Sales team defines it as contracted ARR, Unity Catalog will dutifully log that an AI agent accessed both tables. It will not, however, reconcile the conflicting definitions. The agent is left to guess, leading to hallucinations. Alchemyst AI solves this by operating as a meaning layer, actively resolving semantic drift across your organization so agents operate on a shared, verified understanding.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Probabilistic RAG vs. Deterministic Context
-            </h2>
+<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+               Should you use probabilistic RAG or deterministic context?
+             </h2>
             <p style={{ marginBottom: "24px" }}>
               The Databricks Mosaic AI Agent Framework relies on AI Search—a built-in vector database utilizing HNSW approximate nearest neighbor (ANN) search. This is fundamentally a Retrieval-Augmented Generation (RAG) approach. It is probabilistic. It retrieves text chunks based on mathematical similarity, which introduces inherent hallucination and context-rot risks.
             </p>
@@ -125,23 +125,23 @@ export default function CompareDatabricksPage() {
               Alchemyst AI replaces probabilistic retrieval with <strong>deterministic context arithmetic</strong>. By scoping context at write time through composable layers of references and inferences, Alchemyst ensures that agents receive exact, traceable facts rather than best-guess vector matches.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Who is Databricks best for?
-            </h2>
+<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+               What is Databricks best for?
+             </h2>
             <p style={{ marginBottom: "24px" }}>
               Databricks is best for <strong>teams whose data already lives entirely in Delta Lake</strong> and who require strict compliance logging for data access. If you are building data-heavy analytics pipelines and are comfortable managing the data engineering overhead required to maintain vector indexes and MLflow evaluations, Databricks provides a robust, unified ecosystem.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Who is Alchemyst AI best for?
-            </h2>
+<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+               What is Alchemyst AI best for?
+             </h2>
             <p style={{ marginBottom: "24px" }}>
               Alchemyst AI is best for <strong>engineering teams building multi-agent systems that span multiple data silos</strong>. If you need a sovereign context layer that sits above any model and isn't locked to a specific lakehouse, Alchemyst provides the deterministic semantic consensus required to keep agents accurate in production.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              The Verdict
-            </h2>
+<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+               Which should you choose?
+             </h2>
             <p style={{ marginBottom: "24px" }}>
               Databricks is an exceptional platform for data engineering and analytics. But when it comes to agentic AI, relying on vector search and data catalogs leaves you vulnerable to semantic drift. <strong>Alchemyst AI provides the missing context layer</strong>—a dedicated, portable infrastructure for meaning that ensures your agents actually understand the business they are operating in.
             </p>
