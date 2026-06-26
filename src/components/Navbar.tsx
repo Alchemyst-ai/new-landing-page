@@ -35,6 +35,11 @@ const NAV_LINKS = [
 // Competitor comparison pages surfaced under the "Compare" dropdown.
 const COMPARE_LINKS = [
   {
+    label: "vs Mem0 vs Zep vs Letta",
+    href: "/compare/mem0-vs-zep-vs-letta",
+    blurb: "Vector memory, temporal graphs, deterministic context",
+  },
+  {
     label: "vs Mem0",
     href: "/compare/alchemyst-ai-vs-mem0",
     blurb: "Context layer vs AI memory for agents",
@@ -67,6 +72,7 @@ const COMPARE_LINKS = [
 ];
 
 const SECONDARY_LINKS = [
+  { label: "Guide", href: "/blog/how-to-add-persistent-memory-to-ai-agents", external: false },
   { label: "Blog", href: "/blog", external: false },
   { label: "Docs", href: "https://docs.getalchemystai.com", external: true },
 ];

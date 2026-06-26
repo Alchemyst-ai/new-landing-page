@@ -19,9 +19,9 @@ export default function Mem0VsZepVsLettaPage() {
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
-            currentPath="/blog/mem0-vs-zep-vs-letta"
+            currentPath="/compare/mem0-vs-zep-vs-letta"
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: "Mem0 vs Zep vs Letta" },
             ]}
           />

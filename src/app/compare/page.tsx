@@ -14,6 +14,13 @@ export const metadata: Metadata = {
 
 const COMPARISONS = [
   {
+    competitor: "Mem0 vs Zep vs Letta",
+    href: "/compare/mem0-vs-zep-vs-letta",
+    category: "AI Memory",
+    blurb:
+      "Vector-search memory, temporal graphs, and deterministic context layers compared. When to choose Mem0, Zep, Letta, or Alchemyst for your architecture.",
+  },
+  {
     competitor: "Mem0",
     href: "/compare/alchemyst-ai-vs-mem0",
     category: "AI Memory",

@@ -164,6 +164,12 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     title: "Comparison Guides",
     items: [
       {
+        title: "Mem0 vs Zep vs Letta: Which AI Memory Layer is Best?",
+        url: `${BASE_URL}/compare/mem0-vs-zep-vs-letta`,
+        description:
+          "Vector-search memory, temporal graphs, and deterministic context layers compared. When to choose Mem0, Zep, Letta, or Alchemyst for your architecture.",
+      },
+      {
         title: "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents",
         url: `${BASE_URL}/compare/alchemyst-ai-vs-mem0`,
         description:
