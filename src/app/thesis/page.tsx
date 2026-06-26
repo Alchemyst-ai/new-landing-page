@@ -2,9 +2,10 @@
 // Standalone App Router page reusing the shared Navbar/Footer shell and the
 // project's dark editorial design system (Sora + JetBrains Mono, amber accent,
 // #0A0F1E hero bg, 8px max radius) per design.md.
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
@@ -90,7 +91,7 @@ export default function ThesisPage() {
           }}
         />
 
-        <article className="container relative" style={{ maxWidth: "820px", margin: "0 auto" }}>
+        <article className="container relative" style={{ maxWidth: "1620px", margin: "0 auto" }}>
           <Breadcrumbs currentPath="/thesis" items={[{ name: "Thesis" }]} />
 
           {/* Eyebrow */}
@@ -124,7 +125,7 @@ export default function ThesisPage() {
               fontSize: "1.125rem",
               lineHeight: 1.7,
               color: "#CBD5E1",
-              maxWidth: "680px",
+              maxWidth: "1520px",
               marginBottom: "12px",
             }}
           >
@@ -228,7 +229,7 @@ export default function ThesisPage() {
                 lineHeight: 1.12,
                 letterSpacing: "-0.03em",
                 color: "#FFFFFF",
-                maxWidth: "680px",
+                maxWidth: "1520px",
                 marginBottom: "14px",
               }}
             >
@@ -406,14 +407,14 @@ export default function ThesisPage() {
                 lineHeight: 1.4,
                 letterSpacing: "-0.02em",
                 color: "#E2E8F0",
-                maxWidth: "680px",
+                maxWidth: "1520px",
                 margin: "0 auto",
                 fontStyle: "italic",
               }}
             >
-              &ldquo;If structured data drift almost killed Zillow — imagine what{" "}
-              <span style={{ color: "#EF4444" }}>semantic drift</span> can do to your AI-driven
-              organization.&rdquo;
+              If structured data drift almost killed Zillow — imagine what{" "}
+              <span style={{ color: "#EF4444" }} className="mx-1">semantic drift</span> can do to your AI-driven
+              organization.
             </blockquote>
             <p
               style={{
@@ -439,15 +440,14 @@ export default function ThesisPage() {
                 lineHeight: 1.35,
                 letterSpacing: "-0.03em",
                 color: "#FFFFFF",
-                maxWidth: "640px",
+                // maxWidth: "1520px",
                 margin: "0 auto",
                 fontStyle: "italic",
               }}
             >
-              &ldquo;The model is the engine.{" "}
-              <span style={{ color: "#F49025" }}>Context is the fuel.</span>
-              <br />
-              Without it, you&apos;re not going anywhere.&rdquo;
+              The model is the engine.{" "}
+              <span style={{ color: "#F49025" }} className="mx-1">Context is the fuel.</span>
+              Without it, you&apos;re not going anywhere.
             </blockquote>
             <p
               style={{
