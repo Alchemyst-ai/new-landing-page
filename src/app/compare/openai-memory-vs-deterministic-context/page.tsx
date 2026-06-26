@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function PortableMemoryPage() {
   return (
     <>
+      <ArticleSchema
+        headline="openai-memory-vs-deterministic-context"
+        description="Learn why vendor-locked AI memory creates risks for enterprises and why portable context layers are essential for multi-agent systems and model flexibility."
+        url="/compare/openai-memory-vs-deterministic-context"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

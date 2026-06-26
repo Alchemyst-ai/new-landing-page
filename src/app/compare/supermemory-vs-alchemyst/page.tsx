@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function SuperMemoryVsAlchemystPage() {
   return (
     <>
+      <ArticleSchema
+        headline="supermemory-vs-alchemyst"
+        description="Compare SuperMemory's memory+rag approach with Alchemyst AI's deterministic context layer. Both combine memory with retrieval, but with different architectures."
+        url="/compare/supermemory-vs-alchemyst"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

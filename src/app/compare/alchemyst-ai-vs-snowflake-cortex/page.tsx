@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function CompareSnowflakePage() {
   return (
     <>
+      <ArticleSchema
+        headline="Alchemyst AI vs Snowflake Cortex: Enterprise Context Layer Comparison"
+        description="Compare Alchemyst AI and Snowflake Cortex. Discover why Alchemyst's cross-system context arithmetic outperforms warehouse-bounded, static semantic views for agentic workflows."
+        url="/compare/alchemyst-ai-vs-snowflake-cortex"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>

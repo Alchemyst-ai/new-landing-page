@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function CogneeVsAlchemystPage() {
   return (
     <>
+      <ArticleSchema
+        headline="cognee-vs-alchemyst-knowledge-graph"
+        description="Cognee builds knowledge graphs from documents. Alchemyst provides deterministic context arithmetic. Compare graph-based memory architectures."
+        url="/compare/cognee-vs-alchemyst-knowledge-graph"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

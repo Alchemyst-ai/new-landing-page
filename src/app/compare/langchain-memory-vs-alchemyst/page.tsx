@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function LangChainMemoryVsAlchemystPage() {
   return (
     <>
+      <ArticleSchema
+        headline="langchain-memory-vs-alchemyst"
+        description="LangChain deprecated BufferMemory in favor of LangGraph's memory patterns. Alchemyst provides a vendor-agnostic context layer. Compare memory architectures."
+        url="/compare/langchain-memory-vs-alchemyst"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

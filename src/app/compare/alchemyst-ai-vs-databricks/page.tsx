@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function CompareDatabricksPage() {
   return (
     <>
+      <ArticleSchema
+        headline="Alchemyst AI vs Databricks: Enterprise Context Layer Comparison"
+        description="Compare Alchemyst AI and Databricks Mosaic AI. See why Databricks governs data while Alchemyst governs semantic meaning, providing a model-agnostic context layer for multi-agent architectures."
+        url="/compare/alchemyst-ai-vs-databricks"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>

@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function Mem0VsZepVsLettaPage() {
   return (
     <>
+      <ArticleSchema
+        headline="Mem0 vs Zep vs Letta: Which AI Memory Layer is Best?"
+        description="Comparing Mem0, Zep, Letta, and Alchemyst AI. Understand the architectural differences between vector-search memory, temporal graphs, and deterministic context layers."
+        url="/compare/mem0-vs-zep-vs-letta"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

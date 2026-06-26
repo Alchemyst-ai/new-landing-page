@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function ComparePalantirPage() {
   return (
     <>
+      <ArticleSchema
+        headline="Alchemyst AI vs Palantir: Enterprise Context Layer Comparison"
+        description="Compare Alchemyst AI and Palantir AIP. See how Alchemyst's developer-first context layer offers scalable, dynamic institutional memory without requiring massive forward-deployed engineering teams."
+        url="/compare/alchemyst-ai-vs-palantir"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>

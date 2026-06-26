@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function MemvidVsAlchemystPage() {
   return (
     <>
+      <ArticleSchema
+        headline="memvid-vs-alchemyst-agent-memory"
+        description="Compare Memvid's embedded memory approach with Alchemyst AI's context layer. Both eliminate infrastructure, but serve different use cases."
+        url="/compare/memvid-vs-alchemyst-agent-memory"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>

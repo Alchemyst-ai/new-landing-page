@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function CompareZepPage() {
   return (
     <>
+      <ArticleSchema
+        headline="Alchemyst AI vs Zep: Best AI Memory Layer for Agents"
+        description="Compare Alchemyst AI and Zep. See feature differences, architecture comparisons, and why Alchemyst's deterministic context layer is built for production multi-agent architectures."
+        url="/compare/alchemyst-ai-vs-zep"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>

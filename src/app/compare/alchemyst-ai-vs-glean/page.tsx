@@ -15,6 +15,11 @@ export const metadata: Metadata = {
 export default function CompareGleanPage() {
   return (
     <>
+      <ArticleSchema
+        headline="Alchemyst AI vs Glean: Enterprise Context Layer Comparison"
+        description="Compare Alchemyst AI and Glean. Understand the difference between an enterprise search assistant for humans and a developer-embeddable context layer for autonomous agents."
+        url="/compare/alchemyst-ai-vs-glean"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>

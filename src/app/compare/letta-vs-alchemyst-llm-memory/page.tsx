@@ -18,6 +18,11 @@ export const metadata: Metadata = {
 export default function LettaVsAlchemystPage() {
   return (
     <>
+      <ArticleSchema
+        headline="letta-vs-alchemyst-llm-memory"
+        description="Letta (formerly MemGPT) uses OS-inspired tiered memory. Alchemyst uses context arithmetic. Compare architectures for long-running agents."
+        url="/compare/letta-vs-alchemyst-llm-memory"
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
