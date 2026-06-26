@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/cognee-vs-alchemyst-knowledge-graph";
+const PAGE_PATH = "/compare/cognee-vs-alchemyst-knowledge-graph";
 const PAGE_TITLE = "Cognee vs Alchemyst: Open-Source Graph vs Deterministic Context";
 
 export const metadata: Metadata = {

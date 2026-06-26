@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/why-agent-memory-must-be-portable";
+const PAGE_PATH = "/compare/why-agent-memory-must-be-portable";
 const PAGE_TITLE = "Why AI Agent Memory Must Be Portable Across Models";
 
 export const metadata: Metadata = {

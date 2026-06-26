@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/memvid-vs-alchemyst-agent-memory";
+const PAGE_PATH = "/compare/memvid-vs-alchemyst-agent-memory";
 const PAGE_TITLE = "Memvid vs Alchemyst: Embedded Memory vs Context Layer";
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/claude-memory-vs-alchemyst";
+const PAGE_PATH = "/compare/claude-memory-vs-alchemyst";
 const PAGE_TITLE = "Claude Memory vs Alchemyst: Filesystem vs Deterministic Context";
 
 export const metadata: Metadata = {

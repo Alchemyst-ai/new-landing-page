@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/letta-vs-alchemyst-llm-memory";
+const PAGE_PATH = "/compare/letta-vs-alchemyst-llm-memory";
 const PAGE_TITLE = "Letta (MemGPT) vs Alchemyst: OS-Style Memory vs Context Layer";
 
 export const metadata: Metadata = {
