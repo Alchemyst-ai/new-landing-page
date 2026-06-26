@@ -1,17 +1,7 @@
-// Navbar - sticky dark header built on official shadcn/ui components
-// (Radix primitives): NavigationMenu for the desktop nav + Compare dropdown,
-// and Sheet for the responsive mobile drawer.
+// Navbar - glassmorphism design with centered layout and backdrop blur
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger
-} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetClose,
@@ -25,174 +15,66 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-// Primary navigation links rendered inline on desktop.
-const NAV_LINKS = [
-  { label: "Why Context", href: "/#why-context" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Thesis", href: "/thesis" },
-];
-
-// Competitor comparison pages surfaced under the "Compare" dropdown.
-const COMPARE_LINKS = [
-  {
-    label: "vs Mem0",
-    href: "/compare/alchemyst-ai-vs-mem0",
-    blurb: "Context layer vs AI memory for agents",
-  },
-  {
-    label: "vs Palantir",
-    href: "/compare/alchemyst-ai-vs-palantir",
-    blurb: "Dynamic context vs static ontology & FDEs",
-  },
-  {
-    label: "vs Glean",
-    href: "/compare/alchemyst-ai-vs-glean",
-    blurb: "Deterministic context vs probabilistic search assistant.",
-  },
-  {
-    label: "vs Claude Memory",
-    href: "/compare/claude-memory-vs-alchemyst",
-    blurb: "Implicit vs explicit context",
-  },
-  {
-    label: "vs LangChain Memory",
-    href: "/compare/langchain-memory-vs-alchemyst",
-    blurb: "Memory modules vs unified context layer",
-  },
-  {
-    label: "See All Comparisons →",
-    href: "/compare",
-    blurb: "View all competitor comparisons",
-    isSeeAll: true,
-  },
-];
-
-const SECONDARY_LINKS = [
-  { label: "Guide", href: "/blog/how-to-add-persistent-memory-to-ai-agents", external: false },
-  { label: "Blog", href: "/blog", external: false },
-  { label: "Docs", href: "https://docs.getalchemystai.com", external: true },
-];
-
-// Shared classes so inline links match the shadcn trigger sizing/typography.
-const linkClass =
-  "inline-flex h-9 w-max items-center rounded-lg px-2.5 py-1.5 text-sm font-medium text-slate-300 transition-colors hover:text-white hover:bg-white/10 focus:bg-white/10 outline-none";
-
-function ExternalIcon() {
-  return (
-    <svg
-      width="11"
-      height="11"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="ml-1 opacity-70"
-    >
-      <path d="M7 17 17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
+  // Primary navigation links
+  const NAV_LINKS = [
+    { label: "Case Studies", href: "/case-study" },
+    { label: "Security", href: "/security" },
+    { label: "Blog", href: "/blog" },
+    { label: "Docs", href: "https://docs.getalchemystai.com", external: true },
+    { label: "Pricing", href: "/pricing" },
+  ];
+
+  const toggleMenu = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] border-b border-white/[0.06] bg-[rgba(10,15,30,0.92)] backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 no-underline"
-          aria-label="Alchemyst AI home"
-        >
+    <div className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center">
+      <nav className="bg-card/30 backdrop-blur-md border border-border rounded-xl flex justify-between items-center w-[70%] px-6 py-2">
+        {/* Alchemyst Logo */}
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Alchemyst AI"
-            width={150}
-            height={22}
-            priority
-            style={{ height: "22px", width: "auto" }}
+            width={160}
+            height={160}
+            className="h-7 w-auto object-contain"
           />
-          <span className="nav-brand-tag border-l border-white/15 pl-2.5 font-[Sora] text-[0.625rem] font-bold uppercase tracking-[0.18em] text-[#0E9594]">
-            Context Layer
-          </span>
         </Link>
 
-        <NavigationMenu
-          viewport={false}
-          className="nav-desktop-shadcn hidden md:flex"
-        >
-          <NavigationMenuList className="gap-1">
-            {NAV_LINKS.map((link) => (
-              <NavigationMenuItem key={link.label}>
-                <NavigationMenuLink asChild className={linkClass}>
-                  <a href={link.href}>{link.label}</a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-slate-300 hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white">
-                Compare
-              </NavigationMenuTrigger>
-              <NavigationMenuContent className="rounded-xl border border-white/10 bg-[rgba(17,22,38,0.98)] p-2 shadow-2xl backdrop-blur-xl">
-                <ul className="grid w-[340px] gap-1">
-                  {COMPARE_LINKS.map((c) => (
-                    <li key={c.href}>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href={c.href}
-                          className="flex flex-col gap-0.5 rounded-lg p-3 no-underline transition-colors hover:bg-[rgba(244,144,37,0.12)] focus:bg-[rgba(244,144,37,0.12)]"
-                        >
-                          <span className="text-sm font-semibold text-white">
-                            {(!c.label.toLowerCase().includes("all comparison") ? "Alchemyst " : "") + c.label}
-                          </span>
-                          <span className="text-xs leading-snug text-slate-400">
-                            {c.blurb}
-                          </span>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            {SECONDARY_LINKS.map((link) => (
-              <NavigationMenuItem key={link.label}>
-                <NavigationMenuLink asChild className={linkClass}>
-                  <a
-                    href={link.href}
-                    {...(link.external
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                  >
-                    {link.label}
-                    {link.external && <ExternalIcon />}
-                  </a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <Button
-            asChild
-            variant="ghost"
-            size="brand-sm"
-            className="text-white/80 hover:bg-white/10 hover:text-white"
-          >
-            <Link href="/platform/signin">Sign in</Link>
-          </Button>
-          <Button asChild variant="orange" size="brand-sm">
-            <a href="/#get-access">Get API Access</a>
-          </Button>
+        {/* Centered Navigation Sections */}
+        <div className="hidden md:flex items-center space-x-6">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="relative text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm group"
+            >
+              <span className="relative pb-1">
+                {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+              </span>
+            </Link>
+          ))}
         </div>
 
+        {/* Sign In button */}
+        <div className="hidden md:flex items-center space-x-3">
+          <Link
+            href="/platform/signin"
+            className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200"
+          >
+            Sign In
+          </Link>
+        </div>
+
+        {/* Mobile Menu */}
         <div className="md:hidden">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
@@ -220,68 +102,35 @@ export default function Navbar() {
                 </SheetTitle>
               </SheetHeader>
 
-              <nav
-                aria-label="Mobile navigation"
-                className="flex flex-col overflow-y-auto px-6 pb-8"
-                style={{ maxHeight: "calc(100vh - 73px)" }}
-              >
+              <nav className="flex flex-col overflow-y-auto px-6 pb-8">
                 {NAV_LINKS.map((link) => (
                   <SheetClose asChild key={link.label}>
                     <a
                       href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
                       className="border-b border-white/5 py-3 text-base font-medium text-slate-300 no-underline transition-colors hover:text-white"
                     >
                       {link.label}
-                    </a>
-                  </SheetClose>
-                ))}
-
-                <span className="px-0 pb-1.5 pt-4 font-[Sora] text-[0.72rem] font-bold uppercase tracking-[0.14em] text-[#0E9594]">
-                  Compare
-                </span>
-                {COMPARE_LINKS.map((c) => (
-                  <SheetClose asChild key={c.href}>
-                    <Link
-                      href={c.href}
-                      className="border-b border-white/5 py-3 pl-3.5 text-[0.92rem] text-slate-400 no-underline transition-colors hover:text-white"
-                    >
-                      Alchemyst {c.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-
-                {SECONDARY_LINKS.map((link) => (
-                  <SheetClose asChild key={link.label}>
-                    <a
-                      href={link.href}
-                      className="border-b border-white/5 py-3 text-base font-medium text-slate-300 no-underline transition-colors hover:text-white"
-                      {...(link.external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
-                      {link.label}
-                      {link.external ? " ↗" : ""}
                     </a>
                   </SheetClose>
                 ))}
 
                 <div className="mt-4 flex flex-col gap-2.5">
                   <SheetClose asChild>
-                    <Button asChild variant="light" size="full">
-                      <Link href="/platform/signin">Sign in</Link>
-                    </Button>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Button asChild variant="orange" size="full">
-                      <a href="/#get-access">Get API Access</a>
-                    </Button>
+                    <Link
+                      href="/platform/signin"
+                      className="block py-3 px-4 text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200 text-lg font-medium text-center"
+                    >
+                      Sign In
+                    </Link>
                   </SheetClose>
                 </div>
               </nav>
             </SheetContent>
           </Sheet>
         </div>
-      </div>
-    </header>
+      </nav>
+    </div>
   );
 }
