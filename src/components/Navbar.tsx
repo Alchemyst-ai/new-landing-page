@@ -1,11 +1,14 @@
 // Navbar — sticky dark header with in-page anchor links (Server Component)
 // Hover effects handled via CSS class in globals.css — no event handlers needed
 import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
-  { label: "Why Context", href: "#why-context" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Thesis", href: "#thesis" },
+  { label: "Why Context", href: "/#why-context" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Thesis", href: "/thesis" },
+  { label: "Blog", href: "/blog" },
   { label: "Docs", href: "https://docs.getalchemystai.com" },
 ];
 
@@ -33,24 +36,34 @@ export default function Navbar() {
           height: "64px",
         }}
       >
-        {/* Brand */}
+        {/* Brand — actual Alchemyst logo */}
         <Link
           href="/"
           style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+          aria-label="Alchemyst AI home"
         >
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="#F49025" opacity="0.15" />
-            <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="none" stroke="#F49025" strokeWidth="1.5" />
-            <circle cx="14" cy="14" r="3.5" fill="#F49025" />
-          </svg>
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
-            <span style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: "0.9375rem", color: "#FFFFFF", letterSpacing: "-0.01em" }}>
-              Alchemyst AI
-            </span>
-            <span style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: "0.625rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#F49025", marginTop: "1px" }}>
-              Context Layer
-            </span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Alchemyst AI"
+            width={150}
+            height={22}
+            priority
+            style={{ height: "22px", width: "auto" }}
+          />
+          <span
+            style={{
+              fontFamily: "'Sora', sans-serif",
+              fontWeight: 700,
+              fontSize: "0.625rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "#0E9594",
+              borderLeft: "1px solid rgba(255,255,255,0.15)",
+              paddingLeft: "10px",
+            }}
+          >
+            Context Layer
+          </span>
         </Link>
 
         {/* Nav links — desktop */}
@@ -66,23 +79,19 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTAs */}
+        {/* CTAs — shadcn Button (asChild keeps them as links) */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <a
-            href="https://docs.getalchemystai.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-docs-btn"
+          <Button
+            asChild
+            variant="ghost"
+            size="brand-sm"
+            className="text-white/80 hover:bg-white/10 hover:text-white"
           >
-            Read Docs
-          </a>
-          <a
-            href="#get-access"
-            className="btn-primary"
-            style={{ padding: "8px 18px", fontSize: "0.875rem" }}
-          >
-            Get API Access
-          </a>
+            <Link href="/platform/signin">Sign in</Link>
+          </Button>
+          <Button asChild variant="orange" size="brand-sm">
+            <a href="/#get-access">Get API Access</a>
+          </Button>
         </div>
       </div>
     </header>

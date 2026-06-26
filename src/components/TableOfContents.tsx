@@ -122,7 +122,7 @@ export default function TableOfContents({
         </svg>
         <h3
           style={{
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontSize: "1.0625rem",
             fontWeight: 600,
             color: "#FFFFFF",
@@ -156,7 +156,7 @@ export default function TableOfContents({
                 display: "block",
                 width: "100%",
                 textAlign: "left",
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: "0.8125rem",
                 lineHeight: 1.45,
                 fontWeight: level === 1 ? 600 : 400,

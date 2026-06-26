@@ -1,31 +1,33 @@
 // AlchemystFixesSection — "What Alchemyst Does" (Server Component)
+import { Button } from "@/components/ui/button";
 
 const STEPS = [
   {
     num: "01",
-    title: "Three-layer context architecture",
-    body: "Episodic memory (what happened), semantic memory (what it means), and procedural memory (how to act) — all queryable through a single API. Your agent always has the right layer for the right task.",
-    code: `const ctx = await alchemyst.context.get({
-  episodic: { session_id, last_n: 10 },
-  semantic: { query: userMessage },
-  procedural: { task: "outbound_call" }
-});`,
+    title: "Context Arithmetic — the core primitive",
+    body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains — so only the right context survives into the window.",
+    code: `// Set algebra over meaning, at query time
+const window = alchemyst.context.search({
+  query: userMessage,
+  groupName: ["sales", "emea"],   // ∩ narrow scope
+  metadata: { version: "v2" },     // ∩ filter
+});
+// − superseded / deduped  → rank → top-K`,
   },
   {
     num: "02",
-    title: "Context Arithmetic — not just RAG",
-    body: "Instead of naïve top-K similarity search, Alchemyst performs set operations on your data: union across sources, intersection across relevance criteria, and explicit subtraction of stale or irrelevant context.",
-    code: `// Union: merge user history + live CRM data
-// Intersect: only what satisfies both criteria
-// Subtract: exclude superseded decisions
-const window = ctx.union(history, crm)
-  .intersect(relevantToQuery)
-  .subtract(outdatedPricing);`,
+    title: "Institutional knowledge graph + context traces",
+    body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers — by applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
+    code: `// One graph + arithmetic → derived "memories"
+const whatHappened = ctx.search({ groupName: [session_id] });
+const whatItMeans  = ctx.search({ query: term })
+                        .subtract(deprecated);
+// "how to act" falls out of ranked, in-scope context`,
   },
   {
     num: "03",
     title: "Context Traces for full auditability",
-    body: "Every agent decision is traceable back to the exact context it had. Not a summary — the exact data points, ranked and filtered, that went into the model's context window. Debug in minutes, not days.",
+    body: "Every agent decision is traceable back to the exact context it had — at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
     code: `const trace = await alchemyst.trace.get(
   session_id, turn_id
 );
@@ -47,9 +49,9 @@ const window = ctx.union(history, crm)
 ];
 
 const METRICS = [
-  { value: "< 50ms", label: "context retrieval latency", sub: "p99 across all query types" },
-  { value: "94%", label: "reduction in hallucinations", sub: "on domain-specific tasks" },
-  { value: "3×", label: "faster agent debugging", sub: "with context traces vs raw logs" },
+  { value: "< 300ms", label: "context retrieval latency", sub: "p95 across all query types" },
+  { value: "99.7%", label: "reduction in hallucinations", sub: "on domain-specific tasks" },
+  { value: "20×", label: "faster agent debugging", sub: "with context traces vs raw logs" },
   { value: "1 API", label: "replaces 4 infra pieces", sub: "vector DB, graph DB, cache, logger" },
 ];
 
@@ -67,7 +69,7 @@ export default function AlchemystFixesSection() {
           <h2
             id="fixes-heading"
             style={{
-              fontFamily: "'Satoshi', sans-serif",
+              fontFamily: "'Sora', sans-serif",
               fontWeight: 800,
               fontSize: "clamp(1.875rem, 3.5vw, 3rem)",
               lineHeight: 1.08,
@@ -83,7 +85,7 @@ export default function AlchemystFixesSection() {
           </h2>
           <p
             style={{
-              fontFamily: "'Satoshi', sans-serif",
+              fontFamily: "'Sora', sans-serif",
               fontWeight: 400,
               fontSize: "1.0625rem",
               lineHeight: 1.65,
@@ -92,8 +94,9 @@ export default function AlchemystFixesSection() {
               margin: "20px auto 0",
             }}
           >
-            One API call. Three memory layers. Full context arithmetic. Every decision traceable
-            back to its source — without managing a single vector database or graph store.
+            One API call. Context arithmetic over your institutional knowledge graph. Every
+            decision traceable back to its source — without managing a single vector database or
+            graph store.
           </p>
         </div>
 
@@ -132,7 +135,7 @@ export default function AlchemystFixesSection() {
                   </span>
                   <h3
                     style={{
-                      fontFamily: "'Satoshi', sans-serif",
+                      fontFamily: "'Sora', sans-serif",
                       fontWeight: 700,
                       fontSize: "1.0625rem",
                       letterSpacing: "-0.01em",
@@ -144,7 +147,7 @@ export default function AlchemystFixesSection() {
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Satoshi', sans-serif",
+                    fontFamily: "'Sora', sans-serif",
                     fontWeight: 400,
                     fontSize: "0.9375rem",
                     lineHeight: 1.65,
@@ -196,7 +199,7 @@ export default function AlchemystFixesSection() {
             >
               <div
                 style={{
-                  fontFamily: "'Satoshi', sans-serif",
+                  fontFamily: "'Sora', sans-serif",
                   fontWeight: 800,
                   fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
                   letterSpacing: "-0.04em",
@@ -208,7 +211,7 @@ export default function AlchemystFixesSection() {
               </div>
               <div
                 style={{
-                  fontFamily: "'Satoshi', sans-serif",
+                  fontFamily: "'Sora', sans-serif",
                   fontWeight: 600,
                   fontSize: "0.875rem",
                   color: "#0F172A",
@@ -259,7 +262,7 @@ export default function AlchemystFixesSection() {
             </p>
             <h3
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontWeight: 700,
                 fontSize: "1.25rem",
                 letterSpacing: "-0.02em",
@@ -271,7 +274,7 @@ export default function AlchemystFixesSection() {
             </h3>
             <p
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontWeight: 400,
                 fontSize: "0.9375rem",
                 lineHeight: 1.65,
@@ -285,16 +288,16 @@ export default function AlchemystFixesSection() {
               model problem?
             </p>
           </div>
-          <a
-            href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            style={{ whiteSpace: "nowrap" }}
-          >
-            Read the walkthrough
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
+          <Button asChild variant="orange" size="brand" className="whitespace-nowrap">
+            <a
+              href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the walkthrough
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </Button>
         </div>
       </div>
     </section>

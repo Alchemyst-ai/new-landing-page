@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import HowToSchema from "@/components/HowToSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Satoshi', sans-serif";
+const SANS = "'Sora', sans-serif";
 
 const PAGE_PATH = "/blog/how-to-add-persistent-memory-to-ai-agents";
 const PAGE_TITLE = "How to Add Persistent Memory to AI Agents";

@@ -2,17 +2,16 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoBar from "@/components/sections/LogoBar";
-import SemanticDriftSection from "@/components/sections/SemanticDriftSection";
+import WhyContextSection from "@/components/sections/WhyContextSection";
 import AlchemystFixesSection from "@/components/sections/AlchemystFixesSection";
-import ThesisSection from "@/components/sections/ThesisSection";
 
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Alchemyst AI — Context Layer | Never Let Your AI Work on Stale Knowledge",
+  title: "Alchemyst AI — The Institutional Context Backbone for Your Enterprise",
   description:
-    "Persistent memory, semantic retrieval, and cross-session context for AI agents. Fix semantic drift before it kills your enterprise AI adoption.",
+    "Enable AI agents to run your day-to-day operations at enterprise scale. The institutional context backbone that keeps every agent's knowledge current, traceable, and consistent through a single API.",
 };
 
 
@@ -23,10 +22,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <LogoBar />
-        <SemanticDriftSection />
+        <WhyContextSection />
         <AlchemystFixesSection />
-        <ThesisSection />
-        
       </main>
       <Footer />
     </>

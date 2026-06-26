@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
-const SANS = "'Satoshi', sans-serif";
+const SANS = "'Sora', sans-serif";
 
 export const metadata: Metadata = {
   title: "Mem0 vs Zep vs Letta: Which AI Memory Layer is Best?",

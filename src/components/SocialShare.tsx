@@ -50,7 +50,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
         style={{
           display: "flex",
           alignItems: "center",
-          fontFamily: "'Satoshi', sans-serif",
+          fontFamily: "'Sora', sans-serif",
           fontSize: "0.875rem",
           fontWeight: 600,
           color: "#FFFFFF",

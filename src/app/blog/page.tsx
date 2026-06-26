@@ -54,7 +54,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
           <span
             style={{
               display: "inline-block",
-              fontFamily: "'Satoshi', sans-serif",
+              fontFamily: "'Sora', sans-serif",
               fontSize: "0.75rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -71,7 +71,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
         )}
         <h2
           style={{
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontSize: "1.125rem",
             fontWeight: 700,
             lineHeight: 1.35,
@@ -83,7 +83,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
         </h2>
         <p
           style={{
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontSize: "0.9375rem",
             lineHeight: 1.6,
             color: "#475569",
@@ -99,7 +99,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
             gap: "12px",
             fontSize: "0.8125rem",
             color: "#94A3B8",
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
           }}
         >
           {post.author && <span>{post.author.name}</span>}
@@ -137,7 +137,7 @@ export default async function BlogPage() {
             />
             <p
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
@@ -150,7 +150,7 @@ export default async function BlogPage() {
             </p>
             <h1
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
@@ -162,7 +162,7 @@ export default async function BlogPage() {
             </h1>
             <p
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: "1.0625rem",
                 lineHeight: 1.6,
                 color: "#94A3B8",
@@ -182,7 +182,7 @@ export default async function BlogPage() {
                 style={{
                   textAlign: "center",
                   color: "#94A3B8",
-                  fontFamily: "'Satoshi', sans-serif",
+                  fontFamily: "'Sora', sans-serif",
                   fontSize: "1rem",
                   padding: "80px 0",
                 }}

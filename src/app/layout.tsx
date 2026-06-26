@@ -8,13 +8,16 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Alchemyst AI | Context Layer for AI Agents",
+    default: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
     template: "%s | Alchemyst AI",
   },
   description:
-    "Persistent memory and semantic retrieval for AI agents. Stop context rot before it breaks your AI workflows. One API, zero infrastructure.",
+    "Enable AI agents to run your day-to-day operations at enterprise scale. The institutional context backbone that keeps every agent's knowledge current, traceable, and consistent. One API, zero infrastructure.",
   keywords: [
     "AI context layer",
+    "context arithmetic",
+    "institutional knowledge graph",
+    "context traces",
     "AI memory API",
     "semantic retrieval",
     "agent memory",
@@ -40,9 +43,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Alchemyst AI | Context Layer for AI Agents",
+    title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
     description:
-      "Persistent memory and semantic retrieval for AI agents. Stop context rot before it breaks your AI workflows.",
+      "Enable AI agents to run your day-to-day operations at enterprise scale — the institutional context backbone for your enterprise.",
     url: BASE_URL,
     siteName: "Alchemyst AI",
     type: "website",
@@ -52,16 +55,16 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Alchemyst AI Context Layer — Never let your AI Agents work on stale Knowledge again",
+        alt: "Alchemyst AI — Enable AI agents to run your day-to-day operations at enterprise scale",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alchemyst AI | Context Layer for AI Agents",
+    title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
     description:
-      "Persistent memory and semantic retrieval for AI agents. Stop context rot before it breaks your AI workflows.",
+      "Enable AI agents to run your day-to-day operations at enterprise scale — the institutional context backbone for your enterprise.",
     site: "@getalchemystai",
     creator: "@getalchemystai",
     images: [OG_IMAGE],
@@ -87,12 +90,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Anta&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
         <StructuredData />

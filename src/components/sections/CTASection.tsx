@@ -2,6 +2,7 @@
 // CTASection — email capture (Client Component for form interactivity)
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function CTASection() {
   const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ export default function CTASection() {
         <h2
           id="cta-heading"
           style={{
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontWeight: 800,
             fontSize: "clamp(2rem, 4vw, 3.5rem)",
             lineHeight: 1.08,
@@ -65,7 +66,7 @@ export default function CTASection() {
         </h2>
         <p
           style={{
-            fontFamily: "'Satoshi', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontWeight: 400,
             fontSize: "1.125rem",
             lineHeight: 1.6,
@@ -97,7 +98,7 @@ export default function CTASection() {
               placeholder="your@email.com"
               required
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: "0.9375rem",
                 color: "#0F172A",
                 background: "#FFFFFF",
@@ -109,9 +110,9 @@ export default function CTASection() {
                 outline: "none",
               }}
             />
-            <button type="submit" disabled={loading} className="btn-primary">
+            <Button type="submit" disabled={loading} variant="orange" size="brand">
               {loading ? "Requesting..." : "Get API Access"}
-            </button>
+            </Button>
           </form>
         ) : (
           <div
@@ -128,7 +129,7 @@ export default function CTASection() {
           >
             <span
               style={{
-                fontFamily: "'Satoshi', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontWeight: 600,
                 fontSize: "0.9375rem",
                 color: "#16A34A",
@@ -149,20 +150,21 @@ export default function CTASection() {
             marginBottom: "40px",
           }}
         >
-          <a
-            href="https://docs.getalchemystai.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
-          >
-            Read the Docs
-          </a>
+          <Button asChild variant="brand-outline" size="brand">
+            <a
+              href="https://docs.getalchemystai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the Docs
+            </a>
+          </Button>
           <a
             href="https://getalchemystai.com"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: "'Satoshi', sans-serif",
+              fontFamily: "'Sora', sans-serif",
               fontWeight: 500,
               fontSize: "0.9375rem",
               color: "#64748B",

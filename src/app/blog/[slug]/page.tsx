@@ -84,7 +84,7 @@ function categoryHref(post: StrapiBlogPost): string {
   return slug ? `/blog?category=${slug}` : "/blog";
 }
 
-const SANS = "'Satoshi', sans-serif";
+const SANS = "'Sora', sans-serif";
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;

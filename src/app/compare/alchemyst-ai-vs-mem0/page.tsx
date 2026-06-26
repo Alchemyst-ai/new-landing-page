@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
-const SANS = "'Satoshi', sans-serif";
+const SANS = "'Sora', sans-serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents",

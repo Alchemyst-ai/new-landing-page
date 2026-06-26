@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const BASE_URL = "https://getalchemystai.com";
 
-const SANS = "'Satoshi', sans-serif";
+const SANS = "'Sora', sans-serif";
 
 export interface Crumb {
   /** Visible label, e.g. "Blog" */

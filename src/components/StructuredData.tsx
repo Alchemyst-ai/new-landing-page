@@ -19,7 +19,7 @@ export default function StructuredData() {
         logo: `${BASE_URL}/og-image.png`,
         email: "founders@getalchemystai.com",
         description:
-          "Alchemyst AI is a context layer for AI agents that provides persistent memory and semantic retrieval, stopping context rot and semantic drift before they break AI workflows.",
+          "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run day-to-day operations at scale by providing persistent, traceable context and semantic retrieval over an institutional knowledge graph, keeping institutional knowledge current, traceable, and consistent.",
         sameAs: [
           "https://x.com/getalchemyst",
           "https://www.linkedin.com/company/alchemystai",
@@ -36,7 +36,7 @@ export default function StructuredData() {
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Web, Cloud",
         description:
-          "Persistent memory and semantic retrieval for AI agents. Stop context rot before it breaks your AI workflows. One API, zero infrastructure, sub-50ms retrieval latency, 99.9% uptime SLA.",
+          "The institutional context backbone for your enterprise. Enable AI agents to run your day-to-day operations at enterprise scale with persistent, traceable context and semantic retrieval over an institutional knowledge graph. One API, zero infrastructure, sub-300ms retrieval latency, 99.9% uptime SLA.",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -55,7 +55,7 @@ export default function StructuredData() {
             name: "What is Alchemyst AI?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Alchemyst AI is a context layer for AI agents that provides persistent memory and semantic retrieval through a single API. It keeps an agent's knowledge current so it never works on stale knowledge, with no infrastructure to manage.",
+              text: "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run your day-to-day operations at enterprise scale, providing persistent, traceable context and semantic retrieval through a single API — powered by context arithmetic over your institutional knowledge graph — so institutional knowledge stays current, traceable, and consistent, with no infrastructure to manage.",
             },
           },
           {
@@ -63,7 +63,7 @@ export default function StructuredData() {
             name: "What is semantic drift and how does Alchemyst AI fix it?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Semantic drift (context rot) is when an AI agent's knowledge base goes stale as your business moves on, causing wrong or outdated answers. Alchemyst AI fixes it with a live context layer that continuously updates persistent memory and semantic retrieval so agents stay accurate.",
+              text: "Semantic drift (context rot) is when an AI agent's knowledge base goes stale as your business moves on, causing wrong or outdated answers. Alchemyst AI fixes it with a live context layer that continuously updates your institutional knowledge graph and uses context arithmetic for retrieval so agents stay accurate.",
             },
           },
           {
@@ -71,7 +71,7 @@ export default function StructuredData() {
             name: "How fast is Alchemyst AI's context retrieval?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Alchemyst AI delivers sub-50ms retrieval latency with a 99.9% uptime SLA, served through one API with zero infrastructure to manage.",
+              text: "Alchemyst AI delivers sub-300ms retrieval latency with a 99.9% uptime SLA, served through one API with zero infrastructure to manage.",
             },
           },
           {
@@ -79,7 +79,7 @@ export default function StructuredData() {
             name: "Who is Alchemyst AI's context layer for?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "It is built for developers and enterprises building AI agents, LLM apps, chatbots, and automation workflows that need persistent memory and cross-session context to stay reliable in production.",
+              text: "It is built for developers and enterprises building AI agents, LLM apps, chatbots, and automation workflows that need persistent, traceable context across sessions to stay reliable in production.",
             },
           },
           {
