@@ -24,7 +24,7 @@ export default function MemvidVsAlchemystPage() {
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: PAGE_TITLE },
             ]}
           />
