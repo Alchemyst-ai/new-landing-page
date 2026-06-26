@@ -58,21 +58,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const blogComparisonRoutes: MetadataRoute.Sitemap = [
-    "/blog/memvid-vs-alchemyst-agent-memory",
-    "/blog/supermemory-vs-alchemyst",
-    "/blog/letta-vs-alchemyst-llm-memory",
-    "/blog/langchain-memory-vs-alchemyst",
-    "/blog/cognee-vs-alchemyst-knowledge-graph",
-    "/blog/openai-memory-vs-deterministic-context",
-    "/blog/claude-memory-vs-alchemyst",
-  ].map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }));
-
   const blogRoutes: MetadataRoute.Sitemap = posts
     .filter((post) => post.slug)
     .map((post) => ({
@@ -82,5 +67,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
-  return [...staticRoutes, ...blogComparisonRoutes, ...blogRoutes];
+  return [...staticRoutes, ...blogRoutes];
 }
