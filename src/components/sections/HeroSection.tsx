@@ -1,7 +1,7 @@
-// HeroSection — HydraDB-style dark hero, SSG (Server Component)
+// HeroSection - HydraDB-style dark hero, SSG (Server Component)
 // Design: full-bleed dark #0A0F1E, centered headline, amber accent
-import ContextGraphLive from "./ContextGraphLive";
 import { Button } from "@/components/ui/button";
+import ContextGraphLive from "./ContextGraphLive";
 
 export default function HeroSection() {
   return (
@@ -44,7 +44,7 @@ export default function HeroSection() {
       />
 
       <div className="container relative" style={{ textAlign: "left" }}>
-        {/* H1 — punch line (Anta font) */}
+        {/* H1 - punch line (Anta font) */}
         <h1
           id="hero-heading"
           className="animate-fade-in-up delay-100"
@@ -74,7 +74,7 @@ export default function HeroSection() {
           every time.
         </h1>
 
-        {/* Subtitle — positioning + backbone combined into one level */}
+        {/* Subtitle - positioning + backbone combined into one level */}
         <p
           className="animate-fade-in-up delay-200"
           style={{
@@ -87,7 +87,7 @@ export default function HeroSection() {
             margin: "24px 0 0",
           }}
         >
-          Enable AI agents to run your day-to-day operations at enterprise scale — the
+          Enable AI agents to run your day-to-day operations at enterprise scale - the
           institutional context backbone for your enterprise.
         </p>
 

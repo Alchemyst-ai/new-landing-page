@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
 import HowToSchema from "@/components/HowToSchema";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
@@ -20,7 +20,7 @@ export default function HowToPersistentMemoryPage() {
     <>
       <Navbar />
 
-      {/* HowTo structured data — exposes the step-by-step guide to answer engines */}
+      {/* HowTo structured data - exposes the step-by-step guide to answer engines */}
       <HowToSchema
         name={PAGE_TITLE}
         description="A step-by-step guide to adding persistent memory to AI agents and stopping context rot, comparing self-built vector databases with a deterministic context layer like Alchemyst AI."
@@ -104,7 +104,7 @@ export default function HowToPersistentMemoryPage() {
               What causes AI agents to forget? Context rot and semantic drift
             </h2>
             <p style={{ marginBottom: "24px" }}>
-              By default, LLMs are stateless. When you build an AI agent, it forgets everything the moment the session ends. As LLM context windows expand, developers often try to solve this by stuffing the entire history into the prompt. But data always exceeds context windows, leading to <strong>semantic drift</strong> — your business moves on, but the agent&apos;s knowledge remains static and it begins hallucinating.
+              By default, LLMs are stateless. When you build an AI agent, it forgets everything the moment the session ends. As LLM context windows expand, developers often try to solve this by stuffing the entire history into the prompt. But data always exceeds context windows, leading to <strong>semantic drift</strong> - your business moves on, but the agent&apos;s knowledge remains static and it begins hallucinating.
             </p>
 
 <h2 id="step-2" style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px", scrollMarginTop: "96px" }}>
@@ -121,7 +121,7 @@ export default function HowToPersistentMemoryPage() {
              <p style={{ marginBottom: "24px" }}>
                <strong>The downside:</strong> It requires managing infrastructure, tuning chunking strategies, and dealing with probabilistic retrieval. You cannot easily audit <em>why</em> the vector DB returned a specific piece of context, which is a blocker for enterprise use cases. This is why Mem0 and Zep built dedicated memory layers on top.
              </p>
-             
+
              <h3 style={{ color: "#FFFFFF", fontSize: "1.25rem", fontWeight: 600, marginBottom: "16px", marginTop: "32px" }}>
                Why vector databases alone fail for AI memory
              </h3>
@@ -149,7 +149,7 @@ export default function HowToPersistentMemoryPage() {
                <li style={{ marginBottom: "8px" }}><strong>Zero Infrastructure:</strong> Drop it into your stack via APIs, SDKs, or MCPs in Python, JavaScript, or Java, with sub-50ms retrieval latency.</li>
                <li style={{ marginBottom: "8px" }}><strong>Semantic Consensus:</strong> Define canonical term definitions at the org level to prevent ambiguity before it reaches the model.</li>
              </ul>
-             
+
              <h3 style={{ color: "#FFFFFF", fontSize: "1.25rem", fontWeight: 600, marginBottom: "16px", marginTop: "32px" }}>
                Alchemyst vs Mem0 vs Zep: When to Choose What
              </h3>

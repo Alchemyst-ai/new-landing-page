@@ -1,5 +1,5 @@
 /**
- * Next.js Edge Middleware (proxy.ts — Next.js 16 convention)
+ * Next.js Edge Middleware (proxy.ts - Next.js 16 convention)
  *
  * Rewrites /*.html.md requests to /llms.txt?path=<pathname>
  * so per-page markdown is served by the App Router llms.txt handler.

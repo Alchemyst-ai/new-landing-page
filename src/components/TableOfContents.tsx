@@ -1,6 +1,6 @@
 "use client";
 
-// TableOfContents — faithful port of the reference branch's TableOfContents
+// TableOfContents - faithful port of the reference branch's TableOfContents
 // (+ TableOfContentsClient) adapted to the dark blog theme. It parses headings
 // (h1–h4) out of the rendered HTML body, injects matching IDs onto the live DOM
 // nodes inside `containerId`, provides smooth-scroll navigation with an
@@ -19,9 +19,9 @@ interface TOCItem {
 interface TableOfContentsProps {
   /** Raw HTML body of the article (same string rendered into the page). */
   content: string;
-  /** Article title — used for the share block. */
+  /** Article title - used for the share block. */
   title: string;
-  /** Canonical URL of the article — used for the share links. */
+  /** Canonical URL of the article - used for the share links. */
   url: string;
   /** ID of the rendered article container to read headings from. */
   containerId?: string;

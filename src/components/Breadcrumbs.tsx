@@ -1,4 +1,4 @@
-// Breadcrumbs — renders a visible breadcrumb trail AND BreadcrumbList JSON-LD.
+// Breadcrumbs - renders a visible breadcrumb trail AND BreadcrumbList JSON-LD.
 // The visible trail shows site hierarchy to users; the structured data exposes
 // the same hierarchy to search/answer engines (Google, ChatGPT, Perplexity,
 // Gemini, Grok) so they can render rich results and understand page context.
@@ -43,7 +43,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
   // Always begin the trail at Home.
   const trail: Crumb[] = [{ name: "Home", path: "/" }, ...items];
 
-  // BreadcrumbList JSON-LD — one ListItem per level, in order.
+  // BreadcrumbList JSON-LD - one ListItem per level, in order.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

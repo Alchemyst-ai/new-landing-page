@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const BASE_URL = "https://getalchemystai.com";
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
     description:
-      "Enable AI agents to run your day-to-day operations at enterprise scale — the institutional context backbone for your enterprise.",
+      "Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.",
     url: BASE_URL,
     siteName: "Alchemyst AI",
     type: "website",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Alchemyst AI — Enable AI agents to run your day-to-day operations at enterprise scale",
+        alt: "Alchemyst AI - Enable AI agents to run your day-to-day operations at enterprise scale",
         type: "image/png",
       },
     ],
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
     description:
-      "Enable AI agents to run your day-to-day operations at enterprise scale — the institutional context backbone for your enterprise.",
+      "Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.",
     site: "@getalchemystai",
     creator: "@getalchemystai",
     images: [OG_IMAGE],

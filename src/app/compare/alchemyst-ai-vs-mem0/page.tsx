@@ -1,19 +1,27 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ArticleSchema from "@/components/ArticleSchema";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
+const PAGE_PATH = "/compare/alchemyst-ai-vs-mem0";
+const PAGE_TITLE = "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents";
+const PAGE_DESCRIPTION = "Compare Alchemyst AI and Mem0. See feature differences, latency benchmarks, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.";
 
 export const metadata: Metadata = {
-  title: "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents",
-  description:
-    "Compare Alchemyst AI and Mem0. See feature differences, latency benchmarks, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
 };
 
 export default function CompareMem0Page() {
   return (
     <>
+      <ArticleSchema
+        headline={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        url={PAGE_PATH}
+      />
       <Navbar />
       <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
         <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>
@@ -39,7 +47,7 @@ export default function CompareMem0Page() {
           >
             Alchemyst AI vs Mem0
           </h1>
-          
+
           <div style={{ marginBottom: "48px", textAlign: "center" }}>
             <p
               style={{
@@ -117,7 +125,6 @@ export default function CompareMem0Page() {
              </table>
            </div>
 
-           {/* Latency benchmark callout */}
            <div style={{ background: "rgba(244,144,37,0.08)", border: "1px solid rgba(244,144,37,0.2)", borderRadius: "8px", padding: "24px", marginBottom: "64px" }}>
              <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8125rem", color: "#F49025", marginBottom: "8px" }}>
                Performance note
@@ -129,15 +136,15 @@ export default function CompareMem0Page() {
 
           <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
 <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-               What is Alchemyst AI best for?
-             </h2>
+              What is Alchemyst AI best for?
+            </h2>
             <p style={{ marginBottom: "24px" }}>
               Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context. Because context is deterministic and scoped when it is written, you eliminate the hallucination risks associated with probabilistic vector retrieval.
             </p>
 
 <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-               What is Mem0 best for?
-             </h2>
+              What is Mem0 best for?
+            </h2>
             <p style={{ marginBottom: "24px" }}>
               Mem0 is best for <strong>consumer apps, AI companions, and single-agent use cases</strong> where user personalization is the primary goal. Its vector-search approach is excellent at quickly surfacing fuzzy, personalized memories for a single user's chat session, where strict auditability and cross-agent determinism are less critical.
             </p>

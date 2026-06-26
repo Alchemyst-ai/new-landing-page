@@ -1,15 +1,15 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Link from "next/link";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const SANS = "'Sora', sans-serif";
 
 export const metadata: Metadata = {
   title: "Compare Alchemyst AI | Context Layer vs Memory, Ontology & Search",
   description:
-    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory — and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
+    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory - and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
 };
 
 const COMPARISONS = [
@@ -25,7 +25,7 @@ const COMPARISONS = [
     href: "/compare/alchemyst-ai-vs-zep",
     category: "AI Memory",
     blurb:
-      "Sovereign, model-agnostic context infrastructure versus Zep's conversational memory service — and what that means for traceability and semantic consensus at scale.",
+      "Sovereign, model-agnostic context infrastructure versus Zep's conversational memory service - and what that means for traceability and semantic consensus at scale.",
   },
   {
     competitor: "Palantir",
@@ -46,7 +46,7 @@ const COMPARISONS = [
     href: "/compare/alchemyst-ai-vs-snowflake-cortex",
     category: "Data & Governance",
     blurb:
-      "Cross-system, self-updating consensus versus warehouse-bounded, hand-authored semantic views. Context that spans every system your agents touch — not just the one warehouse.",
+      "Cross-system, self-updating consensus versus warehouse-bounded, hand-authored semantic views. Context that spans every system your agents touch - not just the one warehouse.",
   },
   {
     competitor: "Glean",
@@ -60,7 +60,7 @@ const COMPARISONS = [
     href: "/compare/memvid-vs-alchemyst-agent-memory",
     category: "AI Memory",
     blurb:
-      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases — edge/offline vs enterprise.",
+      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases - edge/offline vs enterprise.",
   },
   {
     competitor: "SuperMemory",
@@ -118,7 +118,7 @@ export default function CompareIndexPage() {
           padding: "120px 0 80px",
         }}
       >
-        <div className="container" style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        <div className="container" style={{ maxWidth: "70vw", margin: "0 auto" }}>
           <Breadcrumbs
             currentPath="/compare"
             items={[{ name: "Compare" }]}
@@ -158,8 +158,8 @@ export default function CompareIndexPage() {
               }}
             >
               A context layer is a different primitive from memory, ontology, data
-              governance or enterprise search. These pages lay out — fairly, with
-              the strengths of each platform acknowledged — where a sovereign,
+              governance or enterprise search. These pages lay out - fairly, with
+              the strengths of each platform acknowledged - where a sovereign,
               cross-system, deterministic context layer fits, and where the other
               tools genuinely shine.
             </p>

@@ -5,8 +5,8 @@ import TurnDownService from "turndown";
  * Strapi CMS client for Alchemyst AI blog
  *
  * Environment variables (set in .env.local or deployment secrets):
- *   STRAPI_API_URL    — e.g. https://cms.getalchemystai.com
- *   STRAPI_API_TOKEN  — Strapi API token (leave empty if endpoint is public)
+ *   STRAPI_API_URL    - e.g. https://cms.getalchemystai.com
+ *   STRAPI_API_TOKEN  - Strapi API token (leave empty if endpoint is public)
  *
  * Actual Strapi response shape (flat, not nested under `attributes`):
  * {
@@ -39,7 +39,7 @@ export interface StrapiBlogPost {
   description: string;
   about: string;
   slug: string;
-  /** Full HTML body — the primary content field */
+  /** Full HTML body - the primary content field */
   test?: string;
   /** Flat cover image URL returned by the production API (preferred over `cover`). */
   image?: string;
@@ -148,7 +148,7 @@ export function blogPostFullText(post: StrapiBlogPost): string {
   return "";
 }
 
-/** Raw HTML body exactly as Strapi returns it — for rendering blog post pages */
+/** Raw HTML body exactly as Strapi returns it - for rendering blog post pages */
 export function blogPostRawHtml(post: StrapiBlogPost): string {
   return post.test ?? post.description ?? "";
 }

@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
@@ -33,7 +33,7 @@ export default function AboutPage() {
           >
             The Best AI Memory Layer for Agents
           </h1>
-          
+
           {/* AEO: Standalone answer + Last updated date */}
           <div style={{ marginBottom: "48px" }}>
             <p
@@ -87,16 +87,16 @@ export default function AboutPage() {
           </div>
 
           <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
-            
+
             {/* AEO: Subheadings that match how buyers ask */}
             <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px" }}>
               Why do AI agents need a context layer?
             </h2>
             <p style={{ marginBottom: "16px" }}>
-              AI isn't the future anymore — it's already changing our present. But only 26% of generative AI efforts are actually usable in production. Any functional agent has three parts: the models, the workflows, and the context. Models are crushing SoTA records every day, and workflows are being solved by MCPs. The real problem lies in the context.
+              AI isn't the future anymore - it's already changing our present. But only 26% of generative AI efforts are actually usable in production. Any functional agent has three parts: the models, the workflows, and the context. Models are crushing SoTA records every day, and workflows are being solved by MCPs. The real problem lies in the context.
             </p>
             <p style={{ marginBottom: "16px" }}>
-              As LLM context windows expand, data explodes at 100× the rate. Data is always going to exceed LLM context window sizes. Beyond roughly 10 sessions per user, businesses need to treat memory and user-specific context as mandatory requirements. Without it, agents suffer from semantic drift — your business moves on, but the agent's knowledge remains static.
+              As LLM context windows expand, data explodes at 100× the rate. Data is always going to exceed LLM context window sizes. Beyond roughly 10 sessions per user, businesses need to treat memory and user-specific context as mandatory requirements. Without it, agents suffer from semantic drift - your business moves on, but the agent's knowledge remains static.
             </p>
 
             <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px" }}>
@@ -118,7 +118,7 @@ export default function AboutPage() {
               The Context Layer is built specifically for engineering teams deploying production AI agents at scale. It is not designed for single-agent hobby projects or simple chatbots; it is designed for multi-agent architectures where consistent, organization-wide knowledge is a hard requirement.
             </p>
             <p style={{ marginBottom: "16px" }}>
-              "Everyone will upgrade — and the ones using Alchemyst AI will be at the forefront."
+              "Everyone will upgrade - and the ones using Alchemyst AI will be at the forefront."
             </p>
           </div>
         </article>

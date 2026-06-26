@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/compare/langchain-memory-vs-alchemyst";
+const PAGE_PATH = "/blog/langchain-memory-vs-alchemyst";
 const PAGE_TITLE = "LangChain Memory vs Alchemyst: Framework Memory vs Context Layer";
 
 export const metadata: Metadata = {

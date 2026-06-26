@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";

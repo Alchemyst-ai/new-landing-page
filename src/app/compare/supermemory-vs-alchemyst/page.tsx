@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/compare/supermemory-vs-alchemyst";
+const PAGE_PATH = "/blog/supermemory-vs-alchemyst";
 const PAGE_TITLE = "SuperMemory vs Alchemyst: Memory + RAG vs Deterministic Context";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function SuperMemoryVsAlchemystPage() {
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Compare", path: "/compare" },
+              { name: "Blog", path: "/blog" },
               { name: PAGE_TITLE },
             ]}
           />

@@ -1,13 +1,13 @@
-// Sign-in page — ported from new-landing-revamp-saved and adapted to the
+// Sign-in page - ported from new-landing-revamp-saved and adapted to the
 // new-positioning brand theme. The original used a Spline 3D scene and a
 // shared Button component; here it is self-contained (native buttons, inline
 // GitHub SVG) and themed with the Alchemyst orange (#F49025) + teal (#0E9594).
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function SignInPage() {
   const backendUrl =
@@ -78,7 +78,7 @@ export default function SignInPage() {
               </div>
 
               <div className="flex flex-col gap-3 w-full">
-                {/* GitHub — coming soon */}
+                {/* GitHub - coming soon */}
                 <Button
                   type="button"
                   disabled
@@ -221,7 +221,7 @@ export default function SignInPage() {
               }}
             >
               One sovereign context layer. Any model. Agents that actually run
-              your day-to-day operations — at enterprise scale.
+              your day-to-day operations - at enterprise scale.
             </p>
           </div>
         </div>

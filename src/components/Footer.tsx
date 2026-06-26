@@ -1,4 +1,4 @@
-// Footer — dark ink, amber accent (Server Component)
+// Footer - dark ink, amber accent (Server Component)
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -34,7 +34,7 @@ export default function Footer() {
               </div>
             </div>
             <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 400, fontSize: "0.9375rem", lineHeight: 1.65, color: "#64748B", maxWidth: "320px" }}>
-              Persistent, traceable context and semantic retrieval for AI agents — over your institutional knowledge graph. One API. Zero infrastructure.
+              Persistent, traceable context and semantic retrieval for AI agents - over your institutional knowledge graph. One API. Zero infrastructure.
             </p>
           </div>
 

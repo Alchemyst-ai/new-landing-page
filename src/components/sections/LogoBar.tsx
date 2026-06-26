@@ -1,4 +1,4 @@
-// LogoBar — "Trusted by" social-proof marquee (Server Component)
+// LogoBar - "Trusted by" social-proof marquee (Server Component)
 // Uniform monochrome (muted-white) wordmarks/glyphs for visual consistency
 // on the dark background. Logos scroll horizontally to the left in a
 // seamless loop (list is duplicated for continuity).

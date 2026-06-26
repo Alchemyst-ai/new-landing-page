@@ -1,11 +1,11 @@
-// AlchemystFixesSection — "What Alchemyst Does" (Server Component)
+// AlchemystFixesSection - "What Alchemyst Does" (Server Component)
 import { Button } from "@/components/ui/button";
 
 const STEPS = [
   {
     num: "01",
-    title: "Context Arithmetic — the core primitive",
-    body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains — so only the right context survives into the window.",
+    title: "Context Arithmetic - the core primitive",
+    body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains - so only the right context survives into the window.",
     code: `// Set algebra over meaning, at query time
 const window = alchemyst.context.search({
   query: userMessage,
@@ -17,7 +17,7 @@ const window = alchemyst.context.search({
   {
     num: "02",
     title: "Institutional knowledge graph + context traces",
-    body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers — by applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
+    body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers - by applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
     code: `// One graph + arithmetic → derived "memories"
 const whatHappened = ctx.search({ groupName: [session_id] });
 const whatItMeans  = ctx.search({ query: term })
@@ -27,7 +27,7 @@ const whatItMeans  = ctx.search({ query: term })
   {
     num: "03",
     title: "Context Traces for full auditability",
-    body: "Every agent decision is traceable back to the exact context it had — at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
+    body: "Every agent decision is traceable back to the exact context it had - at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
     code: `const trace = await alchemyst.trace.get(
   session_id, turn_id
 );
@@ -95,7 +95,7 @@ export default function AlchemystFixesSection() {
             }}
           >
             One API call. Context arithmetic over your institutional knowledge graph. Every
-            decision traceable back to its source — without managing a single vector database or
+            decision traceable back to its source - without managing a single vector database or
             graph store.
           </p>
         </div>
@@ -282,8 +282,8 @@ export default function AlchemystFixesSection() {
                 maxWidth: "560px",
               }}
             >
-              Pairing Alchemyst&apos;s Context Traces with Euphony — OpenAI&apos;s open-source conversation
-              visualizer — creates an end-to-end debugging workflow. Every agent failure is now
+              Pairing Alchemyst&apos;s Context Traces with Euphony - OpenAI&apos;s open-source conversation
+              visualizer - creates an end-to-end debugging workflow. Every agent failure is now
               diagnosable in minutes: was it a retrieval problem, a configuration problem, or a
               model problem?
             </p>

@@ -1,4 +1,4 @@
-// /thesis — The Context Thesis, migrated off the home page into a dedicated route.
+// /thesis - The Context Thesis, migrated off the home page into a dedicated route.
 // Standalone App Router page reusing the shared Navbar/Footer shell and the
 // project's dark editorial design system (Sora + JetBrains Mono, amber accent,
 // #0A0F1E hero bg, 8px max radius) per design.md.
@@ -13,9 +13,9 @@ const SANS = "'Sora', sans-serif";
 const MONO = "'JetBrains Mono', monospace";
 
 export const metadata: Metadata = {
-  title: "The Context Thesis — Why We're Building the Institutional Context Backbone",
+  title: "The Context Thesis - Why We're Building the Institutional Context Backbone",
   description:
-    "Alchemyst AI's thesis: intelligence without memory is performance not understanding, context is the compound interest of AI interactions, the model is not the bottleneck — the infrastructure is, and context should be a primitive, not an afterthought. Includes the problem of semantic drift and why enterprise AI fails when context rots.",
+    "Alchemyst AI's thesis: intelligence without memory is performance not understanding, context is the compound interest of AI interactions, the model is not the bottleneck - the infrastructure is, and context should be a primitive, not an afterthought. Includes the problem of semantic drift and why enterprise AI fails when context rots.",
   alternates: {
     canonical: "https://getalchemystai.com/thesis",
   },
@@ -24,17 +24,17 @@ export const metadata: Metadata = {
 const PROBLEM_CARDS = [
   {
     title: "Semantic Consensus breaks silently",
-    body: '"Revenue" means $500K to your CFO and $5M to your Sales team. Your AI agent doesn\'t know which one is right — and acts with false confidence on whichever it finds first.',
+    body: '"Revenue" means $500K to your CFO and $5M to your Sales team. Your AI agent doesn\'t know which one is right - and acts with false confidence on whichever it finds first.',
     tag: "Semantic Consensus",
   },
   {
     title: "Ontologies rot from day one",
-    body: "Every knowledge graph starts accurate. The decay begins the moment you ship it. New pricing tiers, new segments, new teams — the schema never updates itself. Agents keep acting on a version of your business that no longer exists.",
+    body: "Every knowledge graph starts accurate. The decay begins the moment you ship it. New pricing tiers, new segments, new teams - the schema never updates itself. Agents keep acting on a version of your business that no longer exists.",
     tag: "Context Rot",
   },
   {
     title: "Tractability is the missing primitive",
-    body: "You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer — not just logs.",
+    body: "You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer - not just logs.",
     tag: "Auditability",
   },
   {
@@ -48,22 +48,22 @@ const THESES = [
   {
     num: "I",
     title: "Intelligence without memory is performance, not understanding.",
-    body: "A model that can answer any question but remembers nothing is a search engine, not an agent. True intelligence requires the ability to learn from experience — to carry forward what was said, decided, and discovered. An agent that forgets the moment a session ends can never run your operations; it can only react to them, one disconnected prompt at a time.",
+    body: "A model that can answer any question but remembers nothing is a search engine, not an agent. True intelligence requires the ability to learn from experience - to carry forward what was said, decided, and discovered. An agent that forgets the moment a session ends can never run your operations; it can only react to them, one disconnected prompt at a time.",
   },
   {
     num: "II",
     title: "Context is the compound interest of AI interactions.",
-    body: "Every interaction is an investment. Without context, that investment expires at the end of the session. With context, each interaction builds on the last — the agent gets smarter, more personalized, and more valuable with every use. Over time, the context backbone becomes the single most valuable asset an enterprise owns about how its own AI operates.",
+    body: "Every interaction is an investment. Without context, that investment expires at the end of the session. With context, each interaction builds on the last - the agent gets smarter, more personalized, and more valuable with every use. Over time, the context backbone becomes the single most valuable asset an enterprise owns about how its own AI operates.",
   },
   {
     num: "III",
     title: "The model is not the bottleneck. The infrastructure is.",
-    body: "GPT-4, Gemini, Claude — they're all capable enough. The gap between a capable model and a truly intelligent product is the layer that gives it memory, continuity, and awareness of the world it operates in. That layer — the institutional context backbone — is where day-to-day enterprise operations are won or lost, not in the next decimal point of benchmark accuracy.",
+    body: "GPT-4, Gemini, Claude - they're all capable enough. The gap between a capable model and a truly intelligent product is the layer that gives it memory, continuity, and awareness of the world it operates in. That layer - the institutional context backbone - is where day-to-day enterprise operations are won or lost, not in the next decimal point of benchmark accuracy.",
   },
   {
     num: "IV",
     title: "Context should be a primitive, not an afterthought.",
-    body: "Developers shouldn't have to build context management from scratch for every AI product. It should be as simple as calling an API — ingest, retrieve, and let intelligence compound. When context is a first-class primitive, every agent in an organization can draw on the same current, traceable, semantically consistent view of the business.",
+    body: "Developers shouldn't have to build context management from scratch for every AI product. It should be as simple as calling an API - ingest, retrieve, and let intelligence compound. When context is a first-class primitive, every agent in an organization can draw on the same current, traceable, semantically consistent view of the business.",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function ThesisPage() {
           overflow: "hidden",
         }}
       >
-        {/* Hairline grid backdrop — consistent with home dark sections */}
+        {/* Hairline grid backdrop - consistent with home dark sections */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
@@ -130,7 +130,7 @@ export default function ThesisPage() {
             }}
           >
             Enterprise AI doesn&apos;t fail because the model is bad. It fails because the context
-            rots. GPT-4, Gemini, and Claude are all capable enough — the gap between a capable model
+            rots. GPT-4, Gemini, and Claude are all capable enough - the gap between a capable model
             and an agent that can actually run your day-to-day operations is the layer that keeps its
             knowledge current, traceable, and semantically consistent across your entire
             organization. That layer is the thesis below.
@@ -246,7 +246,7 @@ export default function ThesisPage() {
                 maxWidth: "640px",
               }}
             >
-              GPT-4, Gemini, Claude — they&apos;re all capable enough. The gap between a capable model
+              GPT-4, Gemini, Claude - they&apos;re all capable enough. The gap between a capable model
               and a truly intelligent product is the layer that keeps its knowledge current,
               traceable, and semantically consistent across your entire organization.
             </p>
@@ -412,7 +412,7 @@ export default function ThesisPage() {
                 fontStyle: "italic",
               }}
             >
-              If structured data drift almost killed Zillow — imagine what{" "}
+              If structured data drift almost killed Zillow - imagine what{" "}
               <span style={{ color: "#EF4444" }} className="mx-1">semantic drift</span> can do to your AI-driven
               organization.
             </blockquote>
@@ -426,7 +426,7 @@ export default function ThesisPage() {
                 marginTop: "12px",
               }}
             >
-              — Anuran Roy, Semantic Consensus and Semantic Drift
+              - Anuran Roy, Semantic Consensus and Semantic Drift
             </p>
           </div>
 
@@ -459,7 +459,7 @@ export default function ThesisPage() {
                 marginTop: "16px",
               }}
             >
-              — Alchemyst AI, Context Thesis
+              - Alchemyst AI, Context Thesis
             </p>
           </div>
 
@@ -496,7 +496,7 @@ export default function ThesisPage() {
                 margin: "0 auto 28px",
               }}
             >
-              Enable AI agents to run your day-to-day operations at enterprise scale — on a context
+              Enable AI agents to run your day-to-day operations at enterprise scale - on a context
               layer that stays current, traceable, and semantically consistent.
             </p>
             <div

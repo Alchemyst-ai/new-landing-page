@@ -1,9 +1,9 @@
 /**
- * /llms.txt — spec-compliant LLM manifest
+ * /llms.txt - spec-compliant LLM manifest
  *
  * Two sections:
- *   1. STATIC  — landing page content defined in src/lib/staticContent.ts
- *   2. DYNAMIC — blog posts fetched live from Strapi CMS
+ *   1. STATIC  - landing page content defined in src/lib/staticContent.ts
+ *   2. DYNAMIC - blog posts fetched live from Strapi CMS
  *
  * Implemented as a plain Next.js Route Handler (no autoDiscovery) to avoid
  * the Next.js 15 + React 19 Pages Router prerender bug triggered by
@@ -11,14 +11,14 @@
  *
  * Revalidates every 5 minutes via ISR so the blog section stays fresh.
  */
-import { NextResponse } from "next/server";
 import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  BASE_URL,
-  STATIC_SECTIONS,
+    BASE_URL,
+    SITE_DESCRIPTION,
+    SITE_TITLE,
+    STATIC_SECTIONS,
 } from "@/lib/staticContent";
-import { fetchAllBlogPosts, blogPostUrl, blogPostDescription, type StrapiBlogPost } from "@/lib/strapi";
+import { blogPostDescription, blogPostUrl, fetchAllBlogPosts, type StrapiBlogPost } from "@/lib/strapi";
+import { NextResponse } from "next/server";
 
 // Force dynamic so Strapi data is always fetched (ISR via fetch cache)
 export const dynamic = "force-dynamic";
@@ -47,7 +47,7 @@ export async function GET() {
   const posts = await fetchAllBlogPosts();
 
   const blogSection = {
-    title: "Blog — Alchemyst AI",
+    title: "Blog - Alchemyst AI",
     items: posts.map((post: StrapiBlogPost) => ({
       title: post.title,
       url: blogPostUrl(post),

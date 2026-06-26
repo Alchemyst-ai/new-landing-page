@@ -1,8 +1,8 @@
 "use client";
-// CTASection — email capture (Client Component for form interactivity)
+// CTASection - email capture (Client Component for form interactivity)
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function CTASection() {
   const [email, setEmail] = useState("");
@@ -185,7 +185,7 @@ export default function CTASection() {
           }}
         >
           {[
-            "Free tier — no credit card",
+            "Free tier - no credit card",
             "REST API + Python & Node SDKs",
             "99.9% uptime SLA",
             "SOC 2 in progress",

@@ -1,4 +1,4 @@
-// Navbar — sticky dark header built on official shadcn/ui components
+// Navbar - sticky dark header built on official shadcn/ui components
 // (Radix primitives): NavigationMenu for the desktop nav + Compare dropdown,
 // and Sheet for the responsive mobile drawer.
 "use client";
@@ -45,9 +45,9 @@ const COMPARE_LINKS = [
     blurb: "Dynamic context vs static ontology & FDEs",
   },
   {
-    label: "vs Snowflake Cortex",
-    href: "/compare/alchemyst-ai-vs-snowflake-cortex",
-    blurb: "Cross-system consensus vs warehouse-bound views",
+    label: "vs Glean",
+    href: "/compare/alchemyst-ai-vs-glean",
+    blurb: "Deterministic context vs probabilistic search assistant.",
   },
   {
     label: "vs Claude Memory",
@@ -148,7 +148,7 @@ export default function Navbar() {
                           className="flex flex-col gap-0.5 rounded-lg p-3 no-underline transition-colors hover:bg-[rgba(244,144,37,0.12)] focus:bg-[rgba(244,144,37,0.12)]"
                         >
                           <span className="text-sm font-semibold text-white">
-                            Alchemyst {c.label}
+                            {(!c.label.toLowerCase().includes("all comparison") ? "Alchemyst " : "") + c.label}
                           </span>
                           <span className="text-xs leading-snug text-slate-400">
                             {c.blurb}

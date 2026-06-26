@@ -1,14 +1,14 @@
-# Alchemyst AI — Context Layer (new-positioning)
+# Alchemyst AI - Context Layer (new-positioning)
 
 Next.js 16.2 App Router landing page for the Alchemyst AI Context Layer product, built around the **"Never let your AI Agents work on stale Knowledge again"** positioning.
 
 ## Stack
 
-- **Next.js 16.2** — App Router, React Server Components, SSG by default
-- **TypeScript** — strict mode
-- **Tailwind CSS v4** — design tokens in `src/app/globals.css`
-- **Framer Motion** — entrance animations on client components
-- **Lucide React** — icons
+- **Next.js 16.2** - App Router, React Server Components, SSG by default
+- **TypeScript** - strict mode
+- **Tailwind CSS v4** - design tokens in `src/app/globals.css`
+- **Framer Motion** - entrance animations on client components
+- **Lucide React** - icons
 
 ## Routes
 
@@ -17,7 +17,7 @@ Next.js 16.2 App Router landing page for the Alchemyst AI Context Layer product,
 | `/` | Static (SSG) | Full landing page |
 | `/blog` | ISR (5 min) | Blog listing from Strapi CMS |
 | `/blog/[slug]` | SSG + ISR | Individual blog post |
-| `/llms.txt` | Dynamic | LLM manifest — static site content + Strapi blog index |
+| `/llms.txt` | Dynamic | LLM manifest - static site content + Strapi blog index |
 | `/llms-full.txt` | Dynamic | Full markdown dump for LLM ingestion |
 | `/*.html.md` | Edge proxy | Per-page markdown (next-llms-txt spec) |
 

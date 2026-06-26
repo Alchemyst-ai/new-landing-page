@@ -1,9 +1,9 @@
 /**
- * /llms-full.txt — complete markdown dump for LLM ingestion
+ * /llms-full.txt - complete markdown dump for LLM ingestion
  *
  * Two sections:
- *   1. STATIC  — full landing page content in markdown (from staticContent.ts)
- *   2. DYNAMIC — full blog post content fetched live from Strapi CMS
+ *   1. STATIC  - full landing page content in markdown (from staticContent.ts)
+ *   2. DYNAMIC - full blog post content fetched live from Strapi CMS
  *
  * Blog post HTML is sourced from the `test` field in each Strapi post,
  * which contains the full HTML body. HTML tags are stripped to produce
@@ -14,11 +14,11 @@
 
 import { BASE_URL, FULL_STATIC_CONTENT, SITE_TITLE } from "@/lib/staticContent";
 import {
-  blogPostDescription,
-  blogPostFullText,
-  blogPostUrl,
-  fetchAllBlogPosts,
-  formatDate,
+    blogPostDescription,
+    blogPostFullText,
+    blogPostUrl,
+    fetchAllBlogPosts,
+    formatDate,
 } from "@/lib/strapi";
 import { NextResponse } from "next/server";
 
@@ -33,7 +33,7 @@ export async function GET() {
   const lines: string[] = [];
 
   // Header
-  lines.push(`# ${SITE_TITLE} — Full Content Dump`);
+  lines.push(`# ${SITE_TITLE} - Full Content Dump`);
   lines.push(`> Generated at: ${new Date().toISOString()}`);
   lines.push(`> Source: ${BASE_URL}`);
   lines.push("");
@@ -41,7 +41,7 @@ export async function GET() {
   lines.push("");
 
   // ── Section 1: Static landing page content ──────────────────────────────
-  lines.push("## SECTION 1 — Static Landing Page Content");
+  lines.push("## SECTION 1 - Static Landing Page Content");
   lines.push("");
   lines.push(FULL_STATIC_CONTENT.trim());
   lines.push("");
@@ -49,7 +49,7 @@ export async function GET() {
   lines.push("");
 
   // ── Section 2: Dynamic Strapi blog posts ────────────────────────────────
-  lines.push("# SECTION 2 — The Alchemyst Blog");
+  lines.push("# SECTION 2 - The Alchemyst Blog");
   lines.push("");
 
   if (posts.length === 0) {
@@ -65,9 +65,9 @@ export async function GET() {
       lines.push(`# ${post.title}`);
       lines.push("");
       lines.push(`- **URL:** ${blogPostUrl(post)}`);
-      lines.push(`- **Slug:** ${post.slug ?? "—"}`);
-      lines.push(`- **Published:** ${post.publishedAt ? formatDate(post.publishedAt) : "—"}`);
-      lines.push(`- **Last updated:** ${post.updatedAt ? formatDate(post.updatedAt) : "—"}`);
+      lines.push(`- **Slug:** ${post.slug ?? "-"}`);
+      lines.push(`- **Published:** ${post.publishedAt ? formatDate(post.publishedAt) : "-"}`);
+      lines.push(`- **Last updated:** ${post.updatedAt ? formatDate(post.updatedAt) : "-"}`);
       if (post.author) lines.push(`- **Author:** ${post.author.name}`);
       if (post.category) lines.push(`- **Category:** ${post.category.name}`);
       lines.push("");

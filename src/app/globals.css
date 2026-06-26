@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ─── Alchemyst Labs Design System ───────────────────────────────────────────
- * Warm Editorial direction — colours taken from the Alchemyst logo
+ * Warm Editorial direction - colours taken from the Alchemyst logo
  * Paper bg: #F7F4EE  |  Ink: #0F172A
  * Brand orange (primary, logo chevron): #F49025
  * Brand teal   (secondary, logo "I" accent): #0E9594
@@ -17,7 +17,7 @@
   --ink: #0F172A;
   --amber: #F49025;
   --amber-light: #FDB560;
-  /* Logo secondary accent — teal */
+  /* Logo secondary accent - teal */
   --teal: #0E9594;
   --teal-light: #2BB6B4;
   --teal-dark: #0B7676;
@@ -141,7 +141,7 @@ body {
   box-shadow: 0 6px 20px rgba(14, 149, 148, 0.18);
 }
 
-/* ── Secondary (teal) accent helpers — from the logo's teal ── */
+/* ── Secondary (teal) accent helpers - from the logo's teal ── */
 .eyebrow-teal {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;

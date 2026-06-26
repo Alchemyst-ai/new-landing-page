@@ -1,17 +1,17 @@
-import CTASection from "@/components/sections/CTASection";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import CTASection from "@/components/sections/CTASection";
 import TableOfContents from "@/components/TableOfContents";
 import {
-  blogPostCoverUrl,
-  blogPostRawHtml,
-  estimateReadTime,
-  fetchAllBlogSlugs,
-  fetchBlogPostBySlug,
-  fetchRecentBlogPosts,
-  formatDate,
-  type StrapiBlogPost,
+    blogPostCoverUrl,
+    blogPostRawHtml,
+    estimateReadTime,
+    fetchAllBlogSlugs,
+    fetchBlogPostBySlug,
+    fetchRecentBlogPosts,
+    formatDate,
+    type StrapiBlogPost,
 } from "@/lib/strapi";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <Navbar />
 
-      {/* JSON-LD structured data — BlogPosting schema */}
+      {/* JSON-LD structured data - BlogPosting schema */}
       <script
         type="application/ld+json"
         suppressHydrationWarning

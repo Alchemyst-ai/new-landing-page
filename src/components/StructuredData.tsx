@@ -55,7 +55,7 @@ export default function StructuredData() {
             name: "What is Alchemyst AI?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run your day-to-day operations at enterprise scale, providing persistent, traceable context and semantic retrieval through a single API — powered by context arithmetic over your institutional knowledge graph — so institutional knowledge stays current, traceable, and consistent, with no infrastructure to manage.",
+              text: "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run your day-to-day operations at enterprise scale, providing persistent, traceable context and semantic retrieval through a single API - powered by context arithmetic over your institutional knowledge graph - so institutional knowledge stays current, traceable, and consistent, with no infrastructure to manage.",
             },
           },
           {

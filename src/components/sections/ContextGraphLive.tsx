@@ -1,4 +1,4 @@
-// ContextGraphLive — animated "context_graph.live" hero diagram (Server Component)
+// ContextGraphLive - animated "context_graph.live" hero diagram (Server Component)
 // Live data flow: animated dashes stream along every edge, glowing packets
 // travel input → Context Layer → memory/knowledge → LLM, and the central
 // node breathes. All animation is pure SVG SMIL/CSS, so no client JS needed.

@@ -1,4 +1,4 @@
-// WhyContextSection — "Why Context" (id="why-context")
+// WhyContextSection - "Why Context" (id="why-context")
 // Reframes the section around operationalizing business intelligence through two
 // lenses: the Technical case (model-agnostic continuity + context sovereignty) and
 // the Business case (agents that run day-to-day operations at scale).
@@ -7,8 +7,8 @@
 // Pillars use the reusable shadcn Card primitive (light-surface styling passed
 // explicitly, since this section sits on the warm paper background).
 
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 const PILLARS = [
   {
@@ -17,7 +17,7 @@ const PILLARS = [
     kicker: "The Technical Case",
     tag: "Model-agnostic continuity",
     title: "Switch models freely. Keep your context sovereign.",
-    body: "You will switch models — GPT today, Gemini or Claude tomorrow, the next frontier model after that, often several at once routed by cost or capability. Normally every switch resets the agent's memory and behavior. Alchemyst decouples what your organization knows from whichever model is reasoning over it, so your institutional context stays continuous across every upgrade, swap, or multi-model setup. The context is yours — it plugs into any AI model or agent on demand, according to the requirement at hand.",
+    body: "You will switch models - GPT today, Gemini or Claude tomorrow, the next frontier model after that, often several at once routed by cost or capability. Normally every switch resets the agent's memory and behavior. Alchemyst decouples what your organization knows from whichever model is reasoning over it, so your institutional context stays continuous across every upgrade, swap, or multi-model setup. The context is yours - it plugs into any AI model or agent on demand, according to the requirement at hand.",
     chips: ["Model-agnostic", "Context sovereignty", "Zero migration cost", "Multi-model routing", "Sub-300ms retrieval"],
   },
   {
@@ -26,7 +26,7 @@ const PILLARS = [
     kicker: "The Business Case",
     tag: "Operationalized intelligence at scale",
     title: "Operationalize business intelligence that runs your day-to-day.",
-    body: "This isn't about a smarter chatbot. It's about operationalizing your business intelligence — turning what your organization knows into agents that can actually run day-to-day operations and knowledge work across sales, support, ops, and research, at scale. The context layer is what makes that dependable: every agent acts on the same current, traceable, consensus version of the business, so you can trust it to operate, not just assist — without embedding a forward-deployed team in every workflow.",
+    body: "This isn't about a smarter chatbot. It's about operationalizing your business intelligence - turning what your organization knows into agents that can actually run day-to-day operations and knowledge work across sales, support, ops, and research, at scale. The context layer is what makes that dependable: every agent acts on the same current, traceable, consensus version of the business, so you can trust it to operate, not just assist - without embedding a forward-deployed team in every workflow.",
     chips: ["Run ops, not just answers", "One source of truth", "Every decision auditable", "Scales without FDE teams"],
   },
 ];
@@ -93,7 +93,7 @@ export default function WhyContextSection() {
             }}
           >
             Models are commoditizing fast. Durable advantage comes from a context layer that
-            operationalizes your business intelligence — and stays yours no matter which model you
+            operationalizes your business intelligence - and stays yours no matter which model you
             run it on. There are two reasons this matters: a technical one and a business one.
           </p>
         </div>
@@ -303,7 +303,7 @@ export default function WhyContextSection() {
           >
             &ldquo;Models will keep changing. Your{" "}
             <span style={{ color: "#F49025" }}>institutional context</span> is the asset that
-            compounds — so it should belong to you, not to whichever model you happen to run
+            compounds - so it should belong to you, not to whichever model you happen to run
             today.&rdquo;
           </blockquote>
           <p

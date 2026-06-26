@@ -1,4 +1,4 @@
-// HowToSchema — emits HowTo JSON-LD for step-by-step guide pages so answer
+// HowToSchema - emits HowTo JSON-LD for step-by-step guide pages so answer
 // engines (Google rich results, ChatGPT, Perplexity, Gemini) can surface the
 // steps directly. Keep the `steps` text aligned with the on-page H2/H3 sections.
 
