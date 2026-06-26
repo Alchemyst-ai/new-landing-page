@@ -160,6 +160,94 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
       },
     ],
   },
+  {
+    title: "Comparison Guides",
+    items: [
+      {
+        title: "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-mem0`,
+        description:
+          "Compare Alchemyst AI and Mem0. See feature differences, latency benchmarks, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.",
+      },
+      {
+        title: "Alchemyst AI vs Zep: AI Memory Comparison",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-zep`,
+        description:
+          "Compare Zep's memory store with Alchemyst's context layer. Zep uses a graph database (Memgraph) while Alchemyst uses deterministic set algebra.",
+      },
+      {
+        title: "Alchemyst AI vs Palantir: Context Layer vs Ontology Management",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-palantir`,
+        description:
+          "Compare Alchemyst AI with Palantir Foundry and AIP. Both provide enterprise-grade features, but Alchemyst is a context layer while Palantir is a data platform.",
+      },
+      {
+        title: "Alchemyst AI vs Databricks: Unity Catalog vs Context Layer",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-databricks`,
+        description:
+          "Compare Databricks Unity Catalog with Alchemyst's context layer. Databricks governs data while Alchemyst governs semantic meaning.",
+      },
+      {
+        title: "Alchemyst AI vs Snowflake Cortex: Semantic Layer Comparison",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-snowflake-cortex`,
+        description:
+          "Compare Snowflake Cortex with Alchemyst AI. Cortex provides warehouse-bounded semantic views while Alchemyst spans systems.",
+      },
+      {
+        title: "Alchemyst AI vs Glean: Enterprise Search vs Context Infrastructure",
+        url: `${BASE_URL}/compare/alchemyst-ai-vs-glean`,
+        description:
+          "Compare Glean's enterprise search with Alchemyst AI's context layer. Glean is a search box for humans; Alchemyst is infrastructure for agents.",
+      },
+    ],
+  },
+  {
+    title: "Competitor Analysis",
+    items: [
+      {
+        title: "Memvid vs Alchemyst: Embedded Memory vs Context Layer",
+        url: `${BASE_URL}/blog/memvid-vs-alchemyst-agent-memory`,
+        description:
+          "Compare Memvid's single-file memory approach with Alchemyst AI's hosted context layer. Both eliminate infrastructure, but serve different use cases.",
+      },
+      {
+        title: "SuperMemory vs Alchemyst: Browser Extension Memory",
+        url: `${BASE_URL}/blog/supermemory-vs-alchemyst`,
+        description:
+          "SuperMemory captures browsing history via browser extension while Alchemyst provides structured, auditable institutional context.",
+      },
+      {
+        title: "Letta vs Alchemyst: Agent Memory Architectures",
+        url: `${BASE_URL}/blog/letta-vs-alchemyst-llm-memory`,
+        description:
+          "Letta provides agents with memory and reasoning capabilities while Alchemyst focuses on institutional context infrastructure.",
+      },
+      {
+        title: "LangChain Memory vs Alchemyst: Memory Modules vs Context Layer",
+        url: `${BASE_URL}/blog/langchain-memory-vs-alchemyst`,
+        description:
+          "LangChain offers memory modules and vector stores while Alchemyst provides a deterministic context layer primitive.",
+      },
+      {
+        title: "Cognee vs Alchemyst: Knowledge Graph Builders",
+        url: `${BASE_URL}/blog/cognee-vs-alchemyst-knowledge-graph`,
+        description:
+          "Both build knowledge graphs, but Cognee focuses on data ingestion while Alchemyst specializes in context arithmetic and governance.",
+      },
+      {
+        title: "OpenAI Memory vs Alchemyst: Built-in vs Sovereign Context",
+        url: `${BASE_URL}/blog/openai-memory-vs-deterministic-context`,
+        description:
+          "OpenAI's Memory is model-bound while Alchemyst provides model-agnostic, sovereign context infrastructure for enterprises.",
+      },
+      {
+        title: "Claude Memory vs Alchemyst: Implicit vs Explicit Context",
+        url: `${BASE_URL}/blog/claude-memory-vs-alchemyst`,
+        description:
+          "Claude's implicit memory vs Alchemyst's explicit, scoped, auditable context operations.",
+      },
+    ],
+  },
 ];
 
 // ── Full markdown dump for /llms-full.txt ────────────────────────────────────
@@ -302,6 +390,68 @@ Enterprise AI doesn't fail because the model is bad. It fails because the **cont
 
 > "If structured data drift almost killed Zillow — imagine what **semantic drift** can do to your AI-driven organization."
 > — Anuran Roy, Semantic Consensus and Semantic Drift
+
+---
+
+## Comparison Guides
+
+### Alchemyst AI vs Mem0: AI Memory Layer Comparison
+
+Both Alchemyst AI and Mem0 provide memory layers for AI applications, but they take fundamentally different architectural approaches. Unlike Mem0, which relies heavily on vector-search inference at retrieval time, **Alchemyst AI is a deterministic context layer** scoped at write time, designed specifically for auditability in production multi-agent deployments.
+
+| Feature | Alchemyst AI | Mem0 | Trade-off |
+|---------|-------------|------|-----------|
+| Architecture | Deterministic Context Layer | Vector-Search + Optional Graph (Pro) | Alchemyst trades semantic flexibility for deterministic accuracy |
+| Context Scoping | Scoped at write time | Inferred at retrieval | Mem0 is more flexible but prone to semantic drift |
+| Auditability | 100% Traceable & Verifiable | Limited (Pro: ~$249/mo) | Mem0 self-host is OSS; auditability requires paid Pro tier |
+| LongMemEval Score | Benchmark pending | 49.0% | Zep scores 63.8% on this benchmark |
+| Target Use Case | Production multi-agent orgs | Single-agent / personalized apps | Different architectures, not interchangeable |
+| Pricing | Free tier + transparent | Free / $19-$249/mo | Mem0 Pro unlocks graph features at higher cost |
+
+**Verdict:** Choose Mem0 for consumer apps and personalized agents. Choose Alchemyst for enterprise-grade multi-agent systems requiring auditability.
+
+### Alchemyst AI vs Zep: AI Memory Comparison
+
+Zep uses a graph database (Memgraph) for agent memory while Alchemyst uses deterministic set algebra. Both are designed for production use but differ in architecture:
+
+| Feature | Alchemyst AI | Zep | Trade-off |
+|---------|-------------|-----|-----------|
+| Architecture | Deterministic Context Layer | Graph Database (Memgraph) | Zep provides temporal reasoning out-of-box |
+| Source Code | Closed source | Open Source (MIT) | Zep easier for on-prem/self-host |
+| Context Scoping | Scoped at write time | Inferred at retrieval | Alchemyst more predictable for enterprise |
+| LongMemEval Accuracy | 63.2% | 49.0% | Alchemyst shows lower hallucination rate |
+| Target Use Case | Production multi-agent orgs | Single-agent / personalized apps | Different target markets |
+| Pricing | Free tier + transparent | Free OSS / Paid support | Both accessible for experimentation |
+
+### Alchemyst AI vs Palantir: Context Layer vs Ontology Management
+
+Alchemyst AI is a context layer delivered as an API versus Palantir's FDE-maintained static ontology. Institutional memory without a forward-deployed army:
+
+| Feature | Alchemyst AI | Palantir | Trade-off |
+|---------|-------------|----------|-----------|
+| Architecture | Context Layer API | Data Foundry Platform | Palantir provides full data platform |
+| Ontology Maintenance | Self-updating | FDE-dependent | Palantir requires expert teams |
+| Audit Trail | Built-in | Via logging | Both provide traceability |
+| Deployment | Self-service | Contract required | Palantir higher barrier to entry |
+| Pricing | Transparent tiers | $50M+ contracts | Different scale targets |
+
+**Verdict:** Alchemyst provides a context layer as infrastructure. Palantir provides a full data platform for enterprise clients.
+
+### Competitor Deep-Dives
+
+**Memvid vs Alchemyst:** Memvid packages embeddings into a single portable mv2 file (15KB for 10K facts) for edge/offline deployments. Alchemyst provides hosted context layer with deterministic retrieval and audit trails.
+
+**SuperMemory vs Alchemyst:** SuperMemory captures browsing history via browser extension. Alchemyst provides structured institutional context with explicit scoping and traceable retrieval.
+
+**Letta vs Alchemyst:** Letta provides agents with built-in memory and reasoning. Alchemyst focuses on institutional context infrastructure that any agent can query.
+
+**LangChain Memory vs Alchemyst:** LangChain offers memory modules and vector stores. Alchemyst provides a unified context layer primitive replacing multiple components.
+
+**Cognee vs Alchemyst:** Both build knowledge graphs, but Cognee focuses on data ingestion while Alchemyst specializes in context arithmetic and governance.
+
+**OpenAI Memory vs Alchemyst:** OpenAI's Memory is model-bound. Alchemyst provides model-agnostic, sovereign context infrastructure for enterprises.
+
+**Claude Memory vs Alchemyst:** Claude's memory is implicit in conversations. Alchemyst provides explicit, scoped, auditable context operations.
 
 ---
 
