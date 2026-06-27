@@ -127,7 +127,7 @@ export default async function Page(props: {
               "@type": "Person",
               name: "",
             },
-          }),
+          }).replace(/</g, '\u003c'),
         }}
       />
 
