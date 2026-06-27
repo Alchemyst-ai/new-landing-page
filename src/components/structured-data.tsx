@@ -1,11 +1,11 @@
-import { siteConfig } from "@/lib/config";
-
 /**
  * Site-wide JSON-LD structured data for GEO / AI engines.
  * Emits Organization, SoftwareApplication and FAQPage in a single @graph.
  * Rendered once in the root layout so the brand entity is fed straight
  * into AI knowledge graphs (ChatGPT, Claude, Perplexity, Gemini).
  */
+import { siteConfig } from "@/lib/config";
+
 export function StructuredData() {
 	const url = siteConfig.url;
 
@@ -109,7 +109,7 @@ export function StructuredData() {
 		<script
 			type="application/ld+json"
 			suppressHydrationWarning
-			dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+			dangerouslySetInnerHTML={{ __html: JSON.stringify(graph).replace(/</g, '\u003c') }}
 		/>
 	);
 }
