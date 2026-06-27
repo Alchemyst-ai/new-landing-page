@@ -104,6 +104,27 @@ const COMPARISONS = [
     blurb:
       "Implicit conversation memory versus explicit, scoped, auditable context operations with semantic consensus.",
   },
+  {
+    competitor: "Claude Auto Memory",
+    href: "/compare/claude-auto-memory-vs-portable-context",
+    category: "AI Memory",
+    blurb:
+      "Per-repository auto memory versus unified, user-scoped knowledge across tools. Why Claude's storage model fragments team context.",
+  },
+  {
+    competitor: "OpenAI Dreaming",
+    href: "/compare/alchemyst-vs-openai-dreaming",
+    category: "AI Memory",
+    blurb:
+      "Black-box synthesized memory versus explicit, auditable context scopes. The compliance implications of dream-state knowledge.",
+  },
+  {
+    competitor: "Native Tool Memory",
+    href: "/compare/team-context-vs-siloed-memory",
+    category: "Multi-Agent",
+    blurb:
+      "Unified team context versus fragmented per-tool memory silos. How portable context prevents knowledge loss across vendor switches.",
+  },
 ];
 
 export default function CompareIndexPage() {
