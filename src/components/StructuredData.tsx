@@ -95,8 +95,52 @@ export default function StructuredData() {
               text: "No. Alchemyst AI is delivered as a single API with zero infrastructure. You integrate the context layer without standing up or maintaining a vector database or memory store yourself.",
             },
           },
+          {
+            "@type": "Question",
+            name: "How much does Alchemyst AI cost?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Alchemyst AI uses usage-based pricing starting with a Free tier (5M tokens). Paid tiers include Starter, Accelerate, and Supercharge at transparent per-million-token rates. Enterprise pricing is custom-built for your scale and requirements.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What are Context Traces and why do they matter?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Context Traces provide full auditability - every agent decision is traceable back to the exact context it had. Debug in minutes, not days. This pairs with OpenAI Euphony for visual debugging of agent reasoning.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I integrate Alchemyst AI into my agent?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Integrate via the Alchemyst Context Layer API. Use the Python or Node.js SDK to add context retrieval to your agent in minutes. The context layer plugs into any AI model - GPT, Claude, Gemini, or open-source models.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is context arithmetic?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning computed at query time. Intersection narrows scope, union widens recall, subtraction removes superseded content, and ranking weights what remains - so only the right context survives into the model window.",
+            },
+          },
         ],
       },
+      {
+        "@type": "Person",
+        "@id": `${BASE_URL}/#founder`,
+        name: "Uttaran Nayak",
+        jobTitle: "Founder & CEO",
+        worksFor: { "@id": `${BASE_URL}/#organization` },
+        url: BASE_URL,
+        sameAs: [
+          "https://x.com/uttarannayak",
+          "https://www.linkedin.com/in/uttarannayak"
+        ]
+      }
     ],
   };
 
