@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 // Pricing page specific FAQ schema for better AI citation on pricing queries
 const pricingFAQ = {
   "@context": "https://schema.org",
@@ -34,7 +32,7 @@ const pricingFAQ = {
 
 export default function PricingSchema() {
   return (
-    <Script
+    <script
       id="pricing-faq-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
