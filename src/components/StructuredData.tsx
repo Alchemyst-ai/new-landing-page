@@ -23,6 +23,7 @@ export default function StructuredData() {
           height: 630,
         },
         email: "founders@getalchemystai.com",
+        dateModified: "2026-06-27",
         description:
           "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run day-to-day operations at scale by providing persistent, traceable context and semantic retrieval over an institutional knowledge graph, keeping institutional knowledge current, traceable, and consistent.",
         sameAs: [
@@ -54,6 +55,7 @@ export default function StructuredData() {
       {
         "@type": "FAQPage",
         "@id": `${BASE_URL}/#faq`,
+        dateModified: "2026-06-27",
         mainEntity: [
           {
             "@type": "Question",

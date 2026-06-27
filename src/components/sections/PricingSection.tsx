@@ -68,6 +68,18 @@ const PricingSection = () => {
           </div>
         </div>
 
+        {/* Contextual links for SEO/AEO */}
+        <div className="mt-8 mb-16 max-w-3xl mx-auto">
+          <p className="text-sm text-muted-foreground text-center">
+            Learn more:{" "}
+            <a href="/thesis" className="text-primary hover:underline">Context Thesis</a>
+            {" · "}
+            <a href="/compare/alchemyst-ai-vs-mem0" className="text-primary hover:underline">Compare with Mem0</a>
+            {" · "}
+            <a href="https://docs.getalchemystai.com" className="text-primary hover:underline">Documentation</a>
+          </p>
+        </div>
+
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3 lg:gap-8">
           <div className="w-full lg:col-span-2">
             <PricingCalculator />

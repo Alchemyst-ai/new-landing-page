@@ -122,6 +122,12 @@ export default function HeroSection() {
           </Button>
         </div>
 
+        {/* Contextual links for SEO/AEO - not nav/footer */}
+        <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "20px", fontSize: "0.875rem" }}>
+          <a href="/pricing" style={{ color: "#94A3B8", textDecoration: "none" }}>View Pricing</a>
+          <a href="/compare/alchemyst-ai-vs-mem0" style={{ color: "#94A3B8", textDecoration: "none" }}>Compare with Mem0</a>
+          <a href="/blog" style={{ color: "#94A3B8", textDecoration: "none" }}>Read our Blog</a>
+        </div>
 
         {/* Live context graph diagram */}
         <ContextGraphLive />

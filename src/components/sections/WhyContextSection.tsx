@@ -320,6 +320,10 @@ export default function WhyContextSection() {
             <a href="/thesis" style={{ color: "#F49025", textDecoration: "none", borderBottom: "1px solid rgba(244,144,37,0.4)" }}>
               Context Thesis
             </a>
+            {" · "}
+            <a href="/pricing" style={{ color: "#94A3B8", textDecoration: "none", marginLeft: "8px" }}>
+              See Pricing
+            </a>
           </p>
         </div>
       </div>
