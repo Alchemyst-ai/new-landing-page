@@ -207,7 +207,7 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
       },
     ],
   },
-  {
+{
     title: "Competitor Analysis",
     items: [
       {
@@ -251,6 +251,17 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
         url: `${BASE_URL}/compare/claude-memory-vs-alchemyst`,
         description:
           "Claude's implicit memory vs Alchemyst's explicit, scoped, auditable context operations.",
+      },
+    ],
+  },
+  {
+    title: "Pricing",
+    items: [
+      {
+        title: "Pricing - Alchemyst AI Context Layer",
+        url: `${BASE_URL}/pricing`,
+        description:
+          "Usage-based pricing with Free tier (5M tokens) and paid tiers (Starter, Accelerate, Supercharge). Enterprise plans custom-built for scale. Pricing calculator shows transparent costs per-million-tokens.",
       },
     ],
   },
@@ -460,12 +471,30 @@ Alchemyst AI is a context layer delivered as an API versus Palantir's FDE-mainta
 **Claude Memory vs Alchemyst:** Claude's memory is implicit in conversations. Alchemyst provides explicit, scoped, auditable context operations.
 
 ---
-
+ 
 ## Get API Access
-
+ 
 Free tier available. No credit card required. REST API + Python & Node SDKs. 99.9% uptime SLA. SOC 2 in progress.
-
+ 
 - Documentation: https://docs.getalchemystai.com
 - Website: https://getalchemystai.com
 - Contact: hello@getalchemystai.com
-`;
+ 
+---
+ 
+## Pricing
+ 
+**Simple, transparent pricing for the institutional context backbone.**
+ 
+Usage-based pricing with transparent costs per million tokens and per MB processed.
+ 
+| Tier | Description |
+|------|-------------|
+| Free | 5M tokens free with business email signup |
+| Starter | Pay-as-you-go with sub-300ms retrieval |
+| Accelerate | Higher limits for scaling teams |
+| Supercharge | Enterprise-scale with custom bandwidth |
+| Enterprise | Custom-built pricing with dedicated support |
+ 
+Pricing calculator on https://getalchemystai.com/pricing shows exact costs based on expected usage.
+ `;

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function SignInPage() {
   const backendUrl =
-    process.env.NEXT_PUBLIC_BACKEND_URL || "https://api.getalchemystai.com";
+    process.env.NEXT_PUBLIC_BACKEND_URL || "https://platform-backend.getalchemystai.com";
 
   const handleGoogleSignIn = () => {
     window.location.href = `${backendUrl}/api/auth/google`;
