@@ -1,66 +1,44 @@
 import Script from "next/script";
 
-// Pricing page specific JSON-LD for better AI citation
-const pricingSchema = {
+// Pricing page specific FAQ schema for better AI citation on pricing queries
+const pricingFAQ = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Pricing - Alchemyst AI Context Layer",
-  description: "Simple, transparent pricing for the institutional context backbone. Free tier available with transparent usage costs.",
-  breadcrumb: {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://getalchemystai.com/"
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Pricing",
-        item: "https://getalchemystai.com/pricing"
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the Alchemyst AI pricing model?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alchemyst AI uses usage-based pricing with transparent costs per token and per MB processed. The pricing calculator shows exact costs across Free, Starter, Accelerate, and Supercharge tiers based on your expected usage patterns."
       }
-    ]
-  },
-  mainEntity: {
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is the Alchemyst AI pricing model?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Alchemyst AI uses usage-based pricing with transparent costs per token and per MB processed across different tiers."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "How much does enterprise context layer cost?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Enterprise pricing is custom-built based on your organization's needs with dedicated support and scale."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Is there a free tier available?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, 5 million tokens free when you sign up with your business email."
-        }
+    },
+    {
+      "@type": "Question",
+      name: "How much does enterprise context layer cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Enterprise pricing is custom-built based on your organization's needs with dedicated support and scale. Contact the Alchemyst team for a tailored quote."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      name: "Is there a free tier available?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, the Free tier starts at $0 with 5 million tokens included when you sign up with your business email. This is ideal for testing Alchemyst AI's context layer before committing to a paid plan."
+      }
+    }
+  ]
 };
 
 export default function PricingSchema() {
   return (
     <Script
-      id="pricing-schema"
+      id="pricing-faq-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(pricingSchema).replace(/</g, "\\u003c")
+        __html: JSON.stringify(pricingFAQ).replace(/</g, "\\u003c")
       }}
     />
   );

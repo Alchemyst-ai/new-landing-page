@@ -14,8 +14,8 @@ export default function PricingPage() {
   return (
     <div className="relative flex flex-col min-h-screen max-w-screen overflow-x-hidden bg-background">
       <Navbar />
+      <PricingSchema />
       <main className="flex-grow pt-24">
-        <PricingSchema />
         <PricingSection />
       </main>
       <Footer />
