@@ -36,3 +36,5 @@ Thumbs.db
 skills-lock.json
 *.patch
 .vercel
+
+opencode.json
