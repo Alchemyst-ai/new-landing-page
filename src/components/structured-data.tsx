@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { siteConfig } from "@/lib/config";
 
 /**
@@ -9,7 +10,7 @@ import { siteConfig } from "@/lib/config";
 export function StructuredData() {
   const url = siteConfig.url;
 
-  const graph = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -44,9 +45,7 @@ export function StructuredData() {
           price: "0",
           priceCurrency: "USD",
         },
-        publisher: {
-          "@id": `${url}/#organization`,
-        },
+        publisher: { "@id": `${url}/#organization` },
       },
       {
         "@type": "FAQPage",
@@ -106,10 +105,11 @@ export function StructuredData() {
   };
 
   return (
-    <script
-      async
+    <Script
+      id="json-ld"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph).replace(/</g, '\u003c') }}
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\u003c") }}
     />
   );
 }
