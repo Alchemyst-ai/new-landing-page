@@ -108,7 +108,7 @@ export default async function Page(props: {
 
   return (
     <section id="blog" className="bg-background min-h-screen pb-24">
-      <script
+      <script async
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
