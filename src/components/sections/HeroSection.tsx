@@ -3,6 +3,7 @@
 
 import TypewriterWord from "@/components/TypewriterWord";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import ContextGraphLive from "./ContextGraphLive";
 
 export default function HeroSection() {
@@ -117,10 +118,10 @@ export default function HeroSection() {
           }}
         >
           <Button asChild variant="orange" size="brand">
-            <a href="#get-access">
+            <Link href="/platform/signin" target="_blank" rel="noopener">
               Get API Access
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </Link>
           </Button>
           <Button
             asChild

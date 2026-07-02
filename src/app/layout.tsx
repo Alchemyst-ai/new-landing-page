@@ -4,11 +4,11 @@ import "./globals.css";
 
 const BASE_URL = "https://getalchemystai.com";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
-
+const DEFAULT_TITLE = "Alchemyst AI | The company brain your AI agents can trust"
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
+    default: DEFAULT_TITLE,
     template: "%s | Alchemyst AI",
   },
   description:
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
+    title: DEFAULT_TITLE,
     description:
-      "Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.",
+      "Enable AI agents to run your day-to-day operations at enterprise scale with the institutional context backbone.",
     url: BASE_URL,
     siteName: "Alchemyst AI",
     type: "website",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alchemyst AI | The Institutional Context Backbone for Your Enterprise",
+    title: DEFAULT_TITLE,
     description:
       "Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.",
     site: "@getalchemystai",
