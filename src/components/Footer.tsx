@@ -49,6 +49,7 @@ export default function Footer() {
                 { label: "Agent Builder", href: "https://getalchemystai.com/agents" },
                 { label: "Pricing", href: "https://getalchemystai.com/pricing" },
                 { label: "Changelog", href: "https://getalchemystai.com/changelog" },
+                { label: "Creators Program", href: "/creators-program" },
               ].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} style={{ fontFamily: "'Sora', sans-serif", fontSize: "0.9rem", color: "#64748B", textDecoration: "none" }}>{l.label}</a>

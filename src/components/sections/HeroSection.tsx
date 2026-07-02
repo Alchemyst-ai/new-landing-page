@@ -1,5 +1,7 @@
 // HeroSection - HydraDB-style dark hero, SSG (Server Component)
 // Design: full-bleed dark #0A0F1E, centered headline, amber accent
+
+import TypewriterWord from "@/components/TypewriterWord";
 import { Button } from "@/components/ui/button";
 import ContextGraphLive from "./ContextGraphLive";
 
@@ -55,11 +57,11 @@ export default function HeroSection() {
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
             color: "#FFFFFF",
-            maxWidth: "880px",
+            maxWidth: "35vw",
             margin: "0",
           }}
         >
-          Stop re-explaining your business to your{" "}
+          The company brain your{" "}
           <span
             style={{
               fontStyle: "italic",
@@ -71,7 +73,19 @@ export default function HeroSection() {
           >
             AI agents
           </span>{" "}
-          every time.
+          can{" "}
+          <span
+            style={{
+              fontStyle: "italic",
+              background: "linear-gradient(135deg, #F49025 0%, #FDB560 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            <TypewriterWord />
+          </span>
+          .
         </h1>
 
         {/* Subtitle - positioning + backbone combined into one level */}
@@ -83,12 +97,11 @@ export default function HeroSection() {
             fontSize: "clamp(1rem, 1.8vw, 1.25rem)",
             lineHeight: 1.6,
             color: "#94A3B8",
-            maxWidth: "680px",
+            maxWidth: "45vw",
             margin: "24px 0 0",
           }}
         >
-          Enable AI agents to run your day-to-day operations at enterprise scale - the
-          institutional context backbone for your enterprise.
+          Enable AI agents to run your day-to-day operations at enterprise scale with an institutional context backbone.
         </p>
 
         {/* CTAs */}

@@ -35,7 +35,7 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
         title: "Alchemyst AI - The Institutional Context Backbone",
         url: BASE_URL,
         description:
-          "Main landing page. Hero: 'Stop re-explaining your business to your AI agents every time.' " +
+          "Main landing page. Hero: 'The company brain your AI agents can trust.' " +
           "Subtitle: 'Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.' " +
           "Covers semantic drift, context arithmetic (the core primitive), institutional knowledge graphs, and context traces.",
       },
@@ -265,6 +265,17 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
       },
     ],
   },
+  {
+    title: "Creators Program",
+    items: [
+      {
+        title: "Creators Program - AI Context Layer Partnership",
+        url: `${BASE_URL}/creators-program`,
+        description:
+          "Join the Alchemyst AI Creators Program. Get $1,000 credits (250+ million tokens) for building context-aware AI agents. Partnership program for content creators, developers, and builders.",
+      },
+    ],
+  },
 ];
 
 // ── Full markdown dump for /llms-full.txt ────────────────────────────────────
@@ -277,7 +288,7 @@ export const FULL_STATIC_CONTENT = `# ${SITE_TITLE}
 
 ## Hero
 
-**Title:** Stop re-explaining your business to your AI agents every time.
+**Title:** The company brain your AI agents can trust.
 
 **Subtitle:** Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.
 
@@ -497,4 +508,24 @@ Usage-based pricing with transparent costs per million tokens and per MB process
 | Enterprise | Custom-built pricing with dedicated support |
  
 Pricing calculator on https://getalchemystai.com/pricing shows exact costs based on expected usage.
- `;
+ 
+ ---
+ 
+ ## Creators Program
+ 
+ **AI Context Layer Partnership Program.**
+ 
+ Join our Creators Program to build content around Alchemyst AI and get rewarded:
+ 
+ - **$1,000 in credits:** 250+ million tokens on the Alchemyst Context platform
+ - **Hands-on experience:** Build context-aware AI agents and become a verified context layer expert
+ - **Team access:** Direct line with founders. Top creators eligible for interviews for open positions
+ 
+ **Who?** Anyone building AI agents who wants to add persistent context and memory.
+ 
+ **What?** Credits, experience with context implementation, and a direct line to our team.
+ 
+ **How?** Build written, video, or short-form content around Alchemyst AI.
+ 
+ Learn more: https://getalchemystai.com/creators-program
+  `

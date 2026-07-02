@@ -26,6 +26,7 @@ export default function Navbar() {
     { label: "Blog", href: "/blog" },
     { label: "Docs", href: "https://docs.getalchemystai.com", external: true },
     { label: "Pricing", href: "/pricing" },
+    { label: "Creators Program", href: "/creators-program" },
   ];
 
   // Compare dropdown links
@@ -61,7 +62,6 @@ export default function Navbar() {
           <div
             className="relative"
             onMouseEnter={() => setActiveMenu("compare")}
-            onMouseLeave={() => setActiveMenu(null)}
           >
             <button
               className="relative text-slate-300 hover:text-white transition-colors duration-200 text-sm group flex items-center whitespace-nowrap"
@@ -91,7 +91,6 @@ export default function Navbar() {
                 className="absolute top-full left-0 mt-2 w-64 bg-slate-900/90 backdrop-blur-md border border-slate-700/50 rounded-lg shadow-lg p-2"
                 style={{ zIndex: 50 }}
                 onMouseEnter={() => setActiveMenu("compare")}
-                onMouseLeave={() => setActiveMenu(null)}
               >
                 {COMPARE_LINKS.map((link) => (
                   <Link
