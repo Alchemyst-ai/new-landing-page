@@ -7,7 +7,7 @@
  * Keep this in sync with the actual page sections.
  */
 
-export const SITE_TITLE = "Alchemyst AI - The Institutional Context Backbone";
+export const SITE_TITLE = "Alchemyst AI - The company brain your AI agents can trust";
 export const SITE_DESCRIPTION =
   "Enable AI agents to run your day-to-day operations at enterprise scale. " +
   "The institutional context backbone for your enterprise - persistent, traceable context, " +
@@ -482,23 +482,23 @@ Alchemyst AI is a context layer delivered as an API versus Palantir's FDE-mainta
 **Claude Memory vs Alchemyst:** Claude's memory is implicit in conversations. Alchemyst provides explicit, scoped, auditable context operations.
 
 ---
- 
+
 ## Get API Access
- 
+
 Free tier available. No credit card required. REST API + Python & Node SDKs. 99.9% uptime SLA. SOC 2 in progress.
- 
+
 - Documentation: https://docs.getalchemystai.com
 - Website: https://getalchemystai.com
 - Contact: hello@getalchemystai.com
- 
+
 ---
- 
+
 ## Pricing
- 
+
 **Simple, transparent pricing for the institutional context backbone.**
- 
+
 Usage-based pricing with transparent costs per million tokens and per MB processed.
- 
+
 | Tier | Description |
 |------|-------------|
 | Free | 5M tokens free with business email signup |
@@ -506,26 +506,26 @@ Usage-based pricing with transparent costs per million tokens and per MB process
 | Accelerate | Higher limits for scaling teams |
 | Supercharge | Enterprise-scale with custom bandwidth |
 | Enterprise | Custom-built pricing with dedicated support |
- 
+
 Pricing calculator on https://getalchemystai.com/pricing shows exact costs based on expected usage.
- 
+
  ---
- 
+
  ## Creators Program
- 
+
  **AI Context Layer Partnership Program.**
- 
+
  Join our Creators Program to build content around Alchemyst AI and get rewarded:
- 
+
  - **$1,000 in credits:** 250+ million tokens on the Alchemyst Context platform
  - **Hands-on experience:** Build context-aware AI agents and become a verified context layer expert
  - **Team access:** Direct line with founders. Top creators eligible for interviews for open positions
- 
+
  **Who?** Anyone building AI agents who wants to add persistent context and memory.
- 
+
  **What?** Credits, experience with context implementation, and a direct line to our team.
- 
+
  **How?** Build written, video, or short-form content around Alchemyst AI.
- 
+
  Learn more: https://getalchemystai.com/creators-program
   `
