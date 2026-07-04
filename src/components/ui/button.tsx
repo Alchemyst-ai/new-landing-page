@@ -9,12 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        // Light-base default: orange fill, ink text (was already correct).
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        // Outline: hairline border on light, ink text, paper hover.
         outline:
-          "border-white/15 bg-transparent text-foreground hover:bg-white/10 hover:text-foreground",
+          "border-[hsl(var(--border))] bg-transparent text-foreground hover:bg-black/[0.03] hover:text-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/85",
-        ghost: "hover:bg-white/10 hover:text-foreground",
+        // Ghost: transparent → subtle paper wash on hover (light-aware).
+        ghost:
+          "border-transparent bg-transparent text-foreground hover:bg-black/[0.04] hover:text-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20",
         link: "text-primary underline-offset-4 hover:underline",
@@ -22,7 +26,7 @@ const buttonVariants = cva(
         orange:
           "bg-[#F49025] text-white border-transparent shadow-[0_8px_24px_-8px_rgba(244,144,37,0.6)] hover:bg-[#e07f17] hover:shadow-[0_10px_28px_-8px_rgba(244,144,37,0.7)]",
         teal:
-          "bg-[#0E9594] text-white border-transparent shadow-[0_8px_24px_-8px_rgba(14,149,148,0.55)] hover:bg-[#0b7676]",
+          "bg-[#128F8B] text-white border-transparent shadow-[0_8px_24px_-8px_rgba(18,143,139,0.55)] hover:bg-[#0B6E6B]",
         "brand-outline":
           "border-[#F49025]/40 text-[#F49025] bg-transparent hover:bg-[#F49025]/10 hover:border-[#F49025]/60",
         light:

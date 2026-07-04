@@ -9,19 +9,20 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive: "bg-destructive/10 text-destructive hover:bg-destructive/20",
+        // Light-base outline: hairline border, ink text.
         outline:
-          "border-white/15 text-foreground hover:bg-muted hover:text-muted-foreground",
-        ghost: "hover:bg-muted hover:text-muted-foreground",
+          "border-[hsl(var(--border))] text-foreground hover:bg-black/[0.03] hover:text-foreground",
+        ghost: "hover:bg-black/[0.04] hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // ── Alchemyst brand variants ───────────────────────────────
         orange:
           "rounded border border-[#F49025]/25 bg-[#F49025]/10 text-[#7c4a09] font-mono uppercase tracking-wide",
         teal:
-          "rounded border border-[#0E9594]/25 bg-[#0E9594]/10 text-[#0B5E5D] font-mono uppercase tracking-wide",
+          "rounded border border-[#128F8B]/25 bg-[#128F8B]/10 text-[#0B6E6B] font-mono uppercase tracking-wide",
         neutral:
           "rounded border border-[#E2E8F0] bg-[#F1F5F9] text-[#334155] font-mono",
       },

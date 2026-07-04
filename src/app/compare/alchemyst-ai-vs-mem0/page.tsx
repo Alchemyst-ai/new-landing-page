@@ -23,8 +23,8 @@ export default function CompareMem0Page() {
         url={PAGE_PATH}
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
-        <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
+        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath="/compare/alchemyst-ai-vs-mem0"
@@ -40,23 +40,20 @@ export default function CompareMem0Page() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
-              textAlign: "center"
             }}
           >
             Alchemyst AI vs Mem0
           </h1>
 
-          <div style={{ marginBottom: "48px", textAlign: "center" }}>
+          <div style={{ marginBottom: "48px" }}>
             <p
               style={{
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
-                maxWidth: "700px",
-                margin: "0 auto"
+                color: "#475569",
               }}
             >
               Both Alchemyst AI and Mem0 provide memory layers for AI applications, but they take fundamentally different architectural approaches. Unlike Mem0, which relies heavily on vector-search inference at retrieval time, <strong>Alchemyst AI is a deterministic context layer</strong> scoped at write time, designed specifically for auditability in production multi-agent deployments.
@@ -77,45 +74,45 @@ export default function CompareMem0Page() {
            <div style={{ overflowX: "auto", marginBottom: "64px" }}>
              <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
                <thead>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                   <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "25%" }}>Feature</th>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                   <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Feature</th>
                    <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
-                   <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "25%" }}>Mem0</th>
-                   <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
+                   <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Mem0</th>
+                   <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
                  </tr>
                </thead>
-               <tbody style={{ color: "#CBD5E1" }}>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+               <tbody style={{ color: "#475569" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>Architecture</td>
                    <td style={{ padding: "16px" }}>Deterministic Context Layer</td>
                    <td style={{ padding: "16px" }}>Vector-Search + Optional Graph (Pro)</td>
                    <td style={{ padding: "16px", fontSize: "0.9rem" }}>Alchemyst trades semantic flexibility for deterministic accuracy</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>Context Scoping</td>
                    <td style={{ padding: "16px" }}>Scoped at write time</td>
                    <td style={{ padding: "16px" }}>Inferred at retrieval</td>
                    <td style={{ padding: "16px", fontSize: "0.9rem" }}>Mem0 is more flexible but prone to semantic drift</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>Auditability</td>
                    <td style={{ padding: "16px" }}>100% Traceable & Verifiable</td>
                    <td style={{ padding: "16px" }}>Limited (Pro: ~$249/mo)</td>
                    <td style={{ padding: "16px", fontSize: "0.9rem" }}>Mem0 self-host is OSS; auditability requires paid Pro tier</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>LongMemEval Score</td>
                    <td style={{ padding: "16px" }}>Benchmark pending</td>
                    <td style={{ padding: "16px" }}>49.0%</td>
                    <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep scores 63.8% on this benchmark</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>Target Use Case</td>
                    <td style={{ padding: "16px" }}>Production multi-agent orgs</td>
                    <td style={{ padding: "16px" }}>Single-agent / personalized apps</td>
                    <td style={{ padding: "16px", fontSize: "0.9rem" }}>Different architectures, not interchangeable</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                    <td style={{ padding: "16px", fontWeight: 600 }}>Pricing</td>
                    <td style={{ padding: "16px" }}>Free tier + transparent</td>
                    <td style={{ padding: "16px" }}>Free / $19-$249/mo</td>
@@ -125,31 +122,31 @@ export default function CompareMem0Page() {
              </table>
            </div>
 
-           <div style={{ background: "rgba(244,144,37,0.08)", border: "1px solid rgba(244,144,37,0.2)", borderRadius: "8px", padding: "24px", marginBottom: "64px" }}>
+           <div style={{ background: "rgba(244,144,37,0.08)", border: "1px solid rgba(244,144,37,0.2)", borderRadius: "0", padding: "24px", marginBottom: "64px" }}>
              <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8125rem", color: "#F49025", marginBottom: "8px" }}>
                Performance note
              </p>
-             <p style={{ fontFamily: SANS, color: "#CBD5E1", marginBottom: "0", fontSize: "0.9375rem" }}>
+             <p style={{ fontFamily: SANS, color: "#475569", marginBottom: "0", fontSize: "0.9375rem" }}>
                Alchemyst AI delivers sub-300ms retrieval latency at P95, while benchmarked vector-based approaches can hit 7-10 seconds under load. For voice agents with sub-second budgets, this matters.
              </p>
            </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
-<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
+<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Alchemyst AI best for?
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context. Because context is deterministic and scoped when it is written, you eliminate the hallucination risks associated with probabilistic vector retrieval.
             </p>
 
-<h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Mem0 best for?
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Mem0 is best for <strong>consumer apps, AI companions, and single-agent use cases</strong> where user personalization is the primary goal. Its vector-search approach is excellent at quickly surfacing fuzzy, personalized memories for a single user's chat session, where strict auditability and cross-agent determinism are less critical.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Which should you choose? The verdict
             </h2>
             <p style={{ marginBottom: "24px" }}>

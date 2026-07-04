@@ -3,6 +3,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AlchemystFixesSection from "@/components/sections/AlchemystFixesSection";
+import CTASection from "@/components/sections/CTASection";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoBar from "@/components/sections/LogoBar";
 import WhyContextSection from "@/components/sections/WhyContextSection";
@@ -25,6 +26,7 @@ export default function Home() {
         <LogoBar />
         <WhyContextSection />
         <AlchemystFixesSection />
+        <CTASection />
       </main>
       <Footer />
     </>

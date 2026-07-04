@@ -97,12 +97,12 @@ export default function TableOfContents({
 
   return (
     <div
-      style={{
-        background: "rgba(255,255,255,0.02)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: "12px",
-        padding: "24px",
-      }}
+       style={{
+         background: "#FFFFFF",
+         border: "1px solid #E5E7EB",
+         borderRadius: "0",
+         padding: "24px",
+       }}
     >
       {/* Heading with check-circle icon */}
       <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
@@ -125,7 +125,7 @@ export default function TableOfContents({
             fontFamily: "'Sora', sans-serif",
             fontSize: "1.0625rem",
             fontWeight: 600,
-            color: "#FFFFFF",
+             color: "#0F172A",
             margin: 0,
           }}
         >
@@ -140,7 +140,7 @@ export default function TableOfContents({
           flexDirection: "column",
           gap: "6px",
           paddingLeft: "8px",
-          borderLeft: "1px solid rgba(255,255,255,0.08)",
+           borderLeft: "1px solid #E5E7EB",
         }}
       >
         {tocItems.map(({ id, text, level }) => {
@@ -163,7 +163,7 @@ export default function TableOfContents({
                 color: isActive ? "#F49025" : "#94A3B8",
                 background: isActive ? "rgba(244,144,37,0.10)" : "transparent",
                 border: "none",
-                borderRadius: "6px",
+                 borderRadius: "0",
                 padding: "5px 10px",
                 marginLeft: `${indent}px`,
                 cursor: "pointer",

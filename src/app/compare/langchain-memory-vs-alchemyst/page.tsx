@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/langchain-memory-vs-alchemyst";
+const PAGE_PATH = "/compare/langchain-memory-vs-alchemyst";
 const PAGE_TITLE = "LangChain Memory vs Alchemyst: Framework Memory vs Context Layer";
 
 export const metadata: Metadata = {
@@ -19,18 +19,18 @@ export default function LangChainMemoryVsAlchemystPage() {
   return (
     <>
       <ArticleSchema
-        headline="langchain-memory-vs-alchemyst"
+        headline={PAGE_TITLE}
         description="LangChain deprecated BufferMemory in favor of LangGraph's memory patterns. Alchemyst provides a vendor-agnostic context layer. Compare memory architectures."
         url="/compare/langchain-memory-vs-alchemyst"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: PAGE_TITLE },
             ]}
           />
@@ -41,7 +41,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function LangChainMemoryVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               LangChain deprecated BufferMemory in 2026, pushing developers toward LangGraph's persistent store patterns. Alchemyst AI provides a vendor-agnostic context layer that works with any framework. Both solve memory, but at different layers of the stack.
@@ -71,9 +71,9 @@ export default function LangChainMemoryVsAlchemystPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What changed in LangChain memory in 2026?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -88,7 +88,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               The official memory path now runs through <strong>LangGraph's checkpointer-based short_term + long_term patterns</strong>. This means new infrastructure requirements for teams already invested in LangChain.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is LangMem's approach?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -100,7 +100,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}>Framework-locked—cannot be used outside LangGraph.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Alchemyst's approach?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -113,7 +113,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>Context traces:</strong> Audit every decision back to its source.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Migration implications
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -124,34 +124,34 @@ export default function LangChainMemoryVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>Add Alchemyst:</strong> Keep LangGraph for orchestration, use Alchemyst for reliable context. Adds a service but prevents hallucinations.</li>
             </ol>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               When to choose which?
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Consideration</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Consideration</th>
                   <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>LangMem</th>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>LangMem</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Framework integration</td>
                   <td style={{ padding: "12px" }}>✅ Any framework</td>
                   <td style={{ padding: "12px" }}>✅ LangGraph native</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in</td>
                   <td style={{ padding: "12px" }}>⚠️ Not designed for this</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>New infrastructure</td>
                   <td style={{ padding: "12px" }}>✅ Zero-infra API</td>
                   <td style={{ padding: "12px" }}>✅ Uses existing store</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit trails</td>
                   <td style={{ padding: "12px" }}>✅ Retrieval-level</td>
                   <td style={{ padding: "12px" }}>⚠️ Checkpointer logs</td>
@@ -159,7 +159,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               </tbody>
             </table>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The pragmatic recommendation
             </h2>
             <p style={{ marginBottom: "24px" }}>

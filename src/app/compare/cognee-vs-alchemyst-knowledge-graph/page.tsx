@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/cognee-vs-alchemyst-knowledge-graph";
+const PAGE_PATH = "/compare/cognee-vs-alchemyst-knowledge-graph";
 const PAGE_TITLE = "Cognee vs Alchemyst: Open-Source Graph vs Deterministic Context";
 
 export const metadata: Metadata = {
@@ -19,18 +19,18 @@ export default function CogneeVsAlchemystPage() {
   return (
     <>
       <ArticleSchema
-        headline="cognee-vs-alchemyst-knowledge-graph"
+        headline={PAGE_TITLE}
         description="Cognee builds knowledge graphs from documents. Alchemyst provides deterministic context arithmetic. Compare graph-based memory architectures."
         url="/compare/cognee-vs-alchemyst-knowledge-graph"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: PAGE_TITLE },
             ]}
           />
@@ -41,7 +41,7 @@ export default function CogneeVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function CogneeVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               Cognee builds knowledge graphs from unstructured data using remember/recall/improve/forget operations. Alchemyst AI provides deterministic context arithmetic over institutional knowledge. Both use graph structures, but with different priorities.
@@ -71,9 +71,9 @@ export default function CogneeVsAlchemystPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Cognee's graph memory pipeline?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -89,7 +89,7 @@ export default function CogneeVsAlchemystPage() {
               Cognee excels at building a knowledge graph before any queries happen, combining graph traversal with vector similarity for better recall.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Alchemyst's graph approach?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -104,39 +104,39 @@ export default function CogneeVsAlchemystPage() {
               The graph emerges from how context is actually used, not pre-built from documents. This adapts to changing business meanings automatically.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Key differences
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Aspect</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Aspect</th>
                   <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Cognee</th>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Cognee</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Graph build timing</td>
                   <td style={{ padding: "12px" }}>Dynamic (query-time)</td>
                   <td style={{ padding: "12px" }}>Batch (pre-query)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in ontology</td>
                   <td style={{ padding: "12px" }}>⚠️ Manual curation</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Deployment</td>
                   <td style={{ padding: "12px" }}>API / MCP (zero-infra)</td>
                   <td style={{ padding: "12px" }}>Self-host required</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Connectors</td>
                   <td style={{ padding: "12px" }}>30+ via MCP</td>
                   <td style={{ padding: "12px" }}>30+ native connectors</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit trail</td>
                   <td style={{ padding: "12px" }}>✅ Everything traced</td>
                   <td style={{ padding: "12px" }}>⚠️ Graph update logs</td>
@@ -144,7 +144,7 @@ export default function CogneeVsAlchemystPage() {
               </tbody>
             </table>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               When to choose which?
             </h2>
             <p style={{ marginBottom: "16px" }}>
@@ -152,7 +152,7 @@ export default function CogneeVsAlchemystPage() {
             </p>
             <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
               <li style={{ marginBottom: "8px" }}>You want to build a knowledge graph from documents before queries.</li>
-              <li style={{ padding: "12px" }}>You prefer open-source self-hosted infrastructure.</li>
+              <li style={{ marginBottom: "8px" }}>You prefer open-source self-hosted infrastructure.</li>
               <li style={{ marginBottom: "8px" }}>Graph complexity over audit simplicity is acceptable.</li>
             </ul>
 
@@ -165,7 +165,7 @@ export default function CogneeVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}>You want to avoid managing graph database infrastructure.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The architectural trade-off
             </h2>
             <p style={{ marginBottom: "24px" }}>

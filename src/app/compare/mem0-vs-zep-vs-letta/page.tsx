@@ -21,7 +21,7 @@ export default function Mem0VsZepVsLettaPage() {
         url="/compare/mem0-vs-zep-vs-letta"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
@@ -38,7 +38,7 @@ export default function Mem0VsZepVsLettaPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function Mem0VsZepVsLettaPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               When evaluating the best AI memory layer for agents, the market generally looks at Mem0, Zep, and Letta. However, choosing between them depends entirely on whether you are building a personalized consumer chatbot or a production multi-agent architecture. Here is how they compare, and why <strong>Alchemyst AI</strong> represents a different, deterministic approach for enterprise deployments.
@@ -68,30 +68,30 @@ export default function Mem0VsZepVsLettaPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
             
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Mem0: Best for Consumer Personalization
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Mem0 (formerly Embedchain) focuses on personalized AI experiences. It uses a vector-search approach to quickly surface fuzzy, relevant memories for a single user's chat session. It is excellent for AI companions and consumer apps where strict auditability is less critical than a highly personalized feel.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Zep: Best for Long-term Chat History
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Zep is built around temporal knowledge graphs. It excels at understanding the chronological relationship between facts in a long-running user conversation. If your primary challenge is managing infinite scroll chat history for a conversational assistant, Zep is an excellent choice.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Letta: Best for OS-level Agent Memory
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Letta (built by the creators of MemGPT) treats LLMs like an operating system, giving agents explicit tools to page memory in and out of their context window. It is highly technical and powerful for developers who want to tightly control how a single, autonomous agent manages its own internal state over time.
             </p>
 
-            <h2 style={{ color: "#F49025", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px" }}>
               Alchemyst AI: Best for Multi-Agent Enterprise Architectures
             </h2>
             <p style={{ marginBottom: "16px" }}>
@@ -103,7 +103,7 @@ export default function Mem0VsZepVsLettaPage() {
               <li style={{ marginBottom: "8px" }}>Every retrieval decision is 100% traceable and auditable, solving the "black box" problem of AI memory in production.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The Verdict
             </h2>
             <p style={{ marginBottom: "24px" }}>

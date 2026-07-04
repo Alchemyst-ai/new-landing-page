@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Reveal } from "@/components/motion";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -133,8 +134,8 @@ export default function CompareIndexPage() {
       <Navbar />
       <main
         style={{
-          background: "#151515",
-          color: "#FAFAFA",
+          background: "var(--paper)",
+          color: "var(--ink)",
           minHeight: "100vh",
           padding: "120px 0 80px",
         }}
@@ -145,46 +146,40 @@ export default function CompareIndexPage() {
             items={[{ name: "Compare" }]}
           />
 
-          <header style={{ maxWidth: "760px", marginBottom: "56px" }}>
-            <span
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "12px",
-                letterSpacing: "0.16em",
-                textTransform: "uppercase",
-                color: "#F49025",
-                fontWeight: 600,
-              }}
-            >
-              Honest comparisons
-            </span>
-            <h1
-              style={{
-                fontFamily: SANS,
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 800,
-                lineHeight: 1.1,
-                color: "#FFFFFF",
-                margin: "16px 0 20px",
-              }}
-            >
-              How Alchemyst compares
-            </h1>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "1.0625rem",
-                lineHeight: 1.7,
-                color: "#CBD5E1",
-              }}
-            >
-              A context layer is a different primitive from memory, ontology, data
-              governance or enterprise search. These pages lay out - fairly, with
-              the strengths of each platform acknowledged - where a sovereign,
-              cross-system, deterministic context layer fits, and where the other
-              tools genuinely shine.
-            </p>
-          </header>
+          <Reveal direction="up" amount={0.2}>
+            <header style={{ maxWidth: "760px", marginBottom: "56px" }}>
+              <div style={{ display: "flex", marginBottom: "16px" }}>
+                <span className="caption-eyebrow">Honest comparisons</span>
+              </div>
+              <h1
+                style={{
+                  fontFamily: SANS,
+                  fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                  color: "#0F172A",
+                  margin: "16px 0 20px",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                How Alchemyst compares
+              </h1>
+              <p
+                style={{
+                  fontFamily: SANS,
+                  fontSize: "1.0625rem",
+                  lineHeight: 1.7,
+                  color: "#64748B",
+                }}
+              >
+                A context layer is a different primitive from memory, ontology, data
+                governance or enterprise search. These pages lay out - fairly, with
+                the strengths of each platform acknowledged - where a sovereign,
+                cross-system, deterministic context layer fits, and where the other
+                tools genuinely shine.
+              </p>
+            </header>
+          </Reveal>
 
           <div
             style={{
@@ -193,69 +188,68 @@ export default function CompareIndexPage() {
               gap: "20px",
             }}
           >
-            {COMPARISONS.map((c) => (
-              <Link
-                key={c.href}
-                href={c.href}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  background: "#1C1C1C",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "14px",
-                  padding: "28px",
-                  textDecoration: "none",
-                  transition: "border-color 0.2s ease, transform 0.2s ease",
-                }}
-              >
-                <span
+            {COMPARISONS.map((c, i) => (
+              <Reveal key={c.href} direction="up" delay={i * 0.04} amount={0.1}>
+                <Link
+                  href={c.href}
+                  className="compare-card"
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "11px",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "#0E9594",
-                    fontWeight: 600,
-                    marginBottom: "12px",
+                    display: "flex",
+                    flexDirection: "column",
+                    background: "#FFFFFF",
+                    border: "1px solid #E5E7EB",
+                    borderRadius: "0",
+                    padding: "28px",
+                    textDecoration: "none",
+                    height: "100%",
                   }}
                 >
-                  {c.category}
-                </span>
-                <h2
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "1.35rem",
-                    fontWeight: 700,
-                    color: "#FFFFFF",
-                    margin: "0 0 10px",
-                  }}
-                >
-                  Alchemyst <span style={{ color: "#F49025" }}>vs {c.competitor}</span>
-                </h2>
-                <p
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.6,
-                    color: "#94A3B8",
-                    margin: 0,
-                    flex: 1,
-                  }}
-                >
-                  {c.blurb}
-                </p>
-                <span
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "0.875rem",
-                    fontWeight: 600,
-                    color: "#F49025",
-                    marginTop: "20px",
-                  }}
-                >
-                  Read the comparison →
-                </span>
-              </Link>
+                  <span
+                    className="caption-meta"
+                    style={{
+                      color: "#128F8B",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    {c.category}
+                  </span>
+                  <h2
+                    style={{
+                      fontFamily: SANS,
+                      fontSize: "1.35rem",
+                      fontWeight: 700,
+                      color: "#0F172A",
+                      margin: "0 0 10px",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    Alchemyst <span style={{ color: "#F49025" }}>vs {c.competitor}</span>
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: SANS,
+                      fontSize: "0.9375rem",
+                      lineHeight: 1.6,
+                      color: "#64748B",
+                      margin: 0,
+                      flex: 1,
+                    }}
+                  >
+                    {c.blurb}
+                  </p>
+                  <span
+                    style={{
+                      fontFamily: SANS,
+                      fontSize: "0.875rem",
+                      fontWeight: 600,
+                      color: "#F49025",
+                      marginTop: "20px",
+                    }}
+                  >
+                    Read the comparison →
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -31,7 +31,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
         display: "block",
         background: "#FFFFFF",
         border: "1px solid rgba(15,23,42,0.08)",
-        borderRadius: "12px",
+         borderRadius: "0",
         overflow: "hidden",
         textDecoration: "none",
         transition: "box-shadow 0.2s ease, transform 0.2s ease",
@@ -61,7 +61,7 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
               textTransform: "uppercase",
               color: "#F49025",
               background: "rgba(244,144,37,0.1)",
-              borderRadius: "4px",
+               borderRadius: "0",
               padding: "3px 8px",
               marginBottom: "12px",
             }}
@@ -123,7 +123,7 @@ export default async function BlogPage() {
         {/* Hero */}
         <section
           style={{
-            background: "#0F172A",
+            background: "var(--paper)",
             paddingTop: "120px",
             paddingBottom: "80px",
             textAlign: "center",
@@ -154,7 +154,7 @@ export default async function BlogPage() {
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
-                color: "#FFFFFF",
+                color: "var(--ink)",
                 marginBottom: "16px",
               }}
             >
@@ -165,10 +165,10 @@ export default async function BlogPage() {
                 fontFamily: "'Sora', sans-serif",
                 fontSize: "1.0625rem",
                 lineHeight: 1.6,
-                color: "#94A3B8",
-              }}
-            >
-              {posts.length} article{posts.length !== 1 ? "s" : ""} on semantic drift, context
+                 color: "#64748B",
+               }}
+             >
+               {posts.length} article{posts.length !== 1 ? "s" : ""} on semantic drift, context
               engineering, and building reliable agentic AI systems.
             </p>
           </div>

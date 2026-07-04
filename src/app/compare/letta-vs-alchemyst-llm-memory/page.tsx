@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/letta-vs-alchemyst-llm-memory";
+const PAGE_PATH = "/compare/letta-vs-alchemyst-llm-memory";
 const PAGE_TITLE = "Letta (MemGPT) vs Alchemyst: OS-Style Memory vs Context Layer";
 
 export const metadata: Metadata = {
@@ -19,18 +19,18 @@ export default function LettaVsAlchemystPage() {
   return (
     <>
       <ArticleSchema
-        headline="letta-vs-alchemyst-llm-memory"
+        headline={PAGE_TITLE}
         description="Letta (formerly MemGPT) uses OS-inspired tiered memory. Alchemyst uses context arithmetic. Compare architectures for long-running agents."
         url="/compare/letta-vs-alchemyst-llm-memory"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: PAGE_TITLE },
             ]}
           />
@@ -41,7 +41,7 @@ export default function LettaVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function LettaVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               Letta (formerly MemGPT) implements OS-style tiered memory: core (RAM), archival (disk), and recall (history). Alchemyst AI provides context arithmetic over an institutional knowledge graph. Both solve memory for long-running agents, but with fundamentally different architectures.
@@ -71,9 +71,9 @@ export default function LettaVsAlchemystPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Letta's OS-inspired memory model?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -88,7 +88,7 @@ export default function LettaVsAlchemystPage() {
               The agent actively manages its own memory through function calls—`archival_memory_search`, `core_memory_append`, etc. This is excellent for agents that run for weeks or months without human intervention.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Alchemyst's context arithmetic?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -100,39 +100,39 @@ export default function LettaVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>Context traces:</strong> Every retrieval is fully auditable.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               When to choose which architecture?
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Use Case</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Use Case</th>
                   <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Letta</th>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Letta</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Multi-agent coordination</td>
                   <td style={{ padding: "12px" }}>✅ Shared context layer</td>
                   <td style={{ padding: "12px" }}>⚠️ Separate memory per agent</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Long-running research</td>
                   <td style={{ padding: "12px" }}>✅ Good</td>
                   <td style={{ padding: "12px" }}>✅ Excellent</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in ontology</td>
                   <td style={{ padding: "12px" }}>⚠️ Agent-managed</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Model choice</td>
                   <td style={{ padding: "12px" }}>✅ Any via API/MCP</td>
                   <td style={{ padding: "12px" }}>✅ Any via endpoints</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit requirements</td>
                   <td style={{ padding: "12px" }}>✅ Retrieval traces</td>
                   <td style={{ padding: "12px" }}>⚠️ Function call logs</td>
@@ -140,7 +140,7 @@ export default function LettaVsAlchemystPage() {
               </tbody>
             </table>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Architectural trade-offs
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -150,7 +150,7 @@ export default function LettaVsAlchemystPage() {
               Alchemyst places memory management outside the agent. Context is scoped at write time through explicit APIs. This removes burden from agents but requires deliberate context structuring.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The hybrid approach
             </h2>
             <p style={{ marginBottom: "24px" }}>

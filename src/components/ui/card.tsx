@@ -12,7 +12,10 @@ function Card({
       data-slot="card"
       data-size={size}
       className={cn(
-        "flex flex-col gap-4 overflow-hidden rounded-xl bg-card py-4 text-sm text-card-foreground ring-1 ring-white/10",
+        // Light-base default: hairline border + white surface, 8px radius.
+        // Inside [data-theme="dark"] the tokens flip, so the same class works
+        // for dark anchor sections too.
+        "flex flex-col gap-4 overflow-hidden rounded-lg border border-[hsl(var(--border))] bg-card py-4 text-sm text-card-foreground",
         className
       )}
       {...props}
@@ -24,7 +27,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
-      className={cn("grid auto-rows-min items-start gap-1 rounded-t-xl px-4", className)}
+      className={cn("grid auto-rows-min items-start gap-1 rounded-t-lg px-4", className)}
       {...props}
     />
   )
@@ -77,7 +80,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
-      className={cn("flex items-center rounded-b-xl border-t border-white/10 bg-muted/50 p-4", className)}
+      className={cn("flex items-center rounded-b-lg border-t bg-muted/40 p-4", className)}
       {...props}
     />
   )

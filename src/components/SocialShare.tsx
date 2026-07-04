@@ -43,7 +43,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
       style={{
         marginTop: "24px",
         paddingTop: "20px",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+         borderTop: "1px solid #E5E7EB",
       }}
     >
       <h4
@@ -53,7 +53,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
           fontFamily: "'Sora', sans-serif",
           fontSize: "0.875rem",
           fontWeight: 600,
-          color: "#FFFFFF",
+           color: "#0F172A",
           marginBottom: "12px",
         }}
       >
@@ -119,7 +119,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
           onClick={() => handleCopyLink(utmLinks.copy)}
           aria-label="Copy link"
           className="blog-share-btn"
-          style={{ background: "rgba(255,255,255,0.08)", color: "#E2E8F0", border: "none", cursor: "pointer" }}
+           style={{ background: "rgba(15,23,42,0.06)", color: "#475569", border: "none", cursor: "pointer" }}
         >
           {copied ? (
             <svg style={{ width: "16px", height: "16px", color: "#22C55E" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

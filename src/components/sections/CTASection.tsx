@@ -1,13 +1,16 @@
 "use client";
-// CTASection - email capture (Client Component for form interactivity)
 
 import { Button } from "@/components/ui/button";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+
+const ease = [0.23, 1, 0.32, 1] as const;
 
 export default function CTASection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const reduce = useReducedMotion();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,200 +23,130 @@ export default function CTASection() {
   return (
     <section
       id="get-access"
-      style={{
-        background: "#F7F4EE",
-        paddingTop: "96px",
-        paddingBottom: "96px",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className="relative w-full bg-[#FAFAFA] overflow-hidden border-t border-[#E5E7EB]"
       aria-labelledby="cta-heading"
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `radial-gradient(circle at 50% 0%, rgba(244,144,37,0.08) 0%, transparent 60%)`,
-        }}
-      />
-      <div className="container relative" style={{ textAlign: "center" }}>
-        <p className="eyebrow" style={{ marginBottom: "16px" }}>How do you get started?</p>
-        <h2
-          id="cta-heading"
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontWeight: 800,
-            fontSize: "clamp(2rem, 4vw, 3.5rem)",
-            lineHeight: 1.08,
-            letterSpacing: "-0.03em",
-            color: "#0F172A",
-            maxWidth: "640px",
-            margin: "0 auto 16px",
-          }}
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-8 py-28">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start"
         >
-          Give your AI agents the{" "}
-          <span
-            style={{
-              fontStyle: "italic",
-              background: "linear-gradient(135deg, #F49025, #FDB560)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            memory they deserve.
-          </span>
-        </h2>
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontWeight: 400,
-            fontSize: "1.125rem",
-            lineHeight: 1.6,
-            color: "#64748B",
-            maxWidth: "480px",
-            margin: "0 auto 40px",
-          }}
-        >
-          Join developers building the next generation of AI products with persistent context.
-          Free tier available. No credit card required.
-        </p>
-
-        {!submitted ? (
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "12px",
-              marginBottom: "32px",
-            }}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              style={{
-                fontFamily: "'Sora', sans-serif",
-                fontSize: "0.9375rem",
-                color: "#0F172A",
-                background: "#FFFFFF",
-                border: "1px solid #E5E7EB",
-                borderRadius: "8px",
-                padding: "0.75rem 1rem",
-                width: "100%",
-                maxWidth: "300px",
-                outline: "none",
-              }}
-            />
-            <Button type="submit" disabled={loading} variant="orange" size="brand">
-              {loading ? "Requesting..." : "Get API Access"}
-            </Button>
-          </form>
-        ) : (
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              background: "#F0FDF4",
-              border: "1px solid rgba(34,197,94,0.3)",
-              borderRadius: "8px",
-              padding: "14px 24px",
-              marginBottom: "32px",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Sora', sans-serif",
-                fontWeight: 600,
-                fontSize: "0.9375rem",
-                color: "#16A34A",
-              }}
-            >
-              ✓ You&apos;re on the list! We&apos;ll be in touch shortly.
+          {/* ── Left: Copy ── */}
+          <div>
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase font-semibold text-[#128F8B] bg-[#128F8B]/8 px-4 py-1 border border-[#128F8B]/20 mb-8">
+              Get Started
             </span>
-          </div>
-        )}
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "16px",
-            marginBottom: "40px",
-          }}
-        >
-          <Button asChild variant="brand-outline" size="brand">
-            <a
-              href="https://docs.getalchemystai.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <h2
+              id="cta-heading"
+              className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-[-0.025em] text-[#0F172A] leading-[1.15] mb-6"
             >
-              Read the Docs
-            </a>
-          </Button>
-          <a
-            href="https://getalchemystai.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontFamily: "'Sora', sans-serif",
-              fontWeight: 500,
-              fontSize: "0.9375rem",
-              color: "#64748B",
-              textDecoration: "none",
-            }}
-          >
-            Learn about Alchemyst AI →
-          </a>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
-          }}
-        >
-          {[
-            "Free tier - no credit card",
-            "REST API + Python & Node SDKs",
-            "99.9% uptime SLA",
-            "SOC 2 in progress",
-          ].map((item) => (
-            <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span
-                style={{
-                  width: "6px",
-                  height: "6px",
-                  borderRadius: "50%",
-                  background: "#F49025",
-                  opacity: 0.6,
-                  display: "inline-block",
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "11px",
-                  letterSpacing: "0.06em",
-                  color: "#94A3B8",
-                }}
-              >
-                {item}
+              Give your AI agents the{" "}
+              <span className="italic text-[#F49025]">
+                memory they deserve.
               </span>
+            </h2>
+
+            <p className="text-[1.0625rem] text-[#475569] leading-[1.7] mb-10 max-w-[28rem]">
+              Join developers building the next generation of AI products
+              with persistent, auditable context. Free tier available — no
+              credit card required.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[#94A3B8] font-medium">
+              {[
+                "Free tier",
+                "REST + Python & Node SDKs",
+                "99.9% uptime SLA",
+                "SOC 2 in progress",
+              ].map((item) => (
+                <span key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#128F8B]" />
+                  <span>{item}</span>
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+
+          {/* ── Right: Form ── */}
+          <div className="bg-white border border-[#E5E7EB] p-8 lg:p-10">
+            {!submitted ? (
+              <>
+                <h3 className="text-lg font-bold text-[#0F172A] mb-2">
+                  Request API Access
+                </h3>
+                <p className="text-sm text-[#64748B] mb-8">
+                  Enter your email and we&apos;ll set up your workspace.
+                </p>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                    className="w-full bg-white border border-[#E5E7EB] text-[#0F172A] placeholder-[#94A3B8] text-sm px-4 py-3 rounded-none outline-none focus:border-[#F49025] focus:ring-1 focus:ring-[#F49025] transition-colors"
+                  />
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-[#0F172A] hover:bg-[#1E293B] text-white px-7 py-3 rounded-none text-sm font-semibold tracking-wide transition-all shadow-[4px_4px_0px_#0F172A] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#0F172A]"
+                  >
+                    {loading ? "Requesting..." : "Get API Access"}
+                  </Button>
+                </form>
+                <div className="mt-6 pt-6 border-t border-[#E5E7EB] flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://docs.getalchemystai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-[#475569] hover:text-[#0F172A] transition-colors"
+                  >
+                    Read the Docs →
+                  </a>
+                  <a
+                    href="/thesis"
+                    className="text-sm font-semibold text-[#475569] hover:text-[#0F172A] transition-colors"
+                  >
+                    Read the Thesis →
+                  </a>
+                </div>
+              </>
+            ) : (
+              <motion.div
+                initial={reduce ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease }}
+                className="flex flex-col items-center text-center py-8"
+              >
+                <div className="w-10 h-10 bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-4">
+                  <svg
+                    className="w-5 h-5 text-emerald-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <p className="text-base font-semibold text-[#0F172A] mb-1">
+                  You&apos;re on the list.
+                </p>
+                <p className="text-sm text-[#64748B]">
+                  We&apos;ll be in touch shortly.
+                </p>
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

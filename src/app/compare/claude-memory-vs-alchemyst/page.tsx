@@ -24,7 +24,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
         url="/compare/claude-memory-vs-alchemyst"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
@@ -41,7 +41,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               Claude Managed Agents store memory as files on a filesystem. This enables human-readable, exportable context but creates challenges for multi-agent coordination. Alchemyst AI provides a deterministic context layer designed for production deployments.
@@ -71,9 +71,9 @@ export default function ClaudeMemoryVsAlchemystPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Claude's filesystem memory approach?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -85,7 +85,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>Rolback capable:</strong> File-based history allows point-in-time recovery.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What are the limitations for multi-agent systems?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -98,34 +98,34 @@ export default function ClaudeMemoryVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>No retrieval optimization:</strong> Raw file search lacks the semantic relevance scoring of dedicated memory systems.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               When should you choose each approach?
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Consideration</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Consideration</th>
                   <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Claude Memory</th>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Claude Memory</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Multi-agent coordination</td>
                   <td style={{ padding: "12px" }}>✅ Conflict resolution</td>
                   <td style={{ padding: "12px" }}>⚠️ Manual coordination</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Model flexibility</td>
                   <td style={{ padding: "12px" }}>✅ Any model via API/MCP</td>
                   <td style={{ padding: "12px" }}>❌ Claude-only</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consistency</td>
                   <td style={{ padding: "12px" }}>✅ Ontology resolution</td>
                   <td style={{ padding: "12px" }}>❌ Agent-written</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Enterprise compliance</td>
                   <td style={{ padding: "12px" }}>✅ Auditable API</td>
                   <td style={{ padding: "12px" }}>⚠️ File-based logs</td>
@@ -133,7 +133,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
               </tbody>
             </table>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The hybrid approach: best of both worlds
             </h2>
             <p style={{ marginBottom: "24px" }}>

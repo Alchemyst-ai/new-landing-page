@@ -21,8 +21,8 @@ export default function CompareSnowflakePage() {
         url="/compare/alchemyst-ai-vs-snowflake-cortex"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
-        <article className="container" style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
+        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath="/compare/alchemyst-ai-vs-snowflake-cortex"
@@ -38,23 +38,20 @@ export default function CompareSnowflakePage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
-              textAlign: "center"
             }}
           >
             Alchemyst AI vs Snowflake Cortex
           </h1>
           
-          <div style={{ marginBottom: "48px", textAlign: "center" }}>
+          <div style={{ marginBottom: "48px" }}>
             <p
               style={{
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
-                maxWidth: "700px",
-                margin: "0 auto"
+                color: "#475569",
               }}
             >
               Snowflake Cortex brings AI natively to your data warehouse, utilizing Semantic Views to give agents a governed vocabulary. However, these views are static, manually authored, and strictly bounded to Snowflake. <strong>Alchemyst AI provides dynamic, cross-system semantic consensus</strong>. It is a sovereign context layer that spans your entire enterprise stack—resolving semantic drift automatically without locking your agents into a single warehouse.
@@ -74,34 +71,34 @@ export default function CompareSnowflakePage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "33%" }}>Feature</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Feature</th>
                   <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#FFFFFF", fontSize: "1.125rem", width: "33%" }}>Snowflake Cortex</th>
+                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Snowflake Cortex</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Context Scope</td>
                   <td style={{ padding: "16px" }}>Cross-system (Enterprise-wide)</td>
                   <td style={{ padding: "16px" }}>Warehouse-bounded (Snowflake only)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Semantic Consensus</td>
                   <td style={{ padding: "16px" }}>Dynamic, self-updating inferences</td>
                   <td style={{ padding: "16px" }}>Static, manually authored Semantic Views</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Unstructured Retrieval</td>
                   <td style={{ padding: "16px" }}>Deterministic Context Arithmetic</td>
                   <td style={{ padding: "16px" }}>Probabilistic Vector RAG (Cortex Search)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Agent Autonomy</td>
                   <td style={{ padding: "16px" }}>Unlimited multi-agent routing</td>
                   <td style={{ padding: "16px" }}>Limited context windows (3-5 turns)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Ecosystem</td>
                   <td style={{ padding: "16px" }}>Model & Data Agnostic</td>
                   <td style={{ padding: "16px" }}>Locked to Snowflake ecosystem</td>
@@ -110,8 +107,8 @@ export default function CompareSnowflakePage() {
             </table>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The Warehouse Boundary Problem
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -121,7 +118,7 @@ export default function CompareSnowflakePage() {
               However, it suffers from the <strong>Warehouse Boundary Problem</strong>. Semantic Views can only see data inside Snowflake. The average enterprise utilizes 15 to 30 different SaaS systems—from CRMs to ticketing platforms to internal wikis. If an agent needs to reconcile a revenue metric in Snowflake with a customer conversation in Slack or a ticket in Jira, Cortex cannot provide the semantic bridge.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Static Views vs. Dynamic Context
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -131,21 +128,21 @@ export default function CompareSnowflakePage() {
               Alchemyst AI replaces static schema objects with dynamic <strong>Context Arithmetic</strong>. Agents continuously create and update their own context through a composable layer of references and inferences. This ensures that semantic consensus is actively maintained and verified, rather than relying on a data engineer to manually update a view.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Who is Snowflake Cortex best for?
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Snowflake Cortex is best for <strong>organizations whose operational data lives entirely within Snowflake</strong>. If your primary goal is enabling business users to query structured warehouse data using natural language (Text-to-SQL), Cortex Analyst and Semantic Views provide a secure, governed, zero-infrastructure solution.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Who is Alchemyst AI best for?
             </h2>
             <p style={{ marginBottom: "24px" }}>
               Alchemyst AI is best for <strong>engineering teams building complex, multi-agent workflows that span the entire enterprise stack</strong>. If you need a context layer that integrates with Snowflake but also bridges the gap to your CRMs, support systems, and communication channels, Alchemyst provides the deterministic consensus required to prevent hallucinations.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               The Verdict
             </h2>
             <p style={{ marginBottom: "24px" }}>

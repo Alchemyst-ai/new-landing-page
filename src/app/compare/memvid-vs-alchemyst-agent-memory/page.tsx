@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 const SANS = "'Sora', sans-serif";
 
-const PAGE_PATH = "/blog/memvid-vs-alchemyst-agent-memory";
+const PAGE_PATH = "/compare/memvid-vs-alchemyst-agent-memory";
 const PAGE_TITLE = "Memvid vs Alchemyst: Embedded Memory vs Context Layer";
 
 export const metadata: Metadata = {
@@ -19,18 +19,18 @@ export default function MemvidVsAlchemystPage() {
   return (
     <>
       <ArticleSchema
-        headline="memvid-vs-alchemyst-agent-memory"
+        headline={PAGE_TITLE}
         description="Compare Memvid's embedded memory approach with Alchemyst AI's context layer. Both eliminate infrastructure, but serve different use cases."
         url="/compare/memvid-vs-alchemyst-agent-memory"
       />
       <Navbar />
-      <main style={{ background: "#151515", color: "#FAFAFA", minHeight: "100vh", padding: "120px 0 80px" }}>
+      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
         <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
           <Breadcrumbs
             currentPath={PAGE_PATH}
             items={[
-              { name: "Blog", path: "/blog" },
+              { name: "Compare", path: "/compare" },
               { name: PAGE_TITLE },
             ]}
           />
@@ -41,7 +41,7 @@ export default function MemvidVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#FFFFFF",
+              color: "#0F172A",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function MemvidVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#CBD5E1",
+                color: "#475569",
               }}
             >
               Memvid packages embeddings, search structures, and metadata into a single portable file—no infrastructure required. Alchemyst AI provides a deterministic context layer as a service. Both eliminate operational overhead, but with different architectural philosophies.
@@ -71,9 +71,9 @@ export default function MemvidVsAlchemystPage() {
             </p>
           </div>
 
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, color: "#CBD5E1", lineHeight: 1.7 }}>
+          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Memvid's single-file approach?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -88,7 +88,7 @@ export default function MemvidVsAlchemystPage() {
               This is excellent for edge deployments, offline applications, and single-user agents where portability trumps coordination.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               What is Alchemyst AI's context layer?
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -100,34 +100,34 @@ export default function MemvidVsAlchemystPage() {
               <li style={{ marginBottom: "8px" }}><strong>Multi-agent:</strong> Shared institutional context across your organization.</li>
             </ul>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               When to choose which?
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Use Case</th>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Use Case</th>
                   <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#FFFFFF" }}>Memvid</th>
+                  <th style={{ padding: "12px", color: "#0F172A" }}>Memvid</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#CBD5E1" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody style={{ color: "#475569" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Edge/offline deployment</td>
                   <td style={{ padding: "12px" }}>⚠️ Requires connectivity</td>
                   <td style={{ padding: "12px" }}>✅ Perfect fit</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Multi-agent coordination</td>
                   <td style={{ padding: "12px" }}>✅ Designed for this</td>
                   <td style={{ padding: "12px" }}>⚠️ File synchronization needed</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit requirements</td>
                   <td style={{ padding: "12px" }}>✅ Full traceability</td>
                   <td style={{ padding: "12px" }}>⚠️ File inspection only</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
                   <td style={{ padding: "12px" }}>Sub-100ms latency</td>
                   <td style={{ padding: "12px" }}>✅ P95 &lt;300ms</td>
                   <td style={{ padding: "12px" }}>✅ Local file access</td>
@@ -135,7 +135,7 @@ export default function MemvidVsAlchemystPage() {
               </tbody>
             </table>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Architectural differences
             </h2>
             <p style={{ marginBottom: "24px" }}>
@@ -145,7 +145,7 @@ export default function MemvidVsAlchemystPage() {
               <strong>Alchemyst AI</strong> optimizes for institutional context—that is, shared business knowledge that must stay consistent across multiple agents and teams. It handles semantic drift, provides ontology enforcement, and ensures your agents act on verified facts.
             </p>
 
-            <h2 style={{ color: "#FFFFFF", fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
               Conclusion
             </h2>
             <p style={{ marginBottom: "24px" }}>

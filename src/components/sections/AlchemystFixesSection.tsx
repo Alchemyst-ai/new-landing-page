@@ -1,5 +1,9 @@
-// AlchemystFixesSection - "What Alchemyst Does" (Server Component)
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import CountUpMetric from "./CountUpMetric";
+import BenchmarkChart from "./BenchmarkChart";
 
 const STEPS = [
   {
@@ -49,256 +53,189 @@ const whatItMeans  = ctx.search({ query: term })
 ];
 
 const METRICS = [
-  { value: "< 300ms", label: "context retrieval latency", sub: "p95 across all query types" },
-  { value: "99.7%", label: "reduction in hallucinations", sub: "on domain-specific tasks" },
-  { value: "20×", label: "faster agent debugging", sub: "with context traces vs raw logs" },
-  { value: "1 API", label: "replaces 4 infra pieces", sub: "vector DB, graph DB, cache, logger" },
+  { prefix: "< ", value: 300, suffix: "ms", decimals: 0, label: "context retrieval latency", sub: "p95 across all query types" },
+  { prefix: "", value: 99.7, suffix: "%", decimals: 1, label: "reduction in hallucinations", sub: "on domain-specific tasks" },
+  { prefix: "", value: 20, suffix: "×", decimals: 0, label: "faster agent debugging", sub: "with context traces vs raw logs" },
+  { prefix: "", value: 1, suffix: " API", decimals: 0, label: "replaces 4 infra pieces", sub: "vector DB, graph DB, cache, logger" },
 ];
+
+const ease = [0.23, 1, 0.32, 1] as const;
+
+function highlightCode(code: string): string {
+  return code
+    .replace(/\/\/(.*)/g, '<span class="text-slate-400">//$1</span>')
+    .replace(/(const|await|new)/g, '<span class="text-[#128F8B]">$1</span>')
+    .replace(/(alchemyst|ctx)/g, '<span class="text-[#F49025]">$1</span>');
+}
 
 export default function AlchemystFixesSection() {
   return (
     <section
       id="how-it-works"
-      style={{ background: "#F7F4EE", paddingTop: "96px", paddingBottom: "96px" }}
+      className="relative w-full bg-white py-28 overflow-hidden"
       aria-labelledby="fixes-heading"
     >
-      <div className="container">
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          <p className="eyebrow" style={{ marginBottom: "16px" }}>What does Alchemyst do?</p>
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+
+        {/* ── Section header ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="max-w-5xl mb-16 text-center mx-auto"
+        >
+          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#128F8B] font-semibold mb-5 block">
+            What does Alchemyst do?
+          </span>
           <h2
             id="fixes-heading"
-            style={{
-              fontFamily: "'Sora', sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(1.875rem, 3.5vw, 3rem)",
-              lineHeight: 1.08,
-              letterSpacing: "-0.03em",
-              color: "#0F172A",
-              maxWidth: "700px",
-              margin: "0 auto",
-            }}
+            className="text-[#0F172A] text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.1] mb-5"
           >
             A context layer that keeps your AI{" "}
-            <span style={{ color: "#F49025", fontStyle: "italic" }}>current, traceable,</span> and
+            <span className="italic text-[#128F8B]">current, traceable,</span> and
             semantically consistent.
           </h2>
-          <p
-            style={{
-              fontFamily: "'Sora', sans-serif",
-              fontWeight: 400,
-              fontSize: "1.0625rem",
-              lineHeight: 1.65,
-              color: "#64748B",
-              maxWidth: "540px",
-              margin: "20px auto 0",
-            }}
-          >
+          <p className="text-[#475569] text-base lg:text-lg leading-relaxed max-w-2xl text-center mx-auto">
             One API call. Context arithmetic over your institutional knowledge graph. Every
             decision traceable back to its source - without managing a single vector database or
             graph store.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Steps */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px", marginBottom: "80px" }}>
-          {STEPS.map((step) => (
-            <div
-              key={step.num}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "40px",
-                alignItems: "start",
-                background: "#FFFFFF",
-                border: "1px solid #E5E7EB",
-                borderRadius: "8px",
-                padding: "36px",
-              }}
-            >
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
-                  <span
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontWeight: 600,
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.12em",
-                      color: "#F49025",
-                      background: "rgba(244,144,37,0.08)",
-                      border: "1px solid rgba(244,144,37,0.22)",
-                      borderRadius: "4px",
-                      padding: "2px 8px",
-                    }}
-                  >
+        {/* ── Bento grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#E5E7EB] border border-[#E5E7EB] mb-28">
+          {STEPS.map((step, i) => {
+            // Row 1: card 0 spans 2, card 1 spans 1
+            // Row 2: card 2 spans 1, card 3 spans 2
+            const span = i === 0 || i === 3 ? "lg:col-span-2" : "lg:col-span-1";
+
+            return (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease }}
+                className={`${span} flex flex-col bg-white hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300`}
+              >
+                <div className="p-8 lg:p-10 flex-grow">
+                  <span className="font-mono text-sm tracking-[0.12em] text-[#128F8B] font-bold block mb-4">
                     {step.num}
                   </span>
-                  <h3
-                    style={{
-                      fontFamily: "'Sora', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "1.0625rem",
-                      letterSpacing: "-0.01em",
-                      color: "#0F172A",
-                    }}
-                  >
+                  <h3 className="text-[#0F172A] text-xl font-bold leading-tight mb-3">
                     {step.title}
                   </h3>
+                  <p className="text-[#475569] text-[15px] leading-relaxed">
+                    {step.body}
+                  </p>
                 </div>
-                <p
-                  style={{
-                    fontFamily: "'Sora', sans-serif",
-                    fontWeight: 400,
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.65,
-                    color: "#64748B",
-                  }}
-                >
-                  {step.body}
-                </p>
-              </div>
-              <pre
-                style={{
-                  background: "#0F172A",
-                  borderRadius: "8px",
-                  padding: "20px",
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.8125rem",
-                  lineHeight: 1.7,
-                  color: "#94A3B8",
-                  overflowX: "auto",
-                  margin: 0,
-                }}
-              >
-                <code>{step.code}</code>
-              </pre>
-            </div>
-          ))}
+                <div className="bg-[#F8FAFC] border-t border-[#E5E7EB] p-8">
+                  <pre className="font-mono text-[13px] leading-relaxed text-slate-700 overflow-x-auto whitespace-pre-wrap">
+                    <code
+                      dangerouslySetInnerHTML={{
+                        __html: highlightCode(step.code),
+                      }}
+                    />
+                  </pre>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Metrics */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "1px",
-            background: "#E5E7EB",
-            borderRadius: "8px",
-            overflow: "hidden",
-            marginBottom: "64px",
-          }}
+        {/* ── Metrics strip ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="grid grid-cols-2 lg:grid-cols-4 mb-28"
         >
           {METRICS.map((m) => (
             <div
               key={m.label}
-              style={{
-                background: "#FFFFFF",
-                padding: "28px 24px",
-                textAlign: "center",
-              }}
+              className="border border-[#E5E7EB] bg-white"
             >
-              <div
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontWeight: 800,
-                  fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
-                  letterSpacing: "-0.04em",
-                  color: "#F49025",
-                  fontVariantNumeric: "tabular-nums",
-                }}
-              >
-                {m.value}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "0.875rem",
-                  color: "#0F172A",
-                  marginTop: "4px",
-                }}
-              >
-                {m.label}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "10px",
-                  letterSpacing: "0.08em",
-                  color: "#94A3B8",
-                  marginTop: "4px",
-                }}
-              >
-                {m.sub}
-              </div>
+              <CountUpMetric
+                value={m.value}
+                prefix={m.prefix}
+                suffix={m.suffix}
+                decimals={m.decimals}
+                label={m.label}
+                sub={m.sub}
+              />
             </div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Euphony callout */}
-        <div
-          style={{
-            background: "#0F172A",
-            borderRadius: "8px",
-            padding: "40px",
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "32px",
-            alignItems: "center",
-          }}
+        {/* ── Benchmark chart ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="mb-28"
         >
-          <div>
-            <p
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "10px",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                color: "#F49025",
-                marginBottom: "10px",
-              }}
-            >
-              Example Use Case
-            </p>
-            <h3
-              style={{
-                fontFamily: "'Sora', sans-serif",
-                fontWeight: 700,
-                fontSize: "1.25rem",
-                letterSpacing: "-0.02em",
-                color: "#FFFFFF",
-                marginBottom: "12px",
-              }}
-            >
-              How do you debug what an agent can&apos;t see? Context Tracing with OpenAI Euphony
-            </h3>
-            <p
-              style={{
-                fontFamily: "'Sora', sans-serif",
-                fontWeight: 400,
-                fontSize: "0.9375rem",
-                lineHeight: 1.65,
-                color: "#94A3B8",
-                maxWidth: "560px",
-              }}
-            >
-              Pairing Alchemyst&apos;s Context Traces with Euphony - OpenAI&apos;s open-source conversation
-              visualizer - creates an end-to-end debugging workflow. Every agent failure is now
-              diagnosable in minutes: was it a retrieval problem, a configuration problem, or a
-              model problem?
-            </p>
+          <BenchmarkChart />
+        </motion.div>
+
+        {/* ── Euphony callout ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="bg-white border border-[#E5E7EB] p-10 md:p-16"
+        >
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+            <div className="flex-1 max-w-2xl">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#F49025] font-semibold mb-4">
+                Example Use Case
+              </p>
+              <h3 className="text-[#0F172A] text-2xl md:text-3xl font-bold leading-tight mb-5">
+                How do you debug what an agent can&apos;t see? Context Tracing with OpenAI Euphony
+              </h3>
+              <p className="text-[#475569] text-base leading-relaxed">
+                Pairing Alchemyst&apos;s Context Traces with Euphony - OpenAI&apos;s open-source conversation
+                visualizer - creates an end-to-end debugging workflow. Every agent failure is now
+                diagnosable in minutes: was it a retrieval problem, a configuration problem, or a
+                model problem?
+              </p>
+            </div>
+
+            <div className="flex-shrink-0 w-full lg:w-auto">
+              <Button
+                asChild
+                className="w-full lg:w-auto bg-[#F49025] hover:bg-[#D97B1A] text-white px-7 py-3 rounded-none text-sm font-semibold tracking-wide transition-all shadow-[4px_4px_0px_#B45309] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#B45309]"
+              >
+                <a
+                  href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read the walkthrough
+                  <svg
+                    className="ml-2 inline-block"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </Button>
+            </div>
           </div>
-          <Button asChild variant="orange" size="brand" className="whitespace-nowrap">
-            <a
-              href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read the walkthrough
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </Button>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

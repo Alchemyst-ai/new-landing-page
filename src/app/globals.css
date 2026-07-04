@@ -3,60 +3,110 @@
 @tailwind utilities;
 
 /* ─── Alchemyst Labs Design System ───────────────────────────────────────────
- * Warm Editorial direction - colours taken from the Alchemyst logo
- * Paper bg: #F7F4EE  |  Ink: #0F172A
- * Brand orange (primary, logo chevron): #F49025
- * Brand teal   (secondary, logo "I" accent): #0E9594
- * Dark hero bg: #0A0F1E
- * Max border-radius: 8px
- * Fonts: Anta (hero headline) + Sora (display) + JetBrains Mono (code)
+ * Light-mode base + deliberate dark anchor sections (per revamp brief).
+ * Colours taken from the Alchemyst logo:
+ *   Paper bg: #F7F4EE  |  Ink: #0F172A
+ *   Brand orange (primary, logo chevron): #F49025  (+ light #FDB560)
+ *   Brand teal   (secondary, logo "I" accent): #128F8B  (brief's canonical value)
+ *   Dark hero/anchor bg: #0A0F1E   ·   Dark surface bg: #0F172A
+ *   Max card radius: 12px · panel radius: 8px · pill radius: 9999px
+ * Fonts: Anta (hero headline) + Sora (display/body) + JetBrains Mono (code/captions)
+ *
+ * Token model:
+ *   1. `:root`           → light base tokens (the default; paper canvas).
+ *   2. `[data-theme="dark"]` → inverted tokens used inside <DarkAnchor> shells
+ *      so deliberate dark sections continue to render on-brand.
  * ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
+  /* Raw brand swatches (used directly + as HSL token seeds) */
   --paper: #F7F4EE;
   --ink: #0F172A;
   --amber: #F49025;
   --amber-light: #FDB560;
-  /* Logo secondary accent - teal */
-  --teal: #0E9594;
+  /* Brief's canonical teal (replaces the former #0E9594 scale). A single
+     token, with two derived tints for diagrams/hover only. */
+  --teal: #128F8B;
   --teal-light: #2BB6B4;
-  --teal-dark: #0B7676;
+  --teal-dark: #0B6E6B;
   --dark-hero: #0A0F1E;
   --dark-section: #0F172A;
   --muted: #64748B;
   --subtle: #94A3B8;
   --border-light: #E5E7EB;
+  --hairline: rgba(15, 23, 42, 0.08);          /* light-mode hairline */
+  --hairline-strong: rgba(15, 23, 42, 0.14);
+  --ink-soft: #475569;                          /* secondary text on light */
 }
 
 /* ── shadcn/ui token mapping (Tailwind v3, HSL triplets) ────────────────────
- * Maps shadcn's semantic class names (bg-card, text-muted-foreground, border,
- * etc.) onto the Alchemyst dark palette via hsl(var(--token)) so shadcn
- * components render on-brand and stay reusable across the site. */
+ * Light base (default). Components render on the warm-paper canvas with ink
+ * type, hairline borders, and the brand orange/teal accents. */
 :root {
   --radius: 0.5rem;
-  --background: 222 47% 8%;          /* #0A0F1E */
-  --foreground: 0 0% 100%;           /* #FFFFFF */
-  --card: 222 47% 11%;               /* near #0F172A */
-  --card-foreground: 0 0% 100%;
-  --popover: 222 33% 12%;            /* dark surface */
-  --popover-foreground: 0 0% 100%;
-  --primary: 33 90% 55%;             /* #F49025 brand orange */
+  --background: 40 25% 96%;                     /* #F7F4EE warm paper */
+  --foreground: 222 47% 11%;                   /* #0F172A ink */
+  --card: 0 0% 100%;                            /* white card on paper */
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 33 90% 55%;                        /* #F49025 brand orange */
   --primary-foreground: 222 47% 8%;
-  --secondary: 179 83% 32%;          /* #0E9594 brand teal */
+  --secondary: 178 78% 31%;                    /* #128F8B brand teal */
   --secondary-foreground: 0 0% 100%;
-  --muted: 222 30% 16%;              /* subtle dark fill */
-  --muted-foreground: 215 20% 65%;  /* #94A3B8 */
+  --muted: 210 16% 95%;                         /* very light slate fill */
+  --muted-foreground: 215 16% 47%;             /* #64748B-ish */
+  --accent: 40 30% 92%;                         /* warm paper accent fill */
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;                     /* #EF4444 */
+  --destructive-foreground: 0 0% 100%;
+  --border: 222 20% 86%;                        /* light border (#E5E7EB-class) */
+  --input: 222 20% 86%;
+  --ring: 33 90% 55%;
+}
+
+/* ── Scoped dark-anchor tokens ───────────────────────────────────────────────
+ * Applied by the <DarkAnchor> wrapper via data-theme="dark". Lets us drop a
+ * deliberate dark section into the light page without re-theming the entire
+ * site, and keeps the dark pages (/thesis, /blog/[slug], /compare/*, how-to)
+ * visually consistent using the same inverted tokens. */
+[data-theme="dark"] {
+  --paper: #0A0F1E;
+  --ink: #FFFFFF;
+  --muted: #94A3B8;
+  --subtle: #475569;
+  --hairline: rgba(255, 255, 255, 0.06);
+  --hairline-strong: rgba(255, 255, 255, 0.12);
+  --ink-soft: #94A3B8;
+
+  /* shadcn token flip for primitives rendered inside dark anchors */
+  --background: 222 47% 8%;                     /* #0A0F1E */
+  --foreground: 0 0% 100%;
+  --card: 222 47% 11%;                          /* near #0F172A */
+  --card-foreground: 0 0% 100%;
+  --popover: 222 33% 12%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 33 90% 55%;
+  --primary-foreground: 222 47% 8%;
+  --secondary: 178 78% 31%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 222 30% 16%;
+  --muted-foreground: 215 20% 65%;              /* #94A3B8 */
   --accent: 222 30% 18%;
   --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;          /* #EF4444 */
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 100%;               /* applied at low opacity via border utilities */
+  --border: 0 0% 100%;                          /* low-opacity via utilities */
   --input: 0 0% 100%;
   --ring: 33 90% 55%;
 }
 
 @layer base {
   * {
+    /* Default to the light hairline; the dark-anchor scope overrides below. */
+    border-color: hsl(var(--border) / 0.10);
+  }
+  [data-theme="dark"] * {
     border-color: hsl(var(--border) / 0.10);
   }
 }
@@ -71,12 +121,107 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: var(--dark-hero);
-  color: #ffffff;
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Sora', system-ui, sans-serif;
 }
 
-/* ── Eyebrow label ── */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* When a page is explicitly marked as a dark-anchor page (thesis / blog post /
+ * compare detail), set the body canvas to the dark hero too. This is opt-in
+ * per-page via <body data-page-theme="dark">. */
+body[data-page-theme="dark"] {
+  background: var(--dark-hero);
+  color: #ffffff;
+}
+
+/* ── Mono caption system (site-wide "spec sheet" language) ───────────────────
+ * Five reusable utilities that replace ad-hoc inline mono across the site.
+ * Auto-adapts to the dark-anchor scope via CSS variable indirection. */
+.caption-eyebrow,
+.caption-meta,
+.caption-status,
+.caption-chapter,
+.caption-rail-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 1;
+  margin: 0;
+}
+.caption-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--amber);
+  background: rgba(244, 144, 37, 0.08);
+  border: 1px solid rgba(244, 144, 37, 0.22);
+  border-radius: 0;
+  padding: 4px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.caption-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+.caption-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #16A34A;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.caption-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 0;
+  background: currentColor;
+  display: inline-block;
+  box-shadow: 0 0 0 0 currentColor;
+  animation: caption-status-pulse 2s ease-in-out infinite;
+}
+@keyframes caption-status-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; }
+  50%       { box-shadow: 0 0 0 4px rgba(22, 163, 74, 0); }
+}
+.caption-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: hsl(var(--muted-foreground));
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+.caption-chapter::before {
+  content: "〉";
+  color: var(--amber);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.caption-rail-num {
+  color: var(--amber);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+/* ── Eyebrow label (legacy alias retained for sections using .eyebrow) ── */
 .eyebrow {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
@@ -88,7 +233,7 @@ body {
   gap: 8px;
   background: rgba(244, 144, 37, 0.08);
   border: 1px solid rgba(244, 144, 37, 0.22);
-  border-radius: 100px;
+  border-radius: 0;
   padding: 4px 12px;
 }
 
@@ -97,17 +242,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-weight: 700;
   font-size: 0.9375rem;
   color: #0A0F1E;
   background: #F49025;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.75rem 1.625rem;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: all 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: background 160ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .btn-primary:hover {
   background: #E8851A;
@@ -118,30 +265,43 @@ body {
   transform: scale(0.97);
 }
 
-/* ── Ghost button ── */
+/* ── Ghost button ──
+ * Tuned for the light base (ink text, hairline border, teal hover accent). */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-weight: 500;
   font-size: 0.9375rem;
-  color: #64748B;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  color: var(--ink-soft);
+  background: rgba(15, 23, 42, 0.02);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 0;
   padding: 0.75rem 1.625rem;
   text-decoration: none;
   cursor: pointer;
-  transition: all 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 .btn-ghost:hover {
-  color: #ffffff;
-  border-color: rgba(14, 149, 148, 0.55);
-  box-shadow: 0 6px 20px rgba(14, 149, 148, 0.18);
+  color: var(--ink);
+  border-color: rgba(18, 143, 139, 0.55);
+  box-shadow: 0 6px 20px rgba(18, 143, 139, 0.16);
 }
 
-/* ── Secondary (teal) accent helpers - from the logo's teal ── */
+/* Dark-anchor override: ghost button reads inverted on dark surfaces. */
+[data-theme="dark"] .btn-ghost {
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .btn-ghost:hover {
+  color: #ffffff;
+  border-color: rgba(43, 182, 180, 0.55);
+  box-shadow: 0 6px 20px rgba(43, 182, 180, 0.18);
+}
+
+/* ── Secondary (teal) accent helpers - from the logo's teal (#128F8B) ── */
 .eyebrow-teal {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
@@ -151,24 +311,34 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(14, 149, 148, 0.08);
-  border: 1px solid rgba(14, 149, 148, 0.22);
-  border-radius: 100px;
+  background: rgba(18, 143, 139, 0.08);
+  border: 1px solid rgba(18, 143, 139, 0.22);
+  border-radius: 0;
   padding: 4px 12px;
 }
 .text-teal { color: var(--teal); }
+.text-amber { color: var(--amber); }
 
-/* ── Navbar links ── */
+/* ── Navbar links ──
+ * Default to ink-on-paper; the dark-anchor scope below inverts. */
 .nav-link {
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-weight: 500;
   font-size: 0.9rem;
-  color: #94A3B8;
+  color: var(--muted);
   text-decoration: none;
   transition: color 160ms ease;
 }
 .nav-link:hover {
-  color: #FFFFFF;
+  color: var(--ink);
+}
+[data-theme="dark"] .nav-link,
+body[data-page-theme="dark"] .nav-link {
+  color: #94A3B8;
+}
+[data-theme="dark"] .nav-link:hover,
+body[data-page-theme="dark"] .nav-link:hover {
+  color: var(--ink);
 }
 
 /* Hide the brand "Context Layer" tag on small screens (nav itself uses shadcn). */
@@ -179,19 +349,93 @@ body {
 }
 
 .nav-docs-btn {
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #64748B;
+  color: var(--ink-soft);
   text-decoration: none;
   padding: 6px 14px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  transition: all 160ms ease;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 0;
+  transition: color 160ms ease, border-color 160ms ease;
 }
 .nav-docs-btn:hover {
-  color: #FFFFFF;
-  border-color: rgba(255,255,255,0.25);
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+[data-theme="dark"] .nav-docs-btn,
+body[data-page-theme="dark"] .nav-docs-btn {
+  color: #64748B;
+  border-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .nav-docs-btn:hover,
+body[data-page-theme="dark"] .nav-docs-btn:hover {
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Surface helpers shared by light + dark anchor sections ── */
+.surface-card {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid var(--hairline);
+  border-radius: 0;
+}
+.surface-divider {
+  border-top: 1px solid var(--hairline);
+}
+.hairline-grid-bg {
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Logo marquee items brighten on hover (CSS-only, no client JS). */
+.logo-marquee-item:hover {
+  opacity: 1 !important;
+}
+
+/* Pricing cards lift on hover (CSS-only). */
+.pricing-card {
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms ease;
+}
+.pricing-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Compare cards: hairline brightens to orange + lift on hover. */
+.compare-card {
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 220ms ease,
+              box-shadow 220ms ease;
+}
+.compare-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 144, 37, 0.4);
+  box-shadow: 0 8px 24px -12px rgba(244, 144, 37, 0.2);
+}
+
+/* Footer links: orange + underline-grow on hover (dark anchor surface). */
+.footer-link {
+  position: relative;
+  transition: color 160ms ease;
+}
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: #F49025;
+  transition: width 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.footer-link:hover {
+  color: #F49025;
+}
+.footer-link:hover::after {
+  width: 100%;
 }
 
 /* ── Container ── */
@@ -283,8 +527,8 @@ body {
 .blog-post-grid > article { max-width: 100%; }
 
 .blog-toc-item:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  color: #0F172A !important;
+  background: rgba(15, 23, 42, 0.04) !important;
 }
 
 .blog-share-btn {
@@ -293,7 +537,7 @@ body {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 0;
   color: #ffffff;
   transition: opacity 0.2s, background 0.2s;
 }
@@ -317,12 +561,12 @@ body {
   transform: translateY(-2px);
 }
 
-/* ── Dark prose for the article body (matches the live blog) ── */
+/* ── Article body prose ── */
 .prose-blog-dark {
-  font-family: 'Sora', sans-serif;
-  color: #D6DBE1;
-  font-size: 1.125rem;
-  line-height: 2;
+  font-family: 'Sora', system-ui, sans-serif;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.8;
 }
 .prose-blog-dark > :first-child { margin-top: 0; }
 
@@ -339,28 +583,28 @@ body {
 }
 
 .prose-blog-dark h2 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 1.875rem);
   font-weight: 700;
   line-height: 1.3;
-  color: #FFFFFF;
+  color: var(--ink);
   margin-top: 56px;
   margin-bottom: 24px;
 }
 .prose-blog-dark h3 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.35;
-  color: #FFFFFF;
+  color: var(--ink);
   margin-top: 40px;
   margin-bottom: 16px;
 }
 .prose-blog-dark h4 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--ink);
   margin-top: 32px;
   margin-bottom: 12px;
 }
@@ -372,8 +616,8 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.prose-blog-dark a:hover { color: #FDB560; }
-.prose-blog-dark strong { color: #FFFFFF; font-weight: 700; }
+.prose-blog-dark a:hover { color: #D97B1A; }
+.prose-blog-dark strong { color: var(--ink); font-weight: 700; }
 .prose-blog-dark ul,
 .prose-blog-dark ol {
   margin: 0 0 24px;
@@ -387,39 +631,39 @@ body {
   border-left: 3px solid #F49025;
   padding-left: 20px;
   margin: 0 0 24px;
-  color: #A1A1A1;
+  color: var(--ink-soft);
   font-style: italic;
 }
 .prose-blog-dark img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: 0;
   margin: 24px 0;
 }
 .prose-blog-dark code {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.9em;
-  background: rgba(255, 255, 255, 0.08);
-  color: #FDB560;
+  background: rgba(15, 23, 42, 0.06);
+  color: #B45309;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 .prose-blog-dark pre {
-  background: #0F0F0F;
-  border: 1px solid #272727;
-  border-radius: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E5E7EB;
+  border-radius: 0;
   padding: 20px;
   overflow-x: auto;
   margin: 0 0 24px;
 }
 .prose-blog-dark pre code {
   background: transparent;
-  color: #E2E8F0;
+  color: #334155;
   padding: 0;
 }
 .prose-blog-dark hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--hairline);
   margin: 40px 0;
 }
 .prose-blog-dark table {
@@ -430,12 +674,12 @@ body {
 }
 .prose-blog-dark th,
 .prose-blog-dark td {
-  border: 1px solid #272727;
+  border: 1px solid #E5E7EB;
   padding: 10px 14px;
   text-align: left;
 }
 .prose-blog-dark th {
-  background: rgba(255, 255, 255, 0.04);
-  color: #FFFFFF;
+  background: rgba(15, 23, 42, 0.03);
+  color: var(--ink);
   font-weight: 600;
 }
