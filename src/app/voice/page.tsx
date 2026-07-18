@@ -23,15 +23,15 @@ export const metadata: Metadata = {
 
 export default function VoicePage() {
   return (
-    <div className="min-h-screen" style={{ background: '#0d0d0f' }}>
+    <div className="min-h-screen" style={{ background: '#151515' }}>
       {/* Left border line - hidden on mobile */}
       <div 
-        className="hidden md:block fixed left-12 md:left-24 lg:left-32 xl:left-48 2xl:left-64 top-0 bottom-0 w-px z-50"
+        className="hidden md:block fixed left-12 md:left-24 lg:left-32 xl:left-48 2xl:left-64 top-0 bottom-0 w-px z-20"
         style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(128, 128, 128, 0.3) 10%, rgba(128, 128, 128, 0.3) 90%, transparent 100%)' }}
       />
       {/* Right border line - hidden on mobile */}
       <div 
-        className="hidden md:block fixed right-12 md:right-24 lg:right-32 xl:right-48 2xl:right-64 top-0 bottom-0 w-px z-50"
+        className="hidden md:block fixed right-12 md:right-24 lg:right-32 xl:right-48 2xl:right-64 top-0 bottom-0 w-px z-20"
         style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(128, 128, 128, 0.3) 10%, rgba(128, 128, 128, 0.3) 90%, transparent 100%)' }}
       />
       

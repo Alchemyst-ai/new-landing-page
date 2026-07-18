@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 import gsap from "gsap";
 import VoiceGridDivider from "./VoiceGridDivider";
+import { Section } from "../section";
 
 const tabs = [
   { id: "loan", label: "Automobile" },
@@ -32,14 +33,14 @@ const languageLabels: Record<string, string> = {
 const ConcentricPlayer = ({ 
   activeTab,
   activeLanguage, 
-  onLanguageChange,
+  onLanguageSelect,
   isPlaying,
   progress, // 0 to 1 representing audio progress
   onPlayPause
 }: { 
   activeTab: string;
   activeLanguage: string;
-  onLanguageChange: (id: string) => void;
+  onLanguageSelect: (id: string) => void;
   isPlaying: boolean;
   progress: number;
   onPlayPause: () => void;
@@ -115,7 +116,7 @@ const ConcentricPlayer = ({
   }, [progress, activeAngle, activeRadius, center]);
 
   // Generate gradient ring segments - now follows progress pointer when playing
-  const gradientRingSegments = useMemo(() => {
+ const gradientRingSegments = useMemo(() => {
     const segments = [];
     const numSegments = 36;
     const radius = ringRadii[activeRingIndex];
@@ -129,8 +130,10 @@ const ConcentricPlayer = ({
       let angleDiff = Math.abs(startAngle - targetAngle);
       if (angleDiff > 180) angleDiff = 360 - angleDiff;
       
+      // Adjusted brightness falloff
       const brightness = Math.max(0, 1 - (angleDiff / 180));
-      const opacity = 0.15 + brightness * 0.7;
+      // Much lower base opacity for subtle look
+      const opacity = 0.05 + brightness * 0.5; 
       const whiteAmount = brightness;
       
       const startRad = (startAngle * Math.PI) / 180;
@@ -150,6 +153,7 @@ const ConcentricPlayer = ({
     }
     return segments;
   }, [activeRingIndex, activeAngle, progressAngle, isPlaying, ringRadii, center]);
+
 
   // Generate smooth hexagonal flower shape - 6 soft lobes
   const generateWaveformPath = useCallback((baseRadius: number, audioData: number[]) => {
@@ -259,36 +263,41 @@ const ConcentricPlayer = ({
   }, [activeLanguage, activeBlip, blipPositions]);
 
   // Calculate gradient direction based on pointer position
-  const gradientAngle = useMemo(() => {
+const gradientAngle = useMemo(() => {
     const currentAngle = isPlaying ? progressAngle : activeAngle;
     return currentAngle + 90; // Offset for CSS gradient direction
   }, [isPlaying, progressAngle, activeAngle]);
 
+  // Accent color constant for easy adjustments (RGB for #f59025)
+  const accentRGB = "245, 144, 37";
+
   return (
     <div className="relative w-full max-w-3xl mx-auto" style={{ aspectRatio: '1/1' }}>
-      {/* Central radial glow - contained within circular area */}
+      {/* Central radial glow - contained within circular area - Significantly reduced opacity and range */}
       <div 
         className="absolute inset-0 pointer-events-none transition-all duration-100"
         style={{
           background: `conic-gradient(from ${gradientAngle}deg at 50% 50%, 
-            rgba(251, 146, 60, 0.25) 0deg,
-            rgba(249, 115, 22, 0.18) 30deg,
-            rgba(234, 88, 12, 0.08) 60deg,
+            rgba(${accentRGB}, 0.15) 0deg,
+            rgba(${accentRGB}, 0.08) 30deg,
+            rgba(${accentRGB}, 0.02) 60deg,
             transparent 120deg,
             transparent 240deg,
-            rgba(234, 88, 12, 0.08) 300deg,
-            rgba(249, 115, 22, 0.18) 330deg,
-            rgba(251, 146, 60, 0.25) 360deg
+            rgba(${accentRGB}, 0.02) 300deg,
+            rgba(${accentRGB}, 0.08) 330deg,
+            rgba(${accentRGB}, 0.15) 360deg
           )`,
           clipPath: 'circle(42% at 50% 50%)',
+          mixBlendMode: 'screen' 
         }}
       />
-      {/* Layered radial glow for depth - also clipped */}
+      {/* Layered radial glow for depth - also clipped - reduced opacity */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.15) 0%, rgba(249, 115, 22, 0.08) 15%, transparent 40%)',
+          background: `radial-gradient(circle at 50% 50%, rgba(${accentRGB}, 0.1) 0%, rgba(${accentRGB}, 0.05) 15%, transparent 35%)`,
           clipPath: 'circle(42% at 50% 50%)',
+          mixBlendMode: 'screen'
         }}
       />
 
@@ -302,6 +311,15 @@ const ConcentricPlayer = ({
             </feMerge>
           </filter>
           <filter id="brightGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur1" />
+            <feGaussianBlur stdDeviation="6" result="blur2" />
+            <feMerge>
+              <feMergeNode in="blur2" />
+              <feMergeNode in="blur1" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="pointerGlow" x="-200%" y="-200%" width="500%" height="500%">
             <feGaussianBlur stdDeviation="4" result="blur1" />
             <feGaussianBlur stdDeviation="8" result="blur2" />
             <feMerge>
@@ -310,17 +328,8 @@ const ConcentricPlayer = ({
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="pointerGlow" x="-200%" y="-200%" width="500%" height="500%">
-            <feGaussianBlur stdDeviation="5" result="blur1" />
-            <feGaussianBlur stdDeviation="10" result="blur2" />
-            <feMerge>
-              <feMergeNode in="blur2" />
-              <feMergeNode in="blur1" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
           <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feGaussianBlur stdDeviation="4" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="blur" />
@@ -330,17 +339,17 @@ const ConcentricPlayer = ({
           
           {/* Progress arc gradient */}
           <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(251, 146, 60, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.8)" />
+            <stop offset="0%" stopColor={`rgba(${accentRGB}, 0.5)`} />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.9)" />
           </linearGradient>
           
           <linearGradient id="connectionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(251, 146, 60, 0.95)" />
-            <stop offset="100%" stopColor="rgba(249, 115, 22, 0.5)" />
+            <stop offset="0%" stopColor={`rgba(${accentRGB}, 0.9)`} />
+            <stop offset="100%" stopColor={`rgba(${accentRGB}, 0.5)`} />
           </linearGradient>
         </defs>
 
-        {/* Non-active rings */}
+        {/* Non-active rings - much more transparent */}
         {ringRadii.map((radius, i) => (
           i !== activeRingIndex && (
             <circle
@@ -349,19 +358,18 @@ const ConcentricPlayer = ({
               cy={center}
               r={radius}
               fill="none"
-              stroke="rgba(249, 115, 22, 0.25)"
+              stroke={`rgba(${accentRGB}, 0.2)`}
               strokeWidth={1}
-              filter="url(#ringGlow)"
             />
           )
         ))}
-
         {/* Active ring with gradient segments */}
-        <g>
+       <g>
           {gradientRingSegments.map((segment, i) => {
-            const r = Math.round(249 + (255 - 249) * segment.whiteAmount);
-            const g = Math.round(115 + (255 - 115) * segment.whiteAmount);
-            const b = Math.round(22 + (255 - 22) * segment.whiteAmount);
+            // Interpolate toward #f59025 (245, 144, 37)
+            const r = Math.round(245 + (255 - 245) * segment.whiteAmount);
+            const g = Math.round(144 + (255 - 144) * segment.whiteAmount);
+            const b = Math.round(37 + (255 - 37) * segment.whiteAmount);
             const strokeColor = `rgba(${r}, ${g}, ${b}, ${segment.opacity})`;
             
             return (
@@ -370,9 +378,9 @@ const ConcentricPlayer = ({
                 d={segment.d}
                 fill="none"
                 stroke={strokeColor}
-                strokeWidth={segment.brightness > 0.7 ? 2.5 : segment.brightness > 0.3 ? 1.8 : 1.2}
+                strokeWidth={segment.brightness > 0.7 ? 2 : segment.brightness > 0.3 ? 1.5 : 1}
                 strokeLinecap="round"
-                filter={segment.brightness > 0.5 ? "url(#brightGlow)" : "url(#ringGlow)"}
+                filter={segment.brightness > 0.6 ? "url(#brightGlow)" : undefined} // Limit glow filter application
               />
             );
           })}
@@ -384,7 +392,7 @@ const ConcentricPlayer = ({
             d={generateProgressArc()}
             fill="none"
             stroke="url(#progressGradient)"
-            strokeWidth={3}
+            strokeWidth={2.5}
             strokeLinecap="round"
             filter="url(#brightGlow)"
           />
@@ -397,23 +405,23 @@ const ConcentricPlayer = ({
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
-              r={18}
-              fill="rgba(255, 255, 255, 0.15)"
+              r={16}
+              fill={`rgba(${accentRGB}, 0.1)`}
               filter="url(#pointerGlow)"
             />
             {/* Middle glow */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
-              r={10}
-              fill="rgba(255, 255, 255, 0.3)"
+              r={8}
+              fill={`rgba(${accentRGB}, 0.25)`}
               filter="url(#pointerGlow)"
             />
             {/* Main pointer */}
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
-              r={6}
+              r={5}
               fill="white"
               filter="url(#brightGlow)"
             />
@@ -421,23 +429,23 @@ const ConcentricPlayer = ({
             <circle
               cx={progressPosition.x}
               cy={progressPosition.y}
-              r={3}
+              r={2.5}
               fill="white"
             />
           </g>
         )}
 
         {/* Connection line - follows progress pointer when playing, brighter when moving */}
-        <line
+       <line
           ref={connectionRef}
           x1={center}
           y1={center}
           x2={isPlaying ? progressPosition.x : (activeBlip?.x || center)}
           y2={isPlaying ? progressPosition.y : (activeBlip?.y || center)}
-          stroke={isPlaying ? "rgba(255, 255, 255, 0.6)" : "url(#connectionGrad)"}
-          strokeWidth={isPlaying ? 1.2 : 1}
-          filter={isPlaying ? "url(#pointerGlow)" : "url(#strongGlow)"}
-          opacity={1}
+          stroke={isPlaying ? "rgba(255, 255, 255, 0.4)" : "url(#connectionGrad)"}
+          strokeWidth={isPlaying ? 1 : 1}
+          filter={isPlaying ? "url(#pointerGlow)" : undefined}
+          opacity={0.8}
         />
         
         {/* Extra glow line when playing */}
@@ -447,10 +455,10 @@ const ConcentricPlayer = ({
             y1={center}
             x2={progressPosition.x}
             y2={progressPosition.y}
-            stroke="rgba(251, 146, 60, 0.4)"
+            stroke={`rgba(${accentRGB}, 0.25)`}
             strokeWidth={2}
             filter="url(#pointerGlow)"
-            opacity={0.5}
+            opacity={0.4}
           />
         )}
 
@@ -458,9 +466,9 @@ const ConcentricPlayer = ({
         <path
           ref={(el) => { waveformRefs.current[0] = el; }}
           d=""
-          fill="rgba(120, 53, 15, 0.2)"
-          stroke="rgba(251, 146, 60, 0.8)"
-          strokeWidth={2.5}
+          fill={`rgba(${accentRGB}, 0.05)`}
+          stroke={`rgba(${accentRGB}, 0.6)`}
+          strokeWidth={2}
           filter="url(#brightGlow)"
         />
         
@@ -469,9 +477,9 @@ const ConcentricPlayer = ({
           cx={center}
           cy={center}
           r={38}
-          fill="rgba(30, 20, 15, 0.75)"
-          stroke="rgba(249, 115, 22, 0.5)"
-          strokeWidth={1.5}
+          fill="rgba(21, 21, 21, 0.8)"
+          stroke={`rgba(${accentRGB}, 0.3)`}
+          strokeWidth={1}
         />
 
         {/* Language blips */}
@@ -489,7 +497,7 @@ const ConcentricPlayer = ({
               className="cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
-                onLanguageChange(blip.id);
+                onLanguageSelect(blip.id);
               }}
             >
               <circle
@@ -497,7 +505,7 @@ const ConcentricPlayer = ({
                 cx={blip.x}
                 cy={blip.y}
                 r={0}
-                fill="rgba(255, 255, 255, 0.35)"
+                fill={`rgba(${accentRGB}, 0.2)`}
                 opacity={0}
                 filter="url(#brightGlow)"
               />
@@ -506,9 +514,9 @@ const ConcentricPlayer = ({
                 ref={(el) => { if (el) blipRefs.current.set(blip.id, el); }}
                 cx={blip.x}
                 cy={blip.y}
-                r={isActive ? 7 : 5}
-                fill={isActive ? "#FED7AA" : "rgba(249, 115, 22, 0.7)"}
-                filter={isActive ? "url(#brightGlow)" : "url(#ringGlow)"}
+                r={isActive ? 6 : 4}
+                fill={isActive ? "#FED7AA" : `rgba(${accentRGB}, 0.4)`}
+                filter={isActive ? "url(#brightGlow)" : undefined}
               />
 
               {isActive && !isPlaying && (
@@ -517,24 +525,24 @@ const ConcentricPlayer = ({
                   cy={blip.y}
                   r={3.5}
                   fill="white"
-                  animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.1, 1] }}
+                  animate={{ opacity: [0.6, 0.9, 0.6], scale: [1, 1.1, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 />
               )}
 
-              <text
+                <text
                 x={labelX}
                 y={labelY}
                 textAnchor={textAnchor}
                 dominantBaseline="middle"
-                fill={isActive ? "#F5F3FF" : "rgba(200, 200, 210, 0.7)"}
+                fill={isActive ? "#F5F3FF" : "rgba(150, 150, 160, 0.6)"}
                 fontSize="18"
                 fontFamily="system-ui, -apple-system, sans-serif"
                 fontWeight={isActive ? "500" : "400"}
                 className="cursor-pointer select-none"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onLanguageChange(blip.id);
+                  onLanguageSelect(blip.id);
                 }}
               >
                 {blip.label}
@@ -550,23 +558,24 @@ const ConcentricPlayer = ({
         <motion.div
           className="relative w-12 h-12 rounded-full flex items-center justify-center cursor-pointer"
           style={{
-            background: 'linear-gradient(135deg, #FB923C 0%, #F97316 50%, #EA580C 100%)',
+            background: 'linear-gradient(135deg, #f59025 0%, #d97706 100%)', // Match accent
             boxShadow: isPlaying 
-              ? '0 0 40px rgba(249, 115, 22, 0.7), 0 0 80px rgba(251, 146, 60, 0.4)'
-              : '0 0 25px rgba(249, 115, 22, 0.5), 0 0 50px rgba(251, 146, 60, 0.25)',
+              ? `0 0 30px rgba(${accentRGB}, 0.4), 0 0 60px rgba(${accentRGB}, 0.2)`
+              : `0 0 20px rgba(${accentRGB}, 0.3), 0 0 40px rgba(${accentRGB}, 0.1)`,
           }}
           onClick={onPlayPause}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           animate={isPlaying ? {
             boxShadow: [
-              '0 0 40px rgba(249, 115, 22, 0.7), 0 0 80px rgba(251, 146, 60, 0.4)',
-              '0 0 55px rgba(249, 115, 22, 0.85), 0 0 100px rgba(251, 146, 60, 0.5)',
-              '0 0 40px rgba(249, 115, 22, 0.7), 0 0 80px rgba(251, 146, 60, 0.4)',
+              `0 0 30px rgba(${accentRGB}, 0.4), 0 0 60px rgba(${accentRGB}, 0.2)`,
+              `0 0 45px rgba(${accentRGB}, 0.5), 0 0 80px rgba(${accentRGB}, 0.3)`,
+              `0 0 30px rgba(${accentRGB}, 0.4), 0 0 60px rgba(${accentRGB}, 0.2)`,
             ],
           } : {}}
-          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
+          {/* ...existing code... */}
           <AnimatePresence mode="wait">
             {isPlaying ? (
               <motion.div key="pause" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={{ duration: 0.15 }}>
@@ -590,6 +599,7 @@ const RealCustomerCalls = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [audioDuration, setAudioDuration] = useState(15); // Default to 15 seconds
+  const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const progressRef = useRef<gsap.core.Tween | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -664,8 +674,47 @@ const RealCustomerCalls = () => {
     }
   };
 
+  const handleLanguageSelect = (language: string) => {
+    if (language === activeLanguage) {
+      if (!isPlaying) {
+        setShouldAutoPlay(true);
+      }
+      return;
+    }
+
+    setShouldAutoPlay(true);
+    setActiveLanguage(language);
+  };
+
+  useEffect(() => {
+    if (!shouldAutoPlay) return;
+
+    const audio = audioRef.current;
+    if (!audio) {
+      setShouldAutoPlay(false);
+      return;
+    }
+
+    const startPlayback = () => {
+      audio.play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          console.error('Audio play failed:', error);
+        })
+        .finally(() => setShouldAutoPlay(false));
+    };
+
+    if (audio.readyState >= 2) {
+      startPlayback();
+      return;
+    }
+
+    audio.addEventListener('canplay', startPlayback, { once: true });
+    return () => audio.removeEventListener('canplay', startPlayback);
+  }, [activeLanguage, activeTab, shouldAutoPlay]);
+
   return (
-    <section id="calls" className="relative py-8 overflow-hidden" style={{ background: '#0d0d0f' }}>
+    <section id="calls" className="relative py-8 overflow-hidden" style={{ background: '#151515' }}>
       {/* Hidden audio element */}
       <audio ref={audioRef} preload="metadata" />
       
@@ -678,7 +727,7 @@ const RealCustomerCalls = () => {
         className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
       >
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-4 leading-tight">
-          <span className="text-orange-400">Hear the difference yourself</span>
+          <span className="text-[#f59025]">Hear the difference yourself</span>
           <br />
           <span className="text-foreground">Across industries. Across languages.</span>
         </h2>
@@ -691,15 +740,15 @@ const RealCustomerCalls = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center mb-2 md:-mb-2"
+          className="flex justify-center mb-2 md:-mb-2" 
         >
           <div 
             className="inline-flex flex-wrap justify-center rounded-full p-1 md:p-1.5 gap-1 max-w-full"
             style={{
-              background: 'rgba(18, 18, 24, 0.95)',
+              background: 'rgba(0, 0, 0, 0.881)',
               border: '1px solid rgba(255,255,255,0.08)',
               backdropFilter: 'blur(8px)',
-            }}
+            }} 
           >
             {tabs.map((tab) => (
               <button
@@ -714,7 +763,7 @@ const RealCustomerCalls = () => {
                     layoutId="activeTabBg"
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(154, 52, 18, 0.8) 0%, rgba(249, 115, 22, 0.6) 100%)',
+                      background: 'linear-gradient(135deg, #f59025cc 0%, #dd7507cc 100%)',
                       boxShadow: '0 0 18px rgba(249, 115, 22, 0.5)',
                     }}
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
@@ -737,7 +786,7 @@ const RealCustomerCalls = () => {
               <div 
                 className="px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-orange-200/90 whitespace-nowrap"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(154, 52, 18, 0.6) 0%, rgba(249, 115, 22, 0.4) 100%)',
+                  background: 'linear-gradient(90deg, #f5902556 0%, #f5902592 100%)',
                   border: '1px solid rgba(249, 115, 22, 0.5)',
                   boxShadow: '0 0 25px rgba(249, 115, 22, 0.3)',
                   backdropFilter: 'blur(8px)',
@@ -758,7 +807,7 @@ const RealCustomerCalls = () => {
             <ConcentricPlayer 
               activeTab={activeTab}
               activeLanguage={activeLanguage}
-              onLanguageChange={setActiveLanguage}
+              onLanguageSelect={handleLanguageSelect}
               isPlaying={isPlaying}
               progress={progress}
               onPlayPause={handlePlayPause}

@@ -148,7 +148,7 @@ const VoiceHero = () => {
         >
           <h1 className="text-5xl md:text-7xl font-light tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             AI Voice Layer that<br />
-            <span className="text-[#ffa500] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Customers Trust.</span>
+            <span className="text-[#f59025] drop-shadow-[0_0_30px_rgba(255,165,0,0.5)]">Customers Trust.</span>
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -166,12 +166,6 @@ const VoiceHero = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-wrap items-center justify-center gap-4 pointer-events-auto"
         >
-          <button
-            onClick={() => setStartPilotOpen(true)}
-            className="cursor-pointer px-10 py-4 rounded-full bg-[#ffa500] text-black font-semibold hover:bg-[#ffb732] transition-all active:scale-95 shadow-[0_0_40px_rgba(255,165,0,0.4)] hover:shadow-[0_0_60px_rgba(255,165,0,0.6)]"
-          >
-            Start Pilot
-          </button>
           <a
             href="https://cal.com/uttaran-nayak-alchemyst/30min?overlayCalendar=true"
             target="_blank"
@@ -180,6 +174,12 @@ const VoiceHero = () => {
           >
             Book a Demo
           </a>
+          <button
+            onClick={() => setStartPilotOpen(true)}
+            className="cursor-pointer px-10 py-4 rounded-full bg-[#f59025] text-black font-semibold hover:bg-[#f89c3a] transition-all active:scale-95 shadow-[0_0_40px_rgba(255,165,0,0.4)] hover:shadow-[0_0_60px_rgba(255,165,0,0.6)]"
+          >
+            Start Pilot
+          </button>
         </motion.div>
         </div>
       </div>

@@ -39,7 +39,7 @@ export function VoiceIntegrations() {
   const div9Ref = useRef<HTMLDivElement>(null)
 
   return (
-    <section className="relative py-12 md:py-16 lg:py-24" style={{ background: '#0d0d0f' }}>
+    <section className="relative py-12 md:py-16 lg:py-24" style={{ background: '#151515' }}>
       <div className="relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Heading */}
         <motion.div
@@ -52,7 +52,7 @@ export function VoiceIntegrations() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 leading-tight px-2">
             Frictionless Integrations,
           </h2>
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-orange-400 px-2">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#f59025] px-2">
             across your entire stack
           </p>
         </motion.div>

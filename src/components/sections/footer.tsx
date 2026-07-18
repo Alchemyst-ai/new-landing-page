@@ -39,7 +39,7 @@ export function Footer() {
 	};
 
 	return (
-		<footer className=" w-full">
+		<footer className=" w-full relative z-30 bg-background">
 			<div className="w-full flex justify-center">
 				<div className="w-[80%]">
 					{/* Main Footer Content */}
