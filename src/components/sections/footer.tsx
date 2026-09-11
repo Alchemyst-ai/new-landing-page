@@ -110,9 +110,9 @@ export function Footer() {
 							<div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
 								{/* Product Links */}
 								<div className="space-y-4">
-									<h4 className="text-sm font-semibold tracking-tight uppercase">
+									<h3 className="text-sm font-semibold tracking-tight uppercase">
 										Product
-									</h4>
+									</h3>
 									<ul className="space-y-3">
 										{footerLinks.product.map((link, index) => (
 											<li key={index}>
@@ -140,9 +140,9 @@ export function Footer() {
 
 								{/* Use Cases */}
 								<div className="space-y-4">
-									<h4 className="text-sm font-semibold tracking-tight uppercase">
+									<h3 className="text-sm font-semibold tracking-tight uppercase">
 										Use Cases
-									</h4>
+									</h3>
 									<ul className="space-y-3">
 										{footerLinks.useCases.map((link, index) => (
 											<li key={index}>
@@ -170,9 +170,9 @@ export function Footer() {
 
 								{/* Resources Links */}
 								<div className="space-y-4">
-									<h4 className="text-sm font-semibold tracking-tight uppercase">
+									<h3 className="text-sm font-semibold tracking-tight uppercase">
 										Resources
-									</h4>
+									</h3>
 									<ul className="space-y-3">
 										{footerLinks.resources.map((link, index) => (
 											<li key={index}>
@@ -200,9 +200,9 @@ export function Footer() {
 
 								{/* Company Links */}
 								<div className="space-y-4">
-									<h4 className="text-sm font-semibold tracking-tight uppercase">
+									<h3 className="text-sm font-semibold tracking-tight uppercase">
 										Company
-									</h4>
+									</h3>
 									<ul className="space-y-3">
 										{footerLinks.company.map((link, index) => (
 											<li key={index}>

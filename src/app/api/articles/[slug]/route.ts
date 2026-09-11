@@ -77,13 +77,41 @@ export async function GET(
         readTime: estimateReadTimeFromHtml(attrs.test || ""),
       };
     });
-    if (data.length === 0) return NextResponse.json({ data: [] }, { status: 404 });
+    if (data.length === 0)
+      return NextResponse.json(
+        {
+          data: [],
+          type: "about:blank",
+          title: "Article not found",
+          status: 404,
+          detail: `No article found for slug '${slug}'.`,
+          code: "article_not_found",
+          resolution: "Check /api/articles for valid slugs, or see /openapi.json, /llms.txt, /sitemap.xml.",
+          error: `No article found for slug '${slug}'.`,
+        },
+        {
+          status: 404,
+          headers: { "Content-Type": "application/problem+json" },
+        }
+      );
     return NextResponse.json({ data });
   } catch (error) {
     const err = error as any;
     const message = err?.message || "Unknown error";
     const debug = err?.__debug || null;
-    return NextResponse.json({ error: message, debug }, { status: 500 });
+    return NextResponse.json(
+      {
+        type: "about:blank",
+        title: "Failed to fetch article",
+        status: 500,
+        detail: message,
+        code: "upstream_failed",
+        resolution: "Retry shortly, or check /openapi.json for usage. Contact founders@getalchemystai.com if this persists.",
+        error: message,
+        debug,
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
+    );
   }
 }
 

@@ -1,11 +1,10 @@
-import Script from "next/script";
 import { siteConfig } from "@/lib/config";
 
 /**
  * Site-wide JSON-LD structured data for GEO / AI engines.
  * Emits Organization, SoftwareApplication and FAQPage in a single @graph.
- * Rendered once in the root layout so the brand entity is fed straight
- * into AI knowledge graphs (ChatGPT, Claude, Perplexity, Gemini).
+ * Uses native <script> (not next/script) so crawlers see static
+ * <script type="application/ld+json"> in raw HTML without JS.
  */
 export function StructuredData() {
   const url = siteConfig.url;
@@ -23,6 +22,23 @@ export function StructuredData() {
         email: "founders@getalchemystai.com",
         description:
           "Alchemyst AI is a verifiable AI context engine that provides AI applications and agents with persistent memory, business data, and operational context so they remain accurate, reliable, and production-ready.",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur",
+          addressLocality: "North 24 Parganas",
+          addressRegion: "West Bengal",
+          postalCode: "700048",
+          addressCountry: "IN",
+        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            email: "founders@getalchemystai.com",
+            contactType: "customer service",
+            url: "https://getalchemystai.com/contact",
+            availableLanguage: ["en"],
+          },
+        ],
         sameAs: [
           "https://x.com/getalchemyst",
           "https://www.linkedin.com/company/alchemystai",
@@ -105,10 +121,9 @@ export function StructuredData() {
   };
 
   return (
-    <Script
-      id="json-ld"
+    <script
       type="application/ld+json"
-      strategy="beforeInteractive"
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\u003c") }}
     />
   );

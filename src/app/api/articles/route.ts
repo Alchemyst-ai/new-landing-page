@@ -91,6 +91,18 @@ export async function GET(req: NextRequest) {
     const err = error as any;
     const message = err?.message || "Unknown error";
     const debug = err?.__debug || null;
-    return NextResponse.json({ error: message, debug }, { status: 500 });
+    return NextResponse.json(
+      {
+        type: "about:blank",
+        title: "Failed to list articles",
+        status: 500,
+        detail: message,
+        code: "upstream_failed",
+        resolution: "Retry shortly, or see /openapi.json. Contact founders@getalchemystai.com if this persists.",
+        error: message,
+        debug,
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
+    );
   }
 }

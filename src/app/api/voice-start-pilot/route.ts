@@ -34,8 +34,17 @@ export async function POST(request: NextRequest) {
     const parsed = bodySchema.safeParse(json);
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Invalid request", issues: parsed.error.flatten() },
-        { status: 422 }
+        {
+          type: "about:blank",
+          title: "Invalid pilot request",
+          status: 422,
+          detail: "Validation failed for voice pilot signup.",
+          code: "validation_failed",
+          resolution: "See /openapi.json operation startVoicePilot. Required: email, callingAgents >=1, acceptedTerms true.",
+          error: "Invalid request",
+          issues: parsed.error.flatten(),
+        },
+        { status: 422, headers: { "Content-Type": "application/problem+json" } }
       );
     }
 
@@ -72,8 +81,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ email: data.email }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json(
-      { error: err?.message ?? "Internal server error" },
-      { status: 500 }
+      {
+        type: "about:blank",
+        title: "Voice pilot signup failed",
+        status: 500,
+        detail: err?.message ?? "Internal server error",
+        code: "internal_error",
+        resolution: "Retry, or contact founders@getalchemystai.com. See /openapi.json.",
+        error: err?.message ?? "Internal server error",
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
     );
   }
 }

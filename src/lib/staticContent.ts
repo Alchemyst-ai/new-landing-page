@@ -139,18 +139,36 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     items: [
       {
         title: "Documentation",
-        url: "https://docs.getalchemystai.com",
+        url: "https://getalchemystai.com/docs",
         description: "Full API reference, SDKs, and integration guides for the Alchemyst Context Layer.",
       },
       {
         title: "Python SDK",
-        url: "https://docs.getalchemystai.com/sdk/python",
-        description: "Official Python SDK for the Alchemyst Context Layer API.",
+        url: "https://getalchemystai.com/docs/integrations/sdk/python-sdk",
+        description: "Official Python SDK for the Alchemyst Context Layer API (pip install alchemystai).",
       },
       {
-        title: "Node.js SDK",
-        url: "https://docs.getalchemystai.com/sdk/node",
-        description: "Official Node.js / TypeScript SDK for the Alchemyst Context Layer API.",
+        title: "TypeScript SDK",
+        url: "https://getalchemystai.com/docs/integrations/sdk/typescript-sdk",
+        description: "Official TypeScript SDK for the Alchemyst Context Layer API (npm i @alchemystai/sdk).",
+      },
+      {
+        title: "CLI and automation",
+        url: `${BASE_URL}/cli`,
+        description:
+          "Official CLI entry points: npm i @alchemystai/sdk with Node 18+ for the TypeScript CLI agent, and pip install alchemystai for Python. Build a context-aware CLI in 10 minutes. See https://www.npmjs.com/package/@alchemystai/sdk and https://pypi.org/project/alchemystai/.",
+      },
+      {
+        title: "MCP server",
+        url: `${BASE_URL}/mcp`,
+        description:
+          "Streamable HTTP MCP server at https://getalchemystai.com/mcp with tools alchemyst_search_docs, alchemyst_list_articles, alchemyst_get_openapi. Manifests: /server.json, /.well-known/ai-catalog.json, /mcp/server-card.",
+      },
+      {
+        title: "OpenAPI spec",
+        url: `${BASE_URL}/openapi.json`,
+        description:
+          "Machine-readable OpenAPI 3.1 spec with operationIds for function calling: listArticles, getArticleBySlug, listCareers, createLeadAutomation, listTools, startVoicePilot.",
       },
       {
         title: "Context Tracing with OpenAI Euphony",
@@ -476,7 +494,9 @@ Alchemyst AI is a context layer delivered as an API versus Palantir's FDE-mainta
   
 Free tier available. No credit card required. REST API + Python & Node SDKs. 99.9% uptime SLA. SOC 2 in progress.
 
-- Documentation: https://docs.getalchemystai.com
+- Documentation: https://getalchemystai.com/docs
+- TypeScript SDK: https://getalchemystai.com/docs/integrations/sdk/typescript-sdk
+- Python SDK: https://getalchemystai.com/docs/integrations/sdk/python-sdk
 - Website: https://getalchemystai.com
 - Contact: hello@getalchemystai.com
 
@@ -497,4 +517,14 @@ Usage-based pricing with transparent costs per million tokens and per MB process
 | Enterprise | Custom-built pricing with dedicated support |
 
 Pricing calculator on https://getalchemystai.com/pricing shows exact costs based on expected usage.
- `;
+
+---
+
+## CLI and MCP
+
+Official CLI entry points for agents: \`npm install @alchemystai/sdk\` (https://www.npmjs.com/package/@alchemystai/sdk, Node 18+) and \`pip install alchemystai\` (https://pypi.org/project/alchemystai/, Python 3.9+). Build the context-aware CLI agent in 10 minutes: https://getalchemystai.com/docs/example-projects/team/cli-chatbot and https://getalchemystai.com/cli.
+
+MCP Streamable HTTP server: https://getalchemystai.com/mcp with tools alchemyst_search_docs, alchemyst_list_articles, alchemyst_get_openapi. Manifests: https://getalchemystai.com/server.json, https://getalchemystai.com/.well-known/ai-catalog.json, https://getalchemystai.com/mcp/server-card.
+
+OpenAPI 3.1 spec: https://getalchemystai.com/openapi.json with operationIds listArticles, getArticleBySlug, listCareers, createLeadAutomation, listTools, createSharedTool, startVoicePilot.
+  `;

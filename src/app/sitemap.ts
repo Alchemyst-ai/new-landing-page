@@ -2,7 +2,10 @@ import { DOMParser } from '@xmldom/xmldom';
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL && process.env.NEXT_PUBLIC_APP_URL.startsWith("http")
+      ? process.env.NEXT_PUBLIC_APP_URL.replace(/\/+$/, "")
+      : "https://getalchemystai.com";
 
   // Static pages
   let staticPages: MetadataRoute.Sitemap = [
@@ -35,6 +38,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/openapi.json`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/cli`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mcp`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/pricing`,

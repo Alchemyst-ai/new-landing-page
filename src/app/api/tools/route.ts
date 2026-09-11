@@ -104,8 +104,16 @@ export async function GET(request: NextRequest) {
 
   } catch (err: any) {
     return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
+      {
+        type: "about:blank",
+        title: "Failed to list tools",
+        status: 500,
+        detail: err?.message ?? "Unknown error",
+        code: "internal_error",
+        resolution: "Retry with valid type/limit/offset per /openapi.json, or contact founders@getalchemystai.com.",
+        error: err?.message ?? "Unknown error",
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
     );
   }
 }
@@ -128,8 +136,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(item, { status: 201 });
   } catch (err: any) {
     return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
+      {
+        type: "about:blank",
+        title: "Failed to create shared item",
+        status: 500,
+        detail: err?.message ?? "Unknown error",
+        code: "internal_error",
+        resolution: "Verify JSON body per /openapi.json operation createSharedTool.",
+        error: err?.message ?? "Unknown error",
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
     );
   }
 }

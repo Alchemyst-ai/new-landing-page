@@ -17,7 +17,13 @@ export function constructMetadata({
   image = absoluteUrl("/og"),
   ...props
 }: Partial<Metadata> & { image?: string, title: string }): Metadata {
+  // Always canonicalize to production for agent entity resolution.
+  // Using env (localhost in dev) breaks is-agentic metadata-completeness.
+  const canonicalBase = "https://getalchemystai.com";
   return {
+    alternates: {
+      canonical: canonicalBase,
+    },
     title: {
       template: "%s | Alchemyst AI - the ONLY AI context LAYER you can verify.",
       default: "Alchemyst AI | The ONLY AI context engine that you can verify.",

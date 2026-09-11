@@ -1,15 +1,32 @@
 /**
  * Next.js Edge Middleware (proxy.ts - Next.js 16 convention)
  *
- * Rewrites /*.html.md requests to /llms.txt?path=<pathname>
- * so per-page markdown is served by the App Router llms.txt handler.
- *
- * /llms.txt and /llms-full.txt are handled directly by their own
- * App Router route handlers and do not need middleware interception.
+ * 1. Rewrites /*.html.md to /llms.txt?path=<pathname>
+ * 2. Accept: text/markdown negotiation (acceptmarkdown.com):
+ *    rewrites page navigations asking for markdown to /api/markdown?path=<pathname>
+ *    which returns text/markdown with Vary: Accept.
+ *    No visual/HTML change — only affects agents explicitly requesting markdown.
  */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+
+const MARKDOWN_SKIP_PREFIXES = [
+  "/_next",
+  "/api/markdown",
+  "/api/",
+  "/llms.txt",
+  "/llms-full.txt",
+  "/sitemap.xml",
+  "/robots.txt",
+  "/openapi.json",
+  "/favicon.ico",
+  "/mcp",
+  "/server.json",
+  "/.well-known",
+];
+
+const STATIC_EXT = /\.(ico|png|jpg|jpeg|gif|svg|webp|css|js|map|woff2?|ttf|mp3|mp4|txt|xml|json)$/i;
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,10 +39,27 @@ export default function middleware(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
+  const accept = request.headers.get("accept") || "";
+  const wantsMarkdown =
+    accept.includes("text/markdown") || accept.includes("text/x-markdown");
+
+  if (wantsMarkdown) {
+    // Don't intercept API JSON, static assets, or already-machine-readable routes
+    if (MARKDOWN_SKIP_PREFIXES.some((p) => pathname.startsWith(p))) {
+      return NextResponse.next();
+    }
+    if (STATIC_EXT.test(pathname)) {
+      return NextResponse.next();
+    }
+    const url = request.nextUrl.clone();
+    url.pathname = "/api/markdown";
+    url.searchParams.set("path", pathname);
+    return NextResponse.rewrite(url);
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  // Only intercept .html.md paths; /llms.txt and /llms-full.txt are App Router routes
-  matcher: ["/:path*.html.md"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };

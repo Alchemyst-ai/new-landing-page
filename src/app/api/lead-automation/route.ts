@@ -69,7 +69,18 @@ const POST = async (req: NextRequest, ctx: { params: Promise<Record<string, any>
     });
 
     if (!success || !!error) {
-      return NextResponse.json({ error: "Cannot process entity - fields missing. Please check the request body once again." }, { status: 422 })
+      return NextResponse.json(
+        {
+          type: "about:blank",
+          title: "Invalid lead payload",
+          status: 422,
+          detail: "Cannot process entity - fields missing. Required: email, csv_csvfirstname, csv_csvcompanyname, csv_currenttitle, csv_linkedinhandle.",
+          code: "validation_failed",
+          resolution: "Check /openapi.json operation createLeadAutomation for the schema and retry.",
+          error: "Cannot process entity - fields missing. Please check the request body once again.",
+        },
+        { status: 422, headers: { "Content-Type": "application/problem+json" } }
+      );
     }
 
     const campaignAddResponse = await fetch(`https://meetalfred.com/api/integrations/webhook/add_lead_to_campaign?webhook_key=${process.env.MEET_ALFRED_API_KEY ?? ''}`, {
@@ -81,11 +92,33 @@ const POST = async (req: NextRequest, ctx: { params: Promise<Record<string, any>
     });
 
     if (!campaignAddResponse.ok) {
-      return NextResponse.json({}, { status: 500 })
+      return NextResponse.json(
+        {
+          type: "about:blank",
+          title: "Upstream campaign failed",
+          status: 500,
+          detail: `MeetAlfred responded with ${campaignAddResponse.status}.`,
+          code: "upstream_failed",
+          resolution: "Retry shortly, or contact founders@getalchemystai.com with the campaign ID 1332714.",
+          error: `MeetAlfred responded with ${campaignAddResponse.status}.`,
+        },
+        { status: 500, headers: { "Content-Type": "application/problem+json" } }
+      );
     }
     return NextResponse.json({}, { status: 201 });
   } catch (error) {
-    return NextResponse.json({}, { status: 500 });
+    return NextResponse.json(
+      {
+        type: "about:blank",
+        title: "Lead automation failed",
+        status: 500,
+        detail: error instanceof Error ? error.message : "Unknown error",
+        code: "internal_error",
+        resolution: "Retry, verify JSON body per /openapi.json, or contact founders@getalchemystai.com.",
+        error: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500, headers: { "Content-Type": "application/problem+json" } }
+    );
   }
 }
 

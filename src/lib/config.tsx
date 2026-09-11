@@ -12,7 +12,7 @@ export const siteConfig = {
   description: "The ONLY AI context engine that you can verify.",
   cta: "Get Started",
   image: '/banner.jpeg',
-  url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+  url: "https://getalchemystai.com",
   keywords: [
     'AI Context',
     'AI Memory',
