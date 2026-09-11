@@ -59,6 +59,33 @@ const nextConfig: NextConfig = {
         source: "/blog/:slug.md",
         destination: "/api/blog/:slug/.md",
       },
+      // Versioned API aliases: /api/v1/* → /api/* (v1 is current; unversioned is legacy alias)
+      {
+        source: "/api/v1/:path*",
+        destination: "/api/:path*",
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "RateLimit-Policy", value: '120;w=60;comment="public read: 120 req/min per IP"' },
+          { key: "RateLimit-Limit", value: "120" },
+          { key: "RateLimit-Remaining", value: "119" },
+          { key: "RateLimit-Reset", value: "60" },
+          { key: "API-Version", value: "v1" },
+          { key: "Access-Control-Expose-Headers", value: "RateLimit-Policy, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset, API-Version, Retry-After" },
+        ],
+      },
+      {
+        source: "/openapi.json",
+        headers: [
+          { key: "API-Version", value: "v1" },
+          { key: "Cache-Control", value: "public, s-maxage=3600, stale-while-revalidate=600" },
+        ],
+      },
     ];
   },
 };

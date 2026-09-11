@@ -18,8 +18,12 @@ import TweetAboutUs from "@/components/TweetAboutUs";
 export default function Home() {
   return (
     <main>
+      {/* <Header /> */}
+      <Hero />
       {/* Server-rendered agent-readable summary — visually hidden, no UI change.
-          Boosts no-JS content ratio with semantic H2/H3 hierarchy. */}
+          Placed AFTER Hero so the first content heading in raw HTML remains
+          the Hero H1 (fixes "first heading is H2" partial). Boosts no-JS
+          content ratio with sequential H2/H3 hierarchy. */}
       <section aria-label="Alchemyst AI overview" className="sr-only">
         <h2>Alchemyst AI — the institutional context backbone for AI agents</h2>
         <p>
@@ -61,9 +65,31 @@ export default function Home() {
           founders@getalchemystai.com. See About, Contact, Privacy, sitemap,
           llms.txt, docs, and the OpenAPI spec at /openapi.json.
         </p>
+        <h3>CLI, SDKs, and MCP for agents</h3>
+        <p>
+          Official CLI entry points:{" "}
+          <a href="https://www.npmjs.com/package/@alchemystai/sdk">
+            npm install @alchemystai/sdk
+          </a>{" "}
+          and{" "}
+          <a href="https://pypi.org/project/alchemystai/">
+            pip install alchemystai
+          </a>
+          . Build the context-aware CLI agent in 10 minutes at{" "}
+          <a href="https://getalchemystai.com/cli">https://getalchemystai.com/cli</a>{" "}
+          and{" "}
+          <a href="https://getalchemystai.com/docs/example-projects/team/cli-chatbot">
+            CLI Agent docs
+          </a>
+          . MCP Streamable HTTP at{" "}
+          <a href="https://getalchemystai.com/mcp">https://getalchemystai.com/mcp</a>.
+          OpenAPI at{" "}
+          <a href="https://getalchemystai.com/openapi.json">
+            https://getalchemystai.com/openapi.json
+          </a>
+          .
+        </p>
       </section>
-      {/* <Header /> */}
-      <Hero />
       <Logos />
       <Examples />
       <UseCases />

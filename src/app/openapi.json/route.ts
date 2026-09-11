@@ -8,7 +8,7 @@ const spec = {
     title: "Alchemyst AI Landing Site Public API",
     version: "1.0.0",
     description:
-      "Public read/write API for the Alchemyst AI marketing site: blog articles from Strapi, career listings from Tally, lead capture, and voice pilot signup. All errors use RFC 9457 problem+json with code, message, and resolution hints.",
+      "Public read/write API for the Alchemyst AI marketing site: blog articles from Strapi, career listings from Tally, lead capture, and voice pilot signup. All errors use RFC 9457 application/problem+json with machine-readable code, human-readable detail, and resolution hints.\n\nVersioning: URL path versioning. Current is /api/v1/* (e.g. GET /api/v1/articles). Unversioned /api/* aliases are kept for backwards compatibility and map to v1 via rewrite. Breaking changes will ship as /api/v2/* with 6-month overlap. Deprecation is signaled via `Deprecation: true` + `Sunset` response headers and documented in /llms.txt changelog. Send `API-Version: v1` (also returned on every response) or use the versioned path.\n\nRate limits: public read 120 req/min per IP. Every /api/* response includes IETF RateLimit headers (`RateLimit-Policy: 120;w=60`, `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`) and `API-Version: v1`. On 429, `Retry-After` seconds is returned with a problem+json body (code rate_limited). See /llms.txt and /docs for conventions.",
     termsOfService: "https://getalchemystai.com/terms-of-use",
     contact: {
       name: "Alchemyst AI support",
@@ -22,8 +22,12 @@ const spec = {
   },
   servers: [
     {
+      url: "https://getalchemystai.com/api/v1",
+      description: "Production v1 (current). Unversioned /api/* aliases to v1.",
+    },
+    {
       url: "https://getalchemystai.com",
-      description: "Production",
+      description: "Production (unversioned aliases, legacy compatible)",
     },
   ],
   tags: [
@@ -59,6 +63,7 @@ const spec = {
             },
           },
           "500": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
         },
       },
     },
@@ -98,6 +103,7 @@ const spec = {
             },
           },
           "404": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
           "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
@@ -128,6 +134,8 @@ const spec = {
               },
             },
           },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
+          "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
     },
@@ -159,6 +167,7 @@ const spec = {
             },
           },
           "422": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
           "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
@@ -210,6 +219,7 @@ const spec = {
               },
             },
           },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
           "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
@@ -236,6 +246,7 @@ const spec = {
               },
             },
           },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
           "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
@@ -269,6 +280,75 @@ const spec = {
             },
           },
           "422": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
+          "500": { $ref: "#/components/responses/ProblemResponse" },
+        },
+      },
+    },
+    "/api/v1/articles": {
+      get: {
+        operationId: "listArticlesV1",
+        summary: "List blog articles (v1)",
+        description:
+          "Versioned alias of GET /api/articles. Current stable v1. See Versioning in info.description.",
+        tags: ["Articles"],
+        parameters: [
+          {
+            in: "header",
+            name: "API-Version",
+            required: false,
+            description: "Pin API version. Current: v1.",
+            schema: { type: "string", enum: ["v1"], default: "v1" },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "Article list",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  required: ["data"],
+                  properties: {
+                    data: {
+                      type: "array",
+                      items: { $ref: "#/components/schemas/ArticleSummary" },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
+          "500": { $ref: "#/components/responses/ProblemResponse" },
+        },
+      },
+    },
+    "/api/v1/careers": {
+      get: {
+        operationId: "listCareersV1",
+        summary: "List open roles (v1)",
+        description: "Versioned alias of GET /api/careers.",
+        tags: ["Careers"],
+        responses: {
+          "200": {
+            description: "Job list",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  required: ["jobs"],
+                  properties: {
+                    jobs: {
+                      type: "array",
+                      items: { $ref: "#/components/schemas/JobPosition" },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
           "500": { $ref: "#/components/responses/ProblemResponse" },
         },
       },
@@ -375,13 +455,59 @@ const spec = {
     },
     responses: {
       ProblemResponse: {
-        description: "RFC 9457 problem+json error",
+        description: "RFC 9457 problem+json error with code and resolution",
+        headers: {
+          "RateLimit-Policy": {
+            description: "Rate limit policy, e.g. 120;w=60",
+            schema: { type: "string" },
+          },
+          "RateLimit-Remaining": {
+            description: "Requests remaining in window",
+            schema: { type: "string" },
+          },
+          "Retry-After": {
+            description: "Seconds to wait after 429",
+            schema: { type: "string" },
+          },
+          "API-Version": {
+            description: "API version served (v1)",
+            schema: { type: "string" },
+          },
+        },
         content: {
           "application/problem+json": {
             schema: { $ref: "#/components/schemas/Problem" },
           },
           "application/json": {
             schema: { $ref: "#/components/schemas/Problem" },
+          },
+        },
+      },
+      RateLimitedResponse: {
+        description: "429 rate limited with Retry-After",
+        headers: {
+          "Retry-After": {
+            description: "Seconds until retry",
+            schema: { type: "integer", example: 60 },
+          },
+          "RateLimit-Policy": {
+            schema: { type: "string", example: "120;w=60" },
+          },
+          "API-Version": {
+            schema: { type: "string", example: "v1" },
+          },
+        },
+        content: {
+          "application/problem+json": {
+            schema: { $ref: "#/components/schemas/Problem" },
+            example: {
+              type: "about:blank",
+              title: "Rate limited",
+              status: 429,
+              detail: "Too many requests. Retry after 60 seconds.",
+              code: "rate_limited",
+              resolution: "Back off per Retry-After, then retry. See /openapi.json rate limit policy.",
+            },
           },
         },
       },

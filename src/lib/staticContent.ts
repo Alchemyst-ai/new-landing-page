@@ -135,6 +135,35 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     ],
   },
   {
+    title: "CLI",
+    items: [
+      {
+        title: "Alchemyst AI CLI and SDKs",
+        url: `${BASE_URL}/cli`,
+        description:
+          "Official CLI: npm install @alchemystai/sdk (https://www.npmjs.com/package/@alchemystai/sdk, Node 18+) and pip install alchemystai (https://pypi.org/project/alchemystai/, Python 3.9+). Build the context-aware CLI agent in 10 minutes: https://getalchemystai.com/docs/example-projects/team/cli-chatbot.",
+      },
+      {
+        title: "CLI Agent example",
+        url: "https://getalchemystai.com/docs/example-projects/team/cli-chatbot",
+        description:
+          "Build a Context-Aware CLI tool that answers questions using stored context from Alchemyst and Gemini. Node and Python source in public repo.",
+      },
+      {
+        title: "TypeScript SDK on npm",
+        url: "https://www.npmjs.com/package/@alchemystai/sdk",
+        description:
+          "Official TypeScript SDK (npm i @alchemystai/sdk). Apache-2.0. Use for CLI scripting without full integration.",
+      },
+      {
+        title: "Python SDK on PyPI",
+        url: "https://pypi.org/project/alchemystai/",
+        description:
+          "Official Python SDK (pip install alchemystai). Apache-2.0. Use for CLI scripting without full integration.",
+      },
+    ],
+  },
+  {
     title: "Developer Resources",
     items: [
       {
