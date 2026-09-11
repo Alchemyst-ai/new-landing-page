@@ -28,7 +28,7 @@ const MARKDOWN_SKIP_PREFIXES = [
 
 const STATIC_EXT = /\.(ico|png|jpg|jpeg|gif|svg|webp|css|js|map|woff2?|ttf|mp3|mp4|txt|xml|json)$/i;
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Rewrite /*.html.md to the llms.txt route handler with path param
@@ -51,10 +51,38 @@ export default function middleware(request: NextRequest) {
     if (STATIC_EXT.test(pathname)) {
       return NextResponse.next();
     }
-    const url = request.nextUrl.clone();
-    url.pathname = "/api/markdown";
-    url.searchParams.set("path", pathname);
-    return NextResponse.rewrite(url);
+    // Fetch markdown from the Route Handler and return directly from the
+    // edge so the final response carries a clean `Vary: Accept` without
+    // Next's RSC `Vary: rsc, ...` (which would otherwise overwrite/combine
+    // and break acceptmarkdown.com CDN semantics). No HTML/visual change.
+    try {
+      const mdUrl = request.nextUrl.clone();
+      mdUrl.pathname = "/api/markdown";
+      mdUrl.searchParams.set("path", pathname);
+      const mdRes = await fetch(mdUrl, {
+        headers: { Accept: "text/markdown" },
+      });
+      const body = await mdRes.text();
+      return new NextResponse(body, {
+        status: mdRes.status,
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          Vary: "Accept, Accept-Encoding",
+          "Cache-Control":
+            mdRes.headers.get("Cache-Control") ||
+            "public, s-maxage=300, stale-while-revalidate=60",
+          ...(mdRes.status === 404
+            ? { "X-Robots-Tag": "noindex" }
+            : {}),
+        },
+      });
+    } catch {
+      // Fallback to rewrite if edge fetch fails (still serves markdown)
+      const url = request.nextUrl.clone();
+      url.pathname = "/api/markdown";
+      url.searchParams.set("path", pathname);
+      return NextResponse.rewrite(url);
+    }
   }
 
   return NextResponse.next();

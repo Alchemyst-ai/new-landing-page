@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { FULL_STATIC_CONTENT, SITE_TITLE, SITE_DESCRIPTION, BASE_URL } from "@/lib/staticContent";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 function baseMarkdown(title: string, body: string) {
   return `# ${title}\n\n> ${SITE_DESCRIPTION}\n\n> Source: ${BASE_URL}\n\n${body}\n`;
