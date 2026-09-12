@@ -23,6 +23,23 @@ export default function StructuredData() {
           height: 630,
         },
         email: "founders@getalchemystai.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur",
+          addressLocality: "Kolkata",
+          addressRegion: "West Bengal",
+          postalCode: "700048",
+          addressCountry: "IN",
+        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            email: "founders@getalchemystai.com",
+            contactType: "customer service",
+            url: `${BASE_URL}/contact`,
+            availableLanguage: ["en"],
+          },
+        ],
         dateModified: "2026-06-27",
         description:
           "Alchemyst AI is the institutional context backbone for the enterprise. It enables AI agents to run day-to-day operations at scale by providing persistent, traceable context and semantic retrieval over an institutional knowledge graph, keeping institutional knowledge current, traceable, and consistent.",

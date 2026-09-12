@@ -138,19 +138,43 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     title: "Developer Resources",
     items: [
       {
+        title: "Alchemyst AI Developer Portal",
+        url: `${BASE_URL}/developers`,
+        description:
+          "Alchemyst AI developer portal with API keys, 5-minute quickstart, SDKs, sandbox environment, OpenAPI spec, and MCP server for building context-aware agents.",
+      },
+      {
+        title: "Alchemyst AI OpenAPI Spec",
+        url: `${BASE_URL}/openapi.json`,
+        description:
+          "Alchemyst AI OpenAPI 3.1 spec with operationIds getApiStatus, listArticles, getArticleBySlug, createLead. Typed params and problem+json errors for LLM function calling.",
+      },
+      {
+        title: "Alchemyst AI MCP Server",
+        url: `${BASE_URL}/mcp`,
+        description:
+          "Alchemyst AI Streamable HTTP MCP server with tools alchemyst_search_docs, alchemyst_list_articles, alchemyst_get_openapi. Manifests at /server.json and /.well-known/mcp.json.",
+      },
+      {
+        title: "Alchemyst AI CLI and SDKs",
+        url: `${BASE_URL}/cli`,
+        description:
+          "Official Alchemyst AI CLI entry points: npm install @alchemystai/sdk (https://www.npmjs.com/package/@alchemystai/sdk) and pip install alchemystai (https://pypi.org/project/alchemystai/). Build a context-aware CLI agent in 10 minutes.",
+      },
+      {
         title: "Documentation",
         url: "https://docs.getalchemystai.com",
-        description: "Full API reference, SDKs, and integration guides for the Alchemyst Context Layer.",
+        description: "Full Alchemyst AI API reference, SDKs, and integration guides for the Context Layer.",
       },
       {
         title: "Python SDK",
         url: "https://docs.getalchemystai.com/sdk/python",
-        description: "Official Python SDK for the Alchemyst Context Layer API.",
+        description: "Official Alchemyst AI Python SDK for the Context Layer API.",
       },
       {
         title: "Node.js SDK",
         url: "https://docs.getalchemystai.com/sdk/node",
-        description: "Official Node.js / TypeScript SDK for the Alchemyst Context Layer API.",
+        description: "Official Alchemyst AI Node.js / TypeScript SDK for the Context Layer API.",
       },
       {
         title: "Context Tracing with OpenAI Euphony",
