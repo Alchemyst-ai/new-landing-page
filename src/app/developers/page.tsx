@@ -1,45 +1,56 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import CodeBlock from "@/components/brand/CodeBlock";
+import { PageHero, PageShell, Prose } from "@/components/page";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Developers | Alchemyst AI Developer Portal",
   description:
-    "Alchemyst AI developer portal — API keys, quickstart, SDKs, sandbox, OpenAPI spec, and MCP server for building context-aware agents.",
+    "Alchemyst AI developer portal: API keys, quickstart, SDKs, sandbox, OpenAPI spec, and MCP server for building context-aware agents.",
+  alternates: { canonical: "https://getalchemystai.com/developers" },
 };
 
 export default function DevelopersPage() {
   return (
-    <>
-      <Navbar />
-      <main style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh", padding: "120px 0 80px" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <h1 style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, lineHeight: 1.1, color: "#4A3B33", marginBottom: "24px" }}>
-            Alchemyst AI Developer Portal
-          </h1>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Build context-aware AI agents on the Alchemyst AI institutional context backbone. Get API keys, follow the 5-minute quickstart, explore SDKs and the sandbox, and integrate via REST, MCP, or CLI. Every operation below is also described in <Link href="/openapi.json" style={{ color: "#B45309" }}>Alchemyst AI OpenAPI spec</Link> and <Link href="/llms.txt" style={{ color: "#B45309" }}>llms.txt</Link>.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>API keys</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Sign up at <Link href="/platform/signin" style={{ color: "#B45309" }}>Alchemyst AI platform sign-in</Link> to create an ALCHEMYST_AI_API_KEY. Free tier includes 5M tokens with no credit card. Use the key as Bearer auth for REST, SDKs, and MCP. Rotate keys anytime from the dashboard. Never commit keys — use environment variables.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Quickstart (5 minutes)</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            1) Install: npm install @alchemystai/sdk or pip install alchemystai. 2) Store context via the API. 3) Retrieve with context arithmetic (intersection, union, subtraction, ranking). 4) Inspect the context trace for every decision. Full guides at <a href="https://docs.getalchemystai.com" style={{ color: "#B45309" }}>Alchemyst AI docs</a> and the <Link href="/cli" style={{ color: "#B45309" }}>Alchemyst AI CLI guide</Link>.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Documentation and API reference</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Full API reference and SDK guides: <a href="https://docs.getalchemystai.com" style={{ color: "#B45309" }}>docs.getalchemystai.com</a>. Machine-readable REST catalog: <Link href="/openapi.json" style={{ color: "#B45309" }}>Alchemyst AI OpenAPI 3.1 spec</Link> with operationIds getApiStatus, listArticles, getArticleBySlug, createLead. Service status: <Link href="/api/status" style={{ color: "#B45309" }}>/api/status</Link>. MCP Streamable HTTP: <Link href="/mcp" style={{ color: "#B45309" }}>Alchemyst AI MCP server</Link>.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Sandbox environment</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Try without writing code: use the Free tier as your sandbox — same API, same traces, no credit card. Explore sample articles via GET /api/articles, check health at /api/status, and call MCP tools/list then tools/call at /mcp. Contact <a href="mailto:founders@getalchemystai.com" style={{ color: "#B45309" }}>founders@getalchemystai.com</a> for enterprise sandbox limits. See also <Link href="/about" style={{ color: "#B45309" }}>About</Link>, <Link href="/contact" style={{ color: "#B45309" }}>Contact</Link>, and <Link href="/privacy" style={{ color: "#B45309" }}>Privacy</Link>.
-          </p>
-        </article>
-      </main>
-      <Footer />
-    </>
+    <PageShell>
+      <PageHero
+        crumbs={[{ name: "Developers" }]}
+        currentPath="/developers"
+        title="Alchemyst AI Developer Portal"
+        lead={
+          <>
+            Build context-aware AI agents on the Alchemyst AI institutional context backbone. Get API keys, follow the 5-minute quickstart, explore SDKs and the sandbox, and integrate via REST, MCP, or CLI. Every operation below is also described in <a className="link-brand" href="/openapi.json">Alchemyst AI OpenAPI spec</a> and <a className="link-brand" href="/llms.txt">llms.txt</a>.
+          </>
+        }
+      />
+      <Prose>
+        <h2>API keys</h2>
+        <p>
+          Sign up at <Link href="/platform/signin">Alchemyst AI platform sign-in</Link> to create an <code>ALCHEMYST_AI_API_KEY</code>. Free tier includes 5M tokens with no credit card. Use the key as Bearer auth for REST, SDKs, and MCP. Rotate keys anytime from the dashboard. Never commit keys: use environment variables.
+        </p>
+
+        <h2>Quickstart (5 minutes)</h2>
+        <ol>
+          <li>Install: <code>npm install @alchemystai/sdk</code> or <code>pip install alchemystai</code>.</li>
+          <li>Store context via the API.</li>
+          <li>Retrieve with context arithmetic (intersection, union, subtraction, ranking).</li>
+          <li>Inspect the context trace for every decision.</li>
+        </ol>
+        <CodeBlock className="not-prose mb-6" code={`npm install @alchemystai/sdk\n# or\npip install alchemystai`} label="Install" />
+        <p>
+          Full guides at <a href="https://docs.getalchemystai.com" target="_blank" rel="noreferrer">Alchemyst AI docs</a> and the <Link href="/cli">Alchemyst AI CLI guide</Link>.
+        </p>
+
+        <h2>Documentation and API reference</h2>
+        <p>
+          Full API reference and SDK guides: <a href="https://docs.getalchemystai.com" target="_blank" rel="noreferrer">docs.getalchemystai.com</a>. Machine-readable REST catalog: <a href="/openapi.json">Alchemyst AI OpenAPI 3.1 spec</a> with operationIds <code>getApiStatus</code>, <code>listArticles</code>, <code>getArticleBySlug</code>, <code>createLead</code>. Service status: <a href="/api/status">/api/status</a>. MCP Streamable HTTP: <a href="/mcp">Alchemyst AI MCP server</a>.
+        </p>
+
+        <h2>Sandbox environment</h2>
+        <p>
+          Try without writing code: use the Free tier as your sandbox, with the same API, same traces, and no credit card. Explore sample articles via <code>GET /api/articles</code>, check health at <code>/api/status</code>, and call MCP <code>tools/list</code> then <code>tools/call</code> at <code>/mcp</code>. Contact <a href="mailto:founders@getalchemystai.com">founders@getalchemystai.com</a> for enterprise sandbox limits. See also <Link href="/about">About</Link>, <Link href="/contact">Contact</Link>, and <Link href="/privacy">Privacy</Link>.
+        </p>
+      </Prose>
+    </PageShell>
   );
 }

@@ -1,149 +1,125 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { motion } from "framer-motion";
-// Previous hero visual, kept for reference and replaced by <ContextStack />.
-// import ContextGraphLive from "./ContextGraphLive";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { BrandButton, Figure, SpecStrip } from "@/components/brand";
+import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
 import ContextStack from "./ContextStack";
 import HeroNetwork from "./HeroNetwork";
+import { useReducedMotionSafe } from "./iso/kit";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
 export default function HeroSection() {
+  const ref = useRef<HTMLElement | null>(null);
+  const reduce = useReducedMotionSafe();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  // Scroll-out depth: copy lifts away faster than the diagram.
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.25]);
+  const figY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+
   return (
     <section
+      ref={ref}
       id="hero"
-      className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#FDFBF7]"
+      className="relative w-full min-h-[100svh] flex items-center overflow-hidden bg-[#FDFBF7]"
       aria-labelledby="hero-heading"
     >
-      {/* ── Animated network constellation ── */}
+      <div aria-hidden className="plate-grid absolute inset-0 opacity-80" />
       <HeroNetwork />
 
-      {/* ── Content ── */}
-      <div className="container relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 py-32 md:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+          {/* Left: copy */}
+          <motion.div style={reduce ? undefined : { y: copyY, opacity: copyOpacity }} className="lg:col-span-6 flex flex-col">
+            <Stagger onMount stagger={0.08}>
+              <FadeUp distance={12} className="mb-9">
+                <span className="inline-flex items-center gap-2.5 rounded-[var(--radius)] border border-[#E4D9BC] bg-white/80 px-3.5 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#57534E] shadow-[var(--shadow-soft)] backdrop-blur-sm">
+                  <span aria-hidden className="h-[7px] w-[7px] bg-[#B45309]" />
+                  Context Engine
+                </span>
+              </FadeUp>
+            </Stagger>
 
-          {/* ── Left: Copy ── */}
-          <div className="flex flex-col">
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease }}
-              className="mb-8"
-            >
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase font-semibold text-[#57534E] bg-white px-4 py-2 border border-[#E4D9BC] rounded-md shadow-[var(--shadow-soft)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B45309]" />
-                Context Engine
-              </span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
+            <RevealText
+              as="h1"
               id="hero-heading"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.06, ease }}
-              className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold tracking-[-0.035em] text-[#4A3B33] leading-[1.1] mb-6"
+              onMount
+              delay={0.1}
+              stagger={0.05}
+              className="text-[clamp(2.5rem,5.4vw,4.25rem)] font-bold tracking-[-0.04em] text-[#4A3B33] leading-[1.06] mb-8 text-balance"
             >
               The institutional memory your{" "}
               <span className="text-[#B45309] italic">AI&nbsp;agents</span>{" "}
               need to operate.
-            </motion.h1>
+            </RevealText>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.12, ease }}
-              className="text-lg text-[#57534E] leading-[1.7] mb-10 max-w-[30rem]"
-            >
-              Alchemyst AI is the context backbone that keeps every
-              agent&apos;s knowledge current, traceable and semantically
-              consistent across your entire organisation through a
-              single API.
-            </motion.p>
+            <Stagger onMount delay={0.45} stagger={0.1}>
+              <FadeUp>
+                <p className="text-[1.125rem] text-[#57534E] leading-[1.75] mb-10 max-w-[31rem]">
+                  Alchemyst AI is the context backbone that keeps every
+                  agent&apos;s knowledge current, traceable and semantically
+                  consistent across your entire organisation through a
+                  single API.
+                </p>
+              </FadeUp>
 
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.18, ease }}
-              className="flex flex-wrap gap-4 mb-12"
-            >
-              <Button
-                asChild
-                className="bg-[#B45309] hover:bg-[#A16207] text-white rounded-lg px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
-              >
-                <Link href="/platform/signin" target="_blank" rel="noopener">
+              <FadeUp className="flex flex-wrap gap-3 mb-14">
+                <BrandButton href="/platform/signin" target="_blank" rel="noopener" arrow>
                   Get API Access
-                  <svg
-                    className="ml-2"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="bg-white border border-[#E4D9BC] text-[#57534E] hover:text-[#4A3B33] hover:border-[#B45309]/50 rounded-lg px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
-              >
-                <a
-                  href="https://docs.getalchemystai.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </BrandButton>
+                <BrandButton href="https://docs.getalchemystai.com" variant="outline" external>
                   Read the Docs
-                </a>
-              </Button>
-            </motion.div>
+                </BrandButton>
+              </FadeUp>
 
-            {/* Metrics */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[#A8A29E] font-medium"
-            >
-              {[
-                { value: "< 300ms", label: "p95 latency" },
-                { value: "100%", label: "auditable" },
-                { value: "1 API", label: "zero infra" },
-              ].map((m) => (
-                <span key={m.label} className="flex items-center gap-1.5">
-                  <span className="text-[#4A3B33] text-xs font-bold tracking-tight">
-                    {m.value}
-                  </span>
-                  <span>{m.label}</span>
-                </span>
-              ))}
-            </motion.div>
-          </div>
+              <FadeUp>
+                <SpecStrip
+                  className="w-fit"
+                  items={[
+                    { value: "< 300ms", label: "p95 latency" },
+                    { value: "100%", label: "auditable" },
+                    { value: "1 API", label: "zero infra" },
+                  ]}
+                />
+              </FadeUp>
+            </Stagger>
+          </motion.div>
 
-          {/* ── Right: Visual ── */}
+          {/* Right: diagram */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease }}
-            className="relative"
+            style={reduce ? undefined : { y: figY }}
+            className="lg:col-span-6 relative"
           >
-            {/* <ContextGraphLive /> */}
-            <ContextStack />
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 28, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.3, ease }}
+            >
+              <Figure>
+                <ContextStack />
+              </Figure>
+            </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll cue: a hairline with a travelling amber segment. */}
+      <motion.div
+        aria-hidden
+        style={reduce ? undefined : { opacity: cueOpacity }}
+        className="pointer-events-none absolute bottom-8 left-1/2 hidden h-14 w-px -translate-x-1/2 overflow-hidden bg-[#E4D9BC] md:block"
+      >
+        {!reduce && (
+          <motion.span
+            className="absolute left-0 top-0 block h-5 w-px bg-[#B45309]"
+            animate={{ y: [-20, 56] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: [0.65, 0, 0.35, 1], repeatDelay: 0.4 }}
+          />
+        )}
+      </motion.div>
     </section>
   );
 }

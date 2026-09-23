@@ -1,13 +1,13 @@
 "use client";
 
-// TableOfContents - faithful port of the reference branch's TableOfContents
-// (+ TableOfContentsClient) adapted to the dark blog theme. It parses headings
-// (h1–h4) out of the rendered HTML body, injects matching IDs onto the live DOM
-// nodes inside `containerId`, provides smooth-scroll navigation with an
-// active-heading highlight (IntersectionObserver), and renders a
-// "Share this article" block beneath the list.
+// TableOfContents: parses headings (h1 to h4) out of the rendered HTML body,
+// injects matching IDs onto the live DOM nodes inside `containerId`, glides to
+// a heading on click (Lenis-aware), tracks the active heading with an
+// IntersectionObserver and marks it with a sliding amber rail. Renders the
+// "Share this article" block beneath the list unless `showShare` is false.
 
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import SocialShare from "./SocialShare";
 
 interface TOCItem {
@@ -90,93 +90,49 @@ export default function TableOfContents({
 
   const scrollToHeading = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (!el) return;
+    if (window.__lenis) window.__lenis.scrollTo(el, { offset: -110 });
+    else el.scrollIntoView({ behavior: "smooth" });
   };
 
   if (tocItems.length === 0) return null;
 
   return (
-    <div
-       style={{
-         background: "#FFFFFF",
-         border: "1px solid #E4D9BC",
-         borderRadius: "var(--radius)",
-         padding: "24px",
-       }}
-    >
-      {/* Heading with check-circle icon */}
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ height: "22px", width: "22px", marginRight: "10px", color: "#B45309" }}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-          />
-        </svg>
-        <h3
-          style={{
-            fontFamily: "var(--font-merriweather), Georgia, serif",
-            fontSize: "1.0625rem",
-            fontWeight: 600,
-             color: "#4A3B33",
-            margin: 0,
-          }}
-        >
-          Table of Contents
-        </h3>
-      </div>
+    <div className="relative rounded-[var(--radius)] border border-[#E4D9BC] bg-white p-6 shadow-[var(--shadow-soft)]">
+      <h3 className="mb-5 flex items-center gap-2.5 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#78716C]">
+        <span aria-hidden className="h-[6px] w-[6px] bg-[#B45309]" />
+        Table of Contents
+      </h3>
 
-      {/* TOC list */}
-      <nav
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "6px",
-          paddingLeft: "8px",
-           borderLeft: "1px solid #E4D9BC",
-        }}
-      >
+      <nav className="relative flex flex-col border-l border-[#F1E9DA]" aria-label="Table of contents">
         {tocItems.map(({ id, text, level }) => {
           const isActive = activeId === id;
-          const indent = level >= 3 ? 18 : level === 2 ? 8 : 0;
+          const indent = level >= 3 ? 26 : level === 2 ? 14 : 14;
           return (
             <button
               key={id}
               type="button"
               onClick={() => scrollToHeading(id)}
-              className="blog-toc-item"
-              style={{
-                display: "block",
-                width: "100%",
-                textAlign: "left",
-                fontFamily: "var(--font-merriweather), Georgia, serif",
-                fontSize: "0.8125rem",
-                lineHeight: 1.45,
-                fontWeight: level === 1 ? 600 : 400,
-                color: isActive ? "#B45309" : "#A8A29E",
-                background: isActive ? "rgba(180, 83, 9,0.10)" : "transparent",
-                border: "none",
-                 borderRadius: "var(--radius)",
-                padding: "5px 10px",
-                marginLeft: `${indent}px`,
-                cursor: "pointer",
-                transition: "color 0.2s, background 0.2s",
-              }}
+              aria-current={isActive ? "location" : undefined}
+              className={`relative block w-full py-[7px] pr-2 text-left text-[0.8125rem] leading-[1.45] transition-colors duration-200 ${
+                isActive ? "text-[#4A3B33]" : "text-[#A8A29E] hover:text-[#57534E]"
+              } ${level === 1 ? "font-bold" : ""}`}
+              style={{ paddingLeft: `${indent}px` }}
             >
+              {isActive && (
+                <motion.span
+                  layoutId={`toc-active-${containerId}`}
+                  aria-hidden
+                  className="absolute -left-px top-1 bottom-1 w-[2px] bg-[#B45309]"
+                  transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                />
+              )}
               {text}
             </button>
           );
         })}
       </nav>
 
-      {/* Share this article */}
       {showShare && <SocialShare title={title} url={url} />}
     </div>
   );

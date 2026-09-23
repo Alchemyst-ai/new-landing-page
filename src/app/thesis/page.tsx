@@ -1,23 +1,19 @@
-// /thesis - The Context Thesis, migrated off the home page into a dedicated route.
-// Standalone App Router page reusing the shared Navbar/Footer shell and the
-// project's light editorial design system (Merriweather + JetBrains Mono, amber accent,
-// paper bg, 0 radius) per design.md.
+// /thesis: The Context Thesis. Editorial long-form built on the shared page
+// templates: revealed hero, the four theses as ruled rows, the problem of
+// semantic drift (sand chapter + scroll-driven drift diagram), two pull
+// quotes and a dark closing chapter that flows into the footer.
 
-import Breadcrumbs from "@/components/Breadcrumbs";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/motion";
+import { BrandButton, Eyebrow, Figure, Section, SpecCard } from "@/components/brand";
+import SectionHeader from "@/components/brand/SectionHeader";
+import { DrawLine, FadeUp, FigureReveal, RevealText, Stagger } from "@/components/motion/primitives";
+import { PageHero, PageShell } from "@/components/page";
 import SemanticDriftFlow from "@/components/sections/SemanticDriftFlow";
 import type { Metadata } from "next";
 
-const SANS = "var(--font-merriweather), Georgia, serif";
-const MONO = "var(--font-jetbrains-mono), monospace";
-
 export const metadata: Metadata = {
-  title: "The Context Thesis - Why We're Building the Institutional Context Backbone",
+  title: "The Context Thesis: Why We're Building the Institutional Context Backbone",
   description:
-    "Alchemyst AI's thesis: intelligence without memory is performance not understanding, context is the compound interest of AI interactions, the model is not the bottleneck - the infrastructure is, and context should be a primitive, not an afterthought. Includes the problem of semantic drift and why enterprise AI fails when context rots.",
+    "Alchemyst AI's thesis: intelligence without memory is performance not understanding, context is the compound interest of AI interactions, the model is not the bottleneck but the infrastructure is, and context should be a primitive, not an afterthought. Includes the problem of semantic drift and why enterprise AI fails when context rots.",
   alternates: {
     canonical: "https://getalchemystai.com/thesis",
   },
@@ -26,17 +22,17 @@ export const metadata: Metadata = {
 const PROBLEM_CARDS = [
   {
     title: "Semantic Consensus breaks silently",
-    body: '"Revenue" means $500K to your CFO and $5M to your Sales team. Your AI agent doesn\'t know which one is right - and acts with false confidence on whichever it finds first.',
+    body: '"Revenue" means $500K to your CFO and $5M to your Sales team. Your AI agent doesn\'t know which one is right, and acts with false confidence on whichever it finds first.',
     tag: "Semantic Consensus",
   },
   {
     title: "Ontologies rot from day one",
-    body: "Every knowledge graph starts accurate. The decay begins the moment you ship it. New pricing tiers, new segments, new teams - the schema never updates itself. Agents keep acting on a version of your business that no longer exists.",
+    body: "Every knowledge graph starts accurate. The decay begins the moment you ship it. New pricing tiers, new segments, new teams: the schema never updates itself. Agents keep acting on a version of your business that no longer exists.",
     tag: "Context Rot",
   },
   {
-    title: "Tractability is the missing primitive",
-    body: "You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer - not just logs.",
+    title: "Traceability is the missing primitive",
+    body: "You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer, not just logs.",
     tag: "Auditability",
   },
   {
@@ -50,404 +46,183 @@ const THESES = [
   {
     num: "I",
     title: "Intelligence without memory is performance, not understanding.",
-    body: "A model that can answer any question but remembers nothing is a search engine, not an agent. True intelligence requires the ability to learn from experience - to carry forward what was said, decided, and discovered. An agent that forgets the moment a session ends can never run your operations; it can only react to them, one disconnected prompt at a time.",
+    body: "A model that can answer any question but remembers nothing is a search engine, not an agent. True intelligence requires the ability to learn from experience: to carry forward what was said, decided, and discovered. An agent that forgets the moment a session ends can never run your operations; it can only react to them, one disconnected prompt at a time.",
   },
   {
     num: "II",
     title: "Context is the compound interest of AI interactions.",
-    body: "Every interaction is an investment. Without context, that investment expires at the end of the session. With context, each interaction builds on the last - the agent gets smarter, more personalized, and more valuable with every use. Over time, the context backbone becomes the single most valuable asset an enterprise owns about how its own AI operates.",
+    body: "Every interaction is an investment. Without context, that investment expires at the end of the session. With context, each interaction builds on the last: the agent gets smarter, more personalized, and more valuable with every use. Over time, the context backbone becomes the single most valuable asset an enterprise owns about how its own AI operates.",
   },
   {
     num: "III",
     title: "The model is not the bottleneck. The infrastructure is.",
-    body: "GPT-4, Gemini, Claude - they're all capable enough. The gap between a capable model and a truly intelligent product is the layer that gives it memory, continuity, and awareness of the world it operates in. That layer - the institutional context backbone - is where day-to-day enterprise operations are won or lost, not in the next decimal point of benchmark accuracy.",
+    body: "GPT-4, Gemini, Claude: they're all capable enough. The gap between a capable model and a truly intelligent product is the layer that gives it memory, continuity, and awareness of the world it operates in. That layer, the institutional context backbone, is where day-to-day enterprise operations are won or lost, not in the next decimal point of benchmark accuracy.",
   },
   {
     num: "IV",
     title: "Context should be a primitive, not an afterthought.",
-    body: "Developers shouldn't have to build context management from scratch for every AI product. It should be as simple as calling an API - ingest, retrieve, and let intelligence compound. When context is a first-class primitive, every agent in an organization can draw on the same current, traceable, semantically consistent view of the business.",
+    body: "Developers shouldn't have to build context management from scratch for every AI product. It should be as simple as calling an API: ingest, retrieve, and let intelligence compound. When context is a first-class primitive, every agent in an organization can draw on the same current, traceable, semantically consistent view of the business.",
   },
 ];
 
 export default function ThesisPage() {
   return (
-    <>
-      <Navbar />
-      <main
-        style={{
-          background: "var(--paper)",
-          color: "var(--ink)",
-          minHeight: "100vh",
-          padding: "120px 0 80px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Hairline grid backdrop - consistent with home dark sections */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{
-            backgroundImage: `linear-gradient(rgba(74, 59, 51,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 59, 51,0.04) 1px, transparent 1px)`,
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-        <article className="container relative" style={{ maxWidth: "1620px", margin: "0 auto" }}>
-          <Breadcrumbs currentPath="/thesis" items={[{ name: "Thesis" }]} />
-
-          {/* Eyebrow */}
-          <p className="eyebrow" style={{ marginBottom: "20px" }}>
-            The Context Thesis
-          </p>
-
-          {/* H1 */}
-          <h1
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
-              fontWeight: 800,
-              lineHeight: 1.08,
-              letterSpacing: "-0.03em",
-              color: "var(--ink)",
-              marginBottom: "24px",
-            }}
-          >
+    <PageShell>
+      <PageHero
+        width="wide"
+        crumbs={[{ name: "Thesis" }]}
+        currentPath="/thesis"
+        eyebrow="The Context Thesis"
+        title={
+          <>
             Why we&apos;re building the{" "}
-            <span style={{ color: "#B45309", fontStyle: "italic" }}>
-              institutional context backbone
-            </span>{" "}
-            for AI.
-          </h1>
-
-          {/* Standalone lead */}
-          <p
-            style={{
-              fontFamily: SANS,
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "#57534E",
-              maxWidth: "1520px",
-              marginBottom: "12px",
-            }}
-          >
+            <span className="italic text-[#B45309]">institutional context backbone</span> for AI.
+          </>
+        }
+        lead={
+          <>
             Enterprise AI doesn&apos;t fail because the model is bad. It fails because the context
-            rots. GPT-4, Gemini, and Claude are all capable enough - the gap between a capable model
+            rots. GPT-4, Gemini, and Claude are all capable enough. The gap between a capable model
             and an agent that can actually run your day-to-day operations is the layer that keeps its
             knowledge current, traceable, and semantically consistent across your entire
             organization. That layer is the thesis below.
-          </p>
-          <p
-            style={{
-              fontFamily: MONO,
-              fontSize: "11px",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "#57534E",
-              marginBottom: "56px",
-            }}
-          >
-            Last updated: June 2026
-          </p>
+          </>
+        }
+        meta="Last updated: June 2026"
+        titleClassName="max-w-[22ch]"
+      />
 
-          {/* Four theses */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "20px",
-              marginBottom: "72px",
-            }}
-          >
-            {THESES.map((t) => (
-              <div
-                key={t.num}
-                 style={{
-                   background: "#FFFFFF",
-                   border: "1px solid #E4D9BC",
-                   borderRadius: "var(--radius)",
-                   padding: "28px",
-                 }}
-               >
-                 <div
-                   style={{
-                     fontFamily: MONO,
-                     fontWeight: 600,
-                     fontSize: "0.75rem",
-                     letterSpacing: "0.15em",
-                     color: "#B45309",
-                     marginBottom: "12px",
-                   }}
-                 >
-                   {t.num}
-                 </div>
-                 <h2
-                   style={{
-                     fontFamily: SANS,
-                     fontWeight: 700,
-                     fontSize: "1.0625rem",
-                     letterSpacing: "-0.01em",
-                     color: "var(--ink)",
-                     marginBottom: "10px",
-                     lineHeight: 1.4,
-                   }}
-                 >
-                   {t.title}
-                 </h2>
-                 <p
-                   style={{
-                     fontFamily: SANS,
-                     fontWeight: 400,
-                     fontSize: "0.9375rem",
-                     lineHeight: 1.7,
-                     color: "#78716C",
-                  }}
-                >
-                  {t.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* ── Migrated from the former Why Context section: the problem of semantic drift ── */}
-          <div style={{ marginBottom: "24px" }}>
-            <p
-              style={{
-                fontFamily: MONO,
-                fontSize: "11px",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                color: "#991B1B",
-                marginBottom: "12px",
-              }}
-            >
-              The problem we exist to solve
-            </p>
-            <h2
-              style={{
-                fontFamily: SANS,
-                fontWeight: 800,
-                fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-                lineHeight: 1.12,
-                letterSpacing: "-0.03em",
-                color: "var(--ink)",
-                maxWidth: "1520px",
-                marginBottom: "14px",
-              }}
-            >
-              Enterprise AI doesn&apos;t fail because the model is bad. It fails because the{" "}
-              <span style={{ color: "#991B1B", fontStyle: "italic" }}>context rots.</span>
-            </h2>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontWeight: 400,
-                fontSize: "1.0625rem",
-                lineHeight: 1.7,
-                 color: "#78716C",
-                 maxWidth: "640px",
-               }}
-             >
-               GPT-4, Gemini, Claude - they&apos;re all capable enough. The gap between a capable model
-               and a truly intelligent product is the layer that keeps its knowledge current,
-               traceable, and semantically consistent across your entire organization.
-             </p>
-           </div>
-
-           {/* Problem cards (dark-themed) */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "20px",
-              marginBottom: "56px",
-            }}
-          >
-            {PROBLEM_CARDS.map((card) => (
-              <div
-                key={card.title}
-                 style={{
-                   background: "#FFFFFF",
-                   border: "1px solid #E4D9BC",
-                   borderRadius: "var(--radius)",
-                   padding: "28px",
-                 }}
-               >
-                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-                   <h3
-                     style={{
-                       fontFamily: SANS,
-                       fontWeight: 700,
-                       fontSize: "1rem",
-                       letterSpacing: "-0.01em",
-                       color: "var(--ink)",
-                     }}
-                   >
-                     {card.title}
-                   </h3>
-                   <span
-                     style={{
-                       fontFamily: MONO,
-                       fontSize: "9px",
-                       letterSpacing: "0.1em",
-                       textTransform: "uppercase",
-                       color: "#991B1B",
-                       background: "rgba(153, 27, 27,0.1)",
-                       border: "1px solid rgba(153, 27, 27,0.25)",
-                       borderRadius: "var(--radius)",
-                      padding: "2px 6px",
-                      flexShrink: 0,
-                      marginLeft: "8px",
-                    }}
-                  >
-                    {card.tag}
+      {/* ── Four theses as ruled editorial rows ─────────────── */}
+      <Section tone="paper" pad="none" innerClassName="pb-24 md:pb-32">
+        <ol>
+          {THESES.map((t, i) => (
+            <li key={t.num}>
+              {i > 0 && <DrawLine />}
+              <Stagger className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-10 md:py-14">
+                <FadeUp className="md:col-span-2">
+                  <span className="block font-bold italic leading-none tracking-[-0.03em] text-[#E4C090] text-[3rem] md:text-[4rem]">
+                    {t.num}
                   </span>
-                </div>
-                <p
-                   style={{
-                     fontFamily: SANS,
-                     fontWeight: 400,
-                     fontSize: "0.9375rem",
-                     lineHeight: 1.65,
-                     color: "#78716C",
-                   }}
-                 >
-                   {card.body}
-                 </p>
-               </div>
-             ))}
-           </div>
+                </FadeUp>
+                <FadeUp className="md:col-span-4">
+                  <h2 className="text-[1.375rem] md:text-[1.5rem] font-bold leading-[1.3] tracking-[-0.02em] text-[#4A3B33] text-balance">
+                    {t.title}
+                  </h2>
+                </FadeUp>
+                <FadeUp className="md:col-span-6">
+                  <p className="text-[1rem] leading-[1.8] text-[#57534E]">{t.body}</p>
+                </FadeUp>
+              </Stagger>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-           {/* Drift propagation diagram — bespoke scroll-narrated Framer Motion sequence */}
-           <Reveal direction="up" amount={0.15}>
-             <SemanticDriftFlow />
-           </Reveal>
+      {/* ── The problem: semantic drift ──────────────────────── */}
+      <Section tone="sand" bordered>
+        <SectionHeader
+          eyebrow="The problem we exist to solve"
+          eyebrowTone="red"
+          title={
+            <>
+              Enterprise AI doesn&apos;t fail because the model is bad. It fails because the{" "}
+              <span className="italic text-[#991B1B]">context rots.</span>
+            </>
+          }
+          lead="GPT-4, Gemini, Claude: they're all capable enough. The gap between a capable model and a truly intelligent product is the layer that keeps its knowledge current, traceable, and semantically consistent across your entire organization."
+        />
 
-           {/* Zillow pull quote (migrated) */}
-           <div style={{ marginBottom: "72px", textAlign: "center" }}>
-             <blockquote
-               style={{
-                 fontFamily: SANS,
-                 fontWeight: 700,
-                 fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
-                 lineHeight: 1.4,
-                 letterSpacing: "-0.02em",
-                 color: "#4A3B33",
-                maxWidth: "1520px",
-                margin: "0 auto",
-                fontStyle: "italic",
-              }}
-            >
-              If structured data drift almost killed Zillow - imagine what{" "}
-              <span style={{ color: "#991B1B" }} className="mx-1">semantic drift</span> can do to your AI-driven
-              organization.
-            </blockquote>
-            <p
-              style={{
-                fontFamily: MONO,
-                fontSize: "11px",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#57534E",
-                marginTop: "12px",
-              }}
-            >
-              - Anuran Roy, Semantic Consensus and Semantic Drift
-            </p>
-          </div>
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20 md:mb-28">
+          {PROBLEM_CARDS.map((card) => (
+            <FadeUp key={card.title} className="flex">
+              <SpecCard className="w-full p-8 lg:p-10">
+                <span className="mb-6 inline-flex items-center gap-2 rounded-[var(--radius)] border border-[#991B1B]/20 bg-[#991B1B]/[0.06] px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#991B1B]">
+                  <span aria-hidden className="h-[5px] w-[5px] bg-[#991B1B]" />
+                  {card.tag}
+                </span>
+                <h3 className="mb-3 text-[1.25rem] font-bold leading-snug tracking-[-0.015em] text-[#4A3B33]">
+                  {card.title}
+                </h3>
+                <p className="text-[0.9375rem] leading-[1.75] text-[#57534E]">{card.body}</p>
+              </SpecCard>
+            </FadeUp>
+          ))}
+        </Stagger>
 
-          {/* Pull quote */}
-          <div style={{ textAlign: "center", marginBottom: "72px" }}>
-            <blockquote
-              style={{
-                fontFamily: SANS,
-                fontWeight: 700,
-                fontSize: "clamp(1.375rem, 2.5vw, 2rem)",
-                lineHeight: 1.35,
-                letterSpacing: "-0.03em",
-                color: "var(--ink)",
-                // maxWidth: "1520px",
-                margin: "0 auto",
-                fontStyle: "italic",
-              }}
-            >
-              The model is the engine.{" "}
-              <span style={{ color: "#B45309" }} className="mx-1">Context is the fuel.</span>
-              Without it, you&apos;re not going anywhere.
-            </blockquote>
-            <p
-              style={{
-                fontFamily: MONO,
-                fontSize: "11px",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#57534E",
-                marginTop: "16px",
-              }}
-            >
-              - Alchemyst AI, Context Thesis
-            </p>
-          </div>
+        {/* Drift propagation diagram: scroll-narrated */}
+        <FigureReveal>
+          <Figure>
+            <SemanticDriftFlow />
+          </Figure>
+        </FigureReveal>
+      </Section>
 
-          {/* Closing CTA */}
-          <div
-            style={{
-              background: "rgba(180, 83, 9,0.06)",
-              border: "1px solid rgba(180, 83, 9,0.22)",
-              borderRadius: "var(--radius)",
-              padding: "36px",
-              textAlign: "center",
-            }}
+      {/* ── Pull quotes ──────────────────────────────────────── */}
+      <Section tone="paper" bordered>
+        <div className="mx-auto max-w-[920px] text-center">
+          <RevealText
+            as="blockquote"
+            stagger={0.025}
+            className="text-[clamp(1.375rem,2.6vw,2rem)] font-bold italic leading-[1.35] tracking-[-0.02em] text-[#4A3B33] text-balance"
           >
-            <h2
-              style={{
-                fontFamily: SANS,
-                fontWeight: 700,
-                fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
-                letterSpacing: "-0.02em",
-                color: "var(--ink)",
-                marginBottom: "12px",
-              }}
+            If structured data drift almost killed Zillow, imagine what{" "}
+            <span className="text-[#991B1B]">semantic drift</span> can do to your AI-driven
+            organization.
+          </RevealText>
+          <FadeUp standalone delay={0.3}>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-[#78716C]">
+              Anuran Roy, Semantic Consensus and Semantic Drift
+            </p>
+          </FadeUp>
+
+          <DrawLine className="my-16 md:my-24 mx-auto max-w-[120px]" />
+
+          <RevealText
+            as="blockquote"
+            stagger={0.03}
+            className="text-[clamp(1.625rem,3.4vw,2.625rem)] font-bold italic leading-[1.25] tracking-[-0.03em] text-[#4A3B33] text-balance"
+          >
+            The model is the engine. <span className="text-[#B45309]">Context is the fuel.</span>{" "}
+            Without it, you&apos;re not going anywhere.
+          </RevealText>
+          <FadeUp standalone delay={0.3}>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-[#78716C]">
+              Alchemyst AI, Context Thesis
+            </p>
+          </FadeUp>
+        </div>
+      </Section>
+
+      {/* ── Closing dark chapter ─────────────────────────────── */}
+      <Section tone="dark" grid>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+          <div className="lg:col-span-8">
+            <FadeUp standalone className="mb-7">
+              <Eyebrow>The Context Thesis</Eyebrow>
+            </FadeUp>
+            <RevealText
+              as="h2"
+              className="text-[clamp(1.875rem,3.8vw,3rem)] font-bold leading-[1.12] tracking-[-0.03em] text-[#F5F5F4] text-balance mb-6"
             >
               The institutional context backbone for your enterprise.
-            </h2>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontWeight: 400,
-                fontSize: "1rem",
-                lineHeight: 1.65,
-                 color: "#78716C",
-                 maxWidth: "520px",
-                 margin: "0 auto 28px",
-              }}
-            >
-              Enable AI agents to run your day-to-day operations at enterprise scale - on a context
-              layer that stays current, traceable, and semantically consistent.
-            </p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "16px",
-              }}
-            >
-              <Button asChild variant="orange" size="brand">
-                <a href="/#get-access">
-                  Get API Access
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-              </Button>
-              <Button asChild variant="brand-outline" size="brand">
-                <a href="/">Back to home</a>
-              </Button>
-            </div>
+            </RevealText>
+            <FadeUp standalone delay={0.15}>
+              <p className="max-w-[36rem] text-[1.0625rem] leading-[1.75] text-[#A8A29E]">
+                Enable AI agents to run your day-to-day operations at enterprise scale, on a context
+                layer that stays current, traceable, and semantically consistent.
+              </p>
+            </FadeUp>
           </div>
-        </article>
-      </main>
-      <Footer />
-    </>
+          <FadeUp standalone delay={0.2} className="lg:col-span-4 flex flex-wrap gap-3 lg:justify-end">
+            <BrandButton href="/#get-access" arrow>
+              Get API Access
+            </BrandButton>
+            <BrandButton href="/" variant="outline-dark">
+              Back to home
+            </BrandButton>
+          </FadeUp>
+        </div>
+      </Section>
+    </PageShell>
   );
 }

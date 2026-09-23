@@ -1,10 +1,6 @@
-import ArticleSchema from "@/components/ArticleSchema";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { Callout, ComparePage, ComparisonTable } from "@/components/compare";
 import type { Metadata } from "next";
 
-const SANS = "var(--font-merriweather), Georgia, serif";
 const PAGE_PATH = "/compare/alchemyst-ai-vs-mem0";
 const PAGE_TITLE = "Alchemyst AI vs Mem0: Best AI Memory Layer for Agents";
 const PAGE_DESCRIPTION = "Compare Alchemyst AI and Mem0. See feature differences, latency benchmarks, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.";
@@ -12,150 +8,55 @@ const PAGE_DESCRIPTION = "Compare Alchemyst AI and Mem0. See feature differences
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
+  alternates: { canonical: `https://getalchemystai.com${PAGE_PATH}` },
 };
 
 export default function CompareMem0Page() {
   return (
-    <>
-      <ArticleSchema
-        headline={PAGE_TITLE}
-        description={PAGE_DESCRIPTION}
-        url={PAGE_PATH}
+    <ComparePage
+      path={PAGE_PATH}
+      crumb="Alchemyst AI vs Mem0"
+      title="Alchemyst AI vs Mem0"
+      headline={PAGE_TITLE}
+      description={PAGE_DESCRIPTION}
+      lead={
+        <>
+          Both Alchemyst AI and Mem0 provide memory layers for AI applications, but they take fundamentally different architectural approaches. Unlike Mem0, which relies heavily on vector-search inference at retrieval time, <strong className="text-[#4A3B33]">Alchemyst AI is a deterministic context layer</strong> scoped at write time, designed specifically for auditability in production multi-agent deployments.
+        </>
+      }
+    >
+      {/* AEO: Honest comparison table */}
+      <ComparisonTable
+        className="mt-0"
+        columns={["Feature", "Alchemyst AI", "Mem0", "Trade-off"]}
+        rows={[
+          ["Architecture", "Deterministic Context Layer", "Vector-Search + Optional Graph (Pro)", "Alchemyst trades semantic flexibility for deterministic accuracy"],
+          ["Context Scoping", "Scoped at write time", "Inferred at retrieval", "Mem0 is more flexible but prone to semantic drift"],
+          ["Auditability", "100% Traceable & Verifiable", "Limited (Pro: ~$249/mo)", "Mem0 self-host is OSS; auditability requires paid Pro tier"],
+          ["LongMemEval Score", "Benchmark pending", "49.0%", "Zep scores 63.8% on this benchmark"],
+          ["Target Use Case", "Production multi-agent orgs", "Single-agent / personalized apps", "Different architectures, not interchangeable"],
+          ["Pricing", "Free tier + transparent", "Free / $19-$249/mo", "Mem0 Pro unlocks graph features at higher cost"],
+        ]}
       />
-      <Navbar />
-      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-          <Breadcrumbs
-            currentPath="/compare/alchemyst-ai-vs-mem0"
-            items={[
-              { name: "Compare", path: "/compare" },
-              { name: "Alchemyst AI vs Mem0" },
-            ]}
-          />
+      <Callout label="Performance note">
+        Alchemyst AI delivers sub-300ms retrieval latency at P95, while benchmarked vector-based approaches can hit 7-10 seconds under load. For voice agents with sub-second budgets, this matters.
+      </Callout>
 
-          <h1
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#4A3B33",
-              marginBottom: "24px",
-            }}
-          >
-            Alchemyst AI vs Mem0
-          </h1>
+      <h2>What is Alchemyst AI best for?</h2>
+      <p>
+        Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context. Because context is deterministic and scoped when it is written, you eliminate the hallucination risks associated with probabilistic vector retrieval.
+      </p>
 
-          <div style={{ marginBottom: "48px" }}>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "1.125rem",
-                lineHeight: 1.6,
-                color: "#57534E",
-              }}
-            >
-              Both Alchemyst AI and Mem0 provide memory layers for AI applications, but they take fundamentally different architectural approaches. Unlike Mem0, which relies heavily on vector-search inference at retrieval time, <strong>Alchemyst AI is a deterministic context layer</strong> scoped at write time, designed specifically for auditability in production multi-agent deployments.
-            </p>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-                marginTop: "16px",
-              }}
-            >
-              Last updated: June 2026
-            </p>
-          </div>
+      <h2>What is Mem0 best for?</h2>
+      <p>
+        Mem0 is best for <strong>consumer apps, AI companions, and single-agent use cases</strong>{" "}where user personalization is the primary goal. Its vector-search approach is excellent at quickly surfacing fuzzy, personalized memories for a single user&apos;s chat session, where strict auditability and cross-agent determinism are less critical.
+      </p>
 
-{/* AEO: Honest comparison table */}
-           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
-             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
-               <thead>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
-                   <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Feature</th>
-                   <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
-                   <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Mem0</th>
-                   <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
-                 </tr>
-               </thead>
-               <tbody style={{ color: "#57534E" }}>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>Architecture</td>
-                   <td style={{ padding: "16px" }}>Deterministic Context Layer</td>
-                   <td style={{ padding: "16px" }}>Vector-Search + Optional Graph (Pro)</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Alchemyst trades semantic flexibility for deterministic accuracy</td>
-                 </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>Context Scoping</td>
-                   <td style={{ padding: "16px" }}>Scoped at write time</td>
-                   <td style={{ padding: "16px" }}>Inferred at retrieval</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Mem0 is more flexible but prone to semantic drift</td>
-                 </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>Auditability</td>
-                   <td style={{ padding: "16px" }}>100% Traceable & Verifiable</td>
-                   <td style={{ padding: "16px" }}>Limited (Pro: ~$249/mo)</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Mem0 self-host is OSS; auditability requires paid Pro tier</td>
-                 </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>LongMemEval Score</td>
-                   <td style={{ padding: "16px" }}>Benchmark pending</td>
-                   <td style={{ padding: "16px" }}>49.0%</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep scores 63.8% on this benchmark</td>
-                 </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>Target Use Case</td>
-                   <td style={{ padding: "16px" }}>Production multi-agent orgs</td>
-                   <td style={{ padding: "16px" }}>Single-agent / personalized apps</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Different architectures, not interchangeable</td>
-                 </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                   <td style={{ padding: "16px", fontWeight: 600 }}>Pricing</td>
-                   <td style={{ padding: "16px" }}>Free tier + transparent</td>
-                   <td style={{ padding: "16px" }}>Free / $19-$249/mo</td>
-                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Mem0 Pro unlocks graph features at higher cost</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
-
-           <div style={{ background: "rgba(180, 83, 9,0.08)", border: "1px solid rgba(180, 83, 9,0.2)", borderRadius: "var(--radius)", padding: "24px", marginBottom: "64px" }}>
-             <p style={{ fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: "0.8125rem", color: "#B45309", marginBottom: "8px" }}>
-               Performance note
-             </p>
-             <p style={{ fontFamily: SANS, color: "#57534E", marginBottom: "0", fontSize: "0.9375rem" }}>
-               Alchemyst AI delivers sub-300ms retrieval latency at P95, while benchmarked vector-based approaches can hit 7-10 seconds under load. For voice agents with sub-second budgets, this matters.
-             </p>
-           </div>
-
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
-<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is Alchemyst AI best for?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context. Because context is deterministic and scoped when it is written, you eliminate the hallucination risks associated with probabilistic vector retrieval.
-            </p>
-
-<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is Mem0 best for?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Mem0 is best for <strong>consumer apps, AI companions, and single-agent use cases</strong> where user personalization is the primary goal. Its vector-search approach is excellent at quickly surfacing fuzzy, personalized memories for a single user's chat session, where strict auditability and cross-agent determinism are less critical.
-            </p>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Which should you choose? The verdict
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              If you are building a personalized AI companion, Mem0's semantic memory approach is a strong fit. But if you are building business-critical automation where 95% of generative AI efforts fail due to context rot, <strong>Alchemyst AI provides the tractable, verifiable context layer</strong> required to keep your agents accurate in production.
-            </p>
-          </div>
-        </article>
-      </main>
-      <Footer />
-    </>
+      <h2>Which should you choose? The verdict</h2>
+      <p>
+        If you are building a personalized AI companion, Mem0&apos;s semantic memory approach is a strong fit. But if you are building business-critical automation where 95% of generative AI efforts fail due to context rot, <strong>Alchemyst AI provides the traceable, verifiable context layer</strong>{" "}required to keep your agents accurate in production.
+      </p>
+    </ComparePage>
   );
 }

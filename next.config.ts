@@ -53,6 +53,12 @@ const nextConfig: NextConfig = {
     STRAPI_BLOG_CONTENT_TYPE:
       process.env.STRAPI_BLOG_CONTENT_TYPE ?? "articles",
   },
+  async redirects() {
+    return [
+      // Single canonical About page.
+      { source: "/about-us", destination: "/about", permanent: true },
+    ];
+  },
   async rewrites() {
     return [
       {

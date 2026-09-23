@@ -1,177 +1,87 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import ArticleSchema from "@/components/ArticleSchema";
+import { ComparePage, ComparisonTable } from "@/components/compare";
 import type { Metadata } from "next";
-
-const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/langchain-memory-vs-alchemyst";
 const PAGE_TITLE = "LangChain Memory vs Alchemyst: Framework Memory vs Context Layer";
+const PAGE_DESCRIPTION = "LangChain deprecated BufferMemory in favor of LangGraph's memory patterns. Alchemyst provides a vendor-agnostic context layer. Compare memory architectures.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
-  description:
-    "LangChain deprecated BufferMemory in favor of LangGraph's memory patterns. Alchemyst provides a vendor-agnostic context layer. Compare memory architectures.",
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: `https://getalchemystai.com${PAGE_PATH}` },
 };
 
 export default function LangChainMemoryVsAlchemystPage() {
   return (
-    <>
-      <ArticleSchema
-        headline={PAGE_TITLE}
-        description="LangChain deprecated BufferMemory in favor of LangGraph's memory patterns. Alchemyst provides a vendor-agnostic context layer. Compare memory architectures."
-        url="/compare/langchain-memory-vs-alchemyst"
+    <ComparePage
+      path={PAGE_PATH}
+      crumb={PAGE_TITLE}
+      title={PAGE_TITLE}
+      headline={PAGE_TITLE}
+      description={PAGE_DESCRIPTION}
+      lead={
+        <>
+          LangChain deprecated BufferMemory in 2026, pushing developers toward LangGraph&apos;s persistent store patterns. Alchemyst AI provides a vendor-agnostic context layer that works with any framework. Both solve memory, but at different layers of the stack.
+        </>
+      }
+    >
+      <h2>What changed in LangChain memory in 2026?</h2>
+      <p>In 2026, LangChain deprecated several memory classes:</p>
+      <ul>
+        <li><strong>BufferMemory</strong>: storing raw conversation history.</li>
+        <li><strong>ConversationBufferMemory</strong>: stateful chat history.</li>
+        <li><strong>VectorStoreRetrieverMemory</strong>: vector-based retrieval.</li>
+      </ul>
+      <p>
+        The official memory path now runs through <strong>LangGraph&apos;s checkpointer-based short_term + long_term patterns</strong>. This means new infrastructure requirements for teams already invested in LangChain.
+      </p>
+
+      <h2>What is LangMem&apos;s approach?</h2>
+      <p>
+        LangMem provides episodic, semantic, and procedural memory primitives built into LangGraph&apos;s persistent store. It requires no new infrastructure for teams already on LangGraph, but:
+      </p>
+      <ul>
+        <li>Semantic memory is just vector retrieval, prone to drift.</li>
+        <li>No built-in semantic consensus or ontology enforcement.</li>
+        <li>Framework-locked: cannot be used outside LangGraph.</li>
+      </ul>
+
+      <h2>What is Alchemyst&apos;s approach?</h2>
+      <p>Alchemyst AI provides a context layer separate from framework:</p>
+      <ul>
+        <li><strong>Framework agnostic:</strong> Works with LangGraph, CrewAI, Vercel AI, Mastra, OpenAI SDK.</li>
+        <li><strong>Deterministic context:</strong> Scanned at write time, not inferred at retrieval.</li>
+        <li><strong>Semantic consensus:</strong> Prevent ambiguous definitions before they reach agents.</li>
+        <li><strong>Context traces:</strong> Audit every decision back to its source.</li>
+      </ul>
+
+      <h2>Migration implications</h2>
+      <p>
+        If you&apos;re on LangChain and need to upgrade your memory stack, you face a choice:
+      </p>
+      <ol>
+        <li><strong>Stay in LangGraph:</strong> Use LangMem for lowest friction. Accept its limitations on semantic drift.</li>
+        <li><strong>Add Alchemyst:</strong> Keep LangGraph for orchestration, use Alchemyst for reliable context. Adds a service but prevents hallucinations.</li>
+      </ol>
+
+      <h2>When to choose which?</h2>
+      <ComparisonTable
+        columns={["Consideration", "Alchemyst AI", "LangMem"]}
+        rows={[
+          ["Framework integration", "✅ Any framework", "✅ LangGraph native"],
+          ["Semantic consensus", "✅ Built-in", "⚠️ Not designed for this"],
+          ["New infrastructure", "✅ Zero-infra API", "✅ Uses existing store"],
+          ["Audit trails", "✅ Retrieval-level", "⚠️ Checkpointer logs"],
+        ]}
       />
-      <Navbar />
-      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-          <Breadcrumbs
-            currentPath={PAGE_PATH}
-            items={[
-              { name: "Compare", path: "/compare" },
-              { name: PAGE_TITLE },
-            ]}
-          />
-
-          <h1
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#4A3B33",
-              marginBottom: "24px",
-            }}
-          >
-            {PAGE_TITLE}
-          </h1>
-
-          <div style={{ marginBottom: "48px" }}>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "1.125rem",
-                lineHeight: 1.6,
-                color: "#57534E",
-              }}
-            >
-              LangChain deprecated BufferMemory in 2026, pushing developers toward LangGraph's persistent store patterns. Alchemyst AI provides a vendor-agnostic context layer that works with any framework. Both solve memory, but at different layers of the stack.
-            </p>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-                marginTop: "16px",
-              }}
-            >
-              Last updated: June 2026
-            </p>
-          </div>
-
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What changed in LangChain memory in 2026?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              In 2026, LangChain deprecated several memory classes:
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}><strong>BufferMemory</strong> — storing raw conversation history.</li>
-              <li style={{ marginBottom: "8px" }}><strong>ConversationBufferMemory</strong> — stateful chat history.</li>
-              <li style={{ marginBottom: "8px" }}><strong>VectorStoreRetrieverMemory</strong> — vector-based retrieval.</li>
-            </ul>
-            <p style={{ marginBottom: "24px" }}>
-              The official memory path now runs through <strong>LangGraph's checkpointer-based short_term + long_term patterns</strong>. This means new infrastructure requirements for teams already invested in LangChain.
-            </p>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is LangMem's approach?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              LangMem provides episodic, semantic, and procedural memory primitives built into LangGraph's persistent store. It requires no new infrastructure for teams already on LangGraph, but:
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}>Semantic memory is just vector retrieval—prone to drift.</li>
-              <li style={{ marginBottom: "8px" }}>No built-in semantic consensus or ontology enforcement.</li>
-              <li style={{ marginBottom: "8px" }}>Framework-locked—cannot be used outside LangGraph.</li>
-            </ul>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is Alchemyst's approach?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Alchemyst AI provides a context layer separate from framework:
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}><strong>Framework agnostic:</strong> Works with LangGraph, CrewAI, Vercel AI, Mastra, OpenAI SDK.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Deterministic context:</strong> Scanned at write time, not inferred at retrieval.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Semantic consensus:</strong> Prevent ambiguous definitions before they reach agents.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Context traces:</strong> Audit every decision back to its source.</li>
-            </ul>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Migration implications
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              If you're on LangChain and need to upgrade your memory stack, you face a choice:
-            </p>
-            <ol style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "decimal" }}>
-              <li style={{ marginBottom: "8px" }}><strong>Stay in LangGraph:</strong> Use LangMem for lowest friction. Accept its limitations on semantic drift.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Add Alchemyst:</strong> Keep LangGraph for orchestration, use Alchemyst for reliable context. Adds a service but prevents hallucinations.</li>
-            </ol>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              When to choose which?
-            </h2>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#4A3B33" }}>Consideration</th>
-                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#4A3B33" }}>LangMem</th>
-                </tr>
-              </thead>
-              <tbody style={{ color: "#57534E" }}>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Framework integration</td>
-                  <td style={{ padding: "12px" }}>✅ Any framework</td>
-                  <td style={{ padding: "12px" }}>✅ LangGraph native</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Semantic consensus</td>
-                  <td style={{ padding: "12px" }}>✅ Built-in</td>
-                  <td style={{ padding: "12px" }}>⚠️ Not designed for this</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>New infrastructure</td>
-                  <td style={{ padding: "12px" }}>✅ Zero-infra API</td>
-                  <td style={{ padding: "12px" }}>✅ Uses existing store</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Audit trails</td>
-                  <td style={{ padding: "12px" }}>✅ Retrieval-level</td>
-                  <td style={{ padding: "12px" }}>⚠️ Checkpointer logs</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              The pragmatic recommendation
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              If you are building agents on LangGraph and need to migrate off deprecated BufferMemory, start with LangMem. It solves the immediate problem with minimal friction.
-            </p>
-            <p style={{ marginBottom: "24px" }}>
-              As your agents grow and semantic drift becomes a real issue—especially for customer-facing or compliance-sensitive applications—layer in Alchemyst AI for institutional-grade context management. The two can coexist: LangGraph orchestrates, Alchemyst provides reliable memory.
-            </p>
-          </div>
-        </article>
-      </main>
-      <Footer />
-    </>
+      <h2>The pragmatic recommendation</h2>
+      <p>
+        If you are building agents on LangGraph and need to migrate off deprecated BufferMemory, start with LangMem. It solves the immediate problem with minimal friction.
+      </p>
+      <p>
+        As your agents grow and semantic drift becomes a real issue, especially for customer-facing or compliance-sensitive applications, layer in Alchemyst AI for institutional-grade context management. The two can coexist: LangGraph orchestrates, Alchemyst provides reliable memory.
+      </p>
+    </ComparePage>
   );
 }

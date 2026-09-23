@@ -437,7 +437,7 @@ Enterprise AI doesn't fail because the model is bad. It fails because the **cont
 
 - **Semantic Consensus breaks silently.** "Revenue" means $500K to your CFO and $5M to your Sales team. Your AI agent doesn't know which one is right - and acts with false confidence on whichever it finds first.
 - **Ontologies rot from day one.** Every knowledge graph starts accurate. The decay begins the moment you ship it. New pricing tiers, new segments, new teams - the schema never updates itself. Agents keep acting on a version of your business that no longer exists.
-- **Tractability is the missing primitive.** You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer - not just logs.
+- **Traceability is the missing primitive.** You can't audit what you can't trace. Without knowing exactly what context an agent had when it made a decision, debugging failures is guesswork. Auditability across agentic tasks requires a traceable context layer - not just logs.
 - **Manual FDE teams don't scale.** Palantir solves this with entire teams of forward-deployed engineers embedded in every client. That works at $50M+ contracts. It doesn't work for the rest of the market.
 
 > "If structured data drift almost killed Zillow - imagine what **semantic drift** can do to your AI-driven organization."

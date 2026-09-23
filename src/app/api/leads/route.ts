@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     {
       ok: true,
       message:
-        "Thanks — our team replies within 2 business days. For instant access, sign up at https://getalchemystai.com/platform/signin.",
+        "Thanks, our team replies within 2 business days. For instant access, sign up at https://getalchemystai.com/platform/signin.",
       contact: "founders@getalchemystai.com",
     },
     { status: 201 }

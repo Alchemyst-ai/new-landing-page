@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/components/sections/iso/kit";
 
 /* ── Layout constants (viewBox 760 × 600) ─────────────────────────────────── */
 
@@ -161,7 +162,7 @@ const MONO = "JetBrains Mono, monospace";
 
 export default function ContextGraphLive() {
   const [hovered, setHovered] = useState<NodeKey | "core" | null>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   const edges = useMemo(
     () =>

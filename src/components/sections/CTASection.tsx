@@ -1,8 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
+import { Arrow, Eyebrow, Ticks } from "@/components/brand";
+import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
+import { useReducedMotionSafe } from "./iso/kit";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -10,7 +12,7 @@ export default function CTASection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,130 +25,118 @@ export default function CTASection() {
   return (
     <section
       id="get-access"
-      className="relative w-full bg-[#F8F4EE] overflow-hidden border-t border-[#E4D9BC]"
+      data-theme="dark"
+      className="relative w-full overflow-hidden bg-[#1C1917] text-[#F5F5F4]"
       aria-labelledby="cta-heading"
     >
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-8 py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start"
-        >
-          {/* ── Left: Copy ── */}
-          <div>
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase font-semibold text-[#A16207] bg-[#A16207]/8 px-4 py-1 border border-[#A16207]/20 mb-8 rounded-md">
-              Get Started
-            </span>
+      <div aria-hidden className="plate-grid absolute inset-0" />
+      <div className="relative mx-auto max-w-[1200px] px-6 lg:px-8 pt-16 md:pt-20 pb-24 md:pb-32">
+        <div className="h-px w-full bg-white/[0.08] mb-16 md:mb-20" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+          {/* Left: copy */}
+          <div className="lg:col-span-7">
+            <FadeUp standalone className="mb-7">
+              <Eyebrow>Get Started</Eyebrow>
+            </FadeUp>
 
-            <h2
+            <RevealText
+              as="h2"
               id="cta-heading"
-              className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-[-0.025em] text-[#4A3B33] leading-[1.15] mb-6"
+              className="text-[clamp(2rem,4.2vw,3.25rem)] font-bold tracking-[-0.03em] leading-[1.1] text-[#F5F5F4] mb-7 text-balance"
             >
               Give your AI agents the{" "}
-              <span className="italic text-[#B45309]">
-                memory they deserve.
-              </span>
-            </h2>
+              <span className="italic text-[#E4C090]">memory they deserve.</span>
+            </RevealText>
 
-            <p className="text-[1.0625rem] text-[#57534E] leading-[1.7] mb-10 max-w-[28rem]">
-              Join developers building the next generation of AI products
-              with persistent, auditable context. Free tier available — no
-              credit card required.
-            </p>
+            <FadeUp standalone delay={0.15}>
+              <p className="text-[1.0625rem] text-[#A8A29E] leading-[1.75] mb-10 max-w-[30rem]">
+                Join developers building the next generation of AI products
+                with persistent, auditable context. Free tier available. No
+                credit card required.
+              </p>
+            </FadeUp>
 
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[#A8A29E] font-medium">
-              {[
-                "Free tier",
-                "REST + Python & Node SDKs",
-                "99.9% uptime SLA",
-                "SOC 2 in progress",
-              ].map((item) => (
-                <span key={item} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A16207]" />
-                  <span>{item}</span>
-                </span>
+            <Stagger as="ul" delay={0.2} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 max-w-[30rem]">
+              {["Free tier", "REST + Python & Node SDKs", "99.9% uptime SLA", "SOC 2 in progress"].map((item) => (
+                <FadeUp
+                  as="li"
+                  key={item}
+                  distance={10}
+                  className="flex items-center gap-3 font-mono text-[11px] tracking-[0.12em] uppercase text-[#D6D3D1]"
+                >
+                  <span aria-hidden className="h-[6px] w-[6px] bg-[#E4C090]" />
+                  {item}
+                </FadeUp>
               ))}
-            </div>
+            </Stagger>
           </div>
 
-          {/* ── Right: Form ── */}
-          <div className="bg-white border border-[#E4D9BC] p-8 lg:p-10 rounded-lg shadow-[var(--shadow-soft)]">
-            {!submitted ? (
-              <>
-                <h3 className="text-lg font-bold text-[#4A3B33] mb-2">
-                  Request API Access
-                </h3>
-                <p className="text-sm text-[#78716C] mb-8">
-                  Enter your email and we&apos;ll set up your workspace.
-                </p>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    className="w-full bg-white border border-[#E4D9BC] text-[#4A3B33] placeholder-[#A8A29E] text-sm px-4 py-3 rounded-md outline-none focus:border-[#B45309] focus:ring-1 focus:ring-[#B45309] transition-colors"
-                  />
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-[#B45309] hover:bg-[#A16207] text-white px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
-                  >
-                    {loading ? "Requesting..." : "Get API Access"}
-                  </Button>
-                </form>
-                <div className="mt-6 pt-6 border-t border-[#E4D9BC] flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://docs.getalchemystai.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-[#57534E] hover:text-[#4A3B33] transition-colors"
-                  >
-                    Read the Docs →
-                  </a>
-                  <a
-                    href="/thesis"
-                    className="text-sm font-semibold text-[#57534E] hover:text-[#4A3B33] transition-colors"
-                  >
-                    Read the Thesis →
-                  </a>
-                </div>
-              </>
-            ) : (
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease }}
-                className="flex flex-col items-center text-center py-8"
-              >
-                <div className="w-10 h-10 bg-[#F1E9DA] border border-[#E4C090] rounded-full flex items-center justify-center mb-4">
-                  <svg
-                    className="w-5 h-5 text-[#B45309]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
+          {/* Right: form card */}
+          <FadeUp standalone delay={0.1} className="lg:col-span-5">
+            <div className="group relative rounded-[var(--radius)] border border-white/[0.09] bg-[#232020]/90 p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)]">
+              <Ticks />
+              {!submitted ? (
+                <>
+                  <h3 className="text-lg font-bold text-[#F5F5F4] mb-2">Request API Access</h3>
+                  <p className="text-sm text-[#A8A29E] mb-8">
+                    Enter your email and we&apos;ll set up your workspace.
+                  </p>
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                    <label htmlFor="cta-email" className="sr-only">
+                      Email
+                    </label>
+                    <input
+                      id="cta-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                      className="w-full rounded-[var(--radius)] border border-white/[0.1] bg-[#1C1917] px-4 py-3.5 text-sm text-[#F5F5F4] placeholder-[#78716C] outline-none transition-[border-color,box-shadow] duration-200 focus:border-[#E4C090]/70 focus:shadow-[0_0_0_3px_rgba(228,192,144,0.12)]"
                     />
-                  </svg>
-                </div>
-                <p className="text-base font-semibold text-[#4A3B33] mb-1">
-                  You&apos;re on the list.
-                </p>
-                <p className="text-sm text-[#78716C]">
-                  We&apos;ll be in touch shortly.
-                </p>
-              </motion.div>
-            )}
-          </div>
-        </motion.div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-[var(--radius)] bg-[#B45309] px-7 py-3.5 text-sm font-bold tracking-wide text-white shadow-[var(--shadow-soft)] transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-[#A16207] disabled:opacity-70"
+                    >
+                      {loading ? "Requesting..." : "Get API Access"}
+                      {!loading && <Arrow />}
+                    </button>
+                  </form>
+                  <div className="mt-7 flex flex-col gap-3 border-t border-white/[0.08] pt-6 sm:flex-row sm:gap-6">
+                    <a
+                      href="https://docs.getalchemystai.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-brand text-sm font-bold w-fit"
+                    >
+                      Read the Docs →
+                    </a>
+                    <a href="/thesis" className="link-brand text-sm font-bold w-fit">
+                      Read the Thesis →
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease }}
+                  className="flex flex-col items-center text-center py-8"
+                  role="status"
+                >
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#E4C090]/40 bg-[#E4C090]/10">
+                    <svg className="h-5 w-5 text-[#E4C090]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-base font-bold text-[#F5F5F4] mb-1">You&apos;re on the list.</p>
+                  <p className="text-sm text-[#A8A29E]">We&apos;ll be in touch shortly.</p>
+                </motion.div>
+              )}
+            </div>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );

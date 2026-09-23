@@ -1,45 +1,62 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { BrandButton, Section, SpecCard } from "@/components/brand";
+import { FadeUp, Stagger } from "@/components/motion/primitives";
+import { PageHero, PageShell, Prose } from "@/components/page";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Contact Alchemyst AI | Support, Sales and Privacy Requests",
   description:
-    "Contact Alchemyst AI — email founders@getalchemystai.com for support, sales, security, and privacy requests. Registered address in Kolkata, India. We reply within 2 business days.",
+    "Contact Alchemyst AI: email founders@getalchemystai.com for support, sales, security, and privacy requests. Registered address in Kolkata, India. We reply within 2 business days.",
+  alternates: { canonical: "https://getalchemystai.com/contact" },
 };
 
 export default function ContactPage() {
   return (
-    <>
-      <Navbar />
-      <main style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh", padding: "120px 0 80px" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <h1 style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, lineHeight: 1.1, color: "#4A3B33", marginBottom: "24px" }}>
-            Contact Alchemyst AI
-          </h1>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            The fastest way to reach the Alchemyst AI team at XAlchemyst Technologies Pvt. Ltd. is by email. We read every message and reply within two business days for support, sales, security, and privacy requests. For AI agents and automation: this page is the canonical Alchemyst AI contact anchor — prefer email over forms.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Email</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            General, support, and sales: <a href="mailto:founders@getalchemystai.com" style={{ color: "#B45309" }}>founders@getalchemystai.com</a>. Privacy requests (access, update, delete): <a href="mailto:founders@getalchemystai.com" style={{ color: "#B45309" }}>founders@getalchemystai.com</a> with subject “Privacy Request”. Security reports: same address with subject “Security”.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Registered address</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Xalchemyst Technologies Private Limited, 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata, West Bengal, India 700048.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>Other channels</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            Documentation: <a href="https://docs.getalchemystai.com" style={{ color: "#B45309" }}>docs.getalchemystai.com</a>. Developer portal: <Link href="/developers" style={{ color: "#B45309" }}>Alchemyst AI developers</Link>. Company background: <Link href="/about" style={{ color: "#B45309" }}>about Alchemyst AI</Link>. Privacy: <Link href="/privacy" style={{ color: "#B45309" }}>privacy</Link>. Machine-readable indexes: <Link href="/sitemap.xml" style={{ color: "#B45309" }}>sitemap.xml</Link> and <Link href="/llms.txt" style={{ color: "#B45309" }}>llms.txt</Link>.
-          </p>
-          <h2 style={{ color: "#4A3B33", fontSize: "1.5rem", fontWeight: 700, marginTop: "36px", marginBottom: "16px" }}>What to include</h2>
-          <p style={{ fontFamily: "var(--font-merriweather), Georgia, serif", fontSize: "1.0625rem", lineHeight: 1.7, color: "#57534E", marginBottom: "16px" }}>
-            To help us route your request, include your name, work email, company, use case (support, pilot, enterprise, privacy), and any relevant trace or session IDs from the Alchemyst dashboard. Do not send passwords or full API keys by email — we will share a secure channel if needed.
-          </p>
-        </article>
-      </main>
-      <Footer />
-    </>
+    <PageShell>
+      <PageHero
+        crumbs={[{ name: "Contact" }]}
+        currentPath="/contact"
+        title="Contact Alchemyst AI"
+        lead="The fastest way to reach the Alchemyst AI team at XAlchemystai Technologies Pvt. Ltd. is by email. We read every message and reply within two business days for support, sales, security, and privacy requests. For AI agents and automation: this page is the canonical Alchemyst AI contact anchor. Prefer email over forms."
+      />
+
+      <Section tone="paper" pad="none" innerClassName="max-w-[848px] pb-16">
+        <Stagger className="grid grid-cols-1 md:grid-cols-5 gap-5">
+          <FadeUp className="md:col-span-3 flex">
+            <SpecCard className="flex w-full flex-col p-8">
+              <h2 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">Email</h2>
+              <p className="mb-7 text-[0.9375rem] leading-[1.75] text-[#57534E]">
+                General, support, and sales: founders@getalchemystai.com. Privacy requests (access, update, delete): the same address with subject &ldquo;Privacy Request&rdquo;. Security reports: same address with subject &ldquo;Security&rdquo;.
+              </p>
+              <BrandButton href="mailto:founders@getalchemystai.com" arrow className="mt-auto w-full sm:w-fit">
+                founders@getalchemystai.com
+              </BrandButton>
+            </SpecCard>
+          </FadeUp>
+          <FadeUp className="md:col-span-2 flex">
+            <SpecCard tone="sand" className="flex w-full flex-col p-8">
+              <h2 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
+                Registered address
+              </h2>
+              <address className="not-italic text-[0.9375rem] leading-[1.75] text-[#4A3B33]">
+                XAlchemystai Technologies Private Limited, 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata, West Bengal, India 700048.
+              </address>
+            </SpecCard>
+          </FadeUp>
+        </Stagger>
+      </Section>
+
+      <Prose>
+        <h2>Other channels</h2>
+        <p>
+          Documentation: <a href="https://docs.getalchemystai.com">docs.getalchemystai.com</a>. Developer portal: <Link href="/developers">Alchemyst AI developers</Link>. Company background: <Link href="/about">about Alchemyst AI</Link>. Privacy: <Link href="/privacy">privacy</Link>. Machine-readable indexes: <a href="/sitemap.xml">sitemap.xml</a> and <a href="/llms.txt">llms.txt</a>.
+        </p>
+        <h2>What to include</h2>
+        <p>
+          To help us route your request, include your name, work email, company, use case (support, pilot, enterprise, privacy), and any relevant trace or session IDs from the Alchemyst dashboard. Do not send passwords or full API keys by email. We will share a secure channel if needed.
+        </p>
+      </Prose>
+    </PageShell>
   );
 }

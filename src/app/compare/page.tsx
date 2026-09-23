@@ -1,16 +1,14 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { Reveal } from "@/components/motion";
+import { Arrow, Section, Ticks } from "@/components/brand";
+import { FadeUp } from "@/components/motion/primitives";
+import { PageHero, PageShell } from "@/components/page";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const SANS = "var(--font-merriweather), Georgia, serif";
-
 export const metadata: Metadata = {
   title: "Compare Alchemyst AI | Context Layer vs Memory, Ontology & Search",
+  alternates: { canonical: "https://getalchemystai.com/compare" },
   description:
-    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory - and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
+    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory, and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
 };
 
 const COMPARISONS = [
@@ -26,7 +24,7 @@ const COMPARISONS = [
     href: "/compare/alchemyst-ai-vs-zep",
     category: "AI Memory",
     blurb:
-      "Sovereign, model-agnostic context infrastructure versus Zep's conversational memory service - and what that means for traceability and semantic consensus at scale.",
+      "Sovereign, model-agnostic context infrastructure versus Zep's conversational memory service, and what that means for traceability and semantic consensus at scale.",
   },
   {
     competitor: "Palantir",
@@ -47,7 +45,7 @@ const COMPARISONS = [
     href: "/compare/alchemyst-ai-vs-snowflake-cortex",
     category: "Data & Governance",
     blurb:
-      "Cross-system, self-updating consensus versus warehouse-bounded, hand-authored semantic views. Context that spans every system your agents touch - not just the one warehouse.",
+      "Cross-system, self-updating consensus versus warehouse-bounded, hand-authored semantic views. Context that spans every system your agents touch, not just the one warehouse.",
   },
   {
     competitor: "Glean",
@@ -61,7 +59,7 @@ const COMPARISONS = [
     href: "/compare/memvid-vs-alchemyst-agent-memory",
     category: "AI Memory",
     blurb:
-      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases - edge/offline vs enterprise.",
+      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases: edge/offline vs enterprise.",
   },
   {
     competitor: "SuperMemory",
@@ -130,131 +128,42 @@ const COMPARISONS = [
 
 export default function CompareIndexPage() {
   return (
-    <>
-      <Navbar />
-      <main
-        style={{
-          background: "var(--paper)",
-          color: "var(--ink)",
-          minHeight: "100vh",
-          padding: "120px 0 80px",
-        }}
-      >
-        <div className="container" style={{ maxWidth: "70vw", margin: "0 auto" }}>
-          <Breadcrumbs
-            currentPath="/compare"
-            items={[{ name: "Compare" }]}
-          />
+    <PageShell cta>
+      <PageHero
+        width="wide"
+        crumbs={[{ name: "Compare" }]}
+        currentPath="/compare"
+        eyebrow="Honest comparisons"
+        title="How Alchemyst compares"
+        lead="A context layer is a different primitive from memory, ontology, data governance or enterprise search. These pages lay out, fairly and with the strengths of each platform acknowledged, where a sovereign, cross-system, deterministic context layer fits, and where the other tools genuinely shine."
+      />
 
-          <Reveal direction="up" amount={0.2}>
-            <header style={{ maxWidth: "760px", marginBottom: "56px" }}>
-              <div style={{ display: "flex", marginBottom: "16px" }}>
-                <span className="caption-eyebrow">Honest comparisons</span>
-              </div>
-              <h1
-                style={{
-                  fontFamily: SANS,
-                  fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                  fontWeight: 800,
-                  lineHeight: 1.1,
-                  color: "#4A3B33",
-                  margin: "16px 0 20px",
-                  letterSpacing: "-0.03em",
-                }}
+      <Section tone="sand" bordered>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {COMPARISONS.map((c, i) => (
+            <FadeUp standalone key={c.href} delay={(i % 3) * 0.06} className="h-full">
+              <Link
+                href={c.href}
+                className="group group/btn relative flex h-full flex-col rounded-[var(--radius)] border border-[#E4D9BC] bg-white p-7 shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-[3px] hover:border-[#E4C090] hover:shadow-[var(--shadow-soft-lg)]"
               >
-                How Alchemyst compares
-              </h1>
-              <p
-                style={{
-                  fontFamily: SANS,
-                  fontSize: "1.0625rem",
-                  lineHeight: 1.7,
-                  color: "#78716C",
-                }}
-              >
-                A context layer is a different primitive from memory, ontology, data
-                governance or enterprise search. These pages lay out - fairly, with
-                the strengths of each platform acknowledged - where a sovereign,
-                cross-system, deterministic context layer fits, and where the other
-                tools genuinely shine.
-              </p>
-            </header>
-          </Reveal>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-              gap: "20px",
-            }}
-          >
-            {COMPARISONS.map((c, i) => (
-              <Reveal key={c.href} direction="up" delay={i * 0.04} amount={0.1}>
-                <Link
-                  href={c.href}
-                  className="compare-card"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    background: "#FFFFFF",
-                    border: "1px solid #E4D9BC",
-                    borderRadius: "var(--radius)",
-                    padding: "28px",
-                    textDecoration: "none",
-                    height: "100%",
-                  }}
-                >
-                  <span
-                    className="caption-meta"
-                    style={{
-                      color: "#A16207",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {c.category}
-                  </span>
-                  <h2
-                    style={{
-                      fontFamily: SANS,
-                      fontSize: "1.35rem",
-                      fontWeight: 700,
-                      color: "#4A3B33",
-                      margin: "0 0 10px",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    Alchemyst <span style={{ color: "#B45309" }}>vs {c.competitor}</span>
-                  </h2>
-                  <p
-                    style={{
-                      fontFamily: SANS,
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.6,
-                      color: "#78716C",
-                      margin: 0,
-                      flex: 1,
-                    }}
-                  >
-                    {c.blurb}
-                  </p>
-                  <span
-                    style={{
-                      fontFamily: SANS,
-                      fontSize: "0.875rem",
-                      fontWeight: 600,
-                      color: "#B45309",
-                      marginTop: "20px",
-                    }}
-                  >
-                    Read the comparison →
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+                <Ticks />
+                <span className="mb-5 inline-flex items-center gap-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#A16207]">
+                  <span aria-hidden className="h-[5px] w-[5px] bg-[#A16207]" />
+                  {c.category}
+                </span>
+                <h2 className="mb-3 text-[1.375rem] font-bold leading-[1.25] tracking-[-0.02em] text-[#4A3B33]">
+                  Alchemyst <span className="text-[#B45309]">vs {c.competitor}</span>
+                </h2>
+                <p className="flex-1 text-[0.9375rem] leading-[1.7] text-[#57534E]">{c.blurb}</p>
+                <span className="mt-6 inline-flex items-center gap-2 border-t border-[#F1E9DA] pt-5 text-[0.875rem] font-bold text-[#B45309]">
+                  Read the comparison
+                  <Arrow />
+                </span>
+              </Link>
+            </FadeUp>
+          ))}
         </div>
-      </main>
-      <Footer />
-    </>
+      </Section>
+    </PageShell>
   );
 }

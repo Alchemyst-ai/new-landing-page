@@ -6,6 +6,7 @@ import AlchemystFixesSection from "@/components/sections/AlchemystFixesSection";
 import CTASection from "@/components/sections/CTASection";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoBar from "@/components/sections/LogoBar";
+import ProofMetrics from "@/components/sections/ProofMetrics";
 import WhyContextSection from "@/components/sections/WhyContextSection";
 import { SITE_TITLE } from "@/lib/staticContent";
 import type { Metadata } from "next";
@@ -23,29 +24,29 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        {/* Server-rendered agent-readable summary — visually hidden, no UI change.
+        {/* Server-rendered agent-readable summary, visually hidden, no UI change.
             Placed AFTER Hero so first heading in raw HTML remains the Hero H1.
             Provides sequential H2/H3 hierarchy + CLI/MCP/OpenAPI discoverability
             for AI crawlers without JavaScript. */}
         <section aria-label="Alchemyst AI overview" className="sr-only">
-          <h2>Alchemyst AI — the institutional context backbone for AI agents</h2>
+          <h2>Alchemyst AI: the institutional context backbone for AI agents</h2>
           <p>
             Alchemyst AI is the verifiable institutional context backbone that lets
             AI agents run day-to-day operations at enterprise scale. Through a single
             API and its context arithmetic primitive, it gives every agent persistent,
             traceable context and semantic retrieval over your institutional knowledge
-            graph — keeping knowledge current, traceable, and consistent. Sub-300ms
+            graph, keeping knowledge current, traceable, and consistent. Sub-300ms
             retrieval latency at p95, 99.7% reduction in domain hallucinations, 20x
             faster debugging, 99.9% uptime SLA, one API with zero infrastructure.
           </p>
-          <h3>Context arithmetic — the core primitive</h3>
+          <h3>Context arithmetic: the core primitive</h3>
           <p>
             Dynamic set algebra over meaning computed at query time. Intersection
             narrows scope by team, region, or version. Union widens recall across
             sources. Subtraction removes superseded or out-of-scope content. Ranking
             keeps only the right context in the window. Memory is derived, not
             hard-coded: recall what happened, resolve what it means, inform how to
-            act — all from one institutional knowledge graph.
+            act, all from one institutional knowledge graph.
           </p>
           <h3>Context traces and semantic consensus</h3>
           <p>
@@ -82,6 +83,8 @@ export default function Home() {
         <LogoBar />
         <WhyContextSection />
         <AlchemystFixesSection />
+        {/* Dark closing chapter: proof, then the CTA, flowing into the footer. */}
+        <ProofMetrics />
         <CTASection />
       </main>
       <Footer />

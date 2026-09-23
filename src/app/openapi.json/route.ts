@@ -256,7 +256,7 @@ const spec = {
         },
       },
       RateLimitedResponse: {
-        description: "Rate limited — retry after Retry-After seconds.",
+        description: "Rate limited: retry after Retry-After seconds.",
         headers: {
           "Retry-After": {
             description: "Seconds until quota resets.",

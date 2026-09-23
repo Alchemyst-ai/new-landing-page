@@ -19,19 +19,15 @@ const KNOWN: Record<string, { title: string; body: string }> = {
   },
   "/about": {
     title: "About Alchemyst AI",
-    body: `Alchemyst AI by XAlchemyst Technologies Pvt. Ltd. builds the institutional context backbone for AI agents.\n\n## What we build\n\nSingle API with context arithmetic over an institutional knowledge graph. Sub-300ms p95, 99.7% fewer hallucinations, full traces.\n\n## Contact\n\n- Email: founders@getalchemystai.com\n- Address: 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India\n- Links: [/contact](${BASE_URL}/contact) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt)`,
-  },
-  "/about-us": {
-    title: "About Alchemyst AI",
-    body: `See canonical [/about](${BASE_URL}/about) for the full story. Alchemyst AI is the verifiable context layer for agents with persistent memory and auditable traces.`,
+    body: `Alchemyst AI by XAlchemystai Technologies Pvt. Ltd. builds the institutional context backbone for AI agents.\n\n## What we build\n\nSingle API with context arithmetic over an institutional knowledge graph. Sub-300ms p95, 99.7% fewer hallucinations, full traces.\n\n## Contact\n\n- Email: founders@getalchemystai.com\n- Address: 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India\n- Links: [/contact](${BASE_URL}/contact) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt)`,
   },
   "/contact": {
     title: "Contact Alchemyst AI",
-    body: `Fastest: founders@getalchemystai.com (support, sales, security, privacy). Reply within 2 business days.\n\n## Address\n\nXalchemyst Technologies Pvt. Ltd., 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India.\n\n## Indexes\n\n- [/](${BASE_URL}/) [/about](${BASE_URL}/about) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt) [/developers](${BASE_URL}/developers)`,
+    body: `Fastest: founders@getalchemystai.com (support, sales, security, privacy). Reply within 2 business days.\n\n## Address\n\nXAlchemystai Technologies Pvt. Ltd., 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India.\n\n## Indexes\n\n- [/](${BASE_URL}/) [/about](${BASE_URL}/about) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt) [/developers](${BASE_URL}/developers)`,
   },
   "/privacy": {
     title: "Privacy Notice | Alchemyst AI",
-    body: `Privacy Notice for Xalchemyst Technologies Pvt. Ltd. Last updated June 2026. Contact founders@getalchemystai.com.\n\nWe process account, billing, telemetry, and support data only with valid basis. Retention max 36 months past termination. Rights: access, correct, delete, withdraw consent. Full policy at [/privacy](${BASE_URL}/privacy).`,
+    body: `Privacy Notice for XAlchemystai Technologies Pvt. Ltd. Last updated June 2026. Contact founders@getalchemystai.com.\n\nWe process account, billing, telemetry, and support data only with valid basis. Retention max 36 months past termination. Rights: access, correct, delete, withdraw consent. Full policy at [/privacy](${BASE_URL}/privacy).`,
   },
   "/pricing": {
     title: "Pricing | Alchemyst AI",

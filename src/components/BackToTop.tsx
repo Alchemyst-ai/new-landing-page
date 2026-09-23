@@ -1,46 +1,38 @@
 "use client";
 
-// BackToTop — a small caret next to the footer copyright that smooth-scrolls
-// to the top on click (Supermemory's footer micro-interaction).
+// BackToTop: an icon-only square button in the footer bar that glides back
+// to the top (through Lenis when active, native otherwise).
 
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotionSafe } from "@/components/sections/iso/kit";
 
 export default function BackToTop() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const onClick = () => {
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    if (window.__lenis && !reduce) window.__lenis.scrollTo(0, { duration: 1.4 });
+    else window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label="Back to top"
-      style={{
-        background: "none",
-        border: "none",
-        cursor: "pointer",
-        padding: "2px 4px",
-        color: "#57534E",
-        fontFamily: "var(--font-jetbrains-mono), monospace",
-        fontSize: "11px",
-        letterSpacing: "0.06em",
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "4px",
-        transition: "color 160ms ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.color = "#B45309";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.color = "#57534E";
-      }}
+      className="group inline-flex h-9 w-9 items-center justify-center rounded-[var(--radius)] border border-white/[0.08] text-[#A8A29E] transition-colors duration-200 hover:border-[#E4C090]/50 hover:text-[#E4C090]"
     >
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg
+        className="transition-transform duration-300 group-hover:-translate-y-0.5"
+        width="13"
+        height="13"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
         <line x1="12" y1="19" x2="12" y2="5" />
         <polyline points="5 12 12 5 19 12" />
       </svg>
-      top
     </button>
   );
 }

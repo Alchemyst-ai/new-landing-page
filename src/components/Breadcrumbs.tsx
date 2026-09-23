@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const BASE_URL = "https://getalchemystai.com";
 
-const SANS = "var(--font-merriweather), Georgia, serif";
+const MONO = "var(--font-jetbrains-mono), ui-monospace, monospace";
 
 export interface Crumb {
   /** Visible label, e.g. "Blog" */
@@ -65,10 +65,12 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
     <nav
       aria-label="Breadcrumb"
       style={{
-        fontFamily: SANS,
-        fontSize: "0.8125rem",
+        fontFamily: MONO,
+        fontSize: "10.5px",
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
         color: "#A8A29E",
-        marginBottom: "24px",
+        marginBottom: "28px",
         ...style,
       }}
     >
@@ -100,7 +102,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
               {crumb.path && !isLast ? (
                 <Link
                   href={crumb.path}
-                  style={{ color: "#A8A29E", textDecoration: "none" }}
+                  className="text-[#78716C] no-underline transition-colors duration-150 hover:text-[color:var(--ink)]"
                 >
                   {crumb.name}
                 </Link>
@@ -108,7 +110,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
                 <span
                   aria-current={isLast ? "page" : undefined}
                   style={{
-                    color: isLast ? "#B45309" : "#A8A29E",
+                    color: isLast ? "var(--amber)" : "#A8A29E",
                     fontWeight: isLast ? 600 : 400,
                     overflow: "hidden",
                     textOverflow: "ellipsis",
@@ -120,7 +122,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
                 </span>
               )}
               {!isLast && (
-                <span aria-hidden="true" style={{ color: "#57534E" }}>
+                <span aria-hidden="true" style={{ color: "#D6D3D1" }}>
                   /
                 </span>
               )}

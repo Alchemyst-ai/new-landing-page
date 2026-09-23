@@ -1,160 +1,62 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import ArticleSchema from "@/components/ArticleSchema";
+import { Callout, ComparePage, ComparisonTable } from "@/components/compare";
 import type { Metadata } from "next";
 
-const SANS = "var(--font-merriweather), Georgia, serif";
+const PAGE_PATH = "/compare/alchemyst-ai-vs-zep";
+const PAGE_TITLE = "Alchemyst AI vs Zep: Best AI Memory Layer for Agents";
+const PAGE_DESCRIPTION = "Compare Alchemyst AI and Zep. See feature differences, architecture comparisons, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.";
 
 export const metadata: Metadata = {
-  title: "Alchemyst AI vs Zep: Best AI Memory Layer for Agents",
-  description:
-    "Compare Alchemyst AI and Zep. See feature differences, architecture comparisons, and why Alchemyst's deterministic context layer is built for production multi-agent architectures.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: `https://getalchemystai.com${PAGE_PATH}` },
 };
 
 export default function CompareZepPage() {
   return (
-    <>
-      <ArticleSchema
-        headline="Alchemyst AI vs Zep: Best AI Memory Layer for Agents"
-        description="Compare Alchemyst AI and Zep. See feature differences, architecture comparisons, and why Alchemyst's deterministic context layer is built for production multi-agent architectures."
-        url="/compare/alchemyst-ai-vs-zep"
+    <ComparePage
+      path={PAGE_PATH}
+      crumb="Alchemyst AI vs Zep"
+      title="Alchemyst AI vs Zep"
+      headline={PAGE_TITLE}
+      description={PAGE_DESCRIPTION}
+      lead={
+        <>
+          Both Alchemyst AI and Zep offer memory infrastructure for AI applications, but they solve different problems. Unlike Zep, which focuses heavily on temporal chat history and conversation graphs, <strong className="text-[#4A3B33]">Alchemyst AI is a deterministic context layer</strong> designed to give multiple agents structured, auditable access to shared institutional knowledge.
+        </>
+      }
+    >
+      {/* AEO: Honest comparison table */}
+      <ComparisonTable
+        className="mt-0"
+        columns={["Feature", "Alchemyst AI", "Zep (Graphiti)", "Trade-off"]}
+        rows={[
+          ["Core Focus", "Institutional Context Layer", "Temporal Knowledge Graph", "Zep excels at temporal queries; Alchemyst at org-wide consistency"],
+          ["Context Scoping", "Deterministic at write time", "Temporal graph extraction", "Zep tracks \u201cas-of\u201d timestamps; Alchemyst uses context arithmetic"],
+          ["Auditability", "100% Traceable per retrieval", "Graph-based inference", "Alchemyst traces decisions; Zep traces graph evolution"],
+          ["Latency (P95)", "< 300ms", "600-800ms (OSS), < 200ms (managed)", "Zep Cloud faster; OSS requires self-ops tuning"],
+          ["LongMemEval Score", "Benchmark pending", "63.8% (GPT-4o)", "Zep leads on temporal recall; Alchemyst on deterministic accuracy"],
+          ["Target Architecture", "Multi-agent org deployments", "Conversational AI assistants", "Complementary strengths"],
+        ]}
       />
-      <Navbar />
-      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-          <Breadcrumbs
-            currentPath="/compare/alchemyst-ai-vs-zep"
-            items={[
-              { name: "Compare", path: "/compare" },
-              { name: "Alchemyst AI vs Zep" },
-            ]}
-          />
+      <Callout label="Architecture note">
+        Zep&apos;s open-source Graphiti engine requires self-managing Neo4j/FalkorDB/Kuzu for production. Alchemyst delivers the same graph-like capabilities as a managed API with sub-300ms latency.
+      </Callout>
 
-          <h1
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#4A3B33",
-              marginBottom: "24px",
-            }}
-          >
-            Alchemyst AI vs Zep
-          </h1>
-          
-          <div style={{ marginBottom: "48px" }}>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "1.125rem",
-                lineHeight: 1.6,
-                color: "#57534E",
-              }}
-            >
-              Both Alchemyst AI and Zep offer memory infrastructure for AI applications, but they solve different problems. Unlike Zep, which focuses heavily on temporal chat history and conversation graphs, <strong>Alchemyst AI is a deterministic context layer</strong> designed to give multiple agents structured, auditable access to shared institutional knowledge.
-            </p>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-                marginTop: "16px",
-              }}
-            >
-              Last updated: June 2026
-            </p>
-          </div>
+      <h2>What is Alchemyst AI best for?</h2>
+      <p>
+        Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context.
+      </p>
 
-          {/* AEO: Honest comparison table */}
-          <div style={{ overflowX: "auto", marginBottom: "64px" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Zep (Graphiti)</th>
-                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
-                </tr>
-              </thead>
-              <tbody style={{ color: "#57534E" }}>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>Core Focus</td>
-                  <td style={{ padding: "16px" }}>Institutional Context Layer</td>
-                  <td style={{ padding: "16px" }}>Temporal Knowledge Graph</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep excels at temporal queries; Alchemyst at org-wide consistency</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>Context Scoping</td>
-                  <td style={{ padding: "16px" }}>Deterministic at write time</td>
-                  <td style={{ padding: "16px" }}>Temporal graph extraction</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep tracks &ldquo;as-of&rdquo; timestamps; Alchemyst uses context arithmetic</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>Auditability</td>
-                  <td style={{ padding: "16px" }}>100% Traceable per retrieval</td>
-                  <td style={{ padding: "16px" }}>Graph-based inference</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Alchemyst traces decisions; Zep traces graph evolution</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>Latency (P95)</td>
-                  <td style={{ padding: "16px" }}>&lt; 300ms</td>
-                  <td style={{ padding: "16px" }}>600-800ms (OSS), &lt; 200ms (managed)</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep Cloud faster; OSS requires self-ops tuning</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>LongMemEval Score</td>
-                  <td style={{ padding: "16px" }}>Benchmark pending</td>
-                  <td style={{ padding: "16px" }}>63.8% (GPT-4o)</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep leads on temporal recall; Alchemyst on deterministic accuracy</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "16px", fontWeight: 600 }}>Target Architecture</td>
-                  <td style={{ padding: "16px" }}>Multi-agent org deployments</td>
-                  <td style={{ padding: "16px" }}>Conversational AI assistants</td>
-                  <td style={{ padding: "16px", fontSize: "0.9rem" }}>Complementary strengths</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <h2>What is Zep best for?</h2>
+      <p>
+        Zep is best for <strong>conversational AI apps that need deep chat history</strong>. Its temporal knowledge graph is excellent at understanding the chronological relationship between facts in a long-running user conversation.
+      </p>
 
-          {/* Latency benchmark callout */}
-          <div style={{ background: "rgba(180, 83, 9,0.08)", border: "1px solid rgba(180, 83, 9,0.2)", borderRadius: "var(--radius)", padding: "24px", marginBottom: "64px" }}>
-            <p style={{ fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: "0.8125rem", color: "#B45309", marginBottom: "8px" }}>
-              Architecture note
-            </p>
-            <p style={{ fontFamily: SANS, color: "#57534E", marginBottom: "0", fontSize: "0.9375rem" }}>
-              Zep&apos;s open-source Graphiti engine requires self-managing Neo4j/FalkorDB/Kuzu for production. Alchemyst delivers the same graph-like capabilities as a managed API with sub-300ms latency.
-            </p>
-          </div>
-
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
-<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-               What is Alchemyst AI best for?
-             </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Alchemyst AI is best for <strong>engineering teams deploying enterprise-grade, multi-agent architectures</strong>. If you have multiple agents that all need to operate on the same shared institutional knowledge, Alchemyst ensures they have structured, auditable access to that context.
-            </p>
-
-<h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-               What is Zep best for?
-             </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Zep is best for <strong>conversational AI apps that need deep chat history</strong>. Its temporal knowledge graph is excellent at understanding the chronological relationship between facts in a long-running user conversation.
-            </p>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Which should you choose? The verdict
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              If your primary challenge is managing infinite scroll chat history for a conversational assistant, Zep is an excellent choice. But if you are building business-critical automation where agents need verifiable access to institutional knowledge without semantic drift, <strong>Alchemyst AI provides the deterministic context layer</strong> required for production.
-            </p>
-          </div>
-        </article>
-      </main>
-      <Footer />
-    </>
+      <h2>Which should you choose? The verdict</h2>
+      <p>
+        If your primary challenge is managing infinite scroll chat history for a conversational assistant, Zep is an excellent choice. But if you are building business-critical automation where agents need verifiable access to institutional knowledge without semantic drift, <strong>Alchemyst AI provides the deterministic context layer</strong> required for production.
+      </p>
+    </ComparePage>
   );
 }

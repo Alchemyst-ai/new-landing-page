@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { DrawLine } from "@/components/motion/primitives";
 
 type Logo = { name: string; node: React.ReactNode };
 
@@ -91,43 +91,44 @@ const LOGOS: Logo[] = [
 ];
 
 export default function LogoBar() {
-  const doubled = [...LOGOS, ...LOGOS, ...LOGOS];
-
   return (
     <section
       aria-label="Trusted by"
-      className="w-full bg-[#F8F4EE] py-20 relative overflow-hidden border-t border-[#E4D9BC]"
+      className="relative w-full overflow-hidden bg-[#FDFBF7] pt-6 pb-20 md:pb-24"
     >
-      <div className="max-w-[1200px] mx-auto mb-12 px-6 lg:px-8 text-center">
-        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#A8A29E] font-medium">
+      <div className="mx-auto mb-12 flex max-w-[1200px] items-center gap-6 px-6 lg:px-8">
+        <DrawLine className="flex-1" from="end" />
+        <span className="shrink-0 font-mono text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#78716C]">
           Trusted by teams at
         </span>
+        <DrawLine className="flex-1" />
       </div>
 
       <div
-        className="relative w-full overflow-hidden"
+        className="marquee group relative w-full overflow-hidden"
         style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          maskImage: "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
         }}
       >
-        <motion.div
-          animate={{ x: [0, -1000] }}
-          transition={{ ease: "linear", duration: 28, repeat: Infinity }}
-          className="flex items-center gap-20 w-max px-10"
-        >
-          {doubled.map((logo, i) => (
-            <div
-              key={`${logo.name}-${i}`}
-              aria-hidden={i >= LOGOS.length ? true : undefined}
-              className="flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-300 text-[#78716C] hover:text-[#4A3B33] cursor-default"
+        <div className="marquee-track flex w-max">
+          {[0, 1, 2].map((set) => (
+            <ul
+              key={set}
+              aria-hidden={set > 0 ? true : undefined}
+              className="flex shrink-0 items-center gap-16 pr-16 md:gap-20 md:pr-20"
             >
-              {logo.node}
-            </div>
+              {LOGOS.map((logo) => (
+                <li
+                  key={`${logo.name}-${set}`}
+                  className="flex items-center justify-center text-[#78716C] opacity-45 transition-[opacity,color] duration-300 hover:text-[#4A3B33] hover:opacity-100"
+                >
+                  {logo.node}
+                </li>
+              ))}
+            </ul>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

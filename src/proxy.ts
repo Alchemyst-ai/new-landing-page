@@ -6,7 +6,7 @@
  * 2. Accept: text/markdown negotiation (acceptmarkdown.com):
  *    serves markdown from /api/markdown?path=<pathname> with
  *    Content-Type: text/markdown and Vary: Accept.
- *    No visual/HTML change — only affects agents explicitly requesting markdown.
+ *    No visual/HTML change: only affects agents explicitly requesting markdown.
  *
  * /llms.txt and /llms-full.txt are handled directly by their own
  * App Router route handlers and do not need middleware interception.

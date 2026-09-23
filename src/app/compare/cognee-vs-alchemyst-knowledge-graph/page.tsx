@@ -1,183 +1,93 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import ArticleSchema from "@/components/ArticleSchema";
+import { ComparePage, ComparisonTable } from "@/components/compare";
 import type { Metadata } from "next";
-
-const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/cognee-vs-alchemyst-knowledge-graph";
 const PAGE_TITLE = "Cognee vs Alchemyst: Open-Source Graph vs Deterministic Context";
+const PAGE_DESCRIPTION = "Cognee builds knowledge graphs from documents. Alchemyst provides deterministic context arithmetic. Compare graph-based memory architectures.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
-  description:
-    "Cognee builds knowledge graphs from documents. Alchemyst provides deterministic context arithmetic. Compare graph-based memory architectures.",
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: `https://getalchemystai.com${PAGE_PATH}` },
 };
 
 export default function CogneeVsAlchemystPage() {
   return (
-    <>
-      <ArticleSchema
-        headline={PAGE_TITLE}
-        description="Cognee builds knowledge graphs from documents. Alchemyst provides deterministic context arithmetic. Compare graph-based memory architectures."
-        url="/compare/cognee-vs-alchemyst-knowledge-graph"
+    <ComparePage
+      path={PAGE_PATH}
+      crumb={PAGE_TITLE}
+      title={PAGE_TITLE}
+      headline={PAGE_TITLE}
+      description={PAGE_DESCRIPTION}
+      lead={
+        <>
+          Cognee builds knowledge graphs from unstructured data using remember/recall/improve/forget operations. Alchemyst AI provides deterministic context arithmetic over institutional knowledge. Both use graph structures, but with different priorities.
+        </>
+      }
+    >
+      <h2>What is Cognee&apos;s graph memory pipeline?</h2>
+      <p>Cognee implements a four-stage memory lifecycle:</p>
+      <ol>
+        <li><strong>Remember:</strong> Ingest documents, conversations, and external data into a knowledge graph.</li>
+        <li><strong>Recall:</strong> Query the graph with hybrid search (vector + graph traversal).</li>
+        <li><strong>Improve:</strong> Refine relationships and update the graph structure.</li>
+        <li><strong>Forget:</strong> Remove outdated or irrelevant information.</li>
+      </ol>
+      <p>
+        Cognee excels at building a knowledge graph before any queries happen, combining graph traversal with vector similarity for better recall.
+      </p>
+
+      <h2>What is Alchemyst&apos;s graph approach?</h2>
+      <p>
+        Alchemyst AI uses context arithmetic, a dynamic set algebra over meaning computed at query time:
+      </p>
+      <ul>
+        <li><strong>Context arithmetic:</strong> Intersect, union, subtract operations on semantic groups.</li>
+        <li><strong>Layered references:</strong> Raw data → Inferences → Derived meanings.</li>
+        <li><strong>Semantic consensus:</strong> Resolve contested definitions before retrieval.</li>
+      </ul>
+      <p>
+        The graph emerges from how context is actually used, not pre-built from documents. This adapts to changing business meanings automatically.
+      </p>
+
+      <h2>Key differences</h2>
+      <ComparisonTable
+        columns={["Aspect", "Alchemyst AI", "Cognee"]}
+        rows={[
+          ["Graph build timing", "Dynamic (query-time)", "Batch (pre-query)"],
+          ["Semantic consensus", "✅ Built-in ontology", "⚠️ Manual curation"],
+          ["Deployment", "API / MCP (zero-infra)", "Self-host required"],
+          ["Connectors", "30+ via MCP", "30+ native connectors"],
+          ["Audit trail", "✅ Everything traced", "⚠️ Graph update logs"],
+        ]}
       />
-      <Navbar />
-      <main style={{ minHeight: "100vh", padding: "120px 0 80px", background: "var(--paper)", color: "var(--ink)" }}>
-        <article className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-          <Breadcrumbs
-            currentPath={PAGE_PATH}
-            items={[
-              { name: "Compare", path: "/compare" },
-              { name: PAGE_TITLE },
-            ]}
-          />
+      <h2>When to choose which?</h2>
+      <p>
+        <strong>Choose Cognee if:</strong>
+      </p>
+      <ul>
+        <li>You want to build a knowledge graph from documents before queries.</li>
+        <li>You prefer open-source self-hosted infrastructure.</li>
+        <li>Graph complexity over audit simplicity is acceptable.</li>
+      </ul>
 
-          <h1
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#4A3B33",
-              marginBottom: "24px",
-            }}
-          >
-            {PAGE_TITLE}
-          </h1>
+      <p>
+        <strong>Choose Alchemyst if:</strong>
+      </p>
+      <ul>
+        <li>You need audit trails for every context decision.</li>
+        <li>Your business definitions change over time (semantic drift).</li>
+        <li>You want to avoid managing graph database infrastructure.</li>
+      </ul>
 
-          <div style={{ marginBottom: "48px" }}>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "1.125rem",
-                lineHeight: 1.6,
-                color: "#57534E",
-              }}
-            >
-              Cognee builds knowledge graphs from unstructured data using remember/recall/improve/forget operations. Alchemyst AI provides deterministic context arithmetic over institutional knowledge. Both use graph structures, but with different priorities.
-            </p>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-                marginTop: "16px",
-              }}
-            >
-              Last updated: June 2026
-            </p>
-          </div>
-
-          <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is Cognee's graph memory pipeline?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Cognee implements a four-stage memory lifecycle:
-            </p>
-            <ol style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "decimal" }}>
-              <li style={{ marginBottom: "8px" }}><strong>Remember:</strong> Ingest documents, conversations, and external data into a knowledge graph.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Recall:</strong> Query the graph with hybrid search (vector + graph traversal).</li>
-              <li style={{ marginBottom: "8px" }}><strong>Improve:</strong> Refine relationships and update the graph structure.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Forget:</strong> Remove outdated or irrelevant information.</li>
-            </ol>
-            <p style={{ marginBottom: "24px" }}>
-              Cognee excels at building a knowledge graph before any queries happen, combining graph traversal with vector similarity for better recall.
-            </p>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              What is Alchemyst's graph approach?
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Alchemyst AI uses context arithmetic—a dynamic set algebra over meaning computed at query time:
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}><strong>Context arithmetic:</strong> Intersect, union, subtract operations on semantic groups.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Layered references:</strong> Raw data → Inferences → Derived meanings.</li>
-              <li style={{ marginBottom: "8px" }}><strong>Semantic consensus:</strong> Resolve contested definitions before retrieval.</li>
-            </ul>
-            <p style={{ marginBottom: "24px" }}>
-              The graph emerges from how context is actually used, not pre-built from documents. This adapts to changing business meanings automatically.
-            </p>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              Key differences
-            </h2>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#4A3B33" }}>Aspect</th>
-                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#4A3B33" }}>Cognee</th>
-                </tr>
-              </thead>
-              <tbody style={{ color: "#57534E" }}>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Graph build timing</td>
-                  <td style={{ padding: "12px" }}>Dynamic (query-time)</td>
-                  <td style={{ padding: "12px" }}>Batch (pre-query)</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Semantic consensus</td>
-                  <td style={{ padding: "12px" }}>✅ Built-in ontology</td>
-                  <td style={{ padding: "12px" }}>⚠️ Manual curation</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Deployment</td>
-                  <td style={{ padding: "12px" }}>API / MCP (zero-infra)</td>
-                  <td style={{ padding: "12px" }}>Self-host required</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Connectors</td>
-                  <td style={{ padding: "12px" }}>30+ via MCP</td>
-                  <td style={{ padding: "12px" }}>30+ native connectors</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
-                  <td style={{ padding: "12px" }}>Audit trail</td>
-                  <td style={{ padding: "12px" }}>✅ Everything traced</td>
-                  <td style={{ padding: "12px" }}>⚠️ Graph update logs</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              When to choose which?
-            </h2>
-            <p style={{ marginBottom: "16px" }}>
-              <strong>Choose Cognee if:</strong>
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}>You want to build a knowledge graph from documents before queries.</li>
-              <li style={{ marginBottom: "8px" }}>You prefer open-source self-hosted infrastructure.</li>
-              <li style={{ marginBottom: "8px" }}>Graph complexity over audit simplicity is acceptable.</li>
-            </ul>
-
-            <p style={{ marginBottom: "16px" }}>
-              <strong>Choose Alchemyst if:</strong>
-            </p>
-            <ul style={{ paddingLeft: "24px", marginBottom: "24px", listStyleType: "disc" }}>
-              <li style={{ marginBottom: "8px" }}>You need audit trails for every context decision.</li>
-              <li style={{ marginBottom: "8px" }}>Your business definitions change over time (semantic drift).</li>
-              <li style={{ marginBottom: "8px" }}>You want to avoid managing graph database infrastructure.</li>
-            </ul>
-
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
-              The architectural trade-off
-            </h2>
-            <p style={{ marginBottom: "24px" }}>
-              Cognee builds a graph first, then queries it. This is predictable but brittle—ontology changes require rebuilding. It's excellent for static knowledge bases.
-            </p>
-            <p style={{ marginBottom: "24px" }}>
-              Alchemyst queries contextually, with the graph emerging from usage patterns. This adapts to semantic drift but requires understanding of context arithmetic patterns. It's excellent for evolving business context.
-            </p>
-          </div>
-        </article>
-      </main>
-      <Footer />
-    </>
+      <h2>The architectural trade-off</h2>
+      <p>
+        Cognee builds a graph first, then queries it. This is predictable but brittle: ontology changes require rebuilding. It&apos;s excellent for static knowledge bases.
+      </p>
+      <p>
+        Alchemyst queries contextually, with the graph emerging from usage patterns. This adapts to semantic drift but requires understanding of context arithmetic patterns. It&apos;s excellent for evolving business context.
+      </p>
+    </ComparePage>
   );
 }

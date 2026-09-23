@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { SVGProps } from "react";
+import BackToTop from "./BackToTop";
+import FooterWatermark from "./FooterWatermark";
 
 function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -20,7 +22,7 @@ function XIcon(props: SVGProps<SVGSVGElement>) {
 
 const footerLinks = {
   Product: [
-    { label: "Context Layer", href: "#" },
+    { label: "Context Layer", href: "/#how-it-works" },
     { label: "Thesis", href: "/thesis" },
     { label: "Kathan Voice AI", href: "https://getalchemystai.com/kathan" },
     { label: "Agent Builder", href: "https://getalchemystai.com/agents" },
@@ -46,13 +48,13 @@ const footerLinks = {
     { label: "All Comparisons", href: "/compare" },
   ],
   Company: [
-    { label: "About Us", href: "/about-us" },
+    { label: "About Us", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Careers", href: "https://getalchemystai.com/careers" },
     { label: "Contact", href: "mailto:founders@getalchemystai.com" },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "https://getalchemystai.com/privacy" },
+    { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "https://getalchemystai.com/terms" },
   ],
 };
@@ -64,33 +66,31 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#1C1917] text-white">
+    <footer data-theme="dark" className="relative overflow-hidden bg-[#1C1917] text-[#F5F5F4]">
+      <div aria-hidden className="plate-grid plate-grid-top absolute inset-0 opacity-60" />
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8">
-        {/* Main footer */}
-        <div className="py-16 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 mb-32">
+        <div className="h-px w-full bg-white/[0.08]" />
+
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 pt-16 pb-16 md:grid-cols-4 lg:grid-cols-7 lg:pb-20">
           {/* Brand column */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-2 mb-4 lg:mb-0 lg:pr-8">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <Image
-                src="/logo.png"
-                alt="Alchemyst AI logo"
-                width={220}
-                height={55}
-                className="w-auto"
-                loading="lazy"
-              />
+          <div className="col-span-2 md:col-span-4 lg:col-span-2 lg:pr-10">
+            <Link href="/" className="mb-7 inline-flex items-center" aria-label="Alchemyst AI home">
+              <Image src="/logo.png" alt="Alchemyst AI logo" width={1388} height={200} className="h-7 w-auto" loading="lazy" />
             </Link>
 
-            <p className="text-sm text-white/50 leading-relaxed max-w-[280px] mb-6">
+            <p className="mb-8 max-w-[300px] text-[0.9375rem] leading-[1.7] text-[#A8A29E]">
               Persistent, traceable context and semantic retrieval for AI
               agents over your institutional knowledge graph.
             </p>
 
-            <p className="text-[8px] uppercase tracking-[0.14em] text-white/30 mb-1">
-              Headquartered in <span className="text-[10px] text-white/50 leading-relaxed mb-6">Bangalore, India</span>
+            <p className="mb-6 flex items-baseline gap-2.5 font-mono text-[10px] uppercase leading-[1.7] tracking-[0.16em] text-[#78716C]">
+              <span aria-hidden className="h-[6px] w-[6px] shrink-0 translate-y-[-1px] bg-[#E4C090]" />
+              <span>
+                Headquartered in <span className="whitespace-nowrap text-[#D6D3D1]">Bangalore, India</span>
+              </span>
             </p>
 
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -98,9 +98,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 bg-white/[0.06] hover:bg-[#F97316]/20 flex items-center justify-center transition-colors"
+                  className="flex h-9 w-9 items-center justify-center rounded-[var(--radius)] border border-white/[0.08] text-[#A8A29E] transition-colors duration-200 hover:border-[#E4C090]/50 hover:text-[#E4C090]"
                 >
-                  <social.icon className="w-4 h-4 text-white/60" />
+                  <social.icon className="h-[15px] w-[15px]" />
                 </a>
               ))}
             </div>
@@ -109,42 +109,42 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-sm font-semibold text-white mb-4">
+              <h3 className="mb-5 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#78716C]">
                 {category}
               </h3>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.href + link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/45 hover:text-[#F97316] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const external = /^(https?:|mailto:)/.test(link.href);
+                  return (
+                    <li key={link.href + link.label}>
+                      <Link
+                        href={link.href}
+                        {...(external && !link.href.startsWith("mailto:") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="footer-link text-[0.875rem] text-[#A8A29E]"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
         </div>
-
-        {/* Bottom bar */}
-        <div className="py-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/35">
-            &copy; {new Date().getFullYear()} XAlchemyst Technologies Pvt. Ltd. All
-            rights reserved.
-          </p>
-
-        </div>
       </div>
 
-      {/* Giant watermark */}
-      <span
-        aria-hidden
-        className="pointer-events-none select-none absolute hidden lg:block bottom-24 leading-none font-bold tracking-tight text-white/[0.03] text-[10vw] translate-y-12 translate-x-1/2 whitespace-nowrap"
-      >
-        Alchemyst AI
-      </span>
+      <FooterWatermark />
+
+      {/* Bottom bar */}
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] py-6 sm:flex-row">
+          <p className="text-[0.8125rem] text-[#78716C]">
+            &copy; {new Date().getFullYear()} XAlchemystai Technologies Pvt. Ltd. All
+            rights reserved.
+          </p>
+          <BackToTop />
+        </div>
+      </div>
     </footer>
   );
 }

@@ -1,8 +1,18 @@
-// Barrel export for the motion / token-scope primitives used site-wide.
-// All client-side wrappers live here so server components can import them
-// freely (Next.js handles the client boundary via each file's "use client"
-// directive where needed).
+// Barrel export for the motion and token-scope primitives used site-wide.
+// Client wrappers carry their own "use client" directive, so server
+// components can import from here freely.
 
 export { default as Reveal } from "./Reveal";
-export { default as MotionSection } from "./MotionSection";
 export { default as DarkAnchor } from "./DarkAnchor";
+export {
+  EASE,
+  VIEWPORT,
+  Stagger,
+  FadeUp,
+  RevealText,
+  DrawLine,
+  Parallax,
+  FigureReveal,
+  useParallax,
+  fadeUpVariants,
+} from "./primitives";

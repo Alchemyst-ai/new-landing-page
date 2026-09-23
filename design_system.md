@@ -6,7 +6,7 @@
 >
 > Base theme imported from tweakcn ("Alchemyst Theme 1 - Serif",
 > tweakcn.com/themes/cmsry03jx000004kzb7m22yek) and extended with a bespoke
-> isometric diagram system. Last updated: September 2026.
+> isometric diagram system. Last updated: September 2026 (page-level system added).
 
 ---
 
@@ -68,13 +68,18 @@ Light base: `--background 40 60% 98%` · `--foreground 21 18% 25%` ·
 | background           | `#1C1917` |
 | foreground           | `#F5F5F4` |
 | card / popover       | `#292524` |
-| primary              | `#F97316` |
+| primary (filled CTA) | `#B45309` |
+| accent text (`--amber`) | `#E4C090` sand (contrast on charcoal) |
 | secondary            | `#57534E` |
 | muted / muted-fg     | `#201D1A` / `#A8A29E` |
-| accent               | `#1E4252` |
+| accent               | warm umber wash `hsl(34 30% 20%)` |
 | destructive          | `#DC2626` |
 | border / input       | `#44403C` |
-| ring                 | `#F97316` |
+| ring                 | `#E4C090` |
+
+`#F97316` and the `#1E4252` teal accent are retired. On dark surfaces, text
+accents, link hovers and HUD squares use sand `#E4C090`; filled buttons stay
+deep amber `#B45309`.
 
 ### Diagram accents
 
@@ -226,11 +231,19 @@ Mono 11px, weight 600, tracking `0.12em` to `0.15em`, uppercase, colour
 
 ### Dark anchors
 
-Deliberate dark sections (footer, thesis / blog / compare chapters, author and
-CTA tiles) use `[data-theme="dark"]` token scopes. A shadcn `.dark` class
-parity block exists for primitives with dormant `dark:` variants. The Navbar
-probes `[data-theme='dark']` sections and flips itself via its own
-`data-theme` attribute.
+Deliberate dark sections use `[data-theme="dark"]` token scopes, applied by
+`<Section tone="dark">`, `<DarkAnchor>` (which also paints `#1C1917`), the
+shared `CTASection` and the `Footer`. A shadcn `.dark` class parity block
+exists for primitives with dormant `dark:` variants. The Navbar probes the
+element behind it and flips to its charcoal glass treatment (and the white
+logo) over any `[data-theme='dark']` ancestor.
+
+**The dark closing chapter.** Every page ends dark: proof or CTA, then the
+footer, as one continuous charcoal stretch. Home: `ProofMetrics` →
+`CTASection` → `Footer`. Compare, blog posts, how-to, placeholders:
+`PageShell cta` appends `CTASection`. Thesis and Creators Program end with
+their own dark `Section`. Never place a light section between a dark chapter
+and the footer.
 
 ---
 
@@ -423,6 +436,9 @@ On inspect of plate `i`:
   only.
 - No decorative gradient blobs or glow effects outside the diagram halo and
   scan systems.
+- No new marketing microcopy for decoration (figure captions, section
+  numbers). Visual structure comes from hairlines, ticks and squares.
+- No `overflow: hidden` on `html` / `body` (breaks sticky); use `clip`.
 - No `next/font`-less font loading, and no font weights outside
   Merriweather's set (300 / 400 / 700 / 900).
 - No fixed-height containers around aspect-locked diagrams (letterboxing is
@@ -445,7 +461,13 @@ src/
     globals.css                 ← tokens, utility classes, blog system
     layout.tsx                  ← next/font (Merriweather, JetBrains Mono)
   components/
+    brand/                      ← brand primitives, CodeBlock, ComparisonTable,
+                                  Status, SectionHeader
+    page/                       ← PageShell, PageHero, Prose, PageBody
+    compare/                    ← ComparePage, Callout (re-exports ComparisonTable)
+    motion/                     ← SmoothScroll, primitives, Reveal, DarkAnchor
     sections/
+      ProofMetrics.tsx          ← dark chapter opener (count-up metrics)
       ContextStack.tsx          ← hero: vertical isometric stack + query loop
       ContextSovereigntyFlow.tsx← landing: horizontal row + hot-swap loop
       BenchmarkChart.tsx        ← landing: isometric accuracy terrain
@@ -460,7 +482,76 @@ src/
 
 ---
 
-## 12. Verification Checklist (run after any visual change)
+## 12. Page-Level System ("the page as a spec sheet")
+
+The site borrows the diagrams' visual language without adding copy:
+hairlines instead of boxes, corner ticks as registration marks, the 7px amber
+HUD square as the bullet and eyebrow marker, mono spec captions, the plate
+grid as a masked backdrop, and amber reserved for active or hovered states.
+
+### Brand primitives (`src/components/brand/`)
+
+| Primitive | Use |
+| --- | --- |
+| `Section` | Every page band. `tone` paper / sand / white / dark (dark sets `data-theme`), `grid` (masked plate grid), `bordered`, `pad`, `width`. |
+| `SectionHeader` (client) | Editorial header: hairline draws in, eyebrow on the rule, headline revealed word by word, lead in a right column (`align="split"`) or stacked (`left` / `center`). |
+| `Eyebrow` | `square` (HUD square + mono label, default) or `pill`. `tone="red"` only for failure narratives. Replaces all hand-rolled eyebrows. |
+| `SpecCard` + `Ticks` | White (or sand / dark) card with corner ticks that brighten to amber and step outward on hover; 2px lift. |
+| `BrandButton` | `primary`, `ink`, `outline`, `outline-dark`, `text`; optional `arrow` that nudges on hover. |
+| `SpecStrip` | Mono metric row with hairline dividers (hero). |
+| `Figure` | Corner-bracket frame around a diagram. No caption text. |
+| `Chip` | Mono chip that warms on card hover. |
+| `CodeBlock` (client) | Editor chrome (three sand dots, optional existing label, icon-only copy), React-node tokenizer in the amber palette. Never `dangerouslySetInnerHTML`. |
+| `ComparisonTable` | The only table design for comparisons: mono header, Alchemyst column tinted and ruled amber, row headers bold, horizontal scroll under 640px. |
+| `Status` / `StatusText` | ✅ / ⚠️ / ❌ rendered as amber check, sand dash, stone cross glyphs with accessible labels. |
+
+### Page templates (`src/components/page/`, `src/components/compare/`)
+
+- `PageShell` = Navbar + `<main>` + optional `CTASection` (`cta`) + Footer.
+- `PageHero` = masked plate grid, mono breadcrumbs, pill eyebrow, revealed
+  H1, lead, meta line with sand square, closing hairline. Widths `narrow`
+  (848px), `medium` (1000px), `wide` (1200px).
+- `Prose` = `.prose-blog-dark.prose-brand` long-form: 72ch measure, h2 on a
+  hairline with an amber square, sand square bullets, amber ordered markers,
+  tinted blockquotes, carded tables. Embedded components opt out with
+  `.not-prose`.
+- `ComparePage` + `Callout` = every `/compare/*` detail page. Content lives in
+  the page, layout lives in the template.
+
+### Motion primitives (`src/components/motion/primitives.tsx`)
+
+| Primitive | Behaviour |
+| --- | --- |
+| `SmoothScroll` | Lenis inertial scroll (duration 1.1, expo-out), in-page anchors land 96px below the nav. Off for reduced motion and touch. Exposed as `window.__lenis` for programmatic glides. |
+| `RevealText` | Masked word-by-word rise (105% → 0, 800ms, 45ms stagger). Keeps wrapper spans (italic accents) and `&nbsp;` joins. Text stays in the DOM. |
+| `FadeUp` / `Stagger` | 24px rise, 700ms `EASE`; standalone or staggered (80ms). |
+| `DrawLine` | Hairline grows from `start` or `end` on first view. |
+| `FigureReveal` | Clip-path wipe + 32px rise for diagrams; clip removed on completion so panels can overflow. |
+| `Parallax` / `useParallax` | Scroll-linked drift of at most ±24px (hero uses 50 to 90px scroll-out depth). |
+
+Rules: every reveal fires once (`VIEWPORT`: once, bottom margin −12%);
+transform, opacity and clip-path only; one entrance plus at most one scroll
+effect per element; all primitives use `useReducedMotionSafe` and resolve
+instantly when reduced. `html, body` use `overflow-x: clip` (never `hidden`)
+so `position: sticky` pinned sequences work.
+
+### Signature sequences
+
+- **Hero:** eyebrow, word-reveal H1, lead, CTAs, `SpecStrip`, then the
+  `ContextStack` figure rises; on scroll-out the copy lifts faster than the
+  diagram; a hairline scroll cue with a travelling amber segment.
+- **How it works (pinned):** desktop sticky rail lists steps 01 to 04 with a
+  HUD-style segmented progress bar; the step card crossing the viewport centre
+  lights its rail entry and warms its border. Rail items glide to their card.
+- **Logo marquee:** three identical sets translated by exactly −33.333% (CSS
+  keyframes, 48s), paused on hover, static for reduced motion.
+- **Proof metrics:** serif numerals count up once (SSR renders the real
+  value), hairline grid 1 / 2x2 / 4 across.
+- **Footer watermark:** outlined sand serif "Alchemyst AI" rising into place.
+
+---
+
+## 13. Verification Checklist (run after any visual change)
 
 1. `npm run build` passes with all 41+ pages generated.
 2. Browser console is clean (no hydration mismatches, no framer-motion
@@ -473,3 +564,9 @@ src/
    and the detail panel land in their reserved slots.
 5. Grep the changed files for `—` and for off-palette hexes before calling
    the work done.
+6. Check that the Navbar flips over every dark chapter and that the page ends
+   on one continuous dark stretch.
+7. JSX gotcha: in this toolchain, a text node that starts with a space right
+   after a closing inline tag and later contains an HTML entity (`&apos;`,
+   `&quot;`) can lose that leading space. Write `</strong>{" "}text` in such
+   lines, and grep the built HTML for `</strong>[a-z]` before shipping.

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ─── Alchemyst AI Design System ─────────────────────────────────────────────
- * "Alchemyst Theme 1 - Serif" — imported from tweakcn
+ * "Alchemyst Theme 1 - Serif", imported from tweakcn
  *   (tweakcn.com/themes/cmsry03jx000004kzb7m22yek)
  *
  * Warm, editorial, paper-first system:
@@ -11,7 +11,7 @@
  *   Primary: #B45309 deep amber  ·  Secondary: #E4C090 sand
  *   Muted:   #F1E9DA / #78716C stone
  *   Border:  #E4D9BC tan
- *   Dark:    #1C1917 warm charcoal · primary #F97316
+ *   Dark:    #1C1917 warm charcoal · accent text #E4C090 sand · CTA #B45309
  *   Radius:  0.3rem · warm soft shadow hsl(28 18% 25%) @ 0.18
  * Fonts: Merriweather (display + body, via next/font → --font-merriweather)
  *        JetBrains Mono (code/captions, via next/font → --font-jetbrains-mono)
@@ -80,10 +80,10 @@
 }
 
 /* ── Scoped dark-anchor tokens ───────────────────────────────────────────────
- * Applied by the <DarkAnchor> wrapper via data-theme="dark". Lets us drop a
- * deliberate dark section into the light page without re-theming the entire
- * site, and keeps the dark pages (/thesis, /blog/[slug], /compare/*, how-to)
- * visually consistent using the same warm-charcoal tokens. */
+ * Applied by <DarkAnchor>, <Section tone="dark"> and the Footer via
+ * data-theme="dark". Drops a deliberate warm-charcoal chapter into the light
+ * page without re-theming the site. Accent text on dark is sand (#E4C090) for
+ * contrast; filled CTAs stay deep amber (#B45309). */
 [data-theme="dark"] {
   --paper: #1C1917;
   --ink: #F5F5F4;
@@ -91,9 +91,10 @@
   --subtle: #78716C;
   --hairline: rgba(245, 245, 244, 0.08);
   --hairline-strong: rgba(245, 245, 244, 0.14);
-  --ink-soft: #A8A29E;
-  --amber: #F97316;
-  --teal: #FDBA74;
+  --ink-soft: #D6D3D1;
+  --amber: #E4C090;
+  --teal: #F2DABA;
+  --border-light: #44403C;
 
   --shadow-color: 0 0% 5%;
 
@@ -104,19 +105,19 @@
   --card-foreground: 60 5% 96%;
   --popover: 12 7% 15%;
   --popover-foreground: 60 5% 96%;
-  --primary: 25 95% 53%;                          /* #F97316 */
+  --primary: 26 91% 37%;                          /* #B45309 */
   --primary-foreground: 0 0% 100%;
   --secondary: 33 6% 32%;                         /* #57534E */
   --secondary-foreground: 20 6% 90%;              /* #E7E5E4 */
   --muted: 30 10% 11%;                            /* #201D1A */
   --muted-foreground: 24 5% 64%;                  /* #A8A29E */
-  --accent: 198 46% 22%;                          /* #1E4252 */
+  --accent: 34 30% 20%;                           /* warm umber wash */
   --accent-foreground: 20 6% 90%;
   --destructive: 0 72% 51%;                       /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
   --border: 30 6% 25%;                            /* #44403C */
   --input: 30 6% 25%;
-  --ring: 25 95% 53%;
+  --ring: 34 61% 73%;                             /* #E4C090 */
 }
 
 /* ── shadcn `.dark` class parity ─────────────────────────────────────────────
@@ -129,19 +130,19 @@
   --card-foreground: 60 5% 96%;
   --popover: 12 7% 15%;
   --popover-foreground: 60 5% 96%;
-  --primary: 25 95% 53%;
+  --primary: 26 91% 37%;
   --primary-foreground: 0 0% 100%;
   --secondary: 33 6% 32%;
   --secondary-foreground: 20 6% 90%;
   --muted: 30 10% 11%;
   --muted-foreground: 24 5% 64%;
-  --accent: 198 46% 22%;
+  --accent: 34 30% 20%;
   --accent-foreground: 20 6% 90%;
   --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 100%;
   --border: 30 6% 25%;
   --input: 30 6% 25%;
-  --ring: 25 95% 53%;
+  --ring: 34 61% 73%;
 }
 
 @layer base {
@@ -160,10 +161,12 @@
   margin: 0;
 }
 
+/* overflow-x: clip (not hidden) so body never becomes a scroll container:
+ * `position: sticky` pinned sequences depend on the viewport scrolling. */
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-merriweather), ui-serif, Georgia, serif;
@@ -176,6 +179,17 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Lenis smooth scroll (src/components/motion/SmoothScroll.tsx). */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+::selection { background: rgba(180, 83, 9, 0.18); color: var(--ink); }
+[data-theme="dark"] ::selection { background: rgba(228, 192, 144, 0.28); color: #FFFFFF; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
 
 /* When a page is explicitly marked as a dark-anchor page (thesis / blog post /
  * compare detail), set the body canvas to the dark hero too. This is opt-in
@@ -341,8 +355,8 @@ body[data-page-theme="dark"] {
 }
 [data-theme="dark"] .btn-ghost:hover {
   color: #F5F5F4;
-  border-color: rgba(249, 115, 22, 0.55);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.18);
+  border-color: rgba(228, 192, 144, 0.55);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ── Secondary accent helpers ── */
@@ -417,8 +431,8 @@ body[data-page-theme="dark"] .nav-link:hover {
   background: rgba(180, 83, 9, 0.06);
 }
 [data-theme="dark"] .nav-menu-item-accent:hover {
-  color: #FDBA74;
-  background: rgba(249, 115, 22, 0.08);
+  color: #F2DABA;
+  background: rgba(228, 192, 144, 0.08);
 }
 
 .nav-docs-btn {
@@ -465,6 +479,63 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   background-size: 80px 80px;
 }
 
+/* ── Plate grid: the page-level echo of the diagram plates' #F6F0E4 grid.
+ * An 80px hairline lattice, radially masked so it fades out toward the edges.
+ * Use as an absolutely positioned, aria-hidden backdrop layer. */
+.plate-grid {
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(74, 59, 51, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 59, 51, 0.055) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 78%);
+}
+[data-theme="dark"] .plate-grid {
+  background-image:
+    linear-gradient(rgba(245, 245, 244, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 245, 244, 0.045) 1px, transparent 1px);
+}
+.plate-grid-top {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
+/* ── Corner ticks: registration marks matching the diagram frames.
+ * Parent needs `position: relative`; add `.group` to brighten on hover. */
+.tick {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: #E4C090;
+  pointer-events: none;
+  transition: border-color 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.tick-tl { top: -1px; left: -1px; border-style: solid; border-width: 1px 0 0 1px; }
+.tick-tr { top: -1px; right: -1px; border-style: solid; border-width: 1px 1px 0 0; }
+.tick-bl { bottom: -1px; left: -1px; border-style: solid; border-width: 0 0 1px 1px; }
+.tick-br { bottom: -1px; right: -1px; border-style: solid; border-width: 0 1px 1px 0; }
+.group:hover .tick, .group:focus-within .tick { border-color: #B45309; }
+.group:hover .tick-tl { transform: translate(-3px, -3px); }
+.group:hover .tick-tr { transform: translate(3px, -3px); }
+.group:hover .tick-bl { transform: translate(-3px, 3px); }
+.group:hover .tick-br { transform: translate(3px, 3px); }
+[data-theme="dark"] .tick { border-color: #57534E; }
+[data-theme="dark"] .group:hover .tick { border-color: #E4C090; }
+
+/* ── Inline text link with a growing hairline underline. */
+.link-brand {
+  color: var(--amber);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 280ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms ease;
+}
+.link-brand:hover { background-size: 100% 1px; }
+
 /* Logo marquee items brighten on hover (CSS-only, no client JS). */
 .logo-marquee-item:hover {
   opacity: 1 !important;
@@ -491,7 +562,7 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   box-shadow: 0 8px 24px -12px rgba(180, 83, 9, 0.2);
 }
 
-/* Footer links: amber + underline-grow on hover (dark anchor surface). */
+/* Footer links: sand + underline-grow on hover (dark anchor surface). */
 .footer-link {
   position: relative;
   transition: color 160ms ease;
@@ -613,10 +684,13 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   width: 36px;
   height: 36px;
   border-radius: var(--radius);
-  color: #ffffff;
-  transition: opacity 0.2s, background 0.2s;
+  color: #78716C;
+  background: #FFFFFF;
+  border: 1px solid #E4D9BC;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
 }
-.blog-share-btn:hover { opacity: 0.85; }
+.blog-share-btn:hover { color: #B45309; border-color: #E4C090; transform: translateY(-1px); }
 
 /* Recently Published grid */
 .blog-recent-grid {
@@ -683,7 +757,7 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   margin-top: 32px;
   margin-bottom: 12px;
 }
-.prose-blog-dark p {
+.prose-blog-dark p:not(.not-prose p) {
   margin-bottom: 24px;
 }
 .prose-blog-dark a {
@@ -741,20 +815,146 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   border-top: 1px solid var(--hairline);
   margin: 40px 0;
 }
-.prose-blog-dark table {
+.prose-blog-dark table:not(.not-prose table) {
   width: 100%;
   border-collapse: collapse;
   margin: 0 0 24px;
   font-size: 0.95rem;
 }
-.prose-blog-dark th,
-.prose-blog-dark td {
+.prose-blog-dark th:not(.not-prose th),
+.prose-blog-dark td:not(.not-prose td) {
   border: 1px solid hsl(var(--border));
   padding: 10px 14px;
   text-align: left;
 }
-.prose-blog-dark th {
+.prose-blog-dark th:not(.not-prose th) {
   background: rgba(74, 59, 51, 0.03);
   color: var(--ink);
   font-weight: 600;
 }
+
+/* ── Prose brand layer (PageShell / Prose template) ──────────────────────────
+ * Sits on top of .prose-blog-dark. Editorial h2 rules, readable measure,
+ * scrollable tables with an ink header row, tidy code and callouts. */
+.prose-brand > p,
+.prose-brand > ul,
+.prose-brand > ol,
+.prose-brand > h2,
+.prose-brand > h3,
+.prose-brand > h4,
+.prose-brand > blockquote {
+  max-width: 72ch;
+}
+.prose-brand h2 {
+  position: relative;
+  padding-top: 40px;
+  margin-top: 64px;
+  border-top: 1px solid #E4D9BC;
+  letter-spacing: -0.02em;
+}
+.prose-brand h2::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: var(--amber);
+}
+.prose-brand > h2:first-child { margin-top: 0; }
+.prose-brand h3 { letter-spacing: -0.01em; }
+.prose-brand a { text-decoration-color: rgba(180, 83, 9, 0.35); text-underline-offset: 3px; transition: text-decoration-color 160ms ease, color 160ms ease; }
+.prose-brand a:hover { text-decoration-color: currentColor; }
+.prose-brand li::marker { color: #B45309; }
+.prose-brand ul { list-style: none; padding-left: 1.25rem; }
+.prose-brand ul > li { position: relative; }
+.prose-brand ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 0.8em;
+  width: 5px;
+  height: 5px;
+  background: #E4C090;
+}
+.prose-brand blockquote {
+  font-style: normal;
+  border-left: 2px solid #B45309;
+  background: #F8F4EE;
+  padding: 18px 22px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink);
+}
+.prose-brand table:not(.not-prose table) {
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #E4D9BC;
+  border-radius: var(--radius);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.9rem;
+}
+.prose-brand th:not(.not-prose th),
+.prose-brand td:not(.not-prose td) {
+  border: none;
+  border-bottom: 1px solid #F1E9DA;
+  padding: 12px 16px;
+  vertical-align: top;
+  min-width: 140px;
+}
+.prose-brand tr:last-child td:not(.not-prose td) { border-bottom: none; }
+.prose-brand th:not(.not-prose th) {
+  background: #F8F4EE;
+  border-bottom: 1px solid #E4D9BC;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #78716C;
+}
+.prose-brand pre {
+  background: #FBF8F2;
+  border-color: #E4D9BC;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+.prose-brand code { background: #F1E9DA; color: #78350F; }
+.prose-brand img { border: 1px solid #E4D9BC; }
+.prose-brand hr { border-top-color: #E4D9BC; }
+
+/* Dark tone for prose used inside a dark anchor. */
+[data-theme="dark"] .prose-brand h2 { border-top-color: rgba(255, 255, 255, 0.08); }
+
+/* ── Logo marquee: seamless three-set loop, pauses on hover. */
+@keyframes marquee-third {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-33.3333%, 0, 0); }
+}
+.marquee-track { animation: marquee-third 48s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+}
+
+/* Components embedded in prose (CodeBlock, cards) opt out with .not-prose. */
+.prose-blog-dark .not-prose pre {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 16px 20px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.prose-blog-dark .not-prose code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+.prose-blog-dark .not-prose ul > li::before { content: none; }
+.prose-blog-dark .not-prose { max-width: 100%; }

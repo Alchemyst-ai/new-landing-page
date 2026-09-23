@@ -3,6 +3,9 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CTASection from "@/components/sections/CTASection";
 import TableOfContents from "@/components/TableOfContents";
+import { Figure, Ticks } from "@/components/brand";
+import SectionHeader from "@/components/brand/SectionHeader";
+import { FadeUp, FigureReveal, RevealText } from "@/components/motion/primitives";
 import {
     blogPostCoverUrl,
     blogPostRawHtml,
@@ -84,7 +87,6 @@ function categoryHref(post: StrapiBlogPost): string {
   return slug ? `/blog?category=${slug}` : "/blog";
 }
 
-const SANS = "var(--font-merriweather), Georgia, serif";
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -145,14 +147,12 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
 
-      <main style={{ minHeight: "100vh" }}>
-        <div
-          className="container blog-post-grid blog-wide"
-          style={{ paddingTop: "104px", paddingBottom: "64px" }}
-        >
+      <main className="relative min-h-screen bg-[#FDFBF7]">
+        <div aria-hidden className="plate-grid plate-grid-top absolute inset-x-0 top-0 h-[640px]" />
+        <div className="container blog-post-grid blog-wide relative pt-28 md:pt-36 pb-16">
           {/* ── Left: sticky Table of Contents ── */}
           <aside className="blog-toc-desktop">
-            <div style={{ position: "sticky", top: "96px" }}>
+            <div className="sticky top-28">
               <TableOfContents
                 content={html}
                 title={post.title}
@@ -163,237 +163,127 @@ export default async function BlogPostPage({ params }: Props) {
           </aside>
 
           {/* ── Main column ── */}
-          <article style={{ minWidth: 0 }}>
-            {/* Breadcrumb trail + BreadcrumbList schema */}
-            <Breadcrumbs
-              currentPath={`/blog/${post.slug}`}
-              items={[
-                { name: "Blog", path: "/blog" },
-                ...(category ? [{ name: category, path: categoryHref(post) }] : []),
-                { name: post.title },
-              ]}
-            />
+          <article className="min-w-0">
+            <FadeUp standalone distance={12}>
+              <Breadcrumbs
+                currentPath={`/blog/${post.slug}`}
+                items={[
+                  { name: "Blog", path: "/blog" },
+                  ...(category ? [{ name: category, path: categoryHref(post) }] : []),
+                  { name: post.title },
+                ]}
+              />
+            </FadeUp>
 
-            {/* Title */}
-            <h1
-              style={{
-                fontFamily: SANS,
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-                color: "#4A3B33",
-                marginBottom: "20px",
-              }}
+            {category && (
+              <FadeUp standalone distance={10} delay={0.05} className="mb-6">
+                <Link
+                  href={categoryHref(post)}
+                  className="inline-flex items-center gap-2 rounded-[var(--radius)] border border-[#B45309]/20 bg-[#B45309]/[0.07] px-3 py-[6px] font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#B45309] transition-colors hover:bg-[#B45309]/[0.12]"
+                >
+                  <span aria-hidden className="h-[5px] w-[5px] bg-current" />
+                  {category}
+                </Link>
+              </FadeUp>
+            )}
+
+            <RevealText
+              as="h1"
+              onMount
+              delay={0.08}
+              stagger={0.03}
+              className="mb-6 max-w-[24ch] text-[clamp(2rem,4.2vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.03em] text-[#4A3B33] text-balance"
             >
               {post.title}
-            </h1>
+            </RevealText>
 
-            {/* Description */}
             {description && (
-              <p
-                style={{
-                  fontFamily: SANS,
-                  fontSize: "1.125rem",
-                  lineHeight: 1.6,
-                  color: "#57534E",
-                  marginBottom: "16px",
-                }}
-              >
-                {description}
-              </p>
-            )}
-
-            {/* Category pill */}
-            {category && (
-              <Link
-                href={categoryHref(post)}
-                style={{ textDecoration: "none", display: "inline-block", marginBottom: "24px" }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontFamily: SANS,
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: "#B45309",
-                    background: "rgba(180, 83, 9,0.12)",
-                    borderRadius: "var(--radius)",
-                    padding: "3px 10px",
-                  }}
-                >
-                  {category}
-                </span>
-              </Link>
-            )}
-
-            {/* Featured cover image */}
-            {coverUrl && (
-              <div
-                style={{
-                  width: "100%",
-                  borderRadius: "var(--radius)",
-                  overflow: "hidden",
-                  background: "rgba(74, 59, 51,0.03)",
-                  marginBottom: "24px",
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={coverUrl}
-                  alt={post.title}
-                  style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
-                />
-              </div>
+              <FadeUp standalone delay={0.2}>
+                <p className="mb-8 max-w-[68ch] text-[1.125rem] leading-[1.7] text-[#57534E]">{description}</p>
+              </FadeUp>
             )}
 
             {/* Author / reviewer / read-time credit row */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                gap: "16px 20px",
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-              }}
-            >
-              {post.author?.name && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/logo.png"
-                    alt={post.author.name}
-                    width={24}
-                    height={24}
-                    style={{ borderRadius: "9999px" }}
-                  />
-                  <span>
+            <FadeUp standalone delay={0.25}>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-[#E4D9BC]/80 py-4 font-mono text-[10.5px] uppercase tracking-[0.12em] text-[#78716C]">
+                {post.author?.name && (
+                  <span className="inline-flex items-center gap-2">
+                    <span aria-hidden className="h-[5px] w-[5px] bg-[#E4C090]" />
                     Written by{" "}
                     <Link
                       href={`/blog?author=${encodeURIComponent(post.author.name)}`}
-                      style={{ color: "#4A3B33", fontWeight: 500, textDecoration: "none" }}
+                      className="font-semibold text-[#4A3B33] transition-colors hover:text-[#B45309]"
                     >
                       {post.author.name}
                     </Link>
                   </span>
-                </span>
-              )}
-
-              {post.reviewer?.name && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/logo.png"
-                    alt={post.reviewer.name}
-                    width={24}
-                    height={24}
-                    style={{ borderRadius: "9999px" }}
-                  />
-                  <span>
+                )}
+                {post.reviewer?.name && (
+                  <span className="inline-flex items-center gap-2">
+                    <span aria-hidden className="h-[5px] w-[5px] bg-[#E4C090]" />
                     Reviewed by{" "}
                     <Link
                       href={`/blog?author=${encodeURIComponent(post.reviewer.name)}`}
-                      style={{ color: "#4A3B33", fontWeight: 500, textDecoration: "none" }}
+                      className="font-semibold text-[#4A3B33] transition-colors hover:text-[#B45309]"
                     >
                       {post.reviewer.name}
                     </Link>
                   </span>
+                )}
+                <span className="inline-flex items-center gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  {readTime} min read
                 </span>
-              )}
+                <span className="inline-flex items-center gap-2">
+                  Published at {formatDate(post.publishedAt)}
+                  {timeAgo(post.publishedAt) ? ` (${timeAgo(post.publishedAt)})` : ""}
+                </span>
+              </div>
+            </FadeUp>
 
-              <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                {readTime} min read
-              </span>
-            </div>
-
-            {/* Published date line */}
-            <div
-              style={{
-                fontFamily: SANS,
-                fontSize: "0.875rem",
-                color: "#78716C",
-                marginTop: "10px",
-              }}
-            >
-              Published at {formatDate(post.publishedAt)}
-              {timeAgo(post.publishedAt) ? ` (${timeAgo(post.publishedAt)})` : ""}
-            </div>
+            {/* Featured cover image */}
+            {coverUrl && (
+              <FigureReveal delay={0.2} className="mt-10">
+                <Figure>
+                  <div className="overflow-hidden rounded-[var(--radius)] border border-[#E4D9BC] bg-[#F1E9DA]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={coverUrl} alt={post.title} className="block h-auto w-full object-cover" />
+                  </div>
+                </Figure>
+              </FigureReveal>
+            )}
 
             {/* Summary card */}
             {post.about && (
-              <section
-                style={{
-                  marginTop: "32px",
-                  background: "#F8F4EE",
-                  border: "1px solid #E4D9BC",
-                  borderRadius: "var(--radius)",
-                  padding: "24px",
-                }}
-              >
-                <h2
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "1.25rem",
-                    fontWeight: 600,
-                    color: "#4A3B33",
-                    marginBottom: "12px",
-                  }}
-                >
-                  Summary
-                </h2>
-                <p
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "1rem",
-                    lineHeight: 1.75,
-                    color: "#57534E",
-                    whiteSpace: "pre-line",
-                  }}
-                >
-                  {post.about}
-                </p>
-              </section>
+              <FadeUp standalone>
+                <section className="relative mt-10 rounded-[var(--radius)] border border-[#E4D9BC] bg-[#F8F4EE] p-7">
+                  <span aria-hidden className="absolute inset-y-0 left-0 w-[2px] bg-[#B45309]" />
+                  <h2 className="mb-3 flex items-center gap-2.5 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#B45309]">
+                    Summary
+                  </h2>
+                  <p className="whitespace-pre-line text-[1rem] leading-[1.75] text-[#57534E]">{post.about}</p>
+                </section>
+              </FadeUp>
             )}
 
             {/* Mobile collapsible TOC */}
-            <details className="blog-toc-mobile" style={{ marginTop: "32px" }}>
-              <summary
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  background: "rgba(74, 59, 51,0.03)",
-                  border: "1px solid #E4D9BC",
-                  borderRadius: "var(--radius)",
-                  padding: "12px 16px",
-                  cursor: "pointer",
-                  fontFamily: SANS,
-                  fontWeight: 600,
-                  color: "#4A3B33",
-                }}
-              >
+            <details className="blog-toc-mobile group mt-8">
+              <summary className="flex cursor-pointer list-none items-center justify-between rounded-[var(--radius)] border border-[#E4D9BC] bg-white px-4 py-3 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#57534E]">
                 Table of Contents
+                <svg className="transition-transform duration-300 group-open:rotate-180" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
               </summary>
-              <div style={{ marginTop: "16px" }}>
+              <div className="mt-4">
                 <TableOfContents
                   content={html}
                   title={post.title}
                   url={fullUrl}
                   containerId="article-content"
+                  showShare={false}
                 />
               </div>
             </details>
@@ -402,44 +292,16 @@ export default async function BlogPostPage({ params }: Props) {
             {html ? (
               <div
                 id="article-content"
-                className="prose-blog-dark"
-                style={{ marginTop: "40px" }}
+                className="prose-blog-dark prose-brand mt-12"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             ) : (
-              <p
-                style={{
-                  fontFamily: SANS,
-                  color: "#78716C",
-                  textAlign: "center",
-                  padding: "60px 0",
-                }}
-              >
-                Content not available.
-              </p>
+              <p className="py-16 text-center text-[#78716C]">Content not available.</p>
             )}
 
             {/* Back link */}
-            <div
-              style={{
-                marginTop: "64px",
-                paddingTop: "32px",
-                borderTop: "1px solid #E4D9BC",
-              }}
-            >
-              <Link
-                href="/blog"
-                style={{
-                  fontFamily: SANS,
-                  fontSize: "0.9375rem",
-                  fontWeight: 600,
-                  color: "#B45309",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "6px",
-                }}
-              >
+            <div className="mt-16 border-t border-[#E4D9BC] pt-8">
+              <Link href="/blog" className="link-brand inline-flex items-center gap-2 text-[0.9375rem] font-bold">
                 ← Back to Blog
               </Link>
             </div>
@@ -448,95 +310,42 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* ── Recently Published ── */}
         {recentPosts.length > 0 && (
-          <section
-            style={{
-              borderTop: "1px solid #E4D9BC",
-              padding: "72px 0",
-            }}
-          >
+          <section className="border-t border-[#E4D9BC] bg-[#F8F4EE] py-20 md:py-24">
             <div className="container blog-wide">
-              <h2
-                style={{
-                  fontFamily: SANS,
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  fontWeight: 700,
-                  color: "#4A3B33",
-                  marginBottom: "32px",
-                }}
-              >
-                Recently Published
-              </h2>
+              <SectionHeader align="left" title="Recently Published" className="!mb-10" />
               <div className="blog-recent-grid">
-                {recentPosts.map((p) => {
+                {recentPosts.map((p, i) => {
                   const cover = blogPostCoverUrl(p);
                   const rt = p.readTime ?? (p.test ? estimateReadTime(p.test) : 5);
                   return (
-                    <Link
-                      key={p.slug}
-                      href={`/blog/${p.slug}`}
-                      className="blog-recent-card"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        background: "#FFFFFF",
-                        border: "1px solid #E4D9BC",
-                        borderRadius: "var(--radius)",
-                        overflow: "hidden",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {cover && (
-                        <div style={{ aspectRatio: "16 / 9", overflow: "hidden", background: "rgba(74, 59, 51,0.03)" }}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={cover}
-                            alt={p.title}
-                            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                          />
-                        </div>
-                      )}
-                      <div style={{ padding: "18px 20px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                        <div
-                          style={{
-                            fontFamily: SANS,
-                            fontSize: "0.75rem",
-                            color: "#A8A29E",
-                          }}
-                        >
-                          {p.category?.name ? `${p.category.name} • ` : ""}
-                          {formatDate(p.publishedAt)} • {rt} min read
-                        </div>
-                        <h3
-                          style={{
-                            fontFamily: SANS,
-                            fontSize: "1.0625rem",
-                            fontWeight: 600,
-                            lineHeight: 1.35,
-                            color: "#4A3B33",
-                            margin: 0,
-                          }}
-                        >
-                          {p.title}
-                        </h3>
-                        {p.description && (
-                          <p
-                            style={{
-                              fontFamily: SANS,
-                              fontSize: "0.875rem",
-                              lineHeight: 1.55,
-                              color: "#57534E",
-                              margin: 0,
-                              display: "-webkit-box",
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: "vertical",
-                              overflow: "hidden",
-                            }}
-                          >
-                            {p.description}
-                          </p>
+                    <FadeUp standalone key={p.slug} delay={(i % 3) * 0.07} className="h-full">
+                      <Link
+                        href={`/blog/${p.slug}`}
+                        className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius)] border border-[#E4D9BC] bg-white shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-[3px] hover:border-[#E4C090] hover:shadow-[var(--shadow-soft-lg)]"
+                      >
+                        <Ticks />
+                        {cover && (
+                          <div className="aspect-[16/9] overflow-hidden bg-[#F1E9DA]">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={cover}
+                              alt={p.title}
+                              className="block h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.035]"
+                            />
+                          </div>
                         )}
-                      </div>
-                    </Link>
+                        <div className="flex flex-col gap-2.5 p-6">
+                          <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#78716C]">
+                            {p.category?.name ? `${p.category.name} / ` : ""}
+                            {formatDate(p.publishedAt)} / {rt} min read
+                          </div>
+                          <h3 className="text-[1.0625rem] font-bold leading-[1.35] text-[#4A3B33]">{p.title}</h3>
+                          {p.description && (
+                            <p className="line-clamp-2 text-[0.875rem] leading-[1.6] text-[#57534E]">{p.description}</p>
+                          )}
+                        </div>
+                      </Link>
+                    </FadeUp>
                   );
                 })}
               </div>
@@ -544,7 +353,7 @@ export default async function BlogPostPage({ params }: Props) {
           </section>
         )}
 
-        {/* ── CTA ── */}
+        {/* ── CTA (dark chapter, flows into the footer) ── */}
         <CTASection />
       </main>
 

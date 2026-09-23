@@ -1,34 +1,58 @@
 import Link from "next/link";
+import { BrandButton } from "@/components/brand";
+import { PageShell } from "@/components/page";
+
+const INDEXES = [
+  ["Homepage", "https://getalchemystai.com/"],
+  ["Sitemap", "https://getalchemystai.com/sitemap.xml"],
+  ["LLM index", "https://getalchemystai.com/llms.txt"],
+  ["Full content", "https://getalchemystai.com/llms-full.txt"],
+  ["Docs", "https://docs.getalchemystai.com"],
+  ["API spec", "https://getalchemystai.com/openapi.json"],
+  ["About", "https://getalchemystai.com/about"],
+  ["Contact", "https://getalchemystai.com/contact"],
+  ["Privacy", "https://getalchemystai.com/privacy"],
+] as const;
+
 export default function NotFound() {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--paper)", color: "var(--ink)", fontFamily: "sans-serif", padding: "24px" }}>
-      <div style={{ textAlign: "center", maxWidth: "640px" }}>
-        <h1 style={{ fontSize: "4rem", fontWeight: 800, color: "#B45309" }}>404</h1>
-        <p style={{ color: "#78716C", marginTop: "8px" }}>Page not found</p>
-        <p style={{ color: "#78716C", marginTop: "12px", fontSize: "0.875rem", lineHeight: 1.6 }}>
-          {/* Agent recovery hint — plain-text markdown-style index for crawlers and AI agents */}
-          # Page not found. Try these public indexes instead:
-          - Homepage: https://getalchemystai.com/
-          - Sitemap: https://getalchemystai.com/sitemap.xml
-          - LLM index: https://getalchemystai.com/llms.txt
-          - Full content: https://getalchemystai.com/llms-full.txt
-          - Docs: https://getalchemystai.com/docs
-          - API spec: https://getalchemystai.com/openapi.json
-          - About: https://getalchemystai.com/about
-          - Contact: https://getalchemystai.com/contact
-          - Privacy: https://getalchemystai.com/privacy
-        </p>
-        <nav aria-label="404 recovery" style={{ marginTop: "16px", display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontSize: "0.875rem" }}>
-          <Link href="/" style={{ color: "#B45309", display: "inline-block" }}>← Back to home</Link>
-          <Link href="/sitemap.xml" style={{ color: "#B45309", display: "inline-block" }}>Sitemap</Link>
-          <Link href="/llms.txt" style={{ color: "#B45309", display: "inline-block" }}>llms.txt</Link>
-          <Link href="/llms-full.txt" style={{ color: "#B45309", display: "inline-block" }}>llms-full.txt</Link>
-          <Link href="/openapi.json" style={{ color: "#B45309", display: "inline-block" }}>API spec</Link>
-          <Link href="/about" style={{ color: "#B45309", display: "inline-block" }}>About</Link>
-          <Link href="/contact" style={{ color: "#B45309", display: "inline-block" }}>Contact</Link>
-          <Link href="/privacy" style={{ color: "#B45309", display: "inline-block" }}>Privacy</Link>
-        </nav>
-      </div>
-    </div>
+    <PageShell>
+      <section className="relative overflow-hidden">
+        <div aria-hidden className="plate-grid absolute inset-0" />
+        <div className="relative mx-auto flex min-h-[80vh] max-w-[760px] flex-col items-center justify-center px-6 pt-36 pb-24 text-center">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B45309]">404</p>
+          <h1 className="mt-5 text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.04em] text-[#4A3B33]">
+            Page not found
+          </h1>
+
+          {/* Agent recovery hint: a plain index for crawlers and AI agents. */}
+          <div className="mt-12 w-full rounded-[var(--radius)] border border-[#E4D9BC] bg-white p-6 text-left shadow-[var(--shadow-soft)]">
+            <p className="mb-4 font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#78716C]">
+              # Page not found. Try these public indexes instead:
+            </p>
+            <ul className="grid grid-cols-1 gap-x-8 gap-y-2 font-mono text-[12px] sm:grid-cols-2">
+              {INDEXES.map(([label, href]) => (
+                <li key={href} className="flex gap-2 text-[#57534E]">
+                  <span className="text-[#A8A29E]">-</span>
+                  <span>
+                    {label}:{" "}
+                    <a href={href} className="link-brand break-all">
+                      {href.replace("https://", "")}
+                    </a>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <nav aria-label="404 recovery" className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <BrandButton href="/">← Back to home</BrandButton>
+            <Link href="/about" className="link-brand px-3 text-sm font-bold">About</Link>
+            <Link href="/contact" className="link-brand px-3 text-sm font-bold">Contact</Link>
+            <Link href="/privacy" className="link-brand px-3 text-sm font-bold">Privacy</Link>
+          </nav>
+        </div>
+      </section>
+    </PageShell>
   );
 }

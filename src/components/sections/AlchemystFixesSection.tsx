@@ -1,15 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import CountUpMetric from "./CountUpMetric";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { BrandButton, Figure, Section, SpecCard } from "@/components/brand";
+import CodeBlock from "@/components/brand/CodeBlock";
+import SectionHeader from "@/components/brand/SectionHeader";
+import { EASE, FadeUp, FigureReveal } from "@/components/motion/primitives";
 import BenchmarkChart from "./BenchmarkChart";
+import { useReducedMotionSafe } from "./iso/kit";
 
 const STEPS = [
   {
     num: "01",
-    title: "Context Arithmetic - the core primitive",
-    body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains - so only the right context survives into the window.",
+    title: "Context Arithmetic: the core primitive",
+    body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains, so only the right context survives into the window.",
     code: `// Set algebra over meaning, at query time
 const window = alchemyst.context.search({
   query: userMessage,
@@ -21,7 +25,7 @@ const window = alchemyst.context.search({
   {
     num: "02",
     title: "Institutional knowledge graph + context traces",
-    body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers - by applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
+    body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers. By applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
     code: `// One graph + arithmetic → derived "memories"
 const whatHappened = ctx.search({ groupName: [session_id] });
 const whatItMeans  = ctx.search({ query: term })
@@ -31,7 +35,7 @@ const whatItMeans  = ctx.search({ query: term })
   {
     num: "03",
     title: "Context Traces for full auditability",
-    body: "Every agent decision is traceable back to the exact context it had - at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
+    body: "Every agent decision is traceable back to the exact context it had, at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
     code: `const trace = await alchemyst.trace.get(
   session_id, turn_id
 );
@@ -52,191 +56,188 @@ const whatItMeans  = ctx.search({ query: term })
   },
 ];
 
-const METRICS = [
-  { prefix: "< ", value: 300, suffix: "ms", decimals: 0, label: "context retrieval latency", sub: "p95 across all query types" },
-  { prefix: "", value: 99.7, suffix: "%", decimals: 1, label: "reduction in hallucinations", sub: "on domain-specific tasks" },
-  { prefix: "", value: 20, suffix: "×", decimals: 0, label: "faster agent debugging", sub: "with context traces vs raw logs" },
-  { prefix: "", value: 1, suffix: " API", decimals: 0, label: "replaces 4 infra pieces", sub: "vector DB, graph DB, cache, logger" },
-];
+/* ── Step card: reports itself active when it crosses the viewport centre ── */
 
-const ease = [0.23, 1, 0.32, 1] as const;
+function StepCard({
+  step,
+  index,
+  active,
+  onActive,
+}: {
+  step: (typeof STEPS)[number];
+  index: number;
+  active: boolean;
+  onActive: (i: number) => void;
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const centred = useInView(ref, { margin: "-45% 0px -45% 0px" });
+  useEffect(() => {
+    if (centred) onActive(index);
+  }, [centred, index, onActive]);
 
-function highlightCode(code: string): string {
-  return code
-    .replace(/\/\/(.*)/g, '<span class="text-[#78716C]">//$1</span>')
-    .replace(/(const|await|new)/g, '<span class="text-[#A16207]">$1</span>')
-    .replace(/(alchemyst|ctx)/g, '<span class="text-[#B45309]">$1</span>');
+  return (
+    <FadeUp standalone>
+      <div ref={ref} id={`step-${step.num}`} className="scroll-mt-32">
+        <SpecCard
+          interactive={false}
+          className={`p-7 sm:p-9 lg:p-10 transition-[border-color,box-shadow] duration-500 ${
+            active ? "lg:border-[#E4C090] lg:shadow-[var(--shadow-soft-lg)]" : ""
+          }`}
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span
+              className={`font-mono text-[12px] font-semibold tracking-[0.14em] transition-colors duration-500 ${
+                active ? "text-[#B45309]" : "text-[#A16207]"
+              }`}
+            >
+              {step.num}
+            </span>
+            <span aria-hidden className="h-px flex-1 bg-[#F1E9DA]" />
+          </div>
+          <h3 className="mb-4 text-[1.375rem] font-bold leading-snug tracking-[-0.015em] text-[#4A3B33]">
+            {step.title}
+          </h3>
+          <p className="mb-8 text-[0.9375rem] leading-[1.75] text-[#57534E] max-w-[62ch]">{step.body}</p>
+          <CodeBlock code={step.code} />
+        </SpecCard>
+      </div>
+    </FadeUp>
+  );
+}
+
+/* ── Sticky rail (desktop): step list + HUD-style segmented progress ─────── */
+
+function StepRail({ active }: { active: number }) {
+  const reduce = useReducedMotionSafe();
+  const go = (num: string) => {
+    const el = document.getElementById(`step-${num}`);
+    if (!el) return;
+    if (window.__lenis && !reduce) window.__lenis.scrollTo(el, { offset: -160 });
+    else el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  };
+  return (
+    <div className="sticky top-32">
+      <div className="mb-8 flex gap-1" aria-hidden>
+        {STEPS.map((s, k) => (
+          <div key={s.num} className="relative h-[3px] flex-1 overflow-hidden rounded-full bg-[#F1E9DA]">
+            <motion.div
+              className="absolute inset-0 origin-left bg-[#B45309]"
+              initial={false}
+              animate={{ scaleX: k <= active ? 1 : 0 }}
+              transition={{ duration: reduce ? 0 : 0.6, ease: EASE }}
+            />
+          </div>
+        ))}
+      </div>
+      <ol className="space-y-1">
+        {STEPS.map((s, k) => {
+          const on = k === active;
+          return (
+            <li key={s.num}>
+              <button
+                type="button"
+                onClick={() => go(s.num)}
+                aria-current={on ? "step" : undefined}
+                className="group flex w-full items-start gap-4 rounded-[var(--radius)] py-3 pr-2 text-left"
+              >
+                <span
+                  className={`mt-[3px] font-mono text-[11px] font-semibold tracking-[0.14em] transition-colors duration-300 ${
+                    on ? "text-[#B45309]" : "text-[#A8A29E] group-hover:text-[#78716C]"
+                  }`}
+                >
+                  {s.num}
+                </span>
+                <span
+                  className={`text-[0.9375rem] font-bold leading-snug transition-colors duration-300 ${
+                    on ? "text-[#4A3B33]" : "text-[#A8A29E] group-hover:text-[#78716C]"
+                  }`}
+                >
+                  {s.title}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
 }
 
 export default function AlchemystFixesSection() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section
-      id="how-it-works"
-      className="relative w-full bg-white py-28 overflow-hidden"
-      aria-labelledby="fixes-heading"
-    >
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-
-        {/* ── Section header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="max-w-5xl mb-16 text-center mx-auto"
-        >
-          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#A16207] font-semibold mb-5 block">
-            What does Alchemyst do?
-          </span>
-          <h2
-            id="fixes-heading"
-            className="text-[#4A3B33] text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.1] mb-5"
-          >
+    <Section id="how-it-works" tone="white" aria-labelledby="fixes-heading">
+      <SectionHeader
+        eyebrow="What does Alchemyst do?"
+        id="fixes-heading"
+        title={
+          <>
             A context layer that keeps your AI{" "}
-            <span className="italic text-[#A16207]">current, traceable,</span> and
-            semantically consistent.
-          </h2>
-          <p className="text-[#57534E] text-base lg:text-lg leading-relaxed max-w-2xl text-center mx-auto">
-            One API call. Context arithmetic over your institutional knowledge graph. Every
-            decision traceable back to its source - without managing a single vector database or
-            graph store.
-          </p>
-        </motion.div>
+            <span className="italic text-[#A16207]">current, traceable,</span> and semantically
+            consistent.
+          </>
+        }
+        lead="One API call. Context arithmetic over your institutional knowledge graph. Every decision traceable back to its source, without managing a single vector database or graph store."
+      />
 
-        {/* ── Bento grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#E4D9BC] border border-[#E4D9BC] mb-28 rounded-lg overflow-hidden shadow-[var(--shadow-soft)]">
-          {STEPS.map((step, i) => {
-            // Row 1: card 0 spans 2, card 1 spans 1
-            // Row 2: card 2 spans 1, card 3 spans 2
-            const span = i === 0 || i === 3 ? "lg:col-span-2" : "lg:col-span-1";
-
-            return (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease }}
-                className={`${span} flex flex-col bg-white hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300`}
-              >
-                <div className="p-8 lg:p-10 flex-grow">
-                  <span className="font-mono text-sm tracking-[0.12em] text-[#A16207] font-bold block mb-4">
-                    {step.num}
-                  </span>
-                  <h3 className="text-[#4A3B33] text-xl font-bold leading-tight mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-[#57534E] text-[15px] leading-relaxed">
-                    {step.body}
-                  </p>
-                </div>
-                <div className="bg-[#F8F4EE] border-t border-[#E4D9BC] p-8">
-                  <pre className="font-mono text-[13px] leading-relaxed text-stone-700 overflow-x-auto whitespace-pre-wrap">
-                    <code
-                      dangerouslySetInnerHTML={{
-                        __html: highlightCode(step.code),
-                      }}
-                    />
-                  </pre>
-                </div>
-              </motion.div>
-            );
-          })}
+      {/* ── Pinned step sequence ───────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-24 md:mb-32">
+        <div className="hidden lg:block lg:col-span-4">
+          <StepRail active={active} />
         </div>
-
-        {/* ── Metrics strip ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-2 lg:grid-cols-4 mb-28"
-        >
-          {METRICS.map((m) => (
-            <div
-              key={m.label}
-              className="border border-[#E4D9BC] bg-white"
-            >
-              <CountUpMetric
-                value={m.value}
-                prefix={m.prefix}
-                suffix={m.suffix}
-                decimals={m.decimals}
-                label={m.label}
-                sub={m.sub}
-              />
-            </div>
+        <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
+          {STEPS.map((step, i) => (
+            <StepCard key={step.num} step={step} index={i} active={active === i} onActive={setActive} />
           ))}
-        </motion.div>
+        </div>
+      </div>
 
-        {/* ── Benchmark chart ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-28"
-        >
-          <BenchmarkChart />
-        </motion.div>
+      {/* ── Benchmark chart ────────────────────────────────── */}
+      <FigureReveal className="mb-24 md:mb-32">
+        <Figure>
+          {/* Wide diagram: keeps its aspect and scrolls sideways under lg. */}
+          <div className="overflow-x-auto lg:overflow-visible">
+            <div className="min-w-[760px]">
+              <BenchmarkChart />
+            </div>
+          </div>
+        </Figure>
+      </FigureReveal>
 
-        {/* ── Euphony callout ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease }}
-          className="bg-white border border-[#E4D9BC] p-10 md:p-16 rounded-lg shadow-[var(--shadow-soft)]"
-        >
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
-            <div className="flex-1 max-w-2xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#B45309] font-semibold mb-4">
+      {/* ── Euphony callout ────────────────────────────────── */}
+      <FadeUp standalone>
+        <SpecCard tone="sand" className="overflow-hidden p-8 sm:p-10 md:p-14">
+          <div aria-hidden className="plate-grid absolute inset-y-0 right-0 w-1/2 opacity-70 [mask-image:linear-gradient(to_left,#000,transparent)]" />
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 items-end gap-10">
+            <div className="lg:col-span-8">
+              <p className="mb-5 inline-flex items-center gap-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
+                <span aria-hidden className="h-[6px] w-[6px] bg-[#B45309]" />
                 Example Use Case
               </p>
-              <h3 className="text-[#4A3B33] text-2xl md:text-3xl font-bold leading-tight mb-5">
+              <h3 className="mb-5 text-[1.5rem] md:text-[1.875rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#4A3B33] text-balance">
                 How do you debug what an agent can&apos;t see? Context Tracing with OpenAI Euphony
               </h3>
-              <p className="text-[#57534E] text-base leading-relaxed">
-                Pairing Alchemyst&apos;s Context Traces with Euphony - OpenAI&apos;s open-source conversation
-                visualizer - creates an end-to-end debugging workflow. Every agent failure is now
+              <p className="max-w-[62ch] text-[0.9375rem] leading-[1.75] text-[#57534E]">
+                Pairing Alchemyst&apos;s Context Traces with Euphony, OpenAI&apos;s open-source conversation
+                visualizer, creates an end-to-end debugging workflow. Every agent failure is now
                 diagnosable in minutes: was it a retrieval problem, a configuration problem, or a
                 model problem?
               </p>
             </div>
-
-            <div className="flex-shrink-0 w-full lg:w-auto">
-              <Button
-                asChild
-                className="w-full lg:w-auto bg-[#B45309] hover:bg-[#A16207] text-white px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
+            <div className="lg:col-span-4 lg:justify-self-end">
+              <BrandButton
+                href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
+                external
+                arrow
+                className="w-full lg:w-auto"
               >
-                <a
-                  href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read the walkthrough
-                  <svg
-                    className="ml-2 inline-block"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
-              </Button>
+                Read the walkthrough
+              </BrandButton>
             </div>
           </div>
-        </motion.div>
-
-      </div>
-    </section>
+        </SpecCard>
+      </FadeUp>
+    </Section>
   );
 }

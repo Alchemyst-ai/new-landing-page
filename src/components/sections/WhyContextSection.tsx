@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Chip, Figure, Section, SpecCard } from "@/components/brand";
+import SectionHeader from "@/components/brand/SectionHeader";
+import { EASE, FadeUp, FigureReveal, RevealText, Stagger, VIEWPORT } from "@/components/motion/primitives";
 import ContextSovereigntyFlow from "./ContextSovereigntyFlow";
+import { useReducedMotionSafe } from "./iso/kit";
 
 /* ── data ─────────────────────────────────────────────────────── */
 
 const PILLARS = [
   {
     accent: "#A16207",
-    accentRgb: "161,98,7",
     kicker: "The Technical Case",
     title: "Switch models freely. Keep your context sovereign.",
     body: "Every model swap normally resets your agent's memory. Alchemyst decouples what your organization knows from whichever model reasons over it, so institutional context stays continuous across every upgrade or multi-model setup.",
@@ -22,10 +25,9 @@ const PILLARS = [
   },
   {
     accent: "#B45309",
-    accentRgb: "180,83,9",
     kicker: "The Business Case",
     title: "Operationalize intelligence that runs your day-to-day.",
-    body: "This isn't a smarter chatbot. It's a context layer that turns what your organization knows into agents that run sales, support, ops, and research at scale — every decision traceable, every agent on the same source of truth.",
+    body: "This isn't a smarter chatbot. It's a context layer that turns what your organization knows into agents that run sales, support, ops, and research at scale: every decision traceable, every agent on the same source of truth.",
     chips: [
       "Run ops, not just answers",
       "One source of truth",
@@ -35,179 +37,107 @@ const PILLARS = [
   },
 ];
 
-const PULL_QUOTE =
-  "Models will keep changing. Your institutional context is the asset that compounds - so it should belong to you, not to whichever model you happen to run today.";
-
-/* ── animation helpers ────────────────────────────────────────── */
-
-const ease = [0.23, 1, 0.32, 1] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease, delay: i * 0.08 },
-  }),
-};
-
 /* ── component ────────────────────────────────────────────────── */
 
 export default function WhyContextSection() {
-  return (
-    <section
-      id="why-context"
-      className="relative w-full bg-[#F8F4EE] py-28 overflow-hidden"
-      aria-labelledby="why-context-heading"
-    >
-      <div className="mx-auto max-w-[1200px] px-6">
-        {/* ── Section header ─────────────────────────────────── */}
-        <div className="mb-16 max-w-4xl text-center mx-auto">
-          <motion.span
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={0}
-            className="inline-block font-mono text-[11px] uppercase tracking-[0.12em] font-semibold text-[#B45309] bg-[#B45309]/8 border border-[#B45309]/20 px-4 py-1 mb-6"
-          >
-            Why context
-          </motion.span>
+  const reduce = useReducedMotionSafe();
 
-          <motion.h2
-            id="why-context-heading"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={1}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4A3B33] tracking-tight leading-[1.1] mb-5"
-          >
+  return (
+    <Section id="why-context" tone="sand" aria-labelledby="why-context-heading" className="overflow-hidden">
+      <SectionHeader
+        eyebrow="Why context"
+        id="why-context-heading"
+        title={
+          <>
             The model is replaceable.
             <br />
-            Your <span className=" text-[#B45309]">institutional context </span>{" "}
-            isn&apos;t.
-          </motion.h2>
+            Your <span className="text-[#B45309]">institutional context</span>{" "}isn&apos;t.
+          </>
+        }
+        lead="Models are commoditizing fast. Durable advantage comes from a context layer that operationalizes your business intelligence and stays yours no matter which model you run it on."
+      />
 
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={2}
-            className="text-base lg:text-lg text-[#57534E] leading-relaxed"
-          >
-            Models are commoditizing fast. Durable advantage comes from a context
-            layer that operationalizes your business intelligence and stays
-            yours no matter which model you run it on.
-          </motion.p>
-        </div>
-
-        {/* ── Bento grid ─────────────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-16">
-          {/* Pull-quote card — spans 2 rows on desktop */}
-          <motion.blockquote
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={3}
-            className="relative flex flex-col justify-center bg-white border border-[#E4D9BC] rounded-xl p-10 lg:p-12 lg:row-span-2 transition-all duration-300 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)] hover:-translate-y-[2px]"
-          >
-            {/* Large decorative quotation mark */}
-            <span
+      {/* ── Bento grid ─────────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-20 md:mb-28">
+        {/* Pull-quote card, spans 2 rows on desktop */}
+        <FadeUp standalone className="lg:col-span-6 lg:row-span-2 flex">
+          <SpecCard as="blockquote" className="flex w-full flex-col p-10 lg:p-12">
+            <div className="flex flex-1 flex-col justify-center">
+            <motion.span
               aria-hidden
-              className="absolute top-8 left-10 text-[120px] leading-none font-serif text-[#E4D9BC] select-none pointer-events-none"
+              className="block font-serif text-[112px] leading-[0.7] text-[#E4C090] select-none"
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
             >
               &ldquo;
-            </span>
+            </motion.span>
 
-            <p className="relative z-10 text-xl sm:text-2xl lg:text-[1.65rem] font-semibold text-[#4A3B33] leading-snug tracking-tight mt-12 lg:mt-0">
-              {PULL_QUOTE.split("institutional context").map((part, i, arr) =>
-                i < arr.length - 1 ? (
-                  <span key={i}>
-                    {part}
-                    <span className="text-[#B45309]">institutional context</span>
-                  </span>
-                ) : (
-                  <span key={i}>{part}</span>
-                )
-              )}
-            </p>
+            <RevealText
+              as="p"
+              stagger={0.018}
+              delay={0.15}
+              className="mt-8 text-[1.375rem] sm:text-[1.625rem] lg:text-[1.75rem] font-bold text-[#4A3B33] leading-[1.35] tracking-[-0.02em]"
+            >
+              Models will keep changing. Your{" "}
+              <span className="text-[#B45309]">institutional context</span> is the asset that
+              compounds, so it should belong to you, not to whichever model you happen to run today.
+            </RevealText>
+            </div>
 
-            <span className="mt-8 inline-flex items-center gap-2 text-[#78716C] text-sm font-mono tracking-wide">
-              <a
-                href="/thesis"
-                className="text-[#B45309] hover:text-[#A16207] transition-colors"
-              >
+            <div className="mt-12 flex items-center justify-between gap-6 border-t border-[#F1E9DA] pt-6">
+              <a href="/thesis" className="link-brand font-mono text-[12px] font-semibold uppercase tracking-[0.12em]">
                 Read the Context Thesis &rarr;
               </a>
-            </span>
-          </motion.blockquote>
+            </div>
+          </SpecCard>
+        </FadeUp>
 
-          {/* Pillar cards */}
-          {PILLARS.map((p, i) => (
-            <motion.div
-              key={p.kicker}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
-              custom={4 + i}
-              className="group relative bg-white border border-[#E4D9BC] rounded-xl p-8 lg:p-10 transition-all duration-300 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)] hover:-translate-y-[2px] overflow-hidden"
-            >
-              {/* 3px top accent bar */}
-              <div
-                className="absolute top-0 left-0 w-full h-[3px]"
+        {/* Pillar cards */}
+        {PILLARS.map((p, i) => (
+          <FadeUp standalone key={p.kicker} delay={0.08 * (i + 1)} className="lg:col-span-6 flex">
+            <SpecCard className="w-full overflow-hidden p-8 lg:p-10">
+              <motion.div
+                aria-hidden
+                className="absolute left-0 top-0 h-[2px] w-full origin-left"
                 style={{ backgroundColor: p.accent }}
+                initial={reduce ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={VIEWPORT}
+                transition={{ duration: 1.1, ease: EASE, delay: 0.25 + i * 0.1 }}
               />
-
-              <div className="flex flex-col h-full">
-                {/* Kicker */}
+              <div className="flex h-full flex-col">
                 <span
-                  className="font-mono text-[11px] uppercase tracking-[0.12em] font-semibold mb-3"
+                  className="mb-4 inline-flex items-center gap-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em]"
                   style={{ color: p.accent }}
                 >
+                  <span aria-hidden className="h-[6px] w-[6px]" style={{ backgroundColor: p.accent }} />
                   {p.kicker}
                 </span>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-[#4A3B33] leading-snug tracking-tight mb-3">
+                <h3 className="mb-3 text-[1.3125rem] font-bold leading-snug tracking-[-0.015em] text-[#4A3B33]">
                   {p.title}
                 </h3>
-
-                {/* Body */}
-                <p className="text-sm text-[#57534E] leading-relaxed mb-6 flex-grow">
-                  {p.body}
-                </p>
-
-                {/* Chips */}
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <p className="mb-7 flex-grow text-[0.9375rem] leading-[1.7] text-[#57534E]">{p.body}</p>
+                <Stagger as="ul" stagger={0.05} delay={0.3} className="mt-auto flex flex-wrap gap-2">
                   {p.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="font-mono text-[10px] text-[#57534E] bg-[#F8F4EE] border border-[#E4D9BC] rounded-md px-3 py-1.5 transition-colors group-hover:bg-white group-hover:border-[#B45309]/40"
-                    >
-                      {chip}
-                    </span>
+                    <FadeUp as="li" key={chip} distance={8}>
+                      <Chip>{chip}</Chip>
+                    </FadeUp>
                   ))}
-                </div>
+                </Stagger>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ── Full-width flow diagram ────────────────────────── */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          custom={6}
-        >
-          <ContextSovereigntyFlow />
-        </motion.div>
+            </SpecCard>
+          </FadeUp>
+        ))}
       </div>
-    </section>
+
+      {/* ── Full-width flow diagram ────────────────────────── */}
+      <FigureReveal>
+        <Figure>
+          <ContextSovereigntyFlow />
+        </Figure>
+      </FigureReveal>
+    </Section>
   );
 }
