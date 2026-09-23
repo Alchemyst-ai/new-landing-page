@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/claude-auto-memory-vs-portable-context";
 const PAGE_TITLE = "Claude Auto Memory vs Portable Context: Fragmentation vs Unity";
@@ -32,14 +32,14 @@ export default function ClaudeAutoMemoryVsPortablePage() {
               { name: PAGE_TITLE },
             ]}
           />
-          <h1 style={{ fontFamily: SANS, fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, lineHeight: 1.1, color: "#0F172A", marginBottom: "24px" }}>
+          <h1 style={{ fontFamily: SANS, fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, lineHeight: 1.1, color: "#4A3B33", marginBottom: "24px" }}>
             {PAGE_TITLE}
           </h1>
           <div style={{ marginBottom: "48px" }}>
-            <p style={{ fontFamily: SANS, fontSize: "1.125rem", lineHeight: 1.6, color: "#475569" }}>
+            <p style={{ fontFamily: SANS, fontSize: "1.125rem", lineHeight: 1.6, color: "#57534E" }}>
               Claude Code's Auto Memory saves insights per-repository. This works for single-agent workflows but creates knowledge silos when your team uses multiple AI tools.
             </p>
-            <p style={{ fontFamily: SANS, fontSize: "0.875rem", color: "#64748B", marginTop: "16px" }}>Last updated: June 2026</p>
+            <p style={{ fontFamily: SANS, fontSize: "0.875rem", color: "#78716C", marginTop: "16px" }}>Last updated: June 2026</p>
           </div>
           <div className="prose-blog-dark" style={{ fontFamily: SANS, lineHeight: 1.7 }}>
             <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "20px" }}>
@@ -80,29 +80,29 @@ export default function ClaudeAutoMemoryVsPortablePage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Feature</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Claude Auto Memory</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Feature</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Claude Auto Memory</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Cross-tool sharing</td>
                   <td style={{ padding: "12px" }}>✅ Native</td>
                   <td style={{ padding: "12px" }}>❌ Manual sync</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>User-scoped context</td>
                   <td style={{ padding: "12px" }}>✅ Multi-scope</td>
                   <td style={{ padding: "12px" }}>⚠️ Repository-only</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Storage limit</td>
                   <td style={{ padding: "12px" }}>✅ Unlimited</td>
                   <td style={{ padding: "12px" }}>⚠️ 25KB threshold</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Conflict resolution</td>
                   <td style={{ padding: "12px" }}>✅ Semantic consensus</td>
                   <td style={{ padding: "12px" }}>❌ Agent-written</td>

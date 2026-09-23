@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Mem0 vs Zep vs Letta: Which AI Memory Layer is Best?",
@@ -38,7 +38,7 @@ export default function Mem0VsZepVsLettaPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function Mem0VsZepVsLettaPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               When evaluating the best AI memory layer for agents, the market generally looks at Mem0, Zep, and Letta. However, choosing between them depends entirely on whether you are building a personalized consumer chatbot or a production multi-agent architecture. Here is how they compare, and why <strong>Alchemyst AI</strong> represents a different, deterministic approach for enterprise deployments.
@@ -60,7 +60,7 @@ export default function Mem0VsZepVsLettaPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >

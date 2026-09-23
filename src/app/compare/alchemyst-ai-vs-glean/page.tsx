@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Glean: Enterprise Context Layer Comparison",
@@ -38,7 +38,7 @@ export default function CompareGleanPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function CompareGleanPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Glean is an exceptional permissions-aware enterprise search engine and AI assistant designed for human workers. However, its context graph relies on probabilistic correlation to infer workflows. <strong>Alchemyst AI is a developer-first context API for autonomous agents</strong>. While Glean disambiguates entities for search, Alchemyst provides deterministic semantic consensus, giving your engineering team the sovereign infrastructure to build reliable multi-agent systems.
@@ -60,7 +60,7 @@ export default function CompareGleanPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -71,34 +71,34 @@ export default function CompareGleanPage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Glean</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Glean</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Primary User</td>
                   <td style={{ padding: "16px" }}>Autonomous AI Agents (via API)</td>
                   <td style={{ padding: "16px" }}>Human Employees (via Assistant UI)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Context Architecture</td>
                   <td style={{ padding: "16px" }}>Deterministic Context Arithmetic</td>
                   <td style={{ padding: "16px" }}>Probabilistic Context Graph</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Semantic Consensus</td>
                   <td style={{ padding: "16px" }}>Actively resolves contested meanings</td>
                   <td style={{ padding: "16px" }}>Infers entities via ML crawling</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Product Category</td>
                   <td style={{ padding: "16px" }}>Context Infrastructure Layer</td>
                   <td style={{ padding: "16px" }}>Enterprise Search / Work Assistant</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Sovereignty</td>
                   <td style={{ padding: "16px" }}>Embeddable in your own architecture</td>
                   <td style={{ padding: "16px" }}>Closed platform ecosystem</td>

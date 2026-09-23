@@ -30,8 +30,8 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
       style={{
         display: "block",
         background: "#FFFFFF",
-        border: "1px solid rgba(15,23,42,0.08)",
-         borderRadius: "0",
+        border: "1px solid rgba(74, 59, 51,0.08)",
+         borderRadius: "var(--radius)",
         overflow: "hidden",
         textDecoration: "none",
         transition: "box-shadow 0.2s ease, transform 0.2s ease",
@@ -54,14 +54,14 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
           <span
             style={{
               display: "inline-block",
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-merriweather), Georgia, serif",
               fontSize: "0.75rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              color: "#F49025",
-              background: "rgba(244,144,37,0.1)",
-               borderRadius: "0",
+              color: "#B45309",
+              background: "rgba(180, 83, 9,0.1)",
+               borderRadius: "var(--radius)",
               padding: "3px 8px",
               marginBottom: "12px",
             }}
@@ -71,11 +71,11 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
         )}
         <h2
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-merriweather), Georgia, serif",
             fontSize: "1.125rem",
             fontWeight: 700,
             lineHeight: 1.35,
-            color: "#0F172A",
+            color: "#4A3B33",
             marginBottom: "10px",
           }}
         >
@@ -83,10 +83,10 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
         </h2>
         <p
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-merriweather), Georgia, serif",
             fontSize: "0.9375rem",
             lineHeight: 1.6,
-            color: "#475569",
+            color: "#57534E",
             marginBottom: "16px",
           }}
         >
@@ -98,8 +98,8 @@ function BlogCard({ post }: { post: StrapiBlogPost }) {
             alignItems: "center",
             gap: "12px",
             fontSize: "0.8125rem",
-            color: "#94A3B8",
-            fontFamily: "'Sora', sans-serif",
+            color: "#A8A29E",
+            fontFamily: "var(--font-merriweather), Georgia, serif",
           }}
         >
           {post.author && <span>{post.author.name}</span>}
@@ -137,12 +137,12 @@ export default async function BlogPage() {
             />
             <p
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-merriweather), Georgia, serif",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#F49025",
+                color: "#B45309",
                 marginBottom: "16px",
               }}
             >
@@ -150,7 +150,7 @@ export default async function BlogPage() {
             </p>
             <h1
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-merriweather), Georgia, serif",
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
@@ -162,10 +162,10 @@ export default async function BlogPage() {
             </h1>
             <p
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-merriweather), Georgia, serif",
                 fontSize: "1.0625rem",
                 lineHeight: 1.6,
-                 color: "#64748B",
+                 color: "#78716C",
                }}
              >
                {posts.length} article{posts.length !== 1 ? "s" : ""} on semantic drift, context
@@ -175,14 +175,14 @@ export default async function BlogPage() {
         </section>
 
         {/* Grid */}
-        <section style={{ background: "#F7F4EE", padding: "80px 0" }}>
+        <section style={{ background: "#F8F4EE", padding: "80px 0" }}>
           <div className="container">
             {posts.length === 0 ? (
               <p
                 style={{
                   textAlign: "center",
-                  color: "#94A3B8",
-                  fontFamily: "'Sora', sans-serif",
+                  color: "#A8A29E",
+                  fontFamily: "var(--font-merriweather), Georgia, serif",
                   fontSize: "1rem",
                   padding: "80px 0",
                 }}
@@ -208,7 +208,7 @@ export default async function BlogPage() {
       <Footer />
       <style>{`
         .blog-card:hover {
-          box-shadow: 0 8px 32px rgba(15,23,42,0.12);
+          box-shadow: 0 8px 32px rgba(74, 59, 51,0.12);
           transform: translateY(-2px);
         }
       `}</style>

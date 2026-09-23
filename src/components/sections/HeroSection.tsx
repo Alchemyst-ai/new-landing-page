@@ -3,7 +3,9 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ContextGraphLive from "./ContextGraphLive";
+// Previous hero visual, kept for reference and replaced by <ContextStack />.
+// import ContextGraphLive from "./ContextGraphLive";
+import ContextStack from "./ContextStack";
 import HeroNetwork from "./HeroNetwork";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -12,7 +14,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#FAFAFA]"
+      className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#FDFBF7]"
       aria-labelledby="hero-heading"
     >
       {/* ── Animated network constellation ── */}
@@ -31,8 +33,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, ease }}
               className="mb-8"
             >
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase font-semibold text-[#475569] bg-white px-4 py-2 border border-[#E5E7EB]">
-                <span className="w-1.5 h-1.5 bg-[#128F8B]" />
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase font-semibold text-[#57534E] bg-white px-4 py-2 border border-[#E4D9BC] rounded-md shadow-[var(--shadow-soft)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B45309]" />
                 Context Engine
               </span>
             </motion.div>
@@ -43,10 +45,10 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.06, ease }}
-              className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold tracking-[-0.035em] text-[#0F172A] leading-[1.1] mb-6"
+              className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold tracking-[-0.035em] text-[#4A3B33] leading-[1.1] mb-6"
             >
               The institutional memory your{" "}
-              <span className="text-[#128F8B]">AI&nbsp;agents</span>{" "}
+              <span className="text-[#B45309] italic">AI&nbsp;agents</span>{" "}
               need to operate.
             </motion.h1>
 
@@ -55,7 +57,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12, ease }}
-              className="text-lg text-[#475569] leading-[1.7] mb-10 max-w-[30rem]"
+              className="text-lg text-[#57534E] leading-[1.7] mb-10 max-w-[30rem]"
             >
               Alchemyst AI is the context backbone that keeps every
               agent&apos;s knowledge current, traceable and semantically
@@ -72,7 +74,7 @@ export default function HeroSection() {
             >
               <Button
                 asChild
-                className="bg-[#0F172A] hover:bg-[#1E293B] text-white rounded-none px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[4px_4px_0px_#0F172A] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#0F172A]"
+                className="bg-[#B45309] hover:bg-[#A16207] text-white rounded-lg px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
               >
                 <Link href="/platform/signin" target="_blank" rel="noopener">
                   Get API Access
@@ -96,7 +98,7 @@ export default function HeroSection() {
               <Button
                 asChild
                 variant="outline"
-                className="bg-white border border-[#E5E7EB] text-[#475569] hover:text-[#0F172A] rounded-none px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[4px_4px_0px_#E2E8F0] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#CBD5E1]"
+                className="bg-white border border-[#E4D9BC] text-[#57534E] hover:text-[#4A3B33] hover:border-[#B45309]/50 rounded-lg px-7 py-3 text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
               >
                 <a
                   href="https://docs.getalchemystai.com"
@@ -113,7 +115,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[#94A3B8] font-medium"
+              className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[#A8A29E] font-medium"
             >
               {[
                 { value: "< 300ms", label: "p95 latency" },
@@ -121,7 +123,7 @@ export default function HeroSection() {
                 { value: "1 API", label: "zero infra" },
               ].map((m) => (
                 <span key={m.label} className="flex items-center gap-1.5">
-                  <span className="text-[#0F172A] text-xs font-bold tracking-tight">
+                  <span className="text-[#4A3B33] text-xs font-bold tracking-tight">
                     {m.value}
                   </span>
                   <span>{m.label}</span>
@@ -137,7 +139,8 @@ export default function HeroSection() {
             transition={{ duration: 0.9, delay: 0.2, ease }}
             className="relative"
           >
-            <ContextGraphLive />
+            {/* <ContextGraphLive /> */}
+            <ContextStack />
           </motion.div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal, DarkAnchor } from "@/components/motion";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/creators-program";
 
@@ -143,7 +143,7 @@ export default function CreatorsProgramPage() {
                 fontWeight: 800,
                 lineHeight: 1.12,
                 letterSpacing: "-0.03em",
-                color: "#0F172A",
+                color: "#4A3B33",
                 marginBottom: "24px",
               }}
             >
@@ -158,7 +158,7 @@ export default function CreatorsProgramPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.7,
-                color: "#475569",
+                color: "#57534E",
                 marginBottom: "48px",
               }}
             >
@@ -174,7 +174,7 @@ export default function CreatorsProgramPage() {
                 fontFamily: SANS,
                 fontWeight: 700,
                 fontSize: "1.75rem",
-                color: "#0F172A",
+                color: "#4A3B33",
                 marginBottom: "24px",
                 letterSpacing: "-0.02em",
               }}
@@ -208,9 +208,9 @@ export default function CreatorsProgramPage() {
                 <div
                   style={{
                     background: "#FFFFFF",
-                    border: "1px solid #E5E7EB",
-                    borderTop: "3px solid #F49025",
-                     borderRadius: "0",
+                    border: "1px solid #E4D9BC",
+                    borderTop: "3px solid #B45309",
+                     borderRadius: "var(--radius)",
                      padding: "24px",
                      height: "100%",
                   }}
@@ -220,13 +220,13 @@ export default function CreatorsProgramPage() {
                       fontFamily: SANS,
                       fontWeight: 700,
                       fontSize: "1.125rem",
-                      color: "#F49025",
+                      color: "#B45309",
                       marginBottom: "8px",
                     }}
                   >
                     {benefit.title}
                   </h3>
-                  <p style={{ fontFamily: SANS, fontSize: "0.9375rem", lineHeight: 1.6, color: "#64748B", margin: 0 }}>
+                  <p style={{ fontFamily: SANS, fontSize: "0.9375rem", lineHeight: 1.6, color: "#78716C", margin: 0 }}>
                     {benefit.body}
                   </p>
                 </div>
@@ -241,7 +241,7 @@ export default function CreatorsProgramPage() {
                 fontFamily: SANS,
                 fontWeight: 700,
                 fontSize: "1.75rem",
-                color: "#0F172A",
+                color: "#4A3B33",
                 marginBottom: "24px",
                 letterSpacing: "-0.02em",
               }}
@@ -268,8 +268,8 @@ export default function CreatorsProgramPage() {
                 <details
                   style={{
                     background: "#FFFFFF",
-                    border: "1px solid #E5E7EB",
-                     borderRadius: "0",
+                    border: "1px solid #E4D9BC",
+                     borderRadius: "var(--radius)",
                    }}
                  >
                    <summary
@@ -277,15 +277,15 @@ export default function CreatorsProgramPage() {
                       fontFamily: SANS,
                       fontWeight: 600,
                       fontSize: "1rem",
-                      color: "#0F172A",
+                      color: "#4A3B33",
                       padding: "16px 20px",
                       cursor: "pointer",
                     }}
                   >
                     {faq.q}
                   </summary>
-                  <div style={{ padding: "0 20px 20px", borderTop: "1px solid #E5E7EB" }}>
-                    <p style={{ fontFamily: SANS, fontSize: "0.9375rem", lineHeight: 1.65, color: "#64748B", marginTop: "16px" }}>
+                  <div style={{ padding: "0 20px 20px", borderTop: "1px solid #E4D9BC" }}>
+                    <p style={{ fontFamily: SANS, fontSize: "0.9375rem", lineHeight: 1.65, color: "#78716C", marginTop: "16px" }}>
                       {faq.a}
                     </p>
                   </div>
@@ -298,9 +298,9 @@ export default function CreatorsProgramPage() {
           <Reveal direction="up" amount={0.2}>
             <DarkAnchor
               style={{
-                background: "rgba(244,144,37,0.06)",
-                border: "1px solid rgba(244,144,37,0.22)",
-                borderRadius: "0",
+                background: "rgba(180, 83, 9,0.06)",
+                border: "1px solid rgba(180, 83, 9,0.22)",
+                borderRadius: "var(--radius)",
                 padding: "36px",
                 textAlign: "center",
                 marginBottom: "48px",
@@ -312,7 +312,7 @@ export default function CreatorsProgramPage() {
                   fontWeight: 700,
                   fontSize: "clamp(1.25rem, 2.5vw, 1.625rem)",
                   letterSpacing: "-0.02em",
-                  color: "#FFFFFF",
+                  color: "#4B3B33",
                   marginBottom: "12px",
                 }}
               >
@@ -324,7 +324,7 @@ export default function CreatorsProgramPage() {
                   fontWeight: 400,
                   fontSize: "1rem",
                   lineHeight: 1.65,
-                  color: "#94A3B8",
+                  color: "#A8A29E",
                   maxWidth: "480px",
                   margin: "0 auto 28px",
                 }}
@@ -352,7 +352,7 @@ export default function CreatorsProgramPage() {
           <p
             className="caption-meta"
             style={{
-              color: "#94A3B8",
+              color: "#A8A29E",
               textAlign: "center",
               justifyContent: "center",
             }}

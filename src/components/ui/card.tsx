@@ -12,10 +12,10 @@ function Card({
       data-slot="card"
       data-size={size}
       className={cn(
-        // Light-base default: hairline border + white surface, 8px radius.
-        // Inside [data-theme="dark"] the tokens flip, so the same class works
-        // for dark anchor sections too.
-        "flex flex-col gap-4 overflow-hidden rounded-lg border border-[hsl(var(--border))] bg-card py-4 text-sm text-card-foreground",
+        // Light-base default: tan border + card surface, theme radius + soft
+        // warm shadow. Inside [data-theme="dark"] the tokens flip, so the same
+        // class works for dark anchor sections too.
+        "flex flex-col gap-4 overflow-hidden rounded-lg border border-[hsl(var(--border))] bg-card py-4 text-sm text-card-foreground shadow-[var(--shadow-soft)]",
         className
       )}
       {...props}

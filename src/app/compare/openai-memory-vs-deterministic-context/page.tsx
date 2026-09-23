@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/openai-memory-vs-deterministic-context";
 const PAGE_TITLE = "Why AI Agent Memory Must Be Portable Across Models";
@@ -41,7 +41,7 @@ export default function PortableMemoryPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function PortableMemoryPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               When AI memory is locked to a single provider, switching models means losing accumulated context. For enterprises building multi-agent systems, this lock-in creates significant operational and compliance risks.
@@ -63,7 +63,7 @@ export default function PortableMemoryPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >

@@ -59,15 +59,15 @@ export default function CountUpMetric({
       ref={ref}
       className="p-8 text-center bg-white h-full flex flex-col justify-center"
     >
-      <div className="font-sora font-bold text-4xl md:text-5xl tracking-tight text-[#128F8B] tabular-nums mb-3">
+      <div className="font-bold text-4xl md:text-5xl tracking-tight text-[#A16207] tabular-nums mb-3">
         {prefix}
         {formatted}
         {suffix}
       </div>
-      <div className="font-sora font-semibold text-[15px] text-slate-800 leading-snug mb-2">
+      <div className="font-semibold text-[15px] text-stone-800 leading-snug mb-2">
         {label}
       </div>
-      <div className="font-mono text-[11px] uppercase tracking-widest text-slate-400">
+      <div className="font-mono text-[11px] uppercase tracking-widest text-stone-400">
         {sub}
       </div>
     </div>

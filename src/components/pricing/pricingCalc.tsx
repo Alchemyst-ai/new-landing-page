@@ -171,36 +171,36 @@ export default function PricingCalculator() {
     >
       {/* Section heading */}
       <div className="flex flex-col items-center mb-12 text-center">
-        <span className="font-mono text-xs uppercase tracking-widest text-[#128F8B] font-semibold bg-[#128F8B]/10 px-4 py-1.5 border border-[#128F8B]/20 mb-6">
+        <span className="font-mono text-xs uppercase tracking-widest text-[#A16207] font-semibold bg-[#A16207]/10 px-4 py-1.5 border border-[#A16207]/20 mb-6">
           Calculator
         </span>
-        <h2 className="font-sans text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] text-slate-900 mb-4">
+        <h2 className="font-sans text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-[-0.02em] text-stone-900 mb-4">
           Estimate Your Costs
         </h2>
-        <p className="font-sans text-base md:text-lg text-slate-600 font-medium max-w-2xl leading-relaxed">
+        <p className="font-sans text-base md:text-lg text-stone-600 font-medium max-w-2xl leading-relaxed">
           Select your tier and enter expected usage to get a detailed cost
           breakdown.
         </p>
       </div>
 
       {/* Calculator card */}
-      <div className="bg-white border border-slate-200 rounded-none p-8 md:p-10 shadow-[8px_8px_0px_#E2E8F0]">
+      <div className="bg-white border border-[#E4D9BC] rounded-xl p-8 md:p-10 shadow-[var(--shadow-soft)]">
         {/* Tier selector row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-slate-500 font-semibold whitespace-nowrap">
+            <span className="font-mono text-xs uppercase tracking-widest text-stone-500 font-semibold whitespace-nowrap">
               Subscription Tier:
             </span>
             <Select value={tier} onValueChange={(v) => setTier(v as Tier)}>
-              <SelectTrigger className="min-w-[280px] sm:min-w-[384px] rounded-none border-slate-300 font-sans text-sm text-slate-900">
+              <SelectTrigger className="min-w-[280px] sm:min-w-[384px] rounded-md border-[#E4D9BC] font-sans text-sm text-stone-900">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-none border-slate-200">
+              <SelectContent className="rounded-md border-[#E4D9BC]">
                 {Object.entries(TIER_LABELS).map(([k, v]) => (
                   <SelectItem
                     key={k}
                     value={k}
-                    className="font-sans text-sm text-slate-700"
+                    className="font-sans text-sm text-stone-700"
                   >
                     {v}
                   </SelectItem>
@@ -212,7 +212,7 @@ export default function PricingCalculator() {
             variant="outline"
             size="sm"
             onClick={resetUsage}
-            className="rounded-none border-slate-300 font-sans text-sm font-semibold text-slate-700 hover:bg-slate-50 shadow-[2px_2px_0px_#E2E8F0] hover:shadow-[4px_4px_0px_#CBD5E1] transition-all"
+            className="rounded-md border-[#E4D9BC] font-sans text-sm font-semibold text-[#57534E] hover:bg-[#F8F4EE] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)] transition-all"
           >
             Reset
           </Button>
@@ -222,23 +222,23 @@ export default function PricingCalculator() {
         <div className="overflow-x-auto -mx-8 md:-mx-10 px-8 md:px-10">
           <table className="w-full text-sm border-collapse font-sans min-w-[700px]">
             <thead>
-              <tr className="border-b-2 border-slate-200 bg-slate-50">
-                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-slate-900 font-bold">
+              <tr className="border-b-2 border-stone-200 bg-stone-50">
+                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-stone-900 font-bold">
                   Action
                 </th>
-                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-slate-900 font-bold hidden md:table-cell">
+                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-stone-900 font-bold hidden md:table-cell">
                   Description
                 </th>
-                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-slate-900 font-bold">
+                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-stone-900 font-bold">
                   Unit
                 </th>
-                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-[#128F8B] font-bold">
+                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-[#A16207] font-bold">
                   Cost / Unit
                 </th>
-                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-slate-900 font-bold">
+                <th className="p-3 text-left font-mono text-xs uppercase tracking-widest text-stone-900 font-bold">
                   Usage
                 </th>
-                <th className="p-3 text-right font-mono text-xs uppercase tracking-widest text-slate-900 font-bold">
+                <th className="p-3 text-right font-mono text-xs uppercase tracking-widest text-stone-900 font-bold">
                   Cost
                 </th>
               </tr>
@@ -261,22 +261,22 @@ export default function PricingCalculator() {
                 return (
                   <tr
                     key={action}
-                    className="border-b border-slate-100 hover:bg-[#F49025]/[0.03] transition-colors duration-150"
+                    className="border-b border-[#F1E9DA] hover:bg-[#B45309]/[0.03] transition-colors duration-150"
                   >
-                    <td className="p-3 font-sans text-sm font-semibold text-slate-900">
+                    <td className="p-3 font-sans text-sm font-semibold text-stone-900">
                       {label.name}
                     </td>
-                    <td className="p-3 font-sans text-sm text-slate-500 hidden md:table-cell">
+                    <td className="p-3 font-sans text-sm text-stone-500 hidden md:table-cell">
                       {label.description}
                     </td>
                     <td className="p-3">
-                      <span className="font-mono text-xs text-slate-400 uppercase tracking-wider">
+                      <span className="font-mono text-xs text-stone-400 uppercase tracking-wider">
                         {label.billingBasis}
                       </span>
                     </td>
-                    <td className="p-3 font-mono text-[13px] text-[#128F8B] font-medium tabular-nums">
+                    <td className="p-3 font-mono text-[13px] text-[#A16207] font-medium tabular-nums">
                       ${(perUnit * 1_000_000).toFixed(2)}{" "}
-                      <span className="text-slate-400">per 1M</span>
+                      <span className="text-stone-400">per 1M</span>
                     </td>
                     <td className="p-3 w-36">
                       <Input
@@ -285,10 +285,10 @@ export default function PricingCalculator() {
                         step="0.01"
                         value={count || ""}
                         onChange={(e) => handleChange(action, e.target.value)}
-                        className="h-8 rounded-none border-slate-300 font-mono text-sm text-slate-900 tabular-nums focus:border-[#128F8B] focus:ring-[#128F8B]/20"
+                        className="h-8 rounded-md border-[#E4D9BC] font-mono text-sm text-stone-900 tabular-nums focus:border-[#A16207] focus:ring-[#A16207]/20"
                       />
                     </td>
-                    <td className="p-3 text-right font-mono text-[13px] text-slate-900 font-medium tabular-nums">
+                    <td className="p-3 text-right font-mono text-[13px] text-stone-900 font-medium tabular-nums">
                       ${cost.toFixed(4)}
                     </td>
                   </tr>
@@ -299,11 +299,11 @@ export default function PricingCalculator() {
         </div>
 
         {/* Total */}
-        <div className="flex items-center justify-end mt-8 pt-6 border-t-2 border-slate-200 gap-3">
-          <span className="font-mono text-xs uppercase tracking-widest text-slate-500 font-semibold">
+        <div className="flex items-center justify-end mt-8 pt-6 border-t-2 border-stone-200 gap-3">
+          <span className="font-mono text-xs uppercase tracking-widest text-stone-500 font-semibold">
             Estimated Total:
           </span>
-          <span className="font-sans text-2xl md:text-3xl font-extrabold text-[#F49025] tabular-nums tracking-tight">
+          <span className="font-sans text-2xl md:text-3xl font-extrabold text-[#B45309] tabular-nums tracking-tight">
             ${totalCost.toFixed(4)}
           </span>
         </div>

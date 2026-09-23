@@ -8,12 +8,12 @@ const CONNECT_DISTANCE = 160;
 const PULSE_INTERVAL = 2200; // ms between pulse spawns
 const MAX_PULSES = 6;
 
-const BRAND_ORANGE = "#F49025";
-const BRAND_TEAL = "#128F8B";
-const NODE_COLOR = "#CBD5E1";
-const LINE_COLOR_R = 203;
-const LINE_COLOR_G = 213;
-const LINE_COLOR_B = 225;
+const BRAND_ORANGE = "#B45309";
+const BRAND_TEAL = "#A16207";
+const NODE_COLOR = "#E4D9BC";
+const LINE_COLOR_R = 228;
+const LINE_COLOR_G = 217;
+const LINE_COLOR_B = 188;
 
 interface Node {
   x: number;
@@ -171,8 +171,8 @@ export default function HeroNetwork() {
       ctx.arc(px, py, 6, 0, Math.PI * 2);
       ctx.fillStyle =
         p.color === BRAND_ORANGE
-          ? `rgba(244,144,37,${0.15 * pulseAlpha})`
-          : `rgba(18,143,139,${0.15 * pulseAlpha})`;
+          ? `rgba(180, 83, 9,${0.15 * pulseAlpha})`
+          : `rgba(161, 98, 7,${0.15 * pulseAlpha})`;
       ctx.fill();
 
       // Core dot
@@ -180,8 +180,8 @@ export default function HeroNetwork() {
       ctx.arc(px, py, 2.5, 0, Math.PI * 2);
       ctx.fillStyle =
         p.color === BRAND_ORANGE
-          ? `rgba(244,144,37,${0.9 * pulseAlpha})`
-          : `rgba(18,143,139,${0.9 * pulseAlpha})`;
+          ? `rgba(180, 83, 9,${0.9 * pulseAlpha})`
+          : `rgba(161, 98, 7,${0.9 * pulseAlpha})`;
       ctx.fill();
     }
 
@@ -193,8 +193,8 @@ export default function HeroNetwork() {
         // Accent glow
         ctx.fillStyle =
           n.color === BRAND_ORANGE
-            ? "rgba(244,144,37,0.12)"
-            : "rgba(18,143,139,0.12)";
+            ? "rgba(180, 83, 9,0.12)"
+            : "rgba(161, 98, 7,0.12)";
         ctx.fillRect(n.x - s - 3, n.y - s - 3, (s + 3) * 2, (s + 3) * 2);
       }
       ctx.fillStyle = n.color;

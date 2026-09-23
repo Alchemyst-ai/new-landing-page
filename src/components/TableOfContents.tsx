@@ -99,8 +99,8 @@ export default function TableOfContents({
     <div
        style={{
          background: "#FFFFFF",
-         border: "1px solid #E5E7EB",
-         borderRadius: "0",
+         border: "1px solid #E4D9BC",
+         borderRadius: "var(--radius)",
          padding: "24px",
        }}
     >
@@ -108,7 +108,7 @@ export default function TableOfContents({
       <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          style={{ height: "22px", width: "22px", marginRight: "10px", color: "#F49025" }}
+          style={{ height: "22px", width: "22px", marginRight: "10px", color: "#B45309" }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -122,10 +122,10 @@ export default function TableOfContents({
         </svg>
         <h3
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-merriweather), Georgia, serif",
             fontSize: "1.0625rem",
             fontWeight: 600,
-             color: "#0F172A",
+             color: "#4A3B33",
             margin: 0,
           }}
         >
@@ -140,7 +140,7 @@ export default function TableOfContents({
           flexDirection: "column",
           gap: "6px",
           paddingLeft: "8px",
-           borderLeft: "1px solid #E5E7EB",
+           borderLeft: "1px solid #E4D9BC",
         }}
       >
         {tocItems.map(({ id, text, level }) => {
@@ -156,14 +156,14 @@ export default function TableOfContents({
                 display: "block",
                 width: "100%",
                 textAlign: "left",
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-merriweather), Georgia, serif",
                 fontSize: "0.8125rem",
                 lineHeight: 1.45,
                 fontWeight: level === 1 ? 600 : 400,
-                color: isActive ? "#F49025" : "#94A3B8",
-                background: isActive ? "rgba(244,144,37,0.10)" : "transparent",
+                color: isActive ? "#B45309" : "#A8A29E",
+                background: isActive ? "rgba(180, 83, 9,0.10)" : "transparent",
                 border: "none",
-                 borderRadius: "0",
+                 borderRadius: "var(--radius)",
                 padding: "5px 10px",
                 marginLeft: `${indent}px`,
                 cursor: "pointer",

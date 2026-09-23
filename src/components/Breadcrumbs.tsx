@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const BASE_URL = "https://getalchemystai.com";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export interface Crumb {
   /** Visible label, e.g. "Blog" */
@@ -67,7 +67,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
       style={{
         fontFamily: SANS,
         fontSize: "0.8125rem",
-        color: "#94A3B8",
+        color: "#A8A29E",
         marginBottom: "24px",
         ...style,
       }}
@@ -100,7 +100,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
               {crumb.path && !isLast ? (
                 <Link
                   href={crumb.path}
-                  style={{ color: "#94A3B8", textDecoration: "none" }}
+                  style={{ color: "#A8A29E", textDecoration: "none" }}
                 >
                   {crumb.name}
                 </Link>
@@ -108,7 +108,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
                 <span
                   aria-current={isLast ? "page" : undefined}
                   style={{
-                    color: isLast ? "#F49025" : "#94A3B8",
+                    color: isLast ? "#B45309" : "#A8A29E",
                     fontWeight: isLast ? 600 : 400,
                     overflow: "hidden",
                     textOverflow: "ellipsis",
@@ -120,7 +120,7 @@ export default function Breadcrumbs({ items, currentPath, style }: BreadcrumbsPr
                 </span>
               )}
               {!isLast && (
-                <span aria-hidden="true" style={{ color: "#475569" }}>
+                <span aria-hidden="true" style={{ color: "#57534E" }}>
                   /
                 </span>
               )}

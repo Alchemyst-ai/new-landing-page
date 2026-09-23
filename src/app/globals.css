@@ -2,112 +2,155 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Alchemyst Labs Design System ───────────────────────────────────────────
- * Light-mode base + deliberate dark anchor sections (per revamp brief).
- * Colours taken from the Alchemyst logo:
- *   Paper bg: #F7F4EE  |  Ink: #0F172A
- *   Brand orange (primary, logo chevron): #F49025  (+ light #FDB560)
- *   Brand teal   (secondary, logo "I" accent): #128F8B  (brief's canonical value)
- *   Dark hero/anchor bg: #0A0F1E   ·   Dark surface bg: #0F172A
- *   Max card radius: 12px · panel radius: 8px · pill radius: 9999px
- * Fonts: Anta (hero headline) + Sora (display/body) + JetBrains Mono (code/captions)
+/* ─── Alchemyst AI Design System ─────────────────────────────────────────────
+ * "Alchemyst Theme 1 - Serif" — imported from tweakcn
+ *   (tweakcn.com/themes/cmsry03jx000004kzb7m22yek)
+ *
+ * Warm, editorial, paper-first system:
+ *   Canvas:  #FDFBF7 cream  |  Ink: #4A3B33 warm brown
+ *   Primary: #B45309 deep amber  ·  Secondary: #E4C090 sand
+ *   Muted:   #F1E9DA / #78716C stone
+ *   Border:  #E4D9BC tan
+ *   Dark:    #1C1917 warm charcoal · primary #F97316
+ *   Radius:  0.3rem · warm soft shadow hsl(28 18% 25%) @ 0.18
+ * Fonts: Merriweather (display + body, via next/font → --font-merriweather)
+ *        JetBrains Mono (code/captions, via next/font → --font-jetbrains-mono)
  *
  * Token model:
- *   1. `:root`           → light base tokens (the default; paper canvas).
- *   2. `[data-theme="dark"]` → inverted tokens used inside <DarkAnchor> shells
- *      so deliberate dark sections continue to render on-brand.
+ *   1. `:root`                → light base tokens (the default; cream canvas).
+ *   2. `[data-theme="dark"]`  → warm-charcoal tokens used inside <DarkAnchor>
+ *      shells so deliberate dark sections stay on-brand.
  * ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
   /* Raw brand swatches (used directly + as HSL token seeds) */
-  --paper: #F7F4EE;
-  --ink: #0F172A;
-  --amber: #F49025;
-  --amber-light: #FDB560;
-  /* Brief's canonical teal (replaces the former #0E9594 scale). A single
-     token, with two derived tints for diagrams/hover only. */
-  --teal: #128F8B;
-  --teal-light: #2BB6B4;
-  --teal-dark: #0B6E6B;
-  --dark-hero: #0A0F1E;
-  --dark-section: #0F172A;
-  --muted: #64748B;
-  --subtle: #94A3B8;
-  --border-light: #E5E7EB;
-  --hairline: rgba(15, 23, 42, 0.08);          /* light-mode hairline */
-  --hairline-strong: rgba(15, 23, 42, 0.14);
-  --ink-soft: #475569;                          /* secondary text on light */
+  --paper: #FDFBF7;
+  --ink: #4A3B33;
+  --amber: #B45309;
+  --amber-light: #E4C090;
+  /* Former teal slots are remapped into the warm amber family (theme has no
+     teal): #A16207 reads as a darker companion accent to the primary. */
+  --teal: #A16207;
+  --teal-light: #E4C090;
+  --teal-dark: #78350F;
+  --dark-hero: #1C1917;
+  --dark-section: #1C1917;
+  --muted: #78716C;
+  --subtle: #A8A29E;
+  --border-light: #E4D9BC;
+  --hairline: rgba(74, 59, 51, 0.08);            /* light-mode hairline */
+  --hairline-strong: rgba(74, 59, 51, 0.14);
+  --ink-soft: #57534E;                            /* secondary text on light */
+
+  /* Warm soft shadow (from tweakcn theme) */
+  --shadow-color: 28 18% 25%;
+  --shadow-opacity: 0.18;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 2px;
+  --shadow-soft: 0 2px 3px 0 hsl(var(--shadow-color) / var(--shadow-opacity));
+  --shadow-soft-lg: 0 10px 24px -10px hsl(var(--shadow-color) / 0.28);
 }
 
 /* ── shadcn/ui token mapping (Tailwind v3, HSL triplets) ────────────────────
- * Light base (default). Components render on the warm-paper canvas with ink
- * type, hairline borders, and the brand orange/teal accents. */
+ * Light base (default). Components render on the cream canvas with warm-brown
+ * type, tan borders, and the deep-amber accent. */
 :root {
-  --radius: 0.5rem;
-  --background: 40 25% 96%;                     /* #F7F4EE warm paper */
-  --foreground: 222 47% 11%;                   /* #0F172A ink */
-  --card: 0 0% 100%;                            /* white card on paper */
-  --card-foreground: 222 47% 11%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --primary: 33 90% 55%;                        /* #F49025 brand orange */
-  --primary-foreground: 222 47% 8%;
-  --secondary: 178 78% 31%;                    /* #128F8B brand teal */
-  --secondary-foreground: 0 0% 100%;
-  --muted: 210 16% 95%;                         /* very light slate fill */
-  --muted-foreground: 215 16% 47%;             /* #64748B-ish */
-  --accent: 40 30% 92%;                         /* warm paper accent fill */
-  --accent-foreground: 222 47% 11%;
-  --destructive: 0 84% 60%;                     /* #EF4444 */
+  --radius: 0.3rem;
+  --background: 40 60% 98%;                       /* #FDFBF7 cream */
+  --foreground: 21 18% 25%;                       /* #4A3B33 warm brown ink */
+  --card: 36 42% 95%;                             /* #F8F4EE card */
+  --card-foreground: 21 18% 25%;
+  --popover: 36 42% 95%;
+  --popover-foreground: 21 18% 25%;
+  --primary: 26 91% 37%;                          /* #B45309 deep amber */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 34 61% 73%;                        /* #E4C090 sand */
+  --secondary-foreground: 33 6% 32%;              /* #57534E */
+  --muted: 39 45% 90%;                            /* #F1E9DA */
+  --muted-foreground: 25 5% 45%;                  /* #78716C */
+  --accent: 34 68% 84%;                           /* #F2DABA */
+  --accent-foreground: 33 6% 32%;
+  --destructive: 0 70% 35%;                       /* #991B1B */
   --destructive-foreground: 0 0% 100%;
-  --border: 222 20% 86%;                        /* light border (#E5E7EB-class) */
-  --input: 222 20% 86%;
-  --ring: 33 90% 55%;
+  --border: 43 43% 82%;                           /* #E4D9BC tan */
+  --input: 43 43% 82%;
+  --ring: 26 91% 37%;
 }
 
 /* ── Scoped dark-anchor tokens ───────────────────────────────────────────────
  * Applied by the <DarkAnchor> wrapper via data-theme="dark". Lets us drop a
  * deliberate dark section into the light page without re-theming the entire
  * site, and keeps the dark pages (/thesis, /blog/[slug], /compare/*, how-to)
- * visually consistent using the same inverted tokens. */
+ * visually consistent using the same warm-charcoal tokens. */
 [data-theme="dark"] {
-  --paper: #0A0F1E;
-  --ink: #FFFFFF;
-  --muted: #94A3B8;
-  --subtle: #475569;
-  --hairline: rgba(255, 255, 255, 0.06);
-  --hairline-strong: rgba(255, 255, 255, 0.12);
-  --ink-soft: #94A3B8;
+  --paper: #1C1917;
+  --ink: #F5F5F4;
+  --muted: #A8A29E;
+  --subtle: #78716C;
+  --hairline: rgba(245, 245, 244, 0.08);
+  --hairline-strong: rgba(245, 245, 244, 0.14);
+  --ink-soft: #A8A29E;
+  --amber: #F97316;
+  --teal: #FDBA74;
+
+  --shadow-color: 0 0% 5%;
 
   /* shadcn token flip for primitives rendered inside dark anchors */
-  --background: 222 47% 8%;                     /* #0A0F1E */
-  --foreground: 0 0% 100%;
-  --card: 222 47% 11%;                          /* near #0F172A */
-  --card-foreground: 0 0% 100%;
-  --popover: 222 33% 12%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 33 90% 55%;
-  --primary-foreground: 222 47% 8%;
-  --secondary: 178 78% 31%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 222 30% 16%;
-  --muted-foreground: 215 20% 65%;              /* #94A3B8 */
-  --accent: 222 30% 18%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
+  --background: 24 10% 10%;                       /* #1C1917 */
+  --foreground: 60 5% 96%;                        /* #F5F5F4 */
+  --card: 12 7% 15%;                              /* #292524 */
+  --card-foreground: 60 5% 96%;
+  --popover: 12 7% 15%;
+  --popover-foreground: 60 5% 96%;
+  --primary: 25 95% 53%;                          /* #F97316 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 6% 32%;                         /* #57534E */
+  --secondary-foreground: 20 6% 90%;              /* #E7E5E4 */
+  --muted: 30 10% 11%;                            /* #201D1A */
+  --muted-foreground: 24 5% 64%;                  /* #A8A29E */
+  --accent: 198 46% 22%;                          /* #1E4252 */
+  --accent-foreground: 20 6% 90%;
+  --destructive: 0 72% 51%;                       /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 100%;                          /* low-opacity via utilities */
-  --input: 0 0% 100%;
-  --ring: 33 90% 55%;
+  --border: 30 6% 25%;                            /* #44403C */
+  --input: 30 6% 25%;
+  --ring: 25 95% 53%;
+}
+
+/* ── shadcn `.dark` class parity ─────────────────────────────────────────────
+ * Mirrors [data-theme="dark"] so dormant `dark:` variants in primitives (used
+ * on deliberately dark surfaces like /platform/signin) resolve correctly. */
+.dark {
+  --background: 24 10% 10%;
+  --foreground: 60 5% 96%;
+  --card: 12 7% 15%;
+  --card-foreground: 60 5% 96%;
+  --popover: 12 7% 15%;
+  --popover-foreground: 60 5% 96%;
+  --primary: 25 95% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 6% 32%;
+  --secondary-foreground: 20 6% 90%;
+  --muted: 30 10% 11%;
+  --muted-foreground: 24 5% 64%;
+  --accent: 198 46% 22%;
+  --accent-foreground: 20 6% 90%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 6% 25%;
+  --input: 30 6% 25%;
+  --ring: 25 95% 53%;
 }
 
 @layer base {
   * {
     /* Default to the light hairline; the dark-anchor scope overrides below. */
-    border-color: hsl(var(--border) / 0.10);
+    border-color: var(--hairline);
   }
   [data-theme="dark"] * {
-    border-color: hsl(var(--border) / 0.10);
+    border-color: var(--hairline);
   }
 }
 
@@ -123,7 +166,7 @@ body {
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
 }
 
 html {
@@ -139,7 +182,7 @@ html {
  * per-page via <body data-page-theme="dark">. */
 body[data-page-theme="dark"] {
   background: var(--dark-hero);
-  color: #ffffff;
+  color: #F5F5F4;
 }
 
 /* ── Mono caption system (site-wide "spec sheet" language) ───────────────────
@@ -150,7 +193,7 @@ body[data-page-theme="dark"] {
 .caption-status,
 .caption-chapter,
 .caption-rail-num {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-size: 11px;
@@ -162,9 +205,9 @@ body[data-page-theme="dark"] {
   align-items: center;
   gap: 8px;
   color: var(--amber);
-  background: rgba(244, 144, 37, 0.08);
-  border: 1px solid rgba(244, 144, 37, 0.22);
-  border-radius: 0;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid rgba(180, 83, 9, 0.22);
+  border-radius: var(--radius);
   padding: 4px 12px;
   font-size: 11px;
   text-transform: uppercase;
@@ -182,7 +225,7 @@ body[data-page-theme="dark"] {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #16A34A;
+  color: var(--amber);
   font-size: 10px;
   letter-spacing: 0.12em;
 }
@@ -190,7 +233,7 @@ body[data-page-theme="dark"] {
   content: "";
   width: 7px;
   height: 7px;
-  border-radius: 0;
+  border-radius: 9999px;
   background: currentColor;
   display: inline-block;
   box-shadow: 0 0 0 0 currentColor;
@@ -198,7 +241,7 @@ body[data-page-theme="dark"] {
 }
 @keyframes caption-status-pulse {
   0%, 100% { box-shadow: 0 0 0 0 currentColor; }
-  50%       { box-shadow: 0 0 0 4px rgba(22, 163, 74, 0); }
+  50%       { box-shadow: 0 0 0 4px rgba(180, 83, 9, 0); }
 }
 .caption-chapter {
   display: inline-flex;
@@ -223,7 +266,7 @@ body[data-page-theme="dark"] {
 
 /* ── Eyebrow label (legacy alias retained for sections using .eyebrow) ── */
 .eyebrow {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -231,9 +274,9 @@ body[data-page-theme="dark"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(244, 144, 37, 0.08);
-  border: 1px solid rgba(244, 144, 37, 0.22);
-  border-radius: 0;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid rgba(180, 83, 9, 0.22);
+  border-radius: var(--radius);
   padding: 4px 12px;
 }
 
@@ -242,42 +285,43 @@ body[data-page-theme="dark"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-weight: 700;
   font-size: 0.9375rem;
-  color: #0A0F1E;
-  background: #F49025;
-  border-radius: 0;
+  color: #FFFFFF;
+  background: var(--amber);
+  border-radius: var(--radius);
   padding: 0.75rem 1.625rem;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  box-shadow: var(--shadow-soft);
   transition: background 160ms cubic-bezier(0.23, 1, 0.32, 1),
               transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
               box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .btn-primary:hover {
-  background: #E8851A;
+  background: #A16207;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(244, 144, 37, 0.3);
+  box-shadow: var(--shadow-soft-lg);
 }
 .btn-primary:active {
   transform: scale(0.97);
 }
 
 /* ── Ghost button ──
- * Tuned for the light base (ink text, hairline border, teal hover accent). */
+ * Tuned for the light base (ink text, hairline border, amber hover accent). */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-weight: 500;
   font-size: 0.9375rem;
   color: var(--ink-soft);
-  background: rgba(15, 23, 42, 0.02);
+  background: rgba(74, 59, 51, 0.02);
   border: 1px solid var(--hairline-strong);
-  border-radius: 0;
+  border-radius: var(--radius);
   padding: 0.75rem 1.625rem;
   text-decoration: none;
   cursor: pointer;
@@ -285,25 +329,25 @@ body[data-page-theme="dark"] {
 }
 .btn-ghost:hover {
   color: var(--ink);
-  border-color: rgba(18, 143, 139, 0.55);
-  box-shadow: 0 6px 20px rgba(18, 143, 139, 0.16);
+  border-color: rgba(180, 83, 9, 0.55);
+  box-shadow: 0 6px 20px rgba(180, 83, 9, 0.16);
 }
 
 /* Dark-anchor override: ghost button reads inverted on dark surfaces. */
 [data-theme="dark"] .btn-ghost {
-  color: #94A3B8;
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.10);
+  color: #A8A29E;
+  background: rgba(245, 245, 244, 0.05);
+  border-color: rgba(245, 245, 244, 0.10);
 }
 [data-theme="dark"] .btn-ghost:hover {
-  color: #ffffff;
-  border-color: rgba(43, 182, 180, 0.55);
-  box-shadow: 0 6px 20px rgba(43, 182, 180, 0.18);
+  color: #F5F5F4;
+  border-color: rgba(249, 115, 22, 0.55);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.18);
 }
 
-/* ── Secondary (teal) accent helpers - from the logo's teal (#128F8B) ── */
+/* ── Secondary accent helpers ── */
 .eyebrow-teal {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -311,9 +355,9 @@ body[data-page-theme="dark"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(18, 143, 139, 0.08);
-  border: 1px solid rgba(18, 143, 139, 0.22);
-  border-radius: 0;
+  background: rgba(161, 98, 7, 0.08);
+  border: 1px solid rgba(161, 98, 7, 0.22);
+  border-radius: var(--radius);
   padding: 4px 12px;
 }
 .text-teal { color: var(--teal); }
@@ -322,7 +366,7 @@ body[data-page-theme="dark"] {
 /* ── Navbar links ──
  * Default to ink-on-paper; the dark-anchor scope below inverts. */
 .nav-link {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-weight: 500;
   font-size: 0.9rem;
   color: var(--muted);
@@ -334,7 +378,7 @@ body[data-page-theme="dark"] {
 }
 [data-theme="dark"] .nav-link,
 body[data-page-theme="dark"] .nav-link {
-  color: #94A3B8;
+  color: #A8A29E;
 }
 [data-theme="dark"] .nav-link:hover,
 body[data-page-theme="dark"] .nav-link:hover {
@@ -348,15 +392,44 @@ body[data-page-theme="dark"] .nav-link:hover {
   }
 }
 
+/* ── Nav dropdown menu items (token-driven; flip inside data-theme="dark") ── */
+.nav-menu-item {
+  color: var(--ink-soft);
+  transition: color 160ms ease, background 160ms ease;
+}
+.nav-menu-item:hover {
+  color: var(--ink);
+  background: rgba(74, 59, 51, 0.05);
+}
+[data-theme="dark"] .nav-menu-item {
+  color: #A8A29E;
+}
+[data-theme="dark"] .nav-menu-item:hover {
+  color: var(--ink);
+  background: rgba(245, 245, 244, 0.06);
+}
+.nav-menu-item-accent {
+  color: var(--amber);
+  transition: color 160ms ease, background 160ms ease;
+}
+.nav-menu-item-accent:hover {
+  color: var(--teal);
+  background: rgba(180, 83, 9, 0.06);
+}
+[data-theme="dark"] .nav-menu-item-accent:hover {
+  color: #FDBA74;
+  background: rgba(249, 115, 22, 0.08);
+}
+
 .nav-docs-btn {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-weight: 500;
   font-size: 0.875rem;
   color: var(--ink-soft);
   text-decoration: none;
   padding: 6px 14px;
   border: 1px solid var(--hairline-strong);
-  border-radius: 0;
+  border-radius: var(--radius);
   transition: color 160ms ease, border-color 160ms ease;
 }
 .nav-docs-btn:hover {
@@ -365,21 +438,22 @@ body[data-page-theme="dark"] .nav-link:hover {
 }
 [data-theme="dark"] .nav-docs-btn,
 body[data-page-theme="dark"] .nav-docs-btn {
-  color: #64748B;
-  border-color: rgba(255, 255, 255, 0.10);
+  color: #A8A29E;
+  border-color: rgba(245, 245, 244, 0.10);
 }
 [data-theme="dark"] .nav-docs-btn:hover,
 body[data-page-theme="dark"] .nav-docs-btn:hover {
   color: var(--ink);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(245, 245, 244, 0.25);
 }
 
 /* ── Surface helpers shared by light + dark anchor sections ── */
 .surface-card {
   background: hsl(var(--card));
   color: hsl(var(--card-foreground));
-  border: 1px solid var(--hairline);
-  border-radius: 0;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
 }
 .surface-divider {
   border-top: 1px solid var(--hairline);
@@ -402,9 +476,10 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 .pricing-card:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-soft-lg);
 }
 
-/* Compare cards: hairline brightens to orange + lift on hover. */
+/* Compare cards: hairline brightens to amber + lift on hover. */
 .compare-card {
   transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
               border-color 220ms ease,
@@ -412,11 +487,11 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 .compare-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(244, 144, 37, 0.4);
-  box-shadow: 0 8px 24px -12px rgba(244, 144, 37, 0.2);
+  border-color: rgba(180, 83, 9, 0.4);
+  box-shadow: 0 8px 24px -12px rgba(180, 83, 9, 0.2);
 }
 
-/* Footer links: orange + underline-grow on hover (dark anchor surface). */
+/* Footer links: amber + underline-grow on hover (dark anchor surface). */
 .footer-link {
   position: relative;
   transition: color 160ms ease;
@@ -428,11 +503,11 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   bottom: -2px;
   width: 0;
   height: 1px;
-  background: #F49025;
+  background: var(--amber);
   transition: width 220ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .footer-link:hover {
-  color: #F49025;
+  color: var(--amber);
 }
 .footer-link:hover::after {
   width: 100%;
@@ -527,8 +602,8 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 .blog-post-grid > article { max-width: 100%; }
 
 .blog-toc-item:hover {
-  color: #0F172A !important;
-  background: rgba(15, 23, 42, 0.04) !important;
+  color: var(--ink) !important;
+  background: rgba(74, 59, 51, 0.04) !important;
 }
 
 .blog-share-btn {
@@ -537,7 +612,7 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 0;
+  border-radius: var(--radius);
   color: #ffffff;
   transition: opacity 0.2s, background 0.2s;
 }
@@ -557,13 +632,13 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 .blog-recent-card { transition: border-color 0.2s, transform 0.2s; }
 .blog-recent-card:hover {
-  border-color: rgba(244, 144, 37, 0.4) !important;
+  border-color: rgba(180, 83, 9, 0.4) !important;
   transform: translateY(-2px);
 }
 
 /* ── Article body prose ── */
 .prose-blog-dark {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   color: var(--ink-soft);
   font-size: 1.0625rem;
   line-height: 1.8;
@@ -583,7 +658,7 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 
 .prose-blog-dark h2 {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-size: clamp(1.5rem, 2.5vw, 1.875rem);
   font-weight: 700;
   line-height: 1.3;
@@ -592,7 +667,7 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   margin-bottom: 24px;
 }
 .prose-blog-dark h3 {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.35;
@@ -601,9 +676,9 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   margin-bottom: 16px;
 }
 .prose-blog-dark h4 {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: var(--font-merriweather), ui-serif, Georgia, serif;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   margin-top: 32px;
   margin-bottom: 12px;
@@ -612,11 +687,11 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   margin-bottom: 24px;
 }
 .prose-blog-dark a {
-  color: #F49025;
+  color: var(--amber);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.prose-blog-dark a:hover { color: #D97B1A; }
+.prose-blog-dark a:hover { color: var(--teal); }
 .prose-blog-dark strong { color: var(--ink); font-weight: 700; }
 .prose-blog-dark ul,
 .prose-blog-dark ol {
@@ -626,9 +701,9 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 .prose-blog-dark ul { list-style: disc; }
 .prose-blog-dark ol { list-style: decimal; }
 .prose-blog-dark li { margin-bottom: 10px; }
-.prose-blog-dark li::marker { color: #F49025; }
+.prose-blog-dark li::marker { color: var(--amber); }
 .prose-blog-dark blockquote {
-  border-left: 3px solid #F49025;
+  border-left: 3px solid var(--amber);
   padding-left: 20px;
   margin: 0 0 24px;
   color: var(--ink-soft);
@@ -637,28 +712,28 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 .prose-blog-dark img {
   max-width: 100%;
   height: auto;
-  border-radius: 0;
+  border-radius: var(--radius);
   margin: 24px 0;
 }
 .prose-blog-dark code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 0.9em;
-  background: rgba(15, 23, 42, 0.06);
-  color: #B45309;
+  background: rgba(74, 59, 51, 0.06);
+  color: var(--amber);
   padding: 2px 6px;
-  border-radius: 0;
+  border-radius: var(--radius);
 }
 .prose-blog-dark pre {
-  background: #F8FAFC;
-  border: 1px solid #E5E7EB;
-  border-radius: 0;
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
   padding: 20px;
   overflow-x: auto;
   margin: 0 0 24px;
 }
 .prose-blog-dark pre code {
   background: transparent;
-  color: #334155;
+  color: var(--ink-soft);
   padding: 0;
 }
 .prose-blog-dark hr {
@@ -674,12 +749,12 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 .prose-blog-dark th,
 .prose-blog-dark td {
-  border: 1px solid #E5E7EB;
+  border: 1px solid hsl(var(--border));
   padding: 10px 14px;
   text-align: left;
 }
 .prose-blog-dark th {
-  background: rgba(15, 23, 42, 0.03);
+  background: rgba(74, 59, 51, 0.03);
   color: var(--ink);
   font-weight: 600;
 }

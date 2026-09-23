@@ -43,17 +43,17 @@ export default function SocialShare({ title, url }: SocialShareProps) {
       style={{
         marginTop: "24px",
         paddingTop: "20px",
-         borderTop: "1px solid #E5E7EB",
+         borderTop: "1px solid #E4D9BC",
       }}
     >
       <h4
         style={{
           display: "flex",
           alignItems: "center",
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-merriweather), Georgia, serif",
           fontSize: "0.875rem",
           fontWeight: 600,
-           color: "#0F172A",
+           color: "#4A3B33",
           marginBottom: "12px",
         }}
       >
@@ -119,10 +119,10 @@ export default function SocialShare({ title, url }: SocialShareProps) {
           onClick={() => handleCopyLink(utmLinks.copy)}
           aria-label="Copy link"
           className="blog-share-btn"
-           style={{ background: "rgba(15,23,42,0.06)", color: "#475569", border: "none", cursor: "pointer" }}
+           style={{ background: "rgba(74,59,51,0.06)", color: "#57534E", border: "none", cursor: "pointer" }}
         >
           {copied ? (
-            <svg style={{ width: "16px", height: "16px", color: "#22C55E" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: "16px", height: "16px", color: "#B45309" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           ) : (
@@ -133,7 +133,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
         </button>
       </div>
       {copied && (
-        <p style={{ fontSize: "0.75rem", color: "#22C55E", marginTop: "8px" }}>
+        <p style={{ fontSize: "0.75rem", color: "#B45309", marginTop: "8px" }}>
           Link copied to clipboard!
         </p>
       )}

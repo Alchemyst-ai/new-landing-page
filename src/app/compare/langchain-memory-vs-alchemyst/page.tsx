@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/langchain-memory-vs-alchemyst";
 const PAGE_TITLE = "LangChain Memory vs Alchemyst: Framework Memory vs Context Layer";
@@ -41,7 +41,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function LangChainMemoryVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               LangChain deprecated BufferMemory in 2026, pushing developers toward LangGraph's persistent store patterns. Alchemyst AI provides a vendor-agnostic context layer that works with any framework. Both solve memory, but at different layers of the stack.
@@ -63,7 +63,7 @@ export default function LangChainMemoryVsAlchemystPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -129,29 +129,29 @@ export default function LangChainMemoryVsAlchemystPage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Consideration</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>LangMem</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Consideration</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>LangMem</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Framework integration</td>
                   <td style={{ padding: "12px" }}>✅ Any framework</td>
                   <td style={{ padding: "12px" }}>✅ LangGraph native</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in</td>
                   <td style={{ padding: "12px" }}>⚠️ Not designed for this</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>New infrastructure</td>
                   <td style={{ padding: "12px" }}>✅ Zero-infra API</td>
                   <td style={{ padding: "12px" }}>✅ Uses existing store</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit trails</td>
                   <td style={{ padding: "12px" }}>✅ Retrieval-level</td>
                   <td style={{ padding: "12px" }}>⚠️ Checkpointer logs</td>

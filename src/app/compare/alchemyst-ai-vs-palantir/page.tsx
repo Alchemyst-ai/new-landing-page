@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Palantir: Enterprise Context Layer Comparison",
@@ -38,7 +38,7 @@ export default function ComparePalantirPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function ComparePalantirPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Both Alchemyst AI and Palantir aim to operationalize enterprise intelligence by grounding AI in business reality. But while Palantir relies on heavy, top-down ontology mapping and forward-deployed engineering (FDE) teams to manually maintain semantic consensus, <strong>Alchemyst AI is a developer-first context layer</strong>. It provides the same institutional consensus and tractability via a single API, natively solving semantic drift without the massive contract overhead.
@@ -60,7 +60,7 @@ export default function ComparePalantirPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -71,39 +71,39 @@ export default function ComparePalantirPage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Palantir AIP</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Palantir AIP</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Architecture</td>
                   <td style={{ padding: "16px" }}>Composable Context Arithmetic</td>
                   <td style={{ padding: "16px" }}>Static Enterprise Ontology</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Palantir is predictable; Alchemyst adapts</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Semantic Consensus</td>
                   <td style={{ padding: "16px" }}>Self-updating via layered inferences</td>
                   <td style={{ padding: "16px" }}>Manually curated by engineers</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Palantir trades speed for rigor</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Deployment Model</td>
                   <td style={{ padding: "16px" }}>Developer API (Zero-infra)</td>
                   <td style={{ padding: "16px" }}>Heavy platform + FDEs</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Palantir needs teams; Alchemyst needs developers</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Time to Value</td>
                   <td style={{ padding: "16px" }}>Minutes (API)</td>
                   <td style={{ padding: "16px" }}>Months (Implementation)</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Palantir is upfront investment; Alchemyst is iterative</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Pricing</td>
                   <td style={{ padding: "16px" }}>Transparent SaaS</td>
                   <td style={{ padding: "16px" }}>$1M+ contracts</td>

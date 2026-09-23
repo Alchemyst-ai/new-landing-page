@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Zep: Best AI Memory Layer for Agents",
@@ -38,7 +38,7 @@ export default function CompareZepPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function CompareZepPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Both Alchemyst AI and Zep offer memory infrastructure for AI applications, but they solve different problems. Unlike Zep, which focuses heavily on temporal chat history and conversation graphs, <strong>Alchemyst AI is a deterministic context layer</strong> designed to give multiple agents structured, auditable access to shared institutional knowledge.
@@ -60,7 +60,7 @@ export default function CompareZepPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -72,45 +72,45 @@ export default function CompareZepPage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Zep (Graphiti)</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "25%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Zep (Graphiti)</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "25%" }}>Trade-off</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Core Focus</td>
                   <td style={{ padding: "16px" }}>Institutional Context Layer</td>
                   <td style={{ padding: "16px" }}>Temporal Knowledge Graph</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep excels at temporal queries; Alchemyst at org-wide consistency</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Context Scoping</td>
                   <td style={{ padding: "16px" }}>Deterministic at write time</td>
                   <td style={{ padding: "16px" }}>Temporal graph extraction</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep tracks &ldquo;as-of&rdquo; timestamps; Alchemyst uses context arithmetic</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Auditability</td>
                   <td style={{ padding: "16px" }}>100% Traceable per retrieval</td>
                   <td style={{ padding: "16px" }}>Graph-based inference</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Alchemyst traces decisions; Zep traces graph evolution</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Latency (P95)</td>
                   <td style={{ padding: "16px" }}>&lt; 300ms</td>
                   <td style={{ padding: "16px" }}>600-800ms (OSS), &lt; 200ms (managed)</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep Cloud faster; OSS requires self-ops tuning</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>LongMemEval Score</td>
                   <td style={{ padding: "16px" }}>Benchmark pending</td>
                   <td style={{ padding: "16px" }}>63.8% (GPT-4o)</td>
                   <td style={{ padding: "16px", fontSize: "0.9rem" }}>Zep leads on temporal recall; Alchemyst on deterministic accuracy</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Target Architecture</td>
                   <td style={{ padding: "16px" }}>Multi-agent org deployments</td>
                   <td style={{ padding: "16px" }}>Conversational AI assistants</td>
@@ -121,11 +121,11 @@ export default function CompareZepPage() {
           </div>
 
           {/* Latency benchmark callout */}
-          <div style={{ background: "rgba(244,144,37,0.08)", border: "1px solid rgba(244,144,37,0.2)", borderRadius: "0", padding: "24px", marginBottom: "64px" }}>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8125rem", color: "#F49025", marginBottom: "8px" }}>
+          <div style={{ background: "rgba(180, 83, 9,0.08)", border: "1px solid rgba(180, 83, 9,0.2)", borderRadius: "var(--radius)", padding: "24px", marginBottom: "64px" }}>
+            <p style={{ fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: "0.8125rem", color: "#B45309", marginBottom: "8px" }}>
               Architecture note
             </p>
-            <p style={{ fontFamily: SANS, color: "#475569", marginBottom: "0", fontSize: "0.9375rem" }}>
+            <p style={{ fontFamily: SANS, color: "#57534E", marginBottom: "0", fontSize: "0.9375rem" }}>
               Zep&apos;s open-source Graphiti engine requires self-managing Neo4j/FalkorDB/Kuzu for production. Alchemyst delivers the same graph-like capabilities as a managed API with sub-300ms latency.
             </p>
           </div>

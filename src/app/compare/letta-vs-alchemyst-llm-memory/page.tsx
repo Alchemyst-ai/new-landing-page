@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/letta-vs-alchemyst-llm-memory";
 const PAGE_TITLE = "Letta (MemGPT) vs Alchemyst: OS-Style Memory vs Context Layer";
@@ -41,7 +41,7 @@ export default function LettaVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function LettaVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Letta (formerly MemGPT) implements OS-style tiered memory: core (RAM), archival (disk), and recall (history). Alchemyst AI provides context arithmetic over an institutional knowledge graph. Both solve memory for long-running agents, but with fundamentally different architectures.
@@ -63,7 +63,7 @@ export default function LettaVsAlchemystPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -105,34 +105,34 @@ export default function LettaVsAlchemystPage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Use Case</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Letta</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Use Case</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Letta</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Multi-agent coordination</td>
                   <td style={{ padding: "12px" }}>✅ Shared context layer</td>
                   <td style={{ padding: "12px" }}>⚠️ Separate memory per agent</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Long-running research</td>
                   <td style={{ padding: "12px" }}>✅ Good</td>
                   <td style={{ padding: "12px" }}>✅ Excellent</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in ontology</td>
                   <td style={{ padding: "12px" }}>⚠️ Agent-managed</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Model choice</td>
                   <td style={{ padding: "12px" }}>✅ Any via API/MCP</td>
                   <td style={{ padding: "12px" }}>✅ Any via endpoints</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit requirements</td>
                   <td style={{ padding: "12px" }}>✅ Retrieval traces</td>
                   <td style={{ padding: "12px" }}>⚠️ Function call logs</td>

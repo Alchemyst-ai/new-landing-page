@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/supermemory-vs-alchemyst";
 const PAGE_TITLE = "SuperMemory vs Alchemyst: Memory + RAG vs Deterministic Context";
@@ -41,7 +41,7 @@ export default function SuperMemoryVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function SuperMemoryVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               SuperMemory combines memory graph + user profiles + knowledge base + session context + compliance in a single API. Alchemyst AI provides a deterministic context layer with context arithmetic. Both target developers, but with different priorities.
@@ -63,7 +63,7 @@ export default function SuperMemoryVsAlchemystPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -107,34 +107,34 @@ export default function SuperMemoryVsAlchemystPage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Aspect</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>SuperMemory</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Aspect</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>SuperMemory</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Primary focus</td>
                   <td style={{ padding: "12px" }}>Institutional context</td>
                   <td style={{ padding: "12px" }}>Memory + RAG combined</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Memory model</td>
                   <td style={{ padding: "12px" }}>Deterministic (scoped writes)</td>
                   <td style={{ padding: "12px" }}>Graph + RAG hybrid</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit trail</td>
                   <td style={{ padding: "12px" }}>✅ Retrieval-level traces</td>
                   <td style={{ padding: "12px" }}>⚠️ Limited</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Document handling</td>
                   <td style={{ padding: "12px" }}>Via MCP connectors</td>
                   <td style={{ padding: "12px" }}>✅ Native knowledge base</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Latency</td>
                   <td style={{ padding: "12px" }}>P95 &lt;300ms</td>
                   <td style={{ padding: "12px" }}>Reported 85.4% on LongMemEval</td>

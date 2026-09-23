@@ -7,8 +7,8 @@ import ContextSovereigntyFlow from "./ContextSovereigntyFlow";
 
 const PILLARS = [
   {
-    accent: "#128F8B",
-    accentRgb: "18,143,139",
+    accent: "#A16207",
+    accentRgb: "161,98,7",
     kicker: "The Technical Case",
     title: "Switch models freely. Keep your context sovereign.",
     body: "Every model swap normally resets your agent's memory. Alchemyst decouples what your organization knows from whichever model reasons over it, so institutional context stays continuous across every upgrade or multi-model setup.",
@@ -21,8 +21,8 @@ const PILLARS = [
     ],
   },
   {
-    accent: "#F49025",
-    accentRgb: "244,144,37",
+    accent: "#B45309",
+    accentRgb: "180,83,9",
     kicker: "The Business Case",
     title: "Operationalize intelligence that runs your day-to-day.",
     body: "This isn't a smarter chatbot. It's a context layer that turns what your organization knows into agents that run sales, support, ops, and research at scale — every decision traceable, every agent on the same source of truth.",
@@ -57,7 +57,7 @@ export default function WhyContextSection() {
   return (
     <section
       id="why-context"
-      className="relative w-full bg-[#FAFAFA] py-28 overflow-hidden"
+      className="relative w-full bg-[#F8F4EE] py-28 overflow-hidden"
       aria-labelledby="why-context-heading"
     >
       <div className="mx-auto max-w-[1200px] px-6">
@@ -69,7 +69,7 @@ export default function WhyContextSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             custom={0}
-            className="inline-block font-mono text-[11px] uppercase tracking-[0.12em] font-semibold text-[#F49025] bg-[#F49025]/8 border border-[#F49025]/20 px-4 py-1 mb-6"
+            className="inline-block font-mono text-[11px] uppercase tracking-[0.12em] font-semibold text-[#B45309] bg-[#B45309]/8 border border-[#B45309]/20 px-4 py-1 mb-6"
           >
             Why context
           </motion.span>
@@ -81,11 +81,11 @@ export default function WhyContextSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             custom={1}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0F172A] tracking-tight leading-[1.1] mb-5"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4A3B33] tracking-tight leading-[1.1] mb-5"
           >
             The model is replaceable.
             <br />
-            Your <span className=" text-[#F49025]">institutional context </span>{" "}
+            Your <span className=" text-[#B45309]">institutional context </span>{" "}
             isn&apos;t.
           </motion.h2>
 
@@ -95,7 +95,7 @@ export default function WhyContextSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             custom={2}
-            className="text-base lg:text-lg text-[#475569] leading-relaxed"
+            className="text-base lg:text-lg text-[#57534E] leading-relaxed"
           >
             Models are commoditizing fast. Durable advantage comes from a context
             layer that operationalizes your business intelligence and stays
@@ -112,22 +112,22 @@ export default function WhyContextSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             custom={3}
-            className="relative flex flex-col justify-center bg-white border border-[#E5E7EB] p-10 lg:p-12 lg:row-span-2 transition-all duration-300 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.08)] hover:-translate-y-[2px]"
+            className="relative flex flex-col justify-center bg-white border border-[#E4D9BC] rounded-xl p-10 lg:p-12 lg:row-span-2 transition-all duration-300 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)] hover:-translate-y-[2px]"
           >
             {/* Large decorative quotation mark */}
             <span
               aria-hidden
-              className="absolute top-8 left-10 text-[120px] leading-none font-serif text-[#E5E7EB] select-none pointer-events-none"
+              className="absolute top-8 left-10 text-[120px] leading-none font-serif text-[#E4D9BC] select-none pointer-events-none"
             >
               &ldquo;
             </span>
 
-            <p className="relative z-10 text-xl sm:text-2xl lg:text-[1.65rem] font-semibold text-[#0F172A] leading-snug tracking-tight mt-12 lg:mt-0">
+            <p className="relative z-10 text-xl sm:text-2xl lg:text-[1.65rem] font-semibold text-[#4A3B33] leading-snug tracking-tight mt-12 lg:mt-0">
               {PULL_QUOTE.split("institutional context").map((part, i, arr) =>
                 i < arr.length - 1 ? (
                   <span key={i}>
                     {part}
-                    <span className="text-[#F49025]">institutional context</span>
+                    <span className="text-[#B45309]">institutional context</span>
                   </span>
                 ) : (
                   <span key={i}>{part}</span>
@@ -135,10 +135,10 @@ export default function WhyContextSection() {
               )}
             </p>
 
-            <span className="mt-8 inline-flex items-center gap-2 text-[#64748B] text-sm font-mono tracking-wide">
+            <span className="mt-8 inline-flex items-center gap-2 text-[#78716C] text-sm font-mono tracking-wide">
               <a
                 href="/thesis"
-                className="text-[#F49025] hover:text-[#D97B1A] transition-colors"
+                className="text-[#B45309] hover:text-[#A16207] transition-colors"
               >
                 Read the Context Thesis &rarr;
               </a>
@@ -154,7 +154,7 @@ export default function WhyContextSection() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               custom={4 + i}
-              className="group relative bg-white border border-[#E5E7EB] p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.08)] hover:-translate-y-[2px] overflow-hidden"
+              className="group relative bg-white border border-[#E4D9BC] rounded-xl p-8 lg:p-10 transition-all duration-300 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)] hover:-translate-y-[2px] overflow-hidden"
             >
               {/* 3px top accent bar */}
               <div
@@ -172,12 +172,12 @@ export default function WhyContextSection() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-[#0F172A] leading-snug tracking-tight mb-3">
+                <h3 className="text-xl font-bold text-[#4A3B33] leading-snug tracking-tight mb-3">
                   {p.title}
                 </h3>
 
                 {/* Body */}
-                <p className="text-sm text-[#475569] leading-relaxed mb-6 flex-grow">
+                <p className="text-sm text-[#57534E] leading-relaxed mb-6 flex-grow">
                   {p.body}
                 </p>
 
@@ -186,7 +186,7 @@ export default function WhyContextSection() {
                   {p.chips.map((chip) => (
                     <span
                       key={chip}
-                      className="font-mono text-[10px] text-[#475569] bg-slate-50 border border-[#E5E7EB] px-3 py-1.5 transition-colors group-hover:bg-white group-hover:border-slate-300"
+                      className="font-mono text-[10px] text-[#57534E] bg-[#F8F4EE] border border-[#E4D9BC] rounded-md px-3 py-1.5 transition-colors group-hover:bg-white group-hover:border-[#B45309]/40"
                     >
                       {chip}
                     </span>

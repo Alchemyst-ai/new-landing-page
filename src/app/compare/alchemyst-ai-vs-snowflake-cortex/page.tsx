@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Snowflake Cortex: Enterprise Context Layer Comparison",
@@ -38,7 +38,7 @@ export default function CompareSnowflakePage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function CompareSnowflakePage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Snowflake Cortex brings AI natively to your data warehouse, utilizing Semantic Views to give agents a governed vocabulary. However, these views are static, manually authored, and strictly bounded to Snowflake. <strong>Alchemyst AI provides dynamic, cross-system semantic consensus</strong>. It is a sovereign context layer that spans your entire enterprise stack—resolving semantic drift automatically without locking your agents into a single warehouse.
@@ -60,7 +60,7 @@ export default function CompareSnowflakePage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -71,34 +71,34 @@ export default function CompareSnowflakePage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Snowflake Cortex</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Snowflake Cortex</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Context Scope</td>
                   <td style={{ padding: "16px" }}>Cross-system (Enterprise-wide)</td>
                   <td style={{ padding: "16px" }}>Warehouse-bounded (Snowflake only)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Semantic Consensus</td>
                   <td style={{ padding: "16px" }}>Dynamic, self-updating inferences</td>
                   <td style={{ padding: "16px" }}>Static, manually authored Semantic Views</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Unstructured Retrieval</td>
                   <td style={{ padding: "16px" }}>Deterministic Context Arithmetic</td>
                   <td style={{ padding: "16px" }}>Probabilistic Vector RAG (Cortex Search)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Agent Autonomy</td>
                   <td style={{ padding: "16px" }}>Unlimited multi-agent routing</td>
                   <td style={{ padding: "16px" }}>Limited context windows (3-5 turns)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Ecosystem</td>
                   <td style={{ padding: "16px" }}>Model & Data Agnostic</td>
                   <td style={{ padding: "16px" }}>Locked to Snowflake ecosystem</td>

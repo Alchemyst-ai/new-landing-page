@@ -20,11 +20,11 @@ const badgeVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // ── Alchemyst brand variants ───────────────────────────────
         orange:
-          "rounded border border-[#F49025]/25 bg-[#F49025]/10 text-[#7c4a09] font-mono uppercase tracking-wide",
+          "rounded border border-[#B45309]/25 bg-[#B45309]/10 text-[#78350F] font-mono uppercase tracking-wide",
         teal:
-          "rounded border border-[#128F8B]/25 bg-[#128F8B]/10 text-[#0B6E6B] font-mono uppercase tracking-wide",
+          "rounded border border-[#A16207]/25 bg-[#A16207]/10 text-[#78350F] font-mono uppercase tracking-wide",
         neutral:
-          "rounded border border-[#E2E8F0] bg-[#F1F5F9] text-[#334155] font-mono",
+          "rounded border border-[#E4D9BC] bg-[#F1E9DA] text-[#57534E] font-mono",
       },
     },
     defaultVariants: {

@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/compare/cognee-vs-alchemyst-knowledge-graph";
 const PAGE_TITLE = "Cognee vs Alchemyst: Open-Source Graph vs Deterministic Context";
@@ -41,7 +41,7 @@ export default function CogneeVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function CogneeVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Cognee builds knowledge graphs from unstructured data using remember/recall/improve/forget operations. Alchemyst AI provides deterministic context arithmetic over institutional knowledge. Both use graph structures, but with different priorities.
@@ -63,7 +63,7 @@ export default function CogneeVsAlchemystPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -109,34 +109,34 @@ export default function CogneeVsAlchemystPage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Aspect</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Cognee</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Aspect</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Cognee</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Graph build timing</td>
                   <td style={{ padding: "12px" }}>Dynamic (query-time)</td>
                   <td style={{ padding: "12px" }}>Batch (pre-query)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consensus</td>
                   <td style={{ padding: "12px" }}>✅ Built-in ontology</td>
                   <td style={{ padding: "12px" }}>⚠️ Manual curation</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Deployment</td>
                   <td style={{ padding: "12px" }}>API / MCP (zero-infra)</td>
                   <td style={{ padding: "12px" }}>Self-host required</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Connectors</td>
                   <td style={{ padding: "12px" }}>30+ via MCP</td>
                   <td style={{ padding: "12px" }}>30+ native connectors</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Audit trail</td>
                   <td style={{ padding: "12px" }}>✅ Everything traced</td>
                   <td style={{ padding: "12px" }}>⚠️ Graph update logs</td>

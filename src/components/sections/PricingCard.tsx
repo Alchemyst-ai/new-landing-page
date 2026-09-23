@@ -34,16 +34,16 @@ const PricingCard = ({
       style={{
         background: "#FFFFFF",
         border: popular
-          ? `1px solid ${customColor || "#F49025"}`
-          : "1px solid #E5E7EB",
-        borderTop: popular ? `3px solid ${customColor || "#F49025"}` : undefined,
-        borderRadius: "0",
+          ? `1px solid ${customColor || "#B45309"}`
+          : "1px solid #E4D9BC",
+        borderTop: popular ? `3px solid ${customColor || "#B45309"}` : undefined,
+        borderRadius: "var(--radius)",
         padding: "32px",
         display: "flex",
         flexDirection: "column",
         height: "100%",
         position: "relative",
-        boxShadow: popular ? "0 8px 32px -12px rgba(244,144,37,0.25)" : undefined,
+        boxShadow: popular ? "0 8px 32px -12px rgba(180, 83, 9,0.25)" : "var(--shadow-soft)",
       }}
     >
       {popular && (
@@ -52,12 +52,12 @@ const PricingCard = ({
             position: "absolute",
             top: "12px",
             right: "12px",
-            backgroundColor: customColor || "#F49025",
-            color: "#0A0F1E",
+            backgroundColor: customColor || "#B45309",
+            color: "#FFFFFF",
             padding: "3px 10px",
-            borderRadius: "0",
+            borderRadius: "var(--radius)",
             fontSize: "10px",
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "var(--font-jetbrains-mono), monospace",
             fontWeight: 600,
             letterSpacing: "0.08em",
             textTransform: "uppercase",
@@ -68,10 +68,10 @@ const PricingCard = ({
       )}
       <h3
         style={{
-          fontFamily: "'Sora', sans-serif",
-          fontWeight: 800,
+          fontFamily: "var(--font-merriweather), Georgia, serif",
+          fontWeight: 900,
           fontSize: "1.875rem",
-          color: "#0F172A",
+          color: "#4A3B33",
           marginBottom: "8px",
           letterSpacing: "-0.02em",
         }}
@@ -81,10 +81,10 @@ const PricingCard = ({
       <div style={{ display: "flex", alignItems: "baseline", marginBottom: "24px" }}>
         <span
           style={{
-            fontFamily: "'Sora', sans-serif",
-            fontWeight: 800,
+            fontFamily: "var(--font-merriweather), Georgia, serif",
+            fontWeight: 900,
             fontSize: "1.5rem",
-            color: "#0F172A",
+            color: "#4A3B33",
             fontVariantNumeric: "tabular-nums",
           }}
         >
@@ -93,9 +93,9 @@ const PricingCard = ({
         {originalPrice && (
           <span
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-merriweather), Georgia, serif",
               fontSize: "0.875rem",
-              color: "#94A3B8",
+              color: "#A8A29E",
               marginLeft: "8px",
               textDecoration: "line-through",
             }}
@@ -106,9 +106,9 @@ const PricingCard = ({
       </div>
       <p
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-merriweather), Georgia, serif",
           fontSize: "0.9375rem",
-          color: "#64748B",
+          color: "#78716C",
           marginBottom: "24px",
           lineHeight: 1.6,
         }}
@@ -121,7 +121,7 @@ const PricingCard = ({
           <div key={index} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
             <div
               style={{
-                color: popular ? (customColor || "#F49025") : "#128F8B",
+                color: popular ? (customColor || "#B45309") : "#A16207",
                 flexShrink: 0,
                 marginTop: "2px",
               }}
@@ -133,9 +133,9 @@ const PricingCard = ({
             </div>
             <span
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-merriweather), Georgia, serif",
                 fontSize: "0.875rem",
-                color: "#475569",
+                color: "#57534E",
                 lineHeight: 1.5,
               }}
             >
@@ -149,9 +149,9 @@ const PricingCard = ({
         <Link href={ctaLink} target="_blank" rel="noopener noreferrer" className="w-full">
           <Button
             style={{
-              borderColor: popular ? customColor || "#F49025" : undefined,
-              backgroundColor: popular ? customColor || "#F49025" : undefined,
-              color: popular ? "#0A0F1E" : undefined,
+              borderColor: popular ? customColor || "#B45309" : undefined,
+              backgroundColor: popular ? customColor || "#B45309" : undefined,
+              color: popular ? "#FFFFFF" : undefined,
             }}
             className={popular ? "w-full" : "w-full"}
             variant={popular ? "default" : "outline"}
@@ -162,9 +162,9 @@ const PricingCard = ({
       ) : (
         <Button
           style={{
-            borderColor: popular ? customColor || "#F49025" : undefined,
-            backgroundColor: popular ? customColor || "#F49025" : undefined,
-            color: popular ? "#0A0F1E" : undefined,
+            borderColor: popular ? customColor || "#B45309" : undefined,
+            backgroundColor: popular ? customColor || "#B45309" : undefined,
+            color: popular ? "#FFFFFF" : undefined,
           }}
           className={popular ? "w-full" : "w-full"}
           variant={popular ? "default" : "outline"}

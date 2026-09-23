@@ -21,7 +21,7 @@ const pricingPlans = [
     ctaText: "Start for free",
     ctaLink: "/platform/signin",
     highlight: false,
-    accent: "#64748B"
+    accent: "#78716C"
   },
   {
     title: "Pro",
@@ -39,7 +39,7 @@ const pricingPlans = [
     ctaText: "Get Pro",
     ctaLink: "/platform/signin",
     highlight: true,
-    accent: "#F49025"
+    accent: "#B45309"
   },
   {
     title: "Enterprise",
@@ -58,7 +58,7 @@ const pricingPlans = [
     ctaText: "Talk to Sales",
     ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min",
     highlight: false,
-    accent: "#128F8B"
+    accent: "#A16207"
   }
 ];
 
@@ -71,7 +71,7 @@ const PricingSection = () => {
     >
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40"
            style={{
-             backgroundImage: `linear-gradient(to right, #E2E8F0 1px, transparent 1px), linear-gradient(to bottom, #E2E8F0 1px, transparent 1px)`,
+             backgroundImage: `linear-gradient(to right, #E4D9BC 1px, transparent 1px), linear-gradient(to bottom, #E4D9BC 1px, transparent 1px)`,
              backgroundSize: "60px 60px",
              maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
              WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
@@ -87,17 +87,17 @@ const PricingSection = () => {
           className="flex flex-col items-center mb-24 text-center max-w-3xl mx-auto"
         >
           <div className="flex justify-center mb-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#128F8B] font-semibold bg-[#128F8B]/10 px-4 py-1.5 rounded-none border border-[#128F8B]/20">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A16207] font-semibold bg-[#A16207]/10 px-4 py-1.5 rounded-md border border-[#A16207]/20">
               Pricing
             </span>
           </div>
           <h1
             id="pricing-heading"
-            className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.02em] text-slate-900 mb-6 leading-tight"
+            className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.02em] text-stone-900 mb-6 leading-tight"
           >
             Simple, Transparent Pricing
           </h1>
-          <p className="font-sans text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
+          <p className="font-sans text-lg md:text-xl text-stone-600 leading-relaxed max-w-2xl font-medium">
             Choose the plan that works best for your needs. All plans include core features to build context-aware AI.
           </p>
         </motion.div>
@@ -110,10 +110,10 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-              className={`flex flex-col relative bg-white border ${plan.highlight ? 'border-[#F49025]' : 'border-slate-200'} rounded-none p-10 transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2 shadow-[8px_8px_0px_#E2E8F0] hover:shadow-[16px_16px_0px_#CBD5E1]`}
+              className={`flex flex-col relative bg-white border ${plan.highlight ? 'border-[#B45309]' : 'border-[#E4D9BC]'} rounded-xl p-10 transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)]`}
             >
               {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F49025] text-white font-mono text-[10px] uppercase tracking-widest font-bold px-4 py-1.5 shadow-[2px_2px_0px_#0F172A]">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#B45309] text-white font-mono text-[10px] uppercase tracking-widest font-bold px-4 py-1.5 shadow-[var(--shadow-soft)]">
                   Most Popular
                 </div>
               )}
@@ -123,16 +123,16 @@ const PricingSection = () => {
                   {plan.title}
                 </h3>
                 <div className="flex items-end gap-1 mb-2">
-                  <span className="font-sans text-5xl font-extrabold text-slate-900 tracking-tight">
+                  <span className="font-sans text-5xl font-extrabold text-stone-900 tracking-tight">
                     {plan.price}
                   </span>
                   {plan.interval && (
-                    <span className="font-sans text-base text-slate-500 font-medium mb-1">
+                    <span className="font-sans text-base text-stone-500 font-medium mb-1">
                       {plan.interval}
                     </span>
                   )}
                 </div>
-                <p className="font-sans text-sm text-slate-600 font-medium h-10">
+                <p className="font-sans text-sm text-stone-600 font-medium h-10">
                   {plan.description}
                 </p>
               </div>
@@ -144,7 +144,7 @@ const PricingSection = () => {
                       <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 6L9 17L4 12" stroke={plan.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                      <span className="font-sans text-sm text-slate-700 font-medium leading-tight">
+                      <span className="font-sans text-sm text-stone-700 font-medium leading-tight">
                         {feature.text}
                       </span>
                     </li>
@@ -154,7 +154,7 @@ const PricingSection = () => {
 
               <Button 
                 asChild 
-                className={`w-full rounded-none py-6 text-sm font-bold tracking-wide transition-all shadow-[4px_4px_0px_#0F172A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#0F172A] ${plan.highlight ? 'bg-[#F49025] hover:bg-[#D97B1A] text-white shadow-[4px_4px_0px_#0F172A]' : 'bg-slate-900 hover:bg-slate-800 text-white'}`}
+                className={`w-full rounded-lg py-6 text-sm font-bold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-2px] hover:shadow-[var(--shadow-soft-lg)] ${plan.highlight ? 'bg-[#B45309] hover:bg-[#A16207] text-white' : 'bg-[#4A3B33] hover:bg-[#3A2E28] text-white'}`}
               >
                 <a href={plan.ctaLink}>
                   {plan.ctaText}
@@ -175,38 +175,38 @@ const PricingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-3xl mx-auto bg-slate-50 border border-slate-200 p-10 rounded-none shadow-[8px_8px_0px_#E2E8F0]"
+          className="max-w-3xl mx-auto bg-[#F8F4EE] border border-[#E4D9BC] p-10 rounded-xl shadow-[var(--shadow-soft)]"
         >
           <div className="mb-10 text-center">
-            <h2 className="font-sans text-2xl font-bold text-slate-900">
+            <h2 className="font-sans text-2xl font-bold text-stone-900">
               Frequently Asked Questions
             </h2>
           </div>
 
           <div className="space-y-8">
             <div>
-              <h3 className="font-sans text-lg font-bold text-slate-900 mb-2">
+              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
                 What is the Alchemyst AI pricing model?
               </h3>
-              <p className="font-sans text-slate-600 font-medium leading-relaxed">
+              <p className="font-sans text-stone-600 font-medium leading-relaxed">
                 Alchemyst AI uses straightforward tiered pricing. You can start completely free, and upgrade to Pro as your request volume or storage needs increase. For massive scale, our Enterprise tier offers custom limits and VPC options.
               </p>
             </div>
 
             <div>
-              <h3 className="font-sans text-lg font-bold text-slate-900 mb-2">
+              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
                 How much does enterprise context layer cost?
               </h3>
-              <p className="font-sans text-slate-600 font-medium leading-relaxed">
+              <p className="font-sans text-stone-600 font-medium leading-relaxed">
                 Enterprise pricing is custom-built based on your organization's needs. We work with you to determine the right configuration for your scale, with custom network bandwidth, storage, and dedicated support.
               </p>
             </div>
 
             <div>
-              <h3 className="font-sans text-lg font-bold text-slate-900 mb-2">
+              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
                 Is there a free tier available?
               </h3>
-              <p className="font-sans text-slate-600 font-medium leading-relaxed">
+              <p className="font-sans text-stone-600 font-medium leading-relaxed">
                 Yes. The Free tier starts at $0 with 50,000 requests included when you sign up. This is ideal for testing Alchemyst AI's context layer before committing to a paid plan.
               </p>
             </div>

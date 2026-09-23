@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/blog/claude-memory-vs-alchemyst";
 const PAGE_TITLE = "Claude Memory vs Alchemyst: Filesystem vs Deterministic Context";
@@ -41,7 +41,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -54,7 +54,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Claude Managed Agents store memory as files on a filesystem. This enables human-readable, exportable context but creates challenges for multi-agent coordination. Alchemyst AI provides a deterministic context layer designed for production deployments.
@@ -63,7 +63,7 @@ export default function ClaudeMemoryVsAlchemystPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -103,29 +103,29 @@ export default function ClaudeMemoryVsAlchemystPage() {
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Consideration</th>
-                  <th style={{ padding: "12px", color: "#F49025" }}>Alchemyst AI</th>
-                  <th style={{ padding: "12px", color: "#0F172A" }}>Claude Memory</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Consideration</th>
+                  <th style={{ padding: "12px", color: "#B45309" }}>Alchemyst AI</th>
+                  <th style={{ padding: "12px", color: "#4A3B33" }}>Claude Memory</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Multi-agent coordination</td>
                   <td style={{ padding: "12px" }}>✅ Conflict resolution</td>
                   <td style={{ padding: "12px" }}>⚠️ Manual coordination</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Model flexibility</td>
                   <td style={{ padding: "12px" }}>✅ Any model via API/MCP</td>
                   <td style={{ padding: "12px" }}>❌ Claude-only</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Semantic consistency</td>
                   <td style={{ padding: "12px" }}>✅ Ontology resolution</td>
                   <td style={{ padding: "12px" }}>❌ Agent-written</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "12px" }}>Enterprise compliance</td>
                   <td style={{ padding: "12px" }}>✅ Auditable API</td>
                   <td style={{ padding: "12px" }}>⚠️ File-based logs</td>

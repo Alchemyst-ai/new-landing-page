@@ -84,7 +84,7 @@ function categoryHref(post: StrapiBlogPost): string {
   return slug ? `/blog?category=${slug}` : "/blog";
 }
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: Props) {
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 700,
                 lineHeight: 1.2,
-                color: "#0F172A",
+                color: "#4A3B33",
                 marginBottom: "20px",
               }}
             >
@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: Props) {
                   fontFamily: SANS,
                   fontSize: "1.125rem",
                   lineHeight: 1.6,
-                  color: "#475569",
+                  color: "#57534E",
                   marginBottom: "16px",
                 }}
               >
@@ -215,9 +215,9 @@ export default async function BlogPostPage({ params }: Props) {
                     fontFamily: SANS,
                     fontSize: "0.75rem",
                     fontWeight: 600,
-                    color: "#F49025",
-                    background: "rgba(244,144,37,0.12)",
-                    borderRadius: "0",
+                    color: "#B45309",
+                    background: "rgba(180, 83, 9,0.12)",
+                    borderRadius: "var(--radius)",
                     padding: "3px 10px",
                   }}
                 >
@@ -231,9 +231,9 @@ export default async function BlogPostPage({ params }: Props) {
               <div
                 style={{
                   width: "100%",
-                  borderRadius: "0",
+                  borderRadius: "var(--radius)",
                   overflow: "hidden",
-                  background: "rgba(15,23,42,0.03)",
+                  background: "rgba(74, 59, 51,0.03)",
                   marginBottom: "24px",
                 }}
               >
@@ -255,7 +255,7 @@ export default async function BlogPostPage({ params }: Props) {
                 gap: "16px 20px",
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
               }}
             >
               {post.author?.name && (
@@ -272,7 +272,7 @@ export default async function BlogPostPage({ params }: Props) {
                     Written by{" "}
                     <Link
                       href={`/blog?author=${encodeURIComponent(post.author.name)}`}
-                      style={{ color: "#0F172A", fontWeight: 500, textDecoration: "none" }}
+                      style={{ color: "#4A3B33", fontWeight: 500, textDecoration: "none" }}
                     >
                       {post.author.name}
                     </Link>
@@ -294,7 +294,7 @@ export default async function BlogPostPage({ params }: Props) {
                     Reviewed by{" "}
                     <Link
                       href={`/blog?author=${encodeURIComponent(post.reviewer.name)}`}
-                      style={{ color: "#0F172A", fontWeight: 500, textDecoration: "none" }}
+                      style={{ color: "#4A3B33", fontWeight: 500, textDecoration: "none" }}
                     >
                       {post.reviewer.name}
                     </Link>
@@ -325,7 +325,7 @@ export default async function BlogPostPage({ params }: Props) {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "10px",
               }}
             >
@@ -338,9 +338,9 @@ export default async function BlogPostPage({ params }: Props) {
               <section
                 style={{
                   marginTop: "32px",
-                  background: "#F8FAFC",
-                  border: "1px solid #E5E7EB",
-                  borderRadius: "0",
+                  background: "#F8F4EE",
+                  border: "1px solid #E4D9BC",
+                  borderRadius: "var(--radius)",
                   padding: "24px",
                 }}
               >
@@ -349,7 +349,7 @@ export default async function BlogPostPage({ params }: Props) {
                     fontFamily: SANS,
                     fontSize: "1.25rem",
                     fontWeight: 600,
-                    color: "#0F172A",
+                    color: "#4A3B33",
                     marginBottom: "12px",
                   }}
                 >
@@ -360,7 +360,7 @@ export default async function BlogPostPage({ params }: Props) {
                     fontFamily: SANS,
                     fontSize: "1rem",
                     lineHeight: 1.75,
-                    color: "#475569",
+                    color: "#57534E",
                     whiteSpace: "pre-line",
                   }}
                 >
@@ -376,14 +376,14 @@ export default async function BlogPostPage({ params }: Props) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  background: "rgba(15,23,42,0.03)",
-                  border: "1px solid #E5E7EB",
-                  borderRadius: "0",
+                  background: "rgba(74, 59, 51,0.03)",
+                  border: "1px solid #E4D9BC",
+                  borderRadius: "var(--radius)",
                   padding: "12px 16px",
                   cursor: "pointer",
                   fontFamily: SANS,
                   fontWeight: 600,
-                  color: "#0F172A",
+                  color: "#4A3B33",
                 }}
               >
                 Table of Contents
@@ -410,7 +410,7 @@ export default async function BlogPostPage({ params }: Props) {
               <p
                 style={{
                   fontFamily: SANS,
-                  color: "#64748B",
+                  color: "#78716C",
                   textAlign: "center",
                   padding: "60px 0",
                 }}
@@ -424,7 +424,7 @@ export default async function BlogPostPage({ params }: Props) {
               style={{
                 marginTop: "64px",
                 paddingTop: "32px",
-                borderTop: "1px solid #E5E7EB",
+                borderTop: "1px solid #E4D9BC",
               }}
             >
               <Link
@@ -433,7 +433,7 @@ export default async function BlogPostPage({ params }: Props) {
                   fontFamily: SANS,
                   fontSize: "0.9375rem",
                   fontWeight: 600,
-                  color: "#F49025",
+                  color: "#B45309",
                   textDecoration: "none",
                   display: "inline-flex",
                   alignItems: "center",
@@ -450,7 +450,7 @@ export default async function BlogPostPage({ params }: Props) {
         {recentPosts.length > 0 && (
           <section
             style={{
-              borderTop: "1px solid #E5E7EB",
+              borderTop: "1px solid #E4D9BC",
               padding: "72px 0",
             }}
           >
@@ -460,7 +460,7 @@ export default async function BlogPostPage({ params }: Props) {
                   fontFamily: SANS,
                   fontSize: "clamp(1.5rem, 3vw, 2rem)",
                   fontWeight: 700,
-                  color: "#0F172A",
+                  color: "#4A3B33",
                   marginBottom: "32px",
                 }}
               >
@@ -479,14 +479,14 @@ export default async function BlogPostPage({ params }: Props) {
                         display: "flex",
                         flexDirection: "column",
                         background: "#FFFFFF",
-                        border: "1px solid #E5E7EB",
-                        borderRadius: "0",
+                        border: "1px solid #E4D9BC",
+                        borderRadius: "var(--radius)",
                         overflow: "hidden",
                         textDecoration: "none",
                       }}
                     >
                       {cover && (
-                        <div style={{ aspectRatio: "16 / 9", overflow: "hidden", background: "rgba(15,23,42,0.03)" }}>
+                        <div style={{ aspectRatio: "16 / 9", overflow: "hidden", background: "rgba(74, 59, 51,0.03)" }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={cover}
@@ -500,7 +500,7 @@ export default async function BlogPostPage({ params }: Props) {
                           style={{
                             fontFamily: SANS,
                             fontSize: "0.75rem",
-                            color: "#94A3B8",
+                            color: "#A8A29E",
                           }}
                         >
                           {p.category?.name ? `${p.category.name} • ` : ""}
@@ -512,7 +512,7 @@ export default async function BlogPostPage({ params }: Props) {
                             fontSize: "1.0625rem",
                             fontWeight: 600,
                             lineHeight: 1.35,
-                            color: "#0F172A",
+                            color: "#4A3B33",
                             margin: 0,
                           }}
                         >
@@ -524,7 +524,7 @@ export default async function BlogPostPage({ params }: Props) {
                               fontFamily: SANS,
                               fontSize: "0.875rem",
                               lineHeight: 1.55,
-                              color: "#475569",
+                              color: "#57534E",
                               margin: 0,
                               display: "-webkit-box",
                               WebkitLineClamp: 2,

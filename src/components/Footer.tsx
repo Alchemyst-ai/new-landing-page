@@ -64,7 +64,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#0F172A] text-white">
+    <footer className="relative overflow-hidden bg-[#1C1917] text-white">
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8">
         {/* Main footer */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 mb-32">
@@ -98,7 +98,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 bg-white/[0.06] hover:bg-[#F49025]/20 flex items-center justify-center transition-colors"
+                  className="w-9 h-9 bg-white/[0.06] hover:bg-[#F97316]/20 flex items-center justify-center transition-colors"
                 >
                   <social.icon className="w-4 h-4 text-white/60" />
                 </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                   <li key={link.href + link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/45 hover:text-[#F49025] transition-colors"
+                      className="text-sm text-white/45 hover:text-[#F97316] transition-colors"
                     >
                       {link.label}
                     </Link>

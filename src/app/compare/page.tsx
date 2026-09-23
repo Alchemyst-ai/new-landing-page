@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Compare Alchemyst AI | Context Layer vs Memory, Ontology & Search",
@@ -157,7 +157,7 @@ export default function CompareIndexPage() {
                   fontSize: "clamp(2rem, 4vw, 3.25rem)",
                   fontWeight: 800,
                   lineHeight: 1.1,
-                  color: "#0F172A",
+                  color: "#4A3B33",
                   margin: "16px 0 20px",
                   letterSpacing: "-0.03em",
                 }}
@@ -169,7 +169,7 @@ export default function CompareIndexPage() {
                   fontFamily: SANS,
                   fontSize: "1.0625rem",
                   lineHeight: 1.7,
-                  color: "#64748B",
+                  color: "#78716C",
                 }}
               >
                 A context layer is a different primitive from memory, ontology, data
@@ -197,8 +197,8 @@ export default function CompareIndexPage() {
                     display: "flex",
                     flexDirection: "column",
                     background: "#FFFFFF",
-                    border: "1px solid #E5E7EB",
-                    borderRadius: "0",
+                    border: "1px solid #E4D9BC",
+                    borderRadius: "var(--radius)",
                     padding: "28px",
                     textDecoration: "none",
                     height: "100%",
@@ -207,7 +207,7 @@ export default function CompareIndexPage() {
                   <span
                     className="caption-meta"
                     style={{
-                      color: "#128F8B",
+                      color: "#A16207",
                       marginBottom: "12px",
                     }}
                   >
@@ -218,19 +218,19 @@ export default function CompareIndexPage() {
                       fontFamily: SANS,
                       fontSize: "1.35rem",
                       fontWeight: 700,
-                      color: "#0F172A",
+                      color: "#4A3B33",
                       margin: "0 0 10px",
                       letterSpacing: "-0.02em",
                     }}
                   >
-                    Alchemyst <span style={{ color: "#F49025" }}>vs {c.competitor}</span>
+                    Alchemyst <span style={{ color: "#B45309" }}>vs {c.competitor}</span>
                   </h2>
                   <p
                     style={{
                       fontFamily: SANS,
                       fontSize: "0.9375rem",
                       lineHeight: 1.6,
-                      color: "#64748B",
+                      color: "#78716C",
                       margin: 0,
                       flex: 1,
                     }}
@@ -242,7 +242,7 @@ export default function CompareIndexPage() {
                       fontFamily: SANS,
                       fontSize: "0.875rem",
                       fontWeight: 600,
-                      color: "#F49025",
+                      color: "#B45309",
                       marginTop: "20px",
                     }}
                   >

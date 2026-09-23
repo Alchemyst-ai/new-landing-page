@@ -24,13 +24,13 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // ── Alchemyst brand variants ──────────────────────────────────
         orange:
-          "bg-[#F49025] text-white border-transparent shadow-[0_8px_24px_-8px_rgba(244,144,37,0.6)] hover:bg-[#e07f17] hover:shadow-[0_10px_28px_-8px_rgba(244,144,37,0.7)]",
+          "bg-[#B45309] text-white border-transparent shadow-[var(--shadow-soft)] hover:bg-[#A16207] hover:shadow-[var(--shadow-soft-lg)]",
         teal:
-          "bg-[#128F8B] text-white border-transparent shadow-[0_8px_24px_-8px_rgba(18,143,139,0.55)] hover:bg-[#0B6E6B]",
+          "bg-[#A16207] text-white border-transparent shadow-[var(--shadow-soft)] hover:bg-[#78350F] hover:shadow-[var(--shadow-soft-lg)]",
         "brand-outline":
-          "border-[#F49025]/40 text-[#F49025] bg-transparent hover:bg-[#F49025]/10 hover:border-[#F49025]/60",
+          "border-[#B45309]/40 text-[#B45309] bg-transparent hover:bg-[#B45309]/10 hover:border-[#B45309]/60",
         light:
-          "bg-white text-[#0F172A] border-[#E5E7EB] hover:bg-[#F7F4EE] shadow-sm",
+          "bg-white text-[#4A3B33] border-[#E4D9BC] hover:bg-[#F8F4EE] shadow-[var(--shadow-soft)]",
       },
       size: {
         default: "h-10 gap-2 px-4",

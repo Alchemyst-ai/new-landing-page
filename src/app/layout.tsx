@@ -1,7 +1,23 @@
 import StructuredData from "@/components/StructuredData";
 import ScrollProgress from "@/components/ScrollProgress";
 import type { Metadata } from "next";
+import { Merriweather, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-merriweather",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 const BASE_URL = "https://getalchemystai.com";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
@@ -87,16 +103,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
         <StructuredData />
       </head>
-      <body>
+      <body className={`${merriweather.variable} ${jetbrainsMono.variable}`}>
         <ScrollProgress />
         {children}
       </body>

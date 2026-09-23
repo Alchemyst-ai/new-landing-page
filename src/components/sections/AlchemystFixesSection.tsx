@@ -63,9 +63,9 @@ const ease = [0.23, 1, 0.32, 1] as const;
 
 function highlightCode(code: string): string {
   return code
-    .replace(/\/\/(.*)/g, '<span class="text-slate-400">//$1</span>')
-    .replace(/(const|await|new)/g, '<span class="text-[#128F8B]">$1</span>')
-    .replace(/(alchemyst|ctx)/g, '<span class="text-[#F49025]">$1</span>');
+    .replace(/\/\/(.*)/g, '<span class="text-[#78716C]">//$1</span>')
+    .replace(/(const|await|new)/g, '<span class="text-[#A16207]">$1</span>')
+    .replace(/(alchemyst|ctx)/g, '<span class="text-[#B45309]">$1</span>');
 }
 
 export default function AlchemystFixesSection() {
@@ -85,18 +85,18 @@ export default function AlchemystFixesSection() {
           transition={{ duration: 0.6, ease }}
           className="max-w-5xl mb-16 text-center mx-auto"
         >
-          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#128F8B] font-semibold mb-5 block">
+          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#A16207] font-semibold mb-5 block">
             What does Alchemyst do?
           </span>
           <h2
             id="fixes-heading"
-            className="text-[#0F172A] text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.1] mb-5"
+            className="text-[#4A3B33] text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.1] mb-5"
           >
             A context layer that keeps your AI{" "}
-            <span className="italic text-[#128F8B]">current, traceable,</span> and
+            <span className="italic text-[#A16207]">current, traceable,</span> and
             semantically consistent.
           </h2>
-          <p className="text-[#475569] text-base lg:text-lg leading-relaxed max-w-2xl text-center mx-auto">
+          <p className="text-[#57534E] text-base lg:text-lg leading-relaxed max-w-2xl text-center mx-auto">
             One API call. Context arithmetic over your institutional knowledge graph. Every
             decision traceable back to its source - without managing a single vector database or
             graph store.
@@ -104,7 +104,7 @@ export default function AlchemystFixesSection() {
         </motion.div>
 
         {/* ── Bento grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#E5E7EB] border border-[#E5E7EB] mb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#E4D9BC] border border-[#E4D9BC] mb-28 rounded-lg overflow-hidden shadow-[var(--shadow-soft)]">
           {STEPS.map((step, i) => {
             // Row 1: card 0 spans 2, card 1 spans 1
             // Row 2: card 2 spans 1, card 3 spans 2
@@ -120,18 +120,18 @@ export default function AlchemystFixesSection() {
                 className={`${span} flex flex-col bg-white hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300`}
               >
                 <div className="p-8 lg:p-10 flex-grow">
-                  <span className="font-mono text-sm tracking-[0.12em] text-[#128F8B] font-bold block mb-4">
+                  <span className="font-mono text-sm tracking-[0.12em] text-[#A16207] font-bold block mb-4">
                     {step.num}
                   </span>
-                  <h3 className="text-[#0F172A] text-xl font-bold leading-tight mb-3">
+                  <h3 className="text-[#4A3B33] text-xl font-bold leading-tight mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-[#475569] text-[15px] leading-relaxed">
+                  <p className="text-[#57534E] text-[15px] leading-relaxed">
                     {step.body}
                   </p>
                 </div>
-                <div className="bg-[#F8FAFC] border-t border-[#E5E7EB] p-8">
-                  <pre className="font-mono text-[13px] leading-relaxed text-slate-700 overflow-x-auto whitespace-pre-wrap">
+                <div className="bg-[#F8F4EE] border-t border-[#E4D9BC] p-8">
+                  <pre className="font-mono text-[13px] leading-relaxed text-stone-700 overflow-x-auto whitespace-pre-wrap">
                     <code
                       dangerouslySetInnerHTML={{
                         __html: highlightCode(step.code),
@@ -155,7 +155,7 @@ export default function AlchemystFixesSection() {
           {METRICS.map((m) => (
             <div
               key={m.label}
-              className="border border-[#E5E7EB] bg-white"
+              className="border border-[#E4D9BC] bg-white"
             >
               <CountUpMetric
                 value={m.value}
@@ -186,17 +186,17 @@ export default function AlchemystFixesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease }}
-          className="bg-white border border-[#E5E7EB] p-10 md:p-16"
+          className="bg-white border border-[#E4D9BC] p-10 md:p-16 rounded-lg shadow-[var(--shadow-soft)]"
         >
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
             <div className="flex-1 max-w-2xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#F49025] font-semibold mb-4">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#B45309] font-semibold mb-4">
                 Example Use Case
               </p>
-              <h3 className="text-[#0F172A] text-2xl md:text-3xl font-bold leading-tight mb-5">
+              <h3 className="text-[#4A3B33] text-2xl md:text-3xl font-bold leading-tight mb-5">
                 How do you debug what an agent can&apos;t see? Context Tracing with OpenAI Euphony
               </h3>
-              <p className="text-[#475569] text-base leading-relaxed">
+              <p className="text-[#57534E] text-base leading-relaxed">
                 Pairing Alchemyst&apos;s Context Traces with Euphony - OpenAI&apos;s open-source conversation
                 visualizer - creates an end-to-end debugging workflow. Every agent failure is now
                 diagnosable in minutes: was it a retrieval problem, a configuration problem, or a
@@ -207,7 +207,7 @@ export default function AlchemystFixesSection() {
             <div className="flex-shrink-0 w-full lg:w-auto">
               <Button
                 asChild
-                className="w-full lg:w-auto bg-[#F49025] hover:bg-[#D97B1A] text-white px-7 py-3 rounded-none text-sm font-semibold tracking-wide transition-all shadow-[4px_4px_0px_#B45309] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#B45309]"
+                className="w-full lg:w-auto bg-[#B45309] hover:bg-[#A16207] text-white px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-1px] hover:shadow-[var(--shadow-soft-lg)]"
               >
                 <a
                   href="https://getalchemystai.com/blog/context-tracing-for-ai-agents-with-openai-euphony"

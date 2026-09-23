@@ -15,11 +15,11 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex-col min-h-screen dark bg-zinc-950">
+    <div className="flex-col min-h-screen dark bg-[#1C1917]">
       {/* Promo banner */}
       <div className="flex align-center w-full text-center justify-center text-sm py-3 tracking-wide"
         style={{
-          color: "#E2E8F0",
+          color: "#E4D9BC",
           background: "rgba(14,149,148,0.14)",
           borderBottom: "1px solid rgba(14,149,148,0.25)",
         }}
@@ -30,7 +30,7 @@ export default function SignInPage() {
       <div className="flex min-h-screen">
         {/* Authentication form */}
         <div className="w-full lg:w-1/2 flex items-center justify-center min-h-screen px-6">
-          <div className="max-w-[500px] w-full p-8 bg-zinc-950/40 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl relative">
+          <div className="max-w-[500px] w-full p-8 bg-[#1C1917]/40 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl relative">
             {/* Gradient border effect */}
             <div className="absolute inset-0 rounded-3xl p-[1px] bg-gradient-to-tr from-white/10 via-white/5 to-transparent -z-10" />
 
@@ -69,7 +69,7 @@ export default function SignInPage() {
                 {/* Google sign-in */}
                 <Button
                   variant="outline"
-                  className="w-full py-6 bg-white hover:bg-gray-50 text-zinc-950 hover:text-zinc-950 border-white/20 hover:cursor-pointer"
+                  className="w-full py-6 bg-white hover:bg-[#F8F4EE] text-[#1C1917] hover:text-[#1C1917] border-white/20 hover:cursor-pointer"
                   onClick={handleGoogleSignIn}
                 >
                   <Mail className="mr-2 h-5 w-5" />

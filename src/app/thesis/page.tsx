@@ -1,6 +1,6 @@
 // /thesis - The Context Thesis, migrated off the home page into a dedicated route.
 // Standalone App Router page reusing the shared Navbar/Footer shell and the
-// project's light editorial design system (Sora + JetBrains Mono, amber accent,
+// project's light editorial design system (Merriweather + JetBrains Mono, amber accent,
 // paper bg, 0 radius) per design.md.
 
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -11,8 +11,8 @@ import { Reveal } from "@/components/motion";
 import SemanticDriftFlow from "@/components/sections/SemanticDriftFlow";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
-const MONO = "'JetBrains Mono', monospace";
+const SANS = "var(--font-merriweather), Georgia, serif";
+const MONO = "var(--font-jetbrains-mono), monospace";
 
 export const metadata: Metadata = {
   title: "The Context Thesis - Why We're Building the Institutional Context Backbone",
@@ -88,7 +88,7 @@ export default function ThesisPage() {
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
           style={{
-            backgroundImage: `linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(74, 59, 51,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 59, 51,0.04) 1px, transparent 1px)`,
             backgroundSize: "80px 80px",
           }}
         />
@@ -114,7 +114,7 @@ export default function ThesisPage() {
             }}
           >
             Why we&apos;re building the{" "}
-            <span style={{ color: "#F49025", fontStyle: "italic" }}>
+            <span style={{ color: "#B45309", fontStyle: "italic" }}>
               institutional context backbone
             </span>{" "}
             for AI.
@@ -126,7 +126,7 @@ export default function ThesisPage() {
               fontFamily: SANS,
               fontSize: "1.125rem",
               lineHeight: 1.7,
-              color: "#475569",
+              color: "#57534E",
               maxWidth: "1520px",
               marginBottom: "12px",
             }}
@@ -143,7 +143,7 @@ export default function ThesisPage() {
               fontSize: "11px",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "#475569",
+              color: "#57534E",
               marginBottom: "56px",
             }}
           >
@@ -164,8 +164,8 @@ export default function ThesisPage() {
                 key={t.num}
                  style={{
                    background: "#FFFFFF",
-                   border: "1px solid #E5E7EB",
-                   borderRadius: "0",
+                   border: "1px solid #E4D9BC",
+                   borderRadius: "var(--radius)",
                    padding: "28px",
                  }}
                >
@@ -175,7 +175,7 @@ export default function ThesisPage() {
                      fontWeight: 600,
                      fontSize: "0.75rem",
                      letterSpacing: "0.15em",
-                     color: "#F49025",
+                     color: "#B45309",
                      marginBottom: "12px",
                    }}
                  >
@@ -200,7 +200,7 @@ export default function ThesisPage() {
                      fontWeight: 400,
                      fontSize: "0.9375rem",
                      lineHeight: 1.7,
-                     color: "#64748B",
+                     color: "#78716C",
                   }}
                 >
                   {t.body}
@@ -217,7 +217,7 @@ export default function ThesisPage() {
                 fontSize: "11px",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "#EF4444",
+                color: "#991B1B",
                 marginBottom: "12px",
               }}
             >
@@ -236,7 +236,7 @@ export default function ThesisPage() {
               }}
             >
               Enterprise AI doesn&apos;t fail because the model is bad. It fails because the{" "}
-              <span style={{ color: "#EF4444", fontStyle: "italic" }}>context rots.</span>
+              <span style={{ color: "#991B1B", fontStyle: "italic" }}>context rots.</span>
             </h2>
             <p
               style={{
@@ -244,7 +244,7 @@ export default function ThesisPage() {
                 fontWeight: 400,
                 fontSize: "1.0625rem",
                 lineHeight: 1.7,
-                 color: "#64748B",
+                 color: "#78716C",
                  maxWidth: "640px",
                }}
              >
@@ -268,8 +268,8 @@ export default function ThesisPage() {
                 key={card.title}
                  style={{
                    background: "#FFFFFF",
-                   border: "1px solid #E5E7EB",
-                   borderRadius: "0",
+                   border: "1px solid #E4D9BC",
+                   borderRadius: "var(--radius)",
                    padding: "28px",
                  }}
                >
@@ -291,10 +291,10 @@ export default function ThesisPage() {
                        fontSize: "9px",
                        letterSpacing: "0.1em",
                        textTransform: "uppercase",
-                       color: "#F87171",
-                       background: "rgba(239,68,68,0.1)",
-                       border: "1px solid rgba(239,68,68,0.25)",
-                       borderRadius: "0",
+                       color: "#991B1B",
+                       background: "rgba(153, 27, 27,0.1)",
+                       border: "1px solid rgba(153, 27, 27,0.25)",
+                       borderRadius: "var(--radius)",
                       padding: "2px 6px",
                       flexShrink: 0,
                       marginLeft: "8px",
@@ -309,7 +309,7 @@ export default function ThesisPage() {
                      fontWeight: 400,
                      fontSize: "0.9375rem",
                      lineHeight: 1.65,
-                     color: "#64748B",
+                     color: "#78716C",
                    }}
                  >
                    {card.body}
@@ -332,14 +332,14 @@ export default function ThesisPage() {
                  fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
                  lineHeight: 1.4,
                  letterSpacing: "-0.02em",
-                 color: "#0F172A",
+                 color: "#4A3B33",
                 maxWidth: "1520px",
                 margin: "0 auto",
                 fontStyle: "italic",
               }}
             >
               If structured data drift almost killed Zillow - imagine what{" "}
-              <span style={{ color: "#EF4444" }} className="mx-1">semantic drift</span> can do to your AI-driven
+              <span style={{ color: "#991B1B" }} className="mx-1">semantic drift</span> can do to your AI-driven
               organization.
             </blockquote>
             <p
@@ -348,7 +348,7 @@ export default function ThesisPage() {
                 fontSize: "11px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#475569",
+                color: "#57534E",
                 marginTop: "12px",
               }}
             >
@@ -372,7 +372,7 @@ export default function ThesisPage() {
               }}
             >
               The model is the engine.{" "}
-              <span style={{ color: "#F49025" }} className="mx-1">Context is the fuel.</span>
+              <span style={{ color: "#B45309" }} className="mx-1">Context is the fuel.</span>
               Without it, you&apos;re not going anywhere.
             </blockquote>
             <p
@@ -381,7 +381,7 @@ export default function ThesisPage() {
                 fontSize: "11px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#475569",
+                color: "#57534E",
                 marginTop: "16px",
               }}
             >
@@ -392,9 +392,9 @@ export default function ThesisPage() {
           {/* Closing CTA */}
           <div
             style={{
-              background: "rgba(244,144,37,0.06)",
-              border: "1px solid rgba(244,144,37,0.22)",
-              borderRadius: "0",
+              background: "rgba(180, 83, 9,0.06)",
+              border: "1px solid rgba(180, 83, 9,0.22)",
+              borderRadius: "var(--radius)",
               padding: "36px",
               textAlign: "center",
             }}
@@ -417,7 +417,7 @@ export default function ThesisPage() {
                 fontWeight: 400,
                 fontSize: "1rem",
                 lineHeight: 1.65,
-                 color: "#64748B",
+                 color: "#78716C",
                  maxWidth: "520px",
                  margin: "0 auto 28px",
               }}

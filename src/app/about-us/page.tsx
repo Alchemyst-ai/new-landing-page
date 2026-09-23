@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import { Reveal, DarkAnchor } from "@/components/motion";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "The Best AI Memory Layer for Agents | About Alchemyst AI",
@@ -29,7 +29,7 @@ export default function AboutPage() {
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
-                color: "#0F172A",
+                color: "#4A3B33",
                 marginBottom: "24px",
                 letterSpacing: "-0.02em",
               }}
@@ -46,7 +46,7 @@ export default function AboutPage() {
                   fontFamily: SANS,
                   fontSize: "1.125rem",
                   lineHeight: 1.6,
-                  color: "#475569",
+                  color: "#57534E",
                 }}
               >
                 <strong>Alchemyst AI</strong> is a standalone AI memory and context layer for agents: it gives AI applications persistent memory, business data, and operational context so they stay accurate and production-ready. Unlike most memory layers, every piece of context Alchemyst retrieves is auditable and verifiable, and it drops into any stack through APIs, SDKs, MCPs, and a browser extension.
@@ -54,7 +54,7 @@ export default function AboutPage() {
               <p
                 className="caption-meta"
                 style={{
-                  color: "#94A3B8",
+                  color: "#A8A29E",
                   marginTop: "16px",
                 }}
               >
@@ -76,7 +76,7 @@ export default function AboutPage() {
               }}
             >
               <div style={{ flexShrink: 0 }}>
-                <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "#F49025", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
+                <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "#B45309", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
                   AU
                 </div>
               </div>
@@ -84,18 +84,18 @@ export default function AboutPage() {
                 <p style={{ fontFamily: SANS, fontSize: "1rem", color: "#FFFFFF", margin: 0, fontWeight: 600 }}>
                   Written by Anuran and Uttaran
                 </p>
-                <p style={{ fontFamily: SANS, fontSize: "0.9rem", color: "#94A3B8", margin: "4px 0 0 0", lineHeight: 1.5 }}>
+                <p style={{ fontFamily: SANS, fontSize: "0.9rem", color: "#A8A29E", margin: "4px 0 0 0", lineHeight: 1.5 }}>
                   Founders of Alchemyst AI. We built the Context Layer after testing 50+ production agent deployments and seeing 95% of them fail due to context rot and semantic drift.
                 </p>
               </div>
             </DarkAnchor>
           </Reveal>
 
-          <div style={{ fontFamily: SANS, color: "#475569", lineHeight: 1.7 }}>
+          <div style={{ fontFamily: SANS, color: "#57534E", lineHeight: 1.7 }}>
 
             {/* AEO: Subheadings that match how buyers ask */}
             <Reveal direction="up" amount={0.15}>
-              <h2 style={{ color: "#0F172A", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ color: "#4A3B33", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
                 Why do AI agents need a context layer?
               </h2>
               <p style={{ marginBottom: "16px", fontSize: "1.0625rem" }}>
@@ -107,7 +107,7 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal direction="up" amount={0.15}>
-              <h2 style={{ color: "#0F172A", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ color: "#4A3B33", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
                 How does Alchemyst AI work?
               </h2>
               <p style={{ marginBottom: "16px", fontSize: "1.0625rem" }}>
@@ -121,7 +121,7 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal direction="up" amount={0.15}>
-              <h2 style={{ color: "#0F172A", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ color: "#4A3B33", fontSize: "1.75rem", fontWeight: 700, marginTop: "48px", marginBottom: "20px", letterSpacing: "-0.02em" }}>
                 Who is this best for?
               </h2>
               <p style={{ marginBottom: "16px", fontSize: "1.0625rem" }}>

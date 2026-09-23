@@ -110,12 +110,12 @@ export default function Navbar() {
       <nav
         data-theme={overDark ? "dark" : undefined}
         className={[
-          "backdrop-blur-xl rounded-none flex justify-between items-center w-[70%] px-6 py-2",
-          "border-b transition-colors duration-200",
+          "backdrop-blur-xl rounded-xl flex justify-between items-center w-[70%] px-6 py-2",
+          "border transition-colors duration-200",
           overDark
-            ? "bg-slate-900/60 border-slate-700/50"
-            : "bg-white/30 border-black/10",
-          scrolled ? "shadow-[0_8px_32px_-12px_rgba(15,23,42,0.1)]" : "",
+            ? "bg-[#1C1917]/70 border-[#44403C]"
+            : "bg-[#FDFBF7]/70 border-[#E4D9BC]",
+          scrolled ? "shadow-[0_8px_32px_-12px_rgba(74,59,51,0.18)]" : "",
         ].join(" ")}
       >
         {/* Alchemyst Logo */}
@@ -126,6 +126,8 @@ export default function Navbar() {
             width={160}
             height={160}
             className="h-7 w-auto object-contain"
+            loading="eager"
+            priority
           />
         </Link>
 
@@ -137,25 +139,16 @@ export default function Navbar() {
             onMouseEnter={() => setActiveMenu("compare")}
           >
             <button
-              className="relative transition-colors duration-200 text-sm group flex items-center whitespace-nowrap"
-              style={{
-                color: overDark ? "#cbd5e1" : "#475569",
-              }}
+              className="nav-link relative transition-colors duration-200 text-sm group flex items-center whitespace-nowrap"
               aria-haspopup="true"
               aria-expanded={activeMenu === "compare"}
               onClick={() => setActiveMenu(activeMenu === "compare" ? null : "compare")}
-              onMouseEnter={(e) => {
-                (e.currentTarget.style.color = overDark ? "#ffffff" : "#0F172A");
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget.style.color = overDark ? "#cbd5e1" : "#475569");
-              }}
             >
               <span className="relative pb-1 flex items-center">
                 Compare
                 <span
                   className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
-                  style={{ background: overDark ? "#ffffff" : "#0F172A" }}
+                  style={{ background: "var(--ink)" }}
                 />
               </span>
               <svg
@@ -173,11 +166,11 @@ export default function Navbar() {
             </button>
             {activeMenu === "compare" && (
               <div
-                className="absolute top-full left-0 mt-2 w-64 rounded-none shadow-lg p-2 backdrop-blur-md border"
+                className="absolute top-full left-0 mt-2 w-64 rounded-lg p-2 backdrop-blur-md border shadow-[var(--shadow-soft-lg)]"
                 style={{
                   zIndex: 50,
-                  background: overDark ? "rgba(15,23,42,0.95)" : "rgba(255,255,255,0.98)",
-                  borderColor: overDark ? "rgba(255,255,255,0.10)" : "rgba(15,23,42,0.08)",
+                  background: overDark ? "rgba(28,25,23,0.97)" : "rgba(253,251,247,0.98)",
+                  borderColor: overDark ? "rgba(245,245,244,0.10)" : "var(--hairline-strong)",
                 }}
                 onMouseEnter={() => setActiveMenu("compare")}
                 onMouseLeave={() => setActiveMenu(null)}
@@ -186,36 +179,16 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="block px-3 py-2 text-sm rounded-none transition-colors"
-                    style={{
-                      color: overDark ? "#cbd5e1" : "#475569",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = overDark ? "#ffffff" : "#0F172A";
-                      e.currentTarget.style.background = overDark ? "rgba(255,255,255,0.05)" : "rgba(15,23,42,0.03)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = overDark ? "#cbd5e1" : "#475569";
-                      e.currentTarget.style.background = "transparent";
-                    }}
+                    className="nav-menu-item block px-3 py-2 text-sm rounded-md"
                   >
                     {link.label}
                   </Link>
                 ))}
                 <Link
                   href="/compare"
-                  className="block px-3 py-2 text-sm rounded-none transition-colors border-t mt-1 pt-2"
+                  className="nav-menu-item-accent block px-3 py-2 text-sm rounded-md border-t mt-1 pt-2"
                   style={{
-                    color: "#F49025",
-                    borderColor: overDark ? "rgba(255,255,255,0.08)" : "rgba(15,23,42,0.06)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#FDB560";
-                    e.currentTarget.style.background = overDark ? "rgba(255,255,255,0.05)" : "rgba(244,144,37,0.06)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#F49025";
-                    e.currentTarget.style.background = "transparent";
+                    borderColor: overDark ? "rgba(245,245,244,0.08)" : "var(--hairline)",
                   }}
                 >
                   See all comparisons
@@ -230,22 +203,13 @@ export default function Navbar() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="relative transition-colors duration-200 text-sm group"
-              style={{
-                color: overDark ? "#cbd5e1" : "#475569",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = overDark ? "#ffffff" : "#0F172A";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = overDark ? "#cbd5e1" : "#475569";
-              }}
+              className="nav-link relative transition-colors duration-200 text-sm group"
             >
               <span className="relative pb-1">
                 {link.label}
                 <span
                   className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
-                  style={{ background: overDark ? "#ffffff" : "#0F172A" }}
+                  style={{ background: "var(--ink)" }}
                 />
               </span>
             </Link>
@@ -254,21 +218,9 @@ export default function Navbar() {
 
         {/* Sign In button */}
         <div className="hidden md:flex items-center space-x-3">
-          <Link
-            href="/platform/signin"
-            className="px-4 py-2 text-sm font-semibold text-white rounded-none transition-colors duration-200"
-            style={{ background: "#0F172A" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#1E293B";
-              e.currentTarget.style.boxShadow = "4px 4px 0px #128F8B";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#0F172A";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            Sign In
-          </Link>
+          <Button variant="orange" size="brand-sm" asChild>
+            <Link href="/platform/signin">Sign In</Link>
+          </Button>
         </div>
 
         {/* Mobile Menu */}
@@ -279,17 +231,17 @@ export default function Navbar() {
                 type="button"
                 aria-label="Open menu"
                 className="inline-flex items-center justify-center p-1"
-                style={{ color: overDark ? "#ffffff" : "#0F172A" }}
+                style={{ color: "var(--ink)" }}
               >
                 <Menu className="size-6" />
               </button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] border-l bg-[rgba(10,15,30,0.99)] p-0 text-slate-200 backdrop-blur-xl"
-              style={{ borderColor: "rgba(255,255,255,0.10)" }}
+              className="w-[300px] border-l bg-[#1C1917] p-0 text-[#E7E5E4] backdrop-blur-xl"
+              style={{ borderColor: "rgba(245,245,244,0.10)" }}
             >
-              <SheetHeader className="border-b px-6 py-4" style={{ borderColor: "rgba(255,255,255,0.10)" }}>
+              <SheetHeader className="border-b px-6 py-4" style={{ borderColor: "rgba(245,245,244,0.10)" }}>
                 <SheetTitle className="text-left">
                   <Image
                     src="/logo.png"
@@ -308,8 +260,8 @@ export default function Navbar() {
                       href={link.href}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      className="border-b py-3 text-base font-medium text-slate-300 no-underline transition-colors hover:text-white"
-                      style={{ borderColor: "rgba(255,255,255,0.05)" }}
+                      className="border-b py-3 text-base font-medium text-[#D6D3D1] no-underline transition-colors hover:text-white"
+                      style={{ borderColor: "rgba(245,245,244,0.06)" }}
                     >
                       {link.label}
                     </a>
@@ -317,20 +269,20 @@ export default function Navbar() {
                 ))}
 
                 {/* Compare section in mobile */}
-                <div className="border-b py-2" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+                <div className="border-b py-2" style={{ borderColor: "rgba(245,245,244,0.06)" }}>
                   <span className="text-xs font-semibold text-white/60 px-2 py-1 block">Compare</span>
                   {COMPARE_LINKS.map((link) => (
                     <SheetClose asChild key={link.href}>
                       <Link
                         href={link.href}
-                        className="py-2 pl-4 text-sm text-slate-300 hover:text-white"
+                        className="py-2 pl-4 text-sm text-[#D6D3D1] hover:text-white"
                       >
                         {link.label}
                       </Link>
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <Link href="/compare" className="py-2 pl-4 text-sm text-amber-400 hover:text-amber-300">
+                    <Link href="/compare" className="py-2 pl-4 text-sm text-[#F97316] hover:text-[#FDBA74]">
                       See all comparisons
                     </Link>
                   </SheetClose>
@@ -340,8 +292,8 @@ export default function Navbar() {
                   <SheetClose asChild>
                     <Link
                       href="/platform/signin"
-                      className="block py-3 px-4 text-white rounded-none transition-colors duration-200 text-lg font-medium text-center"
-                      style={{ background: "#F49025" }}
+                      className="block py-3 px-4 text-white rounded-lg transition-colors duration-200 text-lg font-medium text-center shadow-[var(--shadow-soft)]"
+                      style={{ background: "#F97316" }}
                     >
                       Sign In
                     </Link>

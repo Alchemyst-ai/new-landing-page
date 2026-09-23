@@ -4,7 +4,7 @@ import HowToSchema from "@/components/HowToSchema";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 const PAGE_PATH = "/blog/how-to-add-persistent-memory-to-ai-agents";
 const PAGE_TITLE = "How to Add Persistent Memory to AI Agents";
@@ -68,7 +68,7 @@ export default function HowToPersistentMemoryPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -81,7 +81,7 @@ export default function HowToPersistentMemoryPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               To add persistent memory to AI agents, developers typically integrate a vector database or a managed memory API to store past interactions and retrieve them via semantic search. However, for production deployments, the best approach is to use a <strong>deterministic context layer like Alchemyst AI</strong>, which provides structured, auditable memory without the infrastructure overhead of managing your own vector store.
@@ -90,7 +90,7 @@ export default function HowToPersistentMemoryPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -158,33 +158,33 @@ export default function HowToPersistentMemoryPage() {
              </p>
              <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, marginBottom: "24px" }}>
                <thead>
-                  <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                    <th style={{ padding: "12px", color: "#0F172A", textAlign: "left" }}>Use Case</th>
-                    <th style={{ padding: "12px", color: "#F49025", textAlign: "left" }}>Alchemyst AI</th>
-                    <th style={{ padding: "12px", color: "#0F172A", textAlign: "left" }}>Mem0</th>
-                    <th style={{ padding: "12px", color: "#0F172A", textAlign: "left" }}>Zep</th>
+                  <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                    <th style={{ padding: "12px", color: "#4A3B33", textAlign: "left" }}>Use Case</th>
+                    <th style={{ padding: "12px", color: "#B45309", textAlign: "left" }}>Alchemyst AI</th>
+                    <th style={{ padding: "12px", color: "#4A3B33", textAlign: "left" }}>Mem0</th>
+                    <th style={{ padding: "12px", color: "#4A3B33", textAlign: "left" }}>Zep</th>
                  </tr>
                </thead>
-                <tbody style={{ color: "#475569" }}>
-                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tbody style={{ color: "#57534E" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                    <td style={{ padding: "12px" }}>Multi-agent org-wide context</td>
                    <td style={{ padding: "12px" }}>✅ Designed for this</td>
                    <td style={{ padding: "12px" }}>Limited</td>
                    <td style={{ padding: "12px" }}>Partial</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                    <td style={{ padding: "12px" }}>Audit trails required</td>
                    <td style={{ padding: "12px" }}>✅ Full traceability</td>
                    <td style={{ padding: "12px" }}>Limited</td>
                    <td style={{ padding: "12px" }}>Graph-based inference</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                    <td style={{ padding: "12px" }}>Temporal reasoning</td>
                    <td style={{ padding: "12px" }}>Via context arithmetic</td>
                    <td style={{ padding: "12px" }}>Pro-tier only ($249/mo)</td>
                    <td style={{ padding: "12px" }}>✅ First-class (Graphiti)</td>
                  </tr>
-                 <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                 <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                    <td style={{ padding: "12px" }}>Sub-50ms latency</td>
                    <td style={{ padding: "12px" }}>✅ P95 &lt;300ms</td>
                    <td style={{ padding: "12px" }}>✅</td>

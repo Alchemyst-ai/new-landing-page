@@ -20,8 +20,8 @@ export default function BackToTop() {
         border: "none",
         cursor: "pointer",
         padding: "2px 4px",
-        color: "#475569",
-        fontFamily: "'JetBrains Mono', monospace",
+        color: "#57534E",
+        fontFamily: "var(--font-jetbrains-mono), monospace",
         fontSize: "11px",
         letterSpacing: "0.06em",
         display: "inline-flex",
@@ -30,10 +30,10 @@ export default function BackToTop() {
         transition: "color 160ms ease",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.color = "#F49025";
+        e.currentTarget.style.color = "#B45309";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.color = "#475569";
+        e.currentTarget.style.color = "#57534E";
       }}
     >
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

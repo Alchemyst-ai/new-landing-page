@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleSchema from "@/components/ArticleSchema";
 import type { Metadata } from "next";
 
-const SANS = "'Sora', sans-serif";
+const SANS = "var(--font-merriweather), Georgia, serif";
 
 export const metadata: Metadata = {
   title: "Alchemyst AI vs Databricks: Enterprise Context Layer Comparison",
@@ -38,7 +38,7 @@ export default function CompareDatabricksPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 800,
               lineHeight: 1.1,
-              color: "#0F172A",
+              color: "#4A3B33",
               marginBottom: "24px",
             }}
           >
@@ -51,7 +51,7 @@ export default function CompareDatabricksPage() {
                 fontFamily: SANS,
                 fontSize: "1.125rem",
                 lineHeight: 1.6,
-                color: "#475569",
+                color: "#57534E",
               }}
             >
               Databricks is a powerful Data Intelligence Platform built on the lakehouse, excelling at data engineering and governance. However, its agent framework relies on probabilistic vector search. <strong>Alchemyst AI is a deterministic context layer</strong>. While Databricks governs <em>data access</em>, Alchemyst governs <em>semantic meaning</em>—ensuring your agents share a resolved, organization-wide understanding of your business without being locked into a single data ecosystem.
@@ -60,7 +60,7 @@ export default function CompareDatabricksPage() {
               style={{
                 fontFamily: SANS,
                 fontSize: "0.875rem",
-                color: "#64748B",
+                color: "#78716C",
                 marginTop: "16px",
               }}
             >
@@ -71,34 +71,34 @@ export default function CompareDatabricksPage() {
           <div style={{ overflowX: "auto", marginBottom: "64px" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: SANS, textAlign: "left" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.08)" }}>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Feature</th>
-                  <th style={{ padding: "16px", color: "#F49025", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
-                  <th style={{ padding: "16px", color: "#0F172A", fontSize: "1.125rem", width: "33%" }}>Databricks Mosaic AI</th>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.08)" }}>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Feature</th>
+                  <th style={{ padding: "16px", color: "#B45309", fontSize: "1.125rem", width: "33%" }}>Alchemyst AI</th>
+                  <th style={{ padding: "16px", color: "#4A3B33", fontSize: "1.125rem", width: "33%" }}>Databricks Mosaic AI</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#475569" }}>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+              <tbody style={{ color: "#57534E" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Core Paradigm</td>
                   <td style={{ padding: "16px" }}>Semantic Context Layer</td>
                   <td style={{ padding: "16px" }}>Data Intelligence Platform</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Retrieval Architecture</td>
                   <td style={{ padding: "16px" }}>Deterministic Context Arithmetic</td>
                   <td style={{ padding: "16px" }}>Probabilistic Vector Search (RAG)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Governance Focus</td>
                   <td style={{ padding: "16px" }}>Consensus of Meaning</td>
                   <td style={{ padding: "16px" }}>Data Lineage & ACLs (Unity Catalog)</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Ecosystem</td>
                   <td style={{ padding: "16px" }}>Agnostic (Any model, any data)</td>
                   <td style={{ padding: "16px" }}>Locked to Delta Lake / Databricks</td>
                 </tr>
-                <tr style={{ borderBottom: "1px solid rgba(15,23,42,0.05)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(74, 59, 51,0.05)" }}>
                   <td style={{ padding: "16px", fontWeight: 600 }}>Setup Complexity</td>
                   <td style={{ padding: "16px" }}>Low (API integration)</td>
                   <td style={{ padding: "16px" }}>High (Data engineering required)</td>
