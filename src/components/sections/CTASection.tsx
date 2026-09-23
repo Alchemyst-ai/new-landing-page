@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Arrow, Eyebrow, Ticks } from "@/components/brand";
+import { Arrow, Eyebrow } from "@/components/brand";
 import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
 import { useReducedMotionSafe } from "./iso/kit";
 
@@ -74,7 +74,6 @@ export default function CTASection() {
           {/* Right: form card */}
           <FadeUp standalone delay={0.1} className="lg:col-span-5">
             <div className="group relative rounded-[var(--radius)] border border-white/[0.09] bg-[#232020]/90 p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)]">
-              <Ticks />
               {!submitted ? (
                 <>
                   <h3 className="text-lg font-bold text-[#F5F5F4] mb-2">Request API Access</h3>

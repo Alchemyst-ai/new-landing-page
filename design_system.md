@@ -437,7 +437,8 @@ On inspect of plate `i`:
 - No decorative gradient blobs or glow effects outside the diagram halo and
   scan systems.
 - No new marketing microcopy for decoration (figure captions, section
-  numbers). Visual structure comes from hairlines, ticks and squares.
+  numbers). Visual structure comes from hairlines and squares.
+- No corner brackets or corner tick marks on cards, diagrams or panels.
 - No `overflow: hidden` on `html` / `body` (breaks sticky); use `clip`.
 - No `next/font`-less font loading, and no font weights outside
   Merriweather's set (300 / 400 / 700 / 900).
@@ -485,7 +486,7 @@ src/
 ## 12. Page-Level System ("the page as a spec sheet")
 
 The site borrows the diagrams' visual language without adding copy:
-hairlines instead of boxes, corner ticks as registration marks, the 7px amber
+hairlines instead of boxes, the 7px amber
 HUD square as the bullet and eyebrow marker, mono spec captions, the plate
 grid as a masked backdrop, and amber reserved for active or hovered states.
 
@@ -496,10 +497,9 @@ grid as a masked backdrop, and amber reserved for active or hovered states.
 | `Section` | Every page band. `tone` paper / sand / white / dark (dark sets `data-theme`), `grid` (masked plate grid), `bordered`, `pad`, `width`. |
 | `SectionHeader` (client) | Editorial header: hairline draws in, eyebrow on the rule, headline revealed word by word, lead in a right column (`align="split"`) or stacked (`left` / `center`). |
 | `Eyebrow` | `square` (HUD square + mono label, default) or `pill`. `tone="red"` only for failure narratives. Replaces all hand-rolled eyebrows. |
-| `SpecCard` + `Ticks` | White (or sand / dark) card with corner ticks that brighten to amber and step outward on hover; 2px lift. |
+| `SpecCard` | White (or sand / dark) card, tan hairline border that warms to sand on hover; 2px lift. |
 | `BrandButton` | `primary`, `ink`, `outline`, `outline-dark`, `text`; optional `arrow` that nudges on hover. |
 | `SpecStrip` | Mono metric row with hairline dividers (hero). |
-| `Figure` | Corner-bracket frame around a diagram. No caption text. |
 | `Chip` | Mono chip that warms on card hover. |
 | `CodeBlock` (client) | Editor chrome (three sand dots, optional existing label, icon-only copy), React-node tokenizer in the amber palette. Never `dangerouslySetInnerHTML`. |
 | `ComparisonTable` | The only table design for comparisons: mono header, Alchemyst column tinted and ruled amber, row headers bold, horizontal scroll under 640px. |

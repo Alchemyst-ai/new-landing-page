@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Chip, Figure, Section, SpecCard } from "@/components/brand";
+import { Chip, Section, SpecCard } from "@/components/brand";
 import SectionHeader from "@/components/brand/SectionHeader";
 import { EASE, FadeUp, FigureReveal, RevealText, Stagger, VIEWPORT } from "@/components/motion/primitives";
 import ContextSovereigntyFlow from "./ContextSovereigntyFlow";
@@ -134,9 +134,7 @@ export default function WhyContextSection() {
 
       {/* ── Full-width flow diagram ────────────────────────── */}
       <FigureReveal>
-        <Figure>
           <ContextSovereigntyFlow />
-        </Figure>
       </FigureReveal>
     </Section>
   );

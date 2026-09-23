@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { BrandButton, Figure, SpecStrip } from "@/components/brand";
+import { BrandButton, SpecStrip } from "@/components/brand";
 import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
 import ContextStack from "./ContextStack";
 import HeroNetwork from "./HeroNetwork";
@@ -98,9 +98,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease }}
             >
-              <Figure>
                 <ContextStack />
-              </Figure>
             </motion.div>
           </motion.div>
         </div>

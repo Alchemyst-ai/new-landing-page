@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { BrandButton, Figure, Section, SpecCard } from "@/components/brand";
+import { BrandButton, Section, SpecCard } from "@/components/brand";
 import CodeBlock from "@/components/brand/CodeBlock";
 import SectionHeader from "@/components/brand/SectionHeader";
 import { EASE, FadeUp, FigureReveal } from "@/components/motion/primitives";
@@ -195,14 +195,12 @@ export default function AlchemystFixesSection() {
 
       {/* ── Benchmark chart ────────────────────────────────── */}
       <FigureReveal className="mb-24 md:mb-32">
-        <Figure>
           {/* Wide diagram: keeps its aspect and scrolls sideways under lg. */}
           <div className="overflow-x-auto lg:overflow-visible">
             <div className="min-w-[760px]">
               <BenchmarkChart />
             </div>
           </div>
-        </Figure>
       </FigureReveal>
 
       {/* ── Euphony callout ────────────────────────────────── */}

@@ -32,10 +32,6 @@ export default function SignInPage() {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="group relative w-full max-w-[460px] rounded-[calc(var(--radius)+4px)] border border-white/[0.09] bg-[#232020]/80 p-8 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] backdrop-blur-xl sm:p-10"
           >
-            <span aria-hidden className="tick tick-tl" />
-            <span aria-hidden className="tick tick-tr" />
-            <span aria-hidden className="tick tick-bl" />
-            <span aria-hidden className="tick tick-br" />
 
             <div className="flex flex-col gap-8 items-center">
               <Link href="/" className="flex items-center">

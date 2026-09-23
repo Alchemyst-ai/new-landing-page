@@ -1,7 +1,7 @@
 // Brand primitives: the shared visual vocabulary of the site. Server-safe
 // (no hooks) so they can be used from both server and client components.
-// They echo the isometric diagram language: hairlines, corner ticks, the
-// 7px amber HUD square, mono spec-sheet captions and the plate grid.
+// They echo the isometric diagram language: hairlines, the 7px amber HUD
+// square, mono spec-sheet captions and the plate grid.
 
 import * as React from "react";
 import Link from "next/link";
@@ -126,23 +126,11 @@ export function Section({
   );
 }
 
-/* ── Corner ticks & SpecCard ───────────────────────────────────────────────── */
-
-export function Ticks() {
-  return (
-    <>
-      <span aria-hidden className="tick tick-tl" />
-      <span aria-hidden className="tick tick-tr" />
-      <span aria-hidden className="tick tick-bl" />
-      <span aria-hidden className="tick tick-br" />
-    </>
-  );
-}
+/* ── SpecCard ──────────────────────────────────────────────────────────────── */
 
 export function SpecCard({
   children,
   className,
-  ticks = true,
   interactive = true,
   tone = "light",
   as = "div",
@@ -150,7 +138,6 @@ export function SpecCard({
 }: {
   children: React.ReactNode;
   className?: string;
-  ticks?: boolean;
   interactive?: boolean;
   tone?: "light" | "dark" | "sand";
   as?: "div" | "article" | "li" | "blockquote" | "aside";
@@ -170,7 +157,6 @@ export function SpecCard({
       )}
       {...rest}
     >
-      {ticks && <Ticks />}
       {children}
     </Tag>
   );
@@ -286,32 +272,6 @@ export function SpecStrip({
         </div>
       ))}
     </dl>
-  );
-}
-
-/* ── Figure: frame with corner brackets around a diagram ───────────────────── */
-
-export function Figure({
-  children,
-  className,
-  frame = true,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  frame?: boolean;
-}) {
-  return (
-    <div className={cn("relative", frame && "p-3 sm:p-5", className)}>
-      {frame && (
-        <>
-          <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-5 w-5 border-l border-t border-[#E4C090]" />
-          <span aria-hidden className="pointer-events-none absolute right-0 top-0 h-5 w-5 border-r border-t border-[#E4C090]" />
-          <span aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-5 w-5 border-b border-l border-[#E4C090]" />
-          <span aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-5 w-5 border-b border-r border-[#E4C090]" />
-        </>
-      )}
-      {children}
-    </div>
   );
 }
 

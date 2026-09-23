@@ -3,7 +3,7 @@
 // semantic drift (sand chapter + scroll-driven drift diagram), two pull
 // quotes and a dark closing chapter that flows into the footer.
 
-import { BrandButton, Eyebrow, Figure, Section, SpecCard } from "@/components/brand";
+import { BrandButton, Eyebrow, Section, SpecCard } from "@/components/brand";
 import SectionHeader from "@/components/brand/SectionHeader";
 import { DrawLine, FadeUp, FigureReveal, RevealText, Stagger } from "@/components/motion/primitives";
 import { PageHero, PageShell } from "@/components/page";
@@ -151,9 +151,7 @@ export default function ThesisPage() {
 
         {/* Drift propagation diagram: scroll-narrated */}
         <FigureReveal>
-          <Figure>
             <SemanticDriftFlow />
-          </Figure>
         </FigureReveal>
       </Section>
 

@@ -1,4 +1,4 @@
-import { Arrow, Section, Ticks } from "@/components/brand";
+import { Arrow, Section } from "@/components/brand";
 import { FadeUp } from "@/components/motion/primitives";
 import { PageHero, PageShell } from "@/components/page";
 import {
@@ -32,7 +32,6 @@ function BlogCard({ post, featured = false }: { post: StrapiBlogPost; featured?:
         featured ? "flex-col md:flex-row" : "flex-col"
       }`}
     >
-      <Ticks />
       {coverUrl && (
         <div
           className={`relative overflow-hidden bg-[#F1E9DA] ${

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CTASection from "@/components/sections/CTASection";
 import TableOfContents from "@/components/TableOfContents";
-import { Figure, Ticks } from "@/components/brand";
+
 import SectionHeader from "@/components/brand/SectionHeader";
 import { FadeUp, FigureReveal, RevealText } from "@/components/motion/primitives";
 import {
@@ -247,12 +247,10 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Featured cover image */}
             {coverUrl && (
               <FigureReveal delay={0.2} className="mt-10">
-                <Figure>
                   <div className="overflow-hidden rounded-[var(--radius)] border border-[#E4D9BC] bg-[#F1E9DA]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={coverUrl} alt={post.title} className="block h-auto w-full object-cover" />
                   </div>
-                </Figure>
               </FigureReveal>
             )}
 
@@ -323,7 +321,6 @@ export default async function BlogPostPage({ params }: Props) {
                         href={`/blog/${p.slug}`}
                         className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius)] border border-[#E4D9BC] bg-white shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-[3px] hover:border-[#E4C090] hover:shadow-[var(--shadow-soft-lg)]"
                       >
-                        <Ticks />
                         {cover && (
                           <div className="aspect-[16/9] overflow-hidden bg-[#F1E9DA]">
                             {/* eslint-disable-next-line @next/next/no-img-element */}

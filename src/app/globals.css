@@ -502,28 +502,6 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
 }
 
-/* ── Corner ticks: registration marks matching the diagram frames.
- * Parent needs `position: relative`; add `.group` to brighten on hover. */
-.tick {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-color: #E4C090;
-  pointer-events: none;
-  transition: border-color 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-.tick-tl { top: -1px; left: -1px; border-style: solid; border-width: 1px 0 0 1px; }
-.tick-tr { top: -1px; right: -1px; border-style: solid; border-width: 1px 1px 0 0; }
-.tick-bl { bottom: -1px; left: -1px; border-style: solid; border-width: 0 0 1px 1px; }
-.tick-br { bottom: -1px; right: -1px; border-style: solid; border-width: 0 1px 1px 0; }
-.group:hover .tick, .group:focus-within .tick { border-color: #B45309; }
-.group:hover .tick-tl { transform: translate(-3px, -3px); }
-.group:hover .tick-tr { transform: translate(3px, -3px); }
-.group:hover .tick-bl { transform: translate(-3px, 3px); }
-.group:hover .tick-br { transform: translate(3px, 3px); }
-[data-theme="dark"] .tick { border-color: #57534E; }
-[data-theme="dark"] .group:hover .tick { border-color: #E4C090; }
-
 /* ── Inline text link with a growing hairline underline. */
 .link-brand {
   color: var(--amber);

@@ -1,4 +1,4 @@
-import { Arrow, Section, Ticks } from "@/components/brand";
+import { Arrow, Section } from "@/components/brand";
 import { FadeUp } from "@/components/motion/primitives";
 import { PageHero, PageShell } from "@/components/page";
 import type { Metadata } from "next";
@@ -146,7 +146,6 @@ export default function CompareIndexPage() {
                 href={c.href}
                 className="group group/btn relative flex h-full flex-col rounded-[var(--radius)] border border-[#E4D9BC] bg-white p-7 shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-[3px] hover:border-[#E4C090] hover:shadow-[var(--shadow-soft-lg)]"
               >
-                <Ticks />
                 <span className="mb-5 inline-flex items-center gap-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#A16207]">
                   <span aria-hidden className="h-[5px] w-[5px] bg-[#A16207]" />
                   {c.category}
