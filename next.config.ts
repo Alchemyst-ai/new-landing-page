@@ -70,6 +70,22 @@ const nextConfig: NextConfig = {
         source: "/api/v1/:path*",
         destination: "/api/:path*",
       },
+      {
+        source: '/labs',
+        destination: 'https://labs.getalchemystai.com',
+      },
+      {
+        source: '/labs/:path*',
+        destination: 'https://labs.getalchemystai.com/:path*',
+      },
+      {
+        source: '/press',
+        destination: 'https://press.getalchemystai.com',
+      },
+      {
+        source: '/press/:path*',
+        destination: 'https://press.getalchemystai.com/:path*',
+      },
     ];
   },
   async headers() {
