@@ -1,5 +1,15 @@
 {
   "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "rewrites": [
+    {
+      "source": "/labs/:path*",
+      "destination": "https://labs.getalchemystai.com/:path*"
+    },
+    {
+      "source": "/press/:path*",
+      "destination": "https://press.getalchemystai.com/:path*"
+    }
+  ]
 }
