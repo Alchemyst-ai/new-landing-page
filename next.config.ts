@@ -70,30 +70,30 @@ const nextConfig: NextConfig = {
         source: "/api/v1/:path*",
         destination: "/api/:path*",
       },
-      {
-        source: '/labs',
-        destination: 'https://labs.getalchemystai.com',
-      },
-      {
-        source: '/labs/_next/:path*',
-        destination: 'https://labs.getalchemystai.com/_next/:path*',
-      },
-      {
-        source: '/labs/:path*',
-        destination: 'https://labs.getalchemystai.com/:path*',
-      },
-      {
-        source: '/press',
-        destination: 'https://press.getalchemystai.com',
-      },
-      {
-        source: '/press/_next/:path*',
-        destination: 'https://press.getalchemystai.com/_next/:path*',
-      },
-      {
-        source: '/press/:path*',
-        destination: 'https://press.getalchemystai.com/:path*',
-      },
+      // {
+      //   source: '/labs',
+      //   destination: 'https://labs.getalchemystai.com',
+      // },
+      // {
+      //   source: '/labs/_next/:path*',
+      //   destination: 'https://labs.getalchemystai.com/_next/:path*',
+      // },
+      // {
+      //   source: '/labs/:path*',
+      //   destination: 'https://labs.getalchemystai.com/:path*',
+      // },
+      // {
+      //   source: '/press',
+      //   destination: 'https://press.getalchemystai.com',
+      // },
+      // {
+      //   source: '/press/_next/:path*',
+      //   destination: 'https://press.getalchemystai.com/_next/:path*',
+      // },
+      // {
+      //   source: '/press/:path*',
+      //   destination: 'https://press.getalchemystai.com/:path*',
+      // },
     ];
   },
   async headers() {
