@@ -75,12 +75,20 @@ const nextConfig: NextConfig = {
         destination: 'https://labs.getalchemystai.com',
       },
       {
+        source: '/labs/_next/:path*',
+        destination: 'https://labs.getalchemystai.com/_next/:path*',
+      },
+      {
         source: '/labs/:path*',
         destination: 'https://labs.getalchemystai.com/:path*',
       },
       {
         source: '/press',
         destination: 'https://press.getalchemystai.com',
+      },
+      {
+        source: '/press/_next/:path*',
+        destination: 'https://press.getalchemystai.com/_next/:path*',
       },
       {
         source: '/press/:path*',
