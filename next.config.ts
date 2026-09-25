@@ -39,6 +39,8 @@ const imageHostnames = Array.from(
 );
 
 const nextConfig: NextConfig = {
+  // Allow dev-server resources (HMR websocket, dev chunks) when tunnelling via ngrok.
+  allowedDevOrigins: ["*.ngrok-free.dev", "*.ngrok-free.app", "*.ngrok.app"],
   turbopack: {
     root: projectRoot,
   },

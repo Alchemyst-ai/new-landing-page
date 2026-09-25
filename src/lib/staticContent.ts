@@ -135,6 +135,20 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     ],
   },
   {
+    title: "Security & Compliance",
+    items: [
+      {
+        title: "Alchemyst AI Security & Compliance",
+        url: `${BASE_URL}/security`,
+        description:
+          "Security controls for the context layer: encryption in transit and at rest, scoped and isolated context, " +
+          "Context Traces for auditability, RBAC with SSO and SAML on Enterprise, dedicated infrastructure with VPC peering, " +
+          "export and deletion. Standards status: SOC 2 in progress; GDPR, DPDP Act and CCPA aligned; ISO/IEC 27001 and " +
+          "HIPAA on the roadmap; card payments via Razorpay (PCI-DSS). Security reports: founders@getalchemystai.com.",
+      },
+    ],
+  },
+  {
     title: "Developer Resources",
     items: [
       {

@@ -3,8 +3,8 @@
 //   treatment over [data-theme='dark'] chapters (dark chapter, footer).
 // - Tucks away while scrolling down and returns on the slightest scroll up,
 //   so long-form reading and pinned sequences get the full viewport.
-// - Compare dropdown animates, closes on pointer leave, Escape and outside click.
-// Link labels, order, the Compare list and the Sign In CTA are preserved.
+// - Compare / Resources dropdowns animate, close on pointer leave, Escape and outside click.
+// Order: Compare, Resources, Blog, Docs, Pricing, Labs, then the Sign In CTA.
 "use client";
 
 import {
@@ -25,18 +25,16 @@ import { useReducedMotionSafe } from "@/components/sections/iso/kit";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
-// Primary navigation links (labels + order preserved).
-const NAV_LINKS = [
-  { label: "Case Studies", href: "/case-study" },
-  { label: "Security", href: "/security" },
-  { label: "Blog", href: "/blog" },
-  { label: "Docs", href: "https://docs.getalchemystai.com", external: true },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Creators Program", href: "/creators-program" },
-];
+type NavLink = { label: string; href: string; external?: boolean };
+type NavMenu = {
+  label: string;
+  items: NavLink[];
+  footer?: NavLink;
+};
+type NavItem = ({ kind: "link" } & NavLink) | ({ kind: "menu" } & NavMenu);
 
 // Compare dropdown links (labels + order preserved).
-const COMPARE_LINKS = [
+const COMPARE_LINKS: NavLink[] = [
   { label: "Alchemyst AI vs Mem0", href: "/compare/alchemyst-ai-vs-mem0" },
   { label: "Alchemyst AI vs Glean", href: "/compare/alchemyst-ai-vs-glean" },
   { label: "Alchemyst AI vs Palantir", href: "/compare/alchemyst-ai-vs-palantir" },
@@ -44,15 +42,36 @@ const COMPARE_LINKS = [
   { label: "LangChain Memory vs Alchemyst", href: "/compare/langchain-memory-vs-alchemyst" },
 ];
 
+// Resources dropdown links.
+const RESOURCE_LINKS: NavLink[] = [
+  { label: "Case Studies", href: "/case-study" },
+  { label: "Security", href: "/security" },
+  { label: "Creators Program", href: "/creators-program" },
+];
+
+// Primary navigation, in display order.
+const NAV_ITEMS: NavItem[] = [
+  {
+    kind: "menu",
+    label: "Compare",
+    items: COMPARE_LINKS,
+    footer: { label: "See all comparisons", href: "/compare" },
+  },
+  { kind: "menu", label: "Resources", items: RESOURCE_LINKS },
+  { kind: "link", label: "Blog", href: "/blog" },
+  { kind: "link", label: "Docs", href: "https://docs.getalchemystai.com", external: true },
+  { kind: "link", label: "Pricing", href: "/pricing" },
+  { kind: "link", label: "Labs", href: "https://getalchemystai.com/labs", external: true },
+];
+
 export default function Navbar() {
   const pathname = usePathname() ?? "/";
   const reduce = useReducedMotionSafe();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [compareOpen, setCompareOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [overDark, setOverDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const compareRef = useRef<HTMLDivElement | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Scroll state: elevation, hide-on-down / show-on-up, dark-section probe.
@@ -96,13 +115,14 @@ export default function Navbar() {
     };
   }, [pathname]);
 
-  // Close the dropdown on route change, Escape, and outside click.
-  useEffect(() => setCompareOpen(false), [pathname]);
+  // Close dropdowns on route change, Escape, and outside click.
+  useEffect(() => setOpenMenu(null), [pathname]);
   useEffect(() => {
-    if (!compareOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setCompareOpen(false);
+    if (!openMenu) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenMenu(null);
     const onDown = (e: PointerEvent) => {
-      if (compareRef.current && !compareRef.current.contains(e.target as Node)) setCompareOpen(false);
+      const target = e.target as Element | null;
+      if (!target?.closest?.(`[data-nav-menu="${openMenu}"]`)) setOpenMenu(null);
     };
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onDown);
@@ -110,21 +130,22 @@ export default function Navbar() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("pointerdown", onDown);
     };
-  }, [compareOpen]);
+  }, [openMenu]);
 
-  const openCompare = () => {
+  const openMenuNow = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setCompareOpen(true);
+    setOpenMenu(label);
   };
-  const closeCompareSoon = () => {
+  const closeMenuSoon = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setCompareOpen(false), 160);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 160);
   };
 
   const isActive = (href: string) =>
     !href.startsWith("http") && (pathname === href || pathname.startsWith(`${href}/`));
-  const compareActive = pathname.startsWith("/compare");
-  const showNav = !hidden || compareOpen || mobileOpen;
+  const isMenuActive = (menu: NavMenu) =>
+    menu.items.some((l) => isActive(l.href)) || (!!menu.footer && isActive(menu.footer.href));
+  const showNav = !hidden || !!openMenu || mobileOpen;
 
   return (
     <motion.div
@@ -175,82 +196,93 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-1">
-          <div
-            ref={compareRef}
-            className="relative"
-            onMouseEnter={openCompare}
-            onMouseLeave={closeCompareSoon}
-          >
-            <button
-              type="button"
-              className={`nav-link relative flex items-center gap-1 px-3 py-2 text-[0.875rem] ${compareActive ? "!text-[color:var(--ink)]" : ""}`}
-              aria-haspopup="true"
-              aria-expanded={compareOpen}
-              onClick={() => setCompareOpen((o) => !o)}
-            >
-              Compare
-              <svg
-                className="size-3 transition-transform duration-300"
-                style={{ transform: compareOpen ? "rotate(180deg)" : undefined }}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-              {compareActive && <ActiveMark />}
-            </button>
-            <AnimatePresence>
-              {compareOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -4, scale: 0.985 }}
-                  transition={{ duration: reduce ? 0 : 0.22, ease: EASE }}
-                  style={{ transformOrigin: "top left" }}
-                  className={`absolute top-full left-0 mt-3 w-72 rounded-[calc(var(--radius)+2px)] border p-1.5 backdrop-blur-xl shadow-[var(--shadow-soft-lg)] ${
-                    overDark ? "bg-[#1C1917]/95 border-white/[0.08]" : "bg-[#FDFBF7]/95 border-[#E4D9BC]"
-                  }`}
+          {NAV_ITEMS.map((item) => {
+            if (item.kind === "menu") {
+              const open = openMenu === item.label;
+              const active = isMenuActive(item);
+              return (
+                <div
+                  key={item.label}
+                  data-nav-menu={item.label}
+                  className="relative"
+                  onMouseEnter={() => openMenuNow(item.label)}
+                  onMouseLeave={closeMenuSoon}
                 >
-                  {COMPARE_LINKS.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="nav-menu-item flex items-center justify-between px-3 py-2.5 text-[0.875rem] rounded-[var(--radius)]"
-                    >
-                      {link.label}
-                      {pathname === link.href && <span className="h-1.5 w-1.5 bg-[color:var(--amber)]" aria-hidden />}
-                    </Link>
-                  ))}
-                  <div className={`my-1 h-px ${overDark ? "bg-white/[0.06]" : "bg-[#E4D9BC]/70"}`} />
-                  <Link
-                    href="/compare"
-                    className="nav-menu-item-accent flex items-center justify-between px-3 py-2.5 text-[0.875rem] font-bold rounded-[var(--radius)]"
+                  <button
+                    type="button"
+                    className={`nav-link relative flex items-center gap-1 px-3 py-2 text-[0.875rem] ${active ? "!text-[color:var(--ink)]" : ""}`}
+                    aria-haspopup="true"
+                    aria-expanded={open}
+                    onClick={() => setOpenMenu((o) => (o === item.label ? null : item.label))}
                   >
-                    See all comparisons
-                    <span aria-hidden>→</span>
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                    {item.label}
+                    <svg
+                      className="size-3 transition-transform duration-300"
+                      style={{ transform: open ? "rotate(180deg)" : undefined }}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                    {active && <ActiveMark />}
+                  </button>
+                  <AnimatePresence>
+                    {open && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -4, scale: 0.985 }}
+                        transition={{ duration: reduce ? 0 : 0.22, ease: EASE }}
+                        style={{ transformOrigin: "top left" }}
+                        className={`absolute top-full left-0 mt-3 ${item.footer ? "w-72" : "w-56"} rounded-[calc(var(--radius)+2px)] border p-1.5 backdrop-blur-xl shadow-[var(--shadow-soft-lg)] ${
+                          overDark ? "bg-[#1C1917]/95 border-white/[0.08]" : "bg-[#FDFBF7]/95 border-[#E4D9BC]"
+                        }`}
+                      >
+                        {item.items.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="nav-menu-item flex items-center justify-between px-3 py-2.5 text-[0.875rem] rounded-[var(--radius)]"
+                          >
+                            {link.label}
+                            {isActive(link.href) && <span className="h-1.5 w-1.5 bg-[color:var(--amber)]" aria-hidden />}
+                          </Link>
+                        ))}
+                        {item.footer && (
+                          <>
+                            <div className={`my-1 h-px ${overDark ? "bg-white/[0.06]" : "bg-[#E4D9BC]/70"}`} />
+                            <Link
+                              href={item.footer.href}
+                              className="nav-menu-item-accent flex items-center justify-between px-3 py-2.5 text-[0.875rem] font-bold rounded-[var(--radius)]"
+                            >
+                              {item.footer.label}
+                              <span aria-hidden>→</span>
+                            </Link>
+                          </>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
 
-          {NAV_LINKS.map((link) => {
-            const active = isActive(link.href);
+            const active = isActive(item.href);
             return (
               <Link
-                key={link.label}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
+                key={item.label}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 aria-current={active ? "page" : undefined}
                 className={`nav-link group relative px-3 py-2 text-[0.875rem] ${active ? "!text-[color:var(--ink)]" : ""}`}
               >
-                {link.label}
+                {item.label}
                 {active ? (
                   <ActiveMark />
                 ) : (
@@ -303,37 +335,48 @@ export default function Navbar() {
               </SheetHeader>
 
               <nav className="flex flex-col overflow-y-auto px-6 pb-8" aria-label="Mobile">
-                {NAV_LINKS.map((link) => (
-                  <SheetClose asChild key={link.label}>
-                    <Link
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className={`flex items-center justify-between border-b border-white/[0.06] py-3.5 text-[0.9375rem] transition-colors hover:text-white ${
-                        isActive(link.href) ? "text-[#E4C090]" : "text-[#D6D3D1]"
-                      }`}
-                    >
-                      {link.label}
-                      <span aria-hidden className="text-[#57534E]">→</span>
-                    </Link>
-                  </SheetClose>
-                ))}
-
-                <div className="border-b border-white/[0.06] py-3">
-                  <span className="block py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[#78716C]">Compare</span>
-                  {COMPARE_LINKS.map((link) => (
-                    <SheetClose asChild key={link.href}>
-                      <Link href={link.href} className="block py-2 pl-3 text-sm text-[#A8A29E] transition-colors hover:text-white">
-                        {link.label}
+                {NAV_ITEMS.map((item) =>
+                  item.kind === "menu" ? (
+                    <div key={item.label} className="border-b border-white/[0.06] py-3">
+                      <span className="block py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[#78716C]">
+                        {item.label}
+                      </span>
+                      {item.items.map((link) => (
+                        <SheetClose asChild key={link.href}>
+                          <Link
+                            href={link.href}
+                            className={`block py-2 pl-3 text-sm transition-colors hover:text-white ${
+                              isActive(link.href) ? "text-[#E4C090]" : "text-[#A8A29E]"
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+                        </SheetClose>
+                      ))}
+                      {item.footer && (
+                        <SheetClose asChild>
+                          <Link href={item.footer.href} className="block py-2 pl-3 text-sm font-bold text-[#E4C090] hover:text-[#F2DABA]">
+                            {item.footer.label}
+                          </Link>
+                        </SheetClose>
+                      )}
+                    </div>
+                  ) : (
+                    <SheetClose asChild key={item.label}>
+                      <Link
+                        href={item.href}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
+                        className={`flex items-center justify-between border-b border-white/[0.06] py-3.5 text-[0.9375rem] transition-colors hover:text-white ${
+                          isActive(item.href) ? "text-[#E4C090]" : "text-[#D6D3D1]"
+                        }`}
+                      >
+                        {item.label}
+                        <span aria-hidden className="text-[#57534E]">→</span>
                       </Link>
                     </SheetClose>
-                  ))}
-                  <SheetClose asChild>
-                    <Link href="/compare" className="block py-2 pl-3 text-sm font-bold text-[#E4C090] hover:text-[#F2DABA]">
-                      See all comparisons
-                    </Link>
-                  </SheetClose>
-                </div>
+                  ),
+                )}
 
                 <SheetClose asChild>
                   <Link

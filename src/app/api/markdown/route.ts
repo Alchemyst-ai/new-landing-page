@@ -29,6 +29,10 @@ const KNOWN: Record<string, { title: string; body: string }> = {
     title: "Privacy Notice | Alchemyst AI",
     body: `Privacy Notice for XAlchemystai Technologies Pvt. Ltd. Last updated June 2026. Contact founders@getalchemystai.com.\n\nWe process account, billing, telemetry, and support data only with valid basis. Retention max 36 months past termination. Rights: access, correct, delete, withdraw consent. Full policy at [/privacy](${BASE_URL}/privacy).`,
   },
+  "/security": {
+    title: "Security & Compliance | Alchemyst AI",
+    body: `How Alchemyst AI protects the context AI agents run on.\n\n## Controls\n\n- Encryption in transit (TLS) and at rest\n- Context scoped to its owner at write time and isolated per organization\n- Context Traces: every retrieval records sources, scores and rules applied\n- Role-based access control; SSO and SAML on Enterprise\n- Dedicated infrastructure with VPC peering on Enterprise\n- Export at any time, deletion on request; personal data never sold; retention max 36 months after termination\n\n## Standards\n\n- SOC 2: in progress\n- GDPR, India DPDP Act 2023, CCPA: aligned\n- ISO/IEC 27001: roadmap\n- HIPAA: roadmap (do not send PHI without a BAA)\n- PCI-DSS: card payments handled by Razorpay\n\n## Contact\n\nSecurity documentation and vulnerability reports: founders@getalchemystai.com with subject "Security". Full page at [/security](${BASE_URL}/security).`,
+  },
   "/pricing": {
     title: "Pricing | Alchemyst AI",
     body: `Free tier 5M tokens. Starter, Accelerate, Supercharge, Enterprise. Calculator at ${BASE_URL}/pricing.`,

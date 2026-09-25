@@ -99,8 +99,10 @@ deep amber `#B45309`.
   alternation, `#F1E9DA` muted fills and code blocks.
 - Borders: `#E4D9BC` visible borders, `--hairline` subtle separators.
 - Off-palette colours are allowed only for third-party brand marks (social
-  share swatches) and macOS window dots. Y Combinator's white "Y" glyph is a
-  documented exception.
+  share swatches) and macOS window dots. Partner and customer logos (the
+  hero's Antler mark, the "Trusted by" wall) are never shown in their native
+  colours: they are repainted as single-colour silhouettes via a CSS mask
+  (`TintedLogo`, or the masked tint layer in the hero).
 
 ---
 
@@ -121,7 +123,7 @@ Google Fonts link tags; `next/font` is the only loader.
 
 | Element           | Size                              | Weight | Tracking   | Line height |
 | ----------------- | --------------------------------- | ------ | ---------- | ----------- |
-| Hero H1           | `clamp(2.25rem, 5vw, 3.75rem)`    | 700    | `-0.035em` | 1.1         |
+| Hero H1           | `clamp(2.25rem, 4.3vw, 3.5rem)`   | 300 (italic phrase 400) | `-0.03em` | 1.12 |
 | Section H2        | `clamp(1.75rem, 3.5vw, 2.75rem)`  | 700    | `-0.025em` | 1.15        |
 | Card H3           | `1.25rem`                         | 700    | `-0.01em`  | 1.3         |
 | Body large        | `1.0625rem`                       | 400    | normal     | 1.7         |
@@ -500,6 +502,7 @@ grid as a masked backdrop, and amber reserved for active or hovered states.
 | `SpecCard` | White (or sand / dark) card, tan hairline border that warms to sand on hover; 2px lift. |
 | `BrandButton` | `primary`, `ink`, `outline`, `outline-dark`, `text`; optional `arrow` that nudges on hover. |
 | `SpecStrip` | Mono metric row with hairline dividers (hero). |
+| `TintedLogo` | Transparent logo file used as a mask and filled with `currentColor`; optional `crop` trims padding/taglines. Logo walls size marks by equal area, not equal height. |
 | `Chip` | Mono chip that warms on card hover. |
 | `CodeBlock` (client) | Editor chrome (three sand dots, optional existing label, icon-only copy), React-node tokenizer in the amber palette. Never `dangerouslySetInnerHTML`. |
 | `ComparisonTable` | The only table design for comparisons: mono header, Alchemyst column tinted and ruled amber, row headers bold, horizontal scroll under 640px. |
@@ -539,7 +542,9 @@ so `position: sticky` pinned sequences work.
 
 - **Hero:** eyebrow, word-reveal H1, lead, CTAs, `SpecStrip`, then the
   `ContextStack` figure rises; on scroll-out the copy lifts faster than the
-  diagram; a hairline scroll cue with a travelling amber segment.
+  diagram; a hairline scroll cue with a travelling amber segment. The hero
+  copy is deliberately light (300-weight H1 and lead, regular-weight spec
+  values) so it balances the fine-stroked diagram instead of overpowering it.
 - **How it works (pinned):** desktop sticky rail lists steps 01 to 04 with a
   HUD-style segmented progress bar; the step card crossing the viewport centre
   lights its rail entry and warms its border. Rail items glide to their card.

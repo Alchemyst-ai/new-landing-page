@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Chip, Section, SpecCard } from "@/components/brand";
 import SectionHeader from "@/components/brand/SectionHeader";
 import { EASE, FadeUp, FigureReveal, RevealText, Stagger, VIEWPORT } from "@/components/motion/primitives";
+import ContextGraphField from "./ContextGraphField";
 import ContextSovereigntyFlow from "./ContextSovereigntyFlow";
 import { useReducedMotionSafe } from "./iso/kit";
 
@@ -133,9 +134,20 @@ export default function WhyContextSection() {
       </div>
 
       {/* ── Full-width flow diagram ────────────────────────── */}
-      <FigureReveal>
+      <div className="relative">
+        {/* Ambient graph field behind the diagram; bleeds past it and feathers out. */}
+        <ContextGraphField
+          className="-inset-x-6 -inset-y-16 md:-inset-x-16 md:-inset-y-24"
+          density={8}
+          minClusters={10}
+          maxClusters={80}
+          intensity={0.3}
+          mask="radial-gradient(ellipse 62% 64% at 50% 54%, #000 32%, transparent 84%)"
+        />
+        <FigureReveal className="relative">
           <ContextSovereigntyFlow />
-      </FigureReveal>
+        </FigureReveal>
+      </div>
     </Section>
   );
 }

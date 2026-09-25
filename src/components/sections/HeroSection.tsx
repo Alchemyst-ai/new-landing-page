@@ -1,14 +1,49 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 import { BrandButton, SpecStrip } from "@/components/brand";
 import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
 import ContextStack from "./ContextStack";
-import HeroNetwork from "./HeroNetwork";
+import ContextGraphField from "./ContextGraphField";
 import { useReducedMotionSafe } from "./iso/kit";
 
 const ease = [0.23, 1, 0.32, 1] as const;
+
+/** Investor mark rendered in brand ink: a mask layer repaints the logo's
+ *  shape so native brand colours never leak into the site palette. */
+function TintedLogo({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  return (
+    <span className="relative inline-flex">
+      <Image src={src} alt={alt} width={width} height={height} priority className={className} />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[#4A3B33]"
+        style={{
+          maskImage: `url(${src})`,
+          WebkitMaskImage: `url(${src})`,
+          maskSize: "100% 100%",
+          WebkitMaskSize: "100% 100%",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+        }}
+      />
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement | null>(null);
@@ -27,8 +62,12 @@ export default function HeroSection() {
       className="relative w-full min-h-[100svh] flex items-center overflow-hidden bg-[#FDFBF7]"
       aria-labelledby="hero-heading"
     >
-      <div aria-hidden className="plate-grid absolute inset-0 opacity-80" />
-      <HeroNetwork />
+      <ContextGraphField
+        density={10}
+        maxClusters={150}
+        intensity={0.3}
+        mask="radial-gradient(ellipse 85% 78% at 50% 46%, #000 38%, transparent 86%)"
+      />
 
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-8 pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
@@ -36,9 +75,13 @@ export default function HeroSection() {
           <motion.div style={reduce ? undefined : { y: copyY, opacity: copyOpacity }} className="lg:col-span-6 flex flex-col">
             <Stagger onMount stagger={0.08}>
               <FadeUp distance={12} className="mb-9">
-                <span className="inline-flex items-center gap-2.5 rounded-[var(--radius)] border border-[#E4D9BC] bg-white/80 px-3.5 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#57534E] shadow-[var(--shadow-soft)] backdrop-blur-sm">
-                  <span aria-hidden className="h-[7px] w-[7px] bg-[#B45309]" />
-                  Context Engine
+                <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#78716C]">
+                  Backed by
+                  <TintedLogo src="/Antler.svg" alt="Antler" width={1952} height={470} className="h-4 w-auto" />
+                  <span aria-hidden className="h-3.5 w-px bg-[#D6CFC4]" />
+                  <TintedLogo src="/9uinicorn.png" alt="9Unicorns" width={1000} height={342} className="h-6 w-auto" />
+                  <span aria-hidden className="h-3.5 w-px bg-[#D6CFC4]" />
+                  <TintedLogo src="/ipv-logo.png" alt="Inflection Point Ventures" width={838} height={240} className="h-6 w-auto" />
                 </span>
               </FadeUp>
             </Stagger>
@@ -49,16 +92,16 @@ export default function HeroSection() {
               onMount
               delay={0.1}
               stagger={0.05}
-              className="text-[clamp(2.5rem,5.4vw,4.25rem)] font-bold tracking-[-0.04em] text-[#4A3B33] leading-[1.06] mb-8 text-balance"
+              className="text-[clamp(2.25rem,4.3vw,3.5rem)] font-medium tracking-[-0.03em] text-[#4A3B33] leading-[1.12] mb-7 max-w-[34rem] text-balance"
             >
-              The institutional memory your{" "}
-              <span className="text-[#B45309] italic">AI&nbsp;agents</span>{" "}
-              need to operate.
+              The backbone your team&apos;s {" "}
+              <span className="text-[#B45309] italic font-normal">AI&nbsp;agents</span>{" "}
+              work on.
             </RevealText>
 
             <Stagger onMount delay={0.45} stagger={0.1}>
               <FadeUp>
-                <p className="text-[1.125rem] text-[#57534E] leading-[1.75] mb-10 max-w-[31rem]">
+                <p className="text-[1.0625rem] font-light text-[#57534E] leading-[1.75] mb-10 max-w-[29rem]">
                   Alchemyst AI is the context backbone that keeps every
                   agent&apos;s knowledge current, traceable and semantically
                   consistent across your entire organisation through a

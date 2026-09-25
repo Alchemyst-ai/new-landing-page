@@ -1,94 +1,47 @@
 "use client";
 
+import { TintedLogo } from "@/components/brand";
 import { DrawLine } from "@/components/motion/primitives";
 
-type Logo = { name: string; node: React.ReactNode };
+type Logo = {
+  name: string;
+  src: string;
+  /** Intrinsic size of the file in /public. */
+  width: number;
+  height: number;
+  /** Visible region in source pixels: trims transparent padding and taglines. */
+  crop?: { x: number; y: number; w: number; h: number };
+  /** Optical correction on top of the area-normalised size. */
+  scale?: number;
+};
 
 const LOGOS: Logo[] = [
-  {
-    name: "Veranda Learning",
-    node: (
-      <svg height="24" viewBox="0 0 155 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Veranda Learning">
-        <text x="0" y="18" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="16" fontWeight="600" fill="currentColor" letterSpacing="-0.5">Veranda Learning</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Unacademy",
-    node: (
-      <svg height="24" viewBox="0 0 140 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Unacademy">
-        <text x="0" y="19" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="18" fontWeight="700" fill="currentColor" letterSpacing="-0.5">Unacademy</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Great Learning",
-    node: (
-      <svg height="24" viewBox="0 0 135 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Great Learning">
-        <text x="0" y="17" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="15" fontWeight="700" fill="currentColor" letterSpacing="-0.3">Great Learning</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Anarock",
-    node: (
-      <svg height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anarock">
-        <text x="0" y="18" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="16" fontWeight="800" fill="currentColor" letterSpacing="0.5">ANAROCK</text>
-      </svg>
-    ),
-  },
-  {
-    name: "CIEL HR",
-    node: (
-      <svg height="24" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CIEL HR">
-        <text x="0" y="18" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="17" fontWeight="700" fill="currentColor" letterSpacing="1">CIEL</text>
-        <text x="58" y="18" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="17" fontWeight="400" fill="currentColor" letterSpacing="1">HR</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Motilal Oswal",
-    node: (
-      <svg height="24" viewBox="0 0 125 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Motilal Oswal">
-        <text x="0" y="17" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="14" fontWeight="700" fill="currentColor" letterSpacing="-0.3">Motilal Oswal</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Y Combinator",
-    node: (
-      <svg height="24" viewBox="0 0 150 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Y Combinator">
-        <rect x="0" y="0" width="24" height="24" fill="currentColor" />
-        <text x="12" y="18" textAnchor="middle" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="14" fontWeight="800" fill="#FFF">Y</text>
-        <text x="32" y="17" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="14" fontWeight="600" fill="currentColor" letterSpacing="-0.3">Combinator</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Antler",
-    node: (
-      <svg height="24" viewBox="0 0 90 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antler">
-        <text x="0" y="18" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="16" fontWeight="700" fill="currentColor" letterSpacing="0.5">ANTLER</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Razorpay",
-    node: (
-      <svg height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Razorpay">
-        <text x="0" y="17" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="15" fontWeight="700" fill="currentColor" letterSpacing="-0.3">Razorpay</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Swiggy",
-    node: (
-      <svg height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Swiggy">
-        <text x="0" y="17" fontFamily="var(--font-merriweather), Georgia, serif" fontSize="15" fontWeight="700" fill="currentColor" letterSpacing="-0.3">Swiggy</text>
-      </svg>
-    ),
-  },
+  // Rounded, heavy strokes read larger than their area; thin Unacademy strokes read smaller.
+  { name: "Veranda Learning", src: "/VerandaLearning.png", width: 670, height: 372, crop: { x: 75, y: 105, w: 527, h: 119 }, scale: 0.92 },
+  { name: "Unacademy", src: "/Unacademy.png", width: 309, height: 68, crop: { x: 11, y: 14, w: 288, h: 43 }, scale: 1.08 },
+  // Drops the "Power Ahead" tagline, which would render as illegible specks.
+  { name: "Great Learning", src: "/GreatLearning.png", width: 749, height: 333, crop: { x: 45, y: 39, w: 653, h: 204 } },
+  // Wordmark and rule only; drops the "Values over value" tagline.
+  { name: "Anarock", src: "/Anarock.png", width: 800, height: 214, crop: { x: 14, y: 4, w: 776, h: 152 } },
+  { name: "CIEL HR", src: "/CIEL.png", width: 790, height: 316, crop: { x: 36, y: 55, w: 723, h: 210 }, scale: 1.1 },
+  // Thin ring + open counters read lighter than solid wordmarks.
+  { name: "Motilal Oswal", src: "/MotilalOswal.png", width: 1533, height: 625, scale: 1.12 },
+  { name: "Razorpay", src: "/Razorpay.svg", width: 1896, height: 401 },
+  { name: "Swiggy", src: "/Swiggy.webp", width: 3840, height: 1145, crop: { x: 18, y: 18, w: 3803, h: 1108 } },
 ];
+
+/**
+ * Logos have very different aspect ratios, so a shared height makes wide
+ * wordmarks look huge next to stacked ones. Instead every logo gets roughly
+ * the same visual area (px²), which is how logo walls are balanced optically.
+ */
+const LOGO_AREA = 2600;
+
+function displayHeight(logo: Logo) {
+  const box = logo.crop ?? { w: logo.width, h: logo.height };
+  const aspect = box.w / box.h;
+  return Math.round(Math.sqrt(LOGO_AREA / aspect) * (logo.scale ?? 1));
+}
 
 export default function LogoBar() {
   return (
@@ -99,7 +52,7 @@ export default function LogoBar() {
       <div className="mx-auto mb-12 flex max-w-[1200px] items-center gap-6 px-6 lg:px-8">
         <DrawLine className="flex-1" from="end" />
         <span className="shrink-0 font-mono text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#78716C]">
-          Trusted by teams at
+          Trusted by developer teams at
         </span>
         <DrawLine className="flex-1" />
       </div>
@@ -121,9 +74,16 @@ export default function LogoBar() {
               {LOGOS.map((logo) => (
                 <li
                   key={`${logo.name}-${set}`}
-                  className="flex items-center justify-center text-[#78716C] opacity-45 transition-[opacity,color] duration-300 hover:text-[#4A3B33] hover:opacity-100"
+                  className="flex h-10 items-center justify-center text-[#78716C] opacity-60 transition-[opacity,color] duration-300 hover:text-[#4A3B33] hover:opacity-100"
                 >
-                  {logo.node}
+                  <TintedLogo
+                    src={logo.src}
+                    alt={logo.name}
+                    width={logo.width}
+                    height={logo.height}
+                    crop={logo.crop}
+                    displayHeight={displayHeight(logo)}
+                  />
                 </li>
               ))}
             </ul>

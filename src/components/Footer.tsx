@@ -55,6 +55,7 @@ const footerLinks = {
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
+    { label: "Security", href: "/security" },
     { label: "Terms of Service", href: "https://getalchemystai.com/terms" },
   ],
 };

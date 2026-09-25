@@ -268,10 +268,66 @@ export function SpecStrip({
           )}
         >
           <dt className="order-2 font-mono text-[9.5px] sm:text-[10px] uppercase tracking-[0.12em] sm:tracking-[0.16em] text-[#78716C] whitespace-nowrap">{m.label}</dt>
-          <dd className="order-1 text-[0.9375rem] sm:text-[1.0625rem] whitespace-nowrap font-bold tracking-[-0.01em] text-[#4A3B33] tabular-nums">{m.value}</dd>
+          <dd className="order-1 text-[0.9375rem] sm:text-[1.0625rem] whitespace-nowrap font-normal tracking-[-0.01em] text-[#4A3B33] tabular-nums">{m.value}</dd>
         </div>
       ))}
     </dl>
+  );
+}
+
+/* ── TintedLogo: third-party mark repainted in the site palette ────────────── */
+
+/**
+ * Renders a transparent logo file as a single-colour silhouette. The file is
+ * used as a CSS mask and the element is filled with `currentColor`, so the
+ * mark picks up whatever text colour (and hover transition) its parent sets
+ * and none of the brand's native colours leak into the page.
+ *
+ * `crop` (in source pixels) trims transparent padding or a tagline off the
+ * artwork without editing the file. Rendered size is driven by `displayHeight`.
+ */
+export function TintedLogo({
+  src,
+  alt,
+  width,
+  height: sourceHeight,
+  crop,
+  displayHeight,
+  className,
+}: {
+  src: string;
+  alt: string;
+  /** Intrinsic size of the source file, in pixels. */
+  width: number;
+  height: number;
+  /** Visible region of the source file, in source pixels. Defaults to the full file. */
+  crop?: { x: number; y: number; w: number; h: number };
+  /** Rendered height of the visible region, in CSS pixels. */
+  displayHeight: number;
+  className?: string;
+}) {
+  const box = crop ?? { x: 0, y: 0, w: width, h: sourceHeight };
+  const s = displayHeight / box.h;
+  const px = (n: number) => `${Math.round(n * s * 100) / 100}px`;
+  const mask = `url("${src}")`;
+  return (
+    <span
+      role="img"
+      aria-label={alt}
+      className={cn("inline-block shrink-0 bg-current", className)}
+      style={{
+        width: px(box.w),
+        height: px(box.h),
+        maskImage: mask,
+        WebkitMaskImage: mask,
+        maskSize: `${px(width)} ${px(sourceHeight)}`,
+        WebkitMaskSize: `${px(width)} ${px(sourceHeight)}`,
+        maskPosition: `${px(-box.x)} ${px(-box.y)}`,
+        WebkitMaskPosition: `${px(-box.x)} ${px(-box.y)}`,
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+      }}
+    />
   );
 }
 
