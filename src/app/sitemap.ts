@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/staticContent";
 import { fetchAllBlogPosts } from "@/lib/strapi";
+import { USE_CASES, useCasePath } from "@/lib/useCases";
 
 export const revalidate = 300;
 
@@ -49,6 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/terms-of-use`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
     {
       url: `${BASE_URL}/security`,
@@ -108,6 +115,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}${path}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    {
+      url: `${BASE_URL}/use-cases`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...USE_CASES.map((uc) => ({
+      url: `${BASE_URL}${useCasePath(uc.slug)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
   ];

@@ -7,6 +7,8 @@
  * Keep this in sync with the actual page sections.
  */
 
+import { JOBS, USE_CASES } from "@/lib/useCases";
+
 export const SITE_TITLE = "Alchemyst AI - The company brain your AI agents can trust";
 export const SITE_DESCRIPTION =
   "Enable AI agents to run your day-to-day operations at enterprise scale. " +
@@ -146,6 +148,24 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
           "export and deletion. Standards status: SOC 2 in progress; GDPR, DPDP Act and CCPA aligned; ISO/IEC 27001 and " +
           "HIPAA on the roadmap; card payments via Razorpay (PCI-DSS). Security reports: founders@getalchemystai.com.",
       },
+    ],
+  },
+  {
+    title: "Use Cases",
+    items: [
+      {
+        title: "Alchemyst AI Use Cases",
+        url: `${BASE_URL}/use-cases`,
+        description:
+          "What teams build on the context layer, grouped by the job each application leans on most: " +
+          JOBS.map((j) => `${j.name} (${j.summary.replace(/\.$/, "")})`).join("; ") +
+          ".",
+      },
+      ...USE_CASES.map((uc) => ({
+        title: `${uc.name}: ${uc.tagline}`,
+        url: `${BASE_URL}/use-cases/${uc.slug}`,
+        description: uc.description,
+      })),
     ],
   },
   {

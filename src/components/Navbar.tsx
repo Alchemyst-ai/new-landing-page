@@ -44,6 +44,7 @@ const COMPARE_LINKS: NavLink[] = [
 
 // Resources dropdown links.
 const RESOURCE_LINKS: NavLink[] = [
+  { label: "Use Cases", href: "/use-cases" },
   { label: "Case Studies", href: "/case-study" },
   { label: "Security", href: "/security" },
   { label: "Creators Program", href: "/creators-program" },

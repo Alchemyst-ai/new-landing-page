@@ -138,3 +138,27 @@ export function PageBody({
 }) {
   return <div className={cn("relative mx-auto px-6 lg:px-8 pb-24 md:pb-32", WIDTHS[width], className)}>{children}</div>;
 }
+
+/**
+ * Legal document page (privacy notice, terms). No hero and no motion: the
+ * document renders exactly as written, including its own title, inside the
+ * site chrome (nav, breadcrumbs, footer).
+ */
+export function LegalShell({
+  crumb,
+  currentPath,
+  children,
+}: {
+  crumb: string;
+  currentPath: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <PageShell>
+      <div className="relative mx-auto max-w-[848px] px-6 pb-24 pt-32 md:pb-32 md:pt-40 lg:px-8">
+        <Breadcrumbs items={[{ name: crumb }]} currentPath={currentPath} />
+        <article className="legal-doc mt-8">{children}</article>
+      </div>
+    </PageShell>
+  );
+}

@@ -1,6 +1,6 @@
 "use client";
 
-// FooterWatermark: an outlined serif "Alchemyst AI" that rises into place as
+// FooterWatermark: a translucent, neutral-toned "Alchemyst AI" watermark that rises into place as
 // the footer scrolls in. Decorative only (aria-hidden).
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -18,12 +18,13 @@ export default function FooterWatermark() {
     <div ref={ref} aria-hidden className="pointer-events-none relative z-0 hidden select-none overflow-hidden pb-[1.6vw] md:block">
       <motion.div
         style={reduce ? undefined : { y, opacity }}
-        className="mx-auto max-w-[1400px] whitespace-nowrap px-4 text-center font-bold leading-[0.95] tracking-[-0.04em] text-transparent text-[13.5vw] xl:text-[190px]"
+        className="mx-auto max-w-[1400px] whitespace-nowrap px-4 text-center font-bold leading-[0.95] tracking-[-0.04em] text-[13.5vw] xl:text-[190px]"
       >
         <span
           style={{
-            WebkitTextStroke: "1px rgba(228,192,144,0.22)",
-            backgroundImage: "linear-gradient(to bottom, rgba(228,192,144,0.07), rgba(228,192,144,0))",
+            color: "transparent",
+            // Warm stone tones from the footer's own palette (stone-600 -> stone-800), translucent over #1C1917
+            backgroundImage: "linear-gradient(to bottom, rgba(87,83,78,0.5), rgba(41,37,36,0.5))",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
           }}

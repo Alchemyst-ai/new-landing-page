@@ -30,6 +30,14 @@ const footerLinks = {
     { label: "Changelog", href: "https://getalchemystai.com/changelog" },
     { label: "Creators Program", href: "/creators-program" },
   ],
+  "Use Cases": [
+    { label: "Finance", href: "/use-cases/finance" },
+    { label: "Customer Support", href: "/use-cases/customer-support" },
+    { label: "EdTech", href: "/use-cases/edtech" },
+    { label: "Healthcare", href: "/use-cases/healthcare" },
+    { label: "Voice", href: "/use-cases/voice-agents" },
+    { label: "All Use Cases", href: "/use-cases" },
+  ],
   Developers: [
     { label: "Documentation", href: "https://docs.getalchemystai.com" },
     { label: "API Reference", href: "https://docs.getalchemystai.com/api" },
@@ -56,7 +64,7 @@ const footerLinks = {
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Security", href: "/security" },
-    { label: "Terms of Service", href: "https://getalchemystai.com/terms" },
+    { label: "Terms of Use", href: "/terms-of-use" },
   ],
 };
 
@@ -72,7 +80,7 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8">
         <div className="h-px w-full bg-white/[0.08]" />
 
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 pt-16 pb-16 md:grid-cols-4 lg:grid-cols-7 lg:pb-20">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 pt-16 pb-16 md:grid-cols-4 lg:grid-cols-8 lg:pb-20">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-4 lg:col-span-2 lg:pr-10">
             <Link href="/" className="mb-7 inline-flex items-center" aria-label="Alchemyst AI home">

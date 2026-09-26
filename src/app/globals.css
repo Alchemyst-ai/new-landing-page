@@ -936,3 +936,69 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
 }
 .prose-blog-dark .not-prose ul > li::before { content: none; }
 .prose-blog-dark .not-prose { max-width: 100%; }
+
+/* ── Legal documents (/privacy, /terms-of-use) ─────────────────────────────
+   Reproduces the source documents verbatim. Only the emphasis carried by the
+   originals is expressed here: bold, italic, underline, superscript, centred
+   titles, square (privacy) or round (terms) bullets, and the extra space the
+   originals put between some list items. Text is justified, as in the PDFs. */
+.legal-doc {
+  color: #4A3B33;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.legal-doc > * + * { margin-top: 1.1em; }
+.legal-doc p,
+.legal-doc li { text-align: left; }
+@media (min-width: 768px) {
+  .legal-doc p,
+  .legal-doc li { text-align: justify; }
+}
+.legal-doc strong { font-weight: 700; color: #3A2E28; }
+.legal-doc em { font-style: italic; }
+.legal-doc sup { font-size: 0.65em; line-height: 0; vertical-align: super; }
+.legal-doc a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  scroll-margin-top: 7rem;
+}
+.legal-doc a[href^="mailto:"] { color: #B45309; }
+.legal-doc a:hover { color: #B45309; }
+.legal-doc [id] { scroll-margin-top: 7rem; }
+.legal-doc .legal-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+.legal-doc .legal-center { text-align: center; }
+.legal-doc h2 {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  margin-top: 2.4em;
+}
+.legal-doc h2.legal-toc-title { margin-top: 1.1em; }
+.legal-doc h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 1.6em;
+}
+.legal-doc h2 + *,
+.legal-doc h3 + * { margin-top: 0.9em; }
+.legal-doc .legal-list { padding-left: 2.25rem; }
+.legal-doc .legal-list li { padding-left: 0.25rem; }
+.legal-doc .legal-list li + li { margin-top: 0.15em; }
+.legal-doc .legal-list li.legal-gap { margin-top: 1.1em; }
+.legal-doc .legal-list-square { list-style-type: square; }
+.legal-doc .legal-list-disc { list-style-type: disc; }
+.legal-doc .legal-list li::marker { color: #4A3B33; }
+.legal-doc .legal-toc { list-style: none; padding-left: 1.125rem; }
+.legal-doc .legal-toc li { text-align: left; }
+.legal-doc .legal-toc a { text-decoration: none; }
+.legal-doc .legal-toc a:hover { text-decoration: underline; }

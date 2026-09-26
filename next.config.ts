@@ -59,6 +59,9 @@ const nextConfig: NextConfig = {
     return [
       // Single canonical About page.
       { source: "/about-us", destination: "/about", permanent: true },
+      // Legal pages: keep the previous site's URLs working.
+      { source: "/privacy-policy", destination: "/privacy", permanent: true },
+      { source: "/terms", destination: "/terms-of-use", permanent: true },
     ];
   },
   async rewrites() {
