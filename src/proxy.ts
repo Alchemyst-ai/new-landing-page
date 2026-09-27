@@ -17,7 +17,8 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const BASE_DOMAIN = "new.getalchemystai.com";
+const PUBLIC_DOMAIN = "new.getalchemystai.com";
+const UPSTREAM_BASE_DOMAIN = "getalchemystai.com";
 
 interface ProxiedSubdomain {
   subdomain: string;
@@ -108,11 +109,11 @@ export default async function middleware(request: NextRequest) {
 
   // Check if request is coming from a proxied subdomain directly
   for (const { subdomain, extraPaths = [] } of PROXIED_SUBDOMAINS) {
-    const origin = `https://${subdomain}.${BASE_DOMAIN}`;
+    const origin = `https://${subdomain}.${UPSTREAM_BASE_DOMAIN}`;
 
     // x.getalchemystai.com/:path → getalchemystai.com/x/:path
-    if (hostname === `${subdomain}.${BASE_DOMAIN}`) {
-      const target = new URL(`/${subdomain}${pathname}`, `https://${BASE_DOMAIN}`);
+    if (hostname === `${subdomain}.${UPSTREAM_BASE_DOMAIN}`) {
+      const target = new URL(`/${subdomain}${pathname}`, `https://${PUBLIC_DOMAIN}`);
       target.search = request.nextUrl.search;
       return NextResponse.redirect(target, 301);
     }
