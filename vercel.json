@@ -4,8 +4,16 @@
   "outputDirectory": ".next",
   "rewrites": [
     {
+      "source": "/labs",
+      "destination": "https://labs.getalchemystai.com"
+    },
+    {
       "source": "/labs/:path*",
       "destination": "https://labs.getalchemystai.com/:path*"
+    },
+    {
+      "source": "/press",
+      "destination": "https://press.getalchemystai.com"
     },
     {
       "source": "/press/:path*",

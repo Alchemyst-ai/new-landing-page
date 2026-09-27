@@ -92,7 +92,7 @@ export default function CodeBlock({
   tone = "light",
   chrome = true,
   className,
-  wrap = false,
+  wrap = true,
 }: {
   code: string;
   /** Optional existing label (e.g. the heading it belongs to). */
@@ -168,7 +168,7 @@ export default function CodeBlock({
           wrap ? "whitespace-pre-wrap" : "whitespace-pre",
         )}
       >
-        <code>{highlight(code, tone)}</code>
+        <code className="break-words">{highlight(code, tone)}</code>
       </pre>
     </div>
   );

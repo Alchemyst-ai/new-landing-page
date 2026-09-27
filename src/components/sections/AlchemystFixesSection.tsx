@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import { BrandButton, Section, SpecCard } from "@/components/brand";
 import CodeBlock from "@/components/brand/CodeBlock";
 import SectionHeader from "@/components/brand/SectionHeader";
 import { EASE, FadeUp, FigureReveal } from "@/components/motion/primitives";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import BenchmarkChart from "./BenchmarkChart";
 import { useReducedMotionSafe } from "./iso/kit";
 
@@ -27,10 +27,42 @@ const window = alchemyst.context.search({
     title: "Institutional knowledge graph + context traces",
     body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers. By applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
     code: `// One graph + arithmetic → derived "memories"
-const whatHappened = ctx.search({ groupName: [session_id] });
-const whatItMeans  = ctx.search({ query: term })
-                        .subtract(deprecated);
-// "how to act" falls out of ranked, in-scope context`,
+
+const captureTime1 = "end-date-" + Date.now();
+
+// Represents what should be added when your session is first saved.
+const storeInformationOfSessionAtFirstInstance = await ctx.add({
+    documents: [ ],
+    metadata: {
+      groupName: [session_id, captureTime1]
+    }
+});
+
+// Now resume from where you left off, or let someone resume from there.
+const whatHappened = await ctx.search({
+  query: term,
+  metadata {
+    groupName: [session_id, captureTime1]
+  }
+});
+
+// Second checkpint
+const storeInformationOfSessionAtSecondInstance = await ctx.add({
+    documents: [...],
+    metadata: {
+      groupName: [session_id, captureTime2]
+    }
+});
+
+// Now team lead / CXO looks up about the information
+
+const whatItMeans = ctx.search({
+  query: term,
+  metadata: {
+    groupName: [session_id]
+  }
+})
+// "how to act" falls out of scope over the global context`,
   },
   {
     num: "03",
@@ -46,13 +78,36 @@ const whatItMeans  = ctx.search({ query: term })
     num: "04",
     title: "Semantic consensus enforcement",
     body: 'Define canonical term definitions at the org level. When "revenue" means different things to different teams, Alchemyst resolves the ambiguity before it reaches the model.',
-    code: `await alchemyst.ontology.define({
-  term: "revenue",
-  canonical: "ARR as reported to board",
-  aliases: ["sales", "bookings", "ARR"],
-  owner: "finance",
-  updated_at: new Date()
-});`,
+//     code: `await alchemyst.ontology.define({
+//   term: "revenue",
+//   canonical: "ARR as reported to board",
+//   aliases: ["sales", "bookings", "ARR"],
+//   owner: "finance",
+//   updated_at: new Date()
+// });`,
+    code: `
+const gtmTeamResponse = await alchemyst.context.add({
+  documents: [...], // Data here
+  metadata: {
+    groupName: ["gtm", "revenue"] // The term "revenue" defined by GTM team
+  }
+})
+
+const financeTeamResponse = await alchemyst.context.add({
+  documents: [...], // Data here
+  metadata: {
+    groupName: ["finance", "revenue"] // The term "revenue" defined by Finances team.
+  }
+})
+
+const cxoResponse = await alchemyst.context.search({
+  query: "What's the revenue for Q2 2026?",
+  metadata: {
+    groupName: ["revenue"]
+    // The term "revenue" defined for CXO, with clear segregation between the resources by GTM team and Finances team.
+  }
+})
+    `
   },
 ];
 
