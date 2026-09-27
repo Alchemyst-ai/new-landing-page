@@ -95,18 +95,26 @@ async function proxyTo(
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const hostname = request.headers.get("host") || "";
 
-  // Check if this request matches any proxied subdomain
+  // Check if request is coming from a proxied subdomain directly
   for (const { subdomain, extraPaths = [] } of PROXIED_SUBDOMAINS) {
     const origin = `https://${subdomain}.${BASE_DOMAIN}`;
 
-    // Match /subdomain or /subdomain/*
+    // x.getalchemystai.com/:path → getalchemystai.com/x/:path
+    if (hostname === `${subdomain}.${BASE_DOMAIN}`) {
+      const target = new URL(`/${subdomain}${pathname}`, `https://${BASE_DOMAIN}`);
+      target.search = request.nextUrl.search;
+      return NextResponse.redirect(target, 301);
+    }
+
+    // getalchemystai.com/x/:path → proxy to x.getalchemystai.com/:path
     if (pathname === `/${subdomain}` || pathname.startsWith(`/${subdomain}/`)) {
       const targetPath = pathname.replace(new RegExp(`^/${subdomain}`), "") || "/";
       return proxyTo(request, origin, targetPath);
     }
 
-    // Match extra root-level paths (e.g. /pixel-art.gif → labs.getalchemystai.com/pixel-art.gif)
+    // Extra root-level paths
     if (extraPaths.includes(pathname)) {
       return proxyTo(request, origin, pathname);
     }
