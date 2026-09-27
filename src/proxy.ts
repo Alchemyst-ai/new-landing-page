@@ -17,7 +17,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const BASE_DOMAIN = "getalchemystai.com";
+const BASE_DOMAIN = "new.getalchemystai.com";
 
 interface ProxiedSubdomain {
   subdomain: string;
