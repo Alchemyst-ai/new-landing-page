@@ -1,22 +1,38 @@
 /**
  * Next.js Edge Middleware (proxy.ts - Next.js 16 convention)
  *
- * 1. Proxies /labs/* to labs.getalchemystai.com
+ * 1. Proxies subdomain paths to their respective origins.
+ *    Convention: any entry in PROXIED_SUBDOMAINS can be accessed as
+ *    X.getalchemystai.com OR getalchemystai.com/X
+ *    Each subdomain can define additional root-level assets to proxy.
+ *
  * 2. Rewrites /*.html.md requests to /llms.txt?path=<pathname>
  *    so per-page markdown is served by the App Router llms.txt handler.
+ *
  * 3. Accept: text/markdown negotiation (acceptmarkdown.com):
  *    serves markdown from /api/markdown?path=<pathname> with
  *    Content-Type: text/markdown and Vary: Accept.
- *    No visual/HTML change: only affects agents explicitly requesting markdown.
- *
- * /llms.txt and /llms-full.txt are handled directly by their own
- * App Router route handlers and do not need middleware interception.
  */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const LABS_ORIGIN = "https://labs.getalchemystai.com";
+const BASE_DOMAIN = "getalchemystai.com";
+
+interface ProxiedSubdomain {
+  subdomain: string;
+  // Additional root-level paths on the target to proxy (e.g. /pixel-art.gif)
+  extraPaths?: string[];
+}
+
+const PROXIED_SUBDOMAINS: ProxiedSubdomain[] = [
+  {
+    subdomain: "labs",
+    extraPaths: ["/pixel-art.gif"],
+  },
+  // Add more later:
+  // { subdomain: "press" },
+];
 
 const MARKDOWN_SKIP_PREFIXES = [
   "/_next",
@@ -36,50 +52,63 @@ const MARKDOWN_SKIP_PREFIXES = [
 const STATIC_EXT =
   /\.(ico|png|jpg|jpeg|gif|svg|webp|css|js|map|woff2?|ttf|mp3|mp4|txt|xml|json)$/i;
 
+async function proxyTo(
+  request: NextRequest,
+  targetOrigin: string,
+  targetPath: string
+): Promise<NextResponse> {
+  const target = new URL(targetPath, targetOrigin);
+  target.search = request.nextUrl.search;
+
+  try {
+    const res = await fetch(target, {
+      headers: {
+        ...Object.fromEntries(request.headers),
+        host: new URL(targetOrigin).host,
+      },
+      method: request.method,
+      body: ["GET", "HEAD"].includes(request.method) ? null : request.body,
+      // @ts-expect-error -- duplex required for streaming body
+      duplex: "half",
+    });
+
+    const contentType = res.headers.get("content-type") || "";
+
+    if (contentType.includes("text/html")) {
+      let html = await res.text();
+      // Rewrite root-relative asset URLs to point to the target origin
+      html = html.replaceAll("/_next/", `${targetOrigin}/_next/`);
+      return new NextResponse(html, {
+        status: res.status,
+        headers: { "content-type": contentType },
+      });
+    }
+
+    return new NextResponse(res.body, {
+      status: res.status,
+      headers: res.headers,
+    });
+  } catch {
+    return new NextResponse("Bad Gateway", { status: 502 });
+  }
+}
+
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Proxy /labs/* to labs.getalchemystai.com
-  if (pathname === "/labs" || pathname.startsWith("/labs/")) {
-    const newPath = pathname.replace(/^\/labs/, "") || "/";
-    const target = new URL(newPath, LABS_ORIGIN);
-    target.search = request.nextUrl.search;
+  // Check if this request matches any proxied subdomain
+  for (const { subdomain, extraPaths = [] } of PROXIED_SUBDOMAINS) {
+    const origin = `https://${subdomain}.${BASE_DOMAIN}`;
 
-    try {
-      const res = await fetch(target, {
-        headers: {
-          ...Object.fromEntries(request.headers),
-          host: "labs.getalchemystai.com",
-        },
-        method: request.method,
-        body: ["GET", "HEAD"].includes(request.method) ? null : request.body,
-        // @ts-expect-error -- duplex required for streaming body
-        duplex: "half",
-      });
+    // Match /subdomain or /subdomain/*
+    if (pathname === `/${subdomain}` || pathname.startsWith(`/${subdomain}/`)) {
+      const targetPath = pathname.replace(new RegExp(`^/${subdomain}`), "") || "/";
+      return proxyTo(request, origin, targetPath);
+    }
 
-      const contentType = res.headers.get("content-type") || "";
-
-      // For HTML responses, rewrite asset URLs so /_next/ points back to labs origin
-      if (contentType.includes("text/html")) {
-        let html = await res.text();
-        html = html.replaceAll(
-          "/_next/",
-          `${LABS_ORIGIN}/_next/`
-        );
-        return new NextResponse(html, {
-          status: res.status,
-          headers: {
-            "content-type": contentType,
-          },
-        });
-      }
-
-      return new NextResponse(res.body, {
-        status: res.status,
-        headers: res.headers,
-      });
-    } catch (e) {
-      return new NextResponse("Bad Gateway", { status: 502 });
+    // Match extra root-level paths (e.g. /pixel-art.gif → labs.getalchemystai.com/pixel-art.gif)
+    if (extraPaths.includes(pathname)) {
+      return proxyTo(request, origin, pathname);
     }
   }
 
