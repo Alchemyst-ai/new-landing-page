@@ -95,7 +95,7 @@ async function proxyTo(
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hostname = request.headers.get("host") || "";
+  const hostname = request.nextUrl.hostname.toLowerCase();
 
   // Check if request is coming from a proxied subdomain directly
   for (const { subdomain, extraPaths = [] } of PROXIED_SUBDOMAINS) {
