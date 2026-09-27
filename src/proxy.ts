@@ -55,7 +55,8 @@ const STATIC_EXT =
 async function proxyTo(
   request: NextRequest,
   targetOrigin: string,
-  targetPath: string
+  targetPath: string,
+  publicPrefix: string
 ): Promise<NextResponse> {
   const target = new URL(targetPath, targetOrigin);
   target.search = request.nextUrl.search;
@@ -74,19 +75,27 @@ async function proxyTo(
 
     const contentType = res.headers.get("content-type") || "";
 
+    // Keep upstream redirects under the public subdomain path. Otherwise a
+    // Location: /next route escapes /<subdomain> and lands on the main site.
+    const headers = new Headers(res.headers);
+    const location = headers.get("location");
+    if (location?.startsWith("/") && !location.startsWith("//")) {
+      headers.set("location", `${publicPrefix}${location}`);
+    }
+
     if (contentType.includes("text/html")) {
       let html = await res.text();
       // Rewrite root-relative asset URLs to point to the target origin
       html = html.replaceAll("/_next/", `${targetOrigin}/_next/`);
       return new NextResponse(html, {
         status: res.status,
-        headers: { "content-type": contentType },
+        headers,
       });
     }
 
     return new NextResponse(res.body, {
       status: res.status,
-      headers: res.headers,
+      headers,
     });
   } catch {
     return new NextResponse("Bad Gateway", { status: 502 });
@@ -111,12 +120,12 @@ export default async function middleware(request: NextRequest) {
     // getalchemystai.com/x/:path → proxy to x.getalchemystai.com/:path
     if (pathname === `/${subdomain}` || pathname.startsWith(`/${subdomain}/`)) {
       const targetPath = pathname.replace(new RegExp(`^/${subdomain}`), "") || "/";
-      return proxyTo(request, origin, targetPath);
+      return proxyTo(request, origin, targetPath, `/${subdomain}`);
     }
 
     // Extra root-level paths
     if (extraPaths.includes(pathname)) {
-      return proxyTo(request, origin, pathname);
+      return proxyTo(request, origin, pathname, "");
     }
   }
 
