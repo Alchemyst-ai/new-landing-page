@@ -17,7 +17,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const PUBLIC_DOMAIN = "new.getalchemystai.com";
+const PUBLIC_DOMAIN = "getalchemystai.com";
 const UPSTREAM_BASE_DOMAIN = "getalchemystai.com";
 
 interface ProxiedSubdomain {
