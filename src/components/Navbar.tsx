@@ -62,7 +62,7 @@ const NAV_ITEMS: NavItem[] = [
   { kind: "link", label: "Blog", href: "/blog" },
   { kind: "link", label: "Docs", href: "/docs" },
   { kind: "link", label: "Pricing", href: "/pricing" },
-  { kind: "link", label: "Labs", href: "/labs" },
+  { kind: "link", label: "Labs", href: "https://labs.getalchemystai.com", external: true },
 ];
 
 export default function Navbar() {
