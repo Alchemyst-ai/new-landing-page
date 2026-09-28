@@ -7,6 +7,7 @@
 // Order: Compare, Resources, Blog, Docs, Pricing, Labs, then the Sign In CTA.
 "use client";
 
+import { useReducedMotionSafe } from "@/components/sections/iso/kit";
 import {
   Sheet,
   SheetClose,
@@ -21,7 +22,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotionSafe } from "@/components/sections/iso/kit";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
@@ -60,9 +60,9 @@ const NAV_ITEMS: NavItem[] = [
   },
   { kind: "menu", label: "Resources", items: RESOURCE_LINKS },
   { kind: "link", label: "Blog", href: "/blog" },
-  { kind: "link", label: "Docs", href: "https://docs.getalchemystai.com", external: true },
+  { kind: "link", label: "Docs", href: "/docs" },
   { kind: "link", label: "Pricing", href: "/pricing" },
-  { kind: "link", label: "Labs", href: "https://getalchemystai.com/labs", external: true },
+  { kind: "link", label: "Labs", href: "/labs" },
 ];
 
 export default function Navbar() {
