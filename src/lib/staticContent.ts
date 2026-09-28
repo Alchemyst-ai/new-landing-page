@@ -9,11 +9,10 @@
 
 import { JOBS, USE_CASES } from "@/lib/useCases";
 
-export const SITE_TITLE = "Alchemyst AI - The company brain your AI agents can trust";
+export const SITE_TITLE = "Alchemyst AI - The backbone your team's AI agents work on";
 export const SITE_DESCRIPTION =
-  "Enable AI agents to run your day-to-day operations at enterprise scale. " +
-  "The institutional context backbone for your enterprise - persistent, traceable context, " +
-  "semantic retrieval, and context arithmetic over your institutional knowledge graph. One API. Zero infrastructure.";
+  "Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable, " +
+  "and semantically consistent across your organisation through a single API.";
 export const BASE_URL = "https://getalchemystai.com";
 
 // ── Static sections for llms.txt index ──────────────────────────────────────
@@ -34,12 +33,11 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     title: "Landing Page",
     items: [
       {
-        title: "Alchemyst AI - The Institutional Context Backbone",
+        title: "Alchemyst AI - The backbone your team's AI agents work on",
         url: BASE_URL,
         description:
-          "Main landing page. Hero: 'The company brain your AI agents can trust.' " +
-          "Subtitle: 'Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.' " +
-          "Covers semantic drift, context arithmetic (the core primitive), institutional knowledge graphs, and context traces.",
+          "The context backbone that keeps every agent's knowledge current, traceable, and semantically consistent across an organisation through a single API. " +
+          "The page covers model sovereignty, context arithmetic, semantic consensus, context traces, measured results, and API access.",
       },
     ],
   },
@@ -346,13 +344,15 @@ export const FULL_STATIC_CONTENT = `# ${SITE_TITLE}
 
 ## Hero
 
-**Title:** The company brain your AI agents can trust.
+**Title:** The backbone your team's AI agents work on.
 
-**Subtitle:** Enable AI agents to run your day-to-day operations at enterprise scale - the institutional context backbone for your enterprise.
+**Subtitle:** Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable and semantically consistent across your entire organisation through a single API.
 
-**Standalone definition:** Alchemyst AI is the institutional context backbone that lets AI agents run an enterprise's day-to-day operations at scale. Through a single API and its context arithmetic primitive, it gives every agent persistent, traceable context and semantic retrieval over your institutional knowledge graph - keeping institutional knowledge current, traceable, and consistent.
+**Standalone definition:** Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable and semantically consistent across an organisation through a single API.
 
-**Key metrics:** < 300ms retrieval latency · 99.9% uptime SLA · context arithmetic over an institutional knowledge graph · 1 API, zero infra
+**Hero proof points:** < 300ms p95 latency · 100% auditable · 1 API, zero infra
+
+**Results section:** < 300ms p95 context retrieval latency · 99.7% reduction in hallucinations on domain-specific tasks · 20× faster agent debugging with context traces vs raw logs · 1 API replaces 4 infrastructure pieces (vector database, graph database, cache, logger).
 
 ---
 
@@ -422,14 +422,6 @@ const trace = await alchemyst.trace.get(session_id, turn_id);
 
 Define canonical term definitions at the org level. Alchemyst resolves ambiguity before it reaches the model.
 
-\`\`\`js
-await alchemyst.ontology.define({
-  term: "revenue",
-  canonical: "ARR as reported to board",
-  aliases: ["sales", "bookings", "ARR"],
-  owner: "finance"
-});
-\`\`\`
 
 ### Results
 
@@ -543,11 +535,11 @@ Alchemyst AI is a context layer delivered as an API versus Palantir's FDE-mainta
 
 ## Get API Access
 
-Free tier available. No credit card required. REST API + Python & Node SDKs. 99.9% uptime SLA. SOC 2 in progress.
+Join developers building AI products with persistent, auditable context. The page lists a free tier, REST API, Python and Node SDKs, a 99.9% uptime SLA, and SOC 2 in progress.
 
 - Documentation: https://docs.getalchemystai.com
 - Website: https://getalchemystai.com
-- Contact: hello@getalchemystai.com
+- Contact: founders@getalchemystai.com
 
 ---
 
