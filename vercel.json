@@ -3,25 +3,25 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "rewrites": [
-        {
+    {
       "source": "/_mintlify/:path*",
-      "destination": "https://[subdomain].mintlify.site/_mintlify/:path*"
+      "destination": "https://alchemystai.mintlify.site/_mintlify/:path*"
     },
     {
       "source": "/api/request",
-      "destination": "https://[subdomain].mintlify.site/_mintlify/api/request"
+      "destination": "https://alchemystai.mintlify.site/_mintlify/api/request"
     },
     {
       "source": "/docs",
-      "destination": "https://[subdomain].mintlify.site/docs"
+      "destination": "https://alchemystai.mintlify.site/docs"
     },
     {
       "source": "/docs/:match*",
-      "destination": "https://[subdomain].mintlify.site/docs/:match*"
+      "destination": "https://alchemystai.mintlify.site/docs/:match*"
     },
     {
       "source": "/mintlify-assets/:path+",
-      "destination": "https://[subdomain].mintlify.site/mintlify-assets/:path+"
+      "destination": "https://alchemystai.mintlify.site/mintlify-assets/:path+"
     }
   ]
 }
