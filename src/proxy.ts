@@ -32,7 +32,7 @@ const PROXIED_SUBDOMAINS: ProxiedSubdomain[] = [
     extraPaths: ["/pixel-art.gif"],
   },
   // Add more later:
-  { subdomain: "docs" },
+  // { subdomain: "press" },
 ];
 
 const MARKDOWN_SKIP_PREFIXES = [
