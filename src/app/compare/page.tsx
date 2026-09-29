@@ -1,14 +1,16 @@
 import { Arrow, Section } from "@/components/brand";
 import { FadeUp } from "@/components/motion/primitives";
-import { PageHero, PageShell } from "@/components/page";
+import { PageHero, PageShell, Prose } from "@/components/page";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const title = "Compare AI Context Engine Companies";
+const description = "Evaluate AI context engine companies and memory platforms by retrieval, shared knowledge, source updates, access controls, and integration effort.";
 export const metadata: Metadata = {
-  title: "Compare Alchemyst AI | Context Layer vs Memory, Ontology & Search",
+  title, description,
   alternates: { canonical: "https://getalchemystai.com/compare" },
-  description:
-    "How Alchemyst AI's deterministic context layer compares to Mem0, Zep, Palantir, Databricks, Snowflake Cortex, Memvid, SuperMemory, Letta, LangChain, Cognee, OpenAI Memory, and Claude Memory, and why a sovereign, cross-system context layer is a different primitive from memory, ontology, data governance or enterprise search.",
+  openGraph: { title, description, url: "https://getalchemystai.com/compare", type: "website" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 const COMPARISONS = [
@@ -17,112 +19,91 @@ const COMPARISONS = [
     href: "/compare/alchemyst-ai-vs-mem0",
     category: "AI Memory",
     blurb:
-      "A deterministic context layer over an institutional knowledge graph versus a per-agent memory store. Why context arithmetic beats naïve recall for production multi-agent systems.",
+      "Compare the memory and shared business context requirements of your agent, including retrieval scope and traceability.",
   },
   {
     competitor: "Zep",
     href: "/compare/alchemyst-ai-vs-zep",
     category: "AI Memory",
     blurb:
-      "Sovereign, model-agnostic context infrastructure versus Zep's conversational memory service, and what that means for traceability and semantic consensus at scale.",
-  },
-  {
-    competitor: "Palantir",
-    href: "/compare/alchemyst-ai-vs-palantir",
-    category: "Ontology & FDEs",
-    blurb:
-      "A self-updating context layer delivered as an API versus a powerful but FDE-maintained, drift-prone static ontology. Institutional memory without a forward-deployed army.",
+      "Explore graph-based memory and context retrieval approaches for applications that need information across conversations.",
   },
   {
     competitor: "Databricks",
     href: "/compare/alchemyst-ai-vs-databricks",
     category: "Data & Governance",
     blurb:
-      "Governing semantic meaning versus governing data. Why Unity Catalog and vector RAG manage your data layer, while Alchemyst manages the meaning layer on top of any warehouse or model.",
+      "Consider how a data platform and a dedicated context layer fit into an enterprise agent architecture.",
   },
   {
     competitor: "Snowflake Cortex",
     href: "/compare/alchemyst-ai-vs-snowflake-cortex",
     category: "Data & Governance",
     blurb:
-      "Cross-system, self-updating consensus versus warehouse-bounded, hand-authored semantic views. Context that spans every system your agents touch, not just the one warehouse.",
-  },
-  {
-    competitor: "Glean",
-    href: "/compare/alchemyst-ai-vs-glean",
-    category: "Enterprise Search",
-    blurb:
-      "Deterministic, developer-embeddable context for your own agents versus a probabilistic enterprise search assistant for human employees. Infrastructure, not a search box.",
+      "Evaluate warehouse-based AI workflows alongside a context layer integrated into your application.",
   },
   {
     competitor: "Memvid",
     href: "/compare/memvid-vs-alchemyst-agent-memory",
     category: "AI Memory",
     blurb:
-      "Single-file embedded memory versus hosted context layer. Both eliminate infrastructure, but serve different use cases: edge/offline vs enterprise.",
+      "Compare embedded memory and hosted context infrastructure for your deployment requirements.",
   },
   {
     competitor: "SuperMemory",
     href: "/compare/supermemory-vs-alchemyst",
     category: "AI Memory",
     blurb:
-      "Browser extension memory capture versus structured institutional context. Consumer-friendly vs enterprise-grade auditability.",
-  },
-  {
-    competitor: "Letta",
-    href: "/compare/letta-vs-alchemyst-llm-memory",
-    category: "AI Memory",
-    blurb:
-      "OS-level agent memory versus institutional context infrastructure. Focused on single-agent versus multi-agent architectures.",
+      "Compare memory integrations and context management for the workflows your team is building.",
   },
   {
     competitor: "LangChain Memory",
     href: "/compare/langchain-memory-vs-alchemyst",
     category: "AI Memory",
     blurb:
-      "Memory modules and vector stores versus unified context layer primitive. Framework components vs standalone infrastructure.",
+      "Decide which memory components to assemble in your framework and which operations to delegate to a context service.",
   },
   {
     competitor: "Cognee",
     href: "/compare/cognee-vs-alchemyst-knowledge-graph",
     category: "Knowledge Graph",
     blurb:
-      "Both build knowledge graphs, but Cognee focuses on data ingestion while Alchemyst specializes in context arithmetic and governance.",
+      "Compare knowledge graph approaches, retrieval workflows, and the operational responsibilities of your team.",
   },
   {
     competitor: "OpenAI Memory",
     href: "/compare/openai-memory-vs-deterministic-context",
     category: "AI Memory",
     blurb:
-      "Model-bound built-in memory versus model-agnostic sovereign context layer infrastructure for enterprises.",
+      "Evaluate built-in memory alongside application-managed business context across model integrations.",
   },
   {
     competitor: "Claude Memory",
     href: "/compare/claude-memory-vs-alchemyst",
     category: "AI Memory",
     blurb:
-      "Implicit conversation memory versus explicit, scoped, auditable context operations with semantic consensus.",
+      "Compare assistant memory with a shared context service for your own applications.",
   },
   {
     competitor: "Claude Auto Memory",
     href: "/compare/claude-auto-memory-vs-portable-context",
     category: "AI Memory",
     blurb:
-      "Per-repository auto memory versus unified, user-scoped knowledge across tools. Why Claude's storage model fragments team context.",
+      "Explore repository-specific memory and shared context across developer tools.",
   },
   {
     competitor: "OpenAI Dreaming",
     href: "/compare/alchemyst-vs-openai-dreaming",
     category: "AI Memory",
     blurb:
-      "Black-box synthesized memory versus explicit, auditable context scopes. The compliance implications of dream-state knowledge.",
+      "Consider how synthesized memory and explicit retrieval differ in traceability and application control.",
   },
   {
     competitor: "Native Tool Memory",
     href: "/compare/team-context-vs-siloed-memory",
     category: "Multi-Agent",
     blurb:
-      "Unified team context versus fragmented per-tool memory silos. How portable context prevents knowledge loss across vendor switches.",
+      "Evaluate shared team context alongside separate memory stores in individual tools.",
   },
 ];
 
@@ -133,11 +114,23 @@ export default function CompareIndexPage() {
         width="wide"
         crumbs={[{ name: "Compare" }]}
         currentPath="/compare"
-        eyebrow="Honest comparisons"
-        title="How Alchemyst compares"
-        lead="A context layer is a different primitive from memory, ontology, data governance or enterprise search. These pages lay out, fairly and with the strengths of each platform acknowledged, where a sovereign, cross-system, deterministic context layer fits, and where the other tools genuinely shine."
+        eyebrow="Platform evaluation"
+        title="Compare AI context engine companies"
+        lead="AI context engine companies and AI memory platforms overlap, but cover different parts of an agent workflow. Compare what each system stores, how it retrieves business knowledge, and which operations your team must own. Alchemyst AI focuses on shared context and traceable retrieval for developers and enterprises."
       />
 
+      <Prose width="wide">
+        <h2>How should you evaluate an AI context engine?</h2>
+        <p>Use the same small set of company documents and questions for each candidate. Include an updated policy, a question with no supported answer, and a request for restricted information. Review retrieved evidence and the generated answer separately. This makes differences in source handling and integration effort easier to assess.</p>
+        <ul>
+          <li><strong>Knowledge coverage:</strong> does the service handle shared documents, conversation memory, or both?</li>
+          <li><strong>Retrieval:</strong> can you constrain results by customer, team, source, and version?</li>
+          <li><strong>Governance:</strong> how do identity, deletion, retention, and export work in your deployment?</li>
+          <li><strong>Operations:</strong> what can developers inspect when a source is missing or an answer is unsupported?</li>
+          <li><strong>Commercial fit:</strong> compare current pricing, deployment terms, and usage limits with each provider.</li>
+        </ul>
+        <p>These are Alchemyst-authored comparisons. Product capabilities change, so validate details in each provider&apos;s current documentation and your own evaluation. For architecture choices, read our <Link href="/blog/how-to-add-persistent-memory-to-ai-agents#rag-vs-fine-tuning">RAG vs fine-tuning guide</Link> or explore <Link href="/developers#managed-rag">Alchemyst&apos;s role in managed RAG</Link>.</p>
+      </Prose>
       <Section tone="sand" bordered>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {COMPARISONS.map((c, i) => (

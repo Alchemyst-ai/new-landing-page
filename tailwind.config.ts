@@ -4,6 +4,7 @@ const config: Config = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{ts,tsx,js,jsx,mdx}",
+    "./node_modules/streamdown/dist/**/*.{js,mjs}",
     "./src/app/**/*.{ts,tsx,js,jsx,mdx}",
     "./src/components/**/*.{ts,tsx,js,jsx,mdx}",
   ],

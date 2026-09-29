@@ -1,95 +1,87 @@
 import { NextResponse } from "next/server";
-import {
-  BASE_URL,
-  FULL_STATIC_CONTENT,
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-} from "@/lib/staticContent";
+import { NodeHtmlMarkdown } from "node-html-markdown";
+import { pricingMarkdown } from "@/lib/pricingMarkdown";
+import { BASE_URL } from "@/lib/staticContent";
 
 export const dynamic = "force-dynamic";
 
-function baseMarkdown(title: string, body: string) {
-  return `# ${title}\n\n> ${SITE_DESCRIPTION}\n\n> Source: ${BASE_URL}\n\n${body}\n`;
-}
-
-const KNOWN: Record<string, { title: string; body: string }> = {
-  "/": {
-    title: SITE_TITLE,
-    body: FULL_STATIC_CONTENT,
-  },
-  "/about": {
-    title: "About Alchemyst AI",
-    body: `Alchemyst AI by XAlchemystai Technologies Pvt. Ltd. builds the institutional context backbone for AI agents.\n\n## What we build\n\nSingle API with context arithmetic over an institutional knowledge graph. Sub-300ms p95, 99.7% fewer hallucinations, full traces.\n\n## Contact\n\n- Email: founders@getalchemystai.com\n- Address: 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India\n- Links: [/contact](${BASE_URL}/contact) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt)`,
-  },
-  "/contact": {
-    title: "Contact Alchemyst AI",
-    body: `Fastest: founders@getalchemystai.com (support, sales, security, privacy). Reply within 2 business days.\n\n## Address\n\nXAlchemystai Technologies Pvt. Ltd., 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata 700048, India.\n\n## Indexes\n\n- [/](${BASE_URL}/) [/about](${BASE_URL}/about) [/privacy](${BASE_URL}/privacy) [/sitemap.xml](${BASE_URL}/sitemap.xml) [/llms.txt](${BASE_URL}/llms.txt) [/developers](${BASE_URL}/developers)`,
-  },
-  "/privacy": {
-    title: "Privacy Notice | Alchemyst AI",
-    body: `Privacy Notice for XAlchemystai Technologies Pvt. Ltd. Last updated June 2026. Contact founders@getalchemystai.com.\n\nWe process account, billing, telemetry, and support data only with valid basis. Retention max 36 months past termination. Rights: access, correct, delete, withdraw consent. Full policy at [/privacy](${BASE_URL}/privacy).`,
-  },
-  "/security": {
-    title: "Security & Compliance | Alchemyst AI",
-    body: `How Alchemyst AI protects the context AI agents run on.\n\n## Controls\n\n- Encryption in transit (TLS) and at rest\n- Context scoped to its owner at write time and isolated per organization\n- Context Traces: every retrieval records sources, scores and rules applied\n- Role-based access control; SSO and SAML on Enterprise\n- Dedicated infrastructure with VPC peering on Enterprise\n- Export at any time, deletion on request; personal data never sold; retention max 36 months after termination\n\n## Standards\n\n- SOC 2: in progress\n- GDPR, India DPDP Act 2023, CCPA: aligned\n- ISO/IEC 27001: roadmap\n- HIPAA: roadmap (do not send PHI without a BAA)\n- PCI-DSS: card payments handled by Razorpay\n\n## Contact\n\nSecurity documentation and vulnerability reports: founders@getalchemystai.com with subject "Security". Full page at [/security](${BASE_URL}/security).`,
-  },
-  "/pricing": {
-    title: "Pricing | Alchemyst AI",
-    body: `Free tier 5M tokens. Starter, Accelerate, Supercharge, Enterprise. Calculator at ${BASE_URL}/pricing.`,
-  },
-  "/developers": {
-    title: "Developer Portal | Alchemyst AI",
-    body: `Developer portal at ${BASE_URL}/developers with API keys, quickstart, SDKs, sandbox, and OpenAPI at ${BASE_URL}/openapi.json. LLM index at ${BASE_URL}/llms.txt. MCP at ${BASE_URL}/mcp.`,
-  },
-  "/cli": {
-    title: "CLI | Alchemyst AI",
-    body: `Official Alchemyst AI CLI entry points: npm install @alchemystai/sdk (https://www.npmjs.com/package/@alchemystai/sdk) and pip install alchemystai (https://pypi.org/project/alchemystai/). Guide at ${BASE_URL}/cli and CLI Agent docs.`,
-  },
-  "/thesis": {
-    title: "Context Thesis | Alchemyst AI",
-    body: `Four theses on institutional context. Full page at ${BASE_URL}/thesis. Summary in llms.txt and llms-full.txt.`,
-  },
-  "/openapi.json": {
-    title: "OpenAPI | Alchemyst AI",
-    body: `OpenAPI 3.1 at ${BASE_URL}/openapi.json with operationIds getApiStatus, listArticles, getArticleBySlug, createLead.`,
-  },
-  "/mcp": {
-    title: "MCP server | Alchemyst AI",
-    body: `Streamable HTTP MCP at ${BASE_URL}/mcp. Manifests: ${BASE_URL}/server.json, ${BASE_URL}/.well-known/mcp.json, ${BASE_URL}/mcp/server-card.`,
-  },
+// Restrict conversion to public pages: never fetch APIs, assets, or proxy services.
+const PUBLIC_PAGES = new Set([
+  "/", "/about", "/contact", "/privacy", "/security", "/pricing",
+  "/developers", "/cli", "/thesis", "/terms-of-use", "/case-study",
+  "/creators-program", "/blog", "/compare", "/use-cases",
+]);
+const ALIASES: Record<string, string> = {
+  "/about-us": "/about",
+  "/privacy-policy": "/privacy",
+  "/terms": "/terms-of-use",
 };
 
-function notFoundMarkdown(path: string) {
-  return `# Page not found\n\nThe requested resource ${path} does not exist. Use one of these public indexes to recover:\n\n- Homepage: ${BASE_URL}/\n- Machine-readable site guide: ${BASE_URL}/llms.txt\n- Full content: ${BASE_URL}/llms-full.txt\n- XML sitemap: ${BASE_URL}/sitemap.xml\n- Docs: https://docs.getalchemystai.com\n- Developer portal: ${BASE_URL}/developers\n- API spec: ${BASE_URL}/openapi.json\n- About: ${BASE_URL}/about\n- Contact: ${BASE_URL}/contact\n- Privacy: ${BASE_URL}/privacy\n`;
+function markdownResponse(body: string, status = 200) {
+  return new NextResponse(body, {
+    status,
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+      Vary: "Accept, Accept-Encoding",
+      "Cache-Control": status === 200
+        ? "public, s-maxage=300, stale-while-revalidate=60"
+        : "no-store",
+      ...(status !== 200 ? { "X-Robots-Tag": "noindex" } : {}),
+    },
+  });
+}
+
+function notFoundMarkdown() {
+  return markdownResponse(
+    `# Page not found\n\nThis page has no Markdown equivalent. Browse the [site guide](${BASE_URL}/llms.txt) or [homepage](${BASE_URL}/).\n`,
+    404,
+  );
 }
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const rawPath = url.searchParams.get("path") || "/";
-  const path = rawPath.split("?")[0].split("#")[0] || "/";
-  const normalized = path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
+  const rawPath = (req.headers.get("x-markdown-page") || url.searchParams.get("path") || "/").split(/[?#]/)[0];
+  const path = rawPath.replace(/\/$/, "") || "/";
+  const normalized = ALIASES[path] ?? path;
 
-  const known = KNOWN[normalized] ?? KNOWN[path];
-  if (known) {
-    const body = baseMarkdown(known.title, known.body);
-    return new NextResponse(body, {
-      status: 200,
-      headers: {
-        "Content-Type": "text/markdown; charset=utf-8",
-        Vary: "Accept, Accept-Encoding",
-        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
-      },
-    });
+  if (
+    !PUBLIC_PAGES.has(normalized) &&
+    !/^\/(blog|compare|use-cases)\/[a-zA-Z0-9_-]+$/.test(normalized)
+  ) {
+    return notFoundMarkdown();
   }
 
-  const body = notFoundMarkdown(path);
-  return new NextResponse(body, {
-    status: 404,
-    headers: {
-      "Content-Type": "text/markdown; charset=utf-8",
-      Vary: "Accept, Accept-Encoding",
-      "Cache-Control": "no-store",
-      "X-Robots-Tag": "noindex",
-    },
-  });
+  try {
+    // Explicit HTML negotiation prevents recursion through the Markdown proxy.
+    // No cookies or authorization headers are forwarded to this public fetch.
+    const response = await fetch(new URL(normalized, url.origin), {
+      headers: { Accept: "text/html" },
+      redirect: "manual",
+      cache: "no-store",
+      signal: AbortSignal.timeout(20_000),
+    });
+    if (response.status === 404) return notFoundMarkdown();
+    if (!response.ok || !response.headers.get("content-type")?.includes("text/html")) {
+      throw new Error("Public page did not return HTML");
+    }
+
+    const html = await response.text();
+    const content = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]
+      ?? html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1]
+      ?? html;
+    const markdown = NodeHtmlMarkdown.translate(content, {
+      ignore: ["script", "style", "noscript", "nav", "footer", "svg", "button"],
+    }, {
+      div: ({ node, base }) => node.getAttribute("data-markdown-pricing") === "calculator"
+        ? { content: pricingMarkdown(), recurse: false, surroundingNewlines: 2 }
+        : { ...base },
+    });
+
+    return markdownResponse(`> Source: ${BASE_URL}${normalized}\n\n${markdown}\n`);
+  } catch {
+    return markdownResponse(
+      "# Content temporarily unavailable\n\nThe page could not be converted to Markdown. Please try again shortly.\n",
+      503,
+    );
+  }
 }

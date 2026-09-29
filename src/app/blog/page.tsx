@@ -96,6 +96,11 @@ export default async function BlogPage() {
         lead={`${posts.length} article${posts.length !== 1 ? "s" : ""} on semantic drift, context engineering, and building reliable agentic AI systems.`}
       />
 
+      <Section tone="paper" bordered>
+        <h2 className="mb-4 text-2xl font-bold text-foreground">Start with AI agent memory and business knowledge</h2>
+        <p className="mb-4 text-muted-foreground">Learn how to connect internal documents, diagnose generic answers, and choose between retrieval and fine-tuning.</p>
+        <Link href="/blog/how-to-add-persistent-memory-to-ai-agents" className="link-brand">How to add persistent memory to AI agents &rarr;</Link>
+      </Section>
       <Section tone="sand" bordered>
         {posts.length === 0 ? (
           <p className="py-20 text-center text-[#78716C]">No posts yet. Check back soon.</p>

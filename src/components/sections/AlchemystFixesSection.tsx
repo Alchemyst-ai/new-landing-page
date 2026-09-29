@@ -12,7 +12,7 @@ import { useReducedMotionSafe } from "./iso/kit";
 const STEPS = [
   {
     num: "01",
-    title: "Context Arithmetic: the core primitive",
+    title: "How does knowledge retrieval for AI agents work?",
     body: "Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst intersects to narrow scope, unions to widen recall, subtracts superseded or out-of-scope content, and ranks what remains, so only the right context survives into the window.",
     code: `// Set algebra over meaning, at query time
 const window = alchemyst.context.search({
@@ -24,7 +24,7 @@ const window = alchemyst.context.search({
   },
   {
     num: "02",
-    title: "Institutional knowledge graph + context traces",
+    title: "How does an enterprise knowledge graph support memory?",
     body: "What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory isn't three hard-coded layers. By applying context arithmetic over the graph you can derive the behaviors people expect from memory: recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.",
     code: `// One graph + arithmetic → derived "memories"
 
@@ -66,8 +66,8 @@ const whatItMeans = ctx.search({
   },
   {
     num: "03",
-    title: "Context Traces for full auditability",
-    body: "Every agent decision is traceable back to the exact context it had, at a query level. Not a summary, but the exact data points, scores, and rules that went into the model's context window. Debug in minutes, not days.",
+    title: "Why did my AI agent give a wrong answer?",
+    body: "When an AI agent gives wrong answers about internal data, inspect what it retrieved before changing the prompt. Alchemyst Context Traces expose the sources, scores, and rules used to assemble context. Developers can investigate retrieval failures, while enterprise teams can review which business information supported an answer.",
     code: `const trace = await alchemyst.trace.get(
   session_id, turn_id
 );
@@ -76,7 +76,7 @@ const whatItMeans = ctx.search({
   },
   {
     num: "04",
-    title: "Semantic consensus enforcement",
+    title: "How do agents use consistent business definitions?",
     body: 'Define canonical term definitions at the org level. When "revenue" means different things to different teams, Alchemyst resolves the ambiguity before it reaches the model.',
 //     code: `await alchemyst.ontology.define({
 //   term: "revenue",
@@ -233,7 +233,7 @@ export default function AlchemystFixesSection() {
             consistent.
           </>
         }
-        lead="One API call. Context arithmetic over your institutional knowledge graph. Every decision traceable back to its source, without managing a single vector database or graph store."
+        lead="Alchemyst AI is an AI context management platform for storing and retrieving business knowledge. Use context arithmetic to select relevant information from your institutional knowledge graph, then inspect the sources behind retrieval without operating your own vector database or graph store."
       />
 
       {/* ── Pinned step sequence ───────────────────────────── */}

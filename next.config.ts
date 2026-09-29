@@ -66,10 +66,6 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: "/blog/:slug.md",
-        destination: "/api/blog/:slug/.md",
-      },
       // Versioned API aliases: /api/v1/* → /api/* (v1 is current; unversioned is legacy alias)
       {
         source: "/api/v1/:path*",

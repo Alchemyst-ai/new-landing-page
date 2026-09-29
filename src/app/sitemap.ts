@@ -8,14 +8,11 @@ export const revalidate = 300;
 const COMPARE_ROUTES = [
   "/compare/alchemyst-ai-vs-mem0",
   "/compare/alchemyst-ai-vs-zep",
-  "/compare/alchemyst-ai-vs-palantir",
   "/compare/alchemyst-ai-vs-databricks",
   "/compare/alchemyst-ai-vs-snowflake-cortex",
-  "/compare/alchemyst-ai-vs-glean",
   "/compare/mem0-vs-zep-vs-letta",
   "/compare/memvid-vs-alchemyst-agent-memory",
   "/compare/supermemory-vs-alchemyst",
-  "/compare/letta-vs-alchemyst-llm-memory",
   "/compare/langchain-memory-vs-alchemyst",
   "/compare/cognee-vs-alchemyst-knowledge-graph",
   "/compare/openai-memory-vs-deterministic-context",
@@ -27,6 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await fetchAllBlogPosts();
 
   const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/blog/how-to-add-persistent-memory-to-ai-agents`,
+      lastModified: new Date("2026-09-29"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     {
       url: BASE_URL,
       lastModified: now,
@@ -132,7 +135,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const blogRoutes: MetadataRoute.Sitemap = posts
-    .filter((post) => post.slug)
+    .filter((post) => post.slug && post.slug !== "how-to-add-persistent-memory-to-ai-agents")
     .map((post) => ({
       url: `${BASE_URL}/blog/${post.slug}`,
       lastModified: new Date(post.updatedAt || post.publishedAt || now),

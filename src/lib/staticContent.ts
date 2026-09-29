@@ -9,10 +9,9 @@
 
 import { JOBS, USE_CASES } from "@/lib/useCases";
 
-export const SITE_TITLE = "Alchemyst AI - The backbone your team's AI agents work on";
+export const SITE_TITLE = "AI Context Layer for Business Knowledge | Alchemyst AI";
 export const SITE_DESCRIPTION =
-  "Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable, " +
-  "and semantically consistent across your organisation through a single API.";
+  "Give AI agents company knowledge and persistent memory with Alchemyst AI. A shared, traceable context layer for developers and enterprises.";
 export const BASE_URL = "https://getalchemystai.com";
 
 // ── Static sections for llms.txt index ──────────────────────────────────────
@@ -33,10 +32,10 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     title: "Landing Page",
     items: [
       {
-        title: "Alchemyst AI - The backbone your team's AI agents work on",
+        title: SITE_TITLE,
         url: BASE_URL,
         description:
-          "The context backbone that keeps every agent's knowledge current, traceable, and semantically consistent across an organisation through a single API. " +
+          "An AI context layer for developers and enterprises connecting agents to company knowledge and persistent memory. " +
           "The page covers model sovereignty, context arithmetic, semantic consensus, context traces, measured results, and API access.",
       },
     ],
@@ -170,10 +169,15 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
     title: "Developer Resources",
     items: [
       {
-        title: "Alchemyst AI Developer Portal",
+        title: "How to Add Persistent Memory to AI Agents",
+        url: `${BASE_URL}/blog/how-to-add-persistent-memory-to-ai-agents`,
+        description: "AI agent memory, generic answers, enterprise grounding, RAG vs fine-tuning, and vector databases vs knowledge bases.",
+      },
+      {
+        title: "Add Business Knowledge to Your AI Agent",
         url: `${BASE_URL}/developers`,
         description:
-          "Alchemyst AI developer portal with API keys, 5-minute quickstart, SDKs, sandbox environment, OpenAPI spec, and MCP server for building context-aware agents.",
+          "Connect company documents through context ingestion, scoped retrieval, and grounded generation. SDK installation, semantic search, and managed RAG responsibilities.",
       },
       {
         title: "Alchemyst AI OpenAPI Spec",
@@ -238,12 +242,6 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
           "Compare Zep's memory store with Alchemyst's context layer. Zep uses a graph database (Memgraph) while Alchemyst uses deterministic set algebra.",
       },
       {
-        title: "Alchemyst AI vs Palantir: Context Layer vs Ontology Management",
-        url: `${BASE_URL}/compare/alchemyst-ai-vs-palantir`,
-        description:
-          "Compare Alchemyst AI with Palantir Foundry and AIP. Both provide enterprise-grade features, but Alchemyst is a context layer while Palantir is a data platform.",
-      },
-      {
         title: "Alchemyst AI vs Databricks: Unity Catalog vs Context Layer",
         url: `${BASE_URL}/compare/alchemyst-ai-vs-databricks`,
         description:
@@ -254,12 +252,6 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
         url: `${BASE_URL}/compare/alchemyst-ai-vs-snowflake-cortex`,
         description:
           "Compare Snowflake Cortex with Alchemyst AI. Cortex provides warehouse-bounded semantic views while Alchemyst spans systems.",
-      },
-      {
-        title: "Alchemyst AI vs Glean: Enterprise Search vs Context Infrastructure",
-        url: `${BASE_URL}/compare/alchemyst-ai-vs-glean`,
-        description:
-          "Compare Glean's enterprise search with Alchemyst AI's context layer. Glean is a search box for humans; Alchemyst is infrastructure for agents.",
       },
     ],
   },
@@ -277,12 +269,6 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
         url: `${BASE_URL}/compare/supermemory-vs-alchemyst`,
         description:
           "SuperMemory captures browsing history via browser extension while Alchemyst provides structured, auditable institutional context.",
-      },
-      {
-        title: "Letta vs Alchemyst: Agent Memory Architectures",
-        url: `${BASE_URL}/compare/letta-vs-alchemyst-llm-memory`,
-        description:
-          "Letta provides agents with memory and reasoning capabilities while Alchemyst focuses on institutional context infrastructure.",
       },
       {
         title: "LangChain Memory vs Alchemyst: Memory Modules vs Context Layer",
@@ -342,95 +328,38 @@ export const FULL_STATIC_CONTENT = `# ${SITE_TITLE}
 
 ---
 
-## Hero
+## The AI context layer for your business
 
-**Title:** The backbone your team's AI agents work on.
+Give AI agents access to your company knowledge and persistent memory through a single API. Alchemyst AI connects the context developers need with the shared, traceable knowledge enterprises rely on, across models and workflows.
 
-**Subtitle:** Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable and semantically consistent across your entire organisation through a single API.
+## What is an AI context layer?
 
-**Standalone definition:** Alchemyst AI is the context backbone that keeps every agent's knowledge current, traceable and semantically consistent across an organisation through a single API.
+An AI context layer stores and retrieves the information an AI application needs for a task: company documents, business definitions, and saved interactions. Alchemyst AI provides this knowledge layer for AI agents through an API, so teams can reuse business context across models and inspect the sources used in retrieval.
 
-**Hero proof points:** < 300ms p95 latency · 100% auditable · 1 API, zero infra
+## Why context?
 
-**Results section:** < 300ms p95 context retrieval latency · 99.7% reduction in hallucinations on domain-specific tasks · 20× faster agent debugging with context traces vs raw logs · 1 API replaces 4 infrastructure pieces (vector database, graph database, cache, logger).
+An AI context layer retrieves relevant business knowledge before an agent answers or acts. It connects your internal documents and saved interactions to the model, so your application can ground responses in company data rather than rely on general training knowledge alone.
 
----
+Keep AI agent memory outside the model so saved context can be retrieved across sessions and model changes. Alchemyst separates your company knowledge from the LLM that uses it, giving developers a reusable integration and enterprises continuity across teams and workflows.
 
-## Why Context
+An agent can give generic answers when the relevant company data is missing from its context. Connect policies, product knowledge, and operational records to a shared knowledge layer for AI agents, then retrieve the evidence each sales, support, or operations workflow needs.
 
-**The model is replaceable. Your institutional context isn't.**
+## How does knowledge retrieval for AI agents work?
 
-Models are commoditizing fast. Durable advantage comes from a context layer that operationalizes your business intelligence - and stays yours no matter which model you run it on. There are two reasons this matters: a technical one and a business one.
+Alchemyst AI is an AI context management platform for storing and retrieving business knowledge. Use context arithmetic to select relevant information from your institutional knowledge graph, then inspect the sources behind retrieval without operating your own vector database or graph store.
 
-### The Technical Case - model-agnostic continuity and context sovereignty
+Intersection narrows scope, union combines sources, subtraction excludes content, and ranking selects context. Memory behaviors are derived from the stored context. Canonical business definitions help teams use consistent terms.
 
-You will switch models - GPT today, Gemini or Claude tomorrow, the next frontier model after that, often several at once routed by cost or capability. Normally every switch resets the agent's memory and behavior. Alchemyst decouples *what your organization knows* from *whichever model is reasoning over it*, so your institutional context stays continuous across every upgrade, swap, or multi-model setup. Models must stay switchable, but business continuity and context sovereignty are preserved - the context is yours, and it plugs into any AI model or agent on demand, according to the business requirement at hand.
+## Why did my AI agent give a wrong answer?
 
-*Model-agnostic · context sovereignty · zero migration cost · multi-model routing · sub-300ms retrieval.*
+When an AI agent gives wrong answers about internal data, inspect what it retrieved before changing the prompt. Alchemyst Context Traces expose the sources, scores, and rules used to assemble context. Developers can investigate retrieval failures, while enterprise teams can review which business information supported an answer.
 
-### The Business Case - operationalized intelligence at scale
+## Can grounding stop hallucinations?
 
-This isn't about a smarter chatbot. It's about operationalizing your business intelligence - turning what your organization knows into agents that can actually run day-to-day operations and knowledge work across sales, support, ops, and research, at scale. The context layer is what makes that dependable: every agent acts on the same current, traceable, consensus version of the business, so you can trust it to operate, not just assist - without embedding a forward-deployed team in every workflow.
+Grounding gives the model relevant evidence, which can reduce unsupported answers about your business. It does not guarantee correctness. Keep documents current, check retrieval quality, require source references, and make the agent say when evidence is missing. Review high-impact answers and test both retrieval and generation before expanding a workflow.
 
-*Run ops, not just answers · one source of truth · every decision auditable · scales without FDE teams.*
-
-> "Models will keep changing. Your institutional context is the asset that compounds - so it should belong to you, not to whichever model you happen to run today."
-
-The full problem framing behind this - semantic drift, semantic consensus, and context rot - lives on the Context Thesis page: https://getalchemystai.com/thesis
-
----
-
-## What Alchemyst Does
-
-A context layer that keeps your AI **current, traceable,** and semantically consistent. One API call. Context arithmetic over your institutional knowledge graph. Every decision traceable back to its source.
-
-### 01 - Context Arithmetic - the core primitive
-
-Context arithmetic is the foundational primitive: dynamic set algebra over meaning, computed at query time. Instead of naïve top-K similarity, Alchemyst **intersects** to narrow scope, **unions** to widen recall, **subtracts** superseded or out-of-scope content, and **ranks** what remains - so only the right context survives into the window.
-
-\`\`\`js
-// Set algebra over meaning, at query time
-const window = alchemyst.context.search({
-  query: userMessage,
-  groupName: ["sales", "emea"],   // ∩ narrow scope
-  metadata: { version: "v2" },     // ∩ filter
-});
-// − superseded / deduped  → rank → top-K
-\`\`\`
-
-### 02 - Institutional knowledge graph + derived memory
-
-What you store is an institutional knowledge graph of your organization's context, fully traceable. Memory is **not** three hard-coded layers (episodic / semantic / procedural). By applying context arithmetic over the graph you can **derive** the behaviors expected from memory - recall what happened, resolve what it means, and inform how to act. The memory types are outcomes of the primitive, not separate modules.
-
-\`\`\`js
-// One graph + arithmetic → derived "memories"
-const whatHappened = ctx.search({ groupName: [session_id] });
-const whatItMeans  = ctx.search({ query: term }).subtract(deprecated);
-// "how to act" falls out of ranked, in-scope context
-\`\`\`
-
-### 03 - Context Traces for full auditability
-
-Every agent decision is traceable back to the exact context it had. Debug in minutes, not days.
-
-\`\`\`js
-const trace = await alchemyst.trace.get(session_id, turn_id);
-// Returns: sources[], scores[], rules_applied[]
-\`\`\`
-
-### 04 - Semantic consensus enforcement
-
-Define canonical term definitions at the org level. Alchemyst resolves ambiguity before it reaches the model.
-
-
-### Results
-
-| Metric | Value |
-|--------|-------|
-| Context retrieval latency (p95) | < 300ms |
-| Reduction in hallucinations | 99.7% |
-| Faster agent debugging | 20× |
-| Infra pieces replaced | 4 → 1 API |
+[Add business knowledge to your AI agent](https://getalchemystai.com/developers)
+[AI agent memory and grounded answers](https://getalchemystai.com/blog/how-to-add-persistent-memory-to-ai-agents)
 
 ---
 

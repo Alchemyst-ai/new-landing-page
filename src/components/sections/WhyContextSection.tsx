@@ -15,7 +15,7 @@ const PILLARS = [
     accent: "#A16207",
     kicker: "The Technical Case",
     title: "Switch models freely. Keep your context sovereign.",
-    body: "Every model swap normally resets your agent's memory. Alchemyst decouples what your organization knows from whichever model reasons over it, so institutional context stays continuous across every upgrade or multi-model setup.",
+    body: "Keep AI agent memory outside the model so saved context can be retrieved across sessions and model changes. Alchemyst separates your company knowledge from the LLM that uses it, giving developers a reusable integration and enterprises continuity across teams and workflows.",
     chips: [
       "Model-agnostic",
       "Context sovereignty",
@@ -27,8 +27,8 @@ const PILLARS = [
   {
     accent: "#B45309",
     kicker: "The Business Case",
-    title: "Operationalize intelligence that runs your day-to-day.",
-    body: "This isn't a smarter chatbot. It's a context layer that turns what your organization knows into agents that run sales, support, ops, and research at scale: every decision traceable, every agent on the same source of truth.",
+    title: "Give every agent the company knowledge it needs.",
+    body: "An agent can give generic answers when the relevant company data is missing from its context. Connect policies, product knowledge, and operational records to a shared knowledge layer for AI agents, then retrieve the evidence each sales, support, or operations workflow needs.",
     chips: [
       "Run ops, not just answers",
       "One source of truth",
@@ -55,7 +55,7 @@ export default function WhyContextSection() {
             Your <span className="text-[#B45309]">institutional context</span>{" "}isn&apos;t.
           </>
         }
-        lead="Models are commoditizing fast. Durable advantage comes from a context layer that operationalizes your business intelligence and stays yours no matter which model you run it on."
+        lead="An AI context layer retrieves relevant business knowledge before an agent answers or acts. It connects your internal documents and saved interactions to the model, so your application can ground responses in company data rather than rely on general training knowledge alone."
       />
 
       {/* ── Bento grid ─────────────────────────────────────── */}

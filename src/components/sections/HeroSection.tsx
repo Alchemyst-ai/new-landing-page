@@ -94,18 +94,17 @@ export default function HeroSection() {
               stagger={0.05}
               className="text-[clamp(2.25rem,4.3vw,3.5rem)] font-medium tracking-[-0.03em] text-[#4A3B33] leading-[1.12] mb-7 max-w-[34rem] text-balance"
             >
-              The backbone your team&apos;s {" "}
-              <span className="text-[#B45309] italic font-normal">AI&nbsp;agents</span>{" "}
-              work on.
+              The AI context layer for{ " " }
+              <span className="text-[#B45309] italic font-normal">your business.</span>
             </RevealText>
 
             <Stagger onMount delay={0.45} stagger={0.1}>
               <FadeUp>
                 <p className="text-[1.0625rem] font-light text-[#57534E] leading-[1.75] mb-10 max-w-[29rem]">
-                  Alchemyst AI is the context backbone that keeps every
-                  agent&apos;s knowledge current, traceable and semantically
-                  consistent across your entire organisation through a
-                  single API.
+                  Give AI agents access to your company knowledge and persistent
+                  memory through a single API. Alchemyst AI connects the context
+                  developers need with the shared, traceable knowledge enterprises
+                  rely on, across models and workflows.
                 </p>
               </FadeUp>
 

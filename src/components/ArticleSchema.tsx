@@ -21,7 +21,7 @@ export default function ArticleSchema({
   headline,
   description,
   url,
-  datePublished = "2026-06-01",
+  datePublished,
   dateModified,
   authorName = "Alchemyst AI",
 }: ArticleSchemaProps) {
@@ -33,7 +33,7 @@ export default function ArticleSchema({
     headline,
     description,
     url: pageUrl,
-    datePublished,
+    ...(datePublished ? { datePublished } : {}),
     ...(dateModified ? { dateModified } : {}),
     author: {
       "@type": "Organization",

@@ -1,4 +1,6 @@
+import CustomCommandK from "@/components/custom-cmd-k";
 import StructuredData from "@/components/StructuredData";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/staticContent";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import type { Metadata } from "next";
@@ -22,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const BASE_URL = "https://getalchemystai.com";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
-const DEFAULT_TITLE = "Alchemyst AI | The company brain your AI agents can trust"
+const DEFAULT_TITLE = SITE_TITLE;
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Alchemyst AI",
   },
   description:
-    "Enable AI agents to run your day-to-day operations at enterprise scale. The institutional context backbone that keeps every agent's knowledge current, traceable, and consistent. One API, zero infrastructure.",
+    SITE_DESCRIPTION,
   keywords: [
     "AI context layer",
     "context arithmetic",
@@ -63,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: DEFAULT_TITLE,
     description:
-      "Enable AI agents to run your day-to-day operations at enterprise scale with the institutional context backbone.",
+      SITE_DESCRIPTION,
     url: BASE_URL,
     siteName: "Alchemyst AI",
     type: "website",
@@ -82,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description:
-      "Enable AI agents to run your day-to-day operations at enterprise scale: the institutional context backbone for your enterprise.",
+      SITE_DESCRIPTION,
     site: "@getalchemystai",
     creator: "@getalchemystai",
     images: [OG_IMAGE],
@@ -110,6 +112,7 @@ export default function RootLayout({
         <SmoothScroll />
         <ScrollProgress />
         {children}
+        <CustomCommandK />
       </body>
     </html>
   );

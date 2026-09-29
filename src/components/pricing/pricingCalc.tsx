@@ -12,131 +12,15 @@ import {
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 
-type Tier = "b2c" | "tier1" | "tier2" | "tier3";
+import {
+  ACTION_COSTS_IN_TOKENS,
+  ACTION_COST_LABELS,
+  DISPLAY_ACTIONS,
+  TIER_LABELS,
+  type Tier,
+} from "@/lib/pricing";
 
-export const ACTION_COSTS_IN_TOKENS: Record<string, Record<Tier, number>> = {
-  "genai.chat.generate": {
-    tier1: 15 / 1_000_000,
-    tier2: 13 / 1_000_000,
-    tier3: 10 / 1_000_000,
-    b2c: 20 / 1_000_000,
-  },
-  "genai.proxy.openai.chat.completions": {
-    tier1: 15 / 1_000_000,
-    tier2: 13 / 1_000_000,
-    tier3: 10 / 1_000_000,
-    b2c: 20 / 1_000_000,
-  },
-  "genai.chat.web_search": {
-    tier1: 40 / 1_000_000,
-    tier2: 37 / 1_000_000,
-    tier3: 30 / 1_000_000,
-    b2c: 45 / 1_000_000,
-  },
-  "context.upload": {
-    tier1: (1 * 10) / (2 * 1024 * 1024),
-    tier2: (8 * 5) / (20 * 1024 * 1024),
-    tier3: (3 * 3) / (20 * 1024 * 1024),
-    b2c: 2 / (2 * 1024 * 1024),
-  },
-  "context.search": {
-    tier1: (1 * 10) / (4 * 1024 * 1024),
-    tier2: (8 * 5) / (40 * 1024 * 1024),
-    tier3: (3 * 3) / (40 * 1024 * 1024),
-    b2c: 2 / (4 * 1024 * 1024),
-  },
-  "genai.email.generate": {
-    tier1: 3,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.social.generate": {
-    tier1: 3,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.workflow.step.generate": {
-    tier1: 7,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.leads.get": {
-    tier1: 3,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.leads.augment.by_url": {
-    tier1: 2,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.leads.augment.by_web_search": {
-    tier1: 4,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "genai.email.send": {
-    tier1: 1,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-  "campaigns.create": {
-    tier1: 1,
-    tier2: 0,
-    tier3: 0,
-    b2c: 0,
-  },
-};
-
-export const ACTION_COST_LABELS = {
-  "context.upload": {
-    name: "Context Upload",
-    description: "Upload organization context",
-    billingBasis: "MB",
-  },
-  "context.search": {
-    name: "Context Search",
-    description: "Search through organizational contexts",
-    billingBasis: "MB",
-  },
-  "genai.chat.generate": {
-    name: "AI Chat Response Generations",
-    description: "Cost of using our Chat APIs",
-    billingBasis: "1M tokens",
-  },
-  "genai.proxy.openai.chat.completions": {
-    name: "LLM Proxy Response Generations",
-    description: "Cost of using our LLM Proxy APIs",
-    billingBasis: "1M tokens",
-  },
-  "genai.chat.web_search": {
-    name: "AI Web Search Usage",
-    description: "Cost of using web search",
-    billingBasis: "1K results",
-  },
-};
-
-const TIER_LABELS: Record<Tier, string> = {
-  b2c: "Free (you start here, free upto $9 usage)",
-  tier1: "Starter (unlocks on $19 monthly spend)",
-  tier2: "Accelerate (unlocks on $199 monthly spend)",
-  tier3: "Supercharge (unlocks on $799 monthly spend)",
-};
-
-const DISPLAY_ACTIONS = [
-  "genai.chat.generate",
-  "genai.proxy.openai.chat.completions",
-  "genai.chat.web_search",
-  "context.upload",
-  "context.search",
-] as const;
+export { ACTION_COSTS_IN_TOKENS, ACTION_COST_LABELS } from "@/lib/pricing";
 
 export default function PricingCalculator() {
   const [tier, setTier] = useState<Tier>("b2c");
@@ -163,6 +47,7 @@ export default function PricingCalculator() {
 
   return (
     <motion.div
+      data-markdown-pricing="calculator"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
