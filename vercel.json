@@ -1,5 +1,27 @@
 {
   "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "rewrites": [
+        {
+      "source": "/_mintlify/:path*",
+      "destination": "https://[subdomain].mintlify.site/_mintlify/:path*"
+    },
+    {
+      "source": "/api/request",
+      "destination": "https://[subdomain].mintlify.site/_mintlify/api/request"
+    },
+    {
+      "source": "/docs",
+      "destination": "https://[subdomain].mintlify.site/docs"
+    },
+    {
+      "source": "/docs/:match*",
+      "destination": "https://[subdomain].mintlify.site/docs/:match*"
+    },
+    {
+      "source": "/mintlify-assets/:path+",
+      "destination": "https://[subdomain].mintlify.site/mintlify-assets/:path+"
+    }
+  ]
 }
