@@ -1,101 +1,137 @@
 /**
  * /llms-full.txt - complete markdown dump for LLM ingestion
  *
- * Two sections:
- *   1. STATIC  - full landing page content in markdown (from staticContent.ts)
- *   2. DYNAMIC - full blog post content fetched live from Strapi CMS
- *
- * Blog post HTML is sourced from the `test` field in each Strapi post,
- * which contains the full HTML body. HTML tags are stripped to produce
- * clean plain text for LLM consumption.
+ * Depth-first crawl of every content route (parent page, then its children,
+ * top-level routes alphabetical), each converted with the same HTML to
+ * Markdown mechanism that serves per-page `.md` equivalents. The blog
+ * section is appended at the end. Per-page failures degrade to a one-line
+ * note instead of failing the whole file.
  *
  * Revalidates every 5 minutes via ISR.
  */
 
-import { BASE_URL, FULL_STATIC_CONTENT, SITE_TITLE } from "@/lib/staticContent";
+import { BASE_URL, SITE_TITLE } from "@/lib/staticContent";
+import { fetchPageMarkdown } from "@/lib/pageMarkdown";
 import {
-    blogPostDescription,
-    blogPostFullText,
-    blogPostUrl,
-    fetchAllBlogPosts,
-    formatDate,
+  BLOG_INDEX,
+  BLOG_STATIC_SLUG,
+  DFS_ROUTES,
+} from "@/lib/siteRoutes";
+import {
+  blogPostUrl,
+  fetchAllBlogPosts,
+  formatDate,
+  type StrapiBlogPost,
 } from "@/lib/strapi";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300; // 5 minutes
 
-export async function GET() {
-  // ── 1. Fetch dynamic Strapi blog posts ──────────────────────────────────
-  const posts = await fetchAllBlogPosts();
+/** Bounded concurrency so the crawl cannot fan out without limit. */
+const CONCURRENCY = 6;
 
-  // ── 2. Build the full markdown document ─────────────────────────────────
+async function mapLimit<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let next = 0;
+  const workers = Array.from(
+    { length: Math.min(limit, items.length) },
+    async () => {
+      while (next < items.length) {
+        const i = next++;
+        results[i] = await fn(items[i]);
+      }
+    },
+  );
+  await Promise.all(workers);
+  return results;
+}
+
+async function convertPage(
+  origin: string,
+  path: string,
+): Promise<{ path: string; body: string | null }> {
+  const result = await fetchPageMarkdown(origin, path);
+  if (!result.ok) return { path, body: null };
+  const body = result.markdown.trim();
+  return { path, body: body ? body : null };
+}
+
+export async function GET(req: Request) {
+  const origin = new URL(req.url).origin;
   const lines: string[] = [];
 
-  // Header
   lines.push(`# ${SITE_TITLE} - Full Content Dump`);
   lines.push(`> Generated at: ${new Date().toISOString()}`);
   lines.push(`> Source: ${BASE_URL}`);
   lines.push("");
+
+  // ── Depth-first walk: parent page, then its children ──────────────────────
+  const pages = await mapLimit(DFS_ROUTES, CONCURRENCY, (path) =>
+    convertPage(origin, path),
+  );
+
+  for (const { path, body } of pages) {
+    lines.push("---");
+    lines.push("");
+    lines.push(`## ${BASE_URL}${path}`);
+    lines.push("");
+    lines.push(body ?? `> Content temporarily unavailable for ${path}.`);
+    lines.push("");
+  }
+
+  // ── Blog section, appended at the end ─────────────────────────────────────
+  // Same converter mechanism as /blog/<slug>.md; Strapi supplies the slug
+  // list plus per-post metadata headers.
   lines.push("---");
   lines.push("");
-
-  // ── Section 1: Static landing page content ──────────────────────────────
-  lines.push("## SECTION 1 - Static Landing Page Content");
-  lines.push("");
-  lines.push(FULL_STATIC_CONTENT.trim());
-  lines.push("");
-  lines.push("---");
+  lines.push("# Blog - Alchemyst AI");
   lines.push("");
 
-  // ── Section 2: Dynamic Strapi blog posts ────────────────────────────────
-  lines.push("# SECTION 2 - The Alchemyst Blog");
-  lines.push("");
+  const posts = await fetchAllBlogPosts();
+  const bySlug = new Map<string, StrapiBlogPost>(
+    posts.map((post) => [post.slug, post]),
+  );
+  const slugs = posts.map((post) => post.slug).filter(Boolean);
+  if (!slugs.includes(BLOG_STATIC_SLUG)) slugs.push(BLOG_STATIC_SLUG);
 
-  if (posts.length === 0) {
-    lines.push(
-      "> No blog posts available at this time. "
-        // + "Check that STRAPI_API_URL and STRAPI_API_TOKEN are configured correctly."
-    );
-  } else {
-    // lines.push(`${posts.length} posts retrieved from Strapi CMS.`);
-    // lines.push("");
+  const blogPaths = [BLOG_INDEX, ...slugs.map((slug) => `/blog/${slug}`)];
+  const blogPages = await mapLimit(blogPaths, CONCURRENCY, (path) =>
+    convertPage(origin, path),
+  );
 
-    for (const post of posts) {
+  for (const { path, body } of blogPages) {
+    const slug = path.replace(/^\/blog\/?/, "") || null;
+    const post = slug ? bySlug.get(slug) : undefined;
+    lines.push("---");
+    lines.push("");
+    if (post) {
       lines.push(`# ${post.title}`);
       lines.push("");
       lines.push(`- **URL:** ${blogPostUrl(post)}`);
       lines.push(`- **Slug:** ${post.slug ?? "-"}`);
-      lines.push(`- **Published:** ${post.publishedAt ? formatDate(post.publishedAt) : "-"}`);
-      lines.push(`- **Last updated:** ${post.updatedAt ? formatDate(post.updatedAt) : "-"}`);
+      lines.push(
+        `- **Published:** ${post.publishedAt ? formatDate(post.publishedAt) : "-"}`,
+      );
+      lines.push(
+        `- **Last updated:** ${post.updatedAt ? formatDate(post.updatedAt) : "-"}`,
+      );
       if (post.author) lines.push(`- **Author:** ${post.author.name}`);
       if (post.category) lines.push(`- **Category:** ${post.category.name}`);
       lines.push("");
-
-      // Summary
-      const desc = blogPostDescription(post);
-      if (desc) {
-        lines.push(`**Summary:** ${desc}`);
-        lines.push("");
-      }
-
-      // Full body: sourced from the `test` field (full HTML), stripped to plain text
-      const fullText = blogPostFullText(post);
-      if (fullText) {
-        lines.push("**Full Content:**");
-        lines.push("");
-        lines.push(fullText);
-        lines.push("");
-      }
-
-      lines.push("===");
+    } else {
+      lines.push(`## ${BASE_URL}${path}`);
       lines.push("");
     }
+    lines.push(body ?? `> Content temporarily unavailable for ${path}.`);
+    lines.push("");
   }
 
-  const body = lines.join("\n");
-
-  return new NextResponse(body, {
+  return new NextResponse(lines.join("\n"), {
     status: 200,
     headers: {
       "Content-Type": "text/plain; charset=utf-8",

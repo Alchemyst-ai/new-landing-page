@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { NodeHtmlMarkdown } from "node-html-markdown";
-import { pricingMarkdown } from "@/lib/pricingMarkdown";
 import { BASE_URL } from "@/lib/staticContent";
+import { fetchPageMarkdown } from "@/lib/pageMarkdown";
 
 export const dynamic = "force-dynamic";
 
@@ -47,42 +46,19 @@ export async function GET(req: Request) {
 
   if (
     !PUBLIC_PAGES.has(normalized) &&
-    !/^\/(blog|compare|use-cases|case-study)\/[a-zA-Z0-9_-]+$/.test(normalized)
+    !/^\/(blog|compare|use-cases)\/[a-zA-Z0-9_-]+$/.test(normalized)
   ) {
     return notFoundMarkdown();
   }
 
-  try {
-    // Explicit HTML negotiation prevents recursion through the Markdown proxy.
-    // No cookies or authorization headers are forwarded to this public fetch.
-    const response = await fetch(new URL(normalized, url.origin), {
-      headers: { Accept: "text/html" },
-      redirect: "manual",
-      cache: "no-store",
-      signal: AbortSignal.timeout(20_000),
-    });
-    if (response.status === 404) return notFoundMarkdown();
-    if (!response.ok || !response.headers.get("content-type")?.includes("text/html")) {
-      throw new Error("Public page did not return HTML");
-    }
-
-    const html = await response.text();
-    const content = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]
-      ?? html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1]
-      ?? html;
-    const markdown = NodeHtmlMarkdown.translate(content, {
-      ignore: ["script", "style", "noscript", "nav", "footer", "svg", "button"],
-    }, {
-      div: ({ node, base }) => node.getAttribute("data-markdown-pricing") === "calculator"
-        ? { content: pricingMarkdown(), recurse: false, surroundingNewlines: 2 }
-        : { ...base },
-    });
-
-    return markdownResponse(`> Source: ${BASE_URL}${normalized}\n\n${markdown}\n`);
-  } catch {
+  const result = await fetchPageMarkdown(url.origin, normalized);
+  if (!result.ok) {
+    if (result.reason === "not-found") return notFoundMarkdown();
     return markdownResponse(
       "# Content temporarily unavailable\n\nThe page could not be converted to Markdown. Please try again shortly.\n",
       503,
     );
   }
+
+  return markdownResponse(`> Source: ${BASE_URL}${normalized}\n\n${result.markdown}\n`);
 }
