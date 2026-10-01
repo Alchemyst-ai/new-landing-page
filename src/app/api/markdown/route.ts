@@ -47,7 +47,7 @@ export async function GET(req: Request) {
 
   if (
     !PUBLIC_PAGES.has(normalized) &&
-    !/^\/(blog|compare|use-cases)\/[a-zA-Z0-9_-]+$/.test(normalized)
+    !/^\/(blog|compare|use-cases|case-study)\/[a-zA-Z0-9_-]+$/.test(normalized)
   ) {
     return notFoundMarkdown();
   }

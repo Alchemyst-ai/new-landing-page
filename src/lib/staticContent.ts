@@ -7,6 +7,7 @@
  * Keep this in sync with the actual page sections.
  */
 
+import { CASE_STUDIES, CASE_STUDIES_PATH, caseStudyPath } from "@/lib/caseStudies";
 import { JOBS, USE_CASES } from "@/lib/useCases";
 
 export const SITE_TITLE = "AI Context Layer for Business Knowledge | Alchemyst AI";
@@ -162,6 +163,24 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
         title: `${uc.name}: ${uc.tagline}`,
         url: `${BASE_URL}/use-cases/${uc.slug}`,
         description: uc.description,
+      })),
+    ],
+  },
+  {
+    title: "Case Studies",
+    items: [
+      {
+        title: "Alchemyst AI Case Studies",
+        url: `${BASE_URL}${CASE_STUDIES_PATH}`,
+        description:
+          "How the context and memory layer runs underneath voice and text agents in production, by industry: " +
+          CASE_STUDIES.map((cs) => cs.industry).join("; ") +
+          ".",
+      },
+      ...CASE_STUDIES.map((cs) => ({
+        title: cs.h1,
+        url: `${BASE_URL}${caseStudyPath(cs.slug)}`,
+        description: cs.metaDescription,
       })),
     ],
   },

@@ -73,7 +73,7 @@ export default function Home() {
             agents. Explore https://getalchemystai.com/use-cases. Current plans,
             free-tier allowances, and enterprise options are listed at
             https://getalchemystai.com/pricing. Alchemyst AI is built by
-            XAlchemystai Technologies Pvt. Ltd., Kolkata, India. Contact
+            XAlchemystai Technologies Pvt. Ltd., India. Contact
             founders@getalchemystai.com. Company information, security controls,
             and privacy details are available at https://getalchemystai.com/about,
             https://getalchemystai.com/security, and

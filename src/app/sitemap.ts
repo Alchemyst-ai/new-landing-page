@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/staticContent";
+import { CASE_STUDIES, CASE_STUDIES_PATH, caseStudyPath } from "@/lib/caseStudies";
 import { fetchAllBlogPosts } from "@/lib/strapi";
 import { USE_CASES, useCasePath } from "@/lib/useCases";
 
@@ -109,6 +110,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/careers`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/compare`,
       lastModified: now,
       changeFrequency: "weekly",
@@ -140,6 +147,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...USE_CASES.map((uc) => ({
       url: `${BASE_URL}${useCasePath(uc.slug)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    {
+      url: `${BASE_URL}${CASE_STUDIES_PATH}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...CASE_STUDIES.map((cs) => ({
+      url: `${BASE_URL}${caseStudyPath(cs.slug)}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,

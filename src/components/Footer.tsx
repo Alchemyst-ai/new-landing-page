@@ -58,7 +58,7 @@ const footerLinks = {
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "https://getalchemystai.com/careers" },
+    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "mailto:founders@getalchemystai.com" },
   ],
   Legal: [
