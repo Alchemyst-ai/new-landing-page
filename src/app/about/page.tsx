@@ -36,7 +36,7 @@ export default function AboutPage() {
         <p>Enterprise teams can review <Link href="/security">security controls and current compliance status</Link>, <Link href="/pricing">pricing</Link>, and <Link href="/contact">integration requirements with our team</Link>. Read <Link href="/thesis">our context thesis</Link> for the reasoning behind the product.</p>
 
         <h2>Who is behind Alchemyst AI?</h2>
-        <p>Alchemyst AI is built by XAlchemystai Technologies Pvt. Ltd. Our registered address is 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata, West Bengal, India 700048.</p>
+        <p>Alchemyst AI is built by XAlchemystai Technologies Pvt. Ltd., led by CEO and co-founder <a href="https://www.linkedin.com/in/uttarannayak/" target="_blank" rel="noopener noreferrer">Uttaran Nayak</a>, CTO and co-founder <a href="https://www.linkedin.com/in/anuran-roy/" target="_blank" rel="noopener noreferrer">Anuran Roy</a>, and COO <a href="https://www.linkedin.com/in/prithwijitdey/" target="_blank" rel="noopener noreferrer">Prithwijit Dey</a>.</p>
         <p>Contact <a href="mailto:founders@getalchemystai.com">founders@getalchemystai.com</a> for product and enterprise questions. Our <Link href="/privacy">Privacy Notice</Link> explains how we handle personal data.</p>
       </Prose>
     </PageShell>

@@ -18,14 +18,6 @@ export default function StructuredData() {
           height: 630,
         },
         email: "founders@getalchemystai.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur",
-          addressLocality: "Kolkata",
-          addressRegion: "West Bengal",
-          postalCode: "700048",
-          addressCountry: "IN",
-        },
         contactPoint: [
           {
             "@type": "ContactPoint",

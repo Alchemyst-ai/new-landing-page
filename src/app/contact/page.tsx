@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Contact Alchemyst AI | Support, Sales and Privacy Requests",
   description:
-    "Contact Alchemyst AI: email founders@getalchemystai.com for support, sales, security, and privacy requests. Registered address in Kolkata, India. We reply within 2 business days.",
+    "Contact Alchemyst AI: email founders@getalchemystai.com for support, sales, security, and privacy requests. We reply within 2 business days.",
   alternates: { canonical: "https://getalchemystai.com/contact" },
 };
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
             <SpecCard className="flex w-full flex-col p-8">
               <h2 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">Email</h2>
               <p className="mb-7 text-[0.9375rem] leading-[1.75] text-[#57534E]">
-                General, support, and sales: founders@getalchemystai.com. Privacy requests (access, update, delete): the same address with subject &ldquo;Privacy Request&rdquo;. Security reports: same address with subject &ldquo;Security&rdquo;.
+                General, support, and sales: founders@getalchemystai.com. 
               </p>
               <BrandButton href="mailto:founders@getalchemystai.com" arrow className="mt-auto w-full sm:w-fit">
                 founders@getalchemystai.com
@@ -37,10 +37,10 @@ export default function ContactPage() {
           <FadeUp className="md:col-span-2 flex">
             <SpecCard tone="sand" className="flex w-full flex-col p-8">
               <h2 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
-                Registered address
+                Headquarters
               </h2>
               <address className="not-italic text-[0.9375rem] leading-[1.75] text-[#4A3B33]">
-                XAlchemystai Technologies Private Limited, 3rd Floor, Flat 3/A, 20 P C Ghosh Road, Patipukur, Kolkata, West Bengal, India 700048.
+                XAlchemystai Technologies Private Limited, Headquarters Bengaluru, India
               </address>
             </SpecCard>
           </FadeUp>
