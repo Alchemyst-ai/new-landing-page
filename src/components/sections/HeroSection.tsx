@@ -85,7 +85,7 @@ export default function HeroSection() {
                 </span>
               </FadeUp>
             </Stagger>
-
+ 
             <RevealText
               as="h1"
               id="hero-heading"
@@ -94,8 +94,8 @@ export default function HeroSection() {
               stagger={0.05}
               className="text-[clamp(2.25rem,4.3vw,3.5rem)] font-medium tracking-[-0.03em] text-[#4A3B33] leading-[1.12] mb-7 max-w-[34rem] text-balance"
             >
-              The AI context layer for{ " " }
-              <span className="text-[#B45309] italic font-normal">your business.</span>
+              Context Backbone for every{ " " }
+              <span className="text-[#B45309] italic font-normal">AI team.</span>
             </RevealText>
 
             <Stagger onMount delay={0.45} stagger={0.1}>
