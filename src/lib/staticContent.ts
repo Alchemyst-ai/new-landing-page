@@ -318,6 +318,28 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
       },
     ],
   },
+  {
+    title: "Benchmarks",
+    items: [
+      {
+        title: "Benchmarks: the Pareto frontier for context",
+        url: `${BASE_URL}/benchmarks`,
+        description:
+          "Memory benchmarks tested December 2025. Alchemyst serves context at 170ms P50 latency for $0.06 per 1M tokens with 0.76 memory F1, delivering over 12x more performance value per dollar than the nearest competitor. Head to head F1 across six memory dimensions vs Supermemory, Zep, and Hindsight GPT, with full per-category data tables.",
+      },
+    ],
+  },
+  {
+    title: "Careers",
+    items: [
+      {
+        title: "Careers at Alchemyst AI",
+        url: `${BASE_URL}/careers`,
+        description:
+          "Join the team building the verifiable AI context engine. Open positions link to application forms, and general applications go to founders@getalchemystai.com.",
+      },
+    ],
+  },
 ];
 
 // ── Full markdown dump for /llms-full.txt ────────────────────────────────────

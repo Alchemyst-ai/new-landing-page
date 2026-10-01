@@ -10,6 +10,7 @@ const PUBLIC_PAGES = new Set([
   "/", "/about", "/contact", "/privacy", "/security", "/pricing",
   "/developers", "/cli", "/thesis", "/terms-of-use", "/case-study",
   "/creators-program", "/blog", "/compare", "/use-cases",
+  "/benchmarks", "/careers",
 ]);
 const ALIASES: Record<string, string> = {
   "/about-us": "/about",
