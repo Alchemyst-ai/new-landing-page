@@ -63,6 +63,20 @@ export default async function CareersPage() {
         meta={meta}
       />
 
+      {/* Server-rendered agent-readable summary. Listings are fetched live,
+          so this section states what the page offers even when no roles are
+          cached. */}
+      <section aria-label="Careers overview" className="sr-only">
+        <h2>Careers at Alchemyst AI</h2>
+        <p>
+          Alchemyst AI hires a small, senior team building the model-agnostic
+          context layer that gives enterprise AI agents persistent, auditable
+          memory. Open roles are listed on https://getalchemystai.com/careers
+          and each role links directly to its application form. General
+          applications go to founders@getalchemystai.com.
+        </p>
+      </section>
+
       <Section tone="paper" pad="none" innerClassName="max-w-[1000px] pb-20 md:pb-28">
         <SectionHeader
           align="split"
