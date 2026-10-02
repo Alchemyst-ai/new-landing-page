@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import type { SVGProps } from "react";
 import BackToTop from "./BackToTop";
 import FooterWatermark from "./FooterWatermark";
@@ -24,8 +24,8 @@ const footerLinks = {
   Product: [
     { label: "Context Layer", href: "/#how-it-works" },
     { label: "Thesis", href: "/thesis" },
-    { label: "Kathan Voice AI", href: "https://getalchemystai.com/kathan" },
-    { label: "Agent Builder", href: "https://getalchemystai.com/agents" },
+    // { label: "Kathan Voice AI", href: "https://getalchemystai.com/kathan" },
+    // { label: "Agent Builder", href: "https://getalchemystai.com/agents" },
     { label: "Pricing", href: "/pricing" },
     { label: "Changelog", href: "https://getalchemystai.com/changelog" },
     { label: "Creators Program", href: "/creators-program" },
@@ -35,7 +35,7 @@ const footerLinks = {
     { label: "Customer Support", href: "/use-cases/customer-support" },
     { label: "EdTech", href: "/use-cases/edtech" },
     { label: "Healthcare", href: "/use-cases/healthcare" },
-    { label: "Voice", href: "/use-cases/voice-agents" },
+    // { label: "Voice", href: "/use-cases/voice-agents" },
     { label: "All Use Cases", href: "/use-cases" },
   ],
   Developers: [
