@@ -121,7 +121,7 @@ export function ReviewStep({
           <ItemContent>
             <ItemTitle>Generating your report</ItemTitle>
             <ItemDescription>
-              Scoring your answers and building a checklist. This usually takes 15 to 40 seconds.
+              Scoring your answers and building a checklist. This usually takes upto 2 minutes.
             </ItemDescription>
           </ItemContent>
         </Item>

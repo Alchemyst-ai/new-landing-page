@@ -103,7 +103,7 @@ export async function POST(request: Request) {
       prompt,
       temperature: 0.3,
       schema: generatedResultSchema,
-      abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(50_000)]),
+      abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(300_000)]),
     });
 
     const searchable = `${input.designation}\n${formatAnswers(role, input.answers as Record<string, string | number>)}`;
