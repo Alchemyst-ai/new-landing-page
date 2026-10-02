@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { TAILWIND_V4_DATA, tailwindV4Compat } from "./src/lib/tailwind-v4-compat";
 
 const config: Config = {
   darkMode: ["class"],
@@ -17,6 +18,10 @@ const config: Config = {
       },
     },
     extend: {
+      ringWidth: { 3: "3px" },
+      aria: { invalid: 'invalid="true"' },
+      data: TAILWIND_V4_DATA,
+      spacing: { 18: "4.5rem" },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -89,7 +94,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), tailwindV4Compat],
 };
 
 export default config;

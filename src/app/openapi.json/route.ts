@@ -34,6 +34,7 @@ const spec = {
     { name: "Status", description: "Service health and version discovery." },
     { name: "Articles", description: "Blog articles proxied from Strapi CMS." },
     { name: "Leads", description: "Contact and pilot lead capture." },
+    { name: "Assessment", description: "Context assessment report generation and email delivery." },
   ],
   paths: {
     "/api/status": {
@@ -183,6 +184,75 @@ const spec = {
         },
       },
     },
+    "/api/assessment/generate": {
+      post: {
+        operationId: "generateAssessment",
+        summary: "Generate a context assessment report",
+        description:
+          "Validates identity plus role branched answers, generates a maturity profile and checklist with the configured OpenRouter model, stores the non PII report in Turso, and returns the profile, checklist, matched case study, and report markdown. Returns 422 problem+json on validation failure, 503 when generation is unconfigured, 502 when generation fails.",
+        tags: ["Assessment"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/AssessmentRequest" },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Generated assessment report",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/AssessmentResult" },
+              },
+            },
+          },
+          "422": { $ref: "#/components/responses/ProblemResponse" },
+          "502": { $ref: "#/components/responses/ProblemResponse" },
+          "503": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
+        },
+      },
+    },
+    "/api/assessment/email": {
+      post: {
+        operationId: "emailAssessment",
+        summary: "Email a context assessment report",
+        description:
+          "Sends a generated assessment report to a work email via Resend. Stateless: nothing is persisted. Returns 422 problem+json on validation failure, 503 when delivery is unconfigured, 502 when delivery fails.",
+        tags: ["Assessment"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/AssessmentEmailRequest" },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Email accepted for delivery",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  required: ["ok"],
+                  properties: {
+                    ok: { type: "boolean", example: true },
+                    id: { type: ["string", "null"], description: "Resend message id." },
+                  },
+                },
+              },
+            },
+          },
+          "422": { $ref: "#/components/responses/ProblemResponse" },
+          "502": { $ref: "#/components/responses/ProblemResponse" },
+          "503": { $ref: "#/components/responses/ProblemResponse" },
+          "429": { $ref: "#/components/responses/RateLimitedResponse" },
+        },
+      },
+    },
   },
   components: {
     schemas: {
@@ -231,6 +301,44 @@ const spec = {
           email: { type: "string", format: "email" },
           company: { type: "string", maxLength: 200 },
           useCase: { type: "string", minLength: 1, maxLength: 2000 },
+        },
+      },
+      AssessmentRequest: {
+        type: "object",
+        required: ["designation", "linkedin", "email", "familiarity", "answers"],
+        properties: {
+          name: { type: "string", maxLength: 100 },
+          designation: { type: "string", minLength: 2, maxLength: 100 },
+          linkedin: { type: "string", description: "LinkedIn profile URL." },
+          email: { type: "string", format: "email", description: "Work email only." },
+          familiarity: { type: "string", enum: ["managing", "building", "stakeholder"] },
+          answers: { type: "object", description: "Role branched answers.", additionalProperties: true },
+        },
+      },
+      AssessmentResult: {
+        type: "object",
+        required: ["assessmentId", "role", "profile", "checklist", "case_study", "reportMarkdown", "persisted"],
+        properties: {
+          assessmentId: { type: "string", format: "uuid" },
+          role: { type: "string", enum: ["builder", "manager", "stakeholder"] },
+          profile: { type: "object", description: "Archetype, maturity score, summary, strengths, risks, focus theme." },
+          checklist: { type: "array", items: { type: "object" }, minItems: 6, maxItems: 9 },
+          case_study: { type: "object", description: "Matched case study slug plus reason." },
+          reportMarkdown: { type: "string", description: "Canonical report markdown with unchecked boxes." },
+          persisted: { type: "boolean", description: "Whether the non PII report was stored." },
+        },
+      },
+      AssessmentEmailRequest: {
+        type: "object",
+        required: ["to", "role", "profile", "checklist", "checked", "case_study", "reportMarkdown"],
+        properties: {
+          to: { type: "string", format: "email", description: "Work email only." },
+          role: { type: "string", enum: ["builder", "manager", "stakeholder"] },
+          profile: { type: "object" },
+          checklist: { type: "array", items: { type: "object" } },
+          checked: { type: "object", additionalProperties: { type: "boolean" } },
+          case_study: { type: "object" },
+          reportMarkdown: { type: "string" },
         },
       },
       Problem: {

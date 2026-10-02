@@ -141,7 +141,7 @@ export function CustomCommandK() {
   }, [pathname]);
 
   return (
-    <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-40 -translate-x-1/2">
+    <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-40 -translate-x-1/2 min-w-[30vw]">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -151,7 +151,7 @@ export function CustomCommandK() {
             aria-keyshortcuts="Meta+K Control+K"
           >
             <Search data-icon="mx-4 inline-start" />
-            <span>Search or ask</span>
+            <span>Search or Ask &ldquo;How can Alchemyst help me with my HR mandates?&rdquo;</span>
             <kbd className="ml-4 rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
               {shortcut}
             </kbd>

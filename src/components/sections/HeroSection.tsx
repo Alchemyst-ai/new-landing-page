@@ -1,12 +1,12 @@
 "use client";
 
+import { BrandButton, SpecStrip } from "@/components/brand";
+import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { BrandButton, SpecStrip } from "@/components/brand";
-import { FadeUp, RevealText, Stagger } from "@/components/motion/primitives";
-import ContextStack from "./ContextStack";
 import ContextGraphField from "./ContextGraphField";
+import ContextStack from "./ContextStack";
 import { useReducedMotionSafe } from "./iso/kit";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -85,7 +85,7 @@ export default function HeroSection() {
                 </span>
               </FadeUp>
             </Stagger>
- 
+
             <RevealText
               as="h1"
               id="hero-heading"
@@ -110,10 +110,10 @@ export default function HeroSection() {
 
               <FadeUp className="flex flex-wrap gap-3 mb-14">
                 <BrandButton href="/platform/signin" target="_blank" rel="noopener" arrow>
-                  Get API Access
+                  Signup
                 </BrandButton>
-                <BrandButton href="https://docs.getalchemystai.com" variant="outline" external>
-                  Read the Docs
+                <BrandButton href="/assessment" variant="outline" external>
+                  Take Context Assessment
                 </BrandButton>
               </FadeUp>
 

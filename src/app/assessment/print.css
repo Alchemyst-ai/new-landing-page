@@ -1,0 +1,29 @@
+@media print {
+  [data-site-nav],
+  footer,
+  [data-sonner-toaster],
+  .assessment-no-print {
+    display: none !important;
+  }
+  .assessment-print-only {
+    display: block !important;
+  }
+
+  /* Tabs only show one panel on screen. Print every panel, in order. */
+  .assessment-tabs [role="tabpanel"][data-state="inactive"] {
+    display: block !important;
+  }
+  .assessment-tabs [role="tabpanel"] + [role="tabpanel"] {
+    margin-top: 1.5rem;
+  }
+
+  /* Keep cards and checklist rows from splitting across pages. */
+  [data-slot="card"] {
+    box-shadow: none !important;
+    break-inside: auto;
+  }
+  [data-slot="field-label"],
+  [data-slot="item"] {
+    break-inside: avoid;
+  }
+}
