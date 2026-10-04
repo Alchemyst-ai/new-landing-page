@@ -305,7 +305,7 @@ const spec = {
       },
       AssessmentRequest: {
         type: "object",
-        required: ["designation", "linkedin", "email", "familiarity", "answers"],
+        required: ["designation", "linkedin", "email", "familiarity", "answers", "consent"],
         properties: {
           name: { type: "string", maxLength: 100 },
           designation: { type: "string", minLength: 2, maxLength: 100 },
@@ -313,6 +313,7 @@ const spec = {
           email: { type: "string", format: "email", description: "Work email only." },
           familiarity: { type: "string", enum: ["managing", "building", "stakeholder"] },
           answers: { type: "object", description: "Role branched answers.", additionalProperties: true },
+          consent: { type: "boolean", enum: [true], description: "Contact consent. Must be true." },
         },
       },
       AssessmentResult: {

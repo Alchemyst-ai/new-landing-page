@@ -27,6 +27,10 @@ async function init(): Promise<Client | null> {
         `CREATE TABLE IF NOT EXISTS assessments (
           id TEXT PRIMARY KEY,
           role TEXT NOT NULL,
+          name TEXT,
+          designation TEXT NOT NULL,
+          linkedin TEXT NOT NULL,
+          email TEXT NOT NULL,
           answers_json TEXT NOT NULL,
           profile_json TEXT NOT NULL,
           checklist_json TEXT NOT NULL,
@@ -53,6 +57,10 @@ async function init(): Promise<Client | null> {
 export interface AssessmentRow {
   id: string;
   role: string;
+  name: string | null;
+  designation: string;
+  linkedin: string;
+  email: string;
   answers: Record<string, string | number>;
   profile: unknown;
   checklist: unknown;
@@ -60,17 +68,21 @@ export interface AssessmentRow {
   model: string;
 }
 
-/** Persist a generated assessment without any PII. Returns false when unconfigured. */
+/** Persist a generated assessment with the respondent's identity. Returns false when unconfigured. */
 export async function saveAssessmentRow(row: AssessmentRow): Promise<boolean> {
   const db = await init().catch(() => null);
   if (!db) return false;
   await db.execute({
     sql: `INSERT INTO assessments
-      (id, role, answers_json, profile_json, checklist_json, case_study_slug, model)
-      VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      (id, role, name, designation, linkedin, email, answers_json, profile_json, checklist_json, case_study_slug, model)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       row.id,
       row.role,
+      row.name,
+      row.designation,
+      row.linkedin,
+      row.email,
       JSON.stringify(row.answers),
       JSON.stringify(row.profile),
       JSON.stringify(row.checklist),

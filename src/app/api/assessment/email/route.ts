@@ -78,7 +78,7 @@ export async function POST(request: Request) {
     .join("");
 
   const html = [
-    `<p>Hi ${escapeHtml(greeting)},</p>`,
+    `<p>Hey ${escapeHtml(greeting)}, here&apos;s your report:</p>`,
     `<p>Your context assessment: <strong>${escapeHtml(payload.profile.archetype)}</strong> (${Math.round(payload.profile.maturity_score)}/100, ${band}).</p>`,
     `<p>${escapeHtml(payload.profile.summary)}</p>`,
     `<p><strong>Focus:</strong> ${escapeHtml(payload.profile.focus_theme)}</p>`,

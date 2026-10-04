@@ -16,7 +16,7 @@ import {
   FAMILIARITY_OPTIONS,
   identitySchema,
   ROLE_BY_FAMILIARITY,
-  type AssessmentInputs,
+  type ConsentedInputs,
   type GenerateApiResponse,
   type Role,
 } from "@/lib/assessment/schema";
@@ -79,7 +79,7 @@ async function requestReport(body: unknown): Promise<GenerateApiResponse> {
 }
 
 function toStored(
-  inputs: AssessmentInputs,
+  inputs: ConsentedInputs,
   result: GenerateApiResponse,
   checked: Record<string, boolean>,
 ): StoredAssessment {
@@ -158,6 +158,7 @@ export function AssessmentFlow() {
   const [stored, setStored] = useState<StoredAssessment | null>(null);
   const [showResume, setShowResume] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [consented, setConsented] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [regenerating, setRegenerating] = useState(false);
   const [regenerateError, setRegenerateError] = useState<string | null>(null);
@@ -242,8 +243,8 @@ export function AssessmentFlow() {
   };
 
   const submit = async () => {
-    if (submitting) return;
-    const parsed = assessmentRequestSchema.safeParse({ ...inputs, answers });
+    if (submitting || !consented) return;
+    const parsed = assessmentRequestSchema.safeParse({ ...inputs, answers, consent: true });
     if (!parsed.success) {
       setErrors(issuesToErrors(parsed.error.issues));
       setStep(identitySchema.safeParse(inputs).success ? "branch" : "identity");
@@ -252,7 +253,7 @@ export function AssessmentFlow() {
     setSubmitting(true);
     setSubmitError(null);
     try {
-      const fullInputs = { ...inputs, answers } as AssessmentInputs;
+      const fullInputs: ConsentedInputs = { ...parsed.data };
       const result = await requestReport(fullInputs);
       const next = toStored(fullInputs, result, {});
       saveAssessment(next);
@@ -300,6 +301,7 @@ export function AssessmentFlow() {
     setErrors({});
     setSubmitError(null);
     setRegenerateError(null);
+    setConsented(false);
     goTo("identity");
   };
 
@@ -492,7 +494,7 @@ export function AssessmentFlow() {
                   <ArrowLeft data-icon="inline-start" />
                   Back
                 </Button>
-                <Button onClick={submit} disabled={submitting}>
+                <Button onClick={submit} disabled={submitting || !consented}>
                   {submitting ? (
                     <Spinner data-icon="inline-start" aria-hidden="true" />
                   ) : (
@@ -509,6 +511,8 @@ export function AssessmentFlow() {
               role={role}
               submitting={submitting}
               submitError={submitError}
+              consented={consented}
+              onConsentedChange={setConsented}
               onEditIdentity={() => goTo("identity")}
               onEditBranch={() => goTo("branch")}
               onRetry={submit}

@@ -260,14 +260,18 @@ export async function POST(request: Request) {
       { slug, reason: object.case_study.reason },
     );
 
-    // Persist the report without any PII. Fail open: persistence must never
-    // block the response. The full report is always returned so the frontend
-    // can store it in localStorage.
+    // Persist the report with the respondent's identity. Fail open:
+    // persistence must never block the response. The full report is always
+    // returned so the frontend can store it in localStorage.
     let persisted = false;
     try {
       persisted = await saveAssessmentRow({
         id: assessmentId,
         role,
+        name: input.name ?? null,
+        designation: input.designation,
+        linkedin: input.linkedin,
+        email: input.email,
         answers: input.answers as Record<string, string | number>,
         profile: object.profile,
         checklist: object.checklist,

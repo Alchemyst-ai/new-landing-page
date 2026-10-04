@@ -1,6 +1,6 @@
 "use client";
 
-import type { AssessmentInputs, GenerateResponse } from "@/lib/assessment/schema";
+import type { ConsentedInputs, GenerateResponse } from "@/lib/assessment/schema";
 import { assessmentRequestSchema, generateResponseSchema } from "@/lib/assessment/schema";
 import { buildAssessmentMarkdown } from "@/lib/assessment/markdown";
 
@@ -8,7 +8,7 @@ export const STORAGE_KEY = "alchemyst:assessment:v1";
 
 export interface StoredAssessment {
   version: 1;
-  inputs: AssessmentInputs;
+  inputs: ConsentedInputs;
   result: GenerateResponse;
   reportMarkdown: string;
   checked: Record<string, boolean>;
@@ -57,7 +57,7 @@ export function loadAssessment(): StoredAssessment | null {
     }
     return {
       version: 1,
-      inputs: inputs as AssessmentInputs,
+      inputs: inputs as ConsentedInputs,
       result: parsed.result,
       reportMarkdown,
       checked,

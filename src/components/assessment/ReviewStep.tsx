@@ -2,6 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Item,
   ItemActions,
@@ -12,6 +13,7 @@ import {
   ItemTitle,
 } from "@/components/ui/item";
 import { Spinner } from "@/components/ui/spinner";
+import { Label } from "@/components/ui/label";
 import { answerLabels } from "@/lib/assessment/questions";
 import { FAMILIARITY_OPTIONS, ROLE_LABELS, type Role } from "@/lib/assessment/schema";
 import { AlertCircle, Pencil } from "lucide-react";
@@ -67,6 +69,8 @@ export function ReviewStep({
   role,
   submitting,
   submitError,
+  consented,
+  onConsentedChange,
   onEditIdentity,
   onEditBranch,
   onRetry,
@@ -76,6 +80,8 @@ export function ReviewStep({
   role: Role;
   submitting: boolean;
   submitError: string | null;
+  consented: boolean;
+  onConsentedChange: (consented: boolean) => void;
   onEditIdentity: () => void;
   onEditBranch: () => void;
   onRetry: () => void;
@@ -101,6 +107,24 @@ export function ReviewStep({
     <div className="flex flex-col gap-6">
       <ReviewSection title="About you" rows={identityRows} onEdit={onEditIdentity} disabled={submitting} />
       <ReviewSection title="Your setup" rows={branchRows} onEdit={onEditBranch} disabled={submitting} />
+      <div className="flex items-start gap-3 rounded-lg border border-border bg-background p-3">
+        <Checkbox
+          id="assessment-consent"
+          checked={consented}
+          onCheckedChange={(value) => onConsentedChange(value === true)}
+          disabled={submitting}
+          aria-describedby="assessment-consent-hint"
+          className="mt-0.5"
+        />
+        <div className="flex flex-col gap-1">
+          <Label htmlFor="assessment-consent" className="cursor-pointer text-sm font-normal leading-snug">
+            By taking this assessment, you agree to be contacted by the Alchemyst Team. We won&apos;t spam you, promise!
+          </Label>
+          <p id="assessment-consent-hint" className="text-xs leading-relaxed text-muted-foreground">
+            Tick the box to enable report generation.
+          </p>
+        </div>
+      </div>
       {submitError && !submitting && (
         <Alert variant="destructive">
           <AlertCircle />

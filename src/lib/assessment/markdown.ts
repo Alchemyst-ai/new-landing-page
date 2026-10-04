@@ -25,6 +25,8 @@ export function buildAssessmentMarkdown(
   const { band } = scoreBand(profile.maturity_score);
   const study = CASE_STUDY_BY_SLUG[caseStudy.slug];
   const lines: string[] = [
+    `Hey ${identity.name || identity.designation}, here's your report:`,
+    "",
     `# Context Assessment: ${profile.archetype} (${Math.round(profile.maturity_score)}/100, ${band})`,
     "",
     `Name: ${identity.name || identity.designation}`,

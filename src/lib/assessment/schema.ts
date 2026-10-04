@@ -233,7 +233,10 @@ export const answersByRole: Record<Role, z.ZodTypeAny> = {
 
 /** Full request validation: identity plus the branch answers for its role. */
 export const assessmentRequestSchema = identitySchema.and(
-  z.object({ answers: z.record(z.string(), z.union([z.string(), z.number()])) }),
+  z.object({
+    answers: z.record(z.string(), z.union([z.string(), z.number()])),
+    consent: z.literal(true, { message: "Consent is required to generate your report." }),
+  }),
 ).refine(
   (data) => {
     const role = ROLE_BY_FAMILIARITY[data.familiarity];
@@ -243,6 +246,9 @@ export const assessmentRequestSchema = identitySchema.and(
 );
 
 export type AssessmentRequest = z.infer<typeof assessmentRequestSchema>;
+
+/** Inputs as persisted after consent was given at generation time. */
+export type ConsentedInputs = AssessmentInputs & { consent: true };
 
 /* ── Generated result ─────────────────────────────────────────────────────── */
 
