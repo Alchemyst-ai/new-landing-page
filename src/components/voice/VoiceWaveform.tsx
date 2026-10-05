@@ -11,7 +11,7 @@ export function VoiceWaveform() {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
+    scene.background = new THREE.Color(0x151515);
 
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
@@ -43,7 +43,7 @@ export function VoiceWaveform() {
     
     // Left Material (Vibrant Orange / Gold)
     const orangeMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xffa500, // True Orange
+      color: 0xf59025, // True Orange
       emissive: 0xff4500, // Orange Red for deep glow
       emissiveIntensity: 4.0, // Cranked up for "highlight" feel
       roughness: 0.05,
@@ -65,7 +65,7 @@ export function VoiceWaveform() {
 
     // Ghost Material (Muted Neutral)
     const ghostMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x27272a, // Zinc 800
+      color: 0x151515, // Zinc 800
       transparent: true,
       opacity: 0.05,
     });
@@ -99,7 +99,7 @@ export function VoiceWaveform() {
     sparklesGeometry.setAttribute('position', new THREE.BufferAttribute(sparklesPos, 3));
     
     const sparklesMaterial = new THREE.PointsMaterial({
-      color: 0xffba08,
+      color: 0xf59025,
       size: 0.06,
       transparent: true,
       opacity: 0.7,
@@ -122,7 +122,7 @@ export function VoiceWaveform() {
     scene.add(keyLight);
 
     // Warm accent on the left, cool on the right
-    const leftLight = new THREE.PointLight(0xff8c00, 5, 20); // Stronger orange light
+    const leftLight = new THREE.PointLight(0xf59025, 5, 20); // Stronger orange light
     leftLight.position.set(-8, 2, 5);
     scene.add(leftLight);
 
@@ -133,8 +133,8 @@ export function VoiceWaveform() {
     // Animation variables
     let time = 0;
     const colors = {
-      orange: new THREE.Color(0xffa500),
-      accent: new THREE.Color(0xff4500),
+      orange: new THREE.Color(0xf59025),
+      accent: new THREE.Color(0xf49025),
       gray: new THREE.Color(0xd4d4d8),
     };
 
@@ -257,7 +257,7 @@ export function VoiceWaveform() {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0 w-full h-full bg-black overflow-hidden" 
+      className="absolute inset-0 w-full h-full bg-[#111111] overflow-hidden border-b-1" 
       style={{ touchAction: "none" }}
     />
   );

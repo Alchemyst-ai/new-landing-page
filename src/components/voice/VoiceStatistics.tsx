@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import VoiceGridDivider from "./VoiceGridDivider";
+import { Section } from "../section";
 
 const stats = [
   {
@@ -24,7 +25,7 @@ const stats = [
 
 const VoiceStatistics = () => {
   return (
-    <section className="relative py-8 md:py-10 lg:py-12" style={{ background: '#0d0d0f' }}>
+    <section className="relative py-8 md:py-10 lg:py-12" style={{ background: '#151515' }}>
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -38,7 +39,7 @@ const VoiceStatistics = () => {
           <br />
           Proven Outcomes
           <br />
-          <span className="text-orange-400">Measure World Impacts</span>
+          <span className="text-[#f59025]">Measure World Impacts</span>
         </h2>
       </motion.div>
 

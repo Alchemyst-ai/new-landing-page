@@ -10,6 +10,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import VoiceGridDivider from "./VoiceGridDivider";
+import { Section } from "../section";
 
 export const features = [
   {
@@ -52,7 +53,7 @@ export const features = [
 
 const VoiceFeatures = () => {
   return (
-    <section id="features" className="relative py-12 md:py-16 lg:py-24 overflow-hidden" style={{ background: '#0d0d0f' }}>
+    <section id="features" className="relative py-12 md:py-16 lg:py-24 overflow-hidden" style={{ background: '#151515' }}>
       <div className="relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Headline */}
         <motion.div
@@ -81,17 +82,17 @@ const VoiceFeatures = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="feature-card-gradient rounded-xl md:rounded-2xl p-6 sm:p-7 md:p-8 border border-border/50 h-full hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+              <div className=" bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 rounded-xl md:rounded-2xl p-6 sm:p-7 md:p-8 border border-border/50 h-full hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                 {/* Icon */}
                 <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center">
                   <div className="relative">
                     <feature.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary" strokeWidth={1.5} />
-                    <div className="absolute inset-0 blur-xl bg-primary/20 rounded-full" />
+                    <div className="absolute inset-0 blur-xl bg-[#f59025]/20 rounded-full" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg sm:text-xl font-semibold text-foreground text-center mb-2 sm:mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#f59025] text-center mb-2 sm:mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-primary text-center leading-relaxed">
@@ -102,7 +103,7 @@ const VoiceFeatures = () => {
           ))}
         </div>
       </div>
-
+       
       <VoiceGridDivider className="mt-8 sm:mt-10 md:mt-12" />
     </section>
   );

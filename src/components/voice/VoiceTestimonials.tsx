@@ -34,7 +34,7 @@ const testimonials = [
 
 const VoiceTestimonials = () => {
   return (
-    <section className="relative py-12 md:py-16 lg:py-24 overflow-hidden" style={{ background: '#0d0d0f' }}>
+    <section className="relative py-12 md:py-16 lg:py-24 overflow-hidden" style={{ background: '#151515' }}>
 
       <div className="relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Headline */}
@@ -48,7 +48,7 @@ const VoiceTestimonials = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-2 md:mb-4">
             Testimonials
           </h2>
-          <p className="text-orange-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+          <p className="text-[#f59025] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
             from Enterprise Teams
           </p>
         </motion.div>
@@ -82,12 +82,12 @@ const VoiceTestimonials = () => {
                   </div>
 
                   {/* Quote Content */}
-                  <div className="mb-8 sm:mb-10 md:mb-12 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed">
-                    <p className="text-foreground/90 font-medium">
+                  <div className="mb-8 sm:mb-10 md:mb-12 text-base sm:text-md md:text-lg lg:text-xl leading-relaxed">
+                    <p className="text-foreground/90 text-2xl">
                       {testimonial.quote}
                     </p>
                     {testimonial.details && (
-                      <p className="mt-4 sm:mt-5 md:mt-6 text-foreground/90 font-medium">
+                      <p className="mt-4 sm:mt-5 md:mt-6 text-foreground/90 text-md">
                         {testimonial.details}{" "}
                         <span className="font-bold text-orange-400">
                           {testimonial.highlight1}
