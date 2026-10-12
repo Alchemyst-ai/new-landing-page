@@ -1,33 +1,16 @@
-// Pricing page specific FAQ schema for better AI citation on pricing queries
+// Pricing page FAQ schema. The questions and answers come from the same
+// PRICING_FAQ list the page renders, so the JSON-LD always matches the
+// visible FAQ (a requirement for FAQ rich results).
+import { PRICING_FAQ } from "@/lib/pricing";
+
 const pricingFAQ = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is the Alchemyst AI pricing model?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Alchemyst AI uses usage-based pricing with transparent costs per token and per MB processed. The pricing calculator shows exact costs across Free, Starter, Accelerate, and Supercharge tiers based on your expected usage patterns."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How much does enterprise context layer cost?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Enterprise pricing is custom-built based on your organization's needs with dedicated support and scale. Contact the Alchemyst team for a tailored quote."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Is there a free tier available?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, the Free tier starts at $0 with 5 million tokens included when you sign up with your business email. This is ideal for testing Alchemyst AI's context layer before committing to a paid plan."
-      }
-    }
-  ]
+  mainEntity: PRICING_FAQ.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
 };
 
 export default function PricingSchema() {

@@ -535,15 +535,6 @@ body[data-page-theme="dark"] .nav-docs-btn:hover {
   opacity: 1 !important;
 }
 
-/* Pricing cards lift on hover (CSS-only). */
-.pricing-card {
-  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms ease;
-}
-.pricing-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft-lg);
-}
-
 /* Compare cards: hairline brightens to amber + lift on hover. */
 .compare-card {
   transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1),

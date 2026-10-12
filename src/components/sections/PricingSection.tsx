@@ -1,220 +1,297 @@
-"use client";
+// PricingSection: the body of /pricing below the hero. Server component; all
+// figures are derived from src/lib/pricing.ts so the tier cards, rate card,
+// calculator, FAQ and JSON-LD always agree.
+//
+//   Tiers      four usage tiers on one ladder, plus the enterprise strip
+//   Rate card  every billed action at every tier (per 1M, billing label)
+//   Calculator interactive estimate (client)
+//   FAQ        mirrors the pricing JSON-LD
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { ReactNode } from "react";
+import { BrandButton, Chip, Eyebrow, Section, SpecCard } from "@/components/brand";
+import ComparisonTable from "@/components/brand/ComparisonTable";
+import SectionHeader from "@/components/brand/SectionHeader";
+import { FadeUp, Stagger } from "@/components/motion/primitives";
 import PricingCalculator from "@/components/pricing/pricingCalc";
-import { motion } from "framer-motion";
+import {
+  ACTION_COST_LABELS,
+  DISPLAY_ACTIONS,
+  PRICING_FAQ,
+  TIERS,
+  TIER_ORDER,
+  formatRate,
+  formatUsd,
+  tierEligibility,
+  tokenSavingsVsFree,
+  type Tier,
+} from "@/lib/pricing";
+import { cn } from "@/lib/utils";
 
-const pricingPlans = [
-  {
-    title: "Free",
-    price: "$0",
-    interval: "/forever",
-    description: "Perfect for testing and side projects.",
-    features: [
-      { text: "50,000 requests per month" },
-      { text: "500MB Context Storage" },
-      { text: "Standard Context Traces" },
-      { text: "Community Support" },
-      { text: "1 Workspace" }
-    ],
-    ctaText: "Start for free",
-    ctaLink: "/platform/signin",
-    highlight: false,
-    accent: "#78716C"
-  },
-  {
-    title: "Pro",
-    price: "$49",
-    interval: "/month",
-    description: "For startups and small production teams.",
-    features: [
-      { text: "1,000,000 requests per month" },
-      { text: "50GB Context Storage" },
-      { text: "Advanced Context Traces" },
-      { text: "Priority Email Support" },
-      { text: "5 Workspaces" },
-      { text: "Custom Ontology Rules" }
-    ],
-    ctaText: "Get Pro",
-    ctaLink: "/platform/signin",
-    highlight: true,
-    accent: "#B45309"
-  },
-  {
-    title: "Enterprise",
-    price: "Custom",
-    interval: "",
-    description: "For organizations scaling critical AI operations.",
-    features: [
-      { text: "Unlimited requests" },
-      { text: "Custom Context Storage limits" },
-      { text: "VPC Peering & Dedicated Infrastructure" },
-      { text: "24/7 Phone & Slack Support" },
-      { text: "Unlimited Workspaces" },
-      { text: "SSO & SAML Authentication" },
-      { text: "Dedicated Success Manager" }
-    ],
-    ctaText: "Talk to Sales",
-    ctaLink: "https://cal.com/uttaran-nayak-alchemyst/30min",
-    highlight: false,
-    accent: "#A16207"
-  }
+const SIGN_IN = "/platform/signin";
+const SALES_CALL = "https://cal.com/uttaran-nayak-alchemyst/30min";
+
+/* ── Tier card ─────────────────────────────────────────────────────────────── */
+
+function TierCard({ tier, index }: { tier: Tier; index: number }) {
+  const t = TIERS[tier];
+  const isStart = t.unlockAt === 0;
+  return (
+    <SpecCard
+      as="article"
+      aria-labelledby={`tier-${tier}`}
+      className={cn("flex w-full flex-col p-7", isStart && "border-[#B45309]/45")}
+    >
+      {isStart && (
+        <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] rounded-t-[var(--radius)] bg-[#B45309]" />
+      )}
+
+      <div className="mb-6 flex min-h-[26px] items-center justify-between gap-3">
+        <Eyebrow>Tier {String(index + 1).padStart(2, "0")}</Eyebrow>
+        {isStart && <Chip>You start here</Chip>}
+      </div>
+
+      <h3 id={`tier-${tier}`} className="text-[1.375rem] font-bold leading-[1.25] tracking-[-0.015em] text-[#4A3B33]">
+        {t.name}
+      </h3>
+      <p className="mt-2 text-[0.9375rem] leading-[1.6] text-[#57534E] md:min-h-[3.2em]">{t.audience}</p>
+
+      {/* Price: what it costs to start, or the spend that unlocks the tier */}
+      <div className="mt-6 border-t border-[#E4D9BC] pt-6">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#78716C]">
+          {isStart ? "Starts at" : "Unlocks on"}
+        </p>
+        <p className="mt-3 flex items-baseline gap-2">
+          <span className="text-[2.75rem] font-bold leading-none tracking-[-0.04em] tabular-nums text-[#4A3B33]">
+            {formatUsd(t.unlockAt)}
+          </span>
+          <span className="text-[0.875rem] text-[#78716C]">{isStart ? "to start" : "monthly spend"}</span>
+        </p>
+        <p className="mt-4 flex items-start gap-2.5 text-[0.875rem] leading-[1.55] text-[#57534E]">
+          <span aria-hidden className="mt-[7px] h-[6px] w-[6px] shrink-0 bg-[#E4C090]" />
+          {isStart
+            ? `Free up to ${formatUsd(t.freeUsage ?? 0)} of usage.`
+            : `${tokenSavingsVsFree(tier)}% lower per-token rates than Free.`}
+        </p>
+      </div>
+
+      {/* Rates */}
+      <div className="mt-6 flex-1 border-t border-[#E4D9BC] pt-5">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#78716C]">
+          Rate per 1M · USD
+        </p>
+        <dl className="mt-2">
+          {DISPLAY_ACTIONS.map((action, i) => {
+            const label = ACTION_COST_LABELS[action];
+            return (
+              <div
+                key={action}
+                className={cn(
+                  "flex items-start justify-between gap-4 py-3",
+                  i < DISPLAY_ACTIONS.length - 1 && "border-b border-[#F1E9DA]",
+                )}
+              >
+                <dt className="min-w-0">
+                  <span className="block text-[0.8125rem] font-bold leading-[1.4] text-[#4A3B33]">{label.name}</span>
+                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] text-[#A8A29E]">
+                    {label.billingBasis}
+                  </span>
+                </dt>
+                <dd className="whitespace-nowrap font-mono text-[13px] font-medium tabular-nums text-[#4A3B33]">
+                  {formatRate(action, tier)}
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </div>
+
+      <BrandButton
+        href={SIGN_IN}
+        variant={isStart ? "primary" : "outline"}
+        arrow={isStart}
+        className="mt-6 w-full"
+      >
+        {isStart ? "Start for free" : "Get started"}
+      </BrandButton>
+    </SpecCard>
+  );
+}
+
+/* ── Rate card helpers ─────────────────────────────────────────────────────── */
+
+const RATE_COLUMNS: ReactNode[] = [
+  "Action",
+  "Billing label",
+  ...TIER_ORDER.map((tier) => (
+    <span key={tier} className="block text-right">
+      {TIERS[tier].name}
+      <span className="mt-1 block text-[9.5px] tracking-[0.1em] text-[#A8A29E]">Rate per 1M</span>
+    </span>
+  )),
 ];
 
-const PricingSection = () => {
+const RATE_ROWS: ReactNode[][] = DISPLAY_ACTIONS.map((action) => {
+  const label = ACTION_COST_LABELS[action];
+  return [
+    label.name,
+    <span key="unit" className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.08em] text-[#78716C]">
+      {label.billingBasis}
+    </span>,
+    ...TIER_ORDER.map((tier) => (
+      <span key={tier} className="block whitespace-nowrap text-right font-mono text-[13px] tabular-nums text-[#4A3B33]">
+        {formatRate(action, tier)}
+      </span>
+    )),
+  ];
+});
+
+/* ── Section ───────────────────────────────────────────────────────────────── */
+
+export default function PricingSection() {
   return (
-    <section
-      id="pricing"
-      className="py-32 bg-white relative w-full overflow-hidden"
-      aria-labelledby="pricing-heading"
-    >
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40"
-           style={{
-             backgroundImage: `linear-gradient(to right, #E4D9BC 1px, transparent 1px), linear-gradient(to bottom, #E4D9BC 1px, transparent 1px)`,
-             backgroundSize: "60px 60px",
-             maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
-             WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
-           }}
-      />
+    <>
+      {/* Tiers */}
+      <Section id="tiers" tone="paper" pad="none" innerClassName="pb-20 md:pb-28" aria-labelledby="tiers-heading">
+        <SectionHeader
+          id="tiers-heading"
+          rule={false}
+          eyebrow="Tiers"
+          title={
+            <>
+              Four tiers. <span className="italic text-[#B45309]">One meter.</span>
+            </>
+          }
+          lead="Every account starts on Free. Starter, Accelerate and Supercharge unlock as your monthly spend grows, and each tier bills usage at its own rates."
+        />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center mb-24 text-center max-w-3xl mx-auto"
-        >
-          <div className="flex justify-center mb-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#A16207] font-semibold bg-[#A16207]/10 px-4 py-1.5 rounded-md border border-[#A16207]/20">
-              Pricing
-            </span>
-          </div>
-          <h1
-            id="pricing-heading"
-            className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.02em] text-stone-900 mb-6 leading-tight"
-          >
-            Simple, Transparent Pricing
-          </h1>
-          <p className="font-sans text-lg md:text-xl text-stone-600 leading-relaxed max-w-2xl font-medium">
-            Choose the plan that works best for your needs. All plans include core features to build context-aware AI.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-          {pricingPlans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-              className={`flex flex-col relative bg-white border ${plan.highlight ? 'border-[#B45309]' : 'border-[#E4D9BC]'} rounded-xl p-10 transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-soft-lg)]`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#B45309] text-white font-mono text-[10px] uppercase tracking-widest font-bold px-4 py-1.5 shadow-[var(--shadow-soft)]">
-                  Most Popular
-                </div>
-              )}
-              
-              <div className="mb-8">
-                <h3 className="font-mono text-xs uppercase tracking-widest font-bold mb-4" style={{ color: plan.accent }}>
-                  {plan.title}
-                </h3>
-                <div className="flex items-end gap-1 mb-2">
-                  <span className="font-sans text-5xl font-extrabold text-stone-900 tracking-tight">
-                    {plan.price}
-                  </span>
-                  {plan.interval && (
-                    <span className="font-sans text-base text-stone-500 font-medium mb-1">
-                      {plan.interval}
-                    </span>
-                  )}
-                </div>
-                <p className="font-sans text-sm text-stone-600 font-medium h-10">
-                  {plan.description}
-                </p>
-              </div>
-
-              <div className="flex-grow">
-                <ul className="space-y-4 mb-10">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 6L9 17L4 12" stroke={plan.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span className="font-sans text-sm text-stone-700 font-medium leading-tight">
-                        {feature.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <Button 
-                asChild 
-                className={`w-full rounded-lg py-6 text-sm font-bold tracking-wide transition-all shadow-[var(--shadow-soft)] hover:translate-y-[-2px] hover:shadow-[var(--shadow-soft-lg)] ${plan.highlight ? 'bg-[#B45309] hover:bg-[#A16207] text-white' : 'bg-[#4A3B33] hover:bg-[#3A2E28] text-white'}`}
-              >
-                <a href={plan.ctaLink}>
-                  {plan.ctaText}
-                </a>
-              </Button>
-            </motion.div>
+        {/* The Markdown export swaps the card grid for a compact tier table
+            (pricingTiersMarkdown); the full rates follow in the rate card. */}
+        <Stagger data-markdown-pricing="tiers" className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {TIER_ORDER.map((tier, i) => (
+            <FadeUp key={tier} className="flex">
+              <TierCard tier={tier} index={i} />
+            </FadeUp>
           ))}
-        </div>
+        </Stagger>
 
-        {/* Pricing Calculator */}
-        <div className="mb-32">
-          <PricingCalculator />
-        </div>
-
-        {/* FAQ */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-3xl mx-auto bg-[#F8F4EE] border border-[#E4D9BC] p-10 rounded-xl shadow-[var(--shadow-soft)]"
-        >
-          <div className="mb-10 text-center">
-            <h2 className="font-sans text-2xl font-bold text-stone-900">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-8">
+        <FadeUp standalone className="mt-5">
+          <SpecCard
+            tone="sand"
+            interactive={false}
+            className="flex flex-col gap-6 p-7 md:flex-row md:items-center md:justify-between md:gap-10 md:p-8"
+          >
             <div>
-              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
-                What is the Alchemyst AI pricing model?
+              <Eyebrow className="mb-4">Enterprise</Eyebrow>
+              <h3 className="text-[1.1875rem] font-bold leading-[1.3] tracking-[-0.015em] text-[#4A3B33]">
+                Need more than Supercharge?
               </h3>
-              <p className="font-sans text-stone-600 font-medium leading-relaxed">
-                Alchemyst AI uses straightforward tiered pricing. You can start completely free, and upgrade to Pro as your request volume or storage needs increase. For massive scale, our Enterprise tier offers custom limits and VPC options.
+              <p className="mt-2 max-w-[62ch] text-[0.9375rem] leading-[1.7] text-[#57534E]">
+                For volume beyond Supercharge, dedicated infrastructure or custom terms, we build pricing around your
+                organization.
               </p>
             </div>
+            <BrandButton href={SALES_CALL} external arrow className="shrink-0">
+              Talk to us
+            </BrandButton>
+          </SpecCard>
+        </FadeUp>
+      </Section>
 
-            <div>
-              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
-                How much does enterprise context layer cost?
-              </h3>
-              <p className="font-sans text-stone-600 font-medium leading-relaxed">
-                Enterprise pricing is custom-built based on your organization's needs. We work with you to determine the right configuration for your scale, with custom network bandwidth, storage, and dedicated support.
-              </p>
-            </div>
+      {/* The Markdown export replaces this block with the canonical rate table
+          from pricingMarkdown(), so agents get one clean copy of the rates. */}
+      <div data-markdown-pricing="calculator">
+        {/* Rate card */}
+        <Section id="rates" tone="sand" bordered aria-labelledby="rates-heading">
+          <SectionHeader
+            id="rates-heading"
+            eyebrow="Rate card"
+            title="Usage pricing by tier"
+            lead="All prices are in USD. Rates use the calculator's Cost / Unit display, shown per 1M, next to the billing label for each action."
+          />
+          <FadeUp standalone>
+            <ComparisonTable columns={RATE_COLUMNS} rows={RATE_ROWS} className="my-0" />
+          </FadeUp>
 
-            <div>
-              <h3 className="font-sans text-lg font-bold text-stone-900 mb-2">
-                Is there a free tier available?
-              </h3>
-              <p className="font-sans text-stone-600 font-medium leading-relaxed">
-                Yes. The Free tier starts at $0 with 50,000 requests included when you sign up. This is ideal for testing Alchemyst AI's context layer before committing to a paid plan.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          <FadeUp standalone className="mt-10">
+            <p className="mb-4 font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#78716C]">
+              Tier eligibility
+            </p>
+            <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius)] border border-[#E4D9BC] bg-[#E4D9BC] sm:grid-cols-2 lg:grid-cols-4">
+              {TIER_ORDER.map((tier) => (
+                <div key={tier} className="flex flex-col gap-2 bg-white px-5 py-5">
+                  <dt className="flex items-center gap-2.5 text-[0.9375rem] font-bold text-[#4A3B33]">
+                    <span aria-hidden className="h-[7px] w-[7px] bg-[#B45309]" />
+                    {TIERS[tier].name}
+                  </dt>
+                  <dd className="text-[0.875rem] leading-[1.6] text-[#57534E]">{tierEligibility(tier)}</dd>
+                </div>
+              ))}
+            </dl>
+          </FadeUp>
+        </Section>
+
+        {/* Calculator */}
+        <Section id="calculator" tone="paper" bordered aria-labelledby="calculator-heading">
+          <SectionHeader
+            id="calculator-heading"
+            eyebrow="Calculator"
+            title="Estimate your costs"
+            lead="Select a tier and enter expected usage for each action to get a cost breakdown, then compare the same usage across every tier."
+          />
+          <FadeUp standalone>
+            <PricingCalculator />
+          </FadeUp>
+        </Section>
       </div>
-    </section>
-  );
-};
 
-export default PricingSection;
+      {/* FAQ */}
+      <Section id="faq" tone="sand" bordered aria-labelledby="faq-heading">
+        <SectionHeader
+          id="faq-heading"
+          eyebrow="FAQ"
+          title="Frequently asked questions"
+          lead={
+            <>
+              Still deciding? Read the{" "}
+              <a
+                href="https://docs.getalchemystai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-brand font-bold text-[#4A3B33]"
+              >
+                documentation
+              </a>{" "}
+              or{" "}
+              <a
+                href={SALES_CALL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-brand font-bold text-[#4A3B33]"
+              >
+                talk to the team
+              </a>
+              .
+            </>
+          }
+        />
+        {/* The Markdown export renders these as "### Question" blocks
+            (pricingFaqMarkdown), from the same PRICING_FAQ list. */}
+        <div data-markdown-pricing="faq">
+          <Stagger as="dl" className="border-t border-[#E4D9BC]">
+            {PRICING_FAQ.map((item) => (
+              <FadeUp
+                key={item.question}
+                className="grid grid-cols-1 gap-3 border-b border-[#E4D9BC] py-7 lg:grid-cols-12 lg:gap-12"
+              >
+                <dt className="text-[1.125rem] font-bold leading-[1.4] tracking-[-0.01em] text-[#4A3B33] lg:col-span-5">
+                  {item.question}
+                </dt>
+                <dd className="text-[0.9375rem] leading-[1.75] text-[#57534E] lg:col-span-7">{item.answer}</dd>
+              </FadeUp>
+            ))}
+          </Stagger>
+        </div>
+      </Section>
+    </>
+  );
+}

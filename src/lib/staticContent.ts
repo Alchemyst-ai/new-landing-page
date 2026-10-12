@@ -8,6 +8,7 @@
  */
 
 import { CASE_STUDIES, CASE_STUDIES_PATH, caseStudyPath } from "@/lib/caseStudies";
+import { pricingMarkdown, pricingSummary, pricingTiersMarkdown } from "@/lib/pricingMarkdown";
 import { JOBS, USE_CASES } from "@/lib/useCases";
 
 export const SITE_TITLE = "AI Context Layer for Business Knowledge | Alchemyst AI";
@@ -321,8 +322,7 @@ export const STATIC_SECTIONS: LlmsTxtSection[] = [
       {
         title: "Pricing - Alchemyst AI Context Layer",
         url: `${BASE_URL}/pricing`,
-        description:
-          "Usage-based pricing with Free tier (5M tokens) and paid tiers (Starter, Accelerate, Supercharge). Enterprise plans custom-built for scale. Pricing calculator shows transparent costs per-million-tokens.",
+        description: pricingSummary(),
       },
     ],
   },
@@ -515,19 +515,13 @@ Join developers building AI products with persistent, auditable context. The pag
 
 ## Pricing
 
-**Simple, transparent pricing for the institutional context backbone.**
+${pricingSummary()}
 
-Usage-based pricing with transparent costs per million tokens and per MB processed.
+${pricingTiersMarkdown()}
+${pricingMarkdown()}
+For volume beyond Supercharge, dedicated infrastructure or custom terms, enterprise pricing is built around your organization: https://cal.com/uttaran-nayak-alchemyst/30min
 
-| Tier | Description |
-|------|-------------|
-| Free | 5M tokens free with business email signup |
-| Starter | Pay-as-you-go with sub-300ms retrieval |
-| Accelerate | Higher limits for scaling teams |
-| Supercharge | Enterprise-scale with custom bandwidth |
-| Enterprise | Custom-built pricing with dedicated support |
-
-Pricing calculator on https://getalchemystai.com/pricing shows exact costs based on expected usage.
+Full rate card and cost calculator: https://getalchemystai.com/pricing
 
  ---
 
