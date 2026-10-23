@@ -70,7 +70,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: LinkedinIcon, href: "https://www.linkedin.com/company/alchemystai", label: "LinkedIn" },
-  { icon: XIcon, href: "https://x.com/getalchemystai", label: "X" },
+  { icon: XIcon, href: "https://x.com/getalchemyst", label: "X" },
 ];
 
 export default function Footer() {

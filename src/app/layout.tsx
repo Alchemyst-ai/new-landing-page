@@ -85,8 +85,8 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description:
       SITE_DESCRIPTION,
-    site: "@getalchemystai",
-    creator: "@getalchemystai",
+    site: "@getalchemyst",
+    creator: "@getalchemyst",
     images: [OG_IMAGE],
   },
   alternates: {

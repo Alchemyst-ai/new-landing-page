@@ -109,7 +109,7 @@ export default function CreatorsProgramPage() {
     url: "https://getalchemystai.com",
     logo: "https://getalchemystai.com/logo.png",
     sameAs: [
-      "https://twitter.com/getalchemystai",
+      "https://x.com/getalchemyst",
       "https://youtube.com/@alchemystai",
     ],
     offers: {
