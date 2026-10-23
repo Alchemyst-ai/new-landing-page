@@ -7,17 +7,7 @@
  */
 
 import { NodeHtmlMarkdown } from "node-html-markdown";
-import { pricingFaqMarkdown, pricingMarkdown, pricingTiersMarkdown } from "@/lib/pricingMarkdown";
-
-/**
- * Blocks whose rendered HTML is swapped for purpose-built Markdown, keyed by
- * the value of a `data-markdown-pricing` attribute on a <div>.
- */
-const PRICING_BLOCKS: Record<string, () => string> = {
-  calculator: pricingMarkdown,
-  tiers: pricingTiersMarkdown,
-  faq: pricingFaqMarkdown,
-};
+import { pricingMarkdown } from "@/lib/pricingMarkdown";
 
 export type PageMarkdownResult =
   | { ok: true; markdown: string }
@@ -58,14 +48,10 @@ export async function fetchPageMarkdown(
         ignore: ["script", "style", "noscript", "nav", "footer", "svg", "button"],
       },
       {
-        // `data-markdown-skip`: purely visual recaps, omitted from Markdown.
-        div: ({ node, base }) => {
-          if (node.hasAttribute("data-markdown-skip")) return { ignore: true };
-          const block = PRICING_BLOCKS[node.getAttribute("data-markdown-pricing") ?? ""];
-          return block
-            ? { content: block(), recurse: false, surroundingNewlines: 2 }
-            : { ...base };
-        },
+        div: ({ node, base }) =>
+          node.getAttribute("data-markdown-pricing") === "calculator"
+            ? { content: pricingMarkdown(), recurse: false, surroundingNewlines: 2 }
+            : { ...base },
       },
     );
 

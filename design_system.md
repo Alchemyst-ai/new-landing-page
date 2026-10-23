@@ -226,7 +226,7 @@ Mono 11px, weight 600, tracking `0.12em` to `0.15em`, uppercase, colour
 - Buttons: `.btn-primary`, `.btn-ghost` (both dark-anchor aware).
 - Nav: `.nav-link`, `.nav-docs-btn`, `.nav-menu-item`, `.nav-menu-item-accent`.
 - Surfaces: `.surface-card`, `.surface-divider`, `.hairline-grid-bg`.
-- Behaviour: `.logo-marquee-item`, `.compare-card`,
+- Behaviour: `.logo-marquee-item`, `.pricing-card`, `.compare-card`,
   `.footer-link`, `.blog-*` family, `.prose-blog-dark`.
 - Animations: `.animate-fade-in(-up)`, `.animate-pulse-slow`,
   `.animate-marquee`, `.animate-blink`, `.delay-100..900`.
